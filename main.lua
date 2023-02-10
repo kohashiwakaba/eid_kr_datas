@@ -7,6 +7,7 @@ wakaba_krdesc = mod
 include("wakaba_krdesc.fiendfolio")
 include("wakaba_krdesc.retribution")
 include("wakaba_krdesc.revelations")
+include("wakaba_krdesc.godmode")
 
 
 EID._currentMod = "Wakaba_translation_reserved"
