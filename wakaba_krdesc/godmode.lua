@@ -3,58 +3,61 @@ if GODMODE then
 
 	EID._currentMod = "AOIGodmodeAchieved"
 
+	local V_REPLACE = 0
+	local V_APPEND = 1
+
 	local Items = GODMODE.registry.items
 	local Trinkets = GODMODE.registry.trinkets
 	
 	local BirthrightDesc = {
-		[GODMODE.players[Isaac.GetPlayerTypeByName("Recluse",false)]] = {
+		[Isaac.GetPlayerTypeByName("Recluse",false)] = {
 			Name = "Recluse",
 			Description = "{{Collectible"..Items.larval_therapy.."}}진드기의 공격력 +50%",
 			QuoteDesc = "",
 		},
-		[GODMODE.players[Isaac.GetPlayerTypeByName("Tainted Recluse",true)]] = {
+		[Isaac.GetPlayerTypeByName("Tainted Recluse",true)] = {
 			Name = "Tainted Recluse",
 			Description = "{{Collectible"..Items.reclusive_tendencies.."}} Reculsive Tendencies 사용 시 진드기가 2배로 소환됩니다.#{{Collectible"..Items.reclusive_tendencies.."}} Reculsive Tendencies로 소환된 거미의 공격력 +50%",
 			QuoteDesc = "",
 		},
-		[GODMODE.players[Isaac.GetPlayerTypeByName("Xaphan",false)]] = {
+		[Isaac.GetPlayerTypeByName("Xaphan",false)] = {
 			Name = "Xaphan",
-			Description = "↑ {{LuckSmall}}행운 +5#{{Collectible"..Items.adramolechs_blessing.."}}Adramolech's Blessing의 충전 속도가 2배로 증가합니다.",
+			Description = "↑ {{LuckSmall}}행운 +5#{{Collectible"..Items.adramolechs_blessing.."}}Adramolech's Blessing의 충전량이 2배로 증가합니다.",
 			QuoteDesc = "",
 		},
-		[GODMODE.players[Isaac.GetPlayerTypeByName("Tainted Xaphan",true)]] = {
+		[Isaac.GetPlayerTypeByName("Tainted Xaphan",true)] = {
 			Name = "Tainted Xaphan",
 			Description = "{{Collectible"..Items.adramolechs_fury.."}} 챔피언이 Adramolech's Fury의 표식에 걸릴 확률 +25%#25%의 확률로 표식 걸린 챔피언 속성이 제거됩니다.",
 			QuoteDesc = "",
 		},
-		[GODMODE.players[Isaac.GetPlayerTypeByName("Elohim",false)]] = {
+		[Isaac.GetPlayerTypeByName("Elohim",false)] = {
 			Name = "Elohim",
 			Description = "{{AngelRoom}} 특수한 천사방으로 순간이동합니다.#{{AngelRoom}} 특수한 천사방에는 천사방 아이템 3개를 획득할 수 있습니다.",
 			QuoteDesc = "",
 		},
-		[GODMODE.players[Isaac.GetPlayerTypeByName("Tainted Elohim",true)]] = {
+		[Isaac.GetPlayerTypeByName("Tainted Elohim",true)] = {
 			Name = "Tainted Elohim",
-			Description = "Gain a small all stat up whenever a future boss fight is defeated#Remove 1 more broken heart per boss fight as well",
+			Description = "{{BossRoom}} 보스방의 보스 처치시 모든 능력치가 추가로 증가합니다.",
 			QuoteDesc = "",
 		},
-		[GODMODE.players[Isaac.GetPlayerTypeByName("Gehazi",false)]] = {
+		[Isaac.GetPlayerTypeByName("Gehazi",false)] = {
 			Name = "Gehazi",
 			Description = "{{Collectible"..Items.crown_of_gold.."}} 피격 시 잃는 {{Coin}}동전의 개수 -2",
 			QuoteDesc = "",
 		},
-		[GODMODE.players[Isaac.GetPlayerTypeByName("Deli",false)]] = {
+		[Isaac.GetPlayerTypeByName("Deli",false)] = {
 			Name = "Deli",
 			Description = "↑ {{DamageSmall}}공격력 배율 x1.2#↑ {{TearsSmall}}연사 배율 x1.1",
 			QuoteDesc = "",
 		},
-		[GODMODE.players[Isaac.GetPlayerTypeByName("Tainted Deli",true)]] = {
+		[Isaac.GetPlayerTypeByName("Tainted Deli",true)] = {
 			Name = "Tainted Deli",
-			Description = "Delirious Piles fire a ring of spectral tears dealing your damage on death",
+			Description = "적 처치 시 등장하는 Delirious Pile 처치 시 나오는 탄환이 더 이상 캐릭터에게 피해를 주지 않습니다.",
 			QuoteDesc = "",
 		},
-		[GODMODE.players[Isaac.GetPlayerTypeByName("The Sign",false)]] = {
+		[Isaac.GetPlayerTypeByName("The Sign",false)] = {
 			Name = "The Sign",
-			Description = "↑ Removes all Broken Hearts#↑ Removes 25% speed penalty",
+			Description = "{{BrokenHeart}}모든 부서진하트를 제거합니다.#↑ {{SpeedSmall}}이동속도 배율 x1.33",
 			QuoteDesc = "",
 		},
 	}
@@ -76,7 +79,8 @@ if GODMODE then
 			QuoteDesc = "내 말을 따르면 너의 시간이 올지오다",
 		},
 		[Items.angel_food] = {
-			Description = "↑ 소울하트 +1#↑ 황금하트 +1#↑ {{TearsSmall}}연사 +0.5#↑ {{RangeSmall}}사거리 +2",
+			Description = "↑ {{SoulHeart}}소울하트 +1#↑ {{GoldenHeart}}황금하트 +1#↑ {{TearsSmall}}연사 +0.5",
+			BingeEater = "↑ {{RangeSmall}}사거리 +2",
 			Name = "천사의 식사",
 			QuoteDesc = "금기",
 		},
@@ -121,7 +125,7 @@ if GODMODE then
 			QuoteDesc = "",
 		},
 		[Items.the_carrot] = {
-			Description = "↑ 최대 체력 +1#스테이지 진입 시 {{Collectible21}}/{{Collectible54}}/{{Collectible246}} 중 하나의 효과를 발동합니다.",
+			Description = "↑ {{Heart}}최대 체력 +1#스테이지 진입 시 {{Collectible21}}/{{Collectible54}}/{{Collectible246}} 중 하나의 효과를 발동합니다.",
 			Name = "당근",
 			QuoteDesc = "",
 		},
@@ -136,7 +140,7 @@ if GODMODE then
 			QuoteDesc = "",
 		},
 		[Items.celestial_tail] = {
-			Description = "{{Key}}열쇠 픽업이 1+1로 나옵니다.#{{EternalChest}} 상자가 50%의 확률로 이터널 상자로 교체됩니다.",
+			Description = "{{Key}} 열쇠 픽업이 1+1로 나옵니다.#{{EternalChest}} 상자가 50%의 확률로 이터널 상자로 교체됩니다.",
 			Name = "천체 꼬리",
 			QuoteDesc = "",
 		},
@@ -146,7 +150,7 @@ if GODMODE then
 			QuoteDesc = "",
 		},
 		[Items.crown_of_gold] = {
-			Description = "방 입장 시 랜덤 적 하나를 석화시킵니다. #{{Coin}}동전 25개마다 {{LuckSmall}}행운 +1#↓ 피격 시 일정 수량만큼의 동전을 잃습니다.#!!! 수량 : (5 + {{DamageSmall}} - (1~3))",
+			Description = "방 입장 시 랜덤 적 하나를 석화시킵니다. #↑ {{Coin}}동전 25개마다 {{LuckSmall}}행운 +1#↓ 피격 시 일정 수량만큼의 동전을 잃습니다.#!!! 수량 : (5 + {{DamageSmall}} - (1~3))",
 			Name = "황금 왕관",
 			QuoteDesc = "",
 		},
@@ -157,11 +161,12 @@ if GODMODE then
 		},
 		[Items.devils_food] = {
 			Description = "↑ {{BlackHeart}}블랙하트 +2#↑ {{DamageSmall}}공격력 +1",
+			BingeEater = "↑ {{ShotspeedSmall}}탄속 +0.2",
 			Name = "악마의 먹잇감",
 			QuoteDesc = "",
 		},
 		[Items.divine_approval] = {
-			Description = "{{GoldHeart}} 획득 시 모든 블랙하트가 제거되며 황금하트를 최대 개수만큼 채웁니다.#↑ 소울하트 +3#↑ 스테이지 진입 시 {{GoldenHeart}}황금하트 +1#{{GoldenHeart}}황금하트 개수만큼 {{TearsSmall}}연사 +0.25",
+			Description = "{{GoldHeart}} 획득 시 모든 블랙하트가 제거되며 황금하트를 최대 개수만큼 채웁니다.#↑ {{SoulHeart}}소울하트 +3#↑ 스테이지 진입 시 {{GoldenHeart}}황금하트 +1#↑ {{GoldenHeart}}황금하트 개수만큼 {{TearsSmall}}연사 +0.25",
 			Name = "신성한 찬의",
 			QuoteDesc = "비쌀수록 아픈 법",
 		},
@@ -211,7 +216,7 @@ if GODMODE then
 			QuoteDesc = "",
 		},
 		[Items.fruit_flies] = {
-			Description = "Summons 3 Fruit Flies to grow with you#On room clear, stacking 3% chance to explode into a random fruit and a new one to spawn",
+			Description = "과일 파리를 3마리 소환합니다.#방 클리어 시 3%의 확률로(누적) 터지면서 랜덤 스탯을 5분간 증가시키는 과일을 드랍합니다.#터진 파리는 즉시 재생산됩니다.",
 			Name = "과일 파리",
 			QuoteDesc = "",
 		},
@@ -241,7 +246,7 @@ if GODMODE then
 			QuoteDesc = "",
 		},
 		[Items.golden_stopwatch] = {
-			Description = "Spawns a penny, makes the room gold#Until you leave the room, you don't lose money over time",
+			Description = "사용 시 {{Coin}}동전을 하나 소환하며 그 방에서 동전이 차감되지 않습니다.",
 			Name = "황금 스탑워치",
 			QuoteDesc = "",
 		},
@@ -306,7 +311,7 @@ if GODMODE then
 			QuoteDesc = "아무것도 느껴지지 않아!",
 		},
 		[Items.nirvana] = {
-			Description = "적의 체력을 20% 깎습니다",
+			Description = "모든 적의 최대 체력을 20% 깎습니다.",
 			Name = "니르바나",
 			QuoteDesc = "",
 		},
@@ -356,7 +361,7 @@ if GODMODE then
 			QuoteDesc = "",
 		},
 		[Items.reclusive_tendencies] = {
-			Description = "Charms small spiders in the room for 5 seconds#Spawns 3+(Small Spider count) chiggers",
+			Description = "공격이 적에게 맞을 시 특수한 Spider를 소환합니다.#특수한 Spider는 5초동안 적에게 캐릭터의 공격력 x0.1의 피해를 주나 5초 이후에는 아군 상태가 풀립니다.#사용 시 3 +(Small Spider개수)만큼의 진드기를 소환합니다.#진드기는 적에게 캐릭터의 공격력 x0.25의 피해를 주며 10번의 피해를 주면 사라집니다.",
 			Name = "은둔 성향",
 			QuoteDesc = "",
 		},
@@ -387,6 +392,7 @@ if GODMODE then
 		},
 		[Items.soul_food] = {
 			Description = "↑ {{SoulHeart}}소울하트 +2#↑ {{LuckSmall}}행운 +1",
+			BingeEater = "↑ {{SpeedSmall}}이동속도 +0.2",
 			Name = "영혼의 먹이",
 			QuoteDesc = "",
 		},
@@ -416,7 +422,7 @@ if GODMODE then
 			QuoteDesc = "힘에는 대가가 따르지",
 		},
 		[Items.childs_trophy] = {
-			Description = "!!! 스테이지 당 2회 사용 가능#사용 시 그 방에서 {{DamageSmall}}공격력 배율 x6, {{TearsSmall}}연사 +3",
+			Description = "!!! 스테이지 2회 진입 시 재충전#사용 시 그 방에서 {{DamageSmall}}공격력 배율 x6, {{TearsSmall}}연사 +3",
 			Name = "아이의 트로피",
 			QuoteDesc = "",
 		},
@@ -483,17 +489,17 @@ if GODMODE then
 	local TrinketDesc = {
 		[Trinkets.bobs_tongue] = {
 			Description = "↑ {{TearsSmall}}연사 +0.25#{{Bob}} Bob 변신세트의 아이템 2개 소지 시 랜덤 Bob 아이템 획득과 동시에 장신구가 흡수됩니다.",
-			Name = "밥의 혀",
+			Name = "밥의 혓바닥",
 			QuoteDesc = "",
 		},
 		[Trinkets.bombshell] = {
 			Description = "{{Poison}} {{Bomb}}폭탄 설치 시 5초동안 캐릭터의 위치에 독장판을 생성하며 폭탄의 위치에 독가스를 생성합니다.",
-			Name = "bombshell",
+			Name = "폭발물",
 			QuoteDesc = "",
 		},
 		[Trinkets.gesture_of_the_deep] = {
 			Description = "클리어하지 않은 방 입장 시 액티브 아이템이 충전되어 있을 경우 자동으로 사용합니다.#최대 충전량이 2칸 이하인 경우 1%의 확률로 실패합니다.#방 클리어 시 5%의 확률로 배터리 픽업을 추가로 소환합니다.",
-			Name = "gesture_of_the_deep",
+			Name = "깊은 곳으로부터의 손짓",
 			QuoteDesc = "",
 		},
 		[Trinkets.godmode] = {
@@ -503,23 +509,46 @@ if GODMODE then
 		},
 		[Trinkets.cake_pop] = {
 			Description = "스테이지 진입 시 소지 중인 장신구를 흡수합니다.",
-			Name = "cake_pop",
+			Name = "마블 사탕",
 			QuoteDesc = "",
 		},
 		[Trinkets.snack_lock] = {
-			Description = "Drop 3 random fruit on the start of each floor",
-			Name = "snack_lock",
+			Description = "스테이지 진입 시 랜덤 스탯을 5분간 증가시키는 과일을 3개 드랍합니다.",
+			Name = "도난방지 장치",
 			QuoteDesc = "",
 		},
 		[Trinkets.snapped_cross] = {
 			Description = "적 처치 시 10%의 확률로 3초간 무적 상태가 됩니다.",
-			Name = "snapped_cross",
+			Name = "부서진 십자가",
 			QuoteDesc = "",
 		},
 
+
+		[Trinkets.mood_ring_blue] = {
+			Description = "!!! 현재 3회 남음#Call of the Void의 탄환을 3회 막아줍니다.#막아줄 때마다 한 단계씩 차감하며 스테이지 진입 시 단계가 돌아옵니다.#파란색일 때 스테이지 진입 시 랜덤 능력치가 영구적으로 증가합니다.#위 설정 비활성화 시 소지 중일 때 {{DamageSmall}}공격력 +0.5, {{LuckSmall}}행운 +0.5",
+			Name = "무드 링",
+			QuoteDesc = "",
+		},
+		[Trinkets.mood_ring_yellow] = {
+			Description = "!!! 현재 2회 남음#Call of the Void의 탄환을 2회 막아줍니다.#스테이지 진입 시 파란색으로 변합니다.",
+			Name = "무드 링",
+			QuoteDesc = "",
+		},
+		[Trinkets.mood_ring_green] = {
+			Description = "!!! 현재 1회 남음#Call of the Void의 탄환을 1회 막아줍니다.#스테이지 진입 시 노란색으로 변합니다.",
+			Name = "무드 링",
+			QuoteDesc = "",
+		},
+		[Trinkets.mood_ring_black] = {
+			Description = "!!! 무효과#스테이지 진입 시 초록색으로 변합니다.",
+			Name = "무드 링",
+			QuoteDesc = "",
+		},
+
+
 		[Trinkets.cracked_nazar] = {
 			Description = "{{CurseCursedSmall}} 스테이지 진입 시 50%의 확률로 저주를 제거합니다.",
-			Name = "cracked_nazar",
+			Name = "깨진 나자르",
 			QuoteDesc = "",
 		},
 		[Trinkets.cursed_pendant] = {
@@ -528,19 +557,30 @@ if GODMODE then
 			QuoteDesc = "",
 		},
 		[Trinkets.shattered_moonrock] = {
-			Description = "스테이지 진입 시 Fatal Attraction의 능력치 증감 선택지가 2개 나타납니다.#Fatal Attraction 소지 시 능력치 감소량 -2.5%p",
-			Name = "shattered_moonrock",
+			Description = "{{Collectible"..Items.fatal_attraction.."}} 스테이지 진입 시 Fatal Attraction의 능력치 증감 선택지가 2개 나타납니다.#{{Collectible"..Items.fatal_attraction.."}}Fatal Attraction 소지 시 능력치 감소량 -2.5%p",
+			Name = "조각난 월석",
 			QuoteDesc = "",
 		},
 		[Trinkets.white_candle] = {
 			Description = "↑ 스테이지 입장 시 축복 확률 +5%",
-			Name = "white_candle",
+			Name = "하얀 양초",
 			QuoteDesc = "",
 		},
 	}
 
 	local CardDesc = {
 
+	}
+
+	local VanillaCollectibles = {
+		[CollectibleType.COLLECTIBLE_MORE_OPTIONS] = {
+			Type = V_REPLACE,
+			Description = "{{TreasureRoom}}보물방에 아이템이 한 쌍 더 추가되며 각 쌍 당 하나를 선택하면 나머지는 사라집니다.",
+		},
+		[CollectibleType.COLLECTIBLE_BLACK_CANDLE] = {
+			Type = V_APPEND,
+			Description = "↓ 더 이상 축복을 받을 수 없습니다.",
+		},
 	}
 	
 	for playerType, birthrightdesc in pairs(BirthrightDesc) do
@@ -556,6 +596,9 @@ if GODMODE then
 		EID:addCollectible(itemID, desc, itemdesc.Name, "ko_kr")
 		if itemdesc.Wisps then
 			EID.descriptions["ko_kr"].bookOfVirtuesWisps[itemID] = itemdesc.Wisps
+		end
+		if itemdesc.BingeEater then
+			EID.descriptions["ko_kr"].bingeEaterBuffs[itemID] = itemdesc.BingeEater
 		end
 		if itemdesc.Belial and itemdesc.Belial ~= "" then
 			EID.descriptions["ko_kr"].bookOfBelialBuffs[itemID] = itemdesc.Belial
@@ -573,5 +616,27 @@ if GODMODE then
 	for itemID, itemdesc in pairs(CardDesc) do
 		EID:addCard(itemID, itemdesc.Description, itemdesc.Name, "ko_kr")
 	end
+
+	local function FF_EIDKR_VanillaDescCondition(descObj)
+		if EID:getLanguage() ~= "ko_kr" then return false end
+		return
+			descObj.ObjType == 5
+			and descObj.ObjVariant == PickupVariant.PICKUP_COLLECTIBLE
+			and VanillaCollectibles[descObj.ObjSubType]
+	end
+
+	local function FF_EIDKR_VanillaDescCallback(descObj)
+		if VanillaCollectibles[descObj.ObjSubType] then
+			local type = VanillaCollectibles[descObj.ObjSubType].Type
+			if type == V_REPLACE then
+				descObj.Description = VanillaCollectibles[descObj.ObjSubType].Description
+			else
+				EID:appendToDescription(descObj, "#"..VanillaCollectibles[descObj.ObjSubType].Description)
+			end
+		end
+		return descObj
+	end
+
+	EID:addDescriptionModifier("FF_EIDKR_GodmodeVanillaDescs", FF_EIDKR_VanillaDescCondition, FF_EIDKR_VanillaDescCallback)
 
 end
