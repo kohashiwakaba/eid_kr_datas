@@ -366,7 +366,7 @@ if GODMODE then
 			QuoteDesc = "",
 		},
 		[Items.book_of_saints] = {
-			Description = "사용 시 {{SoulHeart}}소울하트 +2, {{GoldenHeart}}황금하트 +1",
+			Description = "사용 시 {{SoulHeart}}소울하트 +1, {{GoldenHeart}}황금하트 +2",
 			Name = "성인의 책",
 			QuoteDesc = "",
 		},
