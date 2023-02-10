@@ -30,12 +30,12 @@ if GODMODE then
 			QuoteDesc = "내 말을 따르면 너의 시간이 올지오다",
 		},
 		[Items.angel_food] = {
-			Description = "↑ 소울하트 +1#↑ 황금하트 +1#↑ 연사 +0.5#↑ 사거리 +2",
+			Description = "↑ 소울하트 +1#↑ 황금하트 +1#↑ {{TearsSmall}}연사 +0.5#↑ {{RangeSmall}}사거리 +2",
 			Name = "천사의 식사",
 			QuoteDesc = "금기",
 		},
 		[Items.angry_apple_juice] = {
-			Description = "사용 시 체력을 한칸 회복하며 그 방에서 공격력 배율 x1.2, 추가 공격력 +1 증가하나 화면이 약간 일그러집니다.",
+			Description = "사용 시 체력을 한칸 회복하며 그 방에서 {{DamageSmall}}공격력 배율 x1.2, {{DamageSmall}}추가 공격력 +1 증가하나 화면이 약간 일그러집니다.",
 			Name = "화난 애플 주스",
 			QuoteDesc = "내가 뭘 한거지?",
 		},
@@ -55,7 +55,7 @@ if GODMODE then
 			QuoteDesc = "",
 		},
 		[Items.blood_pudding] = {
-			Description = "↑ 행운 +5#!!! 항상 저주에 걸립니다.",
+			Description = "↑ {{LuckSmall}}행운 +5#!!! 항상 저주에 걸립니다.",
 			Name = "핏투성이 푸딩",
 			QuoteDesc = "",
 		},
@@ -110,12 +110,12 @@ if GODMODE then
 			QuoteDesc = "이거 물이 잘 담기지 않는 것 같아",
 		},
 		[Items.devils_food] = {
-			Description = "↑ 블랙하트 +2#↑ 공격력 +1",
+			Description = "↑ 블랙하트 +2#↑ {{DamageSmall}}공격력 +1",
 			Name = "악마의 먹잇감",
 			QuoteDesc = "",
 		},
 		[Items.divine_approval] = {
-			Description = "{{GoldHeart}} 획득 시 모든 블랙하트가 제거되며 황금하트를 최대 개수만큼 채웁니다.#↑ 소울하트 +3#↑ 스테이지 진입 시 황금하트 +1#황금하트 개수만큼 연사 +0.25",
+			Description = "{{GoldHeart}} 획득 시 모든 블랙하트가 제거되며 황금하트를 최대 개수만큼 채웁니다.#↑ 소울하트 +3#↑ 스테이지 진입 시 황금하트 +1#황금하트 개수만큼 {{TearsSmall}}연사 +0.25",
 			Name = "신성한 찬의",
 			QuoteDesc = "비쌀수록 아픈 법",
 		},
@@ -205,7 +205,7 @@ if GODMODE then
 			QuoteDesc = "",
 		},
 		[Items.heart_arrest] = {
-			Description = "↑ 연사 +0.25#눈물 발사 간격이 심장 박동 방식으로 바뀝니다.#체력이 비어 있수록 눈물 딜레이가 감소합니다.",
+			Description = "↑ {{TearsSmall}}연사 +0.25#눈물 발사 간격이 심장 박동 방식으로 바뀝니다.#체력이 비어 있수록 눈물 딜레이가 감소합니다.",
 			Name = "심정지",
 			QuoteDesc = "",
 		},
@@ -225,7 +225,7 @@ if GODMODE then
 			QuoteDesc = "",
 		},
 		[Items.the_ladle] = {
-			Description = "최대 체력 +1#이동속도 +0.1#피격 시 이동속도가 +0.1씩 최대 5회 증가합니다.#스테이지 진입 시 이동속도 증가치가 초기화됩니다.",
+			Description = "최대 체력 +1#{{SpeedSmall}}이동속도 +0.1#피격 시 {{SpeedSmall}}이동속도가 +0.1씩 최대 5회 증가합니다.#스테이지 진입 시 이동속도 증가치가 초기화됩니다.",
 			Name = "국자",
 			QuoteDesc = "",
 		},
@@ -235,17 +235,17 @@ if GODMODE then
 			QuoteDesc = "",
 		},
 		[Items.late_delivery] = {
-			Description = "↑ 연사 +0.5#적에게 2500의 피해를 줄 시 그 방의 아이템을 하나 소환합니다.#아이템 소환 시마다 다음 소환에 필요한 피해량이 5000씩 증가합니다.",
+			Description = "↑ {{TearsSmall}}연사 +0.5#적에게 2500의 피해를 줄 시 그 방의 아이템을 하나 소환합니다.#아이템 소환 시마다 다음 소환에 필요한 피해량이 5000씩 증가합니다.",
 			Name = "느릿느릿 배달",
 			QuoteDesc = "",
 		},
 		[Items.marshall_scarf] = {
-			Description = "↑ 스테이지에 따라 연사 증가#Womb/Corpse 이전 : +0.5#Womb/Corpse : +0.75#Womb 이후 : +1",
+			Description = "↑ 스테이지에 따라 {{TearsSmall}}연사 증가#Womb/Corpse 이전 : +0.5#Womb/Corpse : +0.75#Womb 이후 : +1",
 			Name = "마샬 스카프",
 			QuoteDesc = "",
 		},
 		[Items.maxs_head] = {
-			Description = "!!! 사용 시마다(최대 5회);#↑ 공격력 배율 +25%p#↓ 연사 배율 -10%p#↓ 이동속도 배율 -5%p",
+			Description = "!!! 사용 시마다(최대 5회);#↑ {{DamageSmall}}공격력 배율 +25%p#↓ {{TearsSmall}}연사 배율 -10%p#↓ {{SpeedSmall}}이동속도 배율 -5%p",
 			Name = "맥스의 머리",
 			QuoteDesc = "",
 		},
@@ -255,7 +255,7 @@ if GODMODE then
 			QuoteDesc = "",
 		},
 		[Items.morphine] = {
-			Description = "↓ 부서진하트 +2#↓ 이동속도 배율 -20%#↑ 공격력 +1#30%의 확률로 피해를 무시합니다.",
+			Description = "↓ 부서진하트 +2#↓ {{SpeedSmall}}이동속도 배율 -20%#↑ {{DamageSmall}}공격력 +1#30%의 확률로 피해를 무시합니다.",
 			Name = "모르핀",
 			QuoteDesc = "아무것도 느껴지지 않아!",
 		},
@@ -265,7 +265,7 @@ if GODMODE then
 			QuoteDesc = "",
 		},
 		[Items.nosebleed] = {
-			Description = "방 입장 시 5초동안 서서히 감소하는 공격력 배율이 +50% 증가합니다.",
+			Description = "방 입장 시 5초동안 서서히 감소하는 {{DamageSmall}}공격력 배율이 +50% 증가합니다.",
 			Name = "코피",
 			QuoteDesc = "",
 		},
@@ -320,7 +320,7 @@ if GODMODE then
 			QuoteDesc = "",
 		},
 		[Items.a_second_thought] = {
-			Description = "이동속도 +0.2#보스러시 및 Hush의 입구가 항상 열립니다.#Call of the Void 패널티가 더 이상 발동하지 않습니다.",
+			Description = "{{SpeedSmall}}이동속도 +0.2#보스러시 및 Hush의 입구가 항상 열립니다.#Call of the Void 패널티가 더 이상 발동하지 않습니다.",
 			Name = "다른 생각",
 			QuoteDesc = "",
 		},
@@ -340,17 +340,17 @@ if GODMODE then
 			QuoteDesc = "",
 		},
 		[Items.soul_food] = {
-			Description = "소울하트 +2#행운 +1",
+			Description = "소울하트 +2#{{LuckSmall}}행운 +1",
 			Name = "영혼의 먹이",
 			QuoteDesc = "",
 		},
 		[Items.sugar] = {
-			Description = "!!! 획득 시 이후 등장하는 3개의 아이템이 50%의 확률로 Sugar!로 교체되며;#최대 체력 -1#이동속도 +0.125#공격력 +0.25/0.55(5회이후)/0.2(10회이후)#연사 +0.35/0.2(5회이후)",
+			Description = "!!! 획득 시 이후 등장하는 3개의 아이템이 50%의 확률로 Sugar!로 교체되며;#최대 체력 -1#{{SpeedSmall}}이동속도 +0.125#{{DamageSmall}}공격력 +0.25/0.55(5회이후)/0.2(10회이후)#{{TearsSmall}}연사 +0.35/0.2(5회이후)",
 			Name = "각설탕",
 			QuoteDesc = "",
 		},
 		[Items.taenia] = { -- TearRange adds 5, not 200
-			Description = "사거리 +5#탄속 -0.25#공격 시 공격 키를 뗄 때까지 같은 공격방향을 유지합니다.",
+			Description = "{{RangeSmall}}사거리 +5#{{ShotspeedSmall}}탄속 -0.25#공격 시 공격 키를 뗄 때까지 같은 공격방향을 유지합니다.",
 			Name = "태니아",
 			QuoteDesc = "",
 		},
@@ -365,12 +365,12 @@ if GODMODE then
 			QuoteDesc = "",
 		},
 		[Items.tramp_of_babylon] = {
-			Description = "스테이지에 비례하여 공격력 증가#소지한 상태에서 피격 시 그 방의 적 및 보스가 둘로 복제됩니다.",
+			Description = "↑ 스테이지에 비례하여 {{DamageSmall}}공격력 증가#소지한 상태에서 피격 시 그 방의 적 및 보스가 둘로 복제됩니다.",
 			Name = "바빌론의 창녀",
 			QuoteDesc = "힘에는 대가가 따르지",
 		},
 		[Items.childs_trophy] = {
-			Description = "!!! 스테이지 당 2회 사용 가능#사용 시 그 방에서 공격력 배율 x6, 연사 +3",
+			Description = "!!! 스테이지 당 2회 사용 가능#사용 시 그 방에서 {{DamageSmall}}공격력 배율 x6, {{TearsSmall}}연사 +3",
 			Name = "아이의 트로피",
 			QuoteDesc = "",
 		},
@@ -385,12 +385,12 @@ if GODMODE then
 			QuoteDesc = "",
 		},
 		[Items.war_banner] = {
-			Description = "↑{{Bomb}}폭탄 +5#폭탄 설치 시 최대 10개까지 설치한 위치에 랜덤 오라를 발산합니다.#오라 안에 있을 시 색상에 따라:#{{ColorRed}}빨강{{CR}} : 공격력 +0.25#{{ColorBlue}}파랑{{CR}} : 연사 +0.25#{{ColorYellow}}노랑{{CR}} : 탄속 +0.1",
+			Description = "↑ {{Bomb}}폭탄 +5#폭탄 설치 시 최대 10개까지 설치한 위치에 랜덤 오라를 발산합니다.#오라 안에 있을 시 색상에 따라:#{{ColorRed}}빨강{{CR}} : {{DamageSmall}}공격력 +0.25#{{ColorBlue}}파랑{{CR}} : {{TearsSmall}}연사 +0.25#{{ColorYellow}}노랑{{CR}} : {{ShotspeedSmall}}탄속 +0.1",
 			Name = "전쟁의 배너",
 			QuoteDesc = "",
 		},
 		[Items.wings_of_betrayal] = {
-			Description = "피격 시 그 방에서 공격력 +2.5 증가하며 비행 능력을 얻습니다.",
+			Description = "피격 시 그 방에서 {{DamageSmall}}공격력 +2.5 증가하며 비행 능력을 얻습니다.",
 			Name = "배반의 날개",
 			QuoteDesc = "고통 없이는 얻는 것이 없다",
 		},
