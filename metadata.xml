@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+    <name>zFiend Folio / Retribution / Revelations EID Korean translations</name>
+    <directory>fiendfolio-reheated-eidkr</directory>
+    <id>2852472516</id>
+    <description>This mod is Korean EID translations for Fiend Folio &amp; Retribution &amp; Revelations.
+Released as seperate mod to make translation update faster, will be merged into base mod if descriptions are complete.
+Also adds : Golem machines
+
+Please enjoy original mod.
+EID : https://steamcommunity.com/sharedfiles/filedetails/?id=836319872
+Fiend Folio : https://steamcommunity.com/sharedfiles/filedetails/?id=2851063440
+Retribution : https://steamcommunity.com/sharedfiles/filedetails/?id=2881008017
+Revelations : https://steamcommunity.com/sharedfiles/filedetails/?id=2880387531
+
+Special thanks to Curezor for adding Fiend Folio icons for EID!</description>
+    <version>1.19</version>
+    <visibility>Public</visibility>
+    <tag id="Lua"/>
+</metadata>
