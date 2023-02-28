@@ -4,6 +4,7 @@ EID._currentMod = "Samael"
 
 local bargainingChipDesc = "거래의 영혼이 제시하는 3가지 품목 중 하나를 선택할 수 있습니다."
 		.."#아이템, 픽업, 특수 이벤트(ex:{{Collectible105}}) 등이 제시되며 거래 가격도 다양하게 설정됩니다."
+local ferrymanDesc = "#차원의 틈새에서는 각 포탈마다 영혼이 존재하며 영혼을 적으로부터 보호하면 여러 픽업 보상을 얻을 수 있습니다."
 local BirthrightDesc = {
   [SamaelMod.lib.SamaelId] = {
     Name = "Samael",
@@ -22,18 +23,18 @@ local CollectibleDesc = {
 	[SamaelMod.ITEMS.REAPER_BUM] = {
 		Description = "일정 수의 적 처치마다 뼛조각, 불꽃, 카드, 룬, 혹은 뼈하트를 드랍합니다.",
 		Name = "사신 거지",
-		QuoteDesc = "획득멘트",
+		QuoteDesc = "게으른 사신",
 	},
 	[SamaelMod.ITEMS.PUNISHMENT_OF_THE_GRAVE] = {
 		Description = "↑ 목숨 +1#사망 시 전 방에서 체력 4칸으로 부활하며;#악마 거래를 했을 경우: 천사 보스를 소환하며 처치 시 악마방 아이템 2개를 드랍합니다.#악마 거래를 하지 않았을 경우: 천사방 아이템 하나를 소환합니다.",
 		Name = "무덤의 형벌",
-		QuoteDesc = "획득멘트",
+		QuoteDesc = "죽음 이후의 심판",
 	},
 	
 	[SamaelMod.ITEMS.DENIAL] = {
 		Description = "↓ 행운 -1#Blind 저주에 걸리지 않으며 추가 스테이지의 가려진 아이템을 보여줍니다.#방 입장 시 그 방 한정으로 아이템, 픽업, 슬롯류를 바꿀 수 있는 Denial Dice를 소환합니다.",
 		Name = "부정의 정령",
-		QuoteDesc = "획득멘트",
+		QuoteDesc = "운명을 거부하다",
 	},
 	[SamaelMod.ITEMS.ANGER] = {
 		Description = "↑ 아래 항목, 등 이외의 부정적 효과 발생 시 공격력 +0.5:#"
@@ -42,17 +43,17 @@ local CollectibleDesc = {
 		.."#{{Blank}} - 슬롯/거지가 보상을 주지 않을 때"
 		.."#{{Blank}} - 폭탄으로 비밀방 발견 실패",
 		Name = "분노",
-		QuoteDesc = "획득멘트",
+		QuoteDesc = "운명에 분노하다",
 	},
 	[SamaelMod.ITEMS.BARGAINING] = {
 		Description = "스테이지의 시작방 및 특수방 입장 시 {{Card" .. Isaac.GetCardIdByName("Bargaining's Chip") .. "}}Bargaining's Chip을 소환합니다.#"..bargainingChipDesc,
 		Name = "거래의 정령",
-		QuoteDesc = "획득멘트",
+		QuoteDesc = "운명을 거래하다",
 	},
 	[SamaelMod.ITEMS.DEPRESSION] = {
 		Description = "↑ 연사 +0.7#피격 시 캐릭터가 일정 시간동안 누우며 여러 방향으로 눈물을 발사합니다.#캐릭터가 눕고 있는 도중에는 피해를 받지 않습니다.",
 		Name = "우울의 정령",
-		QuoteDesc = "획득멘트",
+		QuoteDesc = "운명을 비탄하다",
 	},
 	[SamaelMod.ITEMS.ACCEPTANCE] = {
 		Description = "↑ {{LuckSmall}}행운 +1"
@@ -61,102 +62,100 @@ local CollectibleDesc = {
 		.."#아이템 등장 혹은 구매 시 50%의 확률로 아이템이 하나 더 소환됩니다."
 		.."#!!! {{Collectible249}}/{{Collectible414}}/{{Collectible670}}/{{Collectible665}} 아이템이 제거됩니다.",
 		Name = "긍정의 정령",
-		QuoteDesc = "획득멘트",
+		QuoteDesc = "운명을 받아들이다",
 	},
 	[SamaelMod.ITEMS.THANATOPHOBIA] = {
-		Description = "When you take damage, emit a shout that hurts and knocks back enemies, and reflects projectiles."
-		.."#Grants an increasing damage boost for having lower total health."
-		.."#Requires having fewer than 6 hearts total for either effect to trigger."
-		.."#The damage boost is not active while a Holy Mantle is active, but a Holy Mantle breaking will trigger the shout.",
+		Description = "전체 체력이 6칸 이하인 상태에서 피격 시 주변의 적 및 탄환을 밀쳐내며 그 방에서 현재 체력에 반비례하여 공격력이 증가합니다."
+		.."#!!! {{HolyMantleSmall}}Holy Mantle의 보호막으로 방어 시 공격력이 증가하지 않으나 넉백은 그대로 발동됩니다.",
 		Name = "타나토포비아",
-		QuoteDesc = "획득멘트",
+		QuoteDesc = "죽음에 공포를 뜨리라",
 	},
 	[SamaelMod.ITEMS.MALAKH_MOT] = {
 		Description = "사용 시 일시적으로 무적이 되며 낫을 마구 휘두릅니다."
 		.."#적에게 피해를 주면 충전됩니다.",
 		Name = "말라크 모트",
-		QuoteDesc = "획득멘트",
+		QuoteDesc = "죽음이 되다",
 	},
 	[SamaelMod.ITEMS.REMEMBRANCE_OF_THE_FORGOTTEN] = {
 		Description = "방 입장 시 해골 더미가 등장합니다."
 		.."#해골 더미를 집으면 캐릭터의 눈물 공격을 같이 발사하는 영혼이 달립니다."
 		.."#영혼이 사라지면 해골 더미가 다시 등장합니다.",
 		Name = "잊혀진 자의 전언",
-		QuoteDesc = "획득멘트",
+		QuoteDesc = "잊지 마...",
 	},
 	[SamaelMod.ITEMS.MEMENTO_MORI] = {
 		Description = "사용 시 최대 5개까지 연결 지점을 설치합니다."
 		.."#2번 연속 사용 시 연결 지점의 역순으로 적에게 피해를 주는 낫 공격을 하며 낫 공격 중에는 무적입니다."
 		.."#적에게 주는 피해량은 직전에 설치한 연결 지점 수에 비례합니다."
 		Name = "메멘토 모리",
-		QuoteDesc = "획득멘트",
+		QuoteDesc = "죽음의 기억",
 	},
 	[SamaelMod.ITEMS.THANATOPHILIA] = {
-		Description = "Chance to spawn friendly skeletal enemies from killed enemies."
-		.."#Will also periodically spawn a couple when you have none.",
+		Description = "적 처치 시 25%의 확률로 해골 계열의 아군 적을 소환합니다."
+		.."#아군 적이 없을 경우 주기적으로 소환합니다.",
 		Name = "타나토필리아",
-		QuoteDesc = "획득멘트",
+		QuoteDesc = "죽은 자들의 친구",
 	},
 	[SamaelMod.ITEMS.REMEMBRANCE_OF_DEATH] = {
-		Description = "Holding down an attack direction places a stationary reaper shadow at your current location."
-		.."#When you let go, the shadow slashes back to your new location, damaging enemies in its path."
-		.."#Scales with your stats.",
+		Description = "공격 키를 누르는 동안 그 자리에 고정 위치의 사신이 소환됩니다."
+		.."#사신이 소환된 상태에서 공격 키를 떼면 사신이 캐릭터를 향해 공격하며 사신 주변의 적에게 피해를 줍니다."
+		.."#캐릭터는 사신의 공격에 피해를 받지 않으며 적에게 주는 피해량은 {{DamageSmall}}/{{TearsSmall}} 수치에 비례합니다.",
 		Name = "죽음의 전언",
-		QuoteDesc = "획득멘트",
+		QuoteDesc = "그대를 잊지 않으리라",
+	},
+	[SamaelMod.ITEMS.THANATOS] = {
+		Description = "캐릭터를 따라다니며 적의 탄환을 막아주는 관을 3개 소환합니다."
+		.."#각 관 당 적 탄환을 10회 막으면 부서지며 부서지는 동안 푸른 불꽃을 발사하며 작은 캐릭터를 하나 소환합니다."
+		.."#방 입장 시, 혹은 일정 시간이 지나면 관이 재생성됩니다.",
+		Name = "타나토스의 가면",
+		QuoteDesc = "사신의 보호",
 	},
 }
 
 local TrinketDesc = {
 	[SamaelMod.ITEMS.SIGIL_OF_SAMAEL] = {
-		Description = "Killed enemies count as being killed twice."
-		.."#Causes on-kill effects to trigger twice, among other things.",
+		Description = "적 처치 시 적 처치 시의 효과를 추가로 발동합니다."
 		Name = "사마엘의 인장",
-		QuoteDesc = "획득멘트",
+		QuoteDesc = "죽음을 부르는 자",
 	},
 	[SamaelMod.ITEMS.SIGIL_OF_LILITH] = {
-		Description = "Spawns a friendly demon baby if you don't have one."
-		.."#The baby can evolve into stronger forms by clearing enough rooms with it alive."
-		.."#If it dies, you'll get a new one next room.",
+		Description = "작은 아이작 패밀리어를 하나 소환합니다."
+		.."#패밀리어가 죽지 않고 방 클리어 시 그 패밀리어가 성장합니다."
+		.."#패밀리어가 죽으면 방 입장 시 새로운 패밀리어가 소환됩니다.",
 		Name = "릴리스의 인장",
-		QuoteDesc = "획득멘트",
+		QuoteDesc = "생명을 주는 자",
 	},
 	[SamaelMod.ITEMS.CHARON_CLUB_CARD] = {
-		Description ="Guarantees that Ferrymen spawn on every floor, even floors where they wouldn't normally spawn naturally."
-		.."#Halves the toll required to pay Ferrymen.",
+		Description ="모든 스테이지에서 차원의 틈새로 이동하는 뱃시공이 등장합니다."
+		.."#뱃시공의 가격을 절반만큼 할인합니다."
+		..ferrymanDesc,
 		Name = "카론 클럽 카드",
-		QuoteDesc = "획득멘트",
-	},
-	[SamaelMod.ITEMS.THANATOS] = {
-		Description = "Grants a chain of coffin familiars that follow behind you that block projectiles."
-		.."#The coffins will break open after blocking enough projectiles, shooting flames and spawning a small dead friend."
-		.."#Coffins respawn periodically over time, or upon entering a new room.",
-		Name = "타나토스",
-		QuoteDesc = "획득멘트",
+		QuoteDesc = "더 많은 뱃시공 + 입장 할인",
 	},
 }
 
 local CardDesc = {
 	[SamaelMod.ITEMS.XIII] = {
-		Description = "Takes you to a special \"Death Deal\" room where you must choose 1 out of 2-4 deals."
-		.."#Each deal requires you to give up one of your items for a new one."
-		.."#Deals may offer items from the Angel or Devil pools, or a custom Death pool.",
+		Description = "사용 시 특수한 악마방으로 순간이동합니다."
+		.."#특수한 악마방에서는 악마방/천사방/특수악마방 배열의 아이템이 등장하며 체력 거래가 아닌 소지 중인 아이템을 요구하며 하나를 선택 시 나머지는 사라집니다."
+		.."#반드시 거래해야만 출구가 생깁니다.",
 		Name = "XIII",
 		QuoteDesc = "획득멘트",
 	},
 	[SamaelMod.ITEMS.SOUL_OF_SAMAEL] = {
-		Description = "Enemies in the current room will drop souls on death."
-		.."#Spawns pickup rewards for collecting a lot of souls.",
+		Description = "그 방에서 적 처치 시 영혼이 생깁니다."
+		.."#영혼을 모을 때마다 확률적으로 픽업을 생성합니다.",
 		Name = "사마엘의 영혼",
 		QuoteDesc = "획득멘트",
 	},
 	[SamaelMod.ITEMS.XIII_REVERSED] = {
-		Description = "피격 시까지 적이 무한정 소환됩니다."
+		Description = "!!! 클리어한 방에서만 사용 가능#피격 시까지 적이 무한정 소환됩니다."
 		.."#피격 후 방 클리어 시 적에게 준 피해량에 비례한 보상을 소환합니다.",
 		Name = "XIII?",
 		QuoteDesc = "획득멘트",
 	},
 	[SamaelMod.ITEMS.FERRYMANS_OBOLS] = {
-		Description = "Spawns a pre-paid Ferryman.",
+		Description = "사용 시 차원의 틈새로 이동하는 뱃시공을 소환합니다.#{{Blank}} (거래 불필요)"..ferrymanDesc,
 		Name = "뱃시공의 오볼",
 		QuoteDesc = "획득멘트",
 	},
