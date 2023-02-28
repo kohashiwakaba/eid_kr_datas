@@ -2,15 +2,12 @@ if SamaelMod then
 
 EID._currentMod = "Samael"
 
-local bargainingChipDesc = "The Spirit of Bargaining offers 1 of 3 deals."
-		.."#Deals can offer items, pickups, or services such as rerolling."
-		.."#Deals can cost coins, keys, or bombs, or even an item."
-		.."#Bargaining will try to offer deals you might want, and can afford."
-
+local bargainingChipDesc = "거래의 영혼이 제시하는 3가지 품목 중 하나를 선택할 수 있습니다."
+		.."#아이템, 픽업, 특수 이벤트(ex:{{Collectible105}}) 등이 제시되며 거래 가격도 다양하게 설정됩니다."
 local BirthrightDesc = {
   [SamaelMod.lib.SamaelId] = {
     Name = "Samael",
-    Description = "#이동속도 증가#비행 능력을 얻습니다.#Malakh Mot의 충전속도가 빨라지며 사거리가 25% 증가합니다.#Malakh Mot 발동 중 적을 추적하여 공격하는 꼬마 사신을 3마리 소환합니다.", 
+    Description = "#↑ 이동속도 +0.29#비행 능력을 얻습니다.#Malakh Mot의 충전속도가 빨라지며 사거리가 25% 증가합니다.#Malakh Mot 발동 중 적을 추적하여 공격하는 꼬마 사신을 3마리 소환합니다.", 
     QuoteDesc = "",
   },
   [SamaelMod.lib.TaintedSamaelId] = {
@@ -34,8 +31,8 @@ local CollectibleDesc = {
 	},
 	
 	[SamaelMod.ITEMS.DENIAL] = {
-		Description = "↓ 행운 -??#Blind 저주에 걸리지 않으며 추가 스테이지의 가려진 아이템을 보여줍니다.#방 입장 시 그 방 한정으로 아이템, 픽업, 슬롯류를 바꿀 수 있는 Denial Dice를 소환합니다.",
-		Name = "부정의 혼",
+		Description = "↓ 행운 -1#Blind 저주에 걸리지 않으며 추가 스테이지의 가려진 아이템을 보여줍니다.#방 입장 시 그 방 한정으로 아이템, 픽업, 슬롯류를 바꿀 수 있는 Denial Dice를 소환합니다.",
+		Name = "부정의 정령",
 		QuoteDesc = "획득멘트",
 	},
 	[SamaelMod.ITEMS.ANGER] = {
@@ -48,22 +45,22 @@ local CollectibleDesc = {
 		QuoteDesc = "획득멘트",
 	},
 	[SamaelMod.ITEMS.BARGAINING] = {
-		Description = "스테이지의 시작방 및 특수방 입장 시 {{Card" .. Isaac.GetCardIdByName("Bargaining's Chip") .. "}}Bargaining's Chip을 소환합니다.",
-		Name = "거래의 혼",
+		Description = "스테이지의 시작방 및 특수방 입장 시 {{Card" .. Isaac.GetCardIdByName("Bargaining's Chip") .. "}}Bargaining's Chip을 소환합니다.#"..bargainingChipDesc,
+		Name = "거래의 정령",
 		QuoteDesc = "획득멘트",
 	},
 	[SamaelMod.ITEMS.DEPRESSION] = {
 		Description = "↑ 연사 +0.7#피격 시 캐릭터가 일정 시간동안 누우며 여러 방향으로 눈물을 발사합니다.#캐릭터가 눕고 있는 도중에는 피해를 받지 않습니다.",
-		Name = "우울의 혼",
+		Name = "우울의 정령",
 		QuoteDesc = "획득멘트",
 	},
 	[SamaelMod.ITEMS.ACCEPTANCE] = {
-		Description = "↑ Luck up"
-		.."#↓ Applies a permanent Curse of the Blind effect - all item pedestals are hidden."
-		.."#↑ Each time an item pedestal spawns, or an item is purchased, there is a 50% chance for an extra item to spawn."
-		.."#↑ Spawns a random item from the treasure room pool when first picked up."
-		.."#Removes and rerolls \"Options\" items if you have them.",
-		Name = "긍정의 혼",
+		Description = "↑ {{LuckSmall}}행운 +1"
+		.."#{{CurseBlindSmall}} {{ColorOrange}}항상 Blind 저주에 걸립니다.{{CR}}"
+		.."#해당 게임에서 최초 획득 시 {{TreasureRoom}}보물방 배열의 아이템 하나를 소환합니다."
+		.."#아이템 등장 혹은 구매 시 50%의 확률로 아이템이 하나 더 소환됩니다."
+		.."#!!! {{Collectible249}}/{{Collectible414}}/{{Collectible670}}/{{Collectible665}} 아이템이 제거됩니다.",
+		Name = "긍정의 정령",
 		QuoteDesc = "획득멘트",
 	},
 	[SamaelMod.ITEMS.THANATOPHOBIA] = {
@@ -75,23 +72,22 @@ local CollectibleDesc = {
 		QuoteDesc = "획득멘트",
 	},
 	[SamaelMod.ITEMS.MALAKH_MOT] = {
-		Description = "Grants a temporary invincible state where you can attack with a scythe."
-		.."#Charges based on damage dealt.",
+		Description = "사용 시 일시적으로 무적이 되며 낫을 마구 휘두릅니다."
+		.."#적에게 피해를 주면 충전됩니다.",
 		Name = "말라크 모트",
 		QuoteDesc = "획득멘트",
 	},
 	[SamaelMod.ITEMS.REMEMBRANCE_OF_THE_FORGOTTEN] = {
-		Description = "A small skull will appear in each room."
-		.."#Picking up the skull will grant a temporary familiar that copies your tears and stats."
-		.."#When the familiar expires, the skull respawns and can be picked up again.",
+		Description = "방 입장 시 해골 더미가 등장합니다."
+		.."#해골 더미를 집으면 캐릭터의 눈물 공격을 같이 발사하는 영혼이 달립니다."
+		.."#영혼이 사라지면 해골 더미가 다시 등장합니다.",
 		Name = "잊혀진 자의 전언",
 		QuoteDesc = "획득멘트",
 	},
 	[SamaelMod.ITEMS.MEMENTO_MORI] = {
-		Description = "Use to place a sigil at your location - up to 5 can be placed."
-		.."#Double-tap to perform an invincible slashing attack along the path of your placed sigils."
-		.."#Damage increases the more sigils are placed before activation."
-		.."#Has synergies with many other items.",
+		Description = "사용 시 최대 5개까지 연결 지점을 설치합니다."
+		.."#2번 연속 사용 시 연결 지점의 역순으로 적에게 피해를 주는 낫 공격을 하며 낫 공격 중에는 무적입니다."
+		.."#적에게 주는 피해량은 직전에 설치한 연결 지점 수에 비례합니다."
 		Name = "메멘토 모리",
 		QuoteDesc = "획득멘트",
 	},
@@ -154,8 +150,8 @@ local CardDesc = {
 		QuoteDesc = "획득멘트",
 	},
 	[SamaelMod.ITEMS.XIII_REVERSED] = {
-		Description = "Enemies in the room will endlessly respawn until you take damage."
-		.."#Afterwards, spawns rewards based on the total damage dealt to enemies.",
+		Description = "피격 시까지 적이 무한정 소환됩니다."
+		.."#피격 후 방 클리어 시 적에게 준 피해량에 비례한 보상을 소환합니다.",
 		Name = "XIII?",
 		QuoteDesc = "획득멘트",
 	},
@@ -170,12 +166,9 @@ local CardDesc = {
 		QuoteDesc = "획득멘트",
 	},
 	[SamaelMod.ITEMS.DENIAL_DICE] = {
-		Description = "Rerolls a single item, pickup, or machine."
-		.."#Items will attempt to reroll into the same pool they came from."
-		.."#Chests, consumables, trinkets and machines will reroll into another of the same type."
-		.."#Only spawned by \"Spirit of Denial\", once per room."
-		.."#Cannot be taken out of the room it spawned in.",
-		Name = "부정의 주사위",
+		Description = "사용 시 가장 가까이에 있는 아이템 및 픽업 하나를 같은 종류의 항목으로 바꿉니다."
+		.."#!!! 다른 방으로 갖고 갈 수 없습니다.",
+		Name = "부정의 9면 주사위",
 		QuoteDesc = "획득멘트",
 	},
 	--[[ [SamaelMod.ITEMS.SAMAELS_FEATHER] = {
