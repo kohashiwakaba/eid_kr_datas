@@ -4,7 +4,7 @@ EID._currentMod = "Samael"
 
 local bargainingChipDesc = "거래의 영혼이 제시하는 3가지 품목 중 하나를 선택할 수 있습니다."
 		.."#아이템, 픽업, 특수 이벤트(ex:{{Collectible105}}) 등이 제시되며 거래 가격도 다양하게 설정됩니다."
-local ferrymanDesc = "#차원의 틈새에서는 각 포탈마다 영혼이 존재하며 영혼을 적으로부터 보호하면 여러 픽업 보상을 얻을 수 있습니다."
+local ferrymanDesc = "#차원의 틈새에서는 각 포탈마다 영혼이 존재하며 영혼을 적으로부터 보호하면 여러 픽업 보상을 얻을 수 있습니다.#차원의 틈새에서 다시 뱃시공을 통해 돌아올 수 있습니다."
 local BirthrightDesc = {
   [SamaelMod.Lib.SamaelId] = {
     Name = "Samael",
@@ -184,6 +184,9 @@ local PillDesc = {
 		QuoteDesc = "",
 	},
 }
+
+EID:addEntity(Isaac.GetEntityTypeByName("(Samael) Ferryman Beggar"), Isaac.GetEntityTypeByName("(Samael) Ferryman Beggar"), 0, "뱃시공", "{{Dime}} 10{{Coin}}을 소모하여 차원의 틈새로 이동합니다."..ferrymanDesc, "ko_kr")
+EID:addEntity(Isaac.GetEntityTypeByName("(Samael) Bag o' Bones"), Isaac.GetEntityTypeByName("(Samael) Bag o' Bones"), 0, "해골 든 가방", "{{BoneHeart}}뼈하트, {{Rune}}룬, 아군 해골 계열 몬스터, 혹은 뼈다귀 배리어가 나올 수 있습니다.", "ko_kr")
 
 local MementoMoriItemDescriptions = {}
 local SamaelItemDescriptions = {}
