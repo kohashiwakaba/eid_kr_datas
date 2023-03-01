@@ -6,15 +6,15 @@ local bargainingChipDesc = "거래의 영혼이 제시하는 3가지 품목 중 
 		.."#아이템, 픽업, 특수 이벤트(ex:{{Collectible105}}) 등이 제시되며 거래 가격도 다양하게 설정됩니다."
 local ferrymanDesc = "#차원의 틈새에서는 각 포탈마다 영혼이 존재하며 영혼을 적으로부터 보호하면 여러 픽업 보상을 얻을 수 있습니다."
 local BirthrightDesc = {
-  [SamaelMod.lib.SamaelId] = {
+  [SamaelMod.Lib.SamaelId] = {
     Name = "Samael",
     Description = "#↑ 이동속도 +0.29#비행 능력을 얻습니다.#Malakh Mot의 충전속도가 빨라지며 사거리가 25% 증가합니다.#Malakh Mot 발동 중 적을 추적하여 공격하는 꼬마 사신을 3마리 소환합니다.", 
-    QuoteDesc = "",
+    QuoteDesc = "말라크 연속 공격",
   },
-  [SamaelMod.lib.TaintedSamaelId] = {
+  [SamaelMod.Lib.TaintedSamaelId] = {
     Name = "Tainted Samael",
     Description = "#적 처치 시 영혼이 모입니다.#Memento Mori로 공격 시 영혼을 소모하여 연옥의 유령을 소환합니다.", 
-    QuoteDesc = "",
+    QuoteDesc = "영혼 해방",
   },
 }
 
@@ -84,9 +84,9 @@ local CollectibleDesc = {
 		QuoteDesc = "잊지 마...",
 	},
 	[SamaelMod.ITEMS.MEMENTO_MORI] = {
-		Description = "사용 시 최대 5개까지 연결 지점을 설치합니다."
-		.."#2번 연속 사용 시 연결 지점의 역순으로 적에게 피해를 주는 낫 공격을 하며 낫 공격 중에는 무적입니다."
-		.."#적에게 주는 피해량은 직전에 설치한 연결 지점 수에 비례합니다."
+		Description = "사용 시 최대 5개까지 인장을 설치합니다."
+		.."#2번 연속 사용 시 설치한 인장의 역순으로 적에게 피해를 주는 연쇄 낫 공격을 하며 낫 공격 중에는 무적입니다."
+		.."#적에게 주는 피해량은 직전에 설치한 인장 수에 비례합니다.",
 		Name = "메멘토 모리",
 		QuoteDesc = "죽음의 기억",
 	},
@@ -114,7 +114,7 @@ local CollectibleDesc = {
 
 local TrinketDesc = {
 	[SamaelMod.ITEMS.SIGIL_OF_SAMAEL] = {
-		Description = "적 처치 시 적 처치 시의 효과를 추가로 발동합니다."
+		Description = "적 처치 시 적 처치 시의 효과를 추가로 발동합니다.",
 		Name = "사마엘의 인장",
 		QuoteDesc = "죽음을 부르는 자",
 	},
@@ -185,71 +185,71 @@ local PillDesc = {
 	},
 }
 
-local MementoMoriItemDesc = {}
-local SamaelItemDesc = {}
+local MementoMoriItemDescriptions = {}
+local SamaelItemDescriptions = {}
 
 
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_INNER_EYE] = {"+2 hits per slash"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_SPOON_BENDER] = {"Homing slashes"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_MY_REFLECTION] = {"Return to starting point after slashes"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_NUMBER_ONE] = {"↑Pee up"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_HALO_OF_FLIES] = {"Sigils get an orbital fly"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_DR_FETUS] = {"Places bombs on sigils that detonate on activation"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_TECHNOLOGY] = {"Sigils are replaced by technology eyes that shoot lasers at enemies"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_CHOCOLATE_MILK] = {"↓DMG (First slash)", "↑↑DMG (Third slash onwards)"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_PARASITE] = {"Emit split tears while slashing"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_BRIMSTONE] = {"Replaces slashes with brimstone lasers"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_LUMP_OF_COAL] = {"Slash damage increased on enemies further from sigils"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_TOUGH_LOVE] = {"Slashes may knock teeth out of enemies"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_TECHNOLOGY_2] = {"Sigils are connected by damaging lasers"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_MUTANT_SPIDER] = {"+3 hits per slash"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_BLACK_BEAN] = {"Sigils fart on activation"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_SACRED_HEART] = {"Homing slashes"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_EPIC_FETUS] = {"Slashing attack replaced with carpet bombing"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_LOST_CONTACT] = {"Sigils can block projectiles"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_ANTI_GRAVITY] = {"Activation no longer moves you along the sigils", "Slashes still occur independently of you"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_CRICKETS_BODY] = {"Sigils fire tears on activation"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_MONSTROS_LUNG] = {"Sigils spew tears on activation"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_TINY_PLANET] = {"Slashes orbit the origin point before traveling to the next sigil"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_TECH_5] = {"Lasers will randomly fire between sigils"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_20_20] = {"+1 hits per slash"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_BLOOD_CLOT] = {"Alternating +1/+0 damage for each slash"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_FIRE_MIND] = {"Sigils have flames on them", "Slashes leave a trail of fire jets"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_DARK_MATTER] = {"Sigils may inflict fear on enemies"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_PROPTOSIS] = {"Slash damage increased on enemies close to sigils"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_CURSED_EYE] = {"Slashes have a chance to teleport enemies"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_MYSTERIOUS_LIQUID] = {"Sigils and slashes leave green creep"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_LUDOVICO_TECHNIQUE] = {"Sigils can be moved"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_GODHEAD] = {"Sigils have a damaging aura"}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_INNER_EYE] = {"연쇄 공격에 닿은 적에게 2회 추가로 공격합니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_SPOON_BENDER] = {"검기가 적에게 유도됩니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_MY_REFLECTION] = {"검기가 캐릭터의 위치로 되돌아옵니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_NUMBER_ONE] = {"연쇄 공격 중 캐릭터의 주변에 노란 장판을 까는 눈물을 흩뿌립니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_HALO_OF_FLIES] = {"인장마다 파리 배리어를 추가로 설치합니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_DR_FETUS] = {"연쇄 공격 시 인장을 거칠 때마다 인장이 폭발합니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_TECHNOLOGY] = {"인장에서 주기적으로 적을 공격하는 레이저를 발사합니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_CHOCOLATE_MILK] = {"첫번째 연쇄 공격의 피해량이 크게 감소하나 3번째부터의 피해량이 크게 증가합니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_PARASITE] = {"연쇄 공격 중 캐릭터의 양 옆에 눈물을 흩뿌립니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_BRIMSTONE] = {"연쇄 낫 공격이 각 인장 사이의 적에게 피해를 주는 혈사포로 바뀝니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_LUMP_OF_COAL] = {"검기가 먼 적에게 더 큰 피해를 줍니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_TOUGH_LOVE] = {"연쇄 공격 중 적 명중 시 랜덤 방향의 이빨을 추가로 발사합니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_TECHNOLOGY_2] = {"인장 사이에 적에게 피해를 주는 레이저가 생깁니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_MUTANT_SPIDER] = {"연쇄 공격에 닿은 적에게 3회 추가로 공격합니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_BLACK_BEAN] = {"연쇄 공격 시 인장에서 독가스를 뀝니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_SACRED_HEART] = {"검기가 적에게 유도됩니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_EPIC_FETUS] = {"연쇄 공격 시 인장과 그 사이에 미사일이 떨어집니다.", "!!! 캐릭터는 이동하지 않습니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_LOST_CONTACT] = {"인장이 적의 탄환을 막아줍니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_ANTI_GRAVITY] = {"연쇄 공격 시 더 이상 캐릭터가 따라가지 않으며 검기만 따라갑니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_CRICKETS_BODY] = {"연쇄 공격 시 인장에서 4방향으로 눈물을 발사합니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_MONSTROS_LUNG] = {"연쇄 공격 시 인장에서 눈물을 흩뿌립니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_TINY_PLANET] = {"연쇄 공격 시 각 인장 위치를 한바퀴 돌며 이동합니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_TECH_5] = {"각 인장 사이에 랜덤 주기로 레이저를 발사합니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_20_20] = {"연쇄 공격에 닿은 적에게 1회 추가로 공격합니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_BLOOD_CLOT] = {"짝수번째 연쇄 공격마다 추가 피해량 +1"}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_FIRE_MIND] = {"인장에서 불이 나옵니다.", "연쇄 공격 시 캐릭터의 위치에 불길을 남깁니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_DARK_MATTER] = {"인장 주변의 적에게 {{Fear}}공포를 겁니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_PROPTOSIS] = {"연쇄 공격 시 인장에 가까울수록 추가 피해를 줍니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_CURSED_EYE] = {"!!! 연쇄 공격이 적 명중 시 확률적으로 방 안의 임의의 위치로 이동시킵니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_MYSTERIOUS_LIQUID] = {"인장과 연쇄 공격이 독성 장판을 생성합니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_LUDOVICO_TECHNIQUE] = {"공격키로 인장을 움직일 수 있습니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_GODHEAD] = {"인장 주변의 적에게 지속적으로 피해를 주는 후광을 발산합니다."}
 
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_CONTINUUM] = {"Slashes go all the way across the screen"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_HOLY_LIGHT] = {"Leave a trail of holy light beams while slashing"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_MARKED] = {"Sigils are placed at the target instead of at your position"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_TECH_X] = {"Sigils are surrounded by laser rings"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_TRACTOR_BEAM] = {"Tears will periodically travel between sigils"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_BLACK_POWDER] = {"Creates a pentagram if you draw a pentagram shape with your sigils"}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_CONTINUUM] = {"검기가 벽 바깥으로 나갈시 반대편 벽으로 이어서 발사됩니다.", "연쇄 공격 시 각 공격의 전후 범위가 크게 증가합니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_HOLY_LIGHT] = {"연쇄 공격한 위치를 따라 빛줄기가 떨어집니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_MARKED] = {"캐릭터의 위치가 아닌 조준점에 인장을 설치합니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_TECH_X] = {"인장에 원형 레이저를 두릅니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_TRACTOR_BEAM] = {"인장에서 다음 인장 위치를 항해 눈물을 발사합니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_BLACK_POWDER] = {"인장으로 Pentagram 문양 완성 시 그 위치에 마법진을 그립니다."}
 
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_APPLE] = {"Places delicious apples onto sigils (may or may not contain razor blades)"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_COMPOUND_FRACTURE] = {"Sigils emit bones on activation"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_EYE_OF_BELIAL] = {"Eye of Belial tears appear out of enemies hit by slashes"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_JACOBS_LADDER] = {"Emit electricity during slashes"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_GHOST_PEPPER] = {"Chance to emit flame from sigil on activation"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_BIRDS_EYE] = {"Chance to emit flame from sigil on activation"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_LARGE_ZIT] = {"May shoot pus while slashing"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_BACKSTABBER] = {"Slashes may inflict bleeding"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_TECHNOLOGY_ZERO] = {"When you attack, electricity connects you and your sigils"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_POP] = {"Samael would play pool"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_HAEMOLACRIA] = {"Sigils spew tears on activation"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_LACHRYPHAGY] = {"No synergy implemented"} -- Sigils may bite or eat enemies?
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_TRISAGION] = {"Trisagion lasers will periodically travel between sigils"}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_APPLE] = {"연쇄 공격 시 인장에서 확률적으로 면도날을 발사합니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_COMPOUND_FRACTURE] = {"연쇄 공격 시 각 인장에서 뼈 공격을 발사합니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_EYE_OF_BELIAL] = {"연쇄 공격 중 적 명중 시 랜덤 방향의 Eye of Belial 눈물을 추가로 발사합니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_JACOBS_LADDER] = {"연쇄 공격 시 캐릭터 주변에 전류를 발산합니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_GHOST_PEPPER] = {"연쇄 공격 시 확률적으로 인장에서 불꽃을 발사합니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_BIRDS_EYE] = {"연쇄 공격 시 확률적으로 인장에서 불꽃을 발사합니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_LARGE_ZIT] = {"연쇄 공격 중 여드름을 발사합니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_BACKSTABBER] = {"연쇄 공격 및 검기가 적에게 출혈을 겁니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_TECHNOLOGY_ZERO] = {"일반 낫 공격 시 각 인장과 캐릭터 사이의 적에게 피해를 주는 레이저를 발사합니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_POP] = {"연쇄 공격 시 마지막 인장 위치에서 당구공을 발사합니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_HAEMOLACRIA] = {"연쇄 공격 시 인장에서 눈물을 흩뿌립니다."}
+--MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_LACHRYPHAGY] = {"No synergy implemented"} -- Sigils may bite or eat enemies?
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_TRISAGION] = {"인장에서 다음 인장 위치를 항해 레이저 눈물을 발사합니다."}
 
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_MUCORMYCOSIS] = {"Sigils emit spores on activation"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_PLAYDOUGH_COOKIE] = {"Random trail effects while slashing"}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_MUCORMYCOSIS] = {"연쇄 공격 시 인장의 위치에 포자 방귀를 뀝니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_PLAYDOUGH_COOKIE] = {"연쇄 공격이 랜덤 효과를 발동합니다."}
 MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_EYE_OF_THE_OCCULT] = {"(With {{Collectible118}} Brimstone): Slashes pass through your target"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_JUPITER] = {"Leave fart trails while slashing"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_TERRA] = {"Sigils trigger shockwaves on activation"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_OCULAR_RIFT] = {"Rifts will occasionally appear on sigils"}
-MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_STRANGE_ATTRACTOR] = {"Sigils attract enemies and pickups"}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_JUPITER] = {"연쇄 공격 중 지속적으로 독가스를 남깁니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_TERRA] = {"연쇄 공격 시 인장의 위치에 지진파를 발산합니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_OCULAR_RIFT] = {"인장을 찍을 때마다 확률적으로 블랙홀이 생성됩니다."}
+MementoMoriItemDescriptions[CollectibleType.COLLECTIBLE_STRANGE_ATTRACTOR] = {"적 및 픽업이 인장의 위치로 끌려옵니다."}
 
 
 SamaelItemDescriptions[CollectibleType.COLLECTIBLE_20_20] = {"2개의 낫을 동시에 휘두릅니다."}
@@ -306,6 +306,114 @@ end
 for itemID, itemdesc in pairs(CardDesc) do
   EID:addCard(itemID, itemdesc.Description, itemdesc.Name, "ko_kr")
 end
+
+local function MementoMoriEidAppendCondition(descObj)
+	if EID:getLanguage() ~= "ko_kr" then return false end
+	if not descObj or descObj.ObjType ~= 5 or descObj.ObjVariant ~= 100 or not MementoMoriItemDescriptions[descObj.ObjSubType] then
+		return false
+	end
+	
+	for i=0, Game():GetNumPlayers()-1 do
+		local player = Isaac.GetPlayer(i)
+		if player and player:GetPlayerType() == SamaelMod.Lib.TaintedSamaelId then
+			return true
+		end
+	end
+	
+	return false
+end
+
+local function MementoMoriEidAppendCallback(descObj)
+	if descObj.ObjType == 5 and descObj.ObjVariant == 100 and MementoMoriItemDescriptions[descObj.ObjSubType] then
+		for _, str in ipairs(MementoMoriItemDescriptions[descObj.ObjSubType]) do
+			EID:appendToDescription(descObj, "#{{Collectible"..Isaac.GetItemIdByName("Memento Mori") .."}} " .. str)
+		end
+	end
+	return descObj
+end
+
+EID:addDescriptionModifier("FF_EIDKR_samaelMementoMoriModifier", MementoMoriEidAppendCondition, MementoMoriEidAppendCallback)
+
+
+local function SamaelScytheEidAppendCondition(descObj)
+	if EID:getLanguage() ~= "ko_kr" then return false end
+	if not descObj or descObj.ObjType ~= 5 or descObj.ObjVariant ~= 100 or not SamaelItemDescriptions[descObj.ObjSubType] then
+		return false
+	end
+	
+	for i=0, Game():GetNumPlayers()-1 do
+		local player = Isaac.GetPlayer(i)
+		if player and (player:GetPlayerType() == SamaelMod.Lib.SamaelId or player:GetPlayerType() == SamaelMod.Lib.TaintedSamaelId) then
+			return true
+		end
+	end
+	
+	return false
+end
+
+local function SamaelScytheEidAppendCallback(descObj)
+	if descObj.ObjType == 5 and descObj.ObjVariant == 100 and SamaelItemDescriptions[descObj.ObjSubType] then
+		for _, str in ipairs(SamaelItemDescriptions[descObj.ObjSubType]) do
+			EID:appendToDescription(descObj, "#{{SamaelScythe}} " .. str)
+		end
+	end
+	return descObj
+end
+
+EID:addDescriptionModifier("FF_EIDKR_samaelScytheModifier", SamaelScytheEidAppendCondition, SamaelScytheEidAppendCallback)
+
+local i_queueLastFrame
+local i_queueNow
+wakaba_krdesc:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, function (_, player)
+	if Options.Language ~= "kr" then return end
+	local descTable = CollectibleDesc
+	local descTableBR = BirthrightDesc
+	if not descTable and not descTableBR then return end
+
+	i_queueNow = player.QueuedItem.Item
+	if (i_queueNow ~= nil) then
+		if i_queueNow.ID == CollectibleType.COLLECTIBLE_BIRTHRIGHT then
+			local playerType = player:GetPlayerType()
+			for playerID, itemdesc in pairs(descTableBR) do
+				if (playerType == playerID and i_queueNow:IsCollectible() and i_queueLastFrame == nil) then
+					local itemName = "생득권"
+					local queueDesc = itemdesc.QuoteDesc or i_queueNow.Description
+					Game():GetHUD():ShowItemText(itemName, queueDesc)
+				end
+			end
+		else
+			for itemID, itemdesc in pairs(descTable) do
+				if (i_queueNow.ID == itemID and i_queueNow:IsCollectible() and i_queueLastFrame == nil) then
+					local itemName = (itemdesc.Name ~= "" and itemdesc.Name) or i_queueNow.Name
+					local queueDesc = itemdesc.QuoteDesc or i_queueNow.Description
+					Game():GetHUD():ShowItemText(itemName, queueDesc)
+				end
+			end
+		end
+	end
+	i_queueLastFrame = i_queueNow
+end)
+
+
+local t_queueLastFrame
+local t_queueNow
+wakaba_krdesc:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, function (_, player)
+	if Options.Language ~= "kr" then return end
+	local descTable = TrinketDesc
+	if not descTable then return end
+
+	t_queueNow = player.QueuedItem.Item
+	if (t_queueNow ~= nil) then
+		for itemID, itemdesc in pairs(descTable) do
+			if (t_queueNow.ID == itemID and t_queueNow:IsTrinket() and t_queueLastFrame == nil) then
+				local itemName = (itemdesc.Name ~= "" and itemdesc.Name) or t_queueNow.Name
+				local queueDesc = itemdesc.QuoteDesc or t_queueNow.Description
+				Game():GetHUD():ShowItemText(itemName, queueDesc)
+			end
+		end
+	end
+	t_queueLastFrame = t_queueNow
+end)
 
 end
 

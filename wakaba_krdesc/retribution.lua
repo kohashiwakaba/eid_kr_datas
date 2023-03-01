@@ -506,7 +506,7 @@ if Retribution then
   	[Retribution.ITEMS.TITHE] 					= {
   		Name = "십일조",
   		QuoteDesc = "헌금 낼 시간",
-  		Description = "↑ {{EternalHeart}}이터널하트 +1#{{AngelChanceSmall}} 스테이지 진입 시 픽업({{Coin}}/{{Key}}/{{Bomb}}) 하나씩 소모하여 3%의 확률로 특수한 천사방으로 순간이동합니다.#특수한 천사방으로 이동 시 픽업 소모를 중단합니다.#{{AngelDevilChanceSmall}} 스테이지의 악마방/천사방 확률에는 영향을 끼치지 않습니다.",
+  		Description = "↑ {{EternalHeart}}이터널하트 +1#{{AngelChanceSmall}} 스테이지 진입 시 픽업({{Coin}}/{{Key}}/{{Bomb}}) 하나씩 소모하여 3%의 확률로 특수한 천사방으로 순간이동합니다.#특수한 천사방으로 이동 시, 혹은 각각 10{{Coin}}/1{{Bomb}}/1{{Key}} 이하일 때 픽업 소모를 중단합니다.#{{AngelDevilChanceSmall}} 스테이지의 악마방/천사방 확률에는 영향을 끼치지 않습니다.",
   	},
   	[Retribution.ITEMS.TOOL] 					= {
   		Name = "",
