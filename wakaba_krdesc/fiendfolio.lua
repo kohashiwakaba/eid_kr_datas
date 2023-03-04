@@ -90,524 +90,554 @@ if FiendFolio then
 			Name = "파이어볼 +3",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.REVERSE_3_FIREBALLS] = {
+		[FiendFolio.ITEM.CARD.REVERSE_3_FIREBALLS] = {
 			Description = "{{Collectible"..FiendFolio.ITEM.COLLECTIBLE.MALICE.."}} 캐릭터의 공격방향으로 벽에 여러번 부딪힐 때까지 돌진합니다.#돌진 상태에서 적 처치 시 낮은 확률로 {{BlackHeart}}블랙하트를 드랍합니다.",
 			Name = "파이어볼? +3",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.IMPLOSION] = {
+		[FiendFolio.ITEM.CARD.IMPLOSION] = {
 			Description = "사용 시 3방향으로 초록색 Fiend의 파이어볼 불꽃을 즉시 발사합니다.#파이어볼 폭파 시 Fiend의 부하를 소환합니다.#Fiend의 부하는 방 클리어 시 소멸합니다.",
 			Name = "내부파열",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.CALLING_CARD] = {
+		[FiendFolio.ITEM.CARD.CALLING_CARD] = {
 			Description = "사용 시 아군 Psi Hunter 몬스터를 소환합니다.",
 			Name = "사신 호출 카드",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.PLAGUE_OF_DECAY] = {
+		[FiendFolio.ITEM.CARD.PLAGUE_OF_DECAY] = {
 			Description = "사용 시 {{RottenHeart}}썩은하트 +5",
 			Name = "부패 역병",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.GROTTO_BEAST] = {
+		[FiendFolio.ITEM.CARD.GROTTO_BEAST] = {
 			Description = "사용 시 Fiend Folio 출신의 아군 몬스터를 하나 소환합니다.",
 			Name = "어두운 곳의 짐승",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.DEFUSE] = {
+		[FiendFolio.ITEM.CARD.DEFUSE] = {
 			Description = "사용 시 트롤폭탄 및 폭탄이 박힌 돌을 해체하여 폭탄 픽업으로 바꾸며;.#폭발성 몬스터를 일반형으로 바꿉니다.",
 			Name = "해체",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.POT_OF_GREED] = {
+		[FiendFolio.ITEM.CARD.POT_OF_GREED] = {
 			Description = "카드를 2장 드랍합니다.",
 			Name = "욕망의 항아리",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.DOWNLOAD_FAILURE] = {
+		[FiendFolio.ITEM.CARD.DOWNLOAD_FAILURE] = {
 			Description = "사용 시 그 방의 적은 일부 행동이 중단되거나;#Poople 몬스터의 행동을 합니다: 일정 확률로 미끄러지는 장판을 깔며 캐릭터와 대칭되는 위치로 이동합니다.",
 			Name = "다운로드 실패",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.SMALL_CONTRABAND] = {
+		[FiendFolio.ITEM.CARD.SMALL_CONTRABAND] = {
 			Description = "!!! 소지하지 않은 상태에서는 특정 몬스터가 해당 카드를 훔칠 수 있습니다!#해당 카드를 검은 모자의 거지에게 배달 시 특수 배열의 아이템을 소환합니다.#!!! 사용 효과 없음",
 			Name = "작은 밀매품",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.SKIP_CARD] = {
+		[FiendFolio.ITEM.CARD.SKIP_CARD] = {
 			Description = "사용 시 모든 오브젝트 및 엔티티(적/아이템 등)을 지웁니다.#스킵 카드로 방 클리어 시 액티브 아이템 게이지가 충전되지 않으며 방 클리어 보상이 소환되지 않습니다.#{{BossRoom}}보스방의 경우 아이템이 소환되지 않습니다.#최종 보스의 경우 해당 페이즈를 건너뛰지만 마지막 페이즈에서의 사용 시 면역입니다.",
 			Name = "스킵 카드",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.CARDJITSU_SOCCER] = {
+		[FiendFolio.ITEM.CARD.CARDJITSU_SOCCER] = {
 			Description = "사용 시 그 방에서 굴릴 수 있는 축구공을 소환합니다.#축구공은 접촉 시 적에게 속도에 비례한 피해를 줍니다.",
 			Name = "축구",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.CARDJITSU_FLOORING_UPGRADE] = {
+		[FiendFolio.ITEM.CARD.CARDJITSU_FLOORING_UPGRADE] = {
 			Description = "사용 시 그 방 전체에 랜덤 장판을 깝니다.",
 			Name = "바닥 업그레이드",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.CARDJITSU_AC_3000] = {
+		[FiendFolio.ITEM.CARD.CARDJITSU_AC_3000] = {
 			Description = "{{Freezing}} 그 방에서 적 처치 시 해당 적을 얼립니다.",
 			Name = "",
 			QuoteDesc = "",
 		},
 			
-			[FiendFolio.ITEM.CARD.ENERGY_GRASS] = {
+		[FiendFolio.ITEM.CARD.ENERGY_GRASS] = {
 			Description = "방 안의 모든 적을 4초간 {{Poison}}중독시킵니다.",
 			Name = "자연 속성 에너지",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.ENERGY_FIRE] = {
+		[FiendFolio.ITEM.CARD.ENERGY_FIRE] = {
 			Description = "방 안의 모든 적에게 4초간 {{Burning}}화상을 입힙니다.",
 			Name = "불 속성 에너지",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.ENERGY_WATER] = {
+		[FiendFolio.ITEM.CARD.ENERGY_WATER] = {
 			Description = "방 안의 적이 4초간 8방향으로 파란 눈물을 여러번 쏩니다.#파란 눈물을 쏠 때마다 미세한 피해를 받습니다.",
 			Name = "물 속성 에너지",
 			QuoteDesc = "",
 		},-- "Inflicts all enemies in the room with bloating."
-			[FiendFolio.ITEM.CARD.ENERGY_LIGHTNING] = {
+		[FiendFolio.ITEM.CARD.ENERGY_LIGHTNING] = {
 			Description = "방 안의 모든 적이 4초간 짧은 레이저를 발사하며 미세한 피해를 받습니다.",
 			Name = "전기 속성 에너지",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.ENERGY_FIGHTING] = {
+		[FiendFolio.ITEM.CARD.ENERGY_FIGHTING] = {
 			Description = "방 안의 모든 적이 4초간 {{ffBerserk}}폭주 상태가 됩니다.#{{ffBerserk}} 폭주 상태의 적은 공격 목표를 수시로 바꾸고 추가 피해를 받으나 더 빠르게 행동합니다.",
 			Name = "폭주 속성 에너지",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.ENERGY_PSYCHIC] = {
+		[FiendFolio.ITEM.CARD.ENERGY_PSYCHIC] = {
 			Description = "방 안의 모든 적이 4초간 {{Confusion}}혼란에 걸립니다.",
 			Name = "초능력 에너지",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.ENERGY_COLORLESS] = {
+		[FiendFolio.ITEM.CARD.ENERGY_COLORLESS] = {
 			Description = "방 안의 모든 적이 4초간 {{ffHemorrhage}}대출혈에 걸립니다.#{{ffHemorrhage}} 대출혈 상태의 적은 주기적으로 피해를 받고 붉은 장판을 깔며 랜덤 방향으로 핏방울을 흩뿌립니다.",
 			Name = "무속성 에너지",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.ENERGY_DARKNESS] = {
+		[FiendFolio.ITEM.CARD.ENERGY_DARKNESS] = {
 			Description = "방 안의 모든 적이 4초간 {{Fear}}공포에 걸립니다.",
 			Name = "어둠 속성 에너지",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.ENERGY_METAL] = {
+		[FiendFolio.ITEM.CARD.ENERGY_METAL] = {
 			Description = "방 안의 모든 적을 {{ffBruise}}멍들게 합니다.#{{ffBruise}} 멍든 적은 해당 상태 중첩 수만큼 추가 피해를 받습니다.",
 			Name = "강철 속성 에너지",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.ENERGY_FAIRY] = {
+		[FiendFolio.ITEM.CARD.ENERGY_FAIRY] = {
 			Description = "방 안의 모든 적에게 4초간 {{Charm}}매혹을 겁니다.",
 			Name = "요정 속성 에너지",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.ENERGY_DRAGON] = {
+		[FiendFolio.ITEM.CARD.ENERGY_DRAGON] = {
 			Description = "사용 시 랜덤 에너지 계열 카드 효과를 발동합니다.",
 			Name = "드래곤 속성 에너지",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.TRAINER_CARD] = {
+		[FiendFolio.ITEM.CARD.TRAINER_CARD] = {
 			Description = "!!! 현재 미구현.#해당 카드 등장 시 Fiend Folio 제작진에게 문의해 주세요",
 			Name = "트레이너 카드",
 			QuoteDesc = "",
 		},
 			
-			[FiendFolio.ITEM.CARD.GLASS_D6] = {
+		[FiendFolio.ITEM.CARD.GLASS_D6] = {
 			Description = "{{Collectible105}} 사용 시 방 안의 모든 아이템을 다른 아이템으로 바꿉니다.",
 			Name = "유리 6면 조각",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.GLASS_D4] = {
+		[FiendFolio.ITEM.CARD.GLASS_D4] = {
 			Description = "{{Collectible284}} 사용 시 소지중인 모든 패시브 아이템을 모두 바꿉니다.#스테이지 진행에 필요한 아이템은 바뀌지 않습니다.",
 			Name = "유리 4면 조각",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.GLASS_D8] = {
+		[FiendFolio.ITEM.CARD.GLASS_D8] = {
 			Description = "{{Collectible406}} 사용 시 {{DamageSmall}}공격력, {{TearsSmall}}연사, {{RangeSmall}}사거리, {{SpeedSmall}}이동속도 배율을 랜덤으로 바꿉니다.",
 			Name = "유리 8면 조각",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.GLASS_D100] = {
+		[FiendFolio.ITEM.CARD.GLASS_D100] = {
 			Description = "{{Collectible283}} 사용 시 이하의 주사위 아이템을 모두 발동:#{{Blank}} {{Collectible476}}{{Collectible284}}{{Collectible105}}{{Collectible437}}{{Collectible406}}{{Collectible285}}{{Collectible386}}{{Collectible166}}#방 안의 아이템, 픽업 아이템, 장애물, 소지중인 아이템, 능력치를 모두 바꿉니다.#그 방을 다시 시작하며, 방 클리어 시 이전과 다른 보상이 드랍됩니다.#방 안의 픽업 아이템 중 하나를 복사합니다.",
 			Name = "유리 100면 조각",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.GLASS_D10] = {
+		[FiendFolio.ITEM.CARD.GLASS_D10] = {
 			Description = "{{Collectible285}} 사용 시 방 안의 모든 적을 바꿉니다.#높은 확률로 최대 체력이 비슷한 적으로 바뀝니다.",
 			Name = "유리 10면 조각",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.GLASS_D20] = {
+		[FiendFolio.ITEM.CARD.GLASS_D20] = {
 			Description = "{{Collectible166}} 사용 시 방 안의 모든 픽업 아이템을 다른 픽업 아이템으로 바꿉니다.",
 			Name = "유리 20면 조각",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.GLASS_D12] = {
+		[FiendFolio.ITEM.CARD.GLASS_D12] = {
 			Description = "{{Collectible386}} 사용 시 방 안의 모든 장애물을 바꿉니다.",
 			Name = "유리 12면 조각",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.GLASS_SPINDOWN] = {
+		[FiendFolio.ITEM.CARD.GLASS_SPINDOWN] = {
 			Description = "{{Collectible723}} 사용 시 방 안의 모든 아이템을 코드 앞번호의 아이템으로 바꿉니다.#!!! 해금하지 않은 아이템은 등장하지 않습니다.",
 			Name = "유리 스핀다운 조각",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.GLASS_AZURITE_SPINDOWN] = {
+		[FiendFolio.ITEM.CARD.GLASS_AZURITE_SPINDOWN] = {
 			Description = "{{Collectible" .. tostring(FiendFolio.ITEM.COLLECTIBLE.AZURITE_SPINDOWN) .. "}} 사용 시 방 안의 모든 장신구를 코드 앞번호의 장신구로 바꿉니다.",
 			Name = "아주라이트 스핀다운 조각",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.GLASS_D2] = {
+		[FiendFolio.ITEM.CARD.GLASS_D2] = {
 			Description = "{{Collectible" .. tostring(FiendFolio.ITEM.COLLECTIBLE.D2) .. "}} 사용 시 주사위를 들며 공격방향으로 던집니다.#착지한 주사위에 닿은 적, 픽업 아이템, 눈물이 같은 유형의 다른 항목으로 바뀝니다.",
 			Name = "유리 2면 조각",
 			QuoteDesc = "",
 		},
 			
-			[FiendFolio.ITEM.CARD.GREEN_HOUSE] = {
+		[FiendFolio.ITEM.CARD.GREEN_HOUSE] = {
 			Description = "그 방의 모든 적 및 픽업을 보관합니다.#보관된 적 및 픽업은 다음 방 진입 시 강제로 소환됩니다.",
 			Name = "녹색 모형집",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.BRICK_SEPERATOR] = {
+		[FiendFolio.ITEM.CARD.BRICK_SEPERATOR] = {
 			Description = "{{Collectible631}} 사용 시 방 안의 모든 적을 0.4배의 체력을 가진 적 2마리로 나누며;#그 방에서 공격이 적을 관통합니다.",
 			Name = "브릭분해기",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.PUZZLE_PIECE] = {
+		[FiendFolio.ITEM.CARD.PUZZLE_PIECE] = {
 			Description = "운세 퍼즐을 1/3만큼 기록합니다.#!!! 운세 퍼즐이 완성되면 해당 운세에 맞는 아이템을 소환합니다.",
 			Name = "퍼즐 조각",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.COOL_PHOTO] = {
+		[FiendFolio.ITEM.CARD.COOL_PHOTO] = {
 			Description = "{{Coin}}동전 1~2개를 소환합니다.",
 			Name = "멋진 사진",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.BLANK_LETTER_TILE] = {
+		[FiendFolio.ITEM.CARD.BLANK_LETTER_TILE] = {
 			Description = "사용 후 키 입력 시 그 스테이지에서 입력한 키를 키캡에 작성합니다.#작성된 키캡의 키를 누르고 있는 동안:#↑ {{DamageSmall}}공격력 +1#↑ {{TearsSmall}}연사 +1",
 			Name = "빈 키캡",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.HORSE_PUSHPOP] = {
+		[FiendFolio.ITEM.CARD.HORSE_PUSHPOP] = {
 			Description = "!!! China 전용#사용 시 {{BrokenHeart}}부서진하트 -1",
 			Name = "말 푸시팝",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.TOP_HAT] = {
+		[FiendFolio.ITEM.CARD.TOP_HAT] = {
 			Description = "열린 상점 상자를 소환합니다.",
 			Name = "탑모자",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.GIFT_CARD] = {
+		[FiendFolio.ITEM.CARD.GIFT_CARD] = {
 			Description = "방 안의 모든 아이템을 {{Collectible515}}Mystery Gift로 바꿉니다.",
 			Name = "선물 카드",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.STUD] = {
+		[FiendFolio.ITEM.CARD.STUD] = {
 			Description = "레고 페니를 하나 소환합니다.#레고 페니는 습득 시 1{{Coin}}을 획득하지만 {{Collectible486}}캐릭터에게 가짜 피해를 줍니다.#레고 페니에 접촉한 적에게 5의 피해를 줍니다.",
 			Name = "레고 뚜껑",
 			QuoteDesc = "",
 		},
+		[FiendFolio.ITEM.CARD.STUD_2] = {
+			Description = "레고 페니를 하나 소환합니다.#레고 페니는 습득 시 1{{Coin}}을 획득하지만 {{Collectible486}}캐릭터에게 가짜 피해를 줍니다.#레고 페니에 접촉한 적에게 5의 피해를 줍니다.",
+			Name = "레고 뚜껑",
+			QuoteDesc = "",
+		},
+		[FiendFolio.ITEM.CARD.STUD_3] = {
+			Description = "레고 페니를 하나 소환합니다.#레고 페니는 습득 시 1{{Coin}}을 획득하지만 {{Collectible486}}캐릭터에게 가짜 피해를 줍니다.#레고 페니에 접촉한 적에게 5의 피해를 줍니다.",
+			Name = "레고 뚜껑",
+			QuoteDesc = "",
+		},
+		[FiendFolio.ITEM.CARD.STUD_4] = {
+			Description = "레고 페니를 하나 소환합니다.#레고 페니는 습득 시 1{{Coin}}을 획득하지만 {{Collectible486}}캐릭터에게 가짜 피해를 줍니다.#레고 페니에 접촉한 적에게 5의 피해를 줍니다.",
+			Name = "레고 뚜껑",
+			QuoteDesc = "",
+		},
+		[FiendFolio.ITEM.CARD.STUD_5] = {
+			Description = "레고 페니를 하나 소환합니다.#레고 페니는 습득 시 1{{Coin}}을 획득하지만 {{Collectible486}}캐릭터에게 가짜 피해를 줍니다.#레고 페니에 접촉한 적에게 5의 피해를 줍니다.",
+			Name = "레고 뚜껑",
+			QuoteDesc = "",
+		},
+		[FiendFolio.ITEM.CARD.STUD_6] = {
+			Description = "레고 페니를 하나 소환합니다.#레고 페니는 습득 시 1{{Coin}}을 획득하지만 {{Collectible486}}캐릭터에게 가짜 피해를 줍니다.#레고 페니에 접촉한 적에게 5의 피해를 줍니다.",
+			Name = "레고 뚜껑",
+			QuoteDesc = "",
+		},
+		[FiendFolio.ITEM.CARD.CHRISTMAS_CRACKER] = {
+			Description = "캐릭터 주변에 작은 폭발을 일으키며 랜덤 오브젝트를 드랍합니다.#캐릭터는 이 폭발에 피해를 입지 않습니다.",
+			Name = "크리스마스 캔디",
+			QuoteDesc = "",
+		},
 			
-			[FiendFolio.ITEM.CARD.TREASURE_DISC] = {
+		[FiendFolio.ITEM.CARD.TREASURE_DISC] = {
 			Description = "1분간 3~5개의 {{TreasureRoom}}보물방 배열 패시브 아이템의 효과를 받습니다.",
 			Name = "보믈방 체험판 디스크",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.SHOP_DISC] = {
+		[FiendFolio.ITEM.CARD.SHOP_DISC] = {
 			Description = "1분간 3~5개의 {{Shop}}상점({{Trinket184}}:패밀리어) 배열 패시브 아이템의 효과를 받습니다.",
 			Name = "상점 체험판 디스크",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.BOSS_DISC] = {
+		[FiendFolio.ITEM.CARD.BOSS_DISC] = {
 			Description = "1분간 3~5개의 {{BossRoom}}보스방 배열 패시브 아이템의 효과를 받습니다.",
 			Name = "보스방 체험판 디스크",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.SECRET_DISC] = {
+		[FiendFolio.ITEM.CARD.SECRET_DISC] = {
 			Description = "1분간 3~5개의 {{SecretRoom}}비밀방 배열 패시브 아이템의 효과를 받습니다.",
 			Name = "비밀방 체험판 디스크",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.DEVIL_DISC] = {
+		[FiendFolio.ITEM.CARD.DEVIL_DISC] = {
 			Description = "1분간 3~5개의 {{DevilRoom}}악마방 배열 패시브 아이템의 효과를 받습니다.",
 			Name = "악마방 체험판 디스크",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.ANGEL_DISC] = {
+		[FiendFolio.ITEM.CARD.ANGEL_DISC] = {
 			Description = "1분간 3~5개의 {{AngelRoom}}천사방 배열 패시브 아이템의 효과를 받습니다.",
 			Name = "천사방 체험판 디스크",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.PLANETARIUM_DISC] = {
+		[FiendFolio.ITEM.CARD.PLANETARIUM_DISC] = {
 			Description = "1분간 3~5개의 {{Planetarium}}천체관 배열 패시브 아이템의 효과를 받습니다.",
 			Name = "천체관 체험판 디스크",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.CHAOS_DISC] = {
+		[FiendFolio.ITEM.CARD.CHAOS_DISC] = {
 			Description = "1분간 3~5개의 {{Collectible402}}랜덤 배열 패시브 아이템의 효과를 받습니다.",
 			Name = "혼돈의 체험판 디스크",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.BROKEN_DISC] = {
+		[FiendFolio.ITEM.CARD.BROKEN_DISC] = {
 			Description = "1분간 3~5개의 {{Collectible347}}동일한 랜덤 패시브 아이템의 효과를 받습니다.",
 			Name = "망가진 체험판 디스크",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.TAINTED_TREASURE_DISC] = {
+		[FiendFolio.ITEM.CARD.TAINTED_TREASURE_DISC] = {
 			Description = "1분간 3~5개의 {{TreasureRoom}}더럽혀진 보물방 배열 패시브 아이템의 효과를 받습니다.",
 			Name = "더럽혀진 보믈방 체험판 디스크",
 			QuoteDesc = "",
 		},
 			
-			[FiendFolio.ITEM.CARD.MISPRINTED_TWO_OF_CLUBS] = {
+		[FiendFolio.ITEM.CARD.MISPRINTED_TWO_OF_CLUBS] = {
 			Description = "소지 중인 {{Bomb}}폭탄 x2#!!!소지 중인 모든 폭탄을 {{FFCopperBombTint}}{{Bomb}}구리폭탄으로 바꿉니다.",
 			Name = "클로버 2?",
 			QuoteDesc = "",
 		},
 			
-			[FiendFolio.ITEM.CARD.THREE_OF_CLUBS] = {
+		[FiendFolio.ITEM.CARD.THREE_OF_CLUBS] = {
 			Description = "{{Bomb}} 랜덤 폭탄 픽업을 3개 소환합니다.#소환될 수 있는 폭탄의 종류는 각각 동일한 확률을 가집니다.",
 			Name = "클로버 3",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.THREE_OF_DIAMONDS] = {
+		[FiendFolio.ITEM.CARD.THREE_OF_DIAMONDS] = {
 			Description = "{{Coin}} 랜덤 동전 픽업을 3개 소환합니다.#소환될 수 있는 동전의 종류는 각각 동일한 확률을 가집니다.",
 			Name = "다이아 3",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.THREE_OF_SPADES] = {
+		[FiendFolio.ITEM.CARD.THREE_OF_SPADES] = {
 			Description = "{{Key}} 랜덤 열쇠 픽업을 3개 소환합니다.#소환될 수 있는 열쇠의 종류는 각각 동일한 확률을 가집니다.",
 			Name = "스페이드 3",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.THREE_OF_HEARTS] = {
+		[FiendFolio.ITEM.CARD.THREE_OF_HEARTS] = {
 			Description = "{{Heart}} 랜덤 하트 픽업을 3개 소환합니다.#소환될 수 있는 하트의 종류는 각각 동일한 확률을 가집니다.",
 			Name = "하트 3",
 			QuoteDesc = "",
 		},
 			
-			[FiendFolio.ITEM.CARD.JACK_OF_DIAMONDS] = {
+		[FiendFolio.ITEM.CARD.JACK_OF_DIAMONDS] = {
 			Description = "{{FFCursedPennyTint}}{{Coin}}저주받은 동전 2~4개를 소환합니다.#그 방의 모든 동전 픽업을 {{FFCursedPennyTint}}{{Coin}}저주받은 동전으로 바꿉니다.",
 			Name = "다이아 J",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.MISPRINTED_JACK_OF_CLUBS] = {
+		[FiendFolio.ITEM.CARD.MISPRINTED_JACK_OF_CLUBS] = {
 			Description = "황금 트롤폭탄을 소환합니다.#그 방의 모든 폭탄 픽업을 트롤폭탄으로 바꿉니다.",
 			Name = "클로버 J?",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.JACK_OF_CLUBS] = {
+		[FiendFolio.ITEM.CARD.JACK_OF_CLUBS] = {
 			Description = "{{FFCopperBombTint}}{{Bomb}}구리폭탄 2~3개를 소환합니다.#그 방의 모든 폭탄 픽업을 {{FFCopperBombTint}}{{Bomb}}구리폭탄으로 바꿉니다.",
 			Name = "클로버 J",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.JACK_OF_SPADES] = {
+		[FiendFolio.ITEM.CARD.JACK_OF_SPADES] = {
 			Description = "{{FFSpicyKeyTint}}{{Key}}매운열쇠 2~3개를 소환합니다.#그 방의 모든 열쇠 픽업을 {{FFSpicyKeyTint}}{{Key}}매운열쇠로 바꿉니다.",
 			Name = "스페이드 J",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.JACK_OF_HEARTS] = {
+		[FiendFolio.ITEM.CARD.JACK_OF_HEARTS] = {
 			Description = "소지 중인 모든 소울하트/블랙하트를 {{ffImmoralHeart}}이모럴하트로 바꿉니다.#소지 중인 {{SoulHeart}}/{{BlackHeart}}가 없을 경우 {{ffImmoralHeart}}이모럴하트 하나를 드랍합니다.#{{ffImmoralHeart}}이모럴하트 소지 상태에서 피격 시 모든 {{ffImmoralHeart}}가 Fiend의 부하로 바뀌며 방 클리어 시 바뀐 부하는 다시 {{ffImmoralHeart}} 픽업으로 돌아옵니다.",
 			Name = "하트 J",
 			QuoteDesc = "",
 		},
 			
-			[FiendFolio.ITEM.CARD.KING_OF_CLUBS] = {
+		[FiendFolio.ITEM.CARD.KING_OF_CLUBS] = {
 			Description = "기가폭탄을 하나 소환합니다.#다음 폭탄 사용 시 기가폭탄이 설치되며 폭발한 자리에 구덩이가 생기고 적에게 300의 피해를 줍니다.",
 			Name = "클로버 K",
 			QuoteDesc = "",
 		},
 			
-			[FiendFolio.ITEM.CARD.QUEEN_OF_DIAMONDS] = {
+		[FiendFolio.ITEM.CARD.QUEEN_OF_DIAMONDS] = {
 			Description = "방 안의 모든 돌덩이/똥 오브젝트를 동전으로 바꿉니다.#!!! 바뀐 동전은 잠시 후 사라집니다.",
 			Name = "다이아 Q",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.QUEEN_OF_CLUBS] = {
+		[FiendFolio.ITEM.CARD.QUEEN_OF_CLUBS] = {
 			Description = "{{Collectible52}} 그 방에서 공격이 폭탄 발사 공격으로 변경됩니다.",
 			Name = "클로버 Q",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.QUEEN_OF_SPADES] = {
+		[FiendFolio.ITEM.CARD.QUEEN_OF_SPADES] = {
 			Description = "{{Key}}열쇠를 1~10개 소환합니다.",
 			Name = "스페이드 Q",
 			QuoteDesc = "",
 		},
 			
-			[FiendFolio.ITEM.CARD.KING_OF_DIAMONDS] = {
+		[FiendFolio.ITEM.CARD.KING_OF_DIAMONDS] = {
 			Description = "그 방의 적을 적을 멈추게 만들며 멈춘 적 처치시 {{Coin}}동전을 1~3개 드랍합니다.#일부 돌덩이 오브젝트를 금광으로 바꿉니다.",
 			Name = "다이아 K",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.KING_OF_SPADES] = {
+		[FiendFolio.ITEM.CARD.KING_OF_SPADES] = {
 			Description = "{{Key}}열쇠 +1#{{Collectible623}} 그 방에서 눈물을 쏠 때마다 열쇠를 소모하여 Sharp Key의 열쇠로 바꿉니다.#Sharp Key의 눈물이 무언가에 부딪히거나 떨어지면 열쇠를 드랍합니다.#!!! 열쇠가 없을 경우 변환되지 않습니다.",
 			Name = "스페이드 K",
 			QuoteDesc = "",
 		},
 			
-			[FiendFolio.ITEM.CARD.ACE_OF_WANDS] = {
+		[FiendFolio.ITEM.CARD.ACE_OF_WANDS] = {
 			Description = "방 안의 모든 적과 픽업을 {{Battery}}배터리로 바꿉니다.#!!! 바뀐 배터리는 잠시 후 사라집니다.",
 			Name = "완드 A",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.TWO_OF_WANDS] = {
+		[FiendFolio.ITEM.CARD.TWO_OF_WANDS] = {
 			Description = "소지 중인 {{Battery}}액티브 아이템 충전량 x2.#충전량이 없을 시 충전량 1칸을 채워줍니다.#{{Collectible63}} 초과 충전이 가능합니다.",
 			Name = "완드 2",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.THREE_OF_WANDS] = {
+		[FiendFolio.ITEM.CARD.THREE_OF_WANDS] = {
 			Description = "{{Battery}} {{ColorOrange}}3초 이후 사라지는{{CR}} 랜덤 배터리 픽업을 3개 소환합니다.#소환될 수 있는 배터리 종류는 각각 동일한 확률을 가집니다.",
 			Name = "완드 3",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.KING_OF_WANDS] = {
+		[FiendFolio.ITEM.CARD.KING_OF_WANDS] = {
 			Description = "방 안의 {{Battery}}배터리 픽업을 강화시킵니다.",
 			Name = "완드 K",
 			QuoteDesc = "",
 		},
 			
-			[FiendFolio.ITEM.CARD.ACE_OF_PENTACLES] = {
+		[FiendFolio.ITEM.CARD.ACE_OF_PENTACLES] = {
 			Description = "방 안의 모든 적과 픽업을 장신구로 바꿉니다.",
 			Name = "펜타클 A",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.TWO_OF_PENTACLES] = {
+		[FiendFolio.ITEM.CARD.TWO_OF_PENTACLES] = {
 			Description = "소지 중인 장신구를 복제하여 소환합니다.#소지 중인 장신구가 없을 시 랜덤 장신구를 드랍합니다.#!!! 흡수한 장신구는 복제하지 않습니다.",
 			Name = "펜타클 2",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.THREE_OF_PENTACLES] = {
+		[FiendFolio.ITEM.CARD.THREE_OF_PENTACLES] = {
 			Description = "랜덤 장신구(석기 장신구 포함)를 3개 소환합니다.#각 장신구는 50%의 확률로 황금 형태로 소환됩니다.",
 			Name = "펜타클 3",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.KING_OF_PENTACLES] = {
+		[FiendFolio.ITEM.CARD.KING_OF_PENTACLES] = {
 			Description = "소지 중인 장신구를 황금 형태로 바꿉니다.#!!! 흡수한 장신구는 무효과",
 			Name = "펜타클 K",
 			QuoteDesc = "",
 		},
 			
-			[FiendFolio.ITEM.CARD.ACE_OF_SWORDS] = {
+		[FiendFolio.ITEM.CARD.ACE_OF_SWORDS] = {
 			Description = "방 안의 모든 적과 픽업을 아군 자폭 파리/거미/벼룩으로 바꿉니다.",
 			Name = "소드 A",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.TWO_OF_SWORDS] = {
+		[FiendFolio.ITEM.CARD.TWO_OF_SWORDS] = {
 			Description = "사용 시 방 안의 모든 아군 dip 및 자폭 파리/거미/벼룩을 복제하며;#{{Collectible357}} 그 방에서 소지중인 패밀리어를 복사합니다.#복사할 수 있는 패밀리어가 없다면 그 방에서 {{Collectible113}}Demon Baby 패밀리어를 소환합니다.",
 			Name = "소드 2",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.THREE_OF_SWORDS] = {
+		[FiendFolio.ITEM.CARD.THREE_OF_SWORDS] = {
 			Description = "사용 시 랜덤 색상의 아군 자폭 파리/거미/벼룩/flea/dip을 3마리 소환합니다.",
 			Name = "소드 3",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.KING_OF_SWORDS] = {
+		[FiendFolio.ITEM.CARD.KING_OF_SWORDS] = {
 			Description = "{{Collectible247}} 그 스테이지에서 패밀리어의 공격력을 2배로 증가시킵니다.",
 			Name = "소드 K",
 			QuoteDesc = "",
 		},
 			
-			[FiendFolio.ITEM.CARD.ACE_OF_CUPS] = {
+		[FiendFolio.ITEM.CARD.ACE_OF_CUPS] = {
 			Description = "방 안의 모든 적과 픽업을 알약으로 바꿉니다.",
 			Name = "컵 A",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.TWO_OF_CUPS] = {
+		[FiendFolio.ITEM.CARD.TWO_OF_CUPS] = {
 			Description = "소지 중인 알약 및 방 안의 모든 알약을 복제합니다.#복제할 알약이 없을 경우 랜덤 알약을 2개 드랍합니다.",
 			Name = "컵 2",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.THREE_OF_CUPS] = {
+		[FiendFolio.ITEM.CARD.THREE_OF_CUPS] = {
 			Description = "랜덤 알약을 3개 소환합니다.#각 알약은 50%의 확률로 거대 형태로 소환됩니다.",
 			Name = "컵 3",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.KING_OF_CUPS] = {
+		[FiendFolio.ITEM.CARD.KING_OF_CUPS] = {
 			Description = "소지 중인 알약 및 방 안의 모든 알약을 거대 형태로 바꿉니다.",
 			Name = "컵 K",
 			QuoteDesc = "",
 		},
 			
-			[FiendFolio.ITEM.CARD.MISPRINTED_JOKER] = {
+		[FiendFolio.ITEM.CARD.MISPRINTED_JOKER] = {
 			Description = "사용 시 방 안의 모든 아이템을 {{DevilRoom}}악마방/{{AngelRoom}}천사방 아이템으로 바꿉니다.#!!! 낮은 확률로 아이템이 아닌 성스러운/악한 테마의 하트/상자 픽업으로 바뀝니다.",
 			Name = "조커?",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.THIRTEEN_OF_STARS] = {
+		[FiendFolio.ITEM.CARD.THIRTEEN_OF_STARS] = {
 			Description = "{{Collectible721}} 2~6개의 효과와 발동 조건이 혼합된 오류 아이템을 소환합니다.",
 			Name = "스타 13",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.REVERSE_KING_OF_CLUBS] = {
+		[FiendFolio.ITEM.CARD.REVERSE_KING_OF_CLUBS] = {
 			Description = "사용 시 사망하며 캐릭터의 자리에 기가폭탄의 폭발을 일으킵니다.",
 			Name = "클로버 K?",
 			QuoteDesc = "",
 		},
 			
-			[FiendFolio.ITEM.CARD.RUNE_ANSUS] = {
+		[FiendFolio.ITEM.CARD.RUNE_ANSUS] = {
 			Description = "{{Collectible333}} (거짓)그 스테이지에서 맵에 특수방 위치, 비밀방 위치, 스테이지 구조가 표시됩니다.",
 			Name = "안수즈?",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.SOUL_OF_FIEND] = {
+		[FiendFolio.ITEM.CARD.SOUL_OF_FIEND] = {
 			Description = "사용 시 Fiend의 부하를 5~8마리(일반형)와 0~2마리(블랙형) 소환합니다.",
 			Name = "핀드의 영혼",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.SOUL_OF_GOLEM] = {
+		[FiendFolio.ITEM.CARD.SOUL_OF_GOLEM] = {
 			Description = "석기 장신구를 3개 드랍합니다.",
 			Name = "골렘의 영혼",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.SOUL_OF_RANDOM] = {
+		[FiendFolio.ITEM.CARD.SOUL_OF_RANDOM] = {
 			Description = "사용 시 랜덤 영혼석 효과를 발동합니다.",
 			Name = "미지의 영혼석",
 			QuoteDesc = "",
 		},
 			
-			[FiendFolio.ITEM.CARD.STORAGE_BATTERY_0] = {
+		[FiendFolio.ITEM.CARD.STORAGE_BATTERY_0] = {
 			Description = "사용 시 액티브 아이템의 충전량을 최대 3칸까지 저장합니다.#충전된 상태에서 재사용 시 충전량을 액티브 아이템으로 옮깁니다.#{{Collectible63}} 초과 충전이 가능합니다.#{{Card" .. tostring(Card.CORRODED_BATTERY_0) .. "}} 스테이지 진입 시 부식되며 부식된 상태에서 액티브 아이템 충전 시 잠시 후 충전한 위치에서 폭발합니다.",
 			Name = "보조 배터리",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.STORAGE_BATTERY_1] = {
+		[FiendFolio.ITEM.CARD.STORAGE_BATTERY_1] = {
 			Description = "사용 시 액티브 아이템의 충전량을 최대 3칸까지 저장합니다.#충전된 상태에서 재사용 시 충전량을 액티브 아이템으로 옮깁니다.#{{Collectible63}} 초과 충전이 가능합니다.#{{Card" .. tostring(Card.CORRODED_BATTERY_1) .. "}} 스테이지 진입 시 부식되며 부식된 상태에서 액티브 아이템 충전 시 잠시 후 충전한 위치에서 폭발합니다.",
 			Name = "보조 배터리",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.STORAGE_BATTERY_2] = {
+		[FiendFolio.ITEM.CARD.STORAGE_BATTERY_2] = {
 			Description = "사용 시 액티브 아이템의 충전량을 최대 3칸까지 저장합니다.#충전된 상태에서 재사용 시 충전량을 액티브 아이템으로 옮깁니다.#{{Collectible63}} 초과 충전이 가능합니다.#{{Card" .. tostring(Card.CORRODED_BATTERY_2) .. "}} 스테이지 진입 시 부식되며 부식된 상태에서 액티브 아이템 충전 시 잠시 후 충전한 위치에서 폭발합니다.",
 			Name = "보조 배터리",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.STORAGE_BATTERY_3] = {
+		[FiendFolio.ITEM.CARD.STORAGE_BATTERY_3] = {
 			Description = "사용 시 액티브 아이템의 충전량을 최대 3칸까지 저장합니다.#충전된 상태에서 재사용 시 충전량을 액티브 아이템으로 옮깁니다.#{{Collectible63}} 초과 충전이 가능합니다.#{{Card" .. tostring(Card.CORRODED_BATTERY_3) .. "}} 스테이지 진입 시 부식되며 부식된 상태에서 액티브 아이템 충전 시 잠시 후 충전한 위치에서 폭발합니다.",
 			Name = "보조 배터리",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.CORRODED_BATTERY_0] = {
+		[FiendFolio.ITEM.CARD.CORRODED_BATTERY_0] = {
 			Description = "사용 시 액티브 아이템의 충전량을 최대 3칸까지 저장합니다.#충전된 상태에서 재사용 시 충전량을 액티브 아이템으로 옮깁니다.#{{Collectible63}} 초과 충전이 가능합니다.#!!! 액티브 아이템 충전 시 잠시 후 충전한 위치에서 폭발합니다.",
 			Name = "부식된 배터리",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.CORRODED_BATTERY_1] = {
+		[FiendFolio.ITEM.CARD.CORRODED_BATTERY_1] = {
 			Description = "사용 시 액티브 아이템의 충전량을 최대 3칸까지 저장합니다.#충전된 상태에서 재사용 시 충전량을 액티브 아이템으로 옮깁니다.#{{Collectible63}} 초과 충전이 가능합니다.#!!! 액티브 아이템 충전 시 잠시 후 충전한 위치에서 폭발합니다.",
 			Name = "부식된 배터리",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.CORRODED_BATTERY_2] = {
+		[FiendFolio.ITEM.CARD.CORRODED_BATTERY_2] = {
 			Description = "사용 시 액티브 아이템의 충전량을 최대 3칸까지 저장합니다.#충전된 상태에서 재사용 시 충전량을 액티브 아이템으로 옮깁니다.#{{Collectible63}} 초과 충전이 가능합니다.#!!! 액티브 아이템 충전 시 잠시 후 충전한 위치에서 폭발합니다.",
 			Name = "부식된 배터리",
 			QuoteDesc = "",
 		},
-			[FiendFolio.ITEM.CARD.CORRODED_BATTERY_3] = {
+		[FiendFolio.ITEM.CARD.CORRODED_BATTERY_3] = {
 			Description = "사용 시 액티브 아이템의 충전량을 최대 3칸까지 저장합니다.#충전된 상태에서 재사용 시 충전량을 액티브 아이템으로 옮깁니다.#{{Collectible63}} 초과 충전이 가능합니다.#!!! 액티브 아이템 충전 시 잠시 후 충전한 위치에서 폭발합니다.",
 			Name = "부식된 배터리",
 			QuoteDesc = "",
@@ -988,7 +1018,7 @@ if FiendFolio then
 			QuoteDesc = "뱀의 주인이 되다",
 		},
 		[FiendFolio.ITEM.COLLECTIBLE.FRAUDULENT_FUNGUS] = {
-			Description = "↑ {{RottenHeart}}썩은 최대 체력 +1#↑ {{SpeedSmall}}이동속도 +0.2#↑ {{DamageSmall}}공격력 +0.3#↑ {{RangeSmall}}사거리 +0.38",
+			Description = "↑ {{RottenHeart}}썩은 최대 체력 +1#↑ {{SpeedSmall}}이동속도 +0.2#↑ {{DamageSmall}}공격력 +0.3#↑ {{RangeSmall}}사거리 +2.5",
 			Name = "썩은 버섯",
 			QuoteDesc = "일부 능력치 증가",
 		},
@@ -1307,7 +1337,7 @@ if FiendFolio then
 			QuoteDesc = "용돈",
 		},
 		[FiendFolio.ITEM.COLLECTIBLE.EVIL_STICKER] = {
-			Description = "{{ffImmoralHeart}}이모럴하트, {{FFCursedPennyTint}}{{Coin}}저주받은 동전, 장난꾸러기 상자, {{FFSpicyKeyTint}}{{Key}}매운열쇠, {{FFCopperBombTint}}{{Bomb}}구리폭탄의 등장 확률이 증가합니다.",
+			Description = "{{ffImmoralHeart}}이모럴하트, {{FFCursedPennyTint}}{{Coin}}저주받은 동전, 장난꾸러기 상자, {{FFSpicyKeyTint}}{{Key}}매운열쇠, {{FFCopperBombTint}}{{Bomb}}구리폭탄, 저주받은 배터리의 등장 확률이 증가합니다.",
 			Name = "악마 스티커",
 			QuoteDesc = "위험한 픽업",
 		},
@@ -1452,7 +1482,7 @@ if FiendFolio then
 			QuoteDesc = "더블탭 가시돌이",
 		},
 		[FiendFolio.ITEM.COLLECTIBLE.MOMS_STOCKINGS] = {
-			Description = "↑ {{RangeSmall}}사거리 +1.5#아군 자폭 벼룩을 0~6마리 소환합니다.",
+			Description = "↑ {{RangeSmall}}사거리 +2.5#아군 자폭 벼룩을 0~6마리 소환합니다.",
 			Name = "엄마의 스타킹",
 			QuoteDesc = "사거리 증가",
 		},
@@ -1488,7 +1518,7 @@ if FiendFolio then
 			QuoteDesc = "내가 쓴 이야기",
 		},
 		[FiendFolio.ITEM.COLLECTIBLE.HOST_ON_TOAST] = {
-			Description = "↑ {{DamageSmall}}공격력 +0.5#↑ {{RangeSmall}}사거리 +0.38",
+			Description = "↑ {{DamageSmall}}공격력 +0.5#↑ {{RangeSmall}}사거리 +1.5",
 			Name = "호스트 발린 토스트",
 			QuoteDesc = "공격력, 사거리 증가",
 		},
@@ -1537,6 +1567,161 @@ if FiendFolio then
 			Name = "황금 플럼 피리",
 			QuoteDesc = "플레이 타임!",
 		},
+
+		-------------------------------------- 
+		---- FF 2.8: The Spitshine Update ----
+		-------------------------------------- 
+
+		[FiendFolio.ITEM.COLLECTIBLE.FIENDS_THIRD_LEG] = {
+			Description = "↑ {{DamageSmall}}공격력 배율 x3.33#↑ {{TearsSmall}}연사 배율 x1.5#공격에 유도 효과가 생기며 적에게 피해를 주는 보라색 장판을 생성합니다.#공격이 무언가에 부딪힐 시 Fiend의 부하를 소환합니다.",
+			Name = "핀드의 세번째 다리",
+			QuoteDesc = "많다...",
+		},
+
+		[FiendFolio.ITEM.COLLECTIBLE.LOADED_D6] = {
+			Description = "사용 시 그 방의 아이템을 캐릭터가 소지 중인 아이템으로 바꿉니다.#중첩 가능한 아이템이 우선적으로 등장합니다.",
+			Name = "취한 주사위",
+			QuoteDesc = "운명을 반복하는 능력",
+		},
+
+		[FiendFolio.ITEM.COLLECTIBLE.ISAAC_DOT_CHR] = {
+			Description = "↑ 목숨 +1#사망 시 그 방에서 일부 아이템이 오류 아이템으로 바뀐 채 부활합니다.",
+			Name = "",
+			QuoteDesc = "캐릭터 백업 파일 생성 중...",
+		},
+
+		[FiendFolio.ITEM.COLLECTIBLE.WORM_INSIGNIA] = {
+			Description = "↑ {{SpeedSmall}}이동속도 +0.02",
+			Name = "벌레 휘장",
+			QuoteDesc = "일찍 일어나는 벌레가... 응?",
+		},
+
+		[FiendFolio.ITEM.COLLECTIBLE.DADS_BATTERY] = {
+			Desc = "Allows you to use your active item without having enough charge, resulting in negative charge (capped at -12)#Having negative charge reduces your move speed and shot speed, and persists even if you switch active items",
+			Description = "액티브 아이템의 충전량이 모두 채워지지 않았을 때 액티브 아이템 사용 시 부족한 충전량 한칸 당 {{SpeedSmall}}/{{ShotspeedSmall}}(배율)을 깎고 사용합니다.(최대 12칸)",
+			Name = "아빠의 배터리",
+			QuoteDesc = "충전 빚지기",
+		},
+
+		[FiendFolio.ITEM.COLLECTIBLE.TORTURE_COOKIE] = {
+			--Desc = "On use, deals half a red heart of damage to the player, and either displays an evil fortune, spawns a black heart, spawns a reverse tarot card or spawns an evil-themed trinket",
+			Description = "사용 시 체력 반칸을 깎고 확률적으로 {{BlackHeart}}블랙하트(16%)/{{Card}}역타로카드(14%) 및 악마 관련 장신구(3%)를 드랍합니다.#빨간하트를 우선적으로 깎습니다.",
+			Name = "고문 쿠키",
+			QuoteDesc = "재사용 가능한 고문",
+		},
+
+		[FiendFolio.ITEM.COLLECTIBLE.ISAACD_EULOGY] = {
+			--Desc = "Enemies have a luck-based chance to cause a Dice item (D6, D20, etc.) effect to occur upon death",
+			Description = "적 처치 시 랜덤 주사위 효과를 발동합니다.#{{Blank}} ("
+				.."{{Collectible"..CollectibleType.COLLECTIBLE_D1.."}}"
+				.."{{Collectible"..CollectibleType.COLLECTIBLE_D6.."}}"
+				.."{{Collectible"..CollectibleType.COLLECTIBLE_ETERNAL_D6.."}}"
+				.."{{Collectible"..CollectibleType.COLLECTIBLE_D7.."}}"
+				.."{{Collectible"..CollectibleType.COLLECTIBLE_D8.."}}"
+				.."{{Collectible"..CollectibleType.COLLECTIBLE_D10.."}}"
+				.."{{Collectible"..CollectibleType.COLLECTIBLE_D12.."}}"
+				.."{{Collectible"..CollectibleType.COLLECTIBLE_D20.."}}"
+				.."{{Collectible"..CollectibleType.COLLECTIBLE_SPINDOWN_DICE.."}}"
+				.."{{Collectible"..FiendFolio.ITEM.COLLECTIBLE.D2.."}}"
+				.."{{Collectible"..FiendFolio.ITEM.COLLECTIBLE.ETERNAL_D10.."}}"
+				.."{{Collectible"..FiendFolio.ITEM.COLLECTIBLE.ETERNAL_D12.."}}"
+				.."{{Collectible"..FiendFolio.ITEM.COLLECTIBLE.DUSTY_D10.."}}"
+				.."{{Collectible"..FiendFolio.ITEM.COLLECTIBLE.LOADED_D6.."}}"
+				.."{{Collectible"..FiendFolio.ITEM.COLLECTIBLE.AZURITE_SPINDOWN.."}}"
+				..")"
+				.."#!!! {{Collectible"..CollectibleType.COLLECTIBLE_D4.."}}/{{Collectible"..CollectibleType.COLLECTIBLE_D100.."}} : 0.01% 확률",
+			Name = "주사위 찬사",
+			QuoteDesc = "죽음으로 굴리기",
+		},
+
+		[FiendFolio.ITEM.COLLECTIBLE.BRICK_FIGURE] = {
+			--Desc = "Spawns a Brick Separator and 4 Studs on pickup#Pennies have a 20% chance to be converted into Studs",
+			Description = "Brick Separator와 4개의 레고 페니를 드랍합니다.#동전이 20%의 확률로 레고 페니로 바뀝니다.",
+			Name = "벽돌 모형",
+			QuoteDesc = "벽돌 집기",
+		},
+
+		--[[ [FiendFolio.ITEM.COLLECTIBLE.HAZELS_MOONBEAM] = {
+			Description = "",
+			Name = "",
+			QuoteDesc = "",
+		}, ]]
+
+		[FiendFolio.ITEM.COLLECTIBLE.GOLDSHI_LUNCH] = {
+			--Desc = "\1 +1 max heart#\1 +0.1 speed up#\1 +0.2 shotspeed up#In cleared rooms, this increases to +0.85 speed and +0.4 shotspeed",
+			Description = "↑ {{Heart}}최대 체력 +1#↑ {{SpeedSmall}}이동속도 +0.1#{{Blank}} (클리어한 방의 경우 +0.85)#↑ {{ShotspeedSmall}}탄속 +0.2#{{Blank}} (클리어한 방의 경우 +0.4)",
+			Name = "금시 점심",
+			QuoteDesc = "체력 증가, 말처럼 빨리",
+		},
+
+		[FiendFolio.ITEM.COLLECTIBLE.TWINKLE_OF_CONTAGION] = {
+			--Desc = "Enemies have a chance to glow upon entering a room#Looking at a glowing enemy passes the effect onto you, giving you a stat boost while under the effect#After a period of time, the glowing effect will jump from the player to a random enemy",
+			Description = "방 입장 시 적 하나에 후광이 생깁니다.#캐릭터가 후광을 보면 그 후광이 캐릭터에게 옮겨지며 잠시동안 {{DamageSmall}}/{{TearsSmall}}/{{LuckSmall}}이 증가합니다.#일정 시간 이후 다른 적에게 오라가 옮겨집니다.",
+			Name = "빛나는 전염",
+			QuoteDesc = "도전해보기",
+		},
+
+		[FiendFolio.ITEM.COLLECTIBLE.DUSTY_D10] = {
+			--Desc = "On use, rerolls all enemies in the room into different enemies from anywhere in the game#Attempts to reroll enemies into those with similar max HP",
+			Description = "사용 시 그 방의 적을 다른 적으로 바꿉니다.",
+			Name = "낡은 10면 주사위",
+			QuoteDesc = "예전의 믿지 못할 물건",
+		},
+
+		[FiendFolio.ITEM.COLLECTIBLE.TOKEN_BAG] = {
+			--Desc = "Familiar that drops 1 token every 10 rooms",
+			Description = "방 10개 클리어 시 토큰을 하나 드랍합니다.",
+			Name = "토큰 가방",
+			QuoteDesc = "토큰 한가득",
+		},
+
+		[FiendFolio.ITEM.COLLECTIBLE.GREEN_ORANGE] = {
+			--Desc = "\1 +0.7 damage up#\1 +0.5 tears up",
+			Description = "↑ {{DamageSmall}}공격력 +0.7#↑ {{TearsSmall}}연사 +0.5",
+			Name = "녹색 오렌지",
+			QuoteDesc = "부디 깨달아주길...",
+		},
+
+		[FiendFolio.ITEM.COLLECTIBLE.REHEATED_PIZZA] = {
+			--Desc = "\1 +1 max heart#At the start of each floor, spawns a random heart pickup",
+			Description = "↑ {{Heart}}최대 체력 +1#{{UnknownHeart}} 스테이지 입장 시 랜덤 하트를 하나 드랍합니다.",
+			Name = "뜨거운 피자",
+			QuoteDesc = "일일 식사",
+		},
+
+		[FiendFolio.ITEM.COLLECTIBLE.HEDONISTS_COOKBOOK] = {
+			--Desc = "On use, causes all enemies with the lowest max HP in the room to explode in a shower of projectiles",
+			Description = "사용 시 그 방에서 최대 체력이 가장 낮은 적을 즉사시키며 그 자리에서 여러 개의 눈물을 흩뿌립니다.",
+			Name = "쾌락주의자의 요리책",
+			QuoteDesc = "자연 수확",
+		},
+
+		[FiendFolio.ITEM.COLLECTIBLE.ERRORS_CRAZY_SLOTS] = {
+			--Desc = "On use, a three number slot appears above your head#Using the item again locks in a number, and the slot cycles faster after each number is locked#Once all three numbers are locked in, the player is granted the item of the ID shown by the three numbers#If the item ID is invalid then the player is teleported to the Error Room",
+			Description = "!!! 일회용#사용 시 슬롯머신을 시작하며 아이템 사용 버튼을 누르면 왼쪽부터 하나씩 숫자를 멈춥니다.#3개의 숫자를 멈추면 해당 번호에 해당되는 아이템을 획득하며 유효하지 않은 아이템의 경우 {{ErrorRoom}}오류방으로 이동합니다.",
+			Name = "오류난 슬롯머신",
+			QuoteDesc = "운명을 돌리는 능력",
+		},
+
+		[FiendFolio.ITEM.COLLECTIBLE.SPELLING_BEE] = {
+			Description = "현재 게임의 시드를 기반으로 각 글자가 능력치 및 픽업의 기반이 되는 경우 해당 능력치 및 픽업을 증가, 숫자의 경우 모든 능력치가 감소합니다.#!!! (예시 :D,A,M,A,G,E 중 한 글자 포함 시 {{DamageSmall}}공격력 증가)",
+			Name = "스펠링 비",
+			QuoteDesc = "글자의 효율",
+		},
+
+		[FiendFolio.ITEM.COLLECTIBLE.SCULPTED_PEPPER] = {
+			--Desc = "On use, spawns a stone block#Attacking the stone block chisels it#Fully chiseled stone blocks produce an aura that gives status effects to enemies and buffs to the player",
+			Description = "사용 시 그 방에 석상을 투하합니다.#석상 공격 시 조각상이 만들어지며 완성 시 주변의 적에게 {{Fear}}공포를 거는 오라를 생성합니다.",
+			Name = "조각 고추",
+			QuoteDesc = "오만의 힘",
+		},
+
+		[FiendFolio.ITEM.COLLECTIBLE.TOO_MANY_OPTIONS] = {
+			Description = "모든 특수방이 3종류의 랜덤 특수방으로 전환되며 3개 중 하나를 선택할 수 있습니다.#!!! {{CurseRoom}}저주방 선택 시 방 문에 가시가 생깁니다.",
+			Name = "너무 많은 선택",
+			QuoteDesc = "너무 많아!",
+		},
+
 
 	}
 	local ffTrinketDesc = {
@@ -1810,6 +1995,49 @@ if FiendFolio then
 			Name = "부서진 레코드",
 			QuoteDesc = "반복된 채로 멈춰있어",
 		},
+		[FiendFolio.ITEM.TRINKET.FUSHIGI] = {
+			--Description = "Luck-affected chance to fire a metal tear with the Eye of the Occult effect with increased range and double damage.",
+			Description = "{{Collectible606}} 공격 시 확률적으로 2초간 적과 탄환을 끌어들이는 블랙홀이 생성됩니다",
+			Name = "불가사의",
+			QuoteDesc = "떠다니게 해!",
+		},
+		[FiendFolio.ITEM.TRINKET.NESTING_DOLL] = {
+			--Description = "When blowing up a beggar, has a chance to spawn a different random beggar in its place.",
+			Description = "거지 폭파 시 확률적으로 그 자리에서 다른 거지가 생깁니다.",
+			Name = "인형 안의 인형",
+			QuoteDesc = "안에서의 서프라이즈",
+		},
+		[FiendFolio.ITEM.TRINKET.EGG_PENNY] = {
+			--Description = "Chance to spawn a Fragile Bobby on picking up a coin.",
+			Description = "{{Coin}}동전을 주울 때 확률적으로 Fragile Bobby를 소환합니다.",
+			Name = "알 페니",
+			QuoteDesc = "아기 부자",
+		},
+		[FiendFolio.ITEM.TRINKET.LEFTOVERS] = {
+			--Description = "Overhealed health gained from heart pickups will be left on the ground for later use.",
+			Description = "{{Heart}} 초과회복된 하트류 픽업을 남깁니다.",
+			Name = "먹다 남은 음식",
+			QuoteDesc = "나중을 위해 아껴",
+		},
+		[FiendFolio.ITEM.TRINKET.FUZZY_PICKLE] = {
+			--Description = "Grants +0.1 damage up for each reference item/trinket the player has#Active items grant +0.5 damage up instead#Loose references only grant half of the corresponding damage up.",
+			Description = "패러디 아이템 당 {{DamageSmall}}공격력 +0.1#{{Blank}} (패러디가 약한 경우 +0.05)#액티브 아이템인 경우 +0.5",
+			Name = "퍼지 피클",
+			QuoteDesc = "패러디 증가",
+		},
+		[FiendFolio.ITEM.TRINKET.DUDS_FLOWER] = {
+			--Description = "All bombs spawned by the player will become copper bombs.",
+			Description = "캐릭터가 설치한 폭탄이 전부 구리폭탄으로 설치됩니다.",
+			Name = "바보의 꽃",
+			QuoteDesc = "멍청한 폭탄",
+		},
+		[FiendFolio.ITEM.TRINKET.BOMB_TOKEN] = {
+			--Description = "Increases the flat damage dealt by bombs spawned by the player by 100#{{Collectible52}} Grants a 1.5x damage multiplier to Dr. Fetus bombs (instead of the flat damage up).",
+			Description = "{{Bomb}} 플레이어의 폭탄의 피해량 +100#{{Collectible52}} 페투스 폭탄의 경우 피해량 x1.5",
+			Name = "폭탄 토큰",
+			QuoteDesc = "폭발력 증가",
+		},
+
 		[FiendFolio.ITEM.ROCK.DIRT_CLUMP] = {
 			Description = "{{ffGrind}} 채굴기로 이 장신구 소모 시 동전을 소모하지 않습니다.",
 			StatusEffects = {ffStatusEffectDesc.GOLEM_NORMAL},
@@ -2571,6 +2799,91 @@ if FiendFolio then
 			Name = "",
 			QuoteDesc = "",
 		},
+
+		[FiendFolio.ITEM.ROCK.POCKET_ROCKIT] = {
+			--Description = "Chance to fire a rocket tear that homes in on enemies#Rockets shoot low damage tears when close to enemies#Rockets pop into a tear pattern on impact, depending on its color.",
+			Description = "공격 시 10%의 확률로 로켓을 발사합니다.#{{LuckSmall}} :행운 10+일 때 25%#로켓이 무언가에 부딪힌 위치에 8방향으로 특정 패턴의 눈물을 발사합니다.",
+			StatusEffects = {ffStatusEffectDesc.GOLEM_NORMAL},
+			Name = "포켓 로켓",
+			QuoteDesc = "로켓 사이언스",
+		},
+
+		[FiendFolio.ITEM.ROCK.WORMHOLE_ROCK] = {
+			--Description = "Spawns two wormholes#Tears and projectiles that enter a portal will emerge from the other, aimed towards enemies and sometimes gaining additional effects#The wormholes will occasionally burst into tears and change positions.",
+			Description = "방 입장 시 특수 포탈을 2개 소환합니다.#포탈 공격 시 다른 포탈에서 적을 향해 공격력 x1.5의 랜덤 효과의 공격으로 나갑니다.#주기적으로 포탈의 위치가 바뀝니다.",
+			StatusEffects = {ffStatusEffectDesc.GOLEM_NORMAL},
+			Name = "웜홀석",
+			QuoteDesc = "오, 웜홀?",
+		},
+
+		[FiendFolio.ITEM.ROCK.ATLAS_BURDEN] = {
+			--Description = "↓0.4 speed down#Dealing damage to enemies has a chance to drop a boulder onto them, slowing them down and periodically doing heavy damage.",
+			Description = "↓ {{SpeedSmall}}이동속도 -0.4#적 명중 시 최대 25%의 확률로 적에게 하늘을 떠받치게 하며 즉사, 보스의 경우 {{Slow}}둔화 + 주기적으로 공격력 x4의 피해를 줍니다.#{{LuckSmall}} :행운 2.5+일 때 50%, 하늘을 떠받친 적 수에 반비례",
+			StatusEffects = {ffStatusEffectDesc.GOLEM_NORMAL},
+			Name = "아틀라스의 부담",
+			QuoteDesc = "다른 놈들한테 넘겨",
+		},
+
+		[FiendFolio.ITEM.ROCK.ARACHNITE] = {
+			--Description = "Blue spiders are replaced with friendly rock spiders#Chance to replace with tinted or coal rock spiders.",
+			Description = "모든 아군 자폭 파리가 아군 Rock Spider로 바뀝니다.",
+			StatusEffects = {ffStatusEffectDesc.GOLEM_NORMAL},
+			Name = "아라크나이트",
+			QuoteDesc = "돌 속에서의 몸부림",
+		},
+
+		[FiendFolio.ITEM.ROCK.HOMOEROTIC_RUBY] = {
+			--Description = "Chance to fire flaming tears that inflict burn.#Women periodically have a chance to go berserk.",
+			Description = "{{Burning}} 공격 시 10%의 확률로 적에게 화상을 입히는 공격이 나갑니다.#{{LuckSmall}} :행운 8+일 때 50%#{{ffBerserk}} 암컷 적의 경우 확률적으로 폭주 상태가 됩니다.",
+			StatusEffects = {ffStatusEffectDesc.GOLEM_NORMAL,ffStatusEffectDesc.BERSERK},
+			Name = "호모 루비",
+			QuoteDesc = "열정적이야, 베이베!",
+		},
+
+		[FiendFolio.ITEM.ROCK.GAY_GARNET] = {
+			--Description = "Chance to fire freezing flames.#Women periodically have a chance to go berserk.#Women start out charmed.",
+			Description = "{{Freezing}} 15%의 확률로 처치시 적을 얼리는 불꽃을 날립니다#{{LuckSmall}} :행운 7+일 때 50%#{{ffBerserk}} 암컷 적의 경우 등장 시 10초동안 {{Charm}}매혹에 걸리며 확률적으로 폭주 상태가 됩니다.",
+			StatusEffects = {ffStatusEffectDesc.GOLEM_NORMAL,ffStatusEffectDesc.BERSERK},
+			Name = "게이 가넷",
+			QuoteDesc = "교미",
+		},
+
+		[FiendFolio.ITEM.ROCK.LITHOPEDIAN] = {
+			--Description = "Grants a Stoney Gaper familiar that pushes enemies around and blocks shots.",
+			Description = "적을 추적 후 밀쳐내며 적의 탄환을 막아주는 패밀리어를 소환합니다.",
+			StatusEffects = {ffStatusEffectDesc.GOLEM_NORMAL},
+			Name = "리소페디안",
+			QuoteDesc = "당신만의 스토니",
+		},
+
+		[FiendFolio.ITEM.ROCK.JESUS_ROCK] = {
+			Description = "!!! 일회용#사망 시 그 방에서 체력 6칸으로 부활합니다.",
+			StatusEffects = {ffStatusEffectDesc.GOLEM_NORMAL},
+			Name = "예수석",
+			QuoteDesc = "죽음으로부터의 부활",
+		},
+
+		[FiendFolio.ITEM.ROCK.LOST_ARTIFACT] = {
+			--Description = "Upon clearing rooms, spawns a random amount of fairy fly familiars#Fairy flies deal contact damage to enemies, and die after some time#Little fairy flies periodically fire player tears#Round fairy flies explode into a ring of player tears on-death#Big fairy flies divebomb on-death, causing a giga bomb explosion and firing a large ring of player tears.",
+			Description = "방 클리어 시 적과 접촉 시 피해를 주는 요정 파리가 옵니다.#소형 : 주기적으로 캐릭터의 눈물을 발사합니다.#중형 : 터질 때 8방향으로 캐릭터의 눈물을 발사합니다.#대형 : 터질 때 기가 폭발을 일으키며 8방향으로 캐릭터의 눈물을 발사합니다.",
+			StatusEffects = {ffStatusEffectDesc.GOLEM_NORMAL},
+			Name = "잊혀진 유물",
+			QuoteDesc = "냥냥 요정",
+		},
+
+		[FiendFolio.ITEM.ROCK.RIDICULOUS_METAL] = {
+			Description = "방 입장 시 적이 있는 경우 미니 리듬게임을 시작합니다.#정확한 타이밍에 공격 시 적 전체에게 피해를 줍니다.#연속 성공 시 피해량이 증가합니다.",
+			StatusEffects = {ffStatusEffectDesc.GOLEM_NORMAL},
+			Name = "익살스러운 메탈",
+			QuoteDesc = "리듬의 보상",
+		},
+
+		[FiendFolio.ITEM.ROCK.TOP_ROCK] = {
+			Description = "↑ 모든 능력치 증가#소지 중일 때 능력치가 상승하지 않습니다.",
+			StatusEffects = {ffStatusEffectDesc.GOLEM_NORMAL},
+			Name = "꼭대기 돌덩이",
+			QuoteDesc = "이제 내려갈 일만 남았어",
+		},
 				
 		[FiendFolio.ITEM.ROCK.BREAKFAST_FOSSIL] = {
 			Description = "{{ffCrush}} 분해 시 {{Heart}}최대 체력 +1",
@@ -2769,6 +3082,13 @@ if FiendFolio then
 			StatusEffects = {ffStatusEffectDesc.GOLEM_FOSSIL},
 			Name = "감사의 화석",
 			QuoteDesc = "풍성한 거지 + 분해 보너스",
+		},
+		[FiendFolio.ITEM.ROCK.HOLLOW_FOSSIL] = {
+			--Description = "↑ +1.35 damage#{{ffCrush}} Guarantees a deal room and spawns a black heart instead of a soul heart when crushed.",
+			Description = "↑ {{DamageSmall}}공격력 +1.35#{{ffCrush}} 분해 시 소울하트 대신 {{BlackHeart}}블랙하트가 나오며 그 스테이지에서 악마방 확률을 100%로 고정해 줍니다.",
+			StatusEffects = {ffStatusEffectDesc.GOLEM_FOSSIL},
+			Name = "공허의 화석",
+			QuoteDesc = "암흑의 기운이 담겨 있어 + 분해 보너스",
 		},
 				
 		[FiendFolio.ITEM.ROCK.CURVED_GEODE] = {
@@ -3005,6 +3325,15 @@ if FiendFolio then
 	EID:addEntity(5, 30, FiendFolio.PICKUP.KEY.CHARGEDSPICY_PERM, "매운 열쇠", "{{Key}} 열쇠 +2#액티브 아이템의 게이지를 6칸 충전시키며 반칸의 피해를 입습니다.", "ko_kr")
 	
 	EID:addEntity(5, 40, FiendFolio.PICKUP.BOMB.COPPER, "구리 폭탄", "설치 시 확률적으로 불발되거나 {{Collectible106}}거대한 폭발을 일으킵니다.", "ko_kr")
+	EID:addEntity(5, 40, FiendFolio.PICKUP.BOMB.DOUBLE_COPPER, "구리 폭탄", "설치 시 확률적으로 불발되거나 {{Collectible106}}거대한 폭발을 일으킵니다.", "ko_kr")
+	EID:addEntity(5, 40, FiendFolio.PICKUP.BOMB.MIXED_DOUBLE, "구리 폭탄", "설치 시 확률적으로 불발되거나 {{Collectible106}}거대한 폭발을 일으킵니다.", "ko_kr")
+
+	EID:addEntity(5, FiendFolio.PICKUP.VARIANT.FIREWORK_BATTERY, 0, "폭죽 배터리", "{{Collectible"..FiendFolio.ITEM.COLLECTIBLE.EXCELSIOR.."}}다음 액티브 사용 시 유도성 로켓을 여러 발 발사합니다.", "ko_kr")
+	EID:addEntity(5, FiendFolio.PICKUP.VARIANT.VIRTUOUS_BATTERY, 0, "미덕의 배터리", "{{Collectible584}}다음 액티브 사용 시 해당 액티브의 불꽃을 같이 소환합니다.", "ko_kr")
+	EID:addEntity(5, FiendFolio.PICKUP.VARIANT.POTATO_BATTERY, 0, "감자도스", "1칸을 충전합니다.", "ko_kr")
+	EID:addEntity(5, FiendFolio.PICKUP.VARIANT.CURSED_BATTERY, 0, "저주받은 배터리", "-2~4칸을 충전합니다.#The Battery 없이 초과 충전이 가능합니다.", "ko_kr")
+
+	EID:addEntity(5, FiendFolio.PICKUP.VARIANT.TOKEN, 0, "토큰", "가장 최근에 집은 픽업을 다시 집습니다.", "ko_kr")
 
 	EID:addEntity(6, 880, 0, "장애물 재설정 기계", "1{{Bomb}} 필요#{{Collectible386}} 확률적으로 그 방의 장애물을 바꿉니다.", "ko_kr")
 	EID:addEntity(6, FiendFolio.FF.PokerTable.Var, 0, "포커 테이블", "베팅할 픽업의 수를 선택하고 터치 시 확률적으로 돌려받거나 전부 잃습니다.#3번 승리 시 투자한 픽업의 수에 비례하여 픽업 및 아이템을 드랍합니다.", "ko_kr")
@@ -3026,6 +3355,9 @@ if FiendFolio then
 	EID:addEntity(6, 1023, 0, "???", "이후 스테이지에 다시 와주세요.#폭파 시 랜덤 장신구를 드랍합니다.", "ko_kr")
 	EID:addEntity(6, 1024, 0, "정동 골렘", "!!! 스테이지 당 일회용#현재 들고 있는 장신구를 {{ColorTeal}}정동석{{CR}} 장신구 2개로 바꿉니다.#정동성 타입의 장신구는 해당 장신구를 복제합니다.", "ko_kr")
 	EID:addEntity(6, 1024, 1, "정동 골렘", "!!! 이미 사용됨. 다음 스테이지부터 등장 시 다시 사용할 수 있습니다.", "ko_kr")
+	EID:addEntity(6, FiendFolio.FF.Midarizer.Var, 0, "미다라이저", "현재 들고 있는 장신구와 {{Coin}}동전 10개를 소모하여 황금 형태로 바꿉니다.#사용 후 50%의 확률로 비활성화되어 더 이상 사용할 수 없게 됩니다.", "ko_kr")
+	EID:addEntity(6, FiendFolio.FF.Midarizer.Var, 10, "미다라이저", "!!! 비활성화됨. 다음 스테이지부터 등장 시 다시 사용할 수 있습니다.", "ko_kr")
+	EID:addEntity(6, FiendFolio.FF.Sweetpuss.Var, 0, "스윗퍼스", "!!! 일회용#현재 들고 있는 장신구를 {{ColorRed}}화석{{CR}} 장신구로 바꿉니다.#화석 타입의 장신구는 해당 장신구를 파괴합니다.", "ko_kr")
 
   
   EID.descriptions["ko_kr"].bingeEaterBuffs[FiendFolio.ITEM.COLLECTIBLE.TEA] = "↑ {{RangeSmall}}사거리 +1.5#↑ {{LuckSmall}}행운 +1#↓ {{SpeedSmall}}이동속도 -0.03"
@@ -3038,6 +3370,8 @@ if FiendFolio then
 	  or descObj.ObjVariant == 1021
 	  or descObj.ObjVariant == 1022
 	  or (descObj.ObjVariant == 1024 and descObj.ObjSubType == 0)
+		or (descObj.ObjVariant == FiendFolio.FF.Midarizer.Var and descObj.ObjSubType ~= 10)
+		or descObj.ObjVariant == FiendFolio.FF.Sweetpuss.Var
 	  then 
 	    local holdUpRockRange = 100
 
@@ -3049,7 +3383,12 @@ if FiendFolio then
 	      local data = player:GetData()
 			
 	      if player and player:Exists() then
-	        local trinket = FiendFolio.GetMostRecentRockTrinket(player)
+					local trinket
+					if slot.Variant == FiendFolio.FF.Midarizer.Var then
+						trinket = FiendFolio.GetMostRecentRockTrinket(player, nil, true)
+					else
+						trinket = FiendFolio.GetMostRecentRockTrinket(player)
+					end
 	        local price = FiendFolio.GetGrindPriceForTrinket(trinket, player)
 				
 	        local shouldHoldUpRockTrinket = trinket > 0
@@ -3084,6 +3423,10 @@ if FiendFolio then
 	        appendDesc = "#!!! 아래 장신구가 {{ColorPastelBlue}}분해됨{{CR}} : #"
 	      elseif descObj.ObjVariant == 1022 then
 	        appendDesc = "#!!! 아래 장신구가 {{ColorSilver}}흡수됨{{CR}} : #"
+	      elseif descObj.ObjVariant == FiendFolio.FF.Midarizer.Var then
+	        appendDesc = "#!!! 아래 장신구가 {{ColorGold}}강화됨{{CR}} : #"
+	      elseif descObj.ObjVariant == FiendFolio.FF.Sweetpuss.Var then
+	        appendDesc = "#!!! 아래 장신구가 {{ColorEIDError}}소모됨{{CR}} : #"
 	      end
 	      appendDesc = appendDesc .. "{{Trinket"..trinket.."}} {{ColorEIDObjName}}" .. demoDescObj.Name .. "#" .. demoDescObj.Description .. "#"
 	      EID:appendToDescription(descObj, appendDesc)
@@ -3141,7 +3484,7 @@ if FiendFolio then
 	          local durations = {
 	            [1] = 7, [2] = 5, [3] = 8
 	          }
-	          appendDesc = appendDesc .. "#{{FFBruise}} " .. rangeStr .. "적을 " .. tostring(math.ceil(durations[multiplier] * 1.5)) .. "초동안 멍들게 합니다."
+	          appendDesc = appendDesc .. "#{{ffBruise}} " .. rangeStr .. "적을 " .. tostring(math.ceil(durations[multiplier] * 1.5)) .. "초동안 멍들게 합니다."
 	        elseif effect == "violent" then
 	          local rangeStr = multiplier == 1 and "주변의 " or "그 방의 "
 	          local dmgStrings = {
