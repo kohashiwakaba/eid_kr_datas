@@ -8,7 +8,7 @@
     [*]Fiend Folio (Also adds : Golem machines)
     [*]Retribution
     [*]Revelations
-    [*]Samael (Not synergies yet)
+    [*]Samael
 [/list]
 Released as seperate mod to make translation update faster.
 
@@ -19,7 +19,7 @@ Retribution : https://steamcommunity.com/sharedfiles/filedetails/?id=2881008017
 Revelations : https://steamcommunity.com/sharedfiles/filedetails/?id=2880387531
 
 Special thanks to Curezor for adding Fiend Folio icons for EID!</description>
-    <version>1.21</version>
+    <version>1.22</version>
     <visibility>Public</visibility>
     <tag id="Lua"/>
 </metadata>
