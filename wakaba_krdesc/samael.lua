@@ -32,7 +32,7 @@ local CollectibleDesc = {
 	},
 	
 	[SamaelMod.ITEMS.DENIAL] = {
-		Description = "↓ 행운 -1#Blind 저주에 걸리지 않으며 추가 스테이지의 가려진 아이템을 보여줍니다.#방 입장 시 그 방 한정으로 아이템, 픽업, 슬롯류를 바꿀 수 있는 Denial Dice를 소환합니다.",
+		Description = "↓ 행운 -1#Blind 저주에 걸리지 않으며 추가 스테이지의 가려진 아이템을 보여줍니다.#방 입장 시 그 방 한정으로 아이템, 픽업, 슬롯류를 바꿀 수 있는 {{Card"..SamaelMod.ITEMS.DENIAL_DICE.."}}Denial Dice를 소환합니다.",
 		Name = "부정의 정령",
 		QuoteDesc = "운명을 거부하다",
 	},
@@ -103,6 +103,14 @@ local CollectibleDesc = {
 		Name = "죽음의 전언",
 		QuoteDesc = "그대를 잊지 않으리라",
 	},
+	[SamaelMod.ITEMS.TRUMPET_OF_WOE] = {
+		Description = "#사용 시마다 아래 순서대로 번갈아가면서:"
+		.."#{{Blank}} {{ColorSilver}}1회:{{CR}} 랜덤한 효과의 아군 자폭 파리 15마리 소환"
+		.."#{{Blank}} {{ColorSilver}}2회:{{CR}} 아군 Reaper 몬스터 3마리 소환"
+		.."#{{Blank}} {{ColorSilver}}3회:{{CR}} 아군 Ultra Death 소환",
+		Name = "죽음의 전언",
+		QuoteDesc = "그대를 잊지 않으리라",
+	},
 	[SamaelMod.ITEMS.THANATOS] = {
 		Description = "캐릭터를 따라다니며 적의 탄환을 막아주는 관을 3개 소환합니다."
 		.."#각 관 당 적 탄환을 10회 막으면 부서지며 부서지는 동안 푸른 불꽃을 발사하며 작은 캐릭터를 하나 소환합니다."
@@ -110,16 +118,28 @@ local CollectibleDesc = {
 		Name = "타나토스의 가면",
 		QuoteDesc = "사신의 보호",
 	},
+	[SamaelMod.ITEMS.JAR_OF_SCYTHES] = {
+		Description = "적 처치 시 병에 낫이 저장됩니다.(최대 20개)"
+		.."#사용 시 저장된 낫의 수 만큼(최대 4개) 회전하는 낫을 소환합니다."
+		.."#낫의 공격력은 캐릭터의 공격력에 비례합니다.",
+		Name = "타나토스의 가면",
+		QuoteDesc = "사신의 보호",
+	},
 }
 
 local TrinketDesc = {
+	[SamaelMod.ITEMS.WRAITH_SKULL] = {
+		Description = "그 방에서 최초 피격 시 작은 사신 패밀리어를 하나 소환합니다.",
+		Name = "사마엘의 인장",
+		QuoteDesc = "죽음을 부르는 자",
+	},
 	[SamaelMod.ITEMS.SIGIL_OF_SAMAEL] = {
 		Description = "적 처치 시 적 처치 시의 효과를 추가로 발동합니다.",
 		Name = "사마엘의 인장",
 		QuoteDesc = "죽음을 부르는 자",
 	},
 	[SamaelMod.ITEMS.SIGIL_OF_LILITH] = {
-		Description = "작은 아이작 패밀리어를 하나 소환합니다."
+		Description = "작은 사신 패밀리어를 하나 소환합니다."
 		.."#패밀리어가 죽지 않고 방 클리어 시 그 패밀리어가 성장합니다."
 		.."#패밀리어가 죽으면 방 입장 시 새로운 패밀리어가 소환됩니다.",
 		Name = "릴리스의 인장",
@@ -131,6 +151,59 @@ local TrinketDesc = {
 		..ferrymanDesc,
 		Name = "카론 클럽 카드",
 		QuoteDesc = "더 많은 뱃시공 + 입장 할인",
+	},
+	---------------- Fiend Folio Golem Rocks ----------------
+	[SamaelMod.ITEMS.EFFIGY_OF_DENIAL] = {
+		Description = "{{Collectible"..SamaelMod.ITEMS.DENIAL.."}}방 클리어 시 확률적으로 그 방 한정으로 아이템, 픽업, 슬롯류를 바꿀 수 있는 {{Card"..SamaelMod.ITEMS.DENIAL_DICE.."}}Denial Dice를 드랍합니다."
+		.."#{{ffGrind}} 채굴기로 이 장신구 소모 시 {{Card"..SamaelMod.ITEMS.DENIAL_DICE.."}}Denial Dice를 3개 드랍합니다.",
+		Name = "부정의 조각상",
+		QuoteDesc = "더 많은 리롤",
+		StatusEffects = {wakaba_krdesc.ffStatusEffectDesc and wakaba_krdesc.ffStatusEffectDesc.GOLEM_NORMAL},
+	},
+	[SamaelMod.ITEMS.ANGER_FOSSIL] = {
+		Description = "↑ {{DamageSmall}} 공격력 +2"
+		.."#{{Collectible"..SamaelMod.ITEMS.ANGER.."}} 부정적 효과 발생 시 공격력 소량 증가"
+		.."#{{ffCrush}} 분해 시 {{Quality0}}등급 아이템과 구리폭탄을 드랍합니다.",
+		Name = "분노의 화석",
+		QuoteDesc = "사라져가는 분노 + 분해 보너스",
+		StatusEffects = {wakaba_krdesc.ffStatusEffectDesc and wakaba_krdesc.ffStatusEffectDesc.GOLEM_FOSSIL},
+	},
+	[SamaelMod.ITEMS.BARGAINING_FOSSIL] = {
+		Description = "{{Card" .. Isaac.GetCardIdByName("Bargaining's Chip") .. "}} 스테이지 진입 시 거래 품목을 2개 소환합니다."
+		.."#아이템, 픽업, 특수 이벤트(ex:{{Collectible105}}) 등이 제시되며 거래 가격도 다양하게 설정됩니다."
+		.."#{{ffCrush}} 분해 시 {{Collectible"..SamaelMod.ITEMS.BARGAINING.."}}거래 품목을 2개 소환합니다.",
+		Name = "거래의 화석",
+		QuoteDesc = "특별한 거래 + 분해 보너스",
+		StatusEffects = {wakaba_krdesc.ffStatusEffectDesc and wakaba_krdesc.ffStatusEffectDesc.GOLEM_FOSSIL},
+	},
+	[SamaelMod.ITEMS.DEPRESSION_FOSSIL] = {
+		Description = "↑ {{TearsSmall}}연사(+상한) +0.5"
+		.."#{{Collectible"..SamaelMod.ITEMS.DEPRESSION.."}} 15~60초마다 캐릭터가 일정 시간동안 누우며 여러 방향으로 눈물을 발사합니다.#캐릭터가 눕고 있는 도중에는 피해를 받지 않습니다."
+		.."#{{ffCrush}} Grants a large tears up that diminishes over time.",
+		Name = "우울의 화석",
+		QuoteDesc = "눈물 흘릴 시간 + 분해 보너스",
+		StatusEffects = {wakaba_krdesc.ffStatusEffectDesc and wakaba_krdesc.ffStatusEffectDesc.GOLEM_FOSSIL},
+	},
+	[SamaelMod.ITEMS.EFFIGY_OF_ACCEPTANCE] = {
+		Description = "{{TreasureRoom}}보물방/{{BossRoom}}보스방 보상에 가려진 아이템이 한개 더 추가되며 하나를 선택하면 나머지는 사라집니다."
+		.."#가려진 아이템을 집을 시 {{SoulHeart}}소울하트 +1, {{LuckSmall}}행운 +0.5",
+		Name = "긍정의 조각상",
+		QuoteDesc = "운명 믿기",
+		StatusEffects = {wakaba_krdesc.ffStatusEffectDesc and wakaba_krdesc.ffStatusEffectDesc.GOLEM_NORMAL},
+	},
+	[SamaelMod.ITEMS.SCYTHE_FOSSIL] = {
+		Description = "{{Trinket"..SamaelMod.ITEMS.SIGIL_OF_SAMAEL.."}} 적 처치 시 적 처치 시의 효과를 추가로 발동합니다."
+		.."#{{ffCrush}} 분해 시 이후 클리어하지 않은 방 4개까지 재빨리 처치되는 아군 유령을 소환합니다.#{{Blank}} (공격불가/적 처치 효과 발동용)",
+		Name = "사신의 화석",
+		QuoteDesc = "더 많은 죽음 + 분해 보너스",
+		StatusEffects = {wakaba_krdesc.ffStatusEffectDesc and wakaba_krdesc.ffStatusEffectDesc.GOLEM_FOSSIL},
+	},
+	[SamaelMod.ITEMS.FRAGMENT_FRAGMENT] = {
+		Description = "클리어하지 않은 방 진입 시 확률적으로 Lost Soul을 소환합니다."
+		.."#영혼이 생존한 상태로 방 클리어 시 영혼이 픽업을 주고 떠납니다.",
+		Name = "틈새의 파편",
+		QuoteDesc = "저 너머 길 잃은 영혼",
+		StatusEffects = {wakaba_krdesc.ffStatusEffectDesc and wakaba_krdesc.ffStatusEffectDesc.GOLEM_NORMAL},
 	},
 }
 
@@ -277,7 +350,8 @@ SamaelItemDescriptions[CollectibleType.COLLECTIBLE_BERSERK] = {"!!! 주의 : 낫
 SamaelItemDescriptions[CollectibleType.COLLECTIBLE_C_SECTION] = {"!!! 주의 : 태아가 정상적으로 공격하지 않음"}
 SamaelItemDescriptions[CollectibleType.COLLECTIBLE_CURSED_EYE] = {"낫으로 적 명중 시 그 적을 방 안의 랜덤 위치로 순간이동 시킵니다."}
 
-
+wakaba_krdesc.SamaelItemDescriptions = SamaelItemDescriptions
+wakaba_krdesc.MementoMoriItemDescriptions = MementoMoriItemDescriptions
 
 for playerType, birthrightdesc in pairs(BirthrightDesc) do
   EID:addBirthright(playerType, birthrightdesc.Description, birthrightdesc.Name, "ko_kr")
@@ -328,6 +402,7 @@ end
 
 local function MementoMoriEidAppendCallback(descObj)
 	if descObj.ObjType == 5 and descObj.ObjVariant == 100 and MementoMoriItemDescriptions[descObj.ObjSubType] then
+		descObj.Description =  string.gsub(descObj.Description, "(#{{Collectible"..Isaac.GetItemIdByName("Memento Mori") ..").+", "")
 		for _, str in ipairs(MementoMoriItemDescriptions[descObj.ObjSubType]) do
 			EID:appendToDescription(descObj, "#{{Collectible"..Isaac.GetItemIdByName("Memento Mori") .."}} " .. str)
 		end
@@ -356,6 +431,7 @@ end
 
 local function SamaelScytheEidAppendCallback(descObj)
 	if descObj.ObjType == 5 and descObj.ObjVariant == 100 and SamaelItemDescriptions[descObj.ObjSubType] then
+		descObj.Description =  string.gsub(descObj.Description, "(#{{SamaelScythe).+", "")
 		for _, str in ipairs(SamaelItemDescriptions[descObj.ObjSubType]) do
 			EID:appendToDescription(descObj, "#{{SamaelScythe}} " .. str)
 		end

@@ -53,7 +53,8 @@ if FiendFolio then
 		GOLEM_GEODE = "#{{Player"..FiendFolio.PLAYER.GOLEM.."}} 석기 장신구 : {{ColorTeal}}정동석{{CR}} 타입",
 		GOLEM_DUAL = "#{{Player"..FiendFolio.PLAYER.GOLEM.."}} 석기 장신구 : {{ColorTeal}}정동석{{CR}}+{{ColorRed}}화석{{CR}} 타입",
 	}
-  
+
+	wakaba_krdesc.ffStatusEffectDesc = ffStatusEffectDesc
   
   -- Birthright
 	local ffBirthrightDesc = {
@@ -3273,7 +3274,7 @@ if FiendFolio then
 			QuoteDesc = "궁극의 보석 + 정동, 분해 보너스",
 		},
 	}
-
+	
 	for playerType, birthrightdesc in pairs(ffBirthrightDesc) do
 		EID:addBirthright(playerType, birthrightdesc.Description, birthrightdesc.Name, "ko_kr")
 	end
