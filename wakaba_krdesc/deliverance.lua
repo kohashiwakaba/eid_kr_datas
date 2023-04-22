@@ -49,13 +49,13 @@ if Deliverance then
 		},
 		[Items.theApple.id] = {
 			Name = "황금사과",
-			Description = "!!! 일회용# {{Heart}}사용 시 체력을 모두 회복합니다.#{{Trinket"..deliveranceContent.trinkets.appleCore.id.."}}사용 후 Apple Core를 드랍합니다.",
+			Description = "!!! 일회용#{{Heart}} 사용 시 체력을 모두 회복합니다.#{{Trinket"..deliveranceContent.trinkets.appleCore.id.."}} 사용 후 Apple Core를 드랍합니다.",
 			QuoteDesc = "죄의 맛이 나",
-			Belial = "↑ {{BlackHeart}}블랙하트 +2, 모든 최대 체력과 소울하트를 블랙하트로 바꿉니다.#↑ 바꾼 {{Heart}} 당 {{DamageSmall}}공격력 +1#↑ 바꾼 {{SoulHeart}} 당 {{DamageSmall}}공격력 +0.4",
+			Belial = "{{BlackHeart}}블랙하트 +2, 모든 최대 체력과 소울하트를 블랙하트로 바꿉니다.#바꾼 {{Heart}} 당 {{DamageSmall}}공격력 +1#바꾼 {{SoulHeart}} 당 {{DamageSmall}}공격력 +0.4",
 		},
 		[Items.lighter.id] = {
 			Name = "라이터",
-			Description = "{{Burn}} 사용 시 6초동안 그 방의 적에게 화상을 입힙니다.",
+			Description = "{{Burning}} 사용 시 6초동안 그 방의 적에게 화상을 입힙니다.",
 			QuoteDesc = "싹 다 태워버려!",
 		},
 		[Items.shrinkRay.id] = {
@@ -81,7 +81,7 @@ if Deliverance then
 		},
 		[Items.gasoline.id] = {
 			Name = "가솔린",
-			Description = "적 처치 시 잠시동안 {{Slow}}적을 느려지게 하는 장판과 {{Burn}}적에게 피해를 주는 불을 남깁니다.#장판과 불의 위력은 처치한 적의 최대 체력에 비례합니다.",
+			Description = "적 처치 시 잠시동안 {{Slow}}적을 느려지게 하는 장판과 {{Burning}}적에게 피해를 주는 불을 남깁니다.#장판과 불의 위력은 처치한 적의 최대 체력에 비례합니다.",
 			QuoteDesc = "뭔가 타들어가는 냄새가 나",
 		},
 		[Items.luckySaucer.id] = {
@@ -304,7 +304,7 @@ if Deliverance then
 		},
 		[Cards.firestorms.id] = {
 			Name = "파이어스톰",
-			Description = "{{Burn}} 사용 시 그 방의 적에게 화상을 입히며;#{{Collectible257}} 그 방에서 Fire Mind의 효과를 얻습니다.",
+			Description = "{{Burning}} 사용 시 그 방의 적에게 화상을 입히며;#{{Collectible257}} 그 방에서 Fire Mind의 효과를 얻습니다.",
 			QuoteDesc = "",
 		},
 		[Cards.glitch.id] = {
@@ -368,6 +368,58 @@ if Deliverance then
 		if PillDesc[pillEffectID] then
 			Game():GetHUD():ShowItemText(PillDesc[pillEffectID].Name, PillDesc[pillEffectID].QuoteDesc)
 		end
+	end)
+
+	
+	wakaba_krdesc:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, function (_, player)
+		if Options.Language ~= "kr" then return end
+		local descTable = CollectibleDesc
+		local descTableBR = BirthrightDesc
+		if not descTable and not descTableBR then return end
+
+		i_queueNow = player.QueuedItem.Item
+		if (i_queueNow ~= nil) then
+			if i_queueNow.ID == CollectibleType.COLLECTIBLE_BIRTHRIGHT then
+				local playerType = player:GetPlayerType()
+				for playerID, itemdesc in pairs(descTableBR) do
+					if (playerType == playerID and i_queueNow:IsCollectible() and i_queueLastFrame == nil) then
+						local itemName = "생득권"
+						local queueDesc = itemdesc.QuoteDesc or i_queueNow.Description
+						Game():GetHUD():ShowItemText(itemName, queueDesc)
+					end
+				end
+			else
+				for itemID, itemdesc in pairs(descTable) do
+					if (i_queueNow.ID == itemID and i_queueNow:IsCollectible() and i_queueLastFrame == nil) then
+						local itemName = (itemdesc.Name ~= "" and itemdesc.Name) or i_queueNow.Name
+						local queueDesc = itemdesc.QuoteDesc or i_queueNow.Description
+						Game():GetHUD():ShowItemText(itemName, queueDesc)
+					end
+				end
+			end
+		end
+		i_queueLastFrame = i_queueNow
+	end)
+
+
+	local t_queueLastFrame
+	local t_queueNow
+	wakaba_krdesc:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, function (_, player)
+		if Options.Language ~= "kr" then return end
+		local descTable = TrinketDesc
+		if not descTable then return end
+
+		t_queueNow = player.QueuedItem.Item
+		if (t_queueNow ~= nil) then
+			for itemID, itemdesc in pairs(descTable) do
+				if (t_queueNow.ID == itemID and t_queueNow:IsTrinket() and t_queueLastFrame == nil) then
+					local itemName = (itemdesc.Name ~= "" and itemdesc.Name) or t_queueNow.Name
+					local queueDesc = itemdesc.QuoteDesc or t_queueNow.Description
+					Game():GetHUD():ShowItemText(itemName, queueDesc)
+				end
+			end
+		end
+		t_queueLastFrame = t_queueNow
 	end)
 
 end
