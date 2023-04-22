@@ -258,8 +258,8 @@ local PillDesc = {
 	},
 }
 
-EID:addEntity(Isaac.GetEntityTypeByName("(Samael) Ferryman Beggar"), Isaac.GetEntityTypeByName("(Samael) Ferryman Beggar"), 0, "뱃시공", "{{Dime}} 10{{Coin}}을 소모하여 차원의 틈새로 이동합니다."..ferrymanDesc, "ko_kr")
-EID:addEntity(Isaac.GetEntityTypeByName("(Samael) Bag o' Bones"), Isaac.GetEntityTypeByName("(Samael) Bag o' Bones"), 0, "해골 든 가방", "{{BoneHeart}}뼈하트, {{Rune}}룬, 아군 해골 계열 몬스터, 혹은 뼈다귀 배리어가 나올 수 있습니다.", "ko_kr")
+EID:addEntity(SamaelMod.ENTITIES.FERRYMAN.ID, SamaelMod.ENTITIES.FERRYMAN.Var, 0, "뱃시공", "10{{Coin}}을 소모하여 차원의 틈새로 이동합니다."..ferrymanDesc, "ko_kr")
+EID:addEntity(SamaelMod.ENTITIES.BAG_O_BONES.ID, SamaelMod.ENTITIES.BAG_O_BONES.Var, 0, "해골 든 가방", "{{BoneHeart}}뼈하트, {{Rune}}룬, 아군 해골 계열 몬스터, 혹은 뼈다귀 배리어가 나올 수 있습니다.", "ko_kr")
 
 local MementoMoriItemDescriptions = {}
 local SamaelItemDescriptions = {}
