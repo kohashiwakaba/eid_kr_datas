@@ -383,6 +383,15 @@ end
 for itemID, itemdesc in pairs(CardDesc) do
   EID:addCard(itemID, itemdesc.Description, itemdesc.Name, "ko_kr")
 end
+for itemID, itemdesc in pairs(PillDesc) do
+	EID:addPill(itemID, itemdesc.Description, itemdesc.Name, "ko_kr")
+end
+wakaba_krdesc:AddCallback(ModCallbacks.MC_USE_PILL, function (_, pillEffectID, playerWhoUsedItem, useFlags)
+	if Options.Language ~= "kr" or useFlags & UseFlag.USE_NOHUD == UseFlag.USE_NOHUD then return end
+	if PillDesc[pillEffectID] then
+		Game():GetHUD():ShowItemText(PillDesc[pillEffectID].Name, PillDesc[pillEffectID].QuoteDesc)
+	end
+end)
 
 local function MementoMoriEidAppendCondition(descObj)
 	if EID:getLanguage() ~= "ko_kr" then return false end

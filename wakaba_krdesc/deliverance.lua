@@ -298,7 +298,7 @@ if Deliverance then
 
 	local CardDesc = {
 		[Cards.farewellStone.id] = {
-			Name = "아이템이름",
+			Name = "이별의 돌",
 			Description = "!!! {{Heart}}빨간하트를 모두 제거합니다.#{{SoulHeart}} 제거한 빨간하트 수의 50%만큼 소울하트를 획득합니다.#빨간하트가 없을 경우 {{SoulHeart}}소울하트 +1",
 			QuoteDesc = "",
 		},
