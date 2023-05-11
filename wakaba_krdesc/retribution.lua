@@ -223,7 +223,7 @@ if Retribution then
   	[Retribution.ITEMS.DEFIBRILLATOR] 			= {
   		Name = "제세동기",
   		QuoteDesc = "어둠이 보여",
-  		Description = "홀수번째 방마다 {{DamageSmall}}공격력 배율 x1.5",
+  		Description = "방 입장 시 번갈아가면서 {{DamageSmall}}공격력 배율 x1.0/x1.5",
   	},
   	[Retribution.ITEMS.EFFIGY] 				= {
   		Name = "조각상",
@@ -348,14 +348,14 @@ if Retribution then
   	[Retribution.ITEMS.SCULPTING_CLAY] 		= {
   		Name = "조각상",
   		QuoteDesc = "충전식 아이템 복제",
-  		Description = "!!! 스테이지 당 1회만 사용 가능#사용 시 가장 가까운 패시브 아이템 하나를 복사 후 흡수합니다.",
+  		Description = "!!! 스테이지 당 1회만 사용 가능#사용 시 가장 가까운 패시브 아이템 하나를 복사 및 흡수합니다.",
 			Wisps = "(특수 효과 없음/일반 불꽃이 소환됨)",
 			Belial = "복사된 아이템의 원본을 체력 거래가 필요한 {{DevilRoom}}악마방 아이템으로 바꿉니다.",
   	},
   	[Retribution.ITEMS.USED_SCULPTING_CLAY] 	= {
   		Name = "조각상",
   		QuoteDesc = "충전식 아이템 복제",
-  		Description = "!!! 스테이지 당 1회만 사용 가능#이미 사용됨#{{ColorGray}}사용 시 가장 가까운 패시브 아이템 하나를 복사 후 흡수합니다.{{CR}}",
+  		Description = "!!! 스테이지 당 1회만 사용 가능#이미 사용됨#{{ColorGray}}사용 시 가장 가까운 패시브 아이템 하나를 복사 및 흡수합니다.{{CR}}",
 			Wisps = "(특수 효과 없음/일반 불꽃이 소환됨)",
 			Belial = "",
   	},
@@ -965,7 +965,7 @@ if Retribution then
   	[Retribution.TRINKETS.BRANDED_BOWTIE] 	= {
   		Name = "정품 넥타이 리본",
   		QuoteDesc = "부타 사 공식 제품",
-  		Description = "방 클리어 시 능력치 캡슐의 등장할 확률 증가#가챠퐁의 등장확률이 증가합니다.",
+  		Description = "방 클리어 보상이 1/64의 확률로 능력치 캡슐로 바뀝니다.#가챠퐁의 등장확률이 증가합니다.",
   	},
   	[Retribution.TRINKETS.YEN_PENNY] 		= {
   		Name = "엔 페니",
@@ -1138,7 +1138,7 @@ if Retribution then
   	[Retribution.CARDS.JOY_PILL] 						= {
   		Name = "흥분제",
   		QuoteDesc = "",
-  		Description = "{{DamageSmall}} 사용 시 흥분 스택 +1, 그 방에서 공격력 배율 x2, 그 다음 방에서 공격력 배율 x0.8#최근 10개의 방 동안 흥분 스택이 3 이상일 때 방 이동 시 최소 1칸의 피해를 받습니다.",
+  		Description = "{{DamageSmall}} 사용 시 흥분 스택 +1, 그 방에서 공격력 배율 x2, 그 다음 방에서 공격력 배율 x0.85#최근 10개의 방 동안 흥분 스택이 3 이상일 때 방 이동 후 피격 시 최소 1칸의 피해를 받습니다.",
   	},
   	[Retribution.CARDS.EUPHORIA_PILL] 					= {
   		Name = "행복제",
