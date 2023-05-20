@@ -9,6 +9,7 @@
     [*]Retribution
     [*]Revelations
     [*]Samael
+    [*]Deliverance
 [/list]
 Released as seperate mod to make translation update faster.
 
@@ -19,7 +20,7 @@ Retribution : https://steamcommunity.com/sharedfiles/filedetails/?id=2881008017
 Revelations : https://steamcommunity.com/sharedfiles/filedetails/?id=2880387531
 
 Special thanks to Curezor for adding Fiend Folio icons for EID!</description>
-    <version>1.23</version>
+    <version>1.24</version>
     <visibility>Public</visibility>
     <tag id="Lua"/>
 </metadata>
