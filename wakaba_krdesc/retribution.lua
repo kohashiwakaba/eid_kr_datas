@@ -67,7 +67,7 @@ if Retribution then
   		Name = "블랙박스",
   		QuoteDesc = "무엇이 들었을까?",
   		Description = "!!! 소지 중일 때:#↑ {{LuckSmall}}행운 +4#사용 시 아이템, 블랙하트, 카드, 혹은 거미를 소환하며 {{LuckSmall}}행운 -0.5.#{{LuckSmall}} :행운 20+일 때 아이템 100%#!!! {{LuckSmall}}행운 수치가 0 이하일 때 사용 불가",
-			Wisps = "(특수 효과 없음/일반 불꽃이 소환됨)",
+			Wisps = "{{ColorYellow}}중앙 x1{{CR}}#꺼지면 확률적으로 {{BlackHeart}}블랙하트 혹은 적 거미를 하나 드랍합니다.",
 			Belial = "",
   	},
   	[Retribution.ITEMS.BLACK_HAMMER] 			= {
@@ -249,14 +249,14 @@ if Retribution then
   		Name = "가짜 우상",
   		QuoteDesc = "거짓된 운명",
   		Description = "사용 시 그 방에서 {{LuckSmall}}행운 +10.9#나르시스트 장식 패밀리어도 같이 따라다닙니다.",
-			Wisps = "소환되어 있는 동안 {{LuckSmall}}행운 +1.09",
-			Belial = "{{LuckSmall}}행운 증가량이 +16.5로 증가",
+			Wisps = "{{ColorYellow}}중앙 x1{{CR}}#켜져있는 동안 {{LuckSmall}}행운 +1.09",
+			Belial = "{{LuckSmall}}행운 증가량이 +" .. Retribution.BELIAL_FALSE_IDOL_LUCK .. "로 증가",
   	},
   	[Retribution.ITEMS.FALSE_PROMISE] 			= {
   		Name = "거짓된 약속",
   		QuoteDesc = "망가진 소통",
   		Description = "↑ {{LuckSmall}}행운 +1.09",
-			Belial = "{{LuckSmall}}행운 증가량이 +1.65로 증가",
+			Belial = "{{LuckSmall}}행운 증가량이 +" .. Retribution.BELIAL_FALSE_IDOL_LUCK / 10 .. "로 증가",
   	},
   	[Retribution.ITEMS.FORBIDDEN_FRUIT] 		= {
   		Name = "선악과",
@@ -367,7 +367,7 @@ if Retribution then
   	[Retribution.ITEMS.MUSTARD_SEED] 			= {
   		Name = "겨자 씨앗",
   		QuoteDesc = "운명을 심는 능력",
-  		Description = "↑ {{Heart}}최대 체력 +1#↑ {{Heart}}빨간하트 +1#↑ {{DamageSmall}}공격력 +0.6#↑ {{TearsSmall}}연사 +0.3#↑ {{SpeedSmall}}이동속도 +0.2#스테이지 진입 시 이전 스테이지와 액티브/패시브 아이템의 개수가 동일한 경우 위의 증가량이 추가로 적용됩니다.",
+  		Description = "↑ {{Heart}}최대 체력 +1#↑ {{Heart}}빨간하트 +1#↑ {{LuckSmall}}행운 +1#{{RETGermination}} nn%의 확률로 적에게 씨앗을 심는 공격이 나갑니다.#{{Collectible" .. Retribution.ITEMS.BAPTISMAL_FONT .. "}} 씨앗은 5초동안 유지되며 그 사이에 적 처치 시 약화 형태의 아군 적을 소환합니다.",
   	},
   	[Retribution.ITEMS.OLD_BELL] 				= {
   		Name = "낡은 종",
@@ -393,7 +393,7 @@ if Retribution then
   		Name = "호박 마스크",
   		QuoteDesc = "영혼을 위한 영혼",
   		Description = "!!! 일회용 !!!#!!! 사용 시:#↑ {{SoulHeart}}소울하트 +12#이후 현재 게임에서 60초마다 캐릭터가 체력 반칸의 피해를 받으며 이동/몸통방향으로 혈사포를 발사합니다.",
-			Wisps = "(특수 효과 없음/일반 불꽃이 소환됨)",
+			Wisps = "{{ColorYellow}}중앙 x1{{CR}}#내구도가 높으며 켜져있는 동안 호박 혈사포가 발동될 때마다 {{HalfSoulHeart}}소울하트 반칸을 드랍합니다.",
 			Belial = "소울하트 대신 {{BlackHeart}}블랙하트를 추가합니다.",
   	},
   	[Retribution.ITEMS.RAPTURE] 				= {
@@ -430,7 +430,7 @@ if Retribution then
   		Name = "부서진 주사위",
   		QuoteDesc = "무의식적인 영향",
   		Description = "!!! 소지 시:#아이템 획득 시 다른 아이템으로 획득됩니다.#액티브 아이템 교체 시 사라집니다.#!!! 일회용 !!!#사용 시 {{Card49}}Shattered Shard 및 {{Coin}}여러 개의 동전을 드랍합니다.",
-			Wisps = "(특수 효과 없음/일반 불꽃이 소환됨)",
+			Wisps = "{{ColorOrange}}외부 x6{{CR}}#꺼지면 동전을 드랍합니다.",
 			Belial = "사용 시 그 방의 아이템을 최소 {{Quality2}}등급의 {{DevilRoom}}악마방 아이템으로 바꿉니다.",
   	},
   	[Retribution.ITEMS.SHYCOIN] 				= {
@@ -509,8 +509,8 @@ if Retribution then
   		Description = "↑ {{EternalHeart}}이터널하트 +1#{{AngelChanceSmall}} 스테이지 진입 시 픽업({{Coin}}/{{Key}}/{{Bomb}}) 하나씩 소모하여 3%의 확률로 특수한 천사방으로 순간이동합니다.#특수한 천사방으로 이동 시, 혹은 각각 10{{Coin}}/1{{Bomb}}/1{{Key}} 이하일 때 픽업 소모를 중단합니다.#{{AngelDevilChanceSmall}} 스테이지의 악마방/천사방 확률에는 영향을 끼치지 않습니다.",
   	},
   	[Retribution.ITEMS.TOOL] 					= {
-  		Name = "",
-  		QuoteDesc = "태어난 순간을 기억하는가?",
+  		Name = "도구",
+  		QuoteDesc = "태어날 때가 기억나니?",
   		Description = "적이 피해를 입을 때 15%의 확률로 같은 종류의 적에게 피해를 줍니다.#{{LuckSmall}} :행운 13+일 때 35%",
   	},
   	[Retribution.ITEMS.TOY_DRUM] 				= {
@@ -577,7 +577,7 @@ if Retribution then
   	[Retribution.ITEMS.HAM] 					= {
   		Name = "햄",
   		QuoteDesc = "기다란 돼지고기",
-  		Description = "↑ {{Heart}}최대 체력 +1#{{Heart}} 체력을 모두 회복합니다.#↑ {{BlackHeart}}블랙하트 +2#↑ {{DamageSmall}}공격력 +0.75#↑ {{RangeSmall}}사거리 +5#이 아이템은 일반적인 방법으로 등장하지 않습니다.",
+  		Description = "↑ {{Heart}}최대 체력 +1#{{Heart}} 체력을 모두 회복합니다.#↑ {{BlackHeart}}블랙하트 +2#↑ {{DamageSmall}}공격력 +0.75#↑ {{RangeSmall}}사거리 +3.5",
   	},
   	[Retribution.ITEMS.MEAT_GRINDER] 			= {
   		Name = "고기 분쇄기",
@@ -618,7 +618,7 @@ if Retribution then
   	[Retribution.ITEMS.BEECONOMY] 				= {
   		Name = "비코노미",
   		QuoteDesc = "흔들리는 경제",
-  		Description = "↑ {{Coin}}동전 +30#다른 아이템을 구매할 때까지 적이 있는 방 입장 시 3마리의 자폭 꿀벌을 소환합니다.#이 아이템은 판매 가격이 15{{Coin}}으로 고정됩니다.",
+  		Description = "↑ {{Coin}}동전 +30#{{Collectible" .. Retribution.ITEMS.MELITODES .. "}} 획득 시 및 다른 아이템을 구매할 때까지 적이 있는 방 입장 시 3마리의 자폭 꿀벌을 소환합니다.#이 아이템은 판매 가격이 15{{Coin}}으로 고정됩니다.",
   	},
   	[Retribution.ITEMS.BELL_CLAPPER] 			= {
   		Name = "추",
@@ -634,6 +634,7 @@ if Retribution then
   		Name = "브런치",
   		QuoteDesc = "체력 증가",
   		Description = "↑ {{Heart}}최대 체력 +1#↑ {{Heart}}빨간하트 +1",
+			BingeEater = "↑ {{Heart}}추가 빨간하트 +1#↑ {{DamageSmall}}공격력 배율 x1.15#↑ {{RangeSmall}}사거리 +4#↓ {{SpeedSmall}}이동속도 -0.03",
   	},
   	[Retribution.ITEMS.CONJUNCTIVITIS] 		= {
   		Name = "결막염",
@@ -648,7 +649,7 @@ if Retribution then
   	[Retribution.ITEMS.DEVILS_TOOTH] 			= {
   		Name = "악마의 이빨",
   		QuoteDesc = "방혈",
-  		Description = "8%의 확률로 적을 강화 형태로 바꾸는 공격이 나갑니다.#강화 형태로 바뀐 적의 체력을 절반으로 감소시킵니다.#{{LuckSmall}} :행운 7+일 때 20%",
+  		Description = "8%의 확률로 적을 강화 형태로 바꾸는 공격이 나갑니다.#{{Blank}} (Icarus 캐릭터 효과와 동일)#강화 형태로 바뀐 적의 체력을 절반으로 감소시킵니다.#{{LuckSmall}} :행운 7+일 때 20%",
   	},
   	[Retribution.ITEMS.DOWSING_ROD] 			= {
   		Name = "다우징 막대",
@@ -662,7 +663,7 @@ if Retribution then
   		QuoteDesc = "능력치는 없지만",
   		Description = "{{Pill}} 사용 시 능력치를 제외한 랜덤 알약을 사용합니다.",
 			Wisps = "(특수 효과 없음/일반 불꽃이 소환됨)",
-			Belial = "",
+			Belial = "그 방에서 {{DamageSmall}}공격력 +0.66",
   	},
   	[Retribution.ITEMS.FRYS_PAW] 				= {
   		Name = "프라이의 발",
@@ -696,7 +697,7 @@ if Retribution then
   	[Retribution.ITEMS.MONSTER_CANDY] 			= {
   		Name = "이상한 사탕",
   		QuoteDesc = "진화의 증거",
-  		Description = "사용 시 공격하는 방향으로 사탕을 던집니다.#사탕에 닿은 적은 아군이 되며 확률적으로 강화 형태로 진화합니다.#놓친 사탕은 사용 시 아군 몬스터의 체력을 전부 회복시킵니다.",
+  		Description = "사용 시 공격하는 방향으로 사탕을 던집니다.#사탕에 닿은 적은 아군이 되며 확률적으로 강화 형태로 진화합니다.#{{Blank}} (Icarus 캐릭터 효과와 동일)#놓친 사탕은 사용 시 아군 몬스터의 체력을 전부 회복시킵니다.",
 			Wisps = "(특수 효과 없음/일반 불꽃이 소환됨)",
 			Belial = "",
   	},
@@ -778,7 +779,7 @@ if Retribution then
   		Name = "뼈톱",
   		QuoteDesc = "면허를 버릴 시간",
   		Description = "사용 시 근처의 거지를 처치합니다.#거지를 처치할 때마다 일회용 뼛조각 배리어 2개를 소환하며 낮은 확률로 특정 아이템을 드랍합니다.",
-			Wisps = "(특수 효과 없음/일반 불꽃이 소환됨)",
+			Wisps = "{{ColorYellow}}중앙 x1{{CR}}#!!!거지 처치 시에만 소환#(특수효과 없음)",
 			Belial = "처치한 거지에서의 뼛조각이 증가하며 50%의 확률로 {{EmptyBoneHeart}}뼈하트를 드랍합니다.",
   	},
   	[Retribution.ITEMS.RED_CHAIN] 				= {
@@ -833,6 +834,79 @@ if Retribution then
   		Name = "치질",
   		QuoteDesc = "뒤로 모아 쏘기",
   		Description = "{{Chargeable}} 공격을 충전한 다음 {{ColorOrange}}캐릭터의 몸통 반대방향으로{{CR}} 여러 개의 눈물을 흩뿌리면서 발사합니다.#!!! 피격 시 빨간 똥을 쌉니다.",
+		},
+		---------------- Burned out update additions ----------------
+
+		[Retribution.ITEMS.COINFLIP] = {
+  		Name = "동전 던지기",
+  		QuoteDesc = "도탄 샷",
+  		Description = "!!! 방 클리어 시 충전되지 않음#{{Coin}} 동전 +3#{{Collectible" .. Retribution.ITEMS.SPOILS_POUCH .. "}} 사용 시 1{{Coin}}+1{{Battery}}을 소모하여 돼지 코인을 던집니다.#소지 중일 때 공격이 돼지 코인에 명중 시 랜덤 적에게 공격력 x1.5의 피해를 줍니다.#돼지 코인을 주우면 사용한 충전량을 회복합니다.",
+			Wisps = "(특수 효과 없음/일반 불꽃이 소환됨)",
+			Belial = "던진 돼지 코인이 폭발성으로 바뀌며 적의 탄환을 반사할 수 있습니다.",
+		},
+
+		[Retribution.ITEMS.BLAZING_BEAK] = {
+  		Name = "불타는 부리",
+  		QuoteDesc = "저주로 불타다",
+  		Description = "!!! {{ColorYellow}}소지 중일 때 {{CR}}#{{RETCursedTrinket}} 적 처치 시 확률적으로 부정적인 효과를 주는 저주받은 장신구를 드랍합니다.#{{Collectible" .. CollectibleType.COLLECTIBLE_SMELTER .. "}} 저주받은 장신구는 획득 시 강제로 흡수됩니다.#!!! {{ColorYellow}}사용 시 {{CR}}#{{Coin}} 체력 반칸을 깎고(화염 피해) 흡수한 모든 저주받은 장신구의 거래가만큼 동전을 드랍합니다.#빨간하트를 우선적으로 깎습니다.",
+			Wisps = "(특수 효과 없음/일반 불꽃이 소환됨)",
+			Belial = "",
+		},
+
+		[Retribution.ITEMS.POLARIS] = {
+  		Name = "폴라리스",
+  		QuoteDesc = "북극성 마크",
+  		Description = "적 15/30/60기 처치 시마다 단계적으로 공격 보너스를 받습니다.(중복 불가)#{{Collectible" .. CollectibleType.COLLECTIBLE_20_20 .. "}} 15~29: 20/20.#{{DamageSmall}} 20~59: 공격력 배율 x1.75.#{{Collectible" .. CollectibleType.COLLECTIBLE_BRIMSTONE .. "}} 60~: 혈사포#패널티 피격 시 공격 보너스가 초기화됩니다.",
+		},
+
+		[Retribution.ITEMS.MELENA] = {
+  		Name = "흑변",
+  		QuoteDesc = "쾅!",
+  		Description = "사용 시 독방귀와 검은 똥을 쌉니다.",
+			Wisps = "(특수 효과 없음/일반 불꽃이 소환됨)",
+			Belial = "",
+		},
+
+		[Retribution.ITEMS.LIFEBLOOD_SYRINGE] = {
+  		Name = "생명혈 주사기",
+  		QuoteDesc = "치명적인 주사",
+  		Description = "{{SoulHeart}} 사용 시 소울하트 +2#방 클리어로 충전되지 않으며 적 처치 시 확률적으로 등장하는 Lifeseed Spirit 처치시에만 충전됩니다.",
+		},
+
+		[Retribution.ITEMS.PACKAGED_HAM] = {
+  		Name = "햄 묶음",
+  		QuoteDesc = "순수 돼지 100%",
+  		Description = "↑ {{Heart}}최대 체력 +1#{{Heart}} 체력을 모두 회복합니다.#↑ {{BlackHeart}}블랙하트 +1#↑ {{DamageSmall}}공격력 +0.5#↑ {{RangeSmall}}사거리 +2",
+		},
+
+		[Retribution.ITEMS.FIFTY_PERCENT_BEECONOMY] = {
+  		Name = "50% 비코노미",
+  		QuoteDesc = "Bugulon 스페셜",
+  		Description = "↑ {{Coin}}동전 +30#{{Collectible" .. Retribution.ITEMS.MELITODES .. "}} 획득 시 및 방 클리어 시 5마리의 빨간 자폭 꿀벌을 소환합니다.#상점에서 다른 아이템 구매 시 소환되는 꿀벌이 하나씩 감소합니다.#빨간 자폭 꿀벌은 자폭 꿀벌의 2배의 피해를 줍니다.#이 아이템은 판매 가격이 15{{Coin}}으로 고정됩니다.",
+		},
+
+		[Retribution.ITEMS.BYGONE_ARM] = {
+  		Name = "비곤 팔",
+  		QuoteDesc = "피드배커",
+  		Description = "사용 시 공격방향 혹은 이동방향으로 캐릭터의 공격력 x2.5의 방어 무시 피해를 주는 팔을 휘두릅니다.#패링 - 휘두른 팔로 적의 탄환을 반사하거나 캐릭터의 눈물을 강화합니다.#!!! 패링한 눈물은 무언가에 부딪히면 폭발합니다.#{{Collectible" .. CollectibleType.COLLECTIBLE_SCHOOLBAG .. "}} 픽업 슬롯의 소모성 및 액티브가 없을 경우 {{ButtonRB}} 버튼으로도 발동 가능",
+			Wisps = "(특수 효과 없음/일반 불꽃이 소환됨)",
+			Belial = "",
+		},
+
+		[Retribution.ITEMS.THE_PIG_BANG] = {
+  		Name = "피그 뱅",
+  		QuoteDesc = "또 시작이군...",
+  		Description = "사용 시 가장 가까운 적을 따라다니고 5초 뒤 공격력 300의 기가 폭발을 일으키는 돼지를 소환합니다.#돼지로 인한 기가 폭발은 사용한 캐릭터에게 피해를 주지 않습니다.",
+			Wisps = "(특수 효과 없음/일반 불꽃이 소환됨)",
+			Belial = "",
+		},
+
+		[Retribution.ITEMS.SPIFFY_TIMEPIECE] = {
+  		Name = "빛나는 계시기",
+  		QuoteDesc = "지금 몇 시지?",
+  		Description = "사용 시 현재 게임 시간을 알려줍니다.",
+			Wisps = "(특수 효과 없음/일반 불꽃이 소환됨)",
+			Belial = "",
 		},
 
   } 
@@ -976,6 +1050,309 @@ if Retribution then
   		Name = "오컴의 면도날",
   		QuoteDesc = "희생의 영광",
   		Description = "{{Collectible" .. CollectibleType.COLLECTIBLE_SANGUINE_BOND .. "}} 희생방 및 Sanguine Bone의 가시에 희생 시 1회분을 추가로 희생합니다.",
+  	},
+
+		---------------- Burned out update additions ----------------
+		[Retribution.TRINKETS.SHOP_PAYROLL] = {
+  		Name = "상점 급여",
+  		QuoteDesc = "노동이야!",
+  		Description = "2.5초동안 어떠한 키도 입력하지 않을 시 캐릭터가 상점 주인으로 바뀝니다.#{{Coin}} 상점 주인으로 변신한 이후 45초마다 동전 +1.#!!! 1/15의 확률로 동전이 아닌 거미가 소환됩니다.",
+  	},
+
+		[Retribution.TRINKETS.NICKEL_AND_DIME] = {
+  		Name = "니켈과 다임",
+  		QuoteDesc = "가치 증가... 세금이랑 같이",
+  		Description = "{{Shop}} 모든 상점 아이템이 랜덤한 아이템과 1초마다 전환되며 두 아이템 중 하나를 선택할 수 있습니다.#!!! 모든 상점 아이템의 가격이 5{{Coin}}만큼 비싸집니다.",
+  	},
+
+		[Retribution.TRINKETS.WHITE_CANDLE] = {
+  		Name = "하얀 불",
+  		QuoteDesc = "유체이탈",
+  		Description = "소지하는 동안 The Lost(영혼) 상태가 됩니다.#{{Blank}} (Downpour/Dross 2 스테이지의 흰색 불에 닿은 효과와 동일)#장신구를 버려도 상태가 유지되며 버린 이후 방 클리어 시 상태가 복원됩니다.",
+  	},
+
+		[Retribution.TRINKETS.CRYSTAL_SHARD] = {
+  		Name = "크리스탈 조각",
+  		QuoteDesc = "부서지는 룬",
+  		Description = "{{Card" .. Card.RUNE_SHARD .. "}} 룬 사용 시 Rune Shard 1~2개를 드랍합니다.#방 안의 오브젝트가 주문석로 바뀔 확률 증가(해금 필요)#주문석은 파괴될 시 랜덤 룬 효과를 발동합니다.",
+  	},
+
+
+	-- Cursed Trinkets
+		[Retribution.TRINKETS.TWELVE_GAUGE_CLAY] = {
+  		Name = "12-게이지 모형",
+  		QuoteDesc = "저주 강화",
+  		Description = "{{RETCursedTrinket}} 다른 저주받은 장신구의 효과 및 판매 가격을 강화시킵니다.",
+  	},
+
+		[Retribution.TRINKETS.BLOODIED_FEATHER] = {
+  		Name = "피묻은 깃털",
+  		QuoteDesc = "태양의 저주",
+  		Description = "↓ 적이 15%의 확률로 강화형으로 등장합니다.#{{Blank}} (Icarus 캐릭터 효과와 동일)",
+  	},
+
+		[Retribution.TRINKETS.CALTROP] = {
+  		Name = "마름쇠",
+  		QuoteDesc = "아야!",
+  		Description = "↓ 획득 시 체력 1칸의 피해를 받습니다.#{{Blank}} (사망하지 않음)",
+  	},
+
+		[Retribution.TRINKETS.FLAGELLANT_WHIP] = {
+  		Name = "채찍 성애자",
+  		QuoteDesc = "육체의 고행",
+  		Description = "{{Collectible448}} 획득 시 출혈이 걸려 20초마다 체력 반칸의 피해를 입습니다.#출혈은 빨간하트가 없거나 전체 체력이 반칸이 될 때까지 유지됩니다.",
+  	},
+
+		[Retribution.TRINKETS.ASHEN_EYE] = {
+  		Name = "잿더미 눈",
+  		QuoteDesc = "마른 눈물",
+  		Description = "↓ 25%의 확률로 눈물이 발사되지 않습니다.",
+  	},
+
+		[Retribution.TRINKETS.SHY_ONION] = {
+  		Name = "부끄러운 양파",
+  		QuoteDesc = "사회적 불안",
+  		Description = "{{Fear}} 방 입장 시 1.5초동안 캐릭터가 공격 및 액티브 사용을 할 수 없습니다.",
+  	},
+
+		[Retribution.TRINKETS.LAME_SUNGLASSES] = {
+  		Name = "불완전한 썬글라스",
+  		QuoteDesc = "흩뿌려지는 부",
+  		Description = "새로운 방 입장 시 최대 3{{Coin}}을 잃습니다.#{{Trinket" .. Retribution.TRINKETS.SPOILED_COIN .."}} 잃은 {{Coin}} 하나 당 방 안의 랜덤 위치에 3초 후 폭발하는 돼지 코인을 소환합니다.",
+  	},
+
+		[Retribution.TRINKETS.LAMENT] = {
+  		Name = "비탄",
+  		QuoteDesc = "강화 탄환",
+  		Description = "↓ 적의 탄환의 속도와 크기가 커집니다.",
+  	},
+
+		[Retribution.TRINKETS.ANTIMONIAL_COMMUNION] = {
+  		Name = "안티몬 성찬",
+  		QuoteDesc = "다시 전달되는 탄환",
+  		Description = "↓ {{ColorOrange}}적의 탄환이 캐릭터에게 유도됩니다.{{CR}}",
+  	},
+
+		[Retribution.TRINKETS.ROTTEN_GUT] = {
+  		Name = "썩은 내장",
+  		QuoteDesc = "앗! 모두 썩어버렸어",
+  		Description = "{{RottenHeart}} 모든 빨간하트(픽업 및 체력)를 썩은하트로 바꿉니다.",
+  	},
+
+		[Retribution.TRINKETS.BLOWN_FUSE] = {
+  		Name = "꺼진 퓨즈",
+  		QuoteDesc = "어둠의 저주",
+  		Description = "{{CurseDarknessSmall}} 획득 시 및 스테이지 진입 시 Darkness 저주에 걸립니다.",
+  	},
+
+		[Retribution.TRINKETS.FADED_MAP] = {
+  		Name = "흐려진 지도",
+  		QuoteDesc = "길 잃은 자의 저주",
+  		Description = "{{CurseLostSmall}} 획득 시 및 스테이지 진입 시 Lost 저주에 걸립니다.",
+  	},
+
+		[Retribution.TRINKETS.IMPISH_MAIZE] = {
+  		Name = "악마의 옥수수",
+  		QuoteDesc = "미로의 저주",
+  		Description = "{{CurseMazeSmall}} 획득 시 및 스테이지 진입 시 Maze 저주에 걸립니다.",
+  	},
+
+		[Retribution.TRINKETS.DEAD_CANARY] = {
+  		Name = "죽은 카나리아",
+  		QuoteDesc = "잊혀진 자의 저주",
+  		Description = "{{CurseUnknownSmall}} 획득 시 및 스테이지 진입 시 Unknown 저주에 걸립니다.",
+  	},
+
+		[Retribution.TRINKETS.HEART_TRANSPLANT] = {
+  		Name = "심장 이식",
+  		QuoteDesc = "체력 감소",
+  		Description = "↓ 획득 시 최대 체력 1칸 또는 소울하트 2칸을 제거합니다.#{{Blank}} (사망하지 않음)#{{EmptyHeart}} 판매 시 빈 최대 체력 +1",
+  	},
+
+		[Retribution.TRINKETS.CHALLENGE_LOCK] = {
+  		Name = "챌린지 락",
+  		QuoteDesc = "한, 번, 만, 더!",
+  		Description = "{{Collectible" .. CollectibleType.COLLECTIBLE_SHARP_KEY .. "}} 획득 시 열쇠를 전부 소모할 때까지 랜덤 방향으로 Sharp Key를 강제로 사용합니다.#!!! 획득 시 {{GoldenKey}}황금열쇠가 제거됩니다.",
+  	},
+
+		[Retribution.TRINKETS.ANARCHIST_RECIPE] = {
+  		Name = "아나키스트의 레시피",
+  		QuoteDesc = "재해를 위한 요리법",
+  		Description = "{{Collectible" .. CollectibleType.COLLECTIBLE_DR_FETUS .. "}} 획득 시 폭탄을 전부 소모할 때까지 랜덤 방향으로 Dr. Fetus폭탄을 강제로 사용합니다.#!!! 획득 시 {{GoldenBomb}}황금폭탄이 제거됩니다.",
+  	},
+
+		[Retribution.TRINKETS.LOVE_LETTER] = {
+  		Name = "러브레터",
+  		QuoteDesc = "사거리 감소",
+  		Description = "↓ {{RangeSmall}}사거리 -2.",
+  	},
+
+		[Retribution.TRINKETS.SALT_LICK] = {
+  		Name = "소금 혀",
+  		QuoteDesc = "탄속 감소",
+  		Description = "↓ {{ShotspeedSmall}}탄속 -0.5.",
+  	},
+
+		[Retribution.TRINKETS.MIRROR_SHARD] = {
+  		Name = "거울 조각",
+  		QuoteDesc = "행운 감소",
+  		Description = "↓ {{LuckSmall}}행운 -7.",
+  	},
+
+		[Retribution.TRINKETS.LEAKING_BATTERY] = {
+  		Name = "흘러내리는 배터리",
+  		QuoteDesc = "쓸모없는 충전",
+  		Description = "↓ 방 클리어 시 확률적으로 액티브 아이템의 게이지가 채워지지 않거나 {{ColorYellow}}충전량이 되레 깎입니다.{{CR}}",
+  	},
+
+		[Retribution.TRINKETS.WILTED_MYOSOTIS] = {
+  		Name = "시든 물망초",
+  		QuoteDesc = "버려진 저주는 아파",
+  		Description = "↓ 저주받은 장신구가 있는 방에서 나갈 때마다 체력 반칸의 피해를 받습니다#{{Blank}} (사망하지 않음)#획득할 수 없는 경우 적용되지 않습니다.",
+  	},
+
+		[Retribution.TRINKETS.DETOXIFIER] = {
+  		Name = "디톡스",
+  		QuoteDesc = "깨끗한 눈물",
+  		Description = "↓ {{ColorRed}}모든 눈물효과가 제거됩니다.{{CR}}",
+  	},
+
+		[Retribution.TRINKETS.GRAB_BAG] = {
+  		Name = "자루머리",
+  		QuoteDesc = "냐롱!",
+  		Description = "↓ 픽업을 훔치러 가는 패밀리어를 소환합니다.",
+  	},
+
+		[Retribution.TRINKETS.DIET_PILL] = {
+  		Name = "다이어트 알약",
+  		QuoteDesc = "하트 억제제",
+  		Description = "↓ 모든 하트류 픽업을 주울 수 없습니다.#↓ {{ColorOrange}}모든 체력 회복 및 소울하트 획득 효과가 발동되지 않습니다.{{CR}}#!!! 체력은 여전히 깎일 수 있습니다.",
+  	},
+
+		[Retribution.TRINKETS.PINK_WAFER] = {
+  		Name = "분홍색 제병",
+  		QuoteDesc = "급소 확장",
+  		Description = "↓ 캐릭터가 받는 모든 피해가 반칸만큼 추가됩니다.",
+  	},
+
+		[Retribution.TRINKETS.PRIMORDIAL_GENESIS] = {
+  		Name = "근본",
+  		QuoteDesc = "두 배의 피해",
+  		Description = "↓ 캐릭터가 받는 모든 피해가 2배로 증가합니다.",
+  	},
+
+		[Retribution.TRINKETS.VISCALIS] = {
+  		Name = "비스칼",
+  		QuoteDesc = "체력이 오르는 질병",
+  		Description = "↓ 적이 15%의 확률로 체력이 33%만큼 증가합니다.",
+  	},
+
+		[Retribution.TRINKETS.ANTIDEPRESSANTS] = {
+  		Name = "항우울제",
+  		QuoteDesc = "연사력 감소",
+  		Description = "↓ {{TearsSmall}}연사 -0.6.",
+  	},
+
+		[Retribution.TRINKETS.ESTROGEN_PATCH] = {
+  		Name = "에스트로젠 천",
+  		QuoteDesc = "공격력 감소",
+  		Description = "↓ {{DamageSmall}}공격력 배율 x0.85.",
+  	},
+
+		[Retribution.TRINKETS.BLINDFOLD] = {
+  		Name = "눈가리개",
+  		QuoteDesc = "눈 먼 자의 저주",
+  		Description = "{{CurseBlindSmall}} 획득 시 및 스테이지 진입 시 Blind 저주에 걸립니다.",
+  	},
+
+		[Retribution.TRINKETS.UNION_CONTRACT] = {
+  		Name = "조합원 계약",
+  		QuoteDesc = "유급휴가",
+  		Description = "↓ {{Shop}}다음 상점 입장 시 장신구 거래상이 등장하지 않습니다.",
+  	},
+
+		[Retribution.TRINKETS.PETTITOE] = {
+  		Name = "돼지 족발",
+  		QuoteDesc = "돼지의 저주",
+  		Description = "↓ 보물방 이외의 방에서 저주받은 장신구가 동전 픽업으로 바뀝니다.#↓ {{TreasureRoom}}보물방에서 저주받은 장신구가 동전 더미로 바뀝니다.",
+  	},
+
+		[Retribution.TRINKETS.LEAD_STANDARD] = {
+  		Name = "납 표준",
+  		QuoteDesc = "경제적 디플레이션",
+  		Description = "↓ 적 처치 시 확률적으로 1{{Coin}}을 잃거나 3초 후에 사라지는 돼지 코인을 소환합니다.",
+  	},
+
+		[Retribution.TRINKETS.BROKEN_COMPASS] = {
+  		Name = "부서진 나침반",
+  		QuoteDesc = "잃어버린 문장",
+  		Description = "↓ 방 입장 시 랜덤 방향의 문으로 나옵니다.#방 문의 모양이 랜덤 모양으로 바뀝니다.#{{Blank}} ({{SecretRoom}}/{{SuperSecretRoom}}비밀방 포함)",
+  	},
+
+		[Retribution.TRINKETS.PEARLS_OF_SWINE] = {
+  		Name = "돼지의 진주",
+  		QuoteDesc = "민감한 혜택",
+  		Description = "↓ 피격 시마다 이 장신구의 판매 가격이 감소합니다.",
+  	},
+
+		[Retribution.TRINKETS.TAFFY_HEART] = {
+  		Name = "태피 하트",
+  		QuoteDesc = "설탕 투성이",
+  		Description = "↓ 소지 중인 상태에서 체력 회복 및 소울하트 회복 시 랜덤 능력치가 소폭 감소합니다.",
+  	},
+
+		[Retribution.TRINKETS.HEART_OF_ICHOR] = {
+  		Name = "아이코의 심장",
+  		QuoteDesc = "차이나만큼 약해",
+  		Description = "{{BrokenHeart}} 피격 시 부서진하트 +1",
+  	},
+
+		[Retribution.TRINKETS.HEARTY_STEW] = {
+  		Name = "심장 스튜",
+  		QuoteDesc = "꽉 찬 느낌",
+  		Description = "↓ {{BrokenHeart}}부서진하트 +6#거래 시 {{BrokenHeart}}부서진하트 6개가 제거됩니다.",
+  	},
+
+		[Retribution.TRINKETS.FOSSILIZED_COAL] = {
+  		Name = "화석화된 석탄",
+  		QuoteDesc = "왜 이게 행운일까?",
+  		Description = "↓ 방 입장 시 캐릭터의 바로 가까이에 모닥불을 하나 소환합니다.",
+  	},
+
+		[Retribution.TRINKETS.DADS_LUCKY_BOWLING_BALL] = {
+  		Name = "아빠의 행운 볼링공",
+  		QuoteDesc = "이동속도 감소",
+  		Description = "↓ {{SpeedSmall}}이동속도 -0.25.",
+  	},
+
+		[Retribution.TRINKETS.RIGGED_GASHAPON] = {
+  		Name = "조작된 가챠퐁",
+  		QuoteDesc = "거대한 시간",
+  		Description = "{{Collectible" .. CollectibleType.COLLECTIBLE_EYE_OF_GREED .. "}} 획득 시 동전을 전부 소모할 때까지 랜덤 방향으로 Eye of Greed 눈물을 강제로 발사합니다.",
+  	},
+
+		[Retribution.TRINKETS.CROW_MASK] = {
+  		Name = "까마귀 마스크",
+  		QuoteDesc = "더욱 저주받다",
+  		Description = "{{RETCursedTrinket}} 저주받은 장신구의 소환 확률이 증가합니다.#{{Coin}} 저주받은 장신구의 판매 가격이 감소합니다.",
+  	},
+
+		[Retribution.TRINKETS.SACRAMENTAL_WINE] = {
+  		Name = "성례의 와인",
+  		QuoteDesc = "명중률 감소",
+  		Description = "↓ 눈물 명중률 감소",
+  	},
+
+		[Retribution.TRINKETS.JOYCON] = {
+  		Name = "",
+  		QuoteDesc = "드리프트의 왕",
+  		Description = "↓ 소지 중일 때 쏠림 현상이 발생하여 특정 방향으로 계속 이동합니다.",
+  	},
+
+		[Retribution.TRINKETS.ANIMAL_CROSSING_JOYCON] = {
+  		Name = "동물의 숲 에디션 왼쪽 Joy-con",
+  		QuoteDesc = "동숲 한정판!",
+  		Description = "{{RETCursedTrinket}} {{ColorPastelBlue}}저주받은 장신구{{CR}}#↓ 소지 중일 때 쏠림 현상이 발생하여 특정 방향으로 계속 이동합니다.#{{Coin}} {{ColorLightOrange}}거래가: 동전 " .. Retribution.CursedTrinketBaseValue		[Retribution.TRINKETS.ANIMAL_CROSSING_JOYCON] .. "개",
   	},
   }
   local rtCardDesc = {
@@ -1155,6 +1532,11 @@ if Retribution then
   		QuoteDesc = "",
   		Description = "방 안의 모든 아이템을 더 높은 등급의 아이템으로 바꿉니다.",
   	},
+  	[Retribution.CARDS.MAXED_CREDIT_CARD] 				= {
+  		Name = "주사위 파편",
+  		QuoteDesc = "",
+  		Description = "사용 시 그 방의 판매 아이템/픽업을 다른 판매 아이템/픽업으로 바꿉니다.#바뀐 아이템/픽업은 {{ColorOrange}}현재 게임에서 해당 카드를 사용한 횟수만큼{{CR}}25%의 추가 가격이 붙습니다.(복리)",
+  	},
 
   -- Runes
   	[Retribution.RUNES.WUNJO] 		= {
@@ -1165,7 +1547,7 @@ if Retribution then
   	[Retribution.RUNES.THURISAZ] 	= {
   		Name = "휴리사즈",
   		QuoteDesc = "",
-  		Description = "확률적으로 적을 Icarus 스타일로 업그레이드 시키며#업그레이드된 적은 체력이 절반으로 감소합니다.",
+  		Description = "확률적으로 적을 강화형으로 바꾸며#{{Blank}} (Icarus 캐릭터 효과와 동일)#강화된 적은 체력이 절반으로 감소합니다.",
   	},
   	[Retribution.RUNES.MANNAZ] 	= {
   		Name = "만나즈",
@@ -1177,7 +1559,22 @@ if Retribution then
   		QuoteDesc = "",
   		Description = "10초동안 0.4초마다 돼지 코인을 뿌립니다.#!!! 3초 후 사라지거나 33%의 확률로 폭발합니다.",
   	},
+  	[Retribution.RUNES.SOUL_OF_MAMMON]		= {
+  		Name = "마몬의 영혼",
+  		QuoteDesc = "",
+  		Description = "돼지 거지를 3마리 소환합니다.",
+  	},
   }
+
+	local PillDesc = {
+		[Retribution.PILLS.FAKE_PUBERTY] = {
+			Description = EID.descriptions["ko_kr"].pills[10][3],
+			Name = EID.descriptions["ko_kr"].pills[10][2],
+			QuoteDesc = "",
+		},
+	}
+	EID:addEntity(6, Retribution.SLOTS.CURSE_TRADER, 0, "저주 거래상", "!!! 일회용#{{RETCursedTrinket}} 현재 소지 중인 저주받은 장신구를 모두 판매하고 판매한 장신구의 거래가 총합만큼의 동전을 드랍합니다.", "ko_kr")
+
 
 	for playerType, birthrightdesc in pairs(rtBirthrightDesc) do
 		EID:addBirthright(playerType, birthrightdesc.Description, birthrightdesc.Name, "ko_kr")
@@ -1196,6 +1593,14 @@ if Retribution then
 		if itemdesc.Belial and itemdesc.Belial ~= "" then
 			EID.descriptions["ko_kr"].bookOfBelialBuffs[itemID] = itemdesc.Belial
 		end
+		if wakaba and wakaba.intversion and wakaba.intversion >= 10300 then
+			wakaba.descriptions["ko_kr"].collectibles[itemID] = {
+				targetMod = "Retribution",
+				itemName = itemdesc.Name,
+				description = itemdesc.Description,
+				queueDesc = itemdesc.QuoteDesc,
+			}
+		end
 	end
 	for itemID, itemdesc in pairs(rtTrinketDesc) do
 		local desc = itemdesc.Description
@@ -1205,9 +1610,20 @@ if Retribution then
 			end
 		end
 		EID:addTrinket(itemID, desc, itemdesc.Name, "ko_kr")
+		if wakaba and wakaba.intversion and wakaba.intversion >= 10300 then
+			wakaba.descriptions["ko_kr"].trinkets[itemID] = {
+				targetMod = "Retribution",
+				itemName = itemdesc.Name,
+				description = itemdesc.Description,
+				queueDesc = itemdesc.QuoteDesc,
+			}
+		end
 	end
 	for itemID, itemdesc in pairs(rtCardDesc) do
 		EID:addCard(itemID, itemdesc.Description, itemdesc.Name, "ko_kr")
+	end
+	for itemID, itemdesc in pairs(PillDesc) do
+		EID:addPill(itemID, itemdesc.Description, itemdesc.Name, "ko_kr")
 	end
 	
 	local i_queueLastFrame
@@ -1263,4 +1679,30 @@ if Retribution then
 		t_queueLastFrame = t_queueNow
 	end)
   
+	local function FF_EIDKR_CursedTrinketsCondition(descObj)
+		if EID:getLanguage() ~= "ko_kr" then return false end
+		return
+			descObj.ObjType == 5
+			and descObj.ObjVariant == PickupVariant.PICKUP_TRINKET
+			and (descObj.ObjSubType >= Retribution.TRINKETS.TWELVE_GAUGE_CLAY and descObj.ObjSubType <= Retribution.TRINKETS.HIGHEST_CURSED_ID)
+	end
+
+	local function FF_EIDKR_CursedTrinketsCallback(descObj)
+		local value = Retribution.CursedTrinketBaseValue[descObj.ObjSubType] or "N/A"
+		local prefix = "{{RETCursedTrinket}} {{ColorPastelBlue}}저주받은 장신구{{CR}}#"
+		local appendix = "#{{Coin}} {{ColorLightOrange}}거래가: 동전 " .. value .. "개"
+		descObj.Description = prefix .. descObj.Description .. appendix
+		return descObj
+	end
+
+	EID:addDescriptionModifier("FF_EIDKR_CursedTrinkets", FF_EIDKR_CursedTrinketsCondition, FF_EIDKR_CursedTrinketsCallback)
+
+	return {
+		birthright = rtBirthrightDesc,
+		collectibles = rtCollectibleDesc,
+		trinkets = rtTrinketDesc,
+		cards = rtCardDesc,
+		pills = PillDesc,
+	}
+
 end

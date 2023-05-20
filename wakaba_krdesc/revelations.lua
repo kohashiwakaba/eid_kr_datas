@@ -439,6 +439,14 @@ for itemID, itemdesc in pairs(revCollectibleDesc) do
   if itemdesc.Belial and itemdesc.Belial ~= "" then
     EID.descriptions["ko_kr"].bookOfBelialBuffs[itemID] = itemdesc.Belial
   end
+	if wakaba and wakaba.intversion and wakaba.intversion >= 10300 then
+		wakaba.descriptions["ko_kr"].collectibles[itemID] = {
+			targetMod = "Revelations",
+			itemName = itemdesc.Name,
+			Description = itemdesc.Description,
+			queueDesc = itemdesc.QuoteDesc,
+		}
+	end
 end
 for itemID, itemdesc in pairs(revTrinketDesc) do
   local desc = itemdesc.Description
@@ -448,6 +456,14 @@ for itemID, itemdesc in pairs(revTrinketDesc) do
     end
   end
   EID:addTrinket(itemID, desc, itemdesc.Name, "ko_kr")
+	if wakaba and wakaba.intversion and wakaba.intversion >= 10300 then
+		wakaba.descriptions["ko_kr"].trinkets[itemID] = {
+			targetMod = "Revelations",
+			itemName = itemdesc.Name,
+			Description = itemdesc.Description,
+			queueDesc = itemdesc.QuoteDesc,
+		}
+	end
 end
 for itemID, itemdesc in pairs(revCardDesc) do
   EID:addCard(itemID, itemdesc.Description, itemdesc.Name, "ko_kr")
@@ -634,6 +650,14 @@ wakaba_krdesc:AddCallback(ModCallbacks.MC_NPC_UPDATE, function(_, npc)
 	end
 
 end, REVEL.ENT.CURSED_SHRINE.id)
+
+	
+return {
+	birthright = revBirthrightDesc,
+	collectibles = revCollectibleDesc,
+	trinkets = revTrinketDesc,
+	cards = revCardDesc,
+}
 
 end
 

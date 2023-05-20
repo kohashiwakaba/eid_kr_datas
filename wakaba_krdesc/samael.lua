@@ -370,6 +370,14 @@ for itemID, itemdesc in pairs(CollectibleDesc) do
   if itemdesc.Belial and itemdesc.Belial ~= "" then
     EID.descriptions["ko_kr"].bookOfBelialBuffs[itemID] = itemdesc.Belial
   end
+	if wakaba and wakaba.intversion and wakaba.intversion >= 10300 then
+		wakaba.descriptions["ko_kr"].collectibles[itemID] = {
+			targetMod = "Samael",
+			itemName = itemdesc.Name,
+			Description = itemdesc.Description,
+			queueDesc = itemdesc.QuoteDesc,
+		}
+	end
 end
 for itemID, itemdesc in pairs(TrinketDesc) do
   local desc = itemdesc.Description
@@ -379,6 +387,14 @@ for itemID, itemdesc in pairs(TrinketDesc) do
     end
   end
   EID:addTrinket(itemID, desc, itemdesc.Name, "ko_kr")
+	if wakaba and wakaba.intversion and wakaba.intversion >= 10300 then
+		wakaba.descriptions["ko_kr"].trinkets[itemID] = {
+			targetMod = "Samael",
+			itemName = itemdesc.Name,
+			Description = itemdesc.Description,
+			queueDesc = itemdesc.QuoteDesc,
+		}
+	end
 end
 for itemID, itemdesc in pairs(CardDesc) do
   EID:addCard(itemID, itemdesc.Description, itemdesc.Name, "ko_kr")
@@ -502,6 +518,15 @@ wakaba_krdesc:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, function (_, playe
 	end
 	t_queueLastFrame = t_queueNow
 end)
+
+	
+return {
+	birthright = BirthrightDesc,
+	collectibles = CollectibleDesc,
+	trinkets = TrinketDesc,
+	cards = CardDesc,
+	pills = PillDesc,
+}
 
 end
 

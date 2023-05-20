@@ -107,4 +107,13 @@ if GODMODE then
 
 	EID:addDescriptionModifier("FF_EIDKR_GodmodeVanillaDescs", FF_EIDKR_VanillaDescCondition, FF_EIDKR_VanillaDescCallback)
 
+	
+	return {
+		birthright = BirthrightDesc,
+		collectibles = CollectibleDesc,
+		trinkets = TrinketDesc,
+		cards = CardDesc,
+		pills = PillDesc,
+	}
+	
 end

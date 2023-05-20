@@ -347,6 +347,14 @@ if Deliverance then
 		if itemdesc.Belial and itemdesc.Belial ~= "" then
 			EID.descriptions["ko_kr"].bookOfBelialBuffs[itemID] = itemdesc.Belial
 		end
+		if wakaba and wakaba.intversion and wakaba.intversion >= 10300 then
+			wakaba.descriptions["ko_kr"].collectibles[itemID] = {
+				targetMod = "Deliverance",
+				itemName = itemdesc.Name,
+				description = itemdesc.Description,
+				queueDesc = itemdesc.QuoteDesc,
+			}
+		end
 	end
 	for itemID, itemdesc in pairs(TrinketDesc) do
 		local desc = itemdesc.Description
@@ -356,6 +364,14 @@ if Deliverance then
 			end
 		end
 		EID:addTrinket(itemID, desc, itemdesc.Name, "ko_kr")
+		if wakaba and wakaba.intversion and wakaba.intversion >= 10300 then
+			wakaba.descriptions["ko_kr"].trinkets[itemID] = {
+				targetMod = "Deliverance",
+				itemName = itemdesc.Name,
+				description = itemdesc.Description,
+				queueDesc = itemdesc.QuoteDesc,
+			}
+		end
 	end
 	for itemID, itemdesc in pairs(CardDesc) do
 		EID:addCard(itemID, itemdesc.Description, itemdesc.Name, "ko_kr")
@@ -421,5 +437,13 @@ if Deliverance then
 		end
 		t_queueLastFrame = t_queueNow
 	end)
+	
+	return {
+		birthright = BirthrightDesc,
+		collectibles = CollectibleDesc,
+		trinkets = TrinketDesc,
+		cards = CardDesc,
+		pills = PillDesc,
+	}
 
 end
