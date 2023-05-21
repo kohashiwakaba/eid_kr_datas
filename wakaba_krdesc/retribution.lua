@@ -367,7 +367,7 @@ if Retribution then
   	[Retribution.ITEMS.MUSTARD_SEED] 			= {
   		Name = "겨자 씨앗",
   		QuoteDesc = "운명을 심는 능력",
-  		Description = "↑ {{Heart}}최대 체력 +1#↑ {{Heart}}빨간하트 +1#↑ {{LuckSmall}}행운 +1#{{RETGermination}} nn%의 확률로 적에게 씨앗을 심는 공격이 나갑니다.#{{Collectible" .. Retribution.ITEMS.BAPTISMAL_FONT .. "}} 씨앗은 5초동안 유지되며 그 사이에 적 처치 시 약화 형태의 아군 적을 소환합니다.",
+  		Description = "↑ {{Heart}}최대 체력 +1#↑ {{Heart}}빨간하트 +1#↑ {{LuckSmall}}행운 +1#{{RETGermination}} 10%의 확률로 적에게 씨앗을 심는 공격이 나갑니다.#{{LuckSmall}} :행운 25+일 때 25%#{{Collectible" .. Retribution.ITEMS.BAPTISMAL_FONT .. "}} 씨앗은 5초동안 유지되며 그 사이에 적 처치 시 약화 형태의 아군 적을 소환합니다.",
   	},
   	[Retribution.ITEMS.OLD_BELL] 				= {
   		Name = "낡은 종",
@@ -856,7 +856,7 @@ if Retribution then
 		[Retribution.ITEMS.POLARIS] = {
   		Name = "폴라리스",
   		QuoteDesc = "북극성 마크",
-  		Description = "적 15/30/60기 처치 시마다 단계적으로 공격 보너스를 받습니다.(중복 불가)#{{Collectible" .. CollectibleType.COLLECTIBLE_20_20 .. "}} 15~29: 20/20.#{{DamageSmall}} 20~59: 공격력 배율 x1.75.#{{Collectible" .. CollectibleType.COLLECTIBLE_BRIMSTONE .. "}} 60~: 혈사포#패널티 피격 시 공격 보너스가 초기화됩니다.",
+  		Description = "적 15/30/60기 처치 시마다 단계적으로 공격 보너스를 받습니다.(중복 불가)#{{Collectible" .. CollectibleType.COLLECTIBLE_20_20 .. "}} 15~29: 20/20#{{DamageSmall}} 23~59: 공격력 배율 x1.75#{{Collectible" .. CollectibleType.COLLECTIBLE_BRIMSTONE .. "}} 60~: 혈사포#패널티 피격 시 공격 보너스가 초기화됩니다.",
 		},
 
 		[Retribution.ITEMS.MELENA] = {
@@ -896,7 +896,7 @@ if Retribution then
 		[Retribution.ITEMS.THE_PIG_BANG] = {
   		Name = "피그 뱅",
   		QuoteDesc = "또 시작이군...",
-  		Description = "사용 시 가장 가까운 적을 따라다니고 5초 뒤 공격력 300의 기가 폭발을 일으키는 돼지를 소환합니다.#돼지로 인한 기가 폭발은 사용한 캐릭터에게 피해를 주지 않습니다.",
+  		Description = "사용 시 가장 가까운 적을 따라다니고 5초 뒤 공격력 300의 기가 폭발을 일으키는 돼지를 소환합니다.",
 			Wisps = "(특수 효과 없음/일반 불꽃이 소환됨)",
 			Belial = "",
 		},
