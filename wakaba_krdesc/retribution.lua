@@ -14,6 +14,11 @@ if Retribution then
 			Description = "수상한 돌 모양 패밀리어를 소환합니다.#돌 모양 패밀리어 폭파 시 깨어나며 캐릭터의 공격력 x0.5의 공격을 자동으로 발사하며 돼지 동전을 대신 모아줍니다.",
 			QuoteDesc = "석수",
 		},
+		[Retribution.PLAYER_TYPE.MAMMON_B] = {
+			Name = "Tainted Mammon",
+			Description = "{{Shop}} 상점 입장 시 전용 특수 배열의 판매 아이템이 추가로 진열됩니다.#{{Collectible" .. Retribution.ITEMS.SPIFFY_TIMEPIECE .. "}} 사용 시 현재 게임 시간을 알려줍니다.",
+			QuoteDesc = "확실한 소비",
+		},
   }
   local rtCollectibleDesc = {
   	[Retribution.ITEMS.ARROW_OF_LIGHT] 		= {
@@ -181,42 +186,42 @@ if Retribution then
   	[Retribution.ITEMS.DEATH_CAP] 				= {
   		Name = "죽음의 버섯",
   		QuoteDesc = "독을 통해서 생존",
-  		Description = "!!! 사용 시 체력 반칸을 깎고;#↓ {{DamageSmall}}공격력 -0.35#↓ {{SpeedSmall}}이동속도 -0.06#↓ {{ShotspeedSmall}}탄속 -0.06#독성 눈물이 나올 확률 +5%p",
+  		Description = "!!! (0/6)사용 시 체력 반칸을 깎고;#↓ {{DamageSmall}}공격력 -0.35#↓ {{SpeedSmall}}이동속도 -0.06#↓ {{ShotspeedSmall}}탄속 -0.06#독성 눈물이 나올 확률 +5%p",
 			Wisps = "(특수 효과 없음/일반 불꽃이 소환됨)",
 			Belial = "",
   	},
   	[Retribution.ITEMS.DEATH_CAP_2] 			= {
   		Name = "죽음의 버섯",
   		QuoteDesc = "독을 통해서 생존",
-  		Description = "!!! 사용 시 체력 반칸을 깎고;#↓ {{DamageSmall}}공격력 -0.35#↓ {{SpeedSmall}}이동속도 -0.06#↓ {{ShotspeedSmall}}탄속 -0.06#독성 눈물이 나올 확률 +5%p",
+  		Description = "!!! (1/6)사용 시 체력 반칸을 깎고;#↓ {{DamageSmall}}공격력 -0.35#↓ {{SpeedSmall}}이동속도 -0.06#↓ {{ShotspeedSmall}}탄속 -0.06#독성 눈물이 나올 확률 +5%p",
 			Wisps = "(특수 효과 없음/일반 불꽃이 소환됨)",
 			Belial = "",
   	},
   	[Retribution.ITEMS.DEATH_CAP_3] 			= {
   		Name = "죽음의 버섯",
   		QuoteDesc = "독을 통해서 생존",
-  		Description = "!!! 사용 시 체력 반칸을 깎고;#↓ {{DamageSmall}}공격력 -0.35#↓ {{SpeedSmall}}이동속도 -0.06#↓ {{ShotspeedSmall}}탄속 -0.06#독성 눈물이 나올 확률 +5%p",
+  		Description = "!!! (2/6)사용 시 체력 반칸을 깎고;#↓ {{DamageSmall}}공격력 -0.35#↓ {{SpeedSmall}}이동속도 -0.06#↓ {{ShotspeedSmall}}탄속 -0.06#독성 눈물이 나올 확률 +5%p",
 			Wisps = "(특수 효과 없음/일반 불꽃이 소환됨)",
 			Belial = "",
   	},
   	[Retribution.ITEMS.DEATH_CAP_4] 			= {
   		Name = "죽음의 버섯",
   		QuoteDesc = "독을 통해서 생존",
-  		Description = "!!! 사용 시 체력 반칸을 깎고;#↓ {{DamageSmall}}공격력 -0.35#↓ {{SpeedSmall}}이동속도 -0.06#↓ {{ShotspeedSmall}}탄속 -0.06#독성 눈물이 나올 확률 +5%p",
+  		Description = "!!! (3/6)사용 시 체력 반칸을 깎고;#↓ {{DamageSmall}}공격력 -0.35#↓ {{SpeedSmall}}이동속도 -0.06#↓ {{ShotspeedSmall}}탄속 -0.06#독성 눈물이 나올 확률 +5%p",
 			Wisps = "(특수 효과 없음/일반 불꽃이 소환됨)",
 			Belial = "",
   	},
   	[Retribution.ITEMS.DEATH_CAP_5] 			= {
   		Name = "죽음의 버섯",
   		QuoteDesc = "독을 통해서 생존",
-  		Description = "!!! 사용 시 체력 반칸을 깎고;#↓ {{DamageSmall}}공격력 -0.35#↓ {{SpeedSmall}}이동속도 -0.06#↓ {{ShotspeedSmall}}탄속 -0.06#독성 눈물이 나올 확률 +5%p",
+  		Description = "!!! (4/6)사용 시 체력 반칸을 깎고;#↓ {{DamageSmall}}공격력 -0.35#↓ {{SpeedSmall}}이동속도 -0.06#↓ {{ShotspeedSmall}}탄속 -0.06#독성 눈물이 나올 확률 +5%p",
 			Wisps = "(특수 효과 없음/일반 불꽃이 소환됨)",
 			Belial = "",
   	},
   	[Retribution.ITEMS.DEATH_CAP_6] 			= {
   		Name = "죽음의 버섯",
   		QuoteDesc = "독을 통해서 생존",
-  		Description = "!!! 사용 시:#{{Heart}}체력을 모두 회복합니다.#↑ {{DamageSmall}}공격력 +2.75#↑ {{DamageSmall}}공격력 배율 x1.5#↑ {{SpeedSmall}}이동속도 +0.5#↑ {{ShotspeedSmall}}탄속 +0.5#!!! 아이템이 사라집니다.",
+  		Description = "!!! (5/6)사용 시:#{{Heart}}체력을 모두 회복합니다.#↑ {{DamageSmall}}공격력 +2.75#↑ {{DamageSmall}}공격력 배율 x1.5#↑ {{SpeedSmall}}이동속도 +0.5#↑ {{ShotspeedSmall}}탄속 +0.5#!!! 아이템이 사라집니다.",
 			Wisps = "(특수 효과 없음/일반 불꽃이 소환됨)",
 			Belial = "",
   	},
@@ -238,7 +243,7 @@ if Retribution then
   	[Retribution.ITEMS.ETERNAL_BOMBS] 			= {
   		Name = "이터널 폭탄",
   		QuoteDesc = "짐승은 유황 속에서 밤낮 괴로움을 받으리라",
-  		Description = "↑ {{Bomb}}폭탄 +5#폭탄이 보스에게 2배의 피해를 줍니다.",
+  		Description = "↑ {{Bomb}}폭탄 +5#폭탄이 보스에게 1.5배의 피해를 줍니다.",
   	},
   	[Retribution.ITEMS.EVES_NAIL_POLISH] 		= {
   		Name = "이브의 매니큐어",
@@ -856,7 +861,7 @@ if Retribution then
 		[Retribution.ITEMS.POLARIS] = {
   		Name = "폴라리스",
   		QuoteDesc = "북극성 마크",
-  		Description = "적 15/30/60기 처치 시마다 단계적으로 공격 보너스를 받습니다.(중복 불가)#{{Collectible" .. CollectibleType.COLLECTIBLE_20_20 .. "}} 15~29: 20/20#{{DamageSmall}} 23~59: 공격력 배율 x1.75#{{Collectible" .. CollectibleType.COLLECTIBLE_BRIMSTONE .. "}} 60~: 혈사포#패널티 피격 시 공격 보너스가 초기화됩니다.",
+  		Description = "적 15/30/60기 처치 시마다 단계적으로 공격 보너스를 받습니다.(중복 불가)#{{Collectible" .. CollectibleType.COLLECTIBLE_20_20 .. "}} 15~29: 20/20#{{DamageSmall}} 30~59: 공격력 배율 x1.75#{{Collectible" .. CollectibleType.COLLECTIBLE_BRIMSTONE .. "}} 60~: 혈사포#패널티 피격 시 공격 보너스가 초기화됩니다.",
 		},
 
 		[Retribution.ITEMS.MELENA] = {
@@ -964,7 +969,7 @@ if Retribution then
   	[Retribution.TRINKETS.PYRITE] 			= {
   		Name = "황철석",
   		QuoteDesc = "금광",
-  		Description = "픽업 아이템이 3%의 확률로 황금 형태로 바뀝니다.#{{LuckSmall}} :행운 7+일 때 5%",
+  		Description = "픽업이 3%의 확률로 황금 형태로 바뀝니다.#{{LuckSmall}} :행운 7+일 때 5%",
   	},
   	[Retribution.TRINKETS.RAINBOW_PENNY] 	= {
   		Name = "무지개 페니",
@@ -1573,7 +1578,17 @@ if Retribution then
 			QuoteDesc = "",
 		},
 	}
+
+
+
 	EID:addEntity(6, Retribution.SLOTS.CURSE_TRADER, 0, "저주 거래상", "!!! 일회용#{{RETCursedTrinket}} 현재 소지 중인 저주받은 장신구를 모두 판매하고 판매한 장신구의 거래가 총합만큼의 동전을 드랍합니다.", "ko_kr")
+	--EID:addEntity(6, Retribution.SLOTS.BOUGIE_PEDESTAL, 0, "", "", "ko_kr")
+	EID:addEntity(6, Retribution.SLOTS.SWINE_BEGGAR, 0, "돼지 거지", "!!! 사용 시 5{{Coin}}을 소모하여 아래 중 하나를 드랍합니다:#돼지 or 보물방 아이템 (10%)#장신구(20%)#능력치 캡슐 (30%)#자폭 파리/거미 (40%)", "ko_kr")
+	EID:addEntity(6, Retribution.SLOTS.DEMON_SWINE, 0, "악마 돼지", "악마 거래 아이템을 보려면 현재 소지금 절반을 바쳐야 됩니다.", "ko_kr")
+	EID:addEntity(6, Retribution.SLOTS.ANGEL_SWINE, 0, "천사 돼지", "천사방 아이템을 보려면 현재 소지금 절반을 바쳐야 됩니다.", "ko_kr")
+	EID:addEntity(6, Retribution.SLOTS.SPEAR_PILLAR, 0, "부서진 기둥", "{{Key}}열쇠 하나를 소모하여 랜덤한 위치의 빨간 방으로 이동하는 포탈을 생성합니다.({{ErrorRoom}}오류방 포함)#!!! 포탈은 밖으로 나가면 사라집니다.", "ko_kr")
+	EID:addEntity(6, Retribution.SLOTS.BUTAPON, 0, "한정판 부타퐁", "무료 3연차 도전!#사용 시 랜덤 캡슐을 하나 소환합니다.", "ko_kr")
+	EID:addEntity(6, Retribution.SLOTS.GASHAPON, 0, "가챠퐁", "!!! 사용 시 5{{Coin}}을 소모하여 아래 중 하나를 드랍합니다:#능력치 캡슐 (35%)#미니 능력치 캡슐 (25%)#알약 (20%)#장신구(15%)", "ko_kr")
 
 
 	for playerType, birthrightdesc in pairs(rtBirthrightDesc) do
@@ -1678,6 +1693,10 @@ if Retribution then
 		end
 		t_queueLastFrame = t_queueNow
 	end)
+
+	local function getPowerFromDescriptor(descriptor)
+		return Retribution.GetCursedTrinketPickupPower(Retribution.GetPlayerOfType(Retribution.PLAYER_TYPE.MAMMON_B), descriptor.ObjSubType, descriptor.Entity)
+	end
   
 	local function FF_EIDKR_CursedTrinketsCondition(descObj)
 		if EID:getLanguage() ~= "ko_kr" then return false end
@@ -1688,14 +1707,90 @@ if Retribution then
 	end
 
 	local function FF_EIDKR_CursedTrinketsCallback(descObj)
+		local hasPower = getPowerFromDescriptor(descObj) > 1
+		if hasPower then
+			descObj.Description =  string.gsub(descObj.Description, "(#{{Trinket"..Retribution.TRINKETS.TWELVE_GAUGE_CLAY..").+", "")
+		end
 		local value = Retribution.CursedTrinketBaseValue[descObj.ObjSubType] or "N/A"
 		local prefix = "{{RETCursedTrinket}} {{ColorPastelBlue}}저주받은 장신구{{CR}}#"
 		local appendix = "#{{Coin}} {{ColorLightOrange}}거래가: 동전 " .. value .. "개"
 		descObj.Description = prefix .. descObj.Description .. appendix
+		if hasPower then
+			descObj.Description = descObj.Description .. "#{{Trinket" .. Retribution.TRINKETS.TWELVE_GAUGE_CLAY .. "}} {{ColorYellow}}중첩 배율: " .. getPowerFromDescriptor(descObj) .. "x"
+		end
 		return descObj
 	end
 
-	EID:addDescriptionModifier("FF_EIDKR_CursedTrinkets", FF_EIDKR_CursedTrinketsCondition, FF_EIDKR_CursedTrinketsCallback)
+	EID:addDescriptionModifier("FF_EIDKR_RTCursedTrinkets", FF_EIDKR_CursedTrinketsCondition, FF_EIDKR_CursedTrinketsCallback)
+
+	local synergies = {
+		[Retribution.ITEMS.BAPTISMAL_SHELL]	= "Aquaris의 장판에도 효과 적용",
+		[Retribution.ITEMS.CHOLERA]			= "Aquaris의 장판에도 효과 적용",
+		[Retribution.ITEMS.MUSTARD_SEED]	= "Aquaris의 장판에도 씨뿌리기 효과 적용",
+		[Retribution.ITEMS.REFLUX]			= "눈물을 떼면 일부 장판이 폭발합니다.(캐릭터는 폭발 피해를 받지 않음)",
+		[Retribution.ITEMS.SILVER_FLESH]	= "Aquaris의 장판에도 효과 적용",
+		[Retribution.ITEMS.SLICK_SPADE]		= "Aquaris의 장판에도 색상에 따라 효과 적용",
+		[Retribution.ITEMS.SOY_BEAN]		= "Aquaris의 장판에도 효과 적용",
+		[Retribution.ITEMS.BOOSTER_SHOT]	= "서로 다른 적이 장판을 밟을 때마다 장판의 피해량 증가",
+		[Retribution.ITEMS.DEVILS_TOOTH]	= "Aquaris의 장판에도 효과 적용",
+		[Retribution.ITEMS.MELATONIN]		= "Aquaris의 장판에도 효과 적용",
+		[Retribution.ITEMS.MELITODES]		= "Aquaris의 장판에도 효과 적용",
+	}
+	
+	local trinketSynergies = {
+		[Retribution.TRINKETS.THORN_RING]	= "Aquaris의 장판에도 효과 적용",
+	}
+	
+	local function aquariusCallback(descriptor)
+		local synergy = (descriptor.ObjVariant == 350 and trinketSynergies or synergies)[descriptor.ObjSubType]
+	
+		if synergy ~= nil then
+			local icon = "#{{Collectible" .. CollectibleType.COLLECTIBLE_AQUARIUS .. "}} "
+			EID:appendToDescription(descriptor, icon .. synergy:gsub("#", icon))
+		end
+	
+		return descriptor
+	end
+
+	local function FF_EIDKR_RTAquarisCondition(descObj)
+		if EID:getLanguage() ~= "ko_kr" then return false end
+		return descObj.ObjType == 5 and (descObj.ObjVariant == 100 or descObj.ObjVariant == 350) and EID.collectiblesOwned[CollectibleType.COLLECTIBLE_AQUARIUS]
+	end
+
+	local function FF_EIDKR_RTAquarisCallback(descObj)
+		local synergy = (descObj.ObjVariant == 350 and trinketSynergies or synergies)[descObj.ObjSubType]
+
+		if synergy ~= nil then
+			descObj.Description =  string.gsub(descObj.Description, "(#{{Trinket"..CollectibleType.COLLECTIBLE_AQUARIUS..").+", "")
+			local icon = "#{{Collectible" .. CollectibleType.COLLECTIBLE_AQUARIUS .. "}} "
+			EID:appendToDescription(descObj, icon .. synergy:gsub("#", icon))
+		end
+
+		return descObj
+	end
+
+	EID:addDescriptionModifier("FF_EIDKR_RTAquaris", FF_EIDKR_RTAquarisCondition, FF_EIDKR_RTAquarisCallback)
+
+	local function FF_EIDKR_RTBougiePedestalCondition(descObj)
+		if EID:getLanguage() ~= "ko_kr" then return false end
+		return descObj.ObjType == 6 and descObj.ObjVariant == Retribution.SLOTS.BOUGIE_PEDESTAL and descObj.ObjSubType > 0
+	end
+
+	local function FF_EIDKR_RTBougiePedestalCallback(descObj)
+		return EID:getDescriptionObj(5, 100, descObj.ObjSubType)
+	end
+	--EID:addDescriptionModifier("FF_EIDKR_RTBougiePedestal", FF_EIDKR_RTBougiePedestalCondition, FF_EIDKR_RTBougiePedestalCallback)
+
+	wakaba_krdesc:AddPriorityCallback(Retribution.Callback.SLOT_UPDATE, CallbackPriority.LATE, function(_, slot)
+		local data = slot:GetData()
+		data["EID_Lang"] = data["EID_Lang"] or EID:getLanguage()
+		data["EIDKR_ID"] = data["EIDKR_ID"] or slot.SubType
+		if slot.SubType == 0 then
+			data["EID_Description"] = nil
+		elseif data["EID_Lang"] ~= EID:getLanguage() or data["EIDKR_ID"] ~= slot.SubType or data["EID_Description"] == nil then
+			data["EID_Description"] = EID:getDescriptionObj(5, 100, slot.SubType)
+		end
+	end, Retribution.SLOTS.BOUGIE_PEDESTAL)
 
 	return {
 		birthright = rtBirthrightDesc,
