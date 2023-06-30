@@ -238,7 +238,7 @@ if Retribution then
   	[Retribution.ITEMS.EMPIRIC] 				= {
   		Name = "돌팔이",
   		QuoteDesc = "사기 알약",
-  		Description = "!!! 모든 알약의 효과를 알 수 없습니다.#{{Pill}} 모든 알약이 거대 형태로 바뀝니다.#{{Pill}} 기존의 거대 알약이 고래 형태로 바뀝니다.",
+  		Description = "!!! 모든 알약의 효과를 알 수 없습니다.#{{Pill}} 모든 알약이 거대 형태로 바뀝니다.#{{Pill}} 기존의 거대 알약이 고래 형태로 바뀝니다.#모든 캡슐이 강화됩니다.",
   	},
   	[Retribution.ITEMS.ETERNAL_BOMBS] 			= {
   		Name = "이터널 폭탄",
@@ -392,7 +392,7 @@ if Retribution then
   	[Retribution.ITEMS.PHOTON] 				= {
   		Name = "광자",
   		QuoteDesc = "탄속 대폭 증가",
-  		Description = "{{ShotspeedSmall}} 탄속이 4로 고정됩니다.#↑ {{DamageSmall}}공격력 +1#↑ {{DamageSmall}}공격력 배율 x1.5",
+  		Description = "{{ShotspeedSmall}} 눈물의 탄속 = 무한대(스탯 미반영)#↑ {{DamageSmall}}공격력 +1#↑ {{TearsSmall}}연사 +0.35",
   	},
   	[Retribution.ITEMS.PUMPKIN_MASK] 			= {
   		Name = "호박 마스크",
@@ -1044,7 +1044,7 @@ if Retribution then
   	[Retribution.TRINKETS.BRANDED_BOWTIE] 	= {
   		Name = "정품 넥타이 리본",
   		QuoteDesc = "부타 사 공식 제품",
-  		Description = "방 클리어 보상이 1/64의 확률로 능력치 캡슐로 바뀝니다.#가챠퐁의 등장확률이 증가합니다.",
+  		Description = "방 클리어 보상이 1/24의 확률로 능력치 캡슐로 바뀝니다.#가챠퐁의 등장확률이 증가합니다.",
   	},
   	[Retribution.TRINKETS.YEN_PENNY] 		= {
   		Name = "엔 페니",
@@ -1054,14 +1054,14 @@ if Retribution then
   	[Retribution.TRINKETS.OCCAMS_RAZOR] 		= {
   		Name = "오컴의 면도날",
   		QuoteDesc = "희생의 영광",
-  		Description = "{{Collectible" .. CollectibleType.COLLECTIBLE_SANGUINE_BOND .. "}} 희생방 및 Sanguine Bone의 가시에 희생 시 1회분을 추가로 희생합니다.",
+  		Description = "{{Collectible" .. CollectibleType.COLLECTIBLE_SANGUINE_BOND .. "}} 희생방 및 Sanguine Bone의 가시에 희생 시 1회분을 추가로 희생 및 발동합니다.",
   	},
 
 		---------------- Burned out update additions ----------------
 		[Retribution.TRINKETS.SHOP_PAYROLL] = {
   		Name = "상점 급여",
   		QuoteDesc = "노동이야!",
-  		Description = "2.5초동안 어떠한 키도 입력하지 않을 시 캐릭터가 상점 주인으로 바뀝니다.#{{Coin}} 상점 주인으로 변신한 이후 45초마다 동전 +1.#!!! 1/15의 확률로 동전이 아닌 거미가 소환됩니다.",
+  		Description = "{{Shop}} 상점에서 2.5초동안 어떠한 키도 입력하지 않을 시 캐릭터가 상점 주인으로 바뀝니다.#{{Coin}} 상점 주인으로 변신한 이후 45초마다 동전 +1#!!! 1/15의 확률로 동전이 아닌 거미가 소환됩니다.",
   	},
 
 		[Retribution.TRINKETS.NICKEL_AND_DIME] = {
@@ -1189,19 +1189,19 @@ if Retribution then
 		[Retribution.TRINKETS.LOVE_LETTER] = {
   		Name = "러브레터",
   		QuoteDesc = "사거리 감소",
-  		Description = "↓ {{RangeSmall}}사거리 -2.",
+  		Description = "↓ {{RangeSmall}}사거리 -2",
   	},
 
 		[Retribution.TRINKETS.SALT_LICK] = {
   		Name = "소금 혀",
   		QuoteDesc = "탄속 감소",
-  		Description = "↓ {{ShotspeedSmall}}탄속 -0.5.",
+  		Description = "↓ {{ShotspeedSmall}}탄속 -0.5",
   	},
 
 		[Retribution.TRINKETS.MIRROR_SHARD] = {
   		Name = "거울 조각",
   		QuoteDesc = "행운 감소",
-  		Description = "↓ {{LuckSmall}}행운 -7.",
+  		Description = "↓ {{LuckSmall}}행운 -7",
   	},
 
 		[Retribution.TRINKETS.LEAKING_BATTERY] = {
@@ -1255,13 +1255,13 @@ if Retribution then
 		[Retribution.TRINKETS.ANTIDEPRESSANTS] = {
   		Name = "항우울제",
   		QuoteDesc = "연사력 감소",
-  		Description = "↓ {{TearsSmall}}연사 -0.6.",
+  		Description = "↓ {{TearsSmall}}연사 -0.6",
   	},
 
 		[Retribution.TRINKETS.ESTROGEN_PATCH] = {
   		Name = "에스트로젠 천",
   		QuoteDesc = "공격력 감소",
-  		Description = "↓ {{DamageSmall}}공격력 배율 x0.85.",
+  		Description = "↓ {{DamageSmall}}공격력 배율 x0.85",
   	},
 
 		[Retribution.TRINKETS.BLINDFOLD] = {
@@ -1327,7 +1327,7 @@ if Retribution then
 		[Retribution.TRINKETS.DADS_LUCKY_BOWLING_BALL] = {
   		Name = "아빠의 행운 볼링공",
   		QuoteDesc = "이동속도 감소",
-  		Description = "↓ {{SpeedSmall}}이동속도 -0.25.",
+  		Description = "↓ {{SpeedSmall}}이동속도 -0.25",
   	},
 
 		[Retribution.TRINKETS.RIGGED_GASHAPON] = {
@@ -1538,7 +1538,7 @@ if Retribution then
   		Description = "방 안의 모든 아이템을 더 높은 등급의 아이템으로 바꿉니다.",
   	},
   	[Retribution.CARDS.MAXED_CREDIT_CARD] 				= {
-  		Name = "주사위 파편",
+  		Name = "신용카드(한도 초과)",
   		QuoteDesc = "",
   		Description = "사용 시 그 방의 판매 아이템/픽업을 다른 판매 아이템/픽업으로 바꿉니다.#바뀐 아이템/픽업은 {{ColorOrange}}현재 게임에서 해당 카드를 사용한 횟수만큼{{CR}}25%의 추가 가격이 붙습니다.(복리)",
   	},
@@ -1578,9 +1578,9 @@ if Retribution then
 			QuoteDesc = "",
 		},
 	}
-
-
-
+	EID:addEntity(5, Retribution.PICKUPS.WAX_FEATHER, 0, "밀랍 날개", "비활성화된 날개를 복원합니다.", "ko_kr")
+	EID:addEntity(5, Retribution.PICKUPS.WAX_FEATHER, 1, "피치 날개", "비활성화된 날개를 복원합니다.#피격 시에도 날개를 보호해 줍니다.(1회 한정)", "ko_kr")
+	EID:addEntity(6, Retribution.SLOTS.DAEDALUS, 0, "다이달로스의 양초", "접촉 시 체력 반칸을 깎고 일정 확률로 날개 픽업을 드랍합니다.#날개 픽업 획득 시 날개를 복원하거나 피격 시에도 날개를 보존할 수 있는 기회를 제공합니다.(최대 1회)", "ko_kr")
 	EID:addEntity(6, Retribution.SLOTS.CURSE_TRADER, 0, "저주 거래상", "!!! 일회용#{{RETCursedTrinket}} 현재 소지 중인 저주받은 장신구를 모두 판매하고 판매한 장신구의 거래가 총합만큼의 동전을 드랍합니다.", "ko_kr")
 	--EID:addEntity(6, Retribution.SLOTS.BOUGIE_PEDESTAL, 0, "", "", "ko_kr")
 	EID:addEntity(6, Retribution.SLOTS.SWINE_BEGGAR, 0, "돼지 거지", "!!! 사용 시 5{{Coin}}을 소모하여 아래 중 하나를 드랍합니다:#돼지 or 보물방 아이템 (10%)#장신구(20%)#능력치 캡슐 (30%)#자폭 파리/거미 (40%)", "ko_kr")
