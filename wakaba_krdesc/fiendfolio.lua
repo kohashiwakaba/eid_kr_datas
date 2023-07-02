@@ -2885,6 +2885,20 @@ if FiendFolio then
 			Name = "꼭대기 돌덩이",
 			QuoteDesc = "이제 내려갈 일만 남았어",
 		},
+
+		[FiendFolio.ITEM.ROCK.CHUNK_OF_GALLIUM] = {
+			Description = "15%의 확률로 적을 느려지게 하는 장판을 생성하는 공격이 나갑니다.",
+			StatusEffects = {ffStatusEffectDesc.GOLEM_NORMAL},
+			Name = "갈륨 덩이",
+			QuoteDesc = "느릿느릿한 흐름",
+		},
+
+		[FiendFolio.ITEM.ROCK.ONION_ROCK] = {
+			Description = "주변에 있으면 공격방향을 향해 공격하는 Brickmin 패밀리어를 소환합니다.#Brickmin의 효과는 종류에 따라 다릅니다.#스테이지 입장 시 Brickmin의 효과가 바뀝니다.",
+			StatusEffects = {ffStatusEffectDesc.GOLEM_NORMAL},
+			Name = "양파 돌덩이",
+			QuoteDesc = "던질 수 있는 친구들",
+		},
 				
 		[FiendFolio.ITEM.ROCK.BREAKFAST_FOSSIL] = {
 			Description = "{{ffCrush}} 분해 시 {{Heart}}최대 체력 +1",
