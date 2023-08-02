@@ -8,7 +8,7 @@ if GODMODE then
 
 	local Items = GODMODE.registry.items
 	local Trinkets = GODMODE.registry.trinkets
-	
+
 	local BirthrightDesc = {
 		[Isaac.GetPlayerTypeByName("Recluse",false)] = {
 			Name = "Recluse",
@@ -582,7 +582,7 @@ if GODMODE then
 			Description = "↓ 더 이상 축복을 받을 수 없습니다.",
 		},
 	}
-	
+
 	for playerType, birthrightdesc in pairs(BirthrightDesc) do
 		EID:addBirthright(playerType, birthrightdesc.Description, birthrightdesc.Name, "ko_kr")
 	end
@@ -607,7 +607,7 @@ if GODMODE then
 			wakaba.descriptions["ko_kr"].collectibles[itemID] = {
 				targetMod = "AOIGodmodeAchieved",
 				itemName = itemdesc.Name,
-				description = itemdesc.Description,
+				description = desc,
 				queueDesc = itemdesc.QuoteDesc,
 			}
 		end
@@ -624,7 +624,7 @@ if GODMODE then
 			wakaba.descriptions["ko_kr"].trinkets[itemID] = {
 				targetMod = "AOIGodmodeAchieved",
 				itemName = itemdesc.Name,
-				description = itemdesc.Description,
+				description = desc,
 				queueDesc = itemdesc.QuoteDesc,
 			}
 		end

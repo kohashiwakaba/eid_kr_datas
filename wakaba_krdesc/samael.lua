@@ -8,12 +8,12 @@ local ferrymanDesc = "#차원의 틈새에서는 각 포탈마다 영혼이 존�
 local BirthrightDesc = {
   [SamaelMod.Lib.SamaelId] = {
     Name = "Samael",
-    Description = "#↑ 이동속도 +0.29#비행 능력을 얻습니다.#Malakh Mot의 충전속도가 빨라지며 사거리가 25% 증가합니다.#Malakh Mot 발동 중 적을 추적하여 공격하는 꼬마 사신을 3마리 소환합니다.", 
+    Description = "#↑ 이동속도 +0.29#비행 능력을 얻습니다.#Malakh Mot의 충전속도가 빨라지며 사거리가 25% 증가합니다.#Malakh Mot 발동 중 적을 추적하여 공격하는 꼬마 사신을 3마리 소환합니다.",
     QuoteDesc = "말라크 연속 공격",
   },
   [SamaelMod.Lib.TaintedSamaelId] = {
     Name = "Tainted Samael",
-    Description = "#적 처치 시 영혼이 모입니다.#Memento Mori로 공격 시 영혼을 소모하여 연옥의 유령을 소환합니다.", 
+    Description = "#적 처치 시 영혼이 모입니다.#Memento Mori로 공격 시 영혼을 소모하여 연옥의 유령을 소환합니다.",
     QuoteDesc = "영혼 해방",
   },
 }
@@ -30,7 +30,7 @@ local CollectibleDesc = {
 		Name = "무덤의 형벌",
 		QuoteDesc = "죽음 이후의 심판",
 	},
-	
+
 	[SamaelMod.ITEMS.DENIAL] = {
 		Description = "↓ 행운 -1#Blind 저주에 걸리지 않으며 추가 스테이지의 가려진 아이템을 보여줍니다.#방 입장 시 그 방 한정으로 아이템, 픽업, 슬롯류를 바꿀 수 있는 {{Card"..SamaelMod.ITEMS.DENIAL_DICE.."}}Denial Dice를 소환합니다.",
 		Name = "부정의 정령",
@@ -414,14 +414,14 @@ local function MementoMoriEidAppendCondition(descObj)
 	if not descObj or descObj.ObjType ~= 5 or descObj.ObjVariant ~= 100 or not MementoMoriItemDescriptions[descObj.ObjSubType] then
 		return false
 	end
-	
+
 	for i=0, Game():GetNumPlayers()-1 do
 		local player = Isaac.GetPlayer(i)
 		if player and player:GetPlayerType() == SamaelMod.Lib.TaintedSamaelId then
 			return true
 		end
 	end
-	
+
 	return false
 end
 
@@ -443,14 +443,14 @@ local function SamaelScytheEidAppendCondition(descObj)
 	if not descObj or descObj.ObjType ~= 5 or descObj.ObjVariant ~= 100 or not SamaelItemDescriptions[descObj.ObjSubType] then
 		return false
 	end
-	
+
 	for i=0, Game():GetNumPlayers()-1 do
 		local player = Isaac.GetPlayer(i)
 		if player and (player:GetPlayerType() == SamaelMod.Lib.SamaelId or player:GetPlayerType() == SamaelMod.Lib.TaintedSamaelId) then
 			return true
 		end
 	end
-	
+
 	return false
 end
 
@@ -466,60 +466,62 @@ end
 
 EID:addDescriptionModifier("FF_EIDKR_samaelScytheModifier", SamaelScytheEidAppendCondition, SamaelScytheEidAppendCallback)
 
-local i_queueLastFrame
-local i_queueNow
+local i_queueLastFrame = {}
+local i_queueNow = {}
 wakaba_krdesc:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, function (_, player)
 	if Options.Language ~= "kr" then return end
 	local descTable = CollectibleDesc
 	local descTableBR = BirthrightDesc
 	if not descTable and not descTableBR then return end
 
-	i_queueNow = player.QueuedItem.Item
-	if (i_queueNow ~= nil) then
-		if i_queueNow.ID == CollectibleType.COLLECTIBLE_BIRTHRIGHT then
+	i_queueNow[initSeed] = player.QueuedItem.Item
+	if (i_queueNow[initSeed] ~= nil) then
+		if i_queueNow[initSeed].ID == CollectibleType.COLLECTIBLE_BIRTHRIGHT then
 			local playerType = player:GetPlayerType()
 			for playerID, itemdesc in pairs(descTableBR) do
-				if (playerType == playerID and i_queueNow:IsCollectible() and i_queueLastFrame == nil) then
+				if (playerType == playerID and i_queueNow[initSeed]:IsCollectible() and i_queueLastFrame[initSeed] == nil) then
 					local itemName = "생득권"
-					local queueDesc = itemdesc.QuoteDesc or i_queueNow.Description
+					local queueDesc = itemdesc.QuoteDesc or i_queueNow[initSeed].Description
 					Game():GetHUD():ShowItemText(itemName, queueDesc)
 				end
 			end
 		else
 			for itemID, itemdesc in pairs(descTable) do
-				if (i_queueNow.ID == itemID and i_queueNow:IsCollectible() and i_queueLastFrame == nil) then
-					local itemName = (itemdesc.Name ~= "" and itemdesc.Name) or i_queueNow.Name
-					local queueDesc = itemdesc.QuoteDesc or i_queueNow.Description
+				if (i_queueNow[initSeed].ID == itemID and i_queueNow[initSeed]:IsCollectible() and i_queueLastFrame[initSeed] == nil) then
+					local itemName = (itemdesc.Name ~= "" and itemdesc.Name) or i_queueNow[initSeed].Name
+					local queueDesc = itemdesc.QuoteDesc or i_queueNow[initSeed].Description
 					Game():GetHUD():ShowItemText(itemName, queueDesc)
 				end
 			end
 		end
 	end
-	i_queueLastFrame = i_queueNow
+	i_queueLastFrame[initSeed] = i_queueNow[initSeed]
 end)
 
 
-local t_queueLastFrame
-local t_queueNow
+local t_queueLastFrame = {}
+local t_queueNow = {}
 wakaba_krdesc:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, function (_, player)
 	if Options.Language ~= "kr" then return end
 	local descTable = TrinketDesc
 	if not descTable then return end
 
-	t_queueNow = player.QueuedItem.Item
-	if (t_queueNow ~= nil) then
+	local initSeed = tostring(player.InitSeed)
+
+		t_queueNow[initSeed] = player.QueuedItem.Item
+	if (t_queueNow[initSeed] ~= nil) then
 		for itemID, itemdesc in pairs(descTable) do
-			if (t_queueNow.ID == itemID and t_queueNow:IsTrinket() and t_queueLastFrame == nil) then
-				local itemName = (itemdesc.Name ~= "" and itemdesc.Name) or t_queueNow.Name
-				local queueDesc = itemdesc.QuoteDesc or t_queueNow.Description
+			if (t_queueNow[initSeed].ID == itemID and t_queueNow[initSeed]:IsTrinket() and t_queueLastFrame[initSeed] == nil) then
+				local itemName = (itemdesc.Name ~= "" and itemdesc.Name) or t_queueNow[initSeed].Name
+				local queueDesc = itemdesc.QuoteDesc or t_queueNow[initSeed].Description
 				Game():GetHUD():ShowItemText(itemName, queueDesc)
 			end
 		end
 	end
-	t_queueLastFrame = t_queueNow
+	t_queueLastFrame[initSeed] = t_queueNow[initSeed]
 end)
 
-	
+
 return {
 	birthright = BirthrightDesc,
 	collectibles = CollectibleDesc,

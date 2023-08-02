@@ -1,12 +1,23 @@
 
 if FiendFolio then
+	local versionRequ = "2.8.3"
+	local versionNext = "2.8.4"
+
+	if not (FiendFolio.modVersionNumber and FiendFolio.modVersionNumber >= versionRequ) then
+		table.insert(wakaba_krdesc.ERRORS, {
+			err_mod = "Fiend Folio",
+			current = FiendFolio.modVersionNumber,
+			required = versionRequ,
+		})
+		return
+	end
 
   EID._currentMod = "Fiend Folio"
   --EID:setModIndicatorName("Fiend Folio")
 
   EID.descriptions["en_us"].PerfectGenericObjectCharge = "Perfectly Generic Object charge:"
   EID.descriptions["ko_kr"].PerfectGenericObjectCharge = "Perfectly Generic Object 충전량:"
-  
+
   EID.InlineIcons["FFCursedPennyTint"] = function(_)
     EID._NextIconModifier = function(sprite)
       sprite.Color = Color(1, 1, 1, EID.Config["Transparency"] * 0.5, 0.5, 0, 0.8)
@@ -55,7 +66,7 @@ if FiendFolio then
 	}
 
 	wakaba_krdesc.ffStatusEffectDesc = ffStatusEffectDesc
-  
+
   -- Birthright
 	local ffBirthrightDesc = {
 		[FiendFolio.PLAYER.FIEND] = {
@@ -156,7 +167,7 @@ if FiendFolio then
 			Name = "",
 			QuoteDesc = "",
 		},
-			
+
 		[FiendFolio.ITEM.CARD.ENERGY_GRASS] = {
 			Description = "방 안의 모든 적을 4초간 {{Poison}}중독시킵니다.",
 			Name = "자연 속성 에너지",
@@ -217,7 +228,7 @@ if FiendFolio then
 			Name = "트레이너 카드",
 			QuoteDesc = "",
 		},
-			
+
 		[FiendFolio.ITEM.CARD.GLASS_D6] = {
 			Description = "{{Collectible105}} 사용 시 방 안의 모든 아이템을 다른 아이템으로 바꿉니다.",
 			Name = "유리 6면 조각",
@@ -268,7 +279,7 @@ if FiendFolio then
 			Name = "유리 2면 조각",
 			QuoteDesc = "",
 		},
-			
+
 		[FiendFolio.ITEM.CARD.GREEN_HOUSE] = {
 			Description = "그 방의 모든 적 및 픽업을 보관합니다.#보관된 적 및 픽업은 다음 방 진입 시 강제로 소환됩니다.",
 			Name = "녹색 모형집",
@@ -344,7 +355,7 @@ if FiendFolio then
 			Name = "크리스마스 캔디",
 			QuoteDesc = "",
 		},
-			
+
 		[FiendFolio.ITEM.CARD.TREASURE_DISC] = {
 			Description = "1분간 3~5개의 {{TreasureRoom}}보물방 배열 패시브 아이템의 효과를 받습니다.",
 			Name = "보믈방 체험판 디스크",
@@ -395,13 +406,13 @@ if FiendFolio then
 			Name = "더럽혀진 보믈방 체험판 디스크",
 			QuoteDesc = "",
 		},
-			
+
 		[FiendFolio.ITEM.CARD.MISPRINTED_TWO_OF_CLUBS] = {
 			Description = "소지 중인 {{Bomb}}폭탄 x2#!!!소지 중인 모든 폭탄을 {{FFCopperBombTint}}{{Bomb}}구리폭탄으로 바꿉니다.",
 			Name = "클로버 2?",
 			QuoteDesc = "",
 		},
-			
+
 		[FiendFolio.ITEM.CARD.THREE_OF_CLUBS] = {
 			Description = "{{Bomb}} 랜덤 폭탄 픽업을 3개 소환합니다.#소환될 수 있는 폭탄의 종류는 각각 동일한 확률을 가집니다.",
 			Name = "클로버 3",
@@ -422,7 +433,7 @@ if FiendFolio then
 			Name = "하트 3",
 			QuoteDesc = "",
 		},
-			
+
 		[FiendFolio.ITEM.CARD.JACK_OF_DIAMONDS] = {
 			Description = "{{FFCursedPennyTint}}{{Coin}}저주받은 동전 2~4개를 소환합니다.#그 방의 모든 동전 픽업을 {{FFCursedPennyTint}}{{Coin}}저주받은 동전으로 바꿉니다.",
 			Name = "다이아 J",
@@ -448,13 +459,13 @@ if FiendFolio then
 			Name = "하트 J",
 			QuoteDesc = "",
 		},
-			
+
 		[FiendFolio.ITEM.CARD.KING_OF_CLUBS] = {
 			Description = "기가폭탄을 하나 소환합니다.#다음 폭탄 사용 시 기가폭탄이 설치되며 폭발한 자리에 구덩이가 생기고 적에게 300의 피해를 줍니다.",
 			Name = "클로버 K",
 			QuoteDesc = "",
 		},
-			
+
 		[FiendFolio.ITEM.CARD.QUEEN_OF_DIAMONDS] = {
 			Description = "방 안의 모든 돌덩이/똥 오브젝트를 동전으로 바꿉니다.#!!! 바뀐 동전은 잠시 후 사라집니다.",
 			Name = "다이아 Q",
@@ -470,7 +481,7 @@ if FiendFolio then
 			Name = "스페이드 Q",
 			QuoteDesc = "",
 		},
-			
+
 		[FiendFolio.ITEM.CARD.KING_OF_DIAMONDS] = {
 			Description = "그 방의 적을 적을 멈추게 만들며 멈춘 적 처치시 {{Coin}}동전을 1~3개 드랍합니다.#일부 돌덩이 오브젝트를 금광으로 바꿉니다.",
 			Name = "다이아 K",
@@ -481,7 +492,7 @@ if FiendFolio then
 			Name = "스페이드 K",
 			QuoteDesc = "",
 		},
-			
+
 		[FiendFolio.ITEM.CARD.ACE_OF_WANDS] = {
 			Description = "방 안의 모든 적과 픽업을 {{Battery}}배터리로 바꿉니다.#!!! 바뀐 배터리는 잠시 후 사라집니다.",
 			Name = "완드 A",
@@ -502,7 +513,7 @@ if FiendFolio then
 			Name = "완드 K",
 			QuoteDesc = "",
 		},
-			
+
 		[FiendFolio.ITEM.CARD.ACE_OF_PENTACLES] = {
 			Description = "방 안의 모든 적과 픽업을 장신구로 바꿉니다.",
 			Name = "펜타클 A",
@@ -523,7 +534,7 @@ if FiendFolio then
 			Name = "펜타클 K",
 			QuoteDesc = "",
 		},
-			
+
 		[FiendFolio.ITEM.CARD.ACE_OF_SWORDS] = {
 			Description = "방 안의 모든 적과 픽업을 아군 자폭 파리/거미/벼룩으로 바꿉니다.",
 			Name = "소드 A",
@@ -544,7 +555,7 @@ if FiendFolio then
 			Name = "소드 K",
 			QuoteDesc = "",
 		},
-			
+
 		[FiendFolio.ITEM.CARD.ACE_OF_CUPS] = {
 			Description = "방 안의 모든 적과 픽업을 알약으로 바꿉니다.",
 			Name = "컵 A",
@@ -565,7 +576,7 @@ if FiendFolio then
 			Name = "컵 K",
 			QuoteDesc = "",
 		},
-			
+
 		[FiendFolio.ITEM.CARD.MISPRINTED_JOKER] = {
 			Description = "사용 시 방 안의 모든 아이템을 {{DevilRoom}}악마방/{{AngelRoom}}천사방 아이템으로 바꿉니다.#!!! 낮은 확률로 아이템이 아닌 성스러운/악한 테마의 하트/상자 픽업으로 바뀝니다.",
 			Name = "조커?",
@@ -581,7 +592,7 @@ if FiendFolio then
 			Name = "클로버 K?",
 			QuoteDesc = "",
 		},
-			
+
 		[FiendFolio.ITEM.CARD.RUNE_ANSUS] = {
 			Description = "{{Collectible333}} (거짓)그 스테이지에서 맵에 특수방 위치, 비밀방 위치, 스테이지 구조가 표시됩니다.",
 			Name = "안수즈?",
@@ -602,7 +613,7 @@ if FiendFolio then
 			Name = "미지의 영혼석",
 			QuoteDesc = "",
 		},
-			
+
 		[FiendFolio.ITEM.CARD.STORAGE_BATTERY_0] = {
 			Description = "사용 시 액티브 아이템의 충전량을 최대 3칸까지 저장합니다.#충전된 상태에서 재사용 시 충전량을 액티브 아이템으로 옮깁니다.#{{Collectible63}} 초과 충전이 가능합니다.#{{Card" .. tostring(Card.CORRODED_BATTERY_0) .. "}} 스테이지 진입 시 부식되며 부식된 상태에서 액티브 아이템 충전 시 잠시 후 충전한 위치에서 폭발합니다.",
 			Name = "보조 배터리",
@@ -777,7 +788,7 @@ if FiendFolio then
 			Name = "여분의 뼛조각",
 			QuoteDesc = "주인에게로 돌아가거라",
 		},
-				
+
 		[FiendFolio.ITEM.COLLECTIBLE.BACON_GREASE] = {
 			Description = "↑ {{EmptyHeart}}빈 최대 체력 +1#↓ {{Heart}}빨간하트 -1#↑ {{ShotspeedSmall}}탄속 +0.15",
 			Name = "베이컨 지방",
@@ -1161,7 +1172,7 @@ if FiendFolio then
 			Name = "조용한 하트",
 			QuoteDesc = "충전식 악의",
 		},
-				
+
 		[FiendFolio.ITEM.COLLECTIBLE.LIL_LAMB] = {
 			Description = "{{Chargeable}} 공격키를 1초 이상 누르면 충전되며 공격키를 떼면 {{Collectible149}}공격력 25의 폭발성 구토제를 발사합니다.#캐릭터가 이 폭발로 피해를 받을 시 몸통과 머리가 분리되며 분리된 몸통 근처의 적을 향해 자동으로 공격합니다.",
 			Name = "리틀 램",
@@ -1192,7 +1203,7 @@ if FiendFolio then
 			Name = "검은 달",
 			QuoteDesc = "모든것은 무로 돌아간다",
 		},
-				
+
 		[FiendFolio.ITEM.COLLECTIBLE.PERFECTLY_GENERIC_OBJECT_1] = {
 			Description = "획득 시 랜덤 오브젝트를 하나 드랍합니다.#사용 시 소지중인 오브젝트의 효과를 발동합니다.#오브젝트에 따라서 충전량이 달라집니다.",
 			Name = "기초 오브젝트",
@@ -1233,7 +1244,7 @@ if FiendFolio then
 			Name = "기초 오브젝트",
 			QuoteDesc = "유사 오브젝트",
 		},
-				
+
 				-- 뱃지 : The Gauntlet 챌린지에서만 존재
 		[FiendFolio.ITEM.COLLECTIBLE.SPATULA_BADGE] = {
 			Description = "↑ {{DamageSmall}}공격력 +0.1",
@@ -1275,13 +1286,13 @@ if FiendFolio then
 			Name = "배지 완성 보상",
 			QuoteDesc = "배지를 모두 모았다!",
 		},
-				
+
 		[FiendFolio.ITEM.COLLECTIBLE.MARIAS_IPAD] = {
 			Description = "사용 시 캐릭터를 제외한 모든 것을 방의 아래쪽으로 밀어넣습니다.",
 			Name = "마리아의 iPad",
 			QuoteDesc = "제발...",
 		},
-				
+
 		[FiendFolio.ITEM.COLLECTIBLE.GREG_THE_EGG] = {
 			Description = "방 안을 돌아다니며 적의 탄환을 막아줍니다.#방 클리어 시 확률적으로 픽업을 소환합니다.#!!! 적의 탄환을 막으면 일정 확률로 달걀이 깨져 사라지며 랜덤 아이템을 드랍합니다.",
 			Name = "달걀 그레그",
@@ -1569,9 +1580,9 @@ if FiendFolio then
 			QuoteDesc = "플레이 타임!",
 		},
 
-		-------------------------------------- 
+		--------------------------------------
 		---- FF 2.8: The Spitshine Update ----
-		-------------------------------------- 
+		--------------------------------------
 
 		[FiendFolio.ITEM.COLLECTIBLE.FIENDS_THIRD_LEG] = {
 			Description = "↑ {{DamageSmall}}공격력 배율 x3.33#↑ {{TearsSmall}}연사 배율 x1.5#공격에 유도 효과가 생기며 적에게 피해를 주는 보라색 장판을 생성합니다.#공격이 무언가에 부딪힐 시 Fiend의 부하를 소환합니다.",
@@ -1776,7 +1787,7 @@ if FiendFolio then
 			Name = "녹아내리는 페니",
 			QuoteDesc = "일한 만큼의 대가",
 		},
-				
+
 		[FiendFolio.ITEM.TRINKET.BLOODY_SANDPAPER] = {
 			Description = "캐릭터의 이동 관성을 제거하여 이동키를 떼면 즉시 멈춥니다.",
 			Name = "피 묻은 사포",
@@ -1792,7 +1803,7 @@ if FiendFolio then
 			Name = "빨간 리본",
 			QuoteDesc = "영원 2배",
 		},
-				
+
 		[FiendFolio.ITEM.TRINKET.FLEA_MELTDOWN] = {
 			Description = "방 입장 시 적에게 {{Burning}}화상을 입히는 주황색 아군 벼룩을 소환합니다.",
 			Name = "붕괴의 벼룩",
@@ -1813,7 +1824,7 @@ if FiendFolio then
 			Name = "선전의 벼룩",
 			QuoteDesc = "선전을 초래",
 		},
-				
+
 		[FiendFolio.ITEM.TRINKET.FUZZY_PENNY] = {
 			Description = "동전을 주울 시 아군 자폭 벼룩을 소환합니다.",
 			Name = "털 많은 페니",
@@ -1834,7 +1845,7 @@ if FiendFolio then
 			Name = "직소 퍼즐 상자",
 			QuoteDesc = "조각은 잃어버리기 마련",
 		},
-				
+
 		[FiendFolio.ITEM.TRINKET.YIN_YANG_ORB] = {
 			Description = "확률적으로({{LuckSmall}}) 공격력 x1.25의 강한 유도 공격이 나갑니다.#{{LuckSmall}} :20%, 7{{LuckSmall}} 이상: 66%",
 			Name = "음양 오브",
@@ -1879,7 +1890,7 @@ if FiendFolio then
 			Description = "보스 및 미니보스의 체력이 증가합니다.#보스 처치 시 하트류 픽업을 추가로 드랍합니다..",
 			Name = "",
 			QuoteDesc = "풍부한 보스",
-		}, 
+		},
 		[FiendFolio.ITEM.TRINKET.ETERNAL_CAR_BATTERY] = {
 			Description = "액티브 아이템 사용 시 효과가 4~6번 발동되지만 50%의 확률로 액티브 아이템이 사라집니다.",
 			Name = "이터널 자동차 건전지",
@@ -1945,7 +1956,7 @@ if FiendFolio then
 			Name = "쌍둥이 카드",
 			QuoteDesc = "작은 황제",
 		},
-				
+
 		[FiendFolio.ITEM.TRINKET.LOST_FLOWER_CROWN] = {
 			Description = "스테이지 당 1회 한정으로 랜덤 적 하나가 해당 게임에서 제거되어 다시 등장하지 않습니다.",
 			Name = "잊혀진 꽃 왕관",
@@ -2886,20 +2897,6 @@ if FiendFolio then
 			QuoteDesc = "이제 내려갈 일만 남았어",
 		},
 
-		[FiendFolio.ITEM.ROCK.CHUNK_OF_GALLIUM] = {
-			Description = "15%의 확률로 적을 느려지게 하는 장판을 생성하는 공격이 나갑니다.",
-			StatusEffects = {ffStatusEffectDesc.GOLEM_NORMAL},
-			Name = "갈륨 덩이",
-			QuoteDesc = "느릿느릿한 흐름",
-		},
-
-		[FiendFolio.ITEM.ROCK.ONION_ROCK] = {
-			Description = "주변에 있으면 공격방향을 향해 공격하는 Brickmin 패밀리어를 소환합니다.#Brickmin의 효과는 종류에 따라 다릅니다.#스테이지 입장 시 Brickmin의 효과가 바뀝니다.",
-			StatusEffects = {ffStatusEffectDesc.GOLEM_NORMAL},
-			Name = "양파 돌덩이",
-			QuoteDesc = "던질 수 있는 친구들",
-		},
-				
 		[FiendFolio.ITEM.ROCK.BREAKFAST_FOSSIL] = {
 			Description = "{{ffCrush}} 분해 시 {{Heart}}최대 체력 +1",
 			StatusEffects = {ffStatusEffectDesc.GOLEM_FOSSIL},
@@ -3105,7 +3102,7 @@ if FiendFolio then
 			Name = "공허의 화석",
 			QuoteDesc = "암흑의 기운이 담겨 있어 + 분해 보너스",
 		},
-				
+
 		[FiendFolio.ITEM.ROCK.CURVED_GEODE] = {
 			Description = "↑ {{DamageSmall}}공격력 +1#↑ 다른 정동석 소지 시 {{DamageSmall}}추가 공격력 +0.5",
 			StatusEffects = {ffStatusEffectDesc.GOLEM_GEODE},
@@ -3280,7 +3277,7 @@ if FiendFolio then
 			Name = "탯줄",
 			QuoteDesc = "태아 보호 + 정동 보너스",
 		},
-				
+
 		[FiendFolio.ITEM.ROCK.GEODE_FOSSIL] = {
 			Description = "↑ {{RangeSmall}}사거리 +8#↑ 다른 정동석 소지 시 {{RangeSmall}}추가 사거리 +6#{{ffCrush}} 분해 시 랜덤 정동석을 드랍합니다.#{{ffCrush}} 다른 정동석 소지 시 분해 할 때 랜덤 정동석을 추가로 드랍합니다.",
 			StatusEffects = {ffStatusEffectDesc.GOLEM_DUAL},
@@ -3288,7 +3285,54 @@ if FiendFolio then
 			QuoteDesc = "궁극의 보석 + 정동, 분해 보너스",
 		},
 	}
-	
+
+	if FiendFolio.modVersionNumber >= versionNext then
+		wakaba_krdesc.KeyValueBulkAppend(ffTrinketDesc, {
+			[FiendFolio.ITEM.ROCK.CHUNK_OF_GALLIUM] = {
+				Description = "15%의 확률로 적을 느려지게 하는 장판을 생성하는 공격이 나갑니다.",
+				StatusEffects = {ffStatusEffectDesc.GOLEM_NORMAL},
+				Name = "갈륨 덩이",
+				QuoteDesc = "느릿느릿한 흐름",
+			},
+			[FiendFolio.ITEM.ROCK.ONION_ROCK] = {
+				Description = "주변에 있으면 공격방향을 향해 공격하는 Brickmin 패밀리어를 소환합니다.#Brickmin의 효과는 종류에 따라 다릅니다.#스테이지 입장 시 Brickmin의 효과가 바뀝니다.",
+				StatusEffects = {ffStatusEffectDesc.GOLEM_NORMAL},
+				Name = "양파 돌덩이",
+				QuoteDesc = "던질 수 있는 친구들",
+			},
+		})
+	end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	for playerType, birthrightdesc in pairs(ffBirthrightDesc) do
 		EID:addBirthright(playerType, birthrightdesc.Description, birthrightdesc.Name, "ko_kr")
 	end
@@ -3310,7 +3354,7 @@ if FiendFolio then
 			wakaba.descriptions["ko_kr"].collectibles[itemID] = {
 				targetMod = "Fiend Folio",
 				itemName = itemdesc.Name,
-				description = itemdesc.Description,
+				description = desc,
 				queueDesc = itemdesc.QuoteDesc,
 			}
 		end
@@ -3327,7 +3371,7 @@ if FiendFolio then
 			wakaba.descriptions["ko_kr"].trinkets[itemID] = {
 				targetMod = "Fiend Folio",
 				itemName = itemdesc.Name,
-				description = itemdesc.Description,
+				description = desc,
 				queueDesc = itemdesc.QuoteDesc,
 			}
 		end
@@ -3354,7 +3398,7 @@ if FiendFolio then
 	EID:addEntity(5, 30, FiendFolio.PICKUP.KEY.SPICY_PERM, "매운 열쇠", "{{Key}} 열쇠 +2#반칸의 피해를 입습니다.", "ko_kr")
 	EID:addEntity(5, 30, FiendFolio.PICKUP.KEY.SUPERSPICY_PERM, "매운 열쇠", "{{Key}} 열쇠 +3#반칸의 피해를 입습니다.", "ko_kr")
 	EID:addEntity(5, 30, FiendFolio.PICKUP.KEY.CHARGEDSPICY_PERM, "매운 열쇠", "{{Key}} 열쇠 +2#액티브 아이템의 게이지를 6칸 충전시키며 반칸의 피해를 입습니다.", "ko_kr")
-	
+
 	EID:addEntity(5, 40, FiendFolio.PICKUP.BOMB.COPPER, "구리 폭탄", "설치 시 확률적으로 불발되거나 {{Collectible106}}거대한 폭발을 일으킵니다.", "ko_kr")
 	EID:addEntity(5, 40, FiendFolio.PICKUP.BOMB.DOUBLE_COPPER, "구리 폭탄", "설치 시 확률적으로 불발되거나 {{Collectible106}}거대한 폭발을 일으킵니다.", "ko_kr")
 	EID:addEntity(5, 40, FiendFolio.PICKUP.BOMB.MIXED_DOUBLE, "구리 폭탄", "설치 시 확률적으로 불발되거나 {{Collectible106}}거대한 폭발을 일으킵니다.", "ko_kr")
@@ -3390,20 +3434,20 @@ if FiendFolio then
 	EID:addEntity(6, FiendFolio.FF.Midarizer.Var, 10, "미다라이저", "!!! 비활성화됨. 다음 스테이지부터 등장 시 다시 사용할 수 있습니다.", "ko_kr")
 	EID:addEntity(6, FiendFolio.FF.Sweetpuss.Var, 0, "스윗퍼스", "!!! 일회용#현재 들고 있는 장신구를 {{ColorRed}}화석{{CR}} 장신구로 바꿉니다.#화석 타입의 장신구는 해당 장신구를 파괴합니다.", "ko_kr")
 
-  
+
   EID.descriptions["ko_kr"].bingeEaterBuffs[FiendFolio.ITEM.COLLECTIBLE.TEA] = "↑ {{RangeSmall}}사거리 +1.5#↑ {{LuckSmall}}행운 +1#↓ {{SpeedSmall}}이동속도 -0.03"
-  
+
 	local function FF_EIDKR_RockSlotCondition(descObj)
 	  if EID:getLanguage() ~= "ko_kr" then return false end
 	  if not descObj.ObjType == EntityType.ENTITY_SLOT then return false end
 	  if not descObj.Entity then return end
-	  if descObj.ObjVariant == 1020 
+	  if descObj.ObjVariant == 1020
 	  or descObj.ObjVariant == 1021
 	  or descObj.ObjVariant == 1022
 	  or (descObj.ObjVariant == 1024 and descObj.ObjSubType == 0)
 		or (descObj.ObjVariant == FiendFolio.FF.Midarizer.Var and descObj.ObjSubType ~= 10)
 		or descObj.ObjVariant == FiendFolio.FF.Sweetpuss.Var
-	  then 
+	  then
 	    local holdUpRockRange = 100
 
 	    local game = Game()
@@ -3412,7 +3456,7 @@ if FiendFolio then
 	    for i=0, game:GetNumPlayers()-1 do
 	      local player = game:GetPlayer(i)
 	      local data = player:GetData()
-			
+
 	      if player and player:Exists() then
 					local trinket
 					if slot.Variant == FiendFolio.FF.Midarizer.Var then
@@ -3421,7 +3465,7 @@ if FiendFolio then
 						trinket = FiendFolio.GetMostRecentRockTrinket(player)
 					end
 	        local price = FiendFolio.GetGrindPriceForTrinket(trinket, player)
-				
+
 	        local shouldHoldUpRockTrinket = trinket > 0
 	          and (data.holdingUpRockTouchingPickup or 0) == 0
 	          and not player:IsHoldingItem()
@@ -3430,10 +3474,10 @@ if FiendFolio then
 	          and player:GetShootingInput():Length() < 0.1
 	          and not (slot.Variant == 1020 and player:GetNumCoins() < price)
 	          and not (slot.Variant == 1022 and player:GetSoulHearts() < 3)
-				
+
 	        return shouldHoldUpRockTrinket
 	      end
-			
+
 	    end
 	  end
 	end
@@ -3620,61 +3664,65 @@ if FiendFolio then
 			Game():GetHUD():ShowItemText(ffPillDesc[pillEffectID].Name, ffPillDesc[pillEffectID].QuoteDesc)
 		end
 	end)
-	
-	local i_queueLastFrame
-	local i_queueNow
+
+	local i_queueLastFrame = {}
+	local i_queueNow = {}
 	wakaba_krdesc:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, function (_, player)
 		if Options.Language ~= "kr" then return end
 		local descTable = ffCollectibleDesc
 		local descTableBR = ffBirthrightDesc
 		if not descTable and not descTableBR then return end
 
-		i_queueNow = player.QueuedItem.Item
-		if (i_queueNow ~= nil) then
-			if i_queueNow.ID == CollectibleType.COLLECTIBLE_BIRTHRIGHT then
+		local initSeed = tostring(player.InitSeed)
+
+		i_queueNow[initSeed] = player.QueuedItem.Item
+		if (i_queueNow[initSeed] ~= nil) then
+			if i_queueNow[initSeed].ID == CollectibleType.COLLECTIBLE_BIRTHRIGHT then
 				local playerType = player:GetPlayerType()
 				for playerID, itemdesc in pairs(descTableBR) do
-					if (playerType == playerID and i_queueNow:IsCollectible() and i_queueLastFrame == nil) then
+					if (playerType == playerID and i_queueNow[initSeed]:IsCollectible() and i_queueLastFrame[initSeed] == nil) then
 						local itemName = "생득권"
-						local queueDesc = itemdesc.QuoteDesc or i_queueNow.Description
+						local queueDesc = itemdesc.QuoteDesc or i_queueNow[initSeed].Description
 						Game():GetHUD():ShowItemText(itemName, queueDesc)
 					end
 				end
 			else
 				for itemID, itemdesc in pairs(descTable) do
-					if (i_queueNow.ID == itemID and i_queueNow:IsCollectible() and i_queueLastFrame == nil) then
-						local itemName = (itemdesc.Name ~= "" and itemdesc.Name) or i_queueNow.Name
-						local queueDesc = itemdesc.QuoteDesc or i_queueNow.Description
+					if (i_queueNow[initSeed].ID == itemID and i_queueNow[initSeed]:IsCollectible() and i_queueLastFrame[initSeed] == nil) then
+						local itemName = (itemdesc.Name ~= "" and itemdesc.Name) or i_queueNow[initSeed].Name
+						local queueDesc = itemdesc.QuoteDesc or i_queueNow[initSeed].Description
 						Game():GetHUD():ShowItemText(itemName, queueDesc)
 					end
 				end
 			end
 		end
-		i_queueLastFrame = i_queueNow
+		i_queueLastFrame[initSeed] = i_queueNow[initSeed]
 	end)
 
 
-	local t_queueLastFrame
-	local t_queueNow
+	local t_queueLastFrame = {}
+	local t_queueNow = {}
 	wakaba_krdesc:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, function (_, player)
 		if Options.Language ~= "kr" then return end
 		local descTable = ffTrinketDesc
 		if not descTable then return end
 
-		t_queueNow = player.QueuedItem.Item
-		if (t_queueNow ~= nil) then
+		local initSeed = tostring(player.InitSeed)
+
+		t_queueNow[initSeed] = player.QueuedItem.Item
+		if (t_queueNow[initSeed] ~= nil) then
 			for itemID, itemdesc in pairs(descTable) do
-				if (t_queueNow.ID == itemID and t_queueNow:IsTrinket() and t_queueLastFrame == nil) then
-					local itemName = (itemdesc.Name ~= "" and itemdesc.Name) or t_queueNow.Name
-					local queueDesc = itemdesc.QuoteDesc or t_queueNow.Description
+				if (t_queueNow[initSeed].ID == itemID and t_queueNow[initSeed]:IsTrinket() and t_queueLastFrame[initSeed] == nil) then
+					local itemName = (itemdesc.Name ~= "" and itemdesc.Name) or t_queueNow[initSeed].Name
+					local queueDesc = itemdesc.QuoteDesc or t_queueNow[initSeed].Description
 					Game():GetHUD():ShowItemText(itemName, queueDesc)
 				end
 			end
 		end
-		t_queueLastFrame = t_queueNow
+		t_queueLastFrame[initSeed] = t_queueNow[initSeed]
 	end)
 
-	
+
 	return {
 		birthright = ffBirthrightDesc,
 		collectibles = ffCollectibleDesc,
@@ -3682,5 +3730,5 @@ if FiendFolio then
 		cards = ffCardDesc,
 		pills = ffPillDesc,
 	}
-  
+
 end

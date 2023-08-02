@@ -175,7 +175,7 @@ for itemID, itemdesc in pairs(CollectibleDesc) do
 		wakaba.descriptions["ko_kr"].collectibles[itemID] = {
 			targetMod = "LibraryExpanded",
 			itemName = itemdesc.Name,
-			Description = itemdesc.Description,
+			description = desc,
 			queueDesc = itemdesc.QuoteDesc,
 		}
 	end
@@ -197,24 +197,26 @@ end
 
 EID:addDescriptionModifier("FF_EIDKR_TBOATB Modifier", ModifierConditionTBOATB, ModifierCallbackTBOATB)
 
-local i_queueLastFrame
-local i_queueNow
+local i_queueLastFrame = {}
+local i_queueNow = {}
 wakaba_krdesc:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, function (_, player)
 	if Options.Language ~= "kr" then return end
 	local descTable = CollectibleDesc
 	if not descTable then return end
 
-	i_queueNow = player.QueuedItem.Item
-	if (i_queueNow ~= nil) then
+	local initSeed = tostring(player.InitSeed)
+
+		i_queueNow[initSeed] = player.QueuedItem.Item
+	if (i_queueNow[initSeed] ~= nil) then
 		for itemID, itemdesc in pairs(descTable) do
-			if (i_queueNow.ID == itemID and i_queueNow:IsCollectible() and i_queueLastFrame == nil) then
-				local itemName = (itemdesc.Name ~= "" and itemdesc.Name) or i_queueNow.Name
-				local queueDesc = itemdesc.QuoteDesc or i_queueNow.Description
+			if (i_queueNow[initSeed].ID == itemID and i_queueNow[initSeed]:IsCollectible() and i_queueLastFrame[initSeed] == nil) then
+				local itemName = (itemdesc.Name ~= "" and itemdesc.Name) or i_queueNow[initSeed].Name
+				local queueDesc = itemdesc.QuoteDesc or i_queueNow[initSeed].Description
 				Game():GetHUD():ShowItemText(itemName, queueDesc)
 			end
 		end
 	end
-	i_queueLastFrame = i_queueNow
+	i_queueLastFrame[initSeed] = i_queueNow[initSeed]
 end)
 
 end

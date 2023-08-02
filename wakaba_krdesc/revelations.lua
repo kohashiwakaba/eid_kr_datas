@@ -5,17 +5,17 @@ EID._currentMod = "Revelations"
 local revBirthrightDesc = {
   [REVEL.CHAR.SARAH.Type] = {
     Name = "Sarah",
-    Description = "{{BlackHeart}} 피격 시 블랙하트가 나올 때 하나씩만 나옵니다.", 
+    Description = "{{BlackHeart}} 피격 시 블랙하트가 나올 때 하나씩만 나옵니다.",
     QuoteDesc = "내 죄를 용서하소서",
   },
   [REVEL.CHAR.DANTE.Type] = {
     Name = "Dante and Charon",
-    Description = "스테이지 진입 시 둘이 헤어질 때 랜덤 패시브 아이템 3개를 공유합니다.", 
+    Description = "스테이지 진입 시 둘이 헤어질 때 랜덤 패시브 아이템 3개를 공유합니다.",
     QuoteDesc = "전리품 공유",
   },
   [REVEL.CHAR.CHARON.Type] = {
     Name = "Dante and Charon",
-    Description = "스테이지 진입 시 둘이 헤어질 때 랜덤 패시브 아이템 3개를 공유합니다.", 
+    Description = "스테이지 진입 시 둘이 헤어질 때 랜덤 패시브 아이템 3개를 공유합니다.",
     QuoteDesc = "전리품 공유",
   },
 }
@@ -413,13 +413,13 @@ local revCardDesc = {
 		Description = "{{Collectible689}} 사용 시 방 안의 모든 아이템이 5개의 랜덤한 아이템으로 0.2초마다 전환되어 5개의 아이템 중 하나를 선택할 수 있습니다.#선택지의 순서는 랜덤으로 결정됩니다.",
 		Name = "로또 티켓",
 		QuoteDesc = "",
-	}, 
+	},
   [REVEL.POCKETITEM.BELL_SHARD.Id] = {
 		Description = "{{Collectible"..REVEL.ITEM.HEAVENLY_BELL.id.."}} 사용 시 아래의 효과 중 하나 발동:#비밀방 입장 시 아이템 소환#슬롯머신 파괴 시 항상 아이템 소환#슬롯머신 파괴 시 많은 동전이 드랍됨#보스방에서 피격당하지 않고 클리어 시 3개의 아이템 중 하나 선택#사망 시 ???로 부활#상점 주인 파괴 시 사다리방으로 가는 트랩도어 생성#{{HardModeSmall}} 하드 모드에서는 힌트가 표시되지 않음",
 		Name = "종 파편",
 		QuoteDesc = "",
 	},
-        
+
 }
 
 for playerType, birthrightdesc in pairs(revBirthrightDesc) do
@@ -443,7 +443,7 @@ for itemID, itemdesc in pairs(revCollectibleDesc) do
 		wakaba.descriptions["ko_kr"].collectibles[itemID] = {
 			targetMod = "Revelations",
 			itemName = itemdesc.Name,
-			Description = itemdesc.Description,
+			description = desc,
 			queueDesc = itemdesc.QuoteDesc,
 		}
 	end
@@ -460,7 +460,7 @@ for itemID, itemdesc in pairs(revTrinketDesc) do
 		wakaba.descriptions["ko_kr"].trinkets[itemID] = {
 			targetMod = "Revelations",
 			itemName = itemdesc.Name,
-			Description = itemdesc.Description,
+			description = desc,
 			queueDesc = itemdesc.QuoteDesc,
 		}
 	end
@@ -470,57 +470,61 @@ for itemID, itemdesc in pairs(revCardDesc) do
 end
 
 
-local i_queueLastFrame
-local i_queueNow
+local i_queueLastFrame = {}
+local i_queueNow = {}
 wakaba_krdesc:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, function (_, player)
   if Options.Language ~= "kr" then return end
   local descTable = revCollectibleDesc
   local descTableBR = revBirthrightDesc
   if not descTable and not descTableBR then return end
 
-  i_queueNow = player.QueuedItem.Item
-  if (i_queueNow ~= nil) then
-    if i_queueNow.ID == CollectibleType.COLLECTIBLE_BIRTHRIGHT then
+  local initSeed = tostring(player.InitSeed)
+
+		i_queueNow[initSeed] = player.QueuedItem.Item
+  if (i_queueNow[initSeed] ~= nil) then
+    if i_queueNow[initSeed].ID == CollectibleType.COLLECTIBLE_BIRTHRIGHT then
       local playerType = player:GetPlayerType()
       for playerID, itemdesc in pairs(descTableBR) do
-        if (playerType == playerID and i_queueNow:IsCollectible() and i_queueLastFrame == nil) then
+        if (playerType == playerID and i_queueNow[initSeed]:IsCollectible() and i_queueLastFrame[initSeed] == nil) then
           local itemName = "생득권"
-          local queueDesc = itemdesc.QuoteDesc or i_queueNow.Description
+          local queueDesc = itemdesc.QuoteDesc or i_queueNow[initSeed].Description
           Game():GetHUD():ShowItemText(itemName, queueDesc)
         end
       end
     else
       for itemID, itemdesc in pairs(descTable) do
-        if (i_queueNow.ID == itemID and i_queueNow:IsCollectible() and i_queueLastFrame == nil) then
-          local itemName = (itemdesc.Name ~= "" and itemdesc.Name) or i_queueNow.Name
-          local queueDesc = itemdesc.QuoteDesc or i_queueNow.Description
+        if (i_queueNow[initSeed].ID == itemID and i_queueNow[initSeed]:IsCollectible() and i_queueLastFrame[initSeed] == nil) then
+          local itemName = (itemdesc.Name ~= "" and itemdesc.Name) or i_queueNow[initSeed].Name
+          local queueDesc = itemdesc.QuoteDesc or i_queueNow[initSeed].Description
           Game():GetHUD():ShowItemText(itemName, queueDesc)
         end
       end
     end
   end
-  i_queueLastFrame = i_queueNow
+  i_queueLastFrame[initSeed] = i_queueNow[initSeed]
 end)
 
 
-local t_queueLastFrame
-local t_queueNow
+local t_queueLastFrame = {}
+local t_queueNow = {}
 wakaba_krdesc:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, function (_, player)
   if Options.Language ~= "kr" then return end
   local descTable = revTrinketDesc
   if not descTable then return end
 
-  t_queueNow = player.QueuedItem.Item
-  if (t_queueNow ~= nil) then
+  local initSeed = tostring(player.InitSeed)
+
+		t_queueNow[initSeed] = player.QueuedItem.Item
+  if (t_queueNow[initSeed] ~= nil) then
     for itemID, itemdesc in pairs(descTable) do
-      if (t_queueNow.ID == itemID and t_queueNow:IsTrinket() and t_queueLastFrame == nil) then
-        local itemName = (itemdesc.Name ~= "" and itemdesc.Name) or t_queueNow.Name
-        local queueDesc = itemdesc.QuoteDesc or t_queueNow.Description
+      if (t_queueNow[initSeed].ID == itemID and t_queueNow[initSeed]:IsTrinket() and t_queueLastFrame[initSeed] == nil) then
+        local itemName = (itemdesc.Name ~= "" and itemdesc.Name) or t_queueNow[initSeed].Name
+        local queueDesc = itemdesc.QuoteDesc or t_queueNow[initSeed].Description
         Game():GetHUD():ShowItemText(itemName, queueDesc)
       end
     end
   end
-  t_queueLastFrame = t_queueNow
+  t_queueLastFrame[initSeed] = t_queueNow[initSeed]
 end)
 
 
@@ -562,17 +566,17 @@ local revShrines = {
       Name = "분열",
       Description = "적이 확률적으로 2마리로 등장합니다."
   },
-  
+
   [ShrineTypes.MISCHIEF_G] = {
     Name = "장난꾸러기",
-    Description = "방 안의 픽업을 훔치는 Prank가 생깁니다." 
+    Description = "방 안의 픽업을 훔치는 Prank가 생깁니다."
         .. "#Prank는 클리어하지 않은 방에서 캐릭터를 향해 주기적으로 눈덩이를 던집니다."
         .. "#Prank 처치 시 훔친 픽업을 전부 드랍하며 허영 수치로 판매하는 상점 품목을 할인합니다."
   },
   [ShrineTypes.FROST] = {
       Name = "강추위",
       Description = "불꽃의 범위가 짧아집니다."
-          .. "#{{ColorOrange}}Grill O' Wisps{{CR}}가 더 빠르게 움직입니다." 
+          .. "#{{ColorOrange}}Grill O' Wisps{{CR}}가 더 빠르게 움직입니다."
           .. "#눈보라가 더 강해저 캐릭터가 얼기까지의 시간이 짧아집니다."
   },
   [ShrineTypes.FRAGILITY] = {
@@ -588,7 +592,7 @@ local revShrines = {
 
   [ShrineTypes.MISCHIEF_T] = {
     Name = "단죄",
-    Description = "방 안의 픽업을 훔치는 Prank가 생깁니다." 
+    Description = "방 안의 픽업을 훔치는 Prank가 생깁니다."
         .. "#Prank는 클리어하지 않은 방에서 주기적으로 함정을 발동합니다."
         .. "#Prank 처치 시 훔친 픽업을 전부 드랍하며 허영 수치로 판매하는 상점 품목을 할인합니다."
   },
@@ -631,7 +635,7 @@ wakaba_krdesc:AddCallback(ModCallbacks.MC_NPC_UPDATE, function(_, npc)
 	if npc.Variant ~= REVEL.ENT.CURSED_SHRINE.variant then
 		return
 	end
-	
+
 	local shrineData = npc:GetData()
 	--print(shrineData.Init, shrineData.ShrineSet, shrineData.ShrineType)
 	if shrineData.IsKrDescReplaced then return end
@@ -651,7 +655,7 @@ wakaba_krdesc:AddCallback(ModCallbacks.MC_NPC_UPDATE, function(_, npc)
 
 end, REVEL.ENT.CURSED_SHRINE.id)
 
-	
+
 return {
 	birthright = revBirthrightDesc,
 	collectibles = revCollectibleDesc,

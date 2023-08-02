@@ -1,6 +1,16 @@
 
 if Deliverance then
-	--[[ 
+
+--[[ 	if not (Deliverance.deliveranceVersion and Deliverance.deliveranceVersion >= "2.5.8.8") then
+		table.insert(wakaba_krdesc.ERRORS, {
+			err_mod = "Deliverance",
+			current = Deliverance.deliveranceVersion,
+			required = "2.5.8.8",
+		})
+		return
+	end ]]
+
+	--[[
 		TODO for report:
 		- Captain's Brooch spawns Shop Chest, which is graphically glitched
 		- Lucky Saucer reduces -3 Luck(= drops poop) even with non-penalty damage unlike Paschal candle
@@ -17,7 +27,7 @@ if Deliverance then
 	local Trinkets = deliveranceContent.trinkets
 	local Cards = deliveranceContent.cards
 	local Pills = deliveranceContent.pills
-	
+
 	local BirthrightDesc = {
 		[Players.awan.playerAwan] = {
 			Name = "Isaac",
@@ -326,7 +336,7 @@ if Deliverance then
 			QuoteDesc = "약한 영혼",
 		},
 	}
-	
+
 	for playerType, birthrightdesc in pairs(BirthrightDesc) do
 		EID:addBirthright(playerType, birthrightdesc.Description, birthrightdesc.Name, "ko_kr")
 	end
@@ -351,7 +361,7 @@ if Deliverance then
 			wakaba.descriptions["ko_kr"].collectibles[itemID] = {
 				targetMod = "Deliverance",
 				itemName = itemdesc.Name,
-				description = itemdesc.Description,
+				description = desc,
 				queueDesc = itemdesc.QuoteDesc,
 			}
 		end
@@ -368,7 +378,7 @@ if Deliverance then
 			wakaba.descriptions["ko_kr"].trinkets[itemID] = {
 				targetMod = "Deliverance",
 				itemName = itemdesc.Name,
-				description = itemdesc.Description,
+				description = desc,
 				queueDesc = itemdesc.QuoteDesc,
 			}
 		end
@@ -386,58 +396,62 @@ if Deliverance then
 		end
 	end)
 
-	
+
 	wakaba_krdesc:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, function (_, player)
 		if Options.Language ~= "kr" then return end
 		local descTable = CollectibleDesc
 		local descTableBR = BirthrightDesc
 		if not descTable and not descTableBR then return end
 
-		i_queueNow = player.QueuedItem.Item
-		if (i_queueNow ~= nil) then
-			if i_queueNow.ID == CollectibleType.COLLECTIBLE_BIRTHRIGHT then
+		local initSeed = tostring(player.InitSeed)
+
+		i_queueNow[initSeed] = player.QueuedItem.Item
+		if (i_queueNow[initSeed] ~= nil) then
+			if i_queueNow[initSeed].ID == CollectibleType.COLLECTIBLE_BIRTHRIGHT then
 				local playerType = player:GetPlayerType()
 				for playerID, itemdesc in pairs(descTableBR) do
-					if (playerType == playerID and i_queueNow:IsCollectible() and i_queueLastFrame == nil) then
+					if (playerType == playerID and i_queueNow[initSeed]:IsCollectible() and i_queueLastFrame[initSeed] == nil) then
 						local itemName = "생득권"
-						local queueDesc = itemdesc.QuoteDesc or i_queueNow.Description
+						local queueDesc = itemdesc.QuoteDesc or i_queueNow[initSeed].Description
 						Game():GetHUD():ShowItemText(itemName, queueDesc)
 					end
 				end
 			else
 				for itemID, itemdesc in pairs(descTable) do
-					if (i_queueNow.ID == itemID and i_queueNow:IsCollectible() and i_queueLastFrame == nil) then
-						local itemName = (itemdesc.Name ~= "" and itemdesc.Name) or i_queueNow.Name
-						local queueDesc = itemdesc.QuoteDesc or i_queueNow.Description
+					if (i_queueNow[initSeed].ID == itemID and i_queueNow[initSeed]:IsCollectible() and i_queueLastFrame[initSeed] == nil) then
+						local itemName = (itemdesc.Name ~= "" and itemdesc.Name) or i_queueNow[initSeed].Name
+						local queueDesc = itemdesc.QuoteDesc or i_queueNow[initSeed].Description
 						Game():GetHUD():ShowItemText(itemName, queueDesc)
 					end
 				end
 			end
 		end
-		i_queueLastFrame = i_queueNow
+		i_queueLastFrame[initSeed] = i_queueNow[initSeed]
 	end)
 
 
-	local t_queueLastFrame
-	local t_queueNow
+	local t_queueLastFrame = {}
+	local t_queueNow = {}
 	wakaba_krdesc:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, function (_, player)
 		if Options.Language ~= "kr" then return end
 		local descTable = TrinketDesc
 		if not descTable then return end
 
-		t_queueNow = player.QueuedItem.Item
-		if (t_queueNow ~= nil) then
+		local initSeed = tostring(player.InitSeed)
+
+		t_queueNow[initSeed] = player.QueuedItem.Item
+		if (t_queueNow[initSeed] ~= nil) then
 			for itemID, itemdesc in pairs(descTable) do
-				if (t_queueNow.ID == itemID and t_queueNow:IsTrinket() and t_queueLastFrame == nil) then
-					local itemName = (itemdesc.Name ~= "" and itemdesc.Name) or t_queueNow.Name
-					local queueDesc = itemdesc.QuoteDesc or t_queueNow.Description
+				if (t_queueNow[initSeed].ID == itemID and t_queueNow[initSeed]:IsTrinket() and t_queueLastFrame[initSeed] == nil) then
+					local itemName = (itemdesc.Name ~= "" and itemdesc.Name) or t_queueNow[initSeed].Name
+					local queueDesc = itemdesc.QuoteDesc or t_queueNow[initSeed].Description
 					Game():GetHUD():ShowItemText(itemName, queueDesc)
 				end
 			end
 		end
-		t_queueLastFrame = t_queueNow
+		t_queueLastFrame[initSeed] = t_queueNow[initSeed]
 	end)
-	
+
 	return {
 		birthright = BirthrightDesc,
 		collectibles = CollectibleDesc,
