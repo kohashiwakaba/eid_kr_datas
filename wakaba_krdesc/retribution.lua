@@ -1,7 +1,7 @@
 
 if Retribution then
-	local versionRequ = "3.1.0"
-	local versionNext = "3.2.0"
+	local versionRequ = "3.2.0"
+	local versionNext = "3.3.0"
 
 	if not (Retribution.Version and Retribution.Version >= versionRequ) then
 		table.insert(wakaba_krdesc.ERRORS, {
@@ -28,6 +28,11 @@ if Retribution then
 		[Retribution.PLAYER_TYPE.MAMMON_B] = {
 			Name = "Tainted Mammon",
 			Description = "{{Shop}} 상점 입장 시 전용 특수 배열의 판매 아이템이 추가로 진열됩니다.#{{Collectible" .. Retribution.Item.SPIFFY_TIMEPIECE .. "}} 사용 시 현재 게임 시간을 알려줍니다.",
+			QuoteDesc = "확실한 소비",
+		},
+		[Retribution.PLAYER_TYPE.PERSEPHONE] = {
+			Name = "Persephone",
+			Description = "{{RETPullroot}} 새싹이 더 멀리 날아가며 적과 2회 이상 부딪힐 수 있습니다.#{{RETPullroot}} 돌아올 때 캐릭터에게 더 가깝게 돌아옵니다.",
 			QuoteDesc = "확실한 소비",
 		},
   }
@@ -954,6 +959,48 @@ if Retribution then
 			Belial = "",
 		},
 
+		[Retribution.Item.SEED_SACK] = {
+			Name = "씨앗 자루",
+			QuoteDesc = "뽑아라! 뽑아라!",
+			Description = "{{RETPullroot}} 사용 시 3~5마리의 재배용 씨앗을 소환합니다.#{{RETPullroot}} 새싹은 공격하는 방향으로 날아가며 접촉한 적에게 피해를 주며 일정 횟수의 피해를 주면 사라집니다.",
+		},
+
+		[Retribution.Item.BAG_OF_SEEDS] = {
+			Name = "씨앗 가방",
+			QuoteDesc = "부유한 수확",
+			Description = "{{RETPullroot}} 방 입장 시 접촉 후 깨어나는 재배용 씨앗을 소환합니다.#{{RETPullroot}} 새싹은 공격하는 방향으로 날아가며 접촉한 적에게 피해를 주며 일정 횟수의 피해를 주면 사라집니다.",
+		},
+
+		[Retribution.Item.BABYS_BREATH] = {
+			Name = "새싹의 숨결",
+			QuoteDesc = "불안정한 죽음의 경멸",
+			Description = "{{Collectible" .. Retribution.Item.BAPTISMAL_FONT .. "}} 적 처치 시 적의 최대 체력에 비례한 범위만큼 주변의 적을 약화시킵니다.",
+		},
+
+		[Retribution.Item.BLEEDING_HEART] = {
+			Name = "흘러내리는 심장",
+			QuoteDesc = "매혹성 방혈",
+			Description = "↑ {{Heart}}최대 체력 +1#↑ {{Heart}}빨간하트 +1#{{Charm}} 5%의 확률로 적을 매혹시키는 공격이 나갑니다.#{{LuckSmall}} :행운 17+일 때 25%#매혹된 적은 주기적으로 랜덤 방향으로 눈물을 흩뿌립니다.#{{Charm}} 매혹된 적 처치 시 적의 최대 체력에 비례한 범위만큼 주변의 적에게 추가로 매혹시킵니다.",
+		},
+
+		[Retribution.Item.PUFFSTOOL] = {
+			Name = "연기 버섯",
+			QuoteDesc = "연기 폭탄",
+			Description = "사용 시 공격하는 방향으로 버섯을 던집니다.#{{Confusion}} 던진 위치에 20초동안 연막을 뿌리며 연막 안에 있는 적을 혼란시킵니다.",
+		},
+
+		[Retribution.Item.GLORIOSA] = {
+			Name = "글로리오사",
+			QuoteDesc = "불타는 눈물",
+			Description = "↓ {{Tears}}연사 배율 x0.75#{{Burning}} 적에게 화상을 입히는 공격이 나갑니다.#눈물을 곡선형으로 발사하며 착지 지점에 작은 불길을 발생시킵니다.#!!! 불길은 캐릭터에게도 피해를 줍니다.",
+		},
+
+		[Retribution.Item.CORPSE_FLOWER] = {
+			Name = "썩은 꽃",
+			QuoteDesc = "감염성 눈물",
+			Description = "{{RottenHeart}} 썩은하트 하나를 드랍합니다.#10%의 확률로 감염성 독 공격이 나갑니다.#중독된 적은 주기적으로 자폭 파리를 소환하나 소환한 적에게는 피해를 줄 수 없습니다.#{{LuckSmall}} :행운 36+일 때 100%",
+		},
+
   }
   local rtTrinketDesc = {
   	[Retribution.Trinket.BOOKMARK] 		= {
@@ -1121,6 +1168,18 @@ if Retribution then
   		QuoteDesc = "부서지는 룬",
   		Description = "{{Card" .. Card.RUNE_SHARD .. "}} 룬 사용 시 Rune Shard 1~2개를 드랍합니다.#방 안의 오브젝트가 주문석로 바뀔 확률 증가(해금 필요)#주문석은 파괴될 시 랜덤 룬 효과를 발동합니다.",
   	},
+
+		[Retribution.Trinket.WHETSTONE] = {
+			Name = "숫돌",
+			QuoteDesc = "날카로워진 돌덩이 + 넉백 증가",
+			Description = "!!! 장애물이 확률적으로 가시돌로 바뀝니다.#공격이 적을 더 강하게 밀쳐냅니다.",
+		},
+
+		[Retribution.Trinket.SEED_PACKET] = {
+			Name = "씨앗 다발",
+			QuoteDesc = "뿌린 대로 거두리라",
+			Description = "{{RETPullroot}} 적 처치 시 확률적으로 자폭 꿀벌 혹은 접촉 후 깨어나는 재배용 씨앗을 소환합니다.#{{RETPullroot}} 새싹은 공격하는 방향으로 날아가며 접촉한 적에게 피해를 주며 일정 횟수의 피해를 주면 사라집니다.",
+		},
 
 
 	-- Cursed Trinkets
@@ -1394,6 +1453,36 @@ if Retribution then
   		Description = "↓ 소지 중일 때 쏠림 현상이 발생하여 특정 방향으로 계속 이동합니다.",
   	},
 
+		[Retribution.Trinket.CURSED_CAPSULE] = {
+			Name = "저주 캡슐",
+			QuoteDesc = "팔 때 생기는 저주",
+			Description = "!!! {{RETCursedTrinket}}판매 시 다른 저주받은 장신구가 새로 흡수됩니다.",
+		},
+
+		[Retribution.Trinket.BANANA_PEPPER] = {
+			Name = "바나나 고추",
+			QuoteDesc = "화끈하네... 너가 말야",
+			Description = "↓ 공격 시 확률적으로 캐릭터에게 피해를 주는 불꽃을 발사합니다.",
+		},
+
+		[Retribution.Trinket.UNKNOWN] = {
+			Name = "???",
+			QuoteDesc = "쫄?",
+			Description = "!!! {{RETCursedTrinket}}획득 시 랜덤 저주 장신구로 바뀝니다.",
+		},
+
+		[Retribution.Trinket.GUPPYS_WARBLE] = {
+			Name = "구피의 목소리",
+			QuoteDesc = "뭔가 가득찬 친구",
+			Description = "↓ 적 처치 시 적의 최대 체력에 비례하여 Swarm Fly를 여러 마리 소환합니다.",
+		},
+
+		[Retribution.Trinket.DIRTY_ERASER] = {
+			Name = "더럽혀진 지우개",
+			QuoteDesc = "적 더럽히기",
+			Description = "↓ 보스가 아닌 적이 확률적으로 2배로 등장합니다.",
+		},
+
 		[Retribution.Trinket.ANIMAL_CROSSING_JOYCON] = {
   		Name = "동물의 숲 에디션 왼쪽 Joy-con",
   		QuoteDesc = "동숲 한정판!",
@@ -1633,103 +1722,82 @@ if Retribution then
 
 	if Retribution.Version >= versionNext then
 		wakaba_krdesc.KeyValueBulkAppend(rtBirthrightDesc ,{
-			[Retribution.PLAYER_TYPE.PERSEPHONE] = {
-				Name = "Persephone",
-				Description = "{{RETPullroot}} 새싹이 더 멀리 날아가며 적과 2회 이상 부딪힐 수 있습니다.#{{RETPullroot}} 돌아올 때 캐릭터에게 더 가깝게 돌아옵니다.",
-				QuoteDesc = "확실한 소비",
-			},
 		})
 		wakaba_krdesc.KeyValueBulkAppend(rtCollectibleDesc ,{
-
-			[Retribution.Item.SEED_SACK] = {
-				Name = "씨앗 자루",
-				QuoteDesc = "뽑아라! 뽑아라!",
-				Description = "{{RETPullroot}} 사용 시 3~5마리의 재배용 씨앗을 소환합니다.#{{RETPullroot}} 새싹은 공격하는 방향으로 날아가며 접촉한 적에게 피해를 주며 일정 횟수의 피해를 주면 사라집니다.",
-			},
-
-			[Retribution.Item.BAG_OF_SEEDS] = {
-				Name = "씨앗 가방",
-				QuoteDesc = "부유한 수확",
-				Description = "{{RETPullroot}} 방 입장 시 접촉 후 깨어나는 재배용 씨앗을 소환합니다.#{{RETPullroot}} 새싹은 공격하는 방향으로 날아가며 접촉한 적에게 피해를 주며 일정 횟수의 피해를 주면 사라집니다.",
-			},
-
-			[Retribution.Item.BABYS_BREATH] = {
-				Name = "새싹의 숨결",
-				QuoteDesc = "불안정한 죽음의 경멸",
-				Description = "{{Collectible" .. Retribution.Item.BAPTISMAL_FONT .. "}} 적 처치 시 적의 최대 체력에 비례한 범위만큼 주변의 적을 약화시킵니다.",
-			},
-
-			[Retribution.Item.BLEEDING_HEART] = {
-				Name = "흘러내리는 심장",
-				QuoteDesc = "매혹성 방혈",
-				Description = "↑ {{Heart}}최대 체력 +1#↑ {{Heart}}빨간하트 +1#{{Charm}} 5%의 확률로 적을 매혹시키는 공격이 나갑니다.#{{LuckSmall}} :행운 17+일 때 25%#매혹된 적은 주기적으로 랜덤 방향으로 눈물을 흩뿌립니다.#{{Charm}} 매혹된 적 처치 시 적의 최대 체력에 비례한 범위만큼 주변의 적에게 추가로 매혹시킵니다.",
-			},
-
-			[Retribution.Item.PUFFSTOOL] = {
-				Name = "연기 버섯",
-				QuoteDesc = "연기 폭탄",
-				Description = "사용 시 공격하는 방향으로 버섯을 던집니다.#{{Confusion}} 던진 위치에 20초동안 연막을 뿌리며 연막 안에 있는 적을 혼란시킵니다.",
-			},
-
-			[Retribution.Item.GLORIOSA] = {
-				Name = "글로리오사",
-				QuoteDesc = "불타는 눈물",
-				Description = "↓ {{Tears}}연사 배율 x0.75#{{Burning}} 적에게 화상을 입히는 공격이 나갑니다.#눈물을 곡선형으로 발사하며 착지 지점에 작은 불길을 발생시킵니다.#!!! 불길은 캐릭터에게도 피해를 줍니다.",
-			},
-
-			[Retribution.Item.CORPSE_FLOWER] = {
-				Name = "썩은 꽃",
-				QuoteDesc = "감염성 눈물",
-				Description = "{{RottenHeart}} 썩은하트 하나를 드랍합니다.#10%의 확률로 감염성 독 공격이 나갑니다.#중독된 적은 주기적으로 자폭 파리를 소환하나 소환한 적에게는 피해를 줄 수 없습니다.#{{LuckSmall}} :행운 36+일 때 100%",
+			[Retribution.Item.NEVERLASTING_PILL] = {
+				Name = "사라져가는 알약",
+				QuoteDesc = "능력치 패키지",
+				Description = "!!! 일회용#능력치 증감 알약을 6회 사용합니다.",
 			},
 		})
 		wakaba_krdesc.KeyValueBulkAppend(rtTrinketDesc ,{
 
 			-- normal ret
-			[Retribution.Trinket.WHETSTONE] = {
-				Name = "숫돌",
-				QuoteDesc = "날카로워진 돌덩이 + 넉백 증가",
-				Description = "!!! 장애물이 확률적으로 가시돌로 바뀝니다.#공격이 적을 더 강하게 밀쳐냅니다.",
-			},
-
-			[Retribution.Trinket.SEED_PACKET] = {
-				Name = "씨앗 다발",
-				QuoteDesc = "뿌린 대로 거두리라",
-				Description = "{{RETPullroot}} 적 처치 시 확률적으로 자폭 꿀벌 혹은 접촉 후 깨어나는 재배용 씨앗을 소환합니다.#{{RETPullroot}} 새싹은 공격하는 방향으로 날아가며 접촉한 적에게 피해를 주며 일정 횟수의 피해를 주면 사라집니다.",
-			},
 
 			-- cursed for buta-chan
-			[Retribution.Trinket.CURSED_CAPSULE] = {
-				Name = "저주 캡슐",
-				QuoteDesc = "팔 때 생기는 저주",
-				Description = "!!! {{RETCursedTrinket}}판매 시 다른 저주받은 장신구가 새로 흡수됩니다.",
+
+			-- modified
+			[Retribution.Trinket.LOVE_LETTER] = {
+  			Name = "러브레터",
+  			QuoteDesc = "사거리 감소",
+  			Description = "↓ {{RangeSmall}}사거리 -1",
+  		},
+
+			[Retribution.Trinket.NUMBER_ONE_2] = {
+				Name = "오줌싸개 2",
+				QuoteDesc = "사거리 대폭 감소",
+				Description = "↓ {{RangeSmall}}사거리 -2#↓ {{RangeSmall}}사거리 배율 x0.8",
 			},
 
-			[Retribution.Trinket.BANANA_PEPPER] = {
-				Name = "바나나 고추",
-				QuoteDesc = "화끈하네... 너가 말야",
-				Description = "↓ 공격 시 확률적으로 캐릭터에게 피해를 주는 불꽃을 발사합니다.",
+			[Retribution.Trinket.MS_TICK] = {
+				Name = "진드기 아가씨",
+				QuoteDesc = "잘 떨어져...",
+				Description = "↓ 획득 시 캐릭터가 체력 반칸의 피해를 받습니다.(사망하지 않음)#!!! 피격 시 해당 장신구가 강제로 바닥에 놓여집니다.",
 			},
 
-			[Retribution.Trinket.UNKNOWN] = {
-				Name = "???",
-				QuoteDesc = "쫄?",
-				Description = "!!! {{RETCursedTrinket}}획득 시 랜덤 저주 장신구로 바뀝니다.",
-			},
-
-			[Retribution.Trinket.GUPPYS_WARBLE] = {
-				Name = "구피의 목소리",
-				QuoteDesc = "뭔가 가득찬 친구",
-				Description = "↓ 적 처치 시 적의 최대 체력에 비례하여 Swarm Fly를 여러 마리 소환합니다.",
-			},
-
-			[Retribution.Trinket.DIRTY_ERASER] = {
-				Name = "더럽혀진 지우개",
-				QuoteDesc = "적 더럽히기",
-				Description = "↓ 보스가 아닌 적이 확률적으로 2배로 등장합니다.",
+			[Retribution.Trinket.DADS_NUKE] = {
+				Name = "아빠의 핵",
+				QuoteDesc = "폴아웃",
+				Description = "↓ 방 상단에서 방사성 탄환이 소환됩니다.",
 			},
 		})
 		wakaba_krdesc.KeyValueBulkAppend(rtCardDesc ,{
+
+			[Retribution.Card.RANGE_CAPSULE] 					= {
+				Name = "활 캡슐",
+				QuoteDesc = "",
+				Description = "↑ {{RangeSmall}}사거리 +2",
+			},
+			[Retribution.Card.RANGE_DAMAGE_CAPSULE] 			= {
+				Name = "콤보 캡슐",
+				QuoteDesc = "",
+				Description = "↑ {{RangeSmall}}사거리 +2#↑ {{DamageSmall}}공격력 +0.5",
+			},
+			[Retribution.Card.HEALTH_RANGE_CAPSULE] 			= {
+				Name = "콤보 캡슐",
+				QuoteDesc = "",
+				Description = "↑ {{Heart}}최대 체력 +1#↑ {{RangeSmall}}사거리 +2",
+			},
+			[Retribution.Card.LUCK_RANGE_CAPSULE] 			= {
+				Name = "콤보 캡슐",
+				QuoteDesc = "",
+				Description = "↑ {{LuckSmall}}행운 +1#↑ {{RangeSmall}}사거리 +2",
+			},
+			[Retribution.Card.RANGE_SHOTSPEED_CAPSULE] 		= {
+				Name = "콤보 캡슐",
+				QuoteDesc = "",
+				Description = "↑ {{RangeSmall}}사거리 +2#↑ {{ShotspeedSmall}}탄속 +0.1",
+			},
+			[Retribution.Card.RANGE_SPEED_CAPSULE] 			= {
+				Name = "콤보 캡슐",
+				QuoteDesc = "",
+				Description = "↑ {{RangeSmall}}사거리 +2#↑ {{SpeedSmall}}이동속도 +0.1",
+			},
+			[Retribution.Card.RANGE_FIREDELAY_CAPSULE] 		= {
+				Name = "콤보 캡슐",
+				QuoteDesc = "",
+				Description = "↑ {{RangeSmall}}사거리 +2#↑ {{TearsSmall}}연사 +0.25",
+			},
 
 		})
 	end
