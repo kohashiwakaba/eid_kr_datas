@@ -42,7 +42,7 @@ if HeavensCall then
 			QuoteDesc = "간이 슬로우 모션",
 		},
 		[Items.Uranus] = {
-			Description = "{{PoopPickup}} 공격 반대방향으로 똥 방울이 나갑니다.#{{PoopPickup}} 똥 방울에 맞은 적은 5초동안 {{Weakness}}약화되며 캐릭터의 {{TearsSmall}}/{{DamageSmall}}을 증가시키는 장판을 생성합니다.#{{PoopPickup}} Pooped enemies will have weakness and spawn boosting brown creep. #{{Collectible725}} 약화된 적 처치 시 그 위치에 IBS 똥을 소환하며; #{{Collectible576}} 적 처치 실패 시 아군 Dip 패밀리어를 소환합니다.",
+			Description = "{{PoopPickup}} 공격 반대방향으로 똥 방울이 나갑니다.#{{PoopPickup}} 똥 방울에 맞은 적은 5초동안 {{Weakness}}약화되며 캐릭터의 {{TearsSmall}}/{{DamageSmall}}을 증가시키는 장판을 생성합니다.#{{Collectible725}} 약화된 적 처치 시 그 위치에 IBS 똥을 소환하며; #{{Collectible576}} 적 처치 실패 시 아군 Dip 패밀리어를 소환합니다.",
 			Name = "천왕성?",
 			QuoteDesc = "뿌지직 천국",
 		},
