@@ -14,66 +14,66 @@ if HeavensCall then
 		[Items.Mercurius] = {
 			Description = "↑ {{SpeedSmall}}이동속도 +0.23#비행 능력을 얻습니다.#7%의 확률로 적 처치 시 꼬마 아이작 패밀리어를 소환하는 {{ColorTransform}}비스무트{{ColorText}} 공격이 나갑니다.#{{LuckSmall}} 행운 14+일 때 50%#{{Collectible77}} 방 입장 시 5%의 확률로 My Little Unicorn 아이템의 효과를 발동합니다.",
 			Name = "수성?",
-			QuoteDesc = "quote",
+			QuoteDesc = "당신만의 군대",
 		},
 		[Items.Venus] = {
-			Description = "#{{Burning}} Gives a candle familiar, after 15 enemies killed, it will spawn a wax ally. #{{Burning}} Wax allies can be executed by holding CTRL, executed allies have a chance to drop Blazing Hearts, the less health, the more chances. #{{Burning}} Pickuing up a Blazing Heart will give you a Willo",
-			Name = "name",
-			QuoteDesc = "quote",
+			Description = "#{{Collectible687}} 적 15마리 처치 시 캐릭터가 움직이는 방향으로 움직이며 공격하는 방향으로 공격하는 아군 적을 소환합니다.#{{Burning}} 아군 몬스터는 Ctrl 버튼을 꾹 누르면 처치되며 최대 체력에 반비례한 확률로 {{Burning}}불타는 하트를 드랍합니다.#{{Trinket186}} 불타는 하트를 집으면 공격하는 방향으로 돌진하는 Willo를 소환합니다.",
+			Name = "금성?",
+			QuoteDesc = "밀랍 친구들!",
 		},
 		[Items.Terra] = {
 			Description = "방 입장 시 사과를 소환합니다.#사과를 집으면 체력이 가장 많은 적에게 초당 7의 피해를 주는 뱀을 소환합니다.#시간이 지날 수록 사과가 익으며(최대 2회) 사과 단계에 따라 뱀의 피해량이 증가합니다.",
 			Name = "지구?",
-			QuoteDesc = "quote",
+			QuoteDesc = "선악과",
 		},
 		[Items.Mars] = {
-			Description = "#{{Bait}} On use, will give Isaac a laser gun for some seconds. #{{Blank}} #{{Blank}} While the effect is active: #{{ArrowUp}} damage up, tears up, shot speed up, range up. #{{ArrowDown}} Big speed down. #{{Blank}} # The laser gun timer can be increased by killing enemies. # Will go to your pocket active slot if available.",
-			Name = "name",
-			QuoteDesc = "quote",
+			Description = "#사용 시 일정 시간동안 캐릭터가 강한 넉백을 받는 폭발성 레이저를 발사합니다.#발동 중일 때 {{ColorLime}}{{DamageSmall}}x2.5/{{TearsSmall}}x15/{{RangeSmall}}+1.75/{{ShotspeedSmall}}x3{{CR}}, {{ColorRed}}{{SpeedSmall}}-1.2{{CR}}#{{Blank}} 적 처치 시 남은 시간 연장 가능 #!!! 가능한 경우, 카드/알약 슬롯에 배정됩니다.",
+			Name = "화성?",
+			QuoteDesc = "죽이기 위해 태어난 존재",
 		},
 		[Items.Jupiter] = {
-			Description = "# Isaac will create an electrified laser as he walks. # If it loops in a circle, it will create a short circuit and electrocute enemies within it. # The short circuit will also activate some slots machines for free and upgrade batteries with a chance to make any of them explode and revive shopkeepers as allies.",
-			Name = "name",
-			QuoteDesc = "quote",
+			Description = "#캐릭터의 위치에 전류가 생깁니다.#전류를 원형으로 완성하면 그 전류에서 레이저 공격을 생성합니다.#!!! 특정 오브젝트에 레이저 공격이 닿을 경우:#{{Slotmachine}} 슬롯류: 폭발 or 무료 1회#{{Battery}} 배터리: 폭발 or 픽업 업그레이드#!!! 상점 주인 : 아군 몬스터로 부활",
+			Name = "목성?",
+			QuoteDesc = "고압 전류",
 		},
 		[Items.Saturnus] = {
-			Description = "#{{TimerSmall}} On use it will freeze time. # Tears will start moving when time resumes. # Lasers will have the anti-gravity effect. # Placed bombs will instantly explode after the effect ends. #{{ArrowUp}} speed up and tears up while the effect is active. # Will go to your pocket active slot if available.",
-			Name = "name",
-			QuoteDesc = "quote",
+			Description = "#{{TimerSmall}} 사용 시 방 안의 모든 적 및 눈물/레이저/폭탄의 움직임이 5초간 멈춥니다.#{{Blank}} (레이저는 {{Collectible222}} 효과 적용)#{{Blank}} (설치한 폭탄은 효과 종료 즉시 폭발)#{{ArrowUp}} 발동 중일 때 {{SpeedSmall}}=2/{{TearsSmall}}x3#!!! 가능한 경우, 카드/알약 슬롯에 배정됩니다.",
+			Name = "토성?",
+			QuoteDesc = "간이 슬로우 모션",
 		},
 		[Items.Uranus] = {
-			Description = "{{PoopPickup}} Isaac will poop in the opposite direction of his shots. #{{PoopPickup}} Poop tears will apply pooped debuff to enemies. #{{PoopPickup}} Pooped enemies will have weakness and spawn boosting brown creep. #{{PoopPickup}} Killing a pooped enemy will spawn a T??? poop. #{{PoopPickup}} If the enemy does not die and the poop effect wears off, friendly dips will spawn on the enemy.",
-			Name = "name",
-			QuoteDesc = "quote",
+			Description = "{{PoopPickup}} 공격 반대방향으로 똥 방울이 나갑니다.#{{PoopPickup}} 똥 방울에 맞은 적은 5초동안 {{Weakness}}약화되며 캐릭터의 {{TearsSmall}}/{{DamageSmall}}을 증가시키는 장판을 생성합니다.#{{PoopPickup}} Pooped enemies will have weakness and spawn boosting brown creep. #{{Collectible725}} 약화된 적 처치 시 그 위치에 IBS 똥을 소환하며; #{{Collectible576}} 적 처치 실패 시 아군 Dip 패밀리어를 소환합니다.",
+			Name = "천왕성?",
+			QuoteDesc = "뿌지직 천국",
 		},
 		[Items.Neptunus] = {
 			Description = "{{Throwable}} 공격하는 방향으로 삼지창을 날릴 수 있습니다.#삼지창으로 적 처치 시 4%의 확률로 블랙홀을 소환합니다.#{{LuckSmall}} 행운 20+일 때 15%",
 			Name = "해왕성?",
-			QuoteDesc = "quote",
+			QuoteDesc = "심연이 우리를 드려다볼 때",
 		},
 	}
 
 	local TrinketDesc = {
 		[Trinkets.Shard] = {
 			Description = "13%의 확률로 피해를 막으나;#!!! 방 안의 랜덤 위치로 순간이동합니다.",
-			Name = "name",
-			QuoteDesc = "quote",
+			Name = "퀀텀 조각",
+			QuoteDesc = "언제 어디서나",
 		},
 		[Trinkets.Sputnik] = {
-			Description = "# Gives a satellite orbital. #{{Throwable}} Orbitals will move slower but be farther away from you.",
-			Name = "name",
-			QuoteDesc = "quote",
+			Description = "캐릭터의 주변을 돌며 접촉하는 적에게 초당 6의 피해를 입힙니다",
+			Name = "스푸트닉",
+			QuoteDesc = "위성 친구",
 		},
 		[Trinkets.Flag] = {
-			Description = "#{{LuckSmall}} Increases chance to find Telescopes.#{{LuckSmall}} Telescopes will have a higher chance to give moons. #{{DamageSmall}} Moon familiars will do more damage and attack more.",
-			Name = "name",
-			QuoteDesc = "quote",
+			Description = "↑ 망원경 발견 확률 증가#↑ 망원경이 위성 패밀리어를 줄 확률 증가#{{DamageSmall}} 위성 패밀리어의 피해량 증가.",
+			Name = "흐려진 깃발",
+			QuoteDesc = "달을 향해서",
 		},
 	}
-	
-	EID:addEntity(mod.EntityInf[mod.Entity.Telescope].ID, mod.EntityInf[mod.Entity.Telescope].VAR, mod.EntityInf[mod.Entity.Telescope].SUB, "Telescope", "Can give as rewards:#{{Blank}} Wisps, Astral items wisps, Soul Hearts, Blazing Hearts and {{ColorCyan}}Moon {{ColorCyan}}Orbitals", "en_us")
-	EID:addEntity(mod.EntityInf[mod.Entity.Statue].ID, mod.EntityInf[mod.Entity.Statue].VAR, mod.EntityInf[mod.Entity.Statue].SUB, "Astral Statue", "#{{Planetarium}} Take the item and fight a boss.#{{Bomb}} Bombing the statue will turn the item into pickups and spawn the boss.", "en_us")
-	EID:addEntity(mod.EntityInf[mod.Entity.Statue].ID, mod.EntityInf[mod.Entity.Statue].VAR+1, mod.EntityInf[mod.Entity.Statue].SUB, "[Lunar Pact]", "#{{UltraSecretRoom}} Take an item in exchange for broken, red and soul hearts.#{{Warning}} Broken hearts will also subtract the same red life (not containers), but it can't kill you.#For example: picking up a deal of 3 broken hearts with only 3 full red hearts will leave you with half red heart, 3 red containers and 3 broken hearts.", "en_us")
+
+	EID:addEntity(mod.EntityInf[mod.Entity.Telescope].ID, mod.EntityInf[mod.Entity.Telescope].VAR, mod.EntityInf[mod.Entity.Telescope].SUB, "망원경", "1{{Coin}}을 소모하여 아래 중 하나 발동:#{{Blank}} {{Collectible584}}불꽃#{{Blank}} {{ItemPoolPlanetarium}}천체관 아이템 불꽃#{{Blank}} {{SoulHeart}}소울하트/불타는하트#{{Blank}} {{ColorCyan}}위성 패밀리어", "ko_kr")
+	EID:addEntity(mod.EntityInf[mod.Entity.Statue].ID, mod.EntityInf[mod.Entity.Statue].VAR, mod.EntityInf[mod.Entity.Statue].SUB, "아스트랄 석상", "#{{ItemPoolPlanetarium}} 아이템 획득 시 보스전을 시작합니다.#{{Bomb}} 석상을 파괴하면 아이템이 분해되며 보스전을 시작합니다.", "ko_kr")
+	EID:addEntity(mod.EntityInf[mod.Entity.Statue].ID, mod.EntityInf[mod.Entity.Statue].VAR+1, mod.EntityInf[mod.Entity.Statue].SUB, "[달의 계약]", "#{{UltraSecretRoom}} {{Heart}}최대 체력/{{SoulHeart}}소울하트 소모에 더해 {{BrokenHeart}}부서진하트를 얻는 조건으로 거래합니다.#{{Warning}} 거래 시 획득하는 {{BrokenHeart}}부서진하트만큼 {{Heart}}빨간하트/{{SoulHeart}}소울하트를 추가로 차감합니다.(사망하지 않음)", "ko_kr")
 
 	for itemID, itemdesc in pairs(CollectibleDesc) do
 		local desc = itemdesc.Description
@@ -103,6 +103,68 @@ if HeavensCall then
 		EID:addTrinket(itemID, desc, itemdesc.Name, "ko_kr")
 	end
 
+
+	local i_queueLastFrame = {}
+	local i_queueNow = {}
+	wakaba_krdesc:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, function (_, player)
+		if Options.Language ~= "kr" then return end
+		local descTable = CollectibleDesc
+		if not descTable and not descTableBR then return end
+
+		local initSeed = tostring(player.InitSeed)
+
+		i_queueNow[initSeed] = player.QueuedItem.Item
+		if (i_queueNow[initSeed] ~= nil) then
+			for itemID, itemdesc in pairs(descTable) do
+				if (i_queueNow[initSeed].ID == itemID and i_queueNow[initSeed]:IsCollectible() and i_queueLastFrame[initSeed] == nil) then
+					local itemName = (itemdesc.Name ~= "" and itemdesc.Name) or i_queueNow[initSeed].Name
+					local queueDesc = itemdesc.QuoteDesc or i_queueNow[initSeed].Description
+					Game():GetHUD():ShowItemText(itemName, queueDesc)
+				end
+			end
+		end
+		i_queueLastFrame[initSeed] = i_queueNow[initSeed]
+	end)
+
+
+	local t_queueLastFrame = {}
+	local t_queueNow = {}
+	wakaba_krdesc:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, function (_, player)
+		if Options.Language ~= "kr" then return end
+		local descTable = TrinketDesc
+		if not descTable then return end
+
+		local initSeed = tostring(player.InitSeed)
+
+		t_queueNow[initSeed] = player.QueuedItem.Item
+		if (t_queueNow[initSeed] ~= nil) then
+			for itemID, itemdesc in pairs(descTable) do
+				if (t_queueNow[initSeed].ID == itemID and t_queueNow[initSeed]:IsTrinket() and t_queueLastFrame[initSeed] == nil) then
+					local itemName = (itemdesc.Name ~= "" and itemdesc.Name) or t_queueNow[initSeed].Name
+					local queueDesc = itemdesc.QuoteDesc or t_queueNow[initSeed].Description
+					Game():GetHUD():ShowItemText(itemName, queueDesc)
+				end
+			end
+		end
+		t_queueLastFrame[initSeed] = t_queueNow[initSeed]
+	end)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	return {
 		birthright = BirthrightDesc,
 		collectibles = CollectibleDesc,
@@ -110,5 +172,5 @@ if HeavensCall then
 		cards = CardDesc,
 		pills = PillDesc,
 	}
-	
+
 end

@@ -30,6 +30,7 @@ wakaba_krdesc.REVEL = include("wakaba_krdesc.revelations")
 wakaba_krdesc.GODMODE = include("wakaba_krdesc.godmode")
 wakaba_krdesc.SAMAEL = include("wakaba_krdesc.samael")
 wakaba_krdesc.DELIVERANCE = include("wakaba_krdesc.deliverance")
+wakaba_krdesc.HEAVENS_CALL = include("wakaba_krdesc.heavens_call")
 
 --[[
   Each included objects returns as specific format
