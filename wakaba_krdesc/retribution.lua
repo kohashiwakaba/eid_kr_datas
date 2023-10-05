@@ -1735,7 +1735,7 @@ if Retribution then
 			Name = "검은 망치",
 			QuoteDesc = "내가 곧 너를 심판하리라",
 			Description = "사용 시 그 방에서 숫자 공격을 합니다.#숫자에 따라 랜덤 효과 발동:#1: x0.33/캐릭터가 뒤로 밀려남#2: {{DamageSmall}} x0.66#3: {{DamageSmall}} x1 #4: {{DamageSmall}} x1.33#5: {{DamageSmall}} x1.66/{{Collectible494}}#6: {{DamageSmall}} x2/{{Burning}}화상#7: {{DamageSmall}} x2.33/처치 시 33%의 확률로 {{Heart}} 드랍#8: {{DamageSmall}} x2.66/{{Freezing}}즉사/빙걸 #9: {{DamageSmall}} x5/{{ColorOrange}}폭발성{{CR}}",
-			Wisps = "{{ColorYellow}}중앙 x1{{CR}}#불꽃이 위의 눈물을 발사합니다.",
+			Wisps = "{{ColorYellow}}중앙 x1{{CR}}#불꽃이 숫자 눈물을 발사합니다.",
 			Belial = "",
 		},
 
