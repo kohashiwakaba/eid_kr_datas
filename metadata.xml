@@ -10,6 +10,7 @@
     [*]Revelations
     [*]Samael
     [*]Deliverance
+    [*]Heaven's Call
 [/list]
 Released as seperate mod to make translation update faster.
 
@@ -18,9 +19,10 @@ EID : https://steamcommunity.com/sharedfiles/filedetails/?id=836319872
 Fiend Folio : https://steamcommunity.com/sharedfiles/filedetails/?id=2851063440
 Retribution : https://steamcommunity.com/sharedfiles/filedetails/?id=2881008017
 Revelations : https://steamcommunity.com/sharedfiles/filedetails/?id=2880387531
+Heaven's Call : https://steamcommunity.com/sharedfiles/filedetails/?id=2839972756
 
 Special thanks to Curezor for adding Fiend Folio icons for EID!</description>
-    <version>1.34</version>
+    <version>1.36</version>
     <visibility>Public</visibility>
     <tag id="Lua"/>
 </metadata>

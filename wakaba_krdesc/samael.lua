@@ -474,6 +474,8 @@ wakaba_krdesc:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, function (_, playe
 	local descTableBR = BirthrightDesc
 	if not descTable and not descTableBR then return end
 
+	local initSeed = tostring(player.InitSeed)
+
 	i_queueNow[initSeed] = player.QueuedItem.Item
 	if (i_queueNow[initSeed] ~= nil) then
 		if i_queueNow[initSeed].ID == CollectibleType.COLLECTIBLE_BIRTHRIGHT then
