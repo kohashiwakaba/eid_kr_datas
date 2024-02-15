@@ -374,7 +374,7 @@ for itemID, itemdesc in pairs(CollectibleDesc) do
 		wakaba.descriptions["ko_kr"].collectibles[itemID] = {
 			targetMod = "Samael",
 			itemName = itemdesc.Name,
-			Description = itemdesc.Description,
+			description = itemdesc.Description,
 			queueDesc = itemdesc.QuoteDesc,
 		}
 	end
@@ -391,7 +391,7 @@ for itemID, itemdesc in pairs(TrinketDesc) do
 		wakaba.descriptions["ko_kr"].trinkets[itemID] = {
 			targetMod = "Samael",
 			itemName = itemdesc.Name,
-			Description = itemdesc.Description,
+			description = itemdesc.Description,
 			queueDesc = itemdesc.QuoteDesc,
 		}
 	end
