@@ -397,6 +397,8 @@ if Deliverance then
 	end)
 
 
+	local i_queueLastFrame = {}
+	local i_queueNow = {}
 	wakaba_krdesc:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, function (_, player)
 		if Options.Language ~= "kr" then return end
 		local descTable = CollectibleDesc
