@@ -200,7 +200,7 @@ do
   wakaba_krdesc:AddCallback(ModCallbacks.MC_USE_PILL, function (_, pillEffectID, playerWhoUsedItem, useFlags)
     if Options.Language ~= "kr" or useFlags & UseFlag.USE_NOHUD == UseFlag.USE_NOHUD then return end
     if managedTable.pills[pillEffectID] then
-      Game():GetHUD():ShowItemText(PillDesc[pillEffectID].Name, PillDesc[pillEffectID].QuoteDesc)
+      Game():GetHUD():ShowItemText(managedTable.pills[pillEffectID].Name, managedTable.pills[pillEffectID].QuoteDesc)
     end
   end)
 
