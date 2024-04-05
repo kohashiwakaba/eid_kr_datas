@@ -24,13 +24,15 @@ end
 
 wakaba_krdesc.ERRORS = {}
 
-wakaba_krdesc.FIENDFOLIO = include("wakaba_krdesc.fiendfolio")
-wakaba_krdesc.RETRIBUTION = include("wakaba_krdesc.retribution")
-wakaba_krdesc.REVEL = include("wakaba_krdesc.revelations")
-wakaba_krdesc.GODMODE = include("wakaba_krdesc.godmode")
-wakaba_krdesc.SAMAEL = include("wakaba_krdesc.samael")
-wakaba_krdesc.DELIVERANCE = include("wakaba_krdesc.deliverance")
-wakaba_krdesc.HEAVENS_CALL = include("wakaba_krdesc.heavens_call")
+wakaba_krdesc_entries = {}
+wakaba_krdesc_entries.FIENDFOLIO = include("wakaba_krdesc.fiendfolio")
+wakaba_krdesc_entries.RETRIBUTION = include("wakaba_krdesc.retribution")
+wakaba_krdesc_entries.REVEL = include("wakaba_krdesc.revelations")
+wakaba_krdesc_entries.GODMODE = include("wakaba_krdesc.godmode")
+wakaba_krdesc_entries.SAMAEL = include("wakaba_krdesc.samael")
+wakaba_krdesc_entries.DELIVERANCE = include("wakaba_krdesc.deliverance")
+wakaba_krdesc_entries.HEAVENS_CALL = include("wakaba_krdesc.heavens_call")
+wakaba_krdesc_entries.WARPZONE = include("wakaba_krdesc.warpzone")
 
 --[[
   Each included objects returns as specific format
@@ -82,7 +84,127 @@ local function checkStartOfRunWarnings()
 end
 mod:AddCallback(ModCallbacks.MC_POST_RENDER, checkStartOfRunWarnings)
 
+local comb = {
+  birthright = {},
+  collectibles = {},
+  trinkets = {},
+  cards = {},
+  pills = {},
+}
 
+local managedTable = comb
+
+if _wakaba then
+  managedTable = wakaba.descriptions["ko_kr"]
+end
+
+do
+  for modEntry, e in pairs(wakaba_krdesc_entries) do
+    if e and e.targetMod then
+      if e.birthright then
+        for p, b in pairs(e.birthright) do
+          managedTable.birthright[p] = {
+            targetMod = b.targetMod,
+            playerName = b.Name,
+            description = b.Description,
+            queueDesc = b.QuoteDesc,
+          }
+        end
+      end
+      if e.collectibles then
+        for itemID, itemdesc in pairs(e.collectibles) do
+          managedTable.collectibles[itemID] = {
+            targetMod = e.targetMod,
+            itemName = itemdesc.Name,
+            description = itemdesc.Description,
+            queueDesc = itemdesc.QuoteDesc,
+          }
+        end
+      end
+      if e.trinkets then
+        for itemID, itemdesc in pairs(e.trinkets) do
+          managedTable.trinkets[itemID] = {
+            targetMod = e.targetMod,
+            itemName = itemdesc.Name,
+            description = itemdesc.Description,
+            queueDesc = itemdesc.QuoteDesc,
+          }
+        end
+      end
+      if e.cards then
+        for itemID, itemdesc in pairs(e.cards) do
+          managedTable.cards[itemID] = {
+            targetMod = e.targetMod,
+            itemName = itemdesc.Name,
+            description = itemdesc.Description,
+            queueDesc = itemdesc.QuoteDesc,
+          }
+        end
+      end
+      if e.pills then
+        for itemID, itemdesc in pairs(e.pills) do
+          managedTable.pills[itemID] = {
+            targetMod = e.targetMod,
+            itemName = itemdesc.Name,
+            description = itemdesc.Description,
+            queueDesc = itemdesc.QuoteDesc,
+          }
+        end
+      end
+    end
+  end
+end
+
+do
+	local i_queueLastFrame = {}
+	local i_queueNow = {}
+
+  ---@param player EntityPlayer
+	wakaba_krdesc:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, function (_, player)
+		if Options.Language ~= "kr" then return end
+
+		local initSeed = tostring(player.InitSeed)
+
+		i_queueNow[initSeed] = player.QueuedItem.Item
+		if (i_queueNow[initSeed] ~= nil and i_queueLastFrame[initSeed] == nil) then
+      local q = i_queueNow[initSeed] ---@type ItemConfigItem
+      if q:IsCollectible() then
+        if q.ID == CollectibleType.COLLECTIBLE_BIRTHRIGHT then
+          if managedTable.birthright[player:GetPlayerType()] then
+            local entry = managedTable.birthright[player:GetPlayerType()]
+						local itemName = "생득권"
+						local queueDesc = entry.queueDesc
+            if queueDesc then
+              Game():GetHUD():ShowItemText(itemName, queueDesc)
+            end
+          end
+        else
+          if managedTable.collectibles[q.ID] then
+            local entry = managedTable.collectibles[q.ID]
+						local itemName = (entry.itemName ~= "" and entry.itemName) or q.Name
+						local queueDesc = (entry.queueDesc ~= "" and entry.queueDesc) or q.Description
+						Game():GetHUD():ShowItemText(itemName, queueDesc)
+          end
+        end
+      elseif q:IsTrinket() then
+        if managedTable.trinkets[q.ID] then
+          local entry = managedTable.trinkets[q.ID]
+          local itemName = (entry.itemName ~= "" and entry.itemName) or q.Name
+          local queueDesc = (entry.queueDesc ~= "" and entry.queueDesc) or q.Description
+          Game():GetHUD():ShowItemText(itemName, queueDesc)
+        end
+      end
+		end
+		i_queueLastFrame[initSeed] = i_queueNow[initSeed]
+	end)
+  wakaba_krdesc:AddCallback(ModCallbacks.MC_USE_PILL, function (_, pillEffectID, playerWhoUsedItem, useFlags)
+    if Options.Language ~= "kr" or useFlags & UseFlag.USE_NOHUD == UseFlag.USE_NOHUD then return end
+    if managedTable.pills[pillEffectID] then
+      Game():GetHUD():ShowItemText(PillDesc[pillEffectID].Name, PillDesc[pillEffectID].QuoteDesc)
+    end
+  end)
+
+end
 
 -- Reserve current mod indicator for EID
 EID._currentMod = "Wakaba_translation_reserved"

@@ -357,14 +357,6 @@ if Deliverance then
 		if itemdesc.Belial and itemdesc.Belial ~= "" then
 			EID.descriptions["ko_kr"].bookOfBelialBuffs[itemID] = itemdesc.Belial
 		end
-		if wakaba and wakaba.intversion and wakaba.intversion >= 10300 then
-			wakaba.descriptions["ko_kr"].collectibles[itemID] = {
-				targetMod = "Deliverance",
-				itemName = itemdesc.Name,
-				description = desc,
-				queueDesc = itemdesc.QuoteDesc,
-			}
-		end
 	end
 	for itemID, itemdesc in pairs(TrinketDesc) do
 		local desc = itemdesc.Description
@@ -374,14 +366,6 @@ if Deliverance then
 			end
 		end
 		EID:addTrinket(itemID, desc, itemdesc.Name, "ko_kr")
-		if wakaba and wakaba.intversion and wakaba.intversion >= 10300 then
-			wakaba.descriptions["ko_kr"].trinkets[itemID] = {
-				targetMod = "Deliverance",
-				itemName = itemdesc.Name,
-				description = desc,
-				queueDesc = itemdesc.QuoteDesc,
-			}
-		end
 	end
 	for itemID, itemdesc in pairs(CardDesc) do
 		EID:addCard(itemID, itemdesc.Description, itemdesc.Name, "ko_kr")
@@ -389,72 +373,9 @@ if Deliverance then
 	for itemID, itemdesc in pairs(PillDesc) do
 		EID:addPill(itemID, itemdesc.Description, itemdesc.Name, "ko_kr")
 	end
-	wakaba_krdesc:AddCallback(ModCallbacks.MC_USE_PILL, function (_, pillEffectID, playerWhoUsedItem, useFlags)
-		if Options.Language ~= "kr" or useFlags & UseFlag.USE_NOHUD == UseFlag.USE_NOHUD then return end
-		if PillDesc[pillEffectID] then
-			Game():GetHUD():ShowItemText(PillDesc[pillEffectID].Name, PillDesc[pillEffectID].QuoteDesc)
-		end
-	end)
-
-
-	local i_queueLastFrame = {}
-	local i_queueNow = {}
-	wakaba_krdesc:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, function (_, player)
-		if Options.Language ~= "kr" then return end
-		local descTable = CollectibleDesc
-		local descTableBR = BirthrightDesc
-		if not descTable and not descTableBR then return end
-
-		local initSeed = tostring(player.InitSeed)
-
-		i_queueNow[initSeed] = player.QueuedItem.Item
-		if (i_queueNow[initSeed] ~= nil) then
-			if i_queueNow[initSeed].ID == CollectibleType.COLLECTIBLE_BIRTHRIGHT then
-				local playerType = player:GetPlayerType()
-				for playerID, itemdesc in pairs(descTableBR) do
-					if (playerType == playerID and i_queueNow[initSeed]:IsCollectible() and i_queueLastFrame[initSeed] == nil) then
-						local itemName = "생득권"
-						local queueDesc = itemdesc.QuoteDesc or i_queueNow[initSeed].Description
-						Game():GetHUD():ShowItemText(itemName, queueDesc)
-					end
-				end
-			else
-				for itemID, itemdesc in pairs(descTable) do
-					if (i_queueNow[initSeed].ID == itemID and i_queueNow[initSeed]:IsCollectible() and i_queueLastFrame[initSeed] == nil) then
-						local itemName = (itemdesc.Name ~= "" and itemdesc.Name) or i_queueNow[initSeed].Name
-						local queueDesc = itemdesc.QuoteDesc or i_queueNow[initSeed].Description
-						Game():GetHUD():ShowItemText(itemName, queueDesc)
-					end
-				end
-			end
-		end
-		i_queueLastFrame[initSeed] = i_queueNow[initSeed]
-	end)
-
-
-	local t_queueLastFrame = {}
-	local t_queueNow = {}
-	wakaba_krdesc:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, function (_, player)
-		if Options.Language ~= "kr" then return end
-		local descTable = TrinketDesc
-		if not descTable then return end
-
-		local initSeed = tostring(player.InitSeed)
-
-		t_queueNow[initSeed] = player.QueuedItem.Item
-		if (t_queueNow[initSeed] ~= nil) then
-			for itemID, itemdesc in pairs(descTable) do
-				if (t_queueNow[initSeed].ID == itemID and t_queueNow[initSeed]:IsTrinket() and t_queueLastFrame[initSeed] == nil) then
-					local itemName = (itemdesc.Name ~= "" and itemdesc.Name) or t_queueNow[initSeed].Name
-					local queueDesc = itemdesc.QuoteDesc or t_queueNow[initSeed].Description
-					Game():GetHUD():ShowItemText(itemName, queueDesc)
-				end
-			end
-		end
-		t_queueLastFrame[initSeed] = t_queueNow[initSeed]
-	end)
 
 	return {
+		targetMod = "Deliverance",
 		birthright = BirthrightDesc,
 		collectibles = CollectibleDesc,
 		trinkets = TrinketDesc,

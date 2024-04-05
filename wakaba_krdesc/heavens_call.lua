@@ -166,6 +166,7 @@ if HeavensCall then
 
 
 	return {
+		targetMod = "Heaven's call",
 		birthright = BirthrightDesc,
 		collectibles = CollectibleDesc,
 		trinkets = TrinketDesc,
