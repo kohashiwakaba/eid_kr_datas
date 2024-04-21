@@ -33,6 +33,8 @@ wakaba_krdesc_entries.SAMAEL = include("wakaba_krdesc.samael")
 wakaba_krdesc_entries.DELIVERANCE = include("wakaba_krdesc.deliverance")
 wakaba_krdesc_entries.HEAVENS_CALL = include("wakaba_krdesc.heavens_call")
 wakaba_krdesc_entries.WARPZONE = include("wakaba_krdesc.warpzone")
+wakaba_krdesc_entries.SHERIFF = include("wakaba_krdesc.sheriff")
+wakaba_krdesc_entries.YONDU = include("wakaba_krdesc.yondu")
 
 --[[
   Each included objects returns as specific format
