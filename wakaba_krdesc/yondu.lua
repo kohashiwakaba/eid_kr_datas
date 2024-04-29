@@ -10,7 +10,6 @@ if Yondu_Arrow_mod then
 	local BirthrightDesc = {
 		[mod.yonduType] = {
 			Name = "Yondu",
-			Description = "",
 			Description = "↑ 화살의 속도 및 공격 빈도 증가",
 			QuoteDesc = "욘두의 위력을 느껴라",
 		},
