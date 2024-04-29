@@ -1,0 +1,57 @@
+
+if AliceOfBlueArchive then
+
+	EID._currentMod = "AliceOfBlueArchive"
+	local mod = AliceOfBlueArchive
+	local id_sword_of_light = Isaac.GetItemIdByName("Sword of Light")
+	local id_commander = Isaac.GetItemIdByName("Commander")
+
+	local BirthrightDesc = {
+		[Isaac.GetPlayerTypeByName("Alice")] = {
+			Name = "Alice",
+			Description = "{{Collectible"..id_sword_of_light.."}} The Sword of Light - '밸런스 붕괴'의 배수가 최대(x3)로 고정됩니다.",
+			QuoteDesc = "강화 마법입니다!",
+		},
+		[Isaac.GetPlayerTypeByName("Tainted Alice")] = {
+			Name = "???",
+			Description = "아군 몬스터가 항상 무적이 됩니다.",
+			QuoteDesc = "???",
+		},
+	}
+	local CollectibleDesc = {
+		[id_sword_of_light] = {
+			Name = "빛의 검",
+			Description = ""
+				.."#{{Chargeable}} 소지 시 공격이 충전형 레일건 ({{DamageSmall}}x7}}으로 변경됩니다."
+				.."#공격 시마다 충전되며 완충 시에도 에너지를 최대 x3까지 초과 충전이 가능합니다."
+				.."#사용 시 에너지를 소모하여 '밸런스 붕괴'를 발동, 공격방향으로 거대한 레이저를 발사합니다."
+				.. "",
+			QuoteDesc = "슈퍼노바",
+		},
+		[id_commander] = {
+			Name = "커맨더",
+			Description = "!!! 아래 중 하나 발동:"
+				.."#사용 시 코스트 1을 소모, 가장 가까운 일반 몬스터를 아군으로 만들며(최대 8) 커맨더 스택 +1"
+				.."#사용 시 커맨더 스택 20을 소모, 가장 가까운 아이템 하나를 다른 아이템으로 바꿉니다."
+				.."#사용 키를 꾹 누르면 모든 아군을 폭파시킵니다."
+				.. "",
+			QuoteDesc = "컨트롤러",
+		},
+	}
+
+	for playerType, birthrightdesc in pairs(BirthrightDesc) do
+		EID:addBirthright(playerType, birthrightdesc.Description, birthrightdesc.Name, "ko_kr")
+	end
+	for itemID, itemdesc in pairs(CollectibleDesc) do
+		local desc = itemdesc.Description
+		EID:addCollectible(itemID, desc, itemdesc.Name, "ko_kr")
+	end
+
+
+	return {
+		targetMod = "AliceOfBlueArchive",
+		birthright = BirthrightDesc,
+		collectibles = CollectibleDesc,
+	}
+
+end

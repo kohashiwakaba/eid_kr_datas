@@ -1,7 +1,7 @@
 
 if Yondu_Arrow_mod then
 
-	EID._currentMod = "Yondu's Descent"
+	EID._currentMod = "whistle piece"
 	local mod = Yondu_Arrow_mod
 
 	local Items = mod.ITEMS
@@ -11,7 +11,7 @@ if Yondu_Arrow_mod then
 		[mod.yonduType] = {
 			Name = "Yondu",
 			Description = "",
-			--Description = "↑ 자동 모드일 때 화살 속도 +50%#가속력 및 최대 속도 증가",
+			Description = "↑ 화살의 속도 및 공격 빈도 증가",
 			QuoteDesc = "욘두의 위력을 느껴라",
 		},
 	}
@@ -117,7 +117,7 @@ if Yondu_Arrow_mod then
 
 
 	return {
-		targetMod = "Yondu's Descent",
+		targetMod = "whistle piece",
 		birthright = BirthrightDesc,
 		collectibles = CollectibleDesc,
 		trinkets = TrinketDesc,
