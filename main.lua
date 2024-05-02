@@ -37,6 +37,7 @@ wakaba_krdesc_entries.SHERIFF = include("wakaba_krdesc.sheriff")
 wakaba_krdesc_entries.YONDU = include("wakaba_krdesc.yondu")
 wakaba_krdesc_entries.ALICE = include("wakaba_krdesc.alice_ba")
 wakaba_krdesc_entries.CR = include("wakaba_krdesc.community_remix_2024")
+wakaba_krdesc_entries.SACRED_DREAMS = include("wakaba_krdesc.sacred_dreams")
 
 --[[
   Each included objects returns as specific format
