@@ -9,7 +9,7 @@ if SacredDreams then
 	local Cards = SDMod.Consumable
 	
 	local StatusEffectDesc = {
-		SOMNO = "{{Somno}} 기면 상태의 적은 느려지며 추가 피해를 받으나, 효과 종료 후 일정 시간동안 기면에 면역이 됩니다.",
+		SOMNO = "#{{Somno}} {{ColorYellow}}기면 상태의 적은 느려지며 추가 피해를 받으나, 효과 종료 후 일정 시간동안 기면에 면역이 됩니다.",
 		SLOT_SEL = "{{ButtonRT}}교체 버튼으로 능력을 바꿀 슬롯 선택",
 		SLOT_REPLACE = "{{ArrowGrayUp}} !!!{{ColorOrange}}아래 능력을 위 능력으로 교체합니다.",
 	}
@@ -318,7 +318,7 @@ local somnDesc = {
 		QuoteDesc = "주머니의 기력을 모으자!",
 	},
 }
-EID:addEntity(1000, SDMod.SOMNOSSENCE, 0, "somnossence", "somnossence description", "ko_kr")
+EID:addEntity(1000, SDMod.SOMNOSSENCE, 0, "수면", "음냐음냐", "ko_kr")
 
 EID:addEntity(6, SDMod.Slot.DADS_GRAMOPHONE, 0, "레코드 머신", "1{{Coin}} 소모#사용 시 음악을 바꾸어 그 방의 배열 정보를 바꿉니다.#이후 현재 방에서 주사위류({{Collectible105}}) 아이템 사용 시 이 방에서 재생 중인 음악의 배열을 따릅니다.", "ko_kr")
 EID:addEntity(1000, SDMod.SHRINE_SOMNOLEPTIC, 0, "수면 석상", "!!! 일회용#1포인트를 소모하여 능력 슬롯 +1#활성화하지 않은 경우 2{{Bomb}}로 폭파 시 모래 게이지 25% 충전", "ko_kr")
@@ -351,20 +351,11 @@ local currlang = "en_us"
 function SacredDreams:TDGUpgradesDesc_new(e)
 	local s = e:GetSprite()
 	local d = e:GetData()
-	if d.w_eid_lang == EID:getLanguage() then return end
+	if d.w_eid_lang and d.w_eid_lang == EID:getLanguage() then return end
 	d.w_eid_lang = EID:getLanguage()
 
 	if d.w_eid_lang == "ko_kr" then
-		if e.SubType == 0 then
-			local ov = s:GetOverlayAnimation()
-			if somnDesc[ov] then
-				local entry = somnDesc[ov]
-				d.EID_Description = {
-					Name = entry.Name,
-					Description = entry.Description,
-				}
-			end
-		end
+		d.EID_Description = nil
 	else
 		SacredDreams:TDGUpgradesDesc(e)
 	end
@@ -378,39 +369,47 @@ local function FF_EIDKR_SSCondition(descObj)
 	return
 		descObj.ObjType == 1000
 		and descObj.ObjVariant == SDMod.SOMNOSSENCE
+		and descObj.Entity
 		and EID.player
 		and EID.player:GetPlayerType() == SDMod.PlayerType.PLAYER_GUARD
 end
 
 local function FF_EIDKR_SSDescCallback(descObj)
-	local p = EID.player
-	local d = p:GetData()
-	local pos = d.SDGuardData.SelectedSlot
-	local slot = d.SDGuardData.PouchInventory[d.SDGuardData.SelectedSlot + 1]
-	if pos == 0 then
-		EID:appendToDescription(descObj, "#"..StatusEffectDesc.SLOT_SEL)
-	elseif slot then
-		local g = SacredDreams:Guard()
-		local target
-		for k, v in pairs(somnDesc) do
-			if g.ItemToSlot[k] then
-				target = k
-				break
+	local e = descObj.Entity
+	local ss = e:GetSprite()
+	local sd = e:GetData()
+	local ov = ss:GetOverlayAnimation()
+	if somnDesc[ov] then
+		local entry = somnDesc[ov]
+		descObj.Name = entry.Name
+		descObj.Description = entry.Description
+
+		local p = EID.player
+		local d = p:GetData()
+		local pos = d.SDGuardData.SelectedSlot
+		local slot = d.SDGuardData.PouchInventory[d.SDGuardData.SelectedSlot]
+		if pos == 0 or (slot and slot == 0) then
+			EID:appendToDescription(descObj, "#{{ColorOrange}}"..StatusEffectDesc.SLOT_SEL)
+		elseif slot then
+			local g = SacredDreams:Guard()
+			for k, v in pairs(g.ItemToSlot) do
+				if v == slot then
+					local entry2 = somnDesc[k]
+					EID:appendToDescription(descObj, ""
+						.. "#"..StatusEffectDesc.SLOT_REPLACE
+						.. "#{{"..EID.Config["ItemNameColor"].."}}"..entry2.Name
+						.. "#"..entry2.Description
+					)
+					break
+				end
 			end
 		end
-		if target then
-			EID:appendToDescription(descObj, "#"..StatusEffectDesc.SLOT_REPLACE)
-			local entry = somnDesc[target]
-			EID:appendToDescription(descObj, "#"..EID.Config["ItemNameColor"]..entry.Name)
-			EID:appendToDescription(descObj, "#"..entry.Description)
-		else
-			EID:appendToDescription(descObj, "#"..StatusEffectDesc.SLOT_SEL)
-		end
 	end
+
 	return descObj
 end
 
-EID:addDescriptionModifier("FF_EIDKR_GodmodeVanillaDescs", FF_EIDKR_SSCondition, FF_EIDKR_SSDescCallback)
+EID:addDescriptionModifier("FF_EIDKR_Somni", FF_EIDKR_SSCondition, FF_EIDKR_SSDescCallback)
 
 if Options.Language == "kr" then
 	local g = SacredDreams:Guard()
