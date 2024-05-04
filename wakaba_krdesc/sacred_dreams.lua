@@ -10,6 +10,7 @@ if SacredDreams then
 	
 	local StatusEffectDesc = {
 		SOMNO = "#{{Somno}} {{ColorYellow}}기면 상태의 적은 느려지며 추가 피해를 받으나, 효과 종료 후 일정 시간동안 기면에 면역이 됩니다.",
+		DECAY = "#부식 상태의 적은 최대 체력에 비례한 지속 피해를 받습니다. (보스의 경우 최대 25)#부식 상태 적 처치 시 적 기준 랜덤한 방향으로 부식성 눈물을 흩뿌립니다.",
 		SLOT_SEL = "{{ButtonRT}}교체 버튼으로 능력을 바꿀 슬롯 선택",
 		SLOT_REPLACE = "{{ArrowGrayUp}} !!!{{ColorOrange}}아래 능력을 위 능력으로 교체합니다.",
 	}
@@ -27,7 +28,7 @@ if SacredDreams then
 				.."#사용 시 책을 펼쳐 모래 요정을 소환합니다.#모래 요정은 적에게 기면에 빠지게 합니다."
 				.. "",
 			Name = "꿈 이야기",
-			QuoteDesc = "",
+			QuoteDesc = "착한 아이들은 잠 잘 시간",
 			StatusEffects = {StatusEffectDesc.SOMNO},
 		},
 		[SDMod.Item.BON] = {
@@ -35,14 +36,14 @@ if SacredDreams then
 				.."#사용 시 책을 펼쳐 악몽의 Gaper를 소환합니다."
 				.. "",
 			Name = "그리모어 악몽",
-			QuoteDesc = "",
+			QuoteDesc = "나쁜 아이들은 악몽 꿀 시간",
 		},
 		[SDMod.Item.SAND_POUCH] = {
 			Description = ""
 				.."!!! 배터리로 충전 불가#{{Somno}} 사용 시 공격방향의 가까운 적을 기면에 빠지게 합니다."
 				.. "", -- Conditional : Can be enhanced by the Dream Guard's somnossences
 			Name = "모래 주머니",
-			QuoteDesc = "",
+			QuoteDesc = "마법의 가루가 담겨있어",
 			StatusEffects = {StatusEffectDesc.SOMNO},
 		},
 		[SDMod.Item.SLEEPPILLS] = {
@@ -50,70 +51,70 @@ if SacredDreams then
 				.."#스테이지 입장 및 방 6개 클리어 시마다 Sedative 알약을 추가로 드랍합니다."
 				.. "",
 			Name = "수면제",
-			QuoteDesc = "",
+			QuoteDesc = "나 진짜 자야 돼...",
 		},
 		[SDMod.Item.RATTLE] = {
 			Description = ""
 				.."#{{Collectible240}} 공격 중 딸랑이를 흔들어 적에게 피해를 주는 별 모양 눈물을 위로 발사합니다. "
 				.. "",
 			Name = "낡은 딸랑이",
-			QuoteDesc = "",
+			QuoteDesc = "흔들흔들",
 		},
 		[SDMod.Item.GLASSOFMILK] = {
 			Description = ""
 				.."#{{ArrowUp}} {{TearsSmall}}연사 +0.75#{{ArrowDown}} {{ShotspeedSmall}}탄속 -0.15#2.2%의 확률로 {{Confusion}}혼란 or {{Collectible221}}반사 눈물을 발사합니다.#{{LuckSmall}} 행운 40+일 때 100%"
 				.. "",
 			Name = "넘치는 우유",
-			QuoteDesc = "",
+			QuoteDesc = "연사력 증가 + 발사 속도 감소",
 		},
 		[SDMod.Item.COZYPILLOW] = {
 			Description = ""
 				.."#{{Chargeable}} 충전형 배게 공격을 추가합니다. ({{ButtonRT}}교체 버튼으로 토글)#공격키를 누르고 있으면 충전되며 충전량에 따라 피해량이 증가합니다.#배게로 적 명중 시 깃털이 나옵니다.(충전량 비례)"
 				.. "",
 			Name = "편안한 배게",
-			QuoteDesc = "",
+			QuoteDesc = "배게싸움이다!",
 		},
 		[SDMod.Item.MOON_FLOWER] = {
 			Description = ""
 				.."#{{SecretRoom}} 비밀방 입장 시 달빛 꽃잎을 소환합니다.#달빛 꽃잎 획득 시 {{TearsSmall}}연사 +0.5 (최대 6회 {{TearsSmall}}+3)#패널티 피격 시 일정량의 꽃잎을 잃습니다."
 				.. "",
 			Name = "월화",
-			QuoteDesc = "",
+			QuoteDesc = "하나하나의 꽃잎으로 영원한 잠을...",
 		},
 		[SDMod.Item.VINYL] = {
 			Description = ""
 				.."#{{TreasureRoom}}/{{Shop}} 입장 시 50%의 확률로 그 방의 배열 정보르 바꾸는 레코드 머신이 등장합니다."
 				.. "",
 			Name = "아빠의 턴테이블",
-			QuoteDesc = "",
+			QuoteDesc = "이런걸 듣는 걸 좋아하셨지",
 		},
 		[SDMod.Item.PLUSHY_GUPPY] = {
 			Description = ""
 				.."#캐릭터를 따라다니며 가까운 탄환을 막아주거나 가까운 적을 공격합니다.#일정 수 이상 탄환 피해를 받으면 비활성화되며 캐릭터가 접촉 시 다시 활성화됩니다."
 				.. "",
 			Name = "구피 인형",
-			QuoteDesc = "",
+			QuoteDesc = "...그대로 있어",
 		},
 		[SDMod.Item.PLUSHY_PLUM] = {
 			Description = ""
 				.."#캐릭터의 주변을 돌며 가까운 탄환을 막아주거나 주변의 적을 향해 내려찍습니다.#일정 수 이상 탄환 피해를 받으면 비활성화되며 캐릭터가 접촉 시 다시 활성화됩니다."
 				.. "",
 			Name = "플럼 인형",
-			QuoteDesc = "",
+			QuoteDesc = "너가 떠난 자리에...",
 		},
 		[SDMod.Item.PLUSHY_ZIPPER] = {
 			Description = ""
 				.."#캐릭터를 따라다니며 적이 아주 가까이 있으면 {{Collectible531}}위쪽으로 피눈물병을 던집니다. #일정 수 이상 탄환 피해를 받으면 비활성화되며 캐릭터가 접촉 시 다시 활성화됩니다."
 				.. "",
 			Name = "악마 인형",
-			QuoteDesc = "",
+			QuoteDesc = "푹신한 친구",
 		},
 		[SDMod.Item.DREAM_SNATCHER] = {
 			Description = ""
 				.."#{{Throwable}} 사용 시 공격방향으로 짧은 단검을 던집니다.#{{Somno}} 단검에 박힌 적은 주기적으로 기면 피해를 받으며 캐릭터에게 멀어지지 못하게 합니다.#{{Somno}} 재사용 시  회수하며 주변의 적에게 기면 피해를 줍니다."
 				.. "",
 			Name = "드림 스내쳐",
-			QuoteDesc = "",
+			QuoteDesc = "꿈 뜯어내기",
 			StatusEffects = {StatusEffectDesc.SOMNO},
 		},
 		[SDMod.Item.LITTLE_SHEEP] = {
@@ -121,43 +122,43 @@ if SacredDreams then
 				.."#{{Somno}} 적의 주변을 돌며 적에게 20%의 확률로 기면에 빠지게 하는 별조각을 발사합니다."
 				.. "",
 			Name = "리틀 쉽",
-			QuoteDesc = "",
+			QuoteDesc = "양 한마리, 양 두마리, 양 세마리...",
 			StatusEffects = {StatusEffectDesc.SOMNO},
 		},
 		[SDMod.Item.FLARING_CANDLE] = {
 			Description = ""
-				.."#Spawns little orbiting Mini Mins and increases it's aura when shooting # This Aura has a chance to set enemies within it on fire # When Isaac stops shooting: Sets every enemy in aura's radius on fire"
+				.."#공격키를 누르고 있는 동안 캐릭터 주변을 도는 Mini Min 2마리와 그들이 두르는 오라를 키웁니다.#{{Burning}} 오라 안에 있는 적은 확률적으로 화상에 걸립니다.#{{Burning}} 공격키를 떼면 오라가 사라지며 안에 있는 적에게 화상 피해를 줍니다."
 				.. "",
 			Name = "불타오르는 양초",
-			QuoteDesc = "",
+			QuoteDesc = "어둠 속에서 불타올라",
 		},
 		[SDMod.Item.MIDAS_BOMBS] = {
 			Description = ""
 				.."#{{Coin}}동전 +15#{{Collectible202}} 폭발이 적을 황금화시킵니다.#{{Bomb}} 폭탄이 없을 경우 5{{Coin}}을 소모하여 {{ColorOrange}}기본형 폭탄{{CR}}을 설치합니다."
 				.. "",
 			Name = "미다스 폭탄",
-			QuoteDesc = "",
+			QuoteDesc = "폭발성 탐욕",
 		},
 		[SDMod.Item.TINY_HORN] = {
 			Description = ""
 				.."#공격하는 방향으로 공격력 4의 반사+유도 눈물을 발사합니다."
 				.. "",
 			Name = "타이니 혼",
-			QuoteDesc = "",
+			QuoteDesc = "웨!",
 		},
 		[SDMod.Item.LIL_HORNFEL] = {
 			Description = ""
-				.."#Has a chance to fire bursts of tears when hit by enemy projectile # Spawns a friendly bomb fly when Isaac takes damage # Will reward you for bombing tinted rocks"
+				.."#캐릭터를 따라다니며 적의 탄환을 막아줍니다.#탄환을 막을 시 주변에 여러 눈물을 흩뿌립니다.#캐릭터 피격 시 아군 Fly Bomb을 소환합니다.#색돌 파괴 시 추가 보상을 소환합니다."
 				.. "",
 			Name = "리틀 혼펠",
-			QuoteDesc = "",
+			QuoteDesc = "폭발하는 친구",
 		},
 		[SDMod.Item.HARENAS_BLESSINGS] = {
 			Description = ""
-				.."#Each floor gives you a random blessing # Scorching Sands: Isaac will leave a sand trail behind for some time upon entering a room. Enemies will spawn sand spots upon death # Somnomoon: Familiar that upgrades itself on 3rd and 6th cleared room # Somno Stellarum: upon entering a room, up to 3 enemies can have a dangling star above them. These stars will fall down and explode when their enemy is kiled"
+				.."#스테이지 입장 시 랜덤 축복을 받습니다.# {{ColorYellow}}Scorching Sands{{CR}}: 방 입장 시 일정 시간동안 캐릭터가 둔화 피해를 주는 장판을 깔며 적 처치 시에도 적 위치에 해당 장판이 깔립니다.# {{ColorYellow}}Somnomoon{{CR}}: 그 스테이지에서 달빛 패밀리어를 소환, 캐릭터 주변의 적을 향해 4의 별조각을 발사하며 방 3/6개 클리어 시 강화됩니다.# {{ColorYellow}}Somno Stellarum{{CR}}: 방 입장 시 최대 3마리의 적 위에 별이 떠다니며 해당 적 처치 시 별이 추락, 모래 폭발을 일으킵니다."
 				.. "",
 			Name = "하레나의 축복",
-			QuoteDesc = "",
+			QuoteDesc = "꿈나라의 축복",
 		},
 		[SDMod.Item.KEITH_FETUS] = {
 			Description = ""
@@ -168,61 +169,63 @@ if SacredDreams then
 		},
 		[SDMod.Item.TEIN] = {
 			Description = ""
-				.."#Firing occasionally shoots a decay tear that applies a 'Decay' status effect on enemies # Decay will slowly deals a small % of enemy's max health # The effect's damage caps at 25 for bosses # Enemies with this status effect will burst into decay tears on death"
+				.."#확률적으로 부식성 공격이 나갑니다."
 				.. "",
 			Name = "종양 머리",
 			QuoteDesc = "",
+			StatusEffects = {StatusEffectDesc.DECAY},
 		},
 		[SDMod.Item.DER_SANDMANN] = {
 			Description = ""
-				.."#Replaces itself with it's open variant and spawns a book with an aura on use # Dealing damage while holding the open variant will recharge it # On open variant's use: Spawns ghost-like stars and dreams that chases enemies and explodes on impact and replaces itself back to closed variant # Aura's radius and amount of stars depends on item's charge"
+				.."#{{Somno}} 사용 시 책을 열며 적을 기면에 빠지게 하는 오라를 발산합니다.#{{Blank}} (오라 크기는 열린 상태의 충전량에 비례)#열린 상태에서 적 처치 시 충전량을 소량 채우며;#{{Collectible634}} 열린 상태에서 사용 시 충전량에 비례하여 적에게 피해를 주는 별을 여러개 소환합니다."
 				.. "",
 			Name = "샌드맨 이야기",
-			QuoteDesc = "",
+			QuoteDesc = "꿈 속을 안내해 줘",
 		},
 		[SDMod.Item.PLUSHY_MASCOT] = {
 			Description = ""
-				.."#Spawns a set of purchasable items/trinkets from a special pool each floor"
+				.."#스테이지 입장 시 판매 아이템/픽업을 여러 개 소환합니다."
 				.. "",
 			Name = "마스코트 인형",
-			QuoteDesc = "",
+			QuoteDesc = "장난감 가게의 흔한 인형",
 		},
 	}
 	local TrinketDesc = {
 		[SDMod.Trinket.PLUSHY_SEAL] = {
 			Description = ""
-				.."#Orbits around Isaac and protects him from incoming projectiles # Spawns a random heart every floor # Dies after taking too much damage and awaits for the Isaac's touch"
+				.."#캐릭터의 주변을 돌며 적의 탄환을 막아줍니다.#스테이지 입장 시 랜덤 하트를 드랍합니다.#일정 수 이상 탄환 피해를 받으면 비활성화되며 캐릭터가 접촉 시 다시 활성화됩니다."
 				.. "",
 			Name = "표범 인형",
-			QuoteDesc = "",
+			QuoteDesc = "사랑을 담아 <3",
 		},
 		[SDMod.Trinket.WISHING_STAR] = {
 			Description = ""
-				.."#Gives you 1 additional orbital star for each sleep related item in your inventory # Hold CTRL to fill up a charge bar and tap it afterwards to make a wish # Upon making a wish, each star will spawn a unique reward with vary rarity #{{Warning}} Removes itself after making a wish"
+				.."!!! 일회용#잠 관련 아이템 수에 따라 별을 소환합니다.#{{ButtonRT}}교체 버튼을 꾹 누르고 버리기 직전에 때면 소원을 빕니다.#소원을 빌면 여러 보상을 드랍합니다."
 				.. "",
 			Name = "소원의 별",
-			QuoteDesc = "",
+			QuoteDesc = "반짝반짝 작은 별",
+			-- 1/6 확률로 랜덤 배열 아이템, 1/4 확률로 그 방 아이템, 1/4 확률로 자루 2개, 1/3 확률로 페니 5개
 		},
 		[SDMod.Trinket.TOY_CUBE_1] = {
 			Description = ""
-				.."#{{ArrowUp}} +1 Tears up # Replaces itself with Toy Cube N.2 after beating a floor without taking damage"
+				.."#{{ArrowUp}} {{TearsSmall}}연사 +1#{{Trinket"..SDMod.Trinket.TOY_CUBE_2.."}} 패널티 피격 없이 다음 스테이지 입장 시 Toy Cube N.2로 강화됩니다."
 				.. "",
 			Name = "장난감 큐브 N.1",
-			QuoteDesc = "",
+			QuoteDesc = "1을 셀 수 있어!",
 		},
 		[SDMod.Trinket.TOY_CUBE_2] = {
 			Description = ""
-				.."#{{ArrowUp}} +2 Tears up # {{ArrowUp}} +2 Damage # Replaces itself with Toy Cube N.3 after beating a floor without taking damage"
+				.."#{{ArrowUp}} {{TearsSmall}}연사 +2# {{ArrowUp}} 공격력 +2#{{Trinket"..SDMod.Trinket.TOY_CUBE_3.."}} 패널티 피격 없이 다음 스테이지 입장 시 Toy Cube N.3로 강화됩니다."
 				.. "",
 			Name = "장난감 큐브 N.2",
-			QuoteDesc = "",
+			QuoteDesc = "2를 셀 수 있어!",
 		},
 		[SDMod.Trinket.TOY_CUBE_3] = {
 			Description = ""
-				.."#{{ArrowUp}} +3 Tears up # {{ArrowUp}} +3 Damage # {{ArrowUp}} +3 Range # You can't count past 3 :("
+				.."#{{ArrowUp}} {{TearsSmall}}연사 +3# {{ArrowUp}} 공격력 +3# {{ArrowUp}} 사거리 +3"
 				.. "",
 			Name = "장난감 큐브 N.3",
-			QuoteDesc = "",
+			QuoteDesc = "3을 셀 수 있어!",
 		},
 	}
 	
@@ -246,10 +249,12 @@ local CardDesc = {
 local PillDesc = {
 	[PillEffect.PILLEFFECT_AMIRMIR] = {
 		Description = "{{ArrowUp}} {{DamageSmall}}공격력 + 3.5#증가한 공격은 23초에 걸쳐 서서히 감소합니다.#{{Somno}} 그 방에서 캐릭터 및 적이 잠에 빠집니다.",
-		Name = "Sedatives",
+		Name = "진정제",
 		QuoteDesc = "",
 	},
 }
+
+CollectibleDesc[SDMod.Item.DER_SANDMANN_B] = CollectibleDesc[SDMod.Item.DER_SANDMANN]
 
 local somnDesc = {
 	["Sandplosion"] = {
