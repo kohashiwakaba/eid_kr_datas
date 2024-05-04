@@ -83,7 +83,7 @@ if Sheriff then
 		local desc = itemdesc.Description
 		if itemdesc.StatusEffects then
 			for _, eff in ipairs(itemdesc.StatusEffects) do
-				desc = desc .. eff
+				itemdesc.Description = itemdesc.Description .. eff
 			end
 		end
 		EID:addCollectible(itemID, desc, itemdesc.Name, "ko_kr")
@@ -98,7 +98,7 @@ if Sheriff then
 		local desc = itemdesc.Description
 		if itemdesc.StatusEffects then
 			for _, eff in ipairs(itemdesc.StatusEffects) do
-				desc = desc .. eff
+				itemdesc.Description = itemdesc.Description .. eff
 			end
 		end
 		EID:addTrinket(itemID, desc, itemdesc.Name, "ko_kr")

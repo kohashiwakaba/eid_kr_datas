@@ -335,7 +335,7 @@ EID:addEntity(1000, SDMod.SHRINE_SOMNOLEPTIC, 0, "수면 석상", "!!! 일회용
 		local desc = itemdesc.Description
 		if itemdesc.StatusEffects then
 			for _, eff in ipairs(itemdesc.StatusEffects) do
-			desc = desc .. eff
+				itemdesc.Description = itemdesc.Description .. eff
 			end
 		end
 		EID:addCollectible(itemID, desc, itemdesc.Name, "ko_kr")
@@ -344,7 +344,7 @@ EID:addEntity(1000, SDMod.SHRINE_SOMNOLEPTIC, 0, "수면 석상", "!!! 일회용
 		local desc = itemdesc.Description
 		if itemdesc.StatusEffects then
 			for _, eff in ipairs(itemdesc.StatusEffects) do
-			desc = desc .. eff
+				itemdesc.Description = itemdesc.Description .. eff
 			end
 		end
 		EID:addTrinket(itemID, desc, itemdesc.Name, "ko_kr")
