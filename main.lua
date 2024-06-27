@@ -1,25 +1,24 @@
-
 if not EID then return end
 local mod = RegisterMod("Korean EID Descriptions for modded items", 1)
 wakaba_krdesc = mod
 
 --bulk append from retribution (cuz i'm lazy)
 function mod.BulkAppend(hostTable, appendTable)
-	for _, entry in pairs(appendTable) do
-		table.insert(hostTable, entry)
-	end
+  for _, entry in pairs(appendTable) do
+    table.insert(hostTable, entry)
+  end
 end
 
 function mod.IndexedBulkAppend(hostTable, appendTable)
-	for _, entry in pairs(appendTable) do
-		hostTable[entry[1]] = entry[2]
-	end
+  for _, entry in pairs(appendTable) do
+    hostTable[entry[1]] = entry[2]
+  end
 end
 
 function mod.KeyValueBulkAppend(hostTable, appendTable)
-	for index, entry in pairs(appendTable) do
-		hostTable[index] = entry
-	end
+  for index, entry in pairs(appendTable) do
+    hostTable[index] = entry
+  end
 end
 
 wakaba_krdesc.ERRORS = {}
@@ -38,6 +37,7 @@ wakaba_krdesc_entries.YONDU = include("wakaba_krdesc.yondu")
 wakaba_krdesc_entries.ALICE = include("wakaba_krdesc.alice_ba")
 wakaba_krdesc_entries.CR = include("wakaba_krdesc.community_remix_2024")
 wakaba_krdesc_entries.SACRED_DREAMS = include("wakaba_krdesc.sacred_dreams")
+wakaba_krdesc_entries.TAINTED_TREASURE = include("wakaba_krdesc.tainted_treasure")
 
 --[[
   Each included objects returns as specific format
@@ -69,12 +69,12 @@ local function checkStartOfRunWarnings()
     local str = "{{ColorEIDError}}업데이트되지 않은 모드가 있습니다.#창작마당에서 해당 모드를 업데이트하기 전까지 아래 모드의 설명은 적용되지 않습니다."
     for _, err in ipairs(wakaba_krdesc.ERRORS) do
       str = str
-        .. "#{{ColorEIDObjName}}" .. err.err_mod
-        .. "#{{Blank}}  필요 버전 : " .. err.required
-        .. "#{{Blank}}  현재 버전 : " .. err.current
+          .. "#{{ColorEIDObjName}}" .. err.err_mod
+          .. "#{{Blank}}  필요 버전 : " .. err.required
+          .. "#{{Blank}}  현재 버전 : " .. err.current
     end
 
-    if not EID.Config["DisableStartOfRunWarnings"] and game:GetFrameCount() < 10*30 then
+    if not EID.Config["DisableStartOfRunWarnings"] and game:GetFrameCount() < 10 * 30 then
       local demoDescObj = EID:getDescriptionObj(-999, -1, 1)
       demoDescObj.Name = EID:getDescriptionEntry("AchievementWarningTitle") or ""
       demoDescObj.Description = str
@@ -161,24 +161,24 @@ do
 end
 
 do
-	local i_queueLastFrame = {}
-	local i_queueNow = {}
+  local i_queueLastFrame = {}
+  local i_queueNow = {}
 
   ---@param player EntityPlayer
-	wakaba_krdesc:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, function (_, player)
-		if Options.Language ~= "kr" then return end
+  wakaba_krdesc:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, function(_, player)
+    if Options.Language ~= "kr" then return end
 
-		local initSeed = tostring(player.InitSeed)
+    local initSeed = tostring(player.InitSeed)
 
-		i_queueNow[initSeed] = player.QueuedItem.Item
-		if (i_queueNow[initSeed] ~= nil and i_queueLastFrame[initSeed] == nil) then
+    i_queueNow[initSeed] = player.QueuedItem.Item
+    if (i_queueNow[initSeed] ~= nil and i_queueLastFrame[initSeed] == nil) then
       local q = i_queueNow[initSeed] ---@type ItemConfigItem
       if q:IsCollectible() then
         if q.ID == CollectibleType.COLLECTIBLE_BIRTHRIGHT then
           if managedTable.birthright[player:GetPlayerType()] then
             local entry = managedTable.birthright[player:GetPlayerType()]
-						local itemName = "생득권"
-						local queueDesc = entry.queueDesc
+            local itemName = "생득권"
+            local queueDesc = entry.queueDesc
             if queueDesc then
               Game():GetHUD():ShowItemText(itemName, queueDesc)
             end
@@ -186,9 +186,9 @@ do
         else
           if managedTable.collectibles[q.ID] then
             local entry = managedTable.collectibles[q.ID]
-						local itemName = (entry.itemName ~= "" and entry.itemName) or q.Name
-						local queueDesc = (entry.queueDesc ~= "" and entry.queueDesc) or q.Description
-						Game():GetHUD():ShowItemText(itemName, queueDesc)
+            local itemName = (entry.itemName ~= "" and entry.itemName) or q.Name
+            local queueDesc = (entry.queueDesc ~= "" and entry.queueDesc) or q.Description
+            Game():GetHUD():ShowItemText(itemName, queueDesc)
           end
         end
       elseif q:IsTrinket() then
@@ -199,18 +199,16 @@ do
           Game():GetHUD():ShowItemText(itemName, queueDesc)
         end
       end
-		end
-		i_queueLastFrame[initSeed] = i_queueNow[initSeed]
-	end)
-  wakaba_krdesc:AddCallback(ModCallbacks.MC_USE_PILL, function (_, pillEffectID, playerWhoUsedItem, useFlags)
+    end
+    i_queueLastFrame[initSeed] = i_queueNow[initSeed]
+  end)
+  wakaba_krdesc:AddCallback(ModCallbacks.MC_USE_PILL, function(_, pillEffectID, playerWhoUsedItem, useFlags)
     if Options.Language ~= "kr" or useFlags & UseFlag.USE_NOHUD == UseFlag.USE_NOHUD then return end
     if managedTable.pills[pillEffectID] then
       Game():GetHUD():ShowItemText(managedTable.pills[pillEffectID].Name, managedTable.pills[pillEffectID].QuoteDesc)
     end
   end)
-
 end
 
 -- Reserve current mod indicator for EID
 EID._currentMod = "Wakaba_translation_reserved"
-
