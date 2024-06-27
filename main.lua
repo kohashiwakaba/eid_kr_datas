@@ -72,7 +72,7 @@ local function checkStartOfRunWarnings()
 		local game = Game()
 		local str = ""
 		if wakaba_krdesc.ERRORS.NO_REQ then
-			str = "{{ColorEIDError}}Mod Error Container 혹은 REPENTOGON이 적용/설치되지 않았습니다. 둘 중 하나 이상을 적용/설치하기 전까지 모드 설명이 한글로 표시되지 않습니다."
+			str = "{{ColorEIDError}}Mod Error Container 혹은 REPENTOGON이 적용/설치되지 않았습니다.#둘 중 하나 이상을 적용/설치하기 전까지 모드 설명이 한글로 표시되지 않습니다."
 		else
 			str = "{{ColorEIDError}}업데이트되지 않은 모드가 있습니다.#창작마당에서 해당 모드를 업데이트하기 전까지 아래 모드의 설명은 적용되지 않습니다."
 			for _, err in ipairs(wakaba_krdesc.ERRORS) do
