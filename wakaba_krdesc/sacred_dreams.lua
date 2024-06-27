@@ -1,6 +1,15 @@
 
 if SacredDreams then
 
+	if (Isaac.GetItemIdByName("Dreamer's Scroller") <= 0) then
+		table.insert(wakaba_krdesc.ERRORS, {
+			err_mod = "Sacred Dreams",
+			current = "1.1.x",
+			required = "Act 1 (1.2.0)",
+		})
+		return
+	end
+
 	EID._currentMod = "Sacred Dreams"
 	local mod = SacredDreams
 	local Guard = SacredDreams:Guard()
@@ -26,7 +35,7 @@ if SacredDreams then
 		local durArrows, pouchArrows
 		
 		if durMult == 1 then
-				durArrows = "{{ColorYellow}} 유지"
+				durArrows = "{{ColorYellow}}유지"
 		elseif durMult > 1 then
 				if durMult >= 1.45 then
 						durArrows = "↑{{BlinkYellowGreen}}대폭 증가{{CR}}"
@@ -47,7 +56,7 @@ if SacredDreams then
 		string1 = StatusEffectDesc.SOMNO_DURATION..durArrows
 
 		if pouchMult == 1 then
-				pouchArrows = "{{ColorYellow}} 유지"
+				pouchArrows = "{{ColorYellow}}유지"
 		elseif pouchMult > 1 then
 				if pouchMult >= 1.45 then
 						pouchArrows = "↓{{BlinkYellowRed}}대폭 감소{{CR}}"
