@@ -496,13 +496,13 @@ local revShrines = {
     Name = "장난꾸러기",
     Description = "방 안의 픽업을 훔치는 Prank가 생깁니다."
         .. "#Prank는 클리어하지 않은 방에서 캐릭터를 향해 주기적으로 눈덩이를 던집니다."
-        .. "#Prank 처치 시 훔친 픽업을 전부 드랍하며 허영 수치로 판매하는 상점 품목을 할인합니다."
+        .. "#Prank 처치 시 훔친 픽업을 전부 드랍하며 공허치로 판매하는 상점 품목을 할인합니다."
   },
   [ShrineTypes.FROST] = {
       Name = "강추위",
       Description = "불꽃의 범위가 짧아집니다."
           .. "#{{ColorOrange}}Grill O' Wisps{{CR}}가 더 빠르게 움직입니다."
-          .. "#눈보라가 더 강해저 캐릭터가 얼기까지의 시간이 짧아집니다."
+          .. "#눈보라가 더 강해져 캐릭터가 얼기까지의 시간이 짧아집니다."
   },
   [ShrineTypes.FRAGILITY] = {
       Name = "연약",
@@ -519,7 +519,7 @@ local revShrines = {
     Name = "단죄",
     Description = "방 안의 픽업을 훔치는 Prank가 생깁니다."
         .. "#Prank는 클리어하지 않은 방에서 주기적으로 함정을 발동합니다."
-        .. "#Prank 처치 시 훔친 픽업을 전부 드랍하며 허영 수치로 판매하는 상점 품목을 할인합니다."
+        .. "#Prank 처치 시 훔친 픽업을 전부 드랍하며 공허치로 판매하는 상점 품목을 할인합니다."
   },
   [ShrineTypes.REVIVAL] = {
     Name = "부활",
@@ -561,16 +561,17 @@ wakaba_krdesc:AddCallback(ModCallbacks.MC_NPC_UPDATE, function(_, npc)
 		return
 	end
 
+	local revelShrineData = REVEL.GetData(npc)
 	local shrineData = npc:GetData()
 	--print(shrineData.Init, shrineData.ShrineSet, shrineData.ShrineType)
 	if shrineData.IsKrDescReplaced then return end
 	if not shrineData.EID_Description then return end
-	local shrineName = shrineData.ShrineType
+	local shrineName = revelShrineData.ShrineType
 	local shrineNameKR = revShrines[shrineName].Name
 	local shrineDescKR = revShrines[shrineName].Description
-	local rewardValue = shrineData.Value
-	shrineDescKR = shrineDescKR .. ("#↑ 허영 수치 +%d"):format(rewardValue)
-	shrineDescKR = shrineDescKR .. "#허영 수치는 Revelations 스테이지 2번째 층에서 사용할 수 있습니다."
+	local rewardValue = revelShrineData.Value
+	shrineDescKR = shrineDescKR .. ("#↑ 공허치 +%d"):format(rewardValue)
+	shrineDescKR = shrineDescKR .. "#공허치는 Revelations 스테이지 2번째 층에서 사용할 수 있습니다."
 
 	shrineData.EID_Description.Name = shrineNameKR
 	shrineData.EID_Description.Description = shrineDescKR
