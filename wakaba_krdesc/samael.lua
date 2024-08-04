@@ -5,15 +5,27 @@ EID._currentMod = "Samael"
 local bargainingChipDesc = "거래의 영혼이 제시하는 3가지 품목 중 하나를 선택할 수 있습니다."
 		.."#아이템, 픽업, 특수 이벤트(ex:{{Collectible105}}) 등이 제시되며 거래 가격도 다양하게 설정됩니다."
 local ferrymanDesc = "#차원의 틈새에서는 각 포탈마다 영혼이 존재하며 영혼을 적으로부터 보호하면 여러 픽업 보상을 얻을 수 있습니다.#차원의 틈새에서 다시 뱃시공을 통해 돌아올 수 있습니다."
-local BirthrightDesc = {
+local CharacterDesc = {
   [SamaelMod.Lib.SamaelId] = {
     Name = "Samael",
-    Description = "#↑ 이동속도 +0.29#비행 능력을 얻습니다.#Malakh Mot의 충전속도가 빨라지며 사거리가 25% 증가합니다.#Malakh Mot 발동 중 적을 추적하여 공격하는 꼬마 사신을 3마리 소환합니다.",
+		Description = "",
+		Detailed = ""
+			.."#죽음의 천사가 찾아왔습니다."
+			.."#{{Chargeable}} 공격 키로 낫을 휘두르며 충전 시 충전 거리만큼 낫을 던질 수 있습니다."
+			.."#{{Collectible"..SamaelMod.ITEMS.MALAKH_MOT.."}} 고유 능력 : 말라크 모트"
+			.."",
+    Birthright = "#↑ 이동속도 +0.29#비행 능력을 얻습니다.#Malakh Mot의 충전속도가 빨라지며 사거리가 25% 증가합니다.#Malakh Mot 발동 중 적을 추적하여 공격하는 꼬마 사신을 3마리 소환합니다.",
     QuoteDesc = "말라크 연속 공격",
   },
   [SamaelMod.Lib.TaintedSamaelId] = {
     Name = "Tainted Samael",
-    Description = "#적 처치 시 영혼이 모입니다.#Memento Mori로 공격 시 영혼을 소모하여 연옥의 유령을 소환합니다.",
+		Description = "",
+		Detailed = ""
+			.."#죽음의 천사가 더욱 사악해졌습니다."
+			.."#{{Chargeable}} 공격 키로 낫을 휘두를 수 있습니다."
+			.."#{{Collectible"..SamaelMod.ITEMS.MEMENTO_MORI.."}} 고유 능력 : 메멘토 모리"
+			.."",
+    Birthright = "#적 처치 시 영혼이 모입니다.#Memento Mori로 공격 시 영혼을 소모하여 연옥의 유령을 소환합니다.",
     QuoteDesc = "영혼 해방",
   },
 }
@@ -353,8 +365,12 @@ SamaelItemDescriptions[CollectibleType.COLLECTIBLE_CURSED_EYE] = {"낫으로 적
 wakaba_krdesc.SamaelItemDescriptions = SamaelItemDescriptions
 wakaba_krdesc.MementoMoriItemDescriptions = MementoMoriItemDescriptions
 
-for playerType, birthrightdesc in pairs(BirthrightDesc) do
-  EID:addBirthright(playerType, birthrightdesc.Description, birthrightdesc.Name, "ko_kr")
+for playerType, birthrightdesc in pairs(CharacterDesc) do
+	EID:addCharacterInfo(playerType, birthrightdesc.Description, birthrightdesc.Name, "ko_kr")
+	if InventoryDescriptions then
+		EID:addEntity(InvDescEIDType.PLAYER, InvDescEIDVariant.DEFAULT, playerType, birthrightdesc.Name, birthrightdesc.Detailed, "ko_kr")
+	end
+	EID:addBirthright(playerType, birthrightdesc.Birthright, birthrightdesc.Name, "ko_kr")
 end
 for itemID, itemdesc in pairs(CollectibleDesc) do
   local desc = itemdesc.Description
@@ -446,7 +462,7 @@ EID:addDescriptionModifier("FF_EIDKR_samaelScytheModifier", SamaelScytheEidAppen
 
 return {
 	targetMod = "Samael",
-	birthright = BirthrightDesc,
+	characters = CharacterDesc,
 	collectibles = CollectibleDesc,
 	trinkets = TrinketDesc,
 	cards = CardDesc,

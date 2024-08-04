@@ -14,25 +14,55 @@ if Retribution then
 
 	EID._currentMod = "Retribution"
 	--EID:setModIndicatorName("Retribution")
-	local rtBirthrightDesc = {
+	local CharacterDesc = {
 		[Retribution.PLAYER_TYPE.ICARUS] = {
 			Name = "Icarus",
-			Description = "↓ 태양의 저주 : 모든 적이 강화되어서 등장합니다.#↑ 태양의 저주로 강화된 적의 체력이 33% 감소합니다.#{{Collectible"..Retribution.Item.WAX_WING.."}} Wax Wing의 {{DamageSmall}}/{{TearsSmall}} 증가치가 2배로 증가합니다.",
+			Description = "",
+			Detailed = "이카루스는 아버지의 충고를 무시한 대가로 무한히 추락하게 됩니다."
+				.."#스테이지 진입 시 다이달로스의 양초가 생겨 날개를 회복할 수 있습니다."
+				.."#태양의 저주: 적이 확률적으로 강화 형태로 등장합니다."
+				.."#태양의 저주의 확률은 {{DevilRoom}}'악한 행동'을 할 때 증가, {{AngelRoom}}'선한 행동'을 할 때 감소합니다."
+				.."#{{Slow}} 태양의 저주의 확률이 60% 이상이 되면 적을 느리게 하는 장판이 생성되나 {{ColorOrange}} 적이 확률적으로 2회 강화됩니다."
+				.."#{{Collectible"..Retribution.Item.COMMUNION.."}} 고유 능력 : 성찬"
+				.."#{{Collectible"..Retribution.Item.WAX_WING.."}} 고유 능력 : 밀랍 날개"
+				.."",
+			Birthright = "↓ 태양의 저주: 모든 적이 강화되어서 등장합니다.#↑ 태양의 저주로 강화된 적의 체력이 33% 감소합니다.#{{Collectible"..Retribution.Item.WAX_WING.."}} Wax Wing의 {{DamageSmall}}/{{TearsSmall}} 증가치가 2배로 증가합니다.",
 			QuoteDesc = "젠장할 확률",
 		},
 		[Retribution.PLAYER_TYPE.MAMMON] = {
 			Name = "Mammon",
-			Description = "수상한 돌 모양 패밀리어를 소환합니다.#돌 모양 패밀리어 폭파 시 깨어나며 캐릭터의 공격력 x0.5의 공격을 자동으로 발사하며 돼지 동전을 대신 모아줍니다.",
+			Description = "",
+			Detailed = "마몬은 끝없는 탐욕으로 인해 돈을 숭배하지만 실제로는 그저 한 마리의 돼지일 뿐이다."
+				.."#{{TreasureRoom}} 돼지의 저주: 보물방의 아이템이 여러 다발의 {{Coin}}동전으로 바뀝니다."
+				.."#{{AngelDevilChanceSmall}} 돼지의 저주: {{DevilRoom}}악마방/{{AngelRoom}}천사방의 아이템이 각각 돼지 거지로 바뀝니다."
+				.."#{{DevilRoom}}/{{AngelRoom}}의 돼지 거지는 소지 중인 동전의 절반을 소모하여 아이템을 소환합니다."
+				.."#{{Collectible"..Retribution.Item.MEAT_GRINDER.."}} 고유 능력 : 고기 분쇄기"
+				.."#{{Collectible"..Retribution.Item.SPOILS_POUCH.."}} 고유 능력 : 전리품 파우치"
+				.."",
+			Birthright = "수상한 돌 모양 패밀리어를 소환합니다.#돌 모양 패밀리어 폭파 시 깨어나며 캐릭터의 공격력 x0.5의 공격을 자동으로 발사하며 돼지 동전을 대신 모아줍니다.",
 			QuoteDesc = "석수",
 		},
 		[Retribution.PLAYER_TYPE.MAMMON_B] = {
 			Name = "Tainted Mammon",
-			Description = "{{Shop}} 상점 입장 시 전용 특수 배열의 판매 아이템이 추가로 진열됩니다.#{{Collectible" .. Retribution.Item.SPIFFY_TIMEPIECE .. "}} 사용 시 현재 게임 시간을 알려줍니다.",
+			Description = "",
+			Detailed = "The Burnout: 탐욕의 마몬 조차도 이제 무한 노동을 해야 되는 시대가 왔습니다."
+				.."#{{RETCursedTrinket}} '저주받은 장신구'가 여러 곳에서 등장합니다:"
+				.."#{{Blank}} {{TreasureRoom}}보물방 아이템을 대체하여 등장"
+				.."#{{Blank}} {{BossRoom}}보스방/미니보스방 클리어"
+				.."#{{Blank}} 적 처치 시 확률적으로 등장"
+				.."#{{Shop}} 상점에 저주 거래상이 등장하여 저주받은 장신구를 판매할 수 있습니다."
+				.."",
+			Birthright = "{{Shop}} 부기 받침대: 상점 입장 시 전용 특수 배열의 판매 아이템이 추가로 진열됩니다.#{{Collectible" .. Retribution.Item.SPIFFY_TIMEPIECE .. "}} 사용 시 현재 게임 시간을 알려줍니다.",
 			QuoteDesc = "확실한 소비",
 		},
 		[Retribution.PLAYER_TYPE.PERSEPHONE] = {
 			Name = "Persephone",
-			Description = "{{RETPullroot}} 새싹이 더 멀리 날아가며 적과 2회 이상 부딪힐 수 있습니다.#{{RETPullroot}} 돌아올 때 캐릭터에게 더 가깝게 돌아옵니다.",
+			Description = "",
+			Detailed = "페르세포네는 두 명의 신 사이에서 태어난 여인이나 지하로 끌려오고 말았습니다."
+				.."#{{RETPullroot}} 씨앗의 저주: {{DamageSmall}}공격력 배율 x0.2, 새싹의 피해량 x4"
+				.."#{{Collectible"..Retribution.Item.BAG_OF_SEEDS.."}} 고유 능력 : 씨앗 가방 x2"
+				.."",
+			Birthright = "{{RETPullroot}} 새싹이 더 멀리 날아가며 적과 2회 이상 부딪힐 수 있습니다.#{{RETPullroot}} 돌아올 때 캐릭터에게 더 가깝게 돌아옵니다.",
 			QuoteDesc = "확실한 소비",
 		},
 	}
@@ -1721,7 +1751,7 @@ if Retribution then
 
 
 	if Retribution.Version >= versionNext then
-		wakaba_krdesc.KeyValueBulkAppend(rtBirthrightDesc ,{
+		wakaba_krdesc.KeyValueBulkAppend(CharacterDesc ,{
 		})
 		wakaba_krdesc.KeyValueBulkAppend(rtCollectibleDesc ,{
 			[Retribution.Item.NEVERLASTING_PILL] = {
@@ -1859,8 +1889,12 @@ if Retribution then
 
 
 
-	for playerType, birthrightdesc in pairs(rtBirthrightDesc) do
-		EID:addBirthright(playerType, birthrightdesc.Description, birthrightdesc.Name, "ko_kr")
+	for playerType, birthrightdesc in pairs(CharacterDesc) do
+		EID:addCharacterInfo(playerType, birthrightdesc.Description, birthrightdesc.Name, "ko_kr")
+		if InventoryDescriptions then
+			EID:addEntity(InvDescEIDType.PLAYER, InvDescEIDVariant.DEFAULT, playerType, birthrightdesc.Name, birthrightdesc.Detailed, "ko_kr")
+		end
+		EID:addBirthright(playerType, birthrightdesc.Birthright, birthrightdesc.Name, "ko_kr")
 	end
 	for itemID, itemdesc in pairs(rtCollectibleDesc) do
 		local desc = itemdesc.Description
@@ -1952,7 +1986,7 @@ if Retribution then
 
 	return {
 		targetMod = "Retribution",
-		birthright = rtBirthrightDesc,
+		characters = CharacterDesc,
 		collectibles = rtCollectibleDesc,
 		trinkets = rtTrinketDesc,
 		cards = rtCardDesc,

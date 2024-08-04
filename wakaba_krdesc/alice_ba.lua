@@ -6,15 +6,19 @@ if AliceOfBlueArchive then
 	local id_sword_of_light = Isaac.GetItemIdByName("Sword of Light")
 	local id_commander = Isaac.GetItemIdByName("Commander")
 
-	local BirthrightDesc = {
+	local CharacterDesc = {
 		[Isaac.GetPlayerTypeByName("Alice")] = {
 			Name = "Alice",
-			Description = "{{Collectible"..id_sword_of_light.."}} The Sword of Light - '밸런스 붕괴'의 배수가 최대(x3)로 고정됩니다.",
+			Description = "",
+			Detailed = "아리스는 넥슨의 {{ColorLime}}블루 아카이브{{CR}}에 등장하는 귀여운 로봇입니다.#적 명중 시 확률적으로 2배의 피해를 줍니다.#{{Collectible"..id_sword_of_light.."}} 고유 능력 : 빛의 검",
+			Birthright = "{{Collectible"..id_sword_of_light.."}} The Sword of Light - '밸런스 붕괴'의 배수가 최대(x3)로 고정됩니다.",
 			QuoteDesc = "강화 마법입니다!",
 		},
-		[Isaac.GetPlayerTypeByName("Tainted Alice")] = {
+		[Isaac.GetPlayerTypeByName("Tainted Alice", true)] = {
 			Name = "???",
-			Description = "아군 몬스터가 항상 무적이 됩니다.",
+			Description = "",
+			Detailed = "아리스는 넥슨의 {{ColorLime}}블루 아카이브{{CR}}에 등장하는 귀여운 로봇입니다.#아군 몬스터 사망 시 그 방에서 {{DamageSmall}}공격력과 {{TearsSmall}}연사가 증가합니다.#{{Collectible"..id_commander.."}} 고유 능력 : 커맨더",
+			Birthright = "아군 몬스터가 항상 무적이 됩니다.",
 			QuoteDesc = "???",
 		},
 	}
@@ -39,8 +43,12 @@ if AliceOfBlueArchive then
 		},
 	}
 
-	for playerType, birthrightdesc in pairs(BirthrightDesc) do
-		EID:addBirthright(playerType, birthrightdesc.Description, birthrightdesc.Name, "ko_kr")
+	for playerType, birthrightdesc in pairs(CharacterDesc) do
+		EID:addCharacterInfo(playerType, birthrightdesc.Description, birthrightdesc.Name, "ko_kr")
+		if InventoryDescriptions then
+			EID:addEntity(InvDescEIDType.PLAYER, InvDescEIDVariant.DEFAULT, playerType, birthrightdesc.Name, birthrightdesc.Detailed, "ko_kr")
+		end
+		EID:addBirthright(playerType, birthrightdesc.Birthright, birthrightdesc.Name, "ko_kr")
 	end
 	for itemID, itemdesc in pairs(CollectibleDesc) do
 		local desc = itemdesc.Description
@@ -50,7 +58,7 @@ if AliceOfBlueArchive then
 
 	return {
 		targetMod = "AliceOfBlueArchive",
-		birthright = BirthrightDesc,
+		characters = CharacterDesc,
 		collectibles = CollectibleDesc,
 	}
 

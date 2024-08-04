@@ -7,10 +7,12 @@ if Yondu_Arrow_mod then
 	local Items = mod.ITEMS
 	local Trinkets = mod.TRINKETS
 
-	local BirthrightDesc = {
+	local CharacterDesc = {
 		[mod.yonduType] = {
 			Name = "Yondu",
-			Description = "↑ 화살의 속도 및 공격 빈도 증가",
+			Description = "",
+			Detailed = "",
+			Birthright = "↑ 화살의 속도 및 공격 빈도 증가",
 			QuoteDesc = "욘두의 위력을 느껴라",
 		},
 	}
@@ -86,8 +88,13 @@ if Yondu_Arrow_mod then
 		},
 	}
 
-	for playerType, birthrightdesc in pairs(BirthrightDesc) do
-		EID:addBirthright(playerType, birthrightdesc.Description, birthrightdesc.Name, "ko_kr")
+	for playerType, birthrightdesc in pairs(CharacterDesc) do
+		EID:addCharacterInfo(playerType, birthrightdesc.Description, birthrightdesc.Name, "ko_kr")
+		if InventoryDescriptions then
+			EID:addEntity(InvDescEIDType.PLAYER, InvDescEIDVariant.DEFAULT, playerType, birthrightdesc.Name, birthrightdesc.Detailed, "ko_kr")
+			EID:AddIconToObject(InvDescEIDType.PLAYER, InvDescEIDVariant.DEFAULT, playerType, "Player"..playerType.."")
+		end
+		EID:addBirthright(playerType, birthrightdesc.Birthright, birthrightdesc.Name, "ko_kr")
 	end
 	for itemID, itemdesc in pairs(CollectibleDesc) do
 		local desc = itemdesc.Description
@@ -117,7 +124,7 @@ if Yondu_Arrow_mod then
 
 	return {
 		targetMod = "whistle piece",
-		birthright = BirthrightDesc,
+		characters = CharacterDesc,
 		collectibles = CollectibleDesc,
 		trinkets = TrinketDesc,
 	}

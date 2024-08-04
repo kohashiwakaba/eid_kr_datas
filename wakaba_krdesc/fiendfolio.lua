@@ -68,30 +68,65 @@ if FiendFolio then
 	wakaba_krdesc.ffStatusEffectDesc = ffStatusEffectDesc
 
   -- Birthright
-	local ffBirthrightDesc = {
+	local CharacterDesc = {
 		[FiendFolio.PLAYER.FIEND] = {
 			Name = "Fiend",
-			Description = "Fiend의 파이어볼이 적에게 유도되며;#발사 시 지나간 자리에 불길을 남기며;#폭파 시 적 처치 여부와 관계없이 33%의 확률로 Fiend의 부하를 추가로 소환합니다.#Fiend의 파이어볼로 적 처치 시 {{ffImmoralHeart}}이모럴하트 등장 확률이 증가합니다.",
+			Description = "{{ffImmoralHeart}} 최대 체력 = 이모럴하트의 보정을 받습니다.",
+			Detailed = "핀드는 오래 전 The Devil's Harvest 모드와 웃는 악마 이모지에서 유래하였습니다."
+				.."#{{Heart}} 빨간하트 등장 시 확률적으로 {{ffImmoralHeart}}이모럴하트나 {{BlackHeart}}블랙하트로 바뀝니다."
+				.."#{{ffImmoralHeart}} 패널티 피격 시 가장 오른쪽과 붙어있는 모든 같은 종류의 체력이 제거되며 핀드의 부하로 바뀝니다."
+				.."#핀드의 부하는 적을 따라 공격하며 초당 캐릭터의 {{DamageSmall}}/{{TearsSmall}} 비례의 피해를 줍니다."
+				.."#{{Collectible"..FiendFolio.ITEM.COLLECTIBLE.PYROMANCY.."}} 고유 능력 : 방화술사"
+				.."#{{Blank}} (파이어볼이 자동 생성되지 않으며 50 + (스테이지 수 * 10)의 피해를 줄 때마다 생성됨)"
+				.."",
+			Birthright = "Fiend의 파이어볼이 적에게 유도되며;#발사 시 지나간 자리에 불길을 남기며;#폭파 시 적 처치 여부와 관계없이 33%의 확률로 Fiend의 부하를 추가로 소환합니다.#Fiend의 파이어볼로 적 처치 시 {{ffImmoralHeart}}이모럴하트 등장 확률이 증가합니다.",
 			QuoteDesc = "악동 파이어볼",
 		},
 		[FiendFolio.PLAYER.BIEND] = {
 			Name = "Tainted Fiend",
-			Description = "{{Collectible"..FiendFolio.ITEM.COLLECTIBLE.MALICE.."}}Malice로 적 처치 시 블랙하트를 드랍할 확률이 증가합니다.#{{Collectible"..FiendFolio.ITEM.COLLECTIBLE.MALICE.."}}Malice로 폼 전환 시마다 Fiend의 부하가 각각 랜덤 모자를 쓰며 모자에 따라 {{DamageSmall}}/{{TearsSmall}}/{{LuckSmall}}/{{TearsizeSmall}}이 달라집니다.",
+			Description = "{{BlackHeart}} 최대 체력 = 블랙하트의 보정을 받습니다.",
+			Detailed = "The Bastard: 핀드의 지나친 타락은 그의 몸은 녹여버리고 말았습니다."
+				.."#{{BlackHeart}} 하트 등장 시 확률적으로 블랙하트로 바뀝니다."
+				.."#{{Collectible"..FiendFolio.ITEM.COLLECTIBLE.MALICE.."}} 고유 능력 : 악의"
+				.."#악의 사용 시 소지 중인 {{BlackHeart}}의 수에 비례하여 부하로 분해됩니다. (최소 2, 재사용 시 합체)"
+				.."#분해된 부하는 캐릭터와 같은 공격을 하며 피격 시 사라집니다."
+				.."#!!! {{ColorRed}}모든 부하가 사라지면 체력에 관계없이 사망합니다."
+				.."",
+			Birthright = "{{Collectible"..FiendFolio.ITEM.COLLECTIBLE.MALICE.."}}Malice로 적 처치 시 블랙하트를 드랍할 확률이 증가합니다.#{{Collectible"..FiendFolio.ITEM.COLLECTIBLE.MALICE.."}}Malice로 폼 전환 시마다 Fiend의 부하가 각각 랜덤 모자를 쓰며 모자에 따라 {{DamageSmall}}/{{TearsSmall}}/{{LuckSmall}}/{{TearsizeSmall}}이 달라집니다.",
 			QuoteDesc = "악한 회복 + 개성 증가",
 		},
 		[FiendFolio.PLAYER.GOLEM] = {
 			Name = "Golem",
-			Description = "↑ {{LuckSmall}}행운 +2#색돌 파괴 시 소울하트 대신 석기 장신구를 드랍합니다.",
+			Description = "",
+			Detailed = "골렘은 오래 전 The Devil's Harvest 모드와 색돌에서 유래하였습니다."
+				.."#{{Trinket}} 장신구 등장 시 확률적으로 석기 장신구나 룬으로 바뀝니다."
+				.."#{{Collectible139}} 장신구를 처음부터 2개를 동시에 들고 다닐 수 있습니다."
+				.."#{{Trinket}} 비밀방 진입 및 보스방 클리어 시 석기 장신구를 추가로 드랍합니다."
+				.."#주요 특수방에서 서브웨이라는 특수방으로 이동할 수 있으며 서브웨이에서는 각 특수방별 숏컷 및 여러 보조 동료가 있습니다."
+				.."",
+			Birthright = "{{LuckSmall}} 행운 +2#색돌 파괴 시 소울하트 대신 석기 장신구를 드랍합니다.",
 			QuoteDesc = "단단해진 색돌 + 행운 증가",
 		},
 		[FiendFolio.PLAYER.SLIPPY] = {
 			Name = "Slippy",
-			Description = "{{Collectible"..FiendFolio.ITEM.COLLECTIBLE.FROG_HEAD.."}}Golden Frog Head의 방귀의 크기에 따른 독가스를 추가로 남깁니다.",
+			Description = "",
+			Detailed = "슬리피는 Nuclear Throne의 히든 캐릭터로 멈추지 못합니다."
+				.."#공격이 3발로 나갑니다."
+				.."#{{Collectible"..FiendFolio.ITEM.COLLECTIBLE.FROG_HEAD.."}} 고유 능력 : 황금 개구리 머리"
+				.."",
+			Birthright = "{{Collectible"..FiendFolio.ITEM.COLLECTIBLE.FROG_HEAD.."}}Golden Frog Head의 방귀의 크기에 따른 독가스를 추가로 남깁니다.",
 			QuoteDesc = "더욱 지독해진 냄새",
 		},
 		[FiendFolio.PLAYER.CHINA] = {
 			Name = "China",
-			Description = "카드/알약 슬롯에 {{Collectible"..FiendFolio.ITEM.COLLECTIBLE.HORSE_PASTE.."}}Horse Paste 아이템이 배정됩니다.#{{Collectible"..FiendFolio.ITEM.COLLECTIBLE.HORSE_PASTE.."}} 사용 시 {{BrokenHeart}}부서진하트 -1",
+			Description = "",
+			Detailed = "차이나는 핀드의 여자친구이지만 몸이 몹시나 허약합니다."
+				.."#{{BrokenHeart}} 체력이 없으며 피격, 장애물 충돌, 혹은 구덩이에 빠질 때 부서진하트가 추가됩니다."
+				.."#{{Card"..FiendFolio.ITEM.CARD.HORSE_PUSHPOP.."}} 방 클리어 시 15%의 확률로 Push Pop을 추가로 드랍합니다."
+				.."#{{BrokenHeart}} 부서진하트가 12개가 되면 사망합니다."
+				.."#모든 체력 거래는 무료이나 단 하나만 획득할 수 있습니다."
+				.."",
+			Birthright = "카드/알약 슬롯에 {{Collectible"..FiendFolio.ITEM.COLLECTIBLE.HORSE_PASTE.."}}Horse Paste 아이템이 배정됩니다.#{{Collectible"..FiendFolio.ITEM.COLLECTIBLE.HORSE_PASTE.."}} 사용 시 {{BrokenHeart}}부서진하트 -1",
 			QuoteDesc = "초강력 접착제",
 		},
 	}
@@ -3333,8 +3368,12 @@ if FiendFolio then
 
 
 
-	for playerType, birthrightdesc in pairs(ffBirthrightDesc) do
-		EID:addBirthright(playerType, birthrightdesc.Description, birthrightdesc.Name, "ko_kr")
+	for playerType, birthrightdesc in pairs(CharacterDesc) do
+		EID:addCharacterInfo(playerType, birthrightdesc.Description, birthrightdesc.Name, "ko_kr")
+		if InventoryDescriptions then
+			EID:addEntity(InvDescEIDType.PLAYER, InvDescEIDVariant.DEFAULT, playerType, birthrightdesc.Name, birthrightdesc.Detailed, "ko_kr")
+		end
+		EID:addBirthright(playerType, birthrightdesc.Birthright, birthrightdesc.Name, "ko_kr")
 	end
 	for itemID, itemdesc in pairs(ffCollectibleDesc) do
 		local desc = itemdesc.Description
@@ -3651,7 +3690,7 @@ if FiendFolio then
 
 	return {
 		targetMod = "Fiend Folio",
-		birthright = ffBirthrightDesc,
+		characters = CharacterDesc,
 		collectibles = ffCollectibleDesc,
 		trinkets = ffTrinketDesc,
 		cards = ffCardDesc,

@@ -4,6 +4,44 @@ if communityRemix then
 	EID._currentMod = "Community Remix"
 
 
+	local CharacterDesc = {
+		[PlayerType.PLAYER_ADAM] = {
+			Name = "Adam",
+			Description = "",
+			Detailed = "",
+			Birthright = "",
+			QuoteDesc = "",
+		},
+		[PlayerType.PLAYER_ABEL] = {
+			Name = "Abel",
+			Description = "",
+			Detailed = "",
+			Birthright = "",
+			QuoteDesc = "",
+		},
+		[PlayerType.PLAYER_ADAM_B] = {
+			Name = "Tainted Adam",
+			Description = "",
+			Detailed = "",
+			Birthright = "",
+			QuoteDesc = "",
+		},
+		[PlayerType.PLAYER_ABEL_B] = {
+			Name = "Tainted Abel",
+			Description = "",
+			Detailed = "",
+			Birthright = "",
+			QuoteDesc = "",
+		},
+		[PlayerType.PLAYER_DOPLE] = {
+			Name = "Dople",
+			Description = "",
+			Detailed = "",
+			Birthright = "",
+			QuoteDesc = "",
+		},
+	}
+
 	local Items = CollectibleType
 	local Trinkets = TrinketType
 	local Cards = Card
@@ -631,6 +669,13 @@ if communityRemix then
 		},
 	}
 
+	for playerType, birthrightdesc in pairs(CharacterDesc) do
+		--EID:addCharacterInfo(playerType, birthrightdesc.Description, birthrightdesc.Name, "ko_kr")
+		if InventoryDescriptions then
+			--EID:addEntity(InvDescEIDType.PLAYER, InvDescEIDVariant.DEFAULT, playerType, birthrightdesc.Name, birthrightdesc.Detailed, "ko_kr")
+		end
+		--EID:addBirthright(playerType, birthrightdesc.Birthright, birthrightdesc.Name, "ko_kr")
+	end
 	for itemID, itemdesc in pairs(CollectibleDesc) do
 		local desc = itemdesc.Description
 		if itemdesc.StatusEffects then
@@ -662,6 +707,7 @@ if communityRemix then
 
 	return {
 		targetMod = "Community Remix",
+		--characters = CharacterDesc,
 		collectibles = CollectibleDesc,
 		trinkets = TrinketDesc,
 		cards = CardDesc,

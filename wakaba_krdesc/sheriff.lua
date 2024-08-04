@@ -7,15 +7,29 @@ if Sheriff then
 	local Trinkets = Sheriff.Items
 	local Cards = Sheriff.PocketItems
 
-	local BirthrightDesc = {
+	local CharacterDesc = {
 		[Sheriff.Characters.TheSheriff.CHARACTER_ID] = {
 			Name = "The Sheriff",
-			Description = "{{SheriffBullet}} 적 처치 시 확률적으로 탄창 픽업을 드랍합니다.#{{SheriffBullet}} 탄창을 주우면 탄환 +3 (초과 보유 가능)",
+			Description = "",
+			Detailed = ""
+				.."#서부의 보안관이 지하실로 내려왔습니다."
+				.."#공격이 특수 리볼버 공격으로 바뀌며 공격하지 않는 동안 총탄이 자동으로 충전됩니다."
+				.."#멀리 날아간 총탄은 피해량이 절반으로 감소합니다."
+				.."#{{Collectible"..Items.QuickDraw.ITEM_ID.."}} 고유 능력 : 퀵 드로우"
+				.."",
+			Birthright = "{{SheriffBullet}} 적 처치 시 확률적으로 탄창 픽업을 드랍합니다.#{{SheriffBullet}} 탄창을 주우면 탄환 +3 (초과 보유 가능)",
 			QuoteDesc = "빼앗고 다시 쓰기",
 		},
 		[Sheriff.Characters.TaintedSheriff.CHARACTER_ID] = {
 			Name = "Tainted Sheriff",
-			Description = "저격되지 않은 적을 채찍으로 명중 시 특수 저격 표식이 생깁니다.#특수 저격 상태의 적이 1초마다 특수 탄창을 드랍합니다. (초과 보유 가능)",
+			Description = "",
+			Detailed = ""
+				.."#공격이 4발의 특수 리볼버 공격으로 바뀌며 {{ColorOrange}}총탄이 자동으로 충전되지 않습니다."
+				.."#{{Collectible"..Items.Holster.ID.."}} 고유 능력 : 홀스터"
+				.."#{{Blank}} 홀스터로 공격 방식을 바꿀 수 있으며 채찍 공격 명중 시 저격 표식이 생깁니다."
+				.."#{{Blank}} 저격 상태의 적 명중 시 탄창을 드랍하며 탄창은 캐릭터에게 자동으로 끌려옵니다."
+				.."",
+			Birthright = "저격되지 않은 적을 채찍으로 명중 시 특수 저격 표식이 생깁니다.#특수 저격 상태의 적이 1초마다 특수 탄창을 드랍합니다. (초과 보유 가능)",
 			QuoteDesc = "쥐어짜내기",
 		},
 	}
@@ -146,8 +160,12 @@ if Sheriff then
 
 	EID:addEntity(6, Sheriff.Entities.Rancher.ID, 0, "목동", "{{SheriffBullet}} 3{{Coin}}을 사용하여 특수 사격장으로 이동합니다. (아이템 비활성화)#{{SheriffBullet}} {{Timer}}일정 시간 혹은 {{SheriffBullet}}일정 탄수 안에 모든 과녁 명중 시 성공#{{Blank}} (둘 중 하나의 조건만 랜덤으로 적용)#{{ArrowUp}} 성공 수에 비례하여 보상을 드랍합니다.", "ko_kr")
 
-	for playerType, birthrightdesc in pairs(BirthrightDesc) do
-		EID:addBirthright(playerType, birthrightdesc.Description, birthrightdesc.Name, "ko_kr")
+	for playerType, birthrightdesc in pairs(CharacterDesc) do
+		EID:addCharacterInfo(playerType, birthrightdesc.Description, birthrightdesc.Name, "ko_kr")
+		if InventoryDescriptions then
+			EID:addEntity(InvDescEIDType.PLAYER, InvDescEIDVariant.DEFAULT, playerType, birthrightdesc.Name, birthrightdesc.Detailed, "ko_kr")
+		end
+		EID:addBirthright(playerType, birthrightdesc.Birthright, birthrightdesc.Name, "ko_kr")
 	end
 	for itemID, itemdesc in pairs(CollectibleDesc) do
 		local desc = itemdesc.Description
@@ -208,7 +226,7 @@ if Sheriff then
 
 	return {
 		targetMod = "TSC Unlock API (TheSheriff)",
-		birthright = BirthrightDesc,
+		characters = CharacterDesc,
 		collectibles = CollectibleDesc,
 		trinkets = TrinketDesc,
 		cards = CardDesc,

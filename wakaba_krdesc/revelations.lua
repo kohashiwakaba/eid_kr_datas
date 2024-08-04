@@ -2,20 +2,42 @@ if REVEL then
 
 EID._currentMod = "Revelations"
 
-local revBirthrightDesc = {
+local CharacterDesc = {
   [REVEL.CHAR.SARAH.Type] = {
     Name = "Sarah",
-    Description = "{{BlackHeart}} 피격 시 블랙하트가 나올 때 하나씩만 나옵니다.",
+		Description = "",
+		Detailed = ""
+			.."#{{Collectible"..REVEL.ITEM.PENANCE.id.."}} 고유 능력 : 참회"
+			.."#{{Blank}} 어떠한 경우에도 악마방이 등장하지 않습니다."
+			.."#{{Blank}} 4회 이상 참회 시 비행 능력을 얻습니다."
+			.."",
+    Birthright = "{{BlackHeart}} 피격 시 블랙하트가 나올 때 하나씩만 나옵니다.",
     QuoteDesc = "내 죄를 용서하소서",
   },
   [REVEL.CHAR.DANTE.Type] = {
-    Name = "Dante and Charon",
-    Description = "스테이지 진입 시 둘이 헤어질 때 랜덤 패시브 아이템 3개를 공유합니다.",
+    Name = "Dante",
+		Description = "",
+		Detailed = ""
+			.."#{{BossRoom}} 스테이지 진입 시 카론과 흩어지며 보스방을 진입하려면 카론과 만나야 됩니다."
+			.."#{{Slow}} 공격이 무언가에 부딪힐 때 적을 느리게 하는 둔화 장판이 생깁니다."
+			.."#공격방향으로 책을 내려찍으며 적을 강하게 밀쳐냅니다."
+			.."#{{Collectible"..REVEL.ITEM.PHYLACTERY.id.."}} 고유 능력 : 성물함"
+			.."#{{Blank}} 아이템을 드는 도중 Phylactery 사용 시 카론이 해당 아이템을 대신 획득합니다."
+			.."",
+    Birthright = "스테이지 진입 시 둘이 헤어질 때 랜덤 패시브 아이템 3개를 공유합니다.",
     QuoteDesc = "전리품 공유",
   },
   [REVEL.CHAR.CHARON.Type] = {
-    Name = "Dante and Charon",
-    Description = "스테이지 진입 시 둘이 헤어질 때 랜덤 패시브 아이템 3개를 공유합니다.",
+    Name = "Charon",
+		Description = "",
+		Detailed = ""
+			.."#{{BossRoom}} 스테이지 진입 시 단테와 흩어지며 보스방을 진입하려면 단테과 만나야 됩니다."
+			.."#공격이 5~6발로 나갑니다."
+			.."#공격방향을 바꾸면 탄속이 감소하며, 같은 방향으로 쓸수록 되돌아옵니다."
+			.."#{{Collectible"..REVEL.ITEM.PHYLACTERY.id.."}} 고유 능력 : 성물함"
+			.."#{{Blank}} 아이템을 드는 도중 Phylactery 사용 시 단테가 해당 아이템을 대신 획득합니다."
+			.."",
+    Birthright = "스테이지 진입 시 둘이 헤어질 때 랜덤 패시브 아이템 3개를 공유합니다.",
     QuoteDesc = "전리품 공유",
   },
 }
@@ -422,8 +444,12 @@ local revCardDesc = {
 
 }
 
-for playerType, birthrightdesc in pairs(revBirthrightDesc) do
-  EID:addBirthright(playerType, birthrightdesc.Description, birthrightdesc.Name, "ko_kr")
+for playerType, birthrightdesc in pairs(CharacterDesc) do
+	EID:addCharacterInfo(playerType, birthrightdesc.Description, birthrightdesc.Name, "ko_kr")
+	if InventoryDescriptions then
+		EID:addEntity(InvDescEIDType.PLAYER, InvDescEIDVariant.DEFAULT, playerType, birthrightdesc.Name, birthrightdesc.Detailed, "ko_kr")
+	end
+	EID:addBirthright(playerType, birthrightdesc.Birthright, birthrightdesc.Name, "ko_kr")
 end
 for itemID, itemdesc in pairs(revCollectibleDesc) do
   local desc = itemdesc.Description
@@ -584,7 +610,7 @@ end, REVEL.ENT.CURSED_SHRINE.id)
 
 return {
 	targetMod = "Revelations",
-	birthright = revBirthrightDesc,
+	characters = CharacterDesc,
 	collectibles = revCollectibleDesc,
 	trinkets = revTrinketDesc,
 	cards = revCardDesc,

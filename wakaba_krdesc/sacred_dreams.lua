@@ -17,7 +17,7 @@ if SacredDreams then
 	local Items = SDMod.Item
 	local Trinkets = SDMod.Trinket
 	local Cards = SDMod.Consumable
-	
+
 	local StatusEffectDesc = {
 		SOMNO = "#{{Somno}} {{ColorYellow}}기면 상태의 적은 느려지며 추가 피해를 받으나, 효과 종료 후 일정 시간동안 기면에 면역이 됩니다.",
 		DECAY = "#부식 상태의 적은 최대 체력에 비례한 지속 피해를 받습니다. (보스의 경우 최대 25)#부식 상태 적 처치 시 적 기준 랜덤한 방향으로 부식성 눈물을 흩뿌립니다.",
@@ -33,7 +33,7 @@ if SacredDreams then
 
 		local string1, string2
 		local durArrows, pouchArrows
-		
+
 		if durMult == 1 then
 				durArrows = "{{ColorYellow}}유지"
 		elseif durMult > 1 then
@@ -81,10 +81,18 @@ if SacredDreams then
 		}
 	end
 
-	local BirthrightDesc = {
+	local CharacterDesc = {
 		[SDMod.PlayerType.PLAYER_GUARD] = {
 			Name = "The Dreams Guard",
-			Description = "{{Somno}} 기면 상태의 적 처치 시 모래 폭발을 일으킵니다.#{{Somno}} 기면 상태에서 깨어난 적은 기면 상태에서 받은 피해의 75%를 추가로 받습니다.",
+			Description = "",
+			Detailed = ""
+				.."#아이작의 꿈을 지키려고 노력하는 수호자입니다."
+				.."#{{Somno}} 기면 상태의 적에게 피해를 줄 때마다 모래 게이지가 쌓입니다."
+				.."#모래 게이지 완충 시 1포인트가 증가하며 증가한 포인트는 스테이지 진입 시 사용할 수 있습니다."
+				.."#{{Collectible"..SDMod.Item.SAND_POUCH.."}} 고유 능력 : 모래 주머니"
+				.."#최대 3개의 추가 능력을 강화할 수 있으며 교체를 원할 경우 {{ButtonRT}} 버튼을 통해 슬롯을 선택한 상태에서 업그레이드를 선택할 수 있습니다."
+				.."",
+			Birthright = "{{Somno}} 기면 상태의 적 처치 시 모래 폭발을 일으킵니다.#{{Somno}} 기면 상태에서 깨어난 적은 기면 상태에서 받은 피해의 75%를 추가로 받습니다.",
 			QuoteDesc = "잘 자란 말을 하러 왔다",
 		},
 	}
@@ -301,7 +309,7 @@ if SacredDreams then
 			QuoteDesc = "3을 셀 수 있어!",
 		},
 	}
-	
+
 local CardDesc = {
 	[SDMod.Consumable.RUNE_ISA] = {
 		Description = "{{Freezing}} 그 방의 적을 얼립니다.#보스의 경우 6초동안 석화시킵니다.",
@@ -477,9 +485,13 @@ EID:addEntity(1000, SDMod.SOMNOSSENCE, 0, "수면", "음냐음냐", "ko_kr")
 EID:addEntity(6, SDMod.Slot.DADS_GRAMOPHONE, 0, "레코드 머신", "1{{Coin}} 소모#사용 시 음악을 바꾸어 그 방의 배열 정보를 바꿉니다.#이후 현재 방에서 주사위류({{Collectible105}}) 아이템 사용 시 이 방에서 재생 중인 음악의 배열을 따릅니다.", "ko_kr")
 EID:addEntity(1000, SDMod.SHRINE_SOMNOLEPTIC, 0, "수면 석상", "!!! 일회용#1포인트를 소모하여 능력 슬롯 +1#활성화하지 않은 경우 2{{Bomb}}로 폭파 시 모래 게이지 25% 충전", "ko_kr")
 
-	for playerType, birthrightdesc in pairs(BirthrightDesc) do
-		EID:addBirthright(playerType, birthrightdesc.Description, birthrightdesc.Name, "ko_kr")
+for playerType, birthrightdesc in pairs(CharacterDesc) do
+	EID:addCharacterInfo(playerType, birthrightdesc.Description, birthrightdesc.Name, "ko_kr")
+	if InventoryDescriptions then
+		EID:addEntity(InvDescEIDType.PLAYER, InvDescEIDVariant.DEFAULT, playerType, birthrightdesc.Name, birthrightdesc.Detailed, "ko_kr")
 	end
+	EID:addBirthright(playerType, birthrightdesc.Birthright, birthrightdesc.Name, "ko_kr")
+end
 	for itemID, itemdesc in pairs(CollectibleDesc) do
 		local desc = itemdesc.Description
 		if itemdesc.StatusEffects then
@@ -625,7 +637,7 @@ end
 
 	return {
 		targetMod = "Sacred Dreams",
-		birthright = BirthrightDesc,
+		characters = CharacterDesc,
 		collectibles = CollectibleDesc,
 		trinkets = TrinketDesc,
 		cards = CardDesc,

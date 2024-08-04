@@ -28,11 +28,13 @@ if Deliverance then
 	local Cards = deliveranceContent.cards
 	local Pills = deliveranceContent.pills
 
-	local BirthrightDesc = {
+	local CharacterDesc = {
 		[Players.awan.playerAwan] = {
-			Name = "Isaac",
-			Description = "생득권 설명",
-			QuoteDesc = "획득멘트",
+			Name = "Awan",
+			Description = "",
+			Detailed = "",
+			Birthright = "",
+			QuoteDesc = "",
 		},
 	}
 
@@ -337,8 +339,13 @@ if Deliverance then
 		},
 	}
 
-	for playerType, birthrightdesc in pairs(BirthrightDesc) do
-		EID:addBirthright(playerType, birthrightdesc.Description, birthrightdesc.Name, "ko_kr")
+	for playerType, birthrightdesc in pairs(CharacterDesc) do
+		EID:addCharacterInfo(playerType, birthrightdesc.Description, birthrightdesc.Name, "ko_kr")
+		if InventoryDescriptions then
+			EID:addEntity(InvDescEIDType.PLAYER, InvDescEIDVariant.DEFAULT, playerType, birthrightdesc.Name, birthrightdesc.Detailed, "ko_kr")
+			EID:AddIconToObject(InvDescEIDType.PLAYER, InvDescEIDVariant.DEFAULT, playerType, "Player"..playerType.."")
+		end
+		EID:addBirthright(playerType, birthrightdesc.Birthright, birthrightdesc.Name, "ko_kr")
 	end
 	for itemID, itemdesc in pairs(CollectibleDesc) do
 		local desc = itemdesc.Description

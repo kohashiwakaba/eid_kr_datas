@@ -21,7 +21,7 @@ if cat_mod then
 	local Items = Mod.Item
 	local Trinkets = Mod.Trinket
 	local Cards = Mod.Pickup
-	
+
 	local CharacterDesc = {
 		[Mod.Character.GABY] = {
 			Name = "Catgirl W. G. A.",
@@ -238,7 +238,8 @@ if cat_mod then
 	for playerType, birthrightdesc in pairs(CharacterDesc) do
 		EID:addCharacterInfo(playerType, birthrightdesc.Description, birthrightdesc.Name, "ko_kr")
 		if InventoryDescriptions then
-			EID:addEntity(wakaba.INVDESC_TYPE_PLAYER, wakaba.INVDESC_VARIANT, playerType, birthrightdesc.Name, birthrightdesc.Detailed, "ko_kr")
+			EID:addEntity(InvDescEIDType.PLAYER, InvDescEIDVariant.DEFAULT, playerType, birthrightdesc.Name, birthrightdesc.Detailed, "ko_kr")
+			EID:AddIconToObject(InvDescEIDType.PLAYER, InvDescEIDVariant.DEFAULT, playerType, "Player"..playerType.."")
 		end
 		EID:addBirthright(playerType, birthrightdesc.Birthright, birthrightdesc.Name, "ko_kr")
 	end
@@ -275,10 +276,10 @@ if cat_mod then
 
 	return {
 		targetMod = "Catgirl With Gambling Addiction",
-		birthright = CharacterDesc,
+		characters = CharacterDesc,
 		collectibles = CollectibleDesc,
 		trinkets = TrinketDesc,
 		cards = CardDesc,
 	}
-	
+
 end
