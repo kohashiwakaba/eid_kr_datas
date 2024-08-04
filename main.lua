@@ -100,6 +100,7 @@ mod:AddCallback(ModCallbacks.MC_POST_RENDER, checkStartOfRunWarnings)
 
 local comb = {
 	birthright = {},
+	characters = {},
 	collectibles = {},
 	trinkets = {},
 	cards = {},
@@ -117,10 +118,22 @@ do
 		if e and e.targetMod then
 			if e.birthright then
 				for p, b in pairs(e.birthright) do
-					managedTable.birthright[p] = {
+					managedTable.characters[p] = {
 						targetMod = b.targetMod,
 						playerName = b.Name,
-						description = b.Description,
+						birthright = b.Description,
+						queueDesc = b.QuoteDesc,
+					}
+				end
+			end
+			if e.characters then
+				for p, b in pairs(e.characters) do
+					managedTable.characters[p] = {
+						targetMod = b.targetMod,
+						playerName = b.Name,
+						shortDesc = b.Description,
+						detailedDesc = b.Detailed,
+						birthright = b.Birthright,
 						queueDesc = b.QuoteDesc,
 					}
 				end
@@ -184,8 +197,8 @@ do
 			local q = i_queueNow[initSeed] ---@type ItemConfigItem
 			if q:IsCollectible() then
 				if q.ID == CollectibleType.COLLECTIBLE_BIRTHRIGHT then
-					if managedTable.birthright[player:GetPlayerType()] then
-						local entry = managedTable.birthright[player:GetPlayerType()]
+					if managedTable.characters[player:GetPlayerType()] then
+						local entry = managedTable.characters[player:GetPlayerType()]
 						local itemName = "생득권"
 						local queueDesc = entry.queueDesc
 						if queueDesc then
