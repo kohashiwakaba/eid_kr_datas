@@ -17,7 +17,7 @@ if GODMODE then
 		},
 		[Isaac.GetPlayerTypeByName("Tainted Recluse",true)] = {
 			Name = "Tainted Recluse",
-			Description = "{{Collectible"..Items.reclusive_tendencies.."}} Reculsive Tendencies 사용 시 진드기가 2배로 소환됩니다.#{{Collectible"..Items.reclusive_tendencies.."}} Reculsive Tendencies로 소환된 거미의 공격력 +50%",
+			Description = "↑ All attacks apply a poison effect for 2 seconds, dealing 10% player damage#Getting hit while toxic creates toxic creep", -- TODO
 			QuoteDesc = "",
 		},
 		[Isaac.GetPlayerTypeByName("Xaphan",false)] = {
@@ -37,7 +37,7 @@ if GODMODE then
 		},
 		[Isaac.GetPlayerTypeByName("Tainted Elohim",true)] = {
 			Name = "Tainted Elohim",
-			Description = "{{BossRoom}} 보스방의 보스 처치시 모든 능력치가 추가로 증가합니다.",
+			Description = "You can charge daggers to gain a swing attack, pushing enemies away, removing projectiles and dealing damage#Remove 1 more broken heart per boss fight as well", -- TODO
 			QuoteDesc = "",
 		},
 		[Isaac.GetPlayerTypeByName("Gehazi",false)] = {
@@ -45,14 +45,19 @@ if GODMODE then
 			Description = "{{Collectible"..Items.crown_of_gold.."}} 피격 시 잃는 {{Coin}}동전의 개수 -2",
 			QuoteDesc = "",
 		},
+		[Isaac.GetPlayerTypeByName("Tainted Gehazi",false)] = { -- TODO
+			Name = "Tainted Gehazi",
+			Description = "Additional 2% chance for nickel drops from attacking#Additional 10% chance for double penny drops from attacking",
+			QuoteDesc = "",
+		},
 		[Isaac.GetPlayerTypeByName("Deli",false)] = {
 			Name = "Deli",
 			Description = "↑ {{DamageSmall}}공격력 배율 x1.2#↑ {{TearsSmall}}연사 배율 x1.1",
 			QuoteDesc = "",
 		},
-		[Isaac.GetPlayerTypeByName("Tainted Deli",true)] = {
+		[Isaac.GetPlayerTypeByName("Tainted Deli",true)] = { -- TODO
 			Name = "Tainted Deli",
-			Description = "적 처치 시 등장하는 Delirious Pile 처치 시 나오는 탄환이 더 이상 캐릭터에게 피해를 주지 않습니다.",
+			Description = "One less eye closes any time eyes close on your halo#Shifting from Delusion to Oblivion creates a tear burst#Soul hearts have a 20% chance to open your halo's eyes",
 			QuoteDesc = "",
 		},
 		[Isaac.GetPlayerTypeByName("The Sign",false)] = {
@@ -79,7 +84,7 @@ if GODMODE then
 			QuoteDesc = "내 말을 따르면 너의 시간이 올지오다",
 		},
 		[Items.angel_food] = {
-			Description = "↑ {{SoulHeart}}소울하트 +1#↑ {{GoldenHeart}}황금하트 +1#↑ {{TearsSmall}}연사 +0.5",
+			Description = "↑ {{SoulHeart}}소울하트 +1#↑ {{GoldenHeart}}황금하트 +1#↑ {{TearsSmall}}연사 +0.5", -- TODO
 			BingeEater = "↑ {{RangeSmall}}사거리 +2",
 			Name = "천사의 식사",
 			QuoteDesc = "금기",
@@ -99,13 +104,19 @@ if GODMODE then
 			Name = "세례 십자가",
 			QuoteDesc = "",
 		},
+		[Items.birthday_slice] = { -- TODO
+			Description = "↑ +5% All Stats#↑ Heals 2 Red Hearts#↑ +1 Soul Heart",
+			BingeEater = "↑ +2.5% All Stats",
+			Name = "",
+			QuoteDesc = "",
+		},
 		[Items.black_mushroom] = {
 			Description = "!!! 일회용#!!! 사용 시;#↓ {{EmptyHeart}}최대 체력 -1#↑ {{SoulHeart}}소울하트 +3#{{Heart}} 체력을 전부 회복합니다.#사용한 방에서 나가면 스테이지를 재시작합니다.",
 			Name = "암흑 버섯",
 			QuoteDesc = "",
 		},
 		[Items.blood_pudding] = {
-			Description = "↑ {{LuckSmall}}행운 +5#!!! {{CurseCursedSmall}}항상 저주에 걸립니다.",
+			Description = "↑ {{LuckSmall}}행운 +5#!!! {{CurseCursedSmall}}항상 저주에 걸립니다.#{{Blank}} (Maze, Lost, Unknown 우선)",
 			Name = "핏투성이 푸딩",
 			QuoteDesc = "",
 		},
@@ -129,6 +140,11 @@ if GODMODE then
 			Name = "당근",
 			QuoteDesc = "",
 		},
+		[Items.cash_dice] = { -- TODO
+			Description = "Selects the nearest item or shop item.#If it is a shop item, splits it into two new shop items#If it is an item, turns it into a shop item#Can be used 5 times in a room",
+			Name = "",
+			QuoteDesc = "",
+		},
 		[Items.celestial_collar] = {
 			Description = "15%의 확률로 {{TreasureRoom}}보물방/{{Shop}}상점/{{BossRoom}}보스방의 아이템이 {{Collectible11}}1up!로 교체됩니다.#↑ 목숨 개수 당 {{DamageSmall}}공격력 배율 +10%",
 			Name = "천체 목걸이",
@@ -144,13 +160,18 @@ if GODMODE then
 			Name = "천체 꼬리",
 			QuoteDesc = "",
 		},
+		[Items.crimson_solution] = { -- TODO
+			Description = "Random syringe effect when entering a room#On taking fatal damage, prevent death and this item turns into the Broken Syringe trinket",
+			Name = "",
+			QuoteDesc = "",
+		},
 		[Items.crossbones] = {
 			Description = "적 4마리 처치 시마다 3초간 무적이 됩니다.",
 			Name = "십자가로 묶은 뼈",
 			QuoteDesc = "",
 		},
 		[Items.crown_of_gold] = {
-			Description = "방 입장 시 랜덤 적 하나를 석화시킵니다. #↑ {{Coin}}동전 25개마다 {{LuckSmall}}행운 +1#↓ 피격 시 일정 수량만큼의 동전을 잃습니다.#!!! 수량 : (5 + {{DamageSmall}} - (1~3))",
+			Description = "방 입장 시 랜덤 적 하나를 황금화 시킵니다.#↑ {{Coin}}동전 25개마다 {{LuckSmall}}행운 +1#↓ 피격 시 일정 수량만큼의 동전을 잃습니다.#!!! 수량 : (5 + {{DamageSmall}} - (1~3))",
 			Name = "황금 왕관",
 			QuoteDesc = "",
 		},
@@ -159,6 +180,16 @@ if GODMODE then
 			Name = "아빠의 풍선",
 			QuoteDesc = "이거 물이 잘 담기지 않는 것 같아",
 		},
+		[Items.deli_delusion] = { -- TODO
+			Description = "Converts your delirious eyes into a delirious halo#2.5% Range Up for every eye open#The delirious halo blocks hits as long as there are eyes open#Lose ceil(1.5 * damage) eyes for every damage blocked#1 eye opens on room clear",
+			Name = "",
+			QuoteDesc = "",
+		},
+		[Items.deli_oblivion] = { -- TODO
+			Description = "Converts your delirious halo into delirious eyes#Gain 5% damage for every eye#10% Fire Rate up#20% Range down#1 eye is created on room clear, up to 16",
+			Name = "",
+			QuoteDesc = "",
+		},
 		[Items.devils_food] = {
 			Description = "↑ {{BlackHeart}}블랙하트 +2#↑ {{DamageSmall}}공격력 +1",
 			BingeEater = "↑ {{ShotspeedSmall}}탄속 +0.2",
@@ -166,7 +197,7 @@ if GODMODE then
 			QuoteDesc = "",
 		},
 		[Items.divine_approval] = {
-			Description = "{{GoldHeart}} 획득 시 모든 블랙하트가 제거되며 황금하트를 최대 개수만큼 채웁니다.#↑ {{SoulHeart}}소울하트 +3#↑ 스테이지 진입 시 {{GoldenHeart}}황금하트 +1#↑ {{GoldenHeart}}황금하트 개수만큼 {{TearsSmall}}연사 +0.25",
+			Description = "↑ {{SoulHeart}}소울하트 +3#{{GoldHeart}} 획득 시 모든 블랙하트가 제거되며 황금하트를 최대 개수만큼 채웁니다.#↑ 스테이지 진입 시 {{GoldenHeart}}황금하트 +1#↑ {{GoldenHeart}}황금하트 개수만큼 {{TearsSmall}}연사 +0.25",
 			Name = "신성한 찬의",
 			QuoteDesc = "비쌀수록 아픈 법",
 		},
@@ -201,7 +232,7 @@ if GODMODE then
 			QuoteDesc = "",
 		},
 		[Items.feather_duster] = {
-			Description = "↑ {{SpeedSmall}}이동속도 +0.1#부정적인 문 효과가 발생하지 않습니다.#거미줄을 밟으면 거미줄이 사라집니다.",
+			Description = "↑ {{SpeedSmall}}이동속도 +0.1#부정적인 문 효과가 발생하지 않습니다.#거미줄을 밟으면 거미줄이 사라집니다.#끈적한 니켈을 니켈로 바꿉니다.#침대방의 더러운 카펫을 깨끗하게 만듭니다.",
 			Name = "더스터 깃털",
 			QuoteDesc = "",
 		},
@@ -210,10 +241,44 @@ if GODMODE then
 			Name = "금지된 지식",
 			QuoteDesc = "",
 		},
+		[Items.foreign_treatment] = { -- TODO
+			Description = "Grants a modifier to each stat at the beginning of each floor, ranging from -10% to +20%",
+			Name = "",
+			QuoteDesc = "",
+		},
 		[Items.four_leaf_clover] = {
-			Description = "↑ {{LuckSmall}}행운 +2#{{LuckSmall}} 행운 1당 {{DamageSmall}}공격력 +0.25, {{TearsSmall}}연사 +0.25",
+			Description = "↑ {{LuckSmall}}행운 +2#{{LuckSmall}} 행운 1당 {{DamageSmall}}공격력 배율 +5%p, {{TearsSmall}}연사 +0.25",
 			Name = "네잎클로버",
 			QuoteDesc = "",
+		},
+		[Items.fractal_key_inverse] = { -- TODO
+			Description = "On use:#- Wipes your Gilded chance, clearing 1 Broken and Faithless heart for every 12.5% Gilded chance (1/8)#- Destroys this item, creating a Mama Mega-style explosion",
+			Name = "과일 파리",
+			QuoteDesc = "",
+			--[[ {str = "When used, sets your Gilded chance to 0%. Whatever your Gilded chance was before this reset will dictate how strong the effects of this item are."},
+      {str = "When used at 100% Gilded chance, removes 8 Broken hearts and 8 Faithless hearts from the user. When used at 0% chance, removes none of each."},
+      {str = "Each 12.5% of Gilded chance grants 1 more Broken and Faithless heart removed."},
+      {str = "In addition to this reset, this item turns back into the Fractal Key and the player explodes."},
+      {str = "While held, all golden pickups are replaced with 3 random versions of that pickup (if another golden one is rolled without this bonus, this could lead to a chain reaction but the chance this item grants does not apply to this split)."},
+      {str = "The chance that this item grants will decrease by 0.5% for each new room entered. When you re-use the item, the chance will go back to full strength (similar to the way that fruit stat buffs work)."}, ]]
+		},
+		[Items.fractal_key] = { -- TODO
+			Description = "On use:#- grants a decreasing, decaying chance to convert pickups to golden variants#- +1 Broken heart and Faithless heart#While held, golden pickups are replaced with 3 basic versions of that pickup#-0.5% chance per cleared room, resetting to full effect each use",
+			Name = "과일 파리",
+			QuoteDesc = "",
+			--[[ {str = "When used, grants 1 Broken heart and 1 Faithless heart"},
+      {str = "as well as following this formula for a chance to replace pickups with a golden variant:"},
+      {str = "  N = total number of uses"},
+      {str = "  X = granted chance"},
+      {str = "  if N <= 0: 0%"},
+      {str = "  if N < 5: 10% - (N - 1) * 2%"},
+      {str = "  if N >= 5: 5% / (N - 3)"},
+      {str = "So in example, total chance to replace a pickup is as follows per use:"},
+      {str = "- (10% -> 20% -> 28% -> 34% -> ...<39%)"},
+      {str = ""},
+      {str = "While held, all golden pickups are replaced with 3 random versions of that pickup (if another golden one is rolled without this bonus, this could lead to a chain reaction but the chance this item grants does not apply to this split)."},
+      {str = "The chance that this item grants will decrease by 1% for each new room entered. When you re-use the item, the chance that will be added will be the compounded chance (similar to the way that fruit stat buffs work)."},
+      {str = "If using this item would kill the player via broken/faithless hearts, instead turns this item into the Inverse Key and causes the player to explode."}, ]]
 		},
 		[Items.fruit_flies] = {
 			Description = "과일 파리를 3마리 소환합니다.#방 클리어 시 3%의 확률로(누적) 터지면서 랜덤 스탯을 5분간 증가시키는 과일을 드랍합니다.#터진 파리는 즉시 재생산됩니다.",
@@ -250,9 +315,14 @@ if GODMODE then
 			Name = "황금 스탑워치",
 			QuoteDesc = "",
 		},
-		[Items.cloth_of_gold] = {
-			Description = "적을 맞출 시 같은 종류의 적에게 피해가 분산됩니다.#소지 중이지 않은 경우 5%의 확률로 아이템이 {{Collectible"..Items.cloth_on_a_string.."}}Cloth on a String으로 바뀝니다.",
+		[Items.cloth_of_gold] = { -- TODO
+			Description = "Increases strength of Cloth on a String damage bonus by 25%#+25% Damage#+25% Gilded chance",
 			Name = "황금 옷감",
+			QuoteDesc = "",
+		},
+		[Items.greedy_glance] = { -- TODO
+			Description = "When your tears touch a bomb, key or coin you collect the pickup#When your tears touch an unlocked chest, opens the chest",
+			Name = "",
 			QuoteDesc = "",
 		},
 		[Items.heart_arrest] = {
@@ -261,8 +331,13 @@ if GODMODE then
 			QuoteDesc = "",
 		},
 		[Items.holy_chalice] = {
-			Description = "방 클리어 시 {{DamageSmall}}공격력이 +0.75씩 최대 4회 증가합니다.#패널티 피격 시 공격력 증가치가 초기화됩니다.",
+			Description = "방 클리어 시 {{DamageSmall}}공격력 배율이 +10%p씩 최대 40% 증가합니다.#패널티 피격 시 공격력 증가치가 초기화됩니다.",
 			Name = "신성한 성배",
+			QuoteDesc = "",
+		},
+		[Items.hot_potato] = { -- TODO
+			Description = "3% chance to hurl a flaming potato instead of firing a tear#This potato deals high contact damage#On contact, the potato breaks into small chunks that auto target up to 4 nearby enemies#Max chance is 20% at 17 luck"",
+			Name = "",
 			QuoteDesc = "",
 		},
 		[Items.anguish_jar] = {
@@ -281,7 +356,7 @@ if GODMODE then
 			QuoteDesc = "",
 		},
 		[Items.larval_therapy] = {
-			Description = "적 처치 시 체력이 가장 높은 적을 쫒아가는 진드기를 소환합니다.#진드기는 적에게 캐릭터의 공격력 x0.25의 피해를 주며 10번의 피해를 주면 사라집니다.",
+			Description = "적 처치 시 체력이 가장 높은 적을 쫒아가는 진드기를 소환합니다.#진드기는 적에게 캐릭터의 공격력 x0.15의 피해를 주며 10번의 피해를 주면 사라집니다.",
 			Name = "벌레 테라피",
 			QuoteDesc = "",
 		},
@@ -296,17 +371,17 @@ if GODMODE then
 			QuoteDesc = "",
 		},
 		[Items.maxs_head] = {
-			Description = "!!! 사용 시마다(최대 5회);#↑ {{DamageSmall}}공격력 배율 +25%p#↓ {{TearsSmall}}연사 배율 -10%p#↓ {{SpeedSmall}}이동속도 배율 -5%p",
+			Description = "!!! 사용 시마다 그 방에서(최대 5회);#↑ {{DamageSmall}}공격력 배율 +25%p#↓ {{TearsSmall}}연사 배율 -10%p#↓ {{SpeedSmall}}이동속도 배율 -5%p",
 			Name = "맥스의 머리",
 			QuoteDesc = "",
 		},
 		[Items.moms_wish] = {
-			Description = "사용 시 {{Card51}}Holy Card를 드랍하며 {{ColorOrange}}모든 능력치가 -5%p씩 영구적으로 감소합니다.{{CR}} (최대 90%)",
+			Description = "사용 시 {{Card51}}Holy Card를 드랍하며 {{ColorOrange}}모든 능력치가 -5%p씩 영구적으로 감소합니다.{{CR}} (최대 50%)",
 			Name = "엄마의 소원",
 			QuoteDesc = "",
 		},
 		[Items.morphine] = {
-			Description = "↓ {{BrokenHeart}}부서진하트 +2#↓ {{SpeedSmall}}이동속도 배율 -20%#↑ {{DamageSmall}}공격력 +1#30%의 확률로 피해를 무시합니다.",
+			Description = "↓ {{BrokenHeart}}부서진하트 +2#↓ {{SpeedSmall}}이동속도 배율 -20%#↑ {{DamageSmall}}공격력 배율 +10%#30%의 확률로 피해를 무시합니다.",
 			Name = "모르핀",
 			QuoteDesc = "아무것도 느껴지지 않아!",
 		},
@@ -316,8 +391,13 @@ if GODMODE then
 			QuoteDesc = "",
 		},
 		[Items.nosebleed] = {
-			Description = "방 입장 시 5초동안 서서히 감소하는 {{DamageSmall}}공격력 배율이 +50% 증가합니다.",
+			Description = "방 입장 시 12초동안 서서히 감소하는 {{DamageSmall}}공격력 배율이 +50% 증가합니다.",
 			Name = "코피",
+			QuoteDesc = "",
+		},
+		[Items.odd_dice] = { -- TODO
+			Description = "Rerolls items in the room#33% chance to hide a rerolled item#+10% chance after each use to break into 2 dice shards",
+			Name = "",
 			QuoteDesc = "",
 		},
 		[Items.opia] = {
@@ -350,6 +430,11 @@ if GODMODE then
 			Name = "기도자의 매트",
 			QuoteDesc = "",
 		},
+		[Items.vessel_of_purity_1] = { -- TODO
+			Description = "Explodes the current room after taking damage#Gives damage and firerate when cracked or bloodied#↓ Gets destroyed after taking damage 3 times from the boss fight",
+			Name = "",
+			QuoteDesc = "",
+		},
 		[Items.quran] = {
 			Description = "사용 시 모든 {{BlackHeart}}블랙하트를 1.5배의 {{SoulHeart}}소울하트로 바꿉니다.#{{MomBossSmall}}Mom, {{MomsHeartSmall}}Mom's Heart/It Lives 보스에게 사용 시 보스를 즉사시킵니다.#!!! {{SatanSmall}}Satan 보스에게 사용 시 캐릭터가 즉사합니다.",
 			Name = "쿠란",
@@ -361,12 +446,12 @@ if GODMODE then
 			QuoteDesc = "",
 		},
 		[Items.reclusive_tendencies] = {
-			Description = "공격이 적에게 맞을 시 특수한 Spider를 소환합니다.#특수한 Spider는 5초동안 적에게 캐릭터의 공격력 x0.1의 피해를 주나 5초 이후에는 아군 상태가 풀립니다.#사용 시 3 +(Small Spider개수)만큼의 진드기를 소환합니다.#진드기는 적에게 캐릭터의 공격력 x0.25의 피해를 주며 10번의 피해를 주면 사라집니다.",
+			Description = "공격이 적에게 맞을 시 특수한 Spider를 소환합니다.#특수한 Spider는 5초동안 적에게 캐릭터의 공격력 x0.1의 피해를 주나 5초 이후에는 아군 상태가 풀립니다.#사용 시 3 +(Small Spider개수)만큼의 진드기를 소환합니다.#진드기는 적에게 캐릭터의 공격력 x0.15의 피해를 주며 10번의 피해를 주면 사라집니다.",
 			Name = "은둔 성향",
 			QuoteDesc = "",
 		},
 		[Items.book_of_saints] = {
-			Description = "사용 시 {{SoulHeart}}소울하트 +1, {{GoldenHeart}}황금하트 +2",
+			Description = "사용 시 {{SoulHeart}}소울하트 +1, {{GoldenHeart}}황금하트 +2", -- TODO
 			Name = "성인의 책",
 			QuoteDesc = "",
 		},
@@ -396,18 +481,19 @@ if GODMODE then
 			Name = "영혼의 먹이",
 			QuoteDesc = "",
 		},
-		[Items.sugar] = {
+		[Items.sugar] = { -- TODO
 			Description = "!!! 획득 시 이후 등장하는 3개의 아이템이 50%의 확률로 {{Collectible"..Items.sugar.."}}Sugar!로 교체되며;#↓ {{EmptyHeart}}최대 체력 -1#↑ {{SpeedSmall}}이동속도 +0.125#↑ {{DamageSmall}}공격력 +0.25/0.55(5회이후)/0.2(10회이후)#↑ {{TearsSmall}}연사 +0.35/0.2(5회이후)",
+			BingeEater = "All stat bonuses granted by this item are increased by 25% if Binge Eater is held.",
 			Name = "각설탕",
 			QuoteDesc = "",
 		},
 		[Items.taenia] = { -- TearRange adds 5, not 200
-			Description = "↑ {{RangeSmall}}사거리 +5#↓ {{ShotspeedSmall}}탄속 -0.25#공격 시 공격 키를 뗄 때까지 같은 공격방향을 유지합니다.",
+			Description = "↑ {{TearsSmall}}연사 +0.5#↑ {{RangeSmall}}사거리 +5#↓ {{ShotspeedSmall}}탄속 -0.25#공격 시 공격 키를 뗄 때까지 같은 공격방향을 유지합니다.",
 			Name = "태니아",
 			QuoteDesc = "",
 		},
 		[Items.cloth_on_a_string] = {
-			Description = "적을 맞출 시 같은 종류의 적에게 105%의만큼 추가 피해를 줍니다.#소지 중이지 않은 경우 1%의 확률로 아이템이 {{Collectible"..Items.cloth_of_gold.."}}Cloth of Gold로 바뀝니다.",
+			Description = "적을 맞출 시 같은 종류의 적에게 5%의만큼 추가 피해를 줍니다.#소지 중이지 않은 경우 1%의 확률로 아이템이 {{Collectible"..Items.cloth_of_gold.."}}Cloth of Gold로 바뀝니다.",
 			Name = "실에 달린 옷감",
 			QuoteDesc = "",
 		},
@@ -417,7 +503,7 @@ if GODMODE then
 			QuoteDesc = "",
 		},
 		[Items.tramp_of_babylon] = {
-			Description = "↑ 스테이지에 비례하여 {{DamageSmall}}공격력 증가#소지한 상태에서 피격 시 그 방의 적 및 보스가 둘로 복제됩니다.",
+			Description = "↑ 스테이지에 비례하여 {{DamageSmall}}공격력 증가#소지한 상태에서 피격 시 그 방의 적이 둘로 복제, 보스의 경우 잃은 체력의 50%를 회복합니다.",
 			Name = "바빌론의 창녀",
 			QuoteDesc = "힘에는 대가가 따르지",
 		},
@@ -436,8 +522,13 @@ if GODMODE then
 			Name = "바쥬라",
 			QuoteDesc = "",
 		},
+		[Items.vengeful_dagger] = { -- TODO
+			Description = "When used, launches a dagger in the direction you're firing, dealing 200% of your damage on hit.#If you leave and re-enter the room, each dagger deals 400% damage to the enemy it initially hit",
+			Name = "",
+			QuoteDesc = "",
+		},
 		[Items.war_banner] = {
-			Description = "↑ {{Bomb}}폭탄 +5#폭탄 설치 시 최대 10개까지 설치한 위치에 랜덤 오라를 발산합니다.#오라 안에 있을 시 색상에 따라:#{{ColorRed}}빨강{{CR}} : {{DamageSmall}}공격력 +0.25#{{ColorBlue}}파랑{{CR}} : {{TearsSmall}}연사 +0.25#{{ColorYellow}}노랑{{CR}} : {{ShotspeedSmall}}탄속 +0.1",
+			Description = "↑ {{Bomb}}폭탄 +5#폭탄 설치 시 최대 10개까지 설치한 위치에 랜덤 오라를 발산합니다.#오라 안에 있을 시 색상에 따라:#{{ColorRed}}빨강{{CR}} : {{DamageSmall}}공격력 배율 +20%p#{{ColorBlue}}파랑{{CR}} : {{TearsSmall}}연사 +0.3#{{ColorYellow}}노랑{{CR}} : {{ShotspeedSmall}}탄속 +0.1",
 			Name = "전쟁의 배너",
 			QuoteDesc = "",
 		},
@@ -502,6 +593,12 @@ if GODMODE then
 			Name = "깊은 곳으로부터의 손짓",
 			QuoteDesc = "",
 		},
+		[Trinkets.glitched_penny] = { -- TODO
+			Description = "+1.5% chance to teleport to the I AM ERROR ROOM when collecting a coin",
+			Repentogon = "+1.5% chance to spawn a glitched item or teleport to the I AM ERROR ROOM when collecting a coin"
+			Name = "",
+			QuoteDesc = "",
+		},
 		[Trinkets.godmode] = {
 			Description = "!!! {{ColorOrange}}교체 및 버리기 불가{{CR}}#{{Collectible422}} 패널티 피격 시 {{BrokenHeart}}부서진하트를 +1개 추가하며 전 방의 시점으로 돌아갑니다.",
 			Name = "GODMODE",
@@ -520,6 +617,11 @@ if GODMODE then
 		[Trinkets.snapped_cross] = {
 			Description = "적 처치 시 10%의 확률로 3초간 무적 상태가 됩니다.",
 			Name = "부서진 십자가",
+			QuoteDesc = "",
+		},
+		[Trinkets.trickle_key] = { -- TODO
+			Description = "+10% chance to charge keys that spawn#Adds 1 charge to your active items each stage",
+			Name = "",
 			QuoteDesc = "",
 		},
 
