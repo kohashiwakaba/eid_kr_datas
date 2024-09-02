@@ -53,7 +53,7 @@ if communityRemix then
 		},
 
 		[Items.COLLECTIBLE_THE_BOOK_OF_SORROW] = {
-			Description = "{{Timer}} 사용 시 그 방에서:#↑ {{TearsSmall}}연사 +0.7#↑ {{ShotspeedSmall}}탄속 +0.16",
+			Description = "{{Timer}} 사용 시 그 방에서:#↑ {{TearsSmall}}연사 +0.8#↑ {{ShotspeedSmall}}탄속 +0.16#↑ {{LuckSmall}}행운 +5",
 			Name = "고독의 책",
 			QuoteDesc = "읽고 펑펑 울기",
 		},
@@ -143,7 +143,7 @@ if communityRemix then
 		},
 
 		[Items.COLLECTIBLE_PATIENT_ZERO] = {
-			Description = "{{Charm}} 접촉한 적을 매혹시킵니다.",
+			Description = "{{Charm}} 접촉한 적을 매혹시킵니다.#{{Charm}} 매혹된 적이 다른 적 접촉 시 그 적도 매혹시킵니다.",
 			Name = "페이션트 제로",
 			QuoteDesc = "사랑의 터치",
 		},
@@ -192,7 +192,7 @@ if communityRemix then
 
 		[Items.COLLECTIBLE_PB_J] = {
 			Description = "↑ {{Heart}}최대 체력 +1#↑ {{Heart}}빨간하트 +1",
-			Name = "",
+			Name = "브런치",
 			QuoteDesc = "체력 증가",
 		},
 
@@ -203,7 +203,7 @@ if communityRemix then
 		},
 
 		[Items.COLLECTIBLE_BENADRYL] = {
-			Description = "{{Slow}} 알약 사용 시 그 방에서 적과 캐릭터의 속도가 추가로 느려집니다.",
+			Description = "{{Pill}} 알약을 2개 드랍합니다.#{{Pill}} 알약 사용 시 I'm Drowsy 효과를 추가로 발동합니다.",
 			Name = "베나드릴",
 			QuoteDesc = "나른해...",
 		},
@@ -227,13 +227,13 @@ if communityRemix then
 		},
 
 		[Items.COLLECTIBLE_PUMPKIN_MASK] = {
-			Description = "↑ {{BlackHeart}}블랙하트 +1#↑ {{DamageSmall}}공격력 +0.5#{{Fear}} 적 처치 시 다른 적을 25%의 확률로 공포에 걸리게 합니다.#공포에 걸린 적은 모든 피해를 2배로 받습니다.",
-			Name = "호박 마스크",
+			Description = "↑ {{BlackHeart}}블랙하트 +1#{{Fear}} 적 처치 시 다른 적을 25%의 확률로 공포에 걸리게 합니다.#공포에 걸린 적은 모든 피해를 2배로 받습니다.",
+			Name = "잭-오-랜턴",
 			QuoteDesc = "악함 증가 + 두려워해라",
 		},
 
 		[Items.COLLECTIBLE_OPHIUCHUS] = {
-			Description = "↑ {{BlackHeart}}블랙하트 +1#아군 Needle을 소환합니다.#방 클리어 시 50%의 확률로 아군 Needle을 추가로 소환합니다.",
+			Description = "↑ {{BlackHeart}}블랙하트 +1#아군 Needle을 소환합니다.#모든 Needle 몬스터들이 항상 아군이 됩니다.#방 클리어 시 50%의 확률로 아군 Needle을 추가로 소환합니다.",
 			Name = "뱀주인자리",
 			QuoteDesc = "핀과 니들",
 		},
@@ -347,7 +347,7 @@ if communityRemix then
 		},
 
 		[Items.COLLECTIBLE_COCONUT_MILK] = {
-			Description = "↑ {{DamageSmall}}공격력 배율 x1.5#↓ {{ShotspeedSmall}}탄속 -0.16#눈물이 더 이상 떨어지지 않으며 사거리에 따라 눈물이 일정 시간 떠 있게 바뀝니다.",
+			Description = "↓ {{ShotspeedSmall}}탄속 -0.16#눈물이 더 이상 떨어지지 않으며 사거리에 따라 눈물이 일정 시간 떠 있게 바뀝니다.",
 			Name = "코코넛 우유",
 			QuoteDesc = "영원한 눈물",
 		},
@@ -365,7 +365,7 @@ if communityRemix then
 		},
 
 		[Items.COLLECTIBLE_COMMUNION_WINE] = {
-			Description = "{{Collectible108}} 사용 시 그 방에서 {{HolyMantleSmall}}보호막을 1개 지급하며 캐릭터가 받는 피해를 절반으로 줄여줍니다.",
+			Description = "{{Collectible108}} 사용 시 {{HolyMantleSmall}}보호막을 1개 지급하며 그 방에서 캐릭터가 받는 피해를 절반으로 줄여줍니다.",
 			Name = "만찬 와인",
 			QuoteDesc = "내 피를 마시게나",
 		},
@@ -401,7 +401,7 @@ if communityRemix then
 		},
 
 		[Items.COLLECTIBLE_DONKEY_JAWBONE] = {
-			Description = "피격 시 뼈를 휘둘러 주변의 적에 피해 + 탄환을 막아줍니다.",
+			Description = "피격 시 뼈를 휘둘러 주변의 적에 넉백 피해 + 탄환을 막아줍니다.",
 			Name = "당나귀 뼈",
 			QuoteDesc = "내게 오라!",
 		},
@@ -424,6 +424,12 @@ if communityRemix then
 			QuoteDesc = "다 모으자! 폭탄 +5개",
 		},
 
+		[Items.COLLECTIBLE_DADS_SECRET] = {
+			Description = "일급비밀방이 오류방으로 바뀝니다.",
+			Name = "아빠의 작은 비밀",
+			QuoteDesc = "누구한테도 말하지 마",
+		},
+
 		[Items.COLLECTIBLE_CRIMSON_STICK] = {
 			Description = "↑ {{Bomb}}폭탄 +5#가능한 경우, 폭탄이 가까운 빨간 방을 열어줍니다.",
 			Name = "붉은 막대기",
@@ -437,7 +443,7 @@ if communityRemix then
 		},
 
 		[Items.COLLECTIBLE_TWIN_CANDLES] = {
-			Description = "사용 시 각각 8방향으로 빨간 불꽃과 파란 불꽃을 발사합니다.",
+			Description = "사용 시 8방향으로 빨간 불꽃과 파란 불꽃을 발사합니다.",
 			Name = "쌍둥이 양초",
 			QuoteDesc = "카스토르와 폴룩스",
 		},
