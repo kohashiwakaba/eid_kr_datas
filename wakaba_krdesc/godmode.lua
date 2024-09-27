@@ -105,13 +105,13 @@ if GODMODE then
 			QuoteDesc = "",
 		},
 		[Items.birthday_slice] = { -- TODO
-			Description = "↑ +5% All Stats#↑ Heals 2 Red Hearts#↑ +1 Soul Heart",
-			BingeEater = "↑ +2.5% All Stats",
+			Description = "↑ 모든 능력치 +5%#↑ {{HealingRed}}빨간하트 +2#↑ {{SoulHeart}}소울하트 +1",
+			BingeEater = "↑ 추가 모든 능력치 +2.5%",
 			Name = "",
 			QuoteDesc = "",
 		},
 		[Items.black_mushroom] = {
-			Description = "!!! 일회용#!!! 사용 시;#↓ {{EmptyHeart}}최대 체력 -1#↑ {{SoulHeart}}소울하트 +3#{{Heart}} 체력을 전부 회복합니다.#사용한 방에서 나가면 스테이지를 재시작합니다.",
+			Description = "!!! 일회용#!!! 사용 시;#↓ {{EmptyHeart}}최대 체력 -1#↑ {{SoulHeart}}소울하트 +3#{{HealingRed}} 체력을 전부 회복합니다.#사용한 방에서 나가면 스테이지를 재시작합니다.",
 			Name = "암흑 버섯",
 			QuoteDesc = "",
 		},
@@ -141,7 +141,7 @@ if GODMODE then
 			QuoteDesc = "",
 		},
 		[Items.cash_dice] = { -- TODO
-			Description = "Selects the nearest item or shop item.#If it is a shop item, splits it into two new shop items#If it is an item, turns it into a shop item#Can be used 5 times in a room",
+			Description = "사용 시 가장 가까운 아이템을...#판매 아이템의 경우 다른 판매 아이템 2개로 바꿉니다.#아이템의 경우 판매 아이템으로 바꿉니다.#!!! (방 당 최대 5회)",
 			Name = "",
 			QuoteDesc = "",
 		},
@@ -161,7 +161,7 @@ if GODMODE then
 			QuoteDesc = "",
 		},
 		[Items.crimson_solution] = { -- TODO
-			Description = "Random syringe effect when entering a room#On taking fatal damage, prevent death and this item turns into the Broken Syringe trinket",
+			Description = "!!! 일회용#방 입장 시 랜덤 주사기 효과를 발동합니다.#피격 시 체력이 없을 경우 체력을 반칸 보존하며 Broken Syringe 장신구로 바뀝니다.",
 			Name = "",
 			QuoteDesc = "",
 		},
@@ -336,7 +336,7 @@ if GODMODE then
 			QuoteDesc = "",
 		},
 		[Items.hot_potato] = { -- TODO
-			Description = "3% chance to hurl a flaming potato instead of firing a tear#This potato deals high contact damage#On contact, the potato breaks into small chunks that auto target up to 4 nearby enemies#Max chance is 20% at 17 luck"",
+			Description = "3% chance to hurl a flaming potato instead of firing a tear#This potato deals high contact damage#On contact, the potato breaks into small chunks that auto target up to 4 nearby enemies#Max chance is 20% at 17 luck",
 			Name = "",
 			QuoteDesc = "",
 		},
@@ -595,7 +595,7 @@ if GODMODE then
 		},
 		[Trinkets.glitched_penny] = { -- TODO
 			Description = "+1.5% chance to teleport to the I AM ERROR ROOM when collecting a coin",
-			Repentogon = "+1.5% chance to spawn a glitched item or teleport to the I AM ERROR ROOM when collecting a coin"
+			Repentogon = "+1.5% chance to spawn a glitched item or teleport to the I AM ERROR ROOM when collecting a coin",
 			Name = "",
 			QuoteDesc = "",
 		},

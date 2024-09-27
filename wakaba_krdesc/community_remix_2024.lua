@@ -3,21 +3,31 @@ if communityRemix then
 
 	EID._currentMod = "Community Remix"
 
+	local Items = communityRemix.CollectibleType
+	local Trinkets = communityRemix.TrinketType
+	local Cards = communityRemix.Card
 
 	local CharacterDesc = {
 		[communityRemix.PlayerType.PLAYER_ADAM] = {
 			Name = "Adam",
 			Description = "",
-			Detailed = "",
-			Birthright = "",
-			QuoteDesc = "",
+			Detailed = ""
+				.. "#최초로 태어난 사람입니다. 뱀의 꾀에 빠져 선악과를 먹고 동산에 쫒겨나며 저주를 받았습니다."
+				.. "#{{Collectible"..Items.COLLECTIBLE_THE_APPLE.."}} 시작 아이템 : 선악과"
+				.. "",
+			Birthright = "{{Collectible"..Items.COLLECTIBLE_THE_APPLE.."}} {{ColorWhite}}흰색 모드{{CR}}: 움직이지 않을 때 {{ShotspeedSmall}}+0.34, {{RangeSmall}}+2, 조준 보정#{{Collectible"..Items.COLLECTIBLE_THE_APPLE.."}} {{ColorRed}}빨간색 모드{{CR}}: 공격 중이지 않을 때 {{SpeedSmall}}+1",
+			QuoteDesc = "???",
 		},
 		[communityRemix.PlayerType.PLAYER_ABEL] = {
 			Name = "Abel",
-			Description = "",
-			Detailed = "",
-			Birthright = "",
-			QuoteDesc = "",
+			Description = "{{Collectible421}} 공격키를 3초 이상 누르면 충전되며 공격키를 떼면 매혹 방귀를 뀌며 주변의 적에게 5의 피해를 줍니다.",
+			Detailed = ""
+				.. "#아담의 아들 중 하나입니다. 처음으로 죽는 기구한 운명을 가졌습니다."
+				.. "#{{Collectible421}} 공격키를 3초 이상 누르면 충전되며 공격키를 떼면 매혹 방귀를 뀌며 주변의 적에게 5의 피해를 줍니다."
+				.. "#{{Collectible421}} 시작 아이템 : 강낭콩"
+				.. "",
+			Birthright = "방귀를 여러 번 충전 및 발사할 수 있습니다. (최대 10회)",
+			QuoteDesc = "???",
 		},
 		[communityRemix.PlayerType.PLAYER_ADAM_B] = {
 			Name = "Tainted Adam",
@@ -42,13 +52,10 @@ if communityRemix then
 		},
 	}
 
-	local Items = communityRemix.CollectibleType
-	local Trinkets = communityRemix.TrinketType
-	local Cards = communityRemix.Card
 	local CollectibleDesc = {
 		[Items.COLLECTIBLE_THE_APPLE] = {
 			Description = "사용 시 사과의 색상을 바꿉니다.#흰색일 때:#↑ {{TearsSmall}}눈물 딜레이 배율 x0.75#↓ {{DamageSmall}}공격력 배율 x0.75#↑ {{LuckSmall}}행운 +5#↑ {{SpeedSmall}}이동속도 +0.2#↓ {{ShotspeedSmall}}탄속 -0.2#↑ {{RangeSmall}}사거리 +0.8#빨간색일 때:#↑ {{DamageSmall}}공격력 배율 x1.75#↓ {{TearsSmall}}눈물 딜레이 배율 x1.4#↓ {{SpeedSmall}}이동속도 -0.3#↑ {{ShotspeedSmall}}탄속 +0.2#↓ {{RangeSmall}}사거리 -0.8",
-			Name = "금단의 사과",
+			Name = "선악과",
 			QuoteDesc = "궁극의 희생",
 		},
 
@@ -531,6 +538,12 @@ if communityRemix then
 			Name = "플럼 매니페스토",
 			QuoteDesc = "싸우지 말고 서로 사랑하자 - by 플럼이",
 		},
+
+		[Items.COLLECTIBLE_LMAOBOX] = {
+			Description = "",
+			Name = "",
+			QuoteDesc = "",
+		},
 	}
 	local TrinketDesc = {
 		[Trinkets.TRINKET_FIG_LEAF] = {
@@ -754,11 +767,11 @@ if communityRemix then
 	}
 
 	for playerType, birthrightdesc in pairs(CharacterDesc) do
-		--EID:addCharacterInfo(playerType, birthrightdesc.Description, birthrightdesc.Name, "ko_kr")
+		EID:addCharacterInfo(playerType, birthrightdesc.Description, birthrightdesc.Name, "ko_kr")
 		if InventoryDescriptions then
-			--EID:addEntity(InvDescEIDType.PLAYER, InvDescEIDVariant.DEFAULT, playerType, birthrightdesc.Name, birthrightdesc.Detailed, "ko_kr")
+			EID:addEntity(InvDescEIDType.PLAYER, InvDescEIDVariant.DEFAULT, playerType, birthrightdesc.Name, birthrightdesc.Detailed, "ko_kr")
 		end
-		--EID:addBirthright(playerType, birthrightdesc.Birthright, birthrightdesc.Name, "ko_kr")
+		EID:addBirthright(playerType, birthrightdesc.Birthright, birthrightdesc.Name, "ko_kr")
 	end
 	for itemID, itemdesc in pairs(CollectibleDesc) do
 		local desc = itemdesc.Description
@@ -791,7 +804,7 @@ if communityRemix then
 
 	return {
 		targetMod = "Community Remix",
-		--characters = CharacterDesc,
+		characters = CharacterDesc,
 		collectibles = CollectibleDesc,
 		trinkets = TrinketDesc,
 		cards = CardDesc,
