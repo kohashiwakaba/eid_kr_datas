@@ -6,64 +6,147 @@ if GODMODE then
 	local V_REPLACE = 0
 	local V_APPEND = 1
 
+	local Players = GODMODE.registry.players
 	local Items = GODMODE.registry.items
 	local Trinkets = GODMODE.registry.trinkets
 
-	local BirthrightDesc = {
-		[Isaac.GetPlayerTypeByName("Recluse",false)] = {
+	local CharacterDesc = {
+		[GODMODE.registry.players.recluse] = {
 			Name = "Recluse",
-			Description = "{{Collectible"..Items.larval_therapy.."}}진드기의 공격력 +50%",
-			QuoteDesc = "",
+			Description = "",
+			Detailed = ""
+				.. "#"
+				.. "#"
+				.. "#"
+				.. "#{{Collectible"..Items.larval_therapy.."}} 시작 아이템 : 벌레 테라피"
+				.. "",
+			Birthright = "{{Collectible"..Items.larval_therapy.."}} 진드기의 공격력 +50%#진드기가 사라질 때 작은 독장판을 생성합니다.",
+			QuoteDesc = "더 건강한 친구들",
 		},
-		[Isaac.GetPlayerTypeByName("Tainted Recluse",true)] = {
+		[GODMODE.registry.players.t_recluse] = { -- TODO
 			Name = "Tainted Recluse",
-			Description = "↑ All attacks apply a poison effect for 2 seconds, dealing 10% player damage#Getting hit while toxic creates toxic creep", -- TODO
-			QuoteDesc = "",
+			Description = "",
+			Detailed = ""
+				.. "#"
+				.. "#서서히 사라지는 {{ColorLime}}독샘{{CR}}을 가지고 시작하며 적 명중 시 독샘을 회복합니다."
+				.. "#피격 시 2배의 피해를 받으며 독하트가 있는 경우 독하트가 전부 사라집니다."
+				.. "#"
+				.. "#{{Collectible"..Items.reclusive_tendencies.."}} 고유 능력 : 은둔 성향"
+				.. "",
+			Birthright = "{{Poison}}#독샘 활성화 중 적 명중 시 2초간 적을 중독시킵니다.#독샘 활성화 중 피격 시 독장판을 설치합니다.",
+			QuoteDesc = "맹독성",
 		},
-		[Isaac.GetPlayerTypeByName("Xaphan",false)] = {
+		[GODMODE.registry.players.xaphan] = {
 			Name = "Xaphan",
-			Description = "↑ {{LuckSmall}}행운 +5#{{Collectible"..Items.adramolechs_blessing.."}}Adramolech's Blessing의 충전량이 2배로 증가합니다.",
-			QuoteDesc = "",
+			Description = "",
+			Detailed = ""
+				.. "#자판은 사탄과 함께 신에게 반란을 일으킨 자 중 한명입니다."
+				.. "#He proposed to set fire to Heaven during the Rebellion"
+				.. "#He's been fanning the furnaces of hell ever since"
+				.. "#{{Collectible"..Items.adramolechs_blessing.."}} 시작 아이템 : 아드라몰렉의 축복"
+				.. "#!!! {{Collectible"..Items.adramolechs_blessing.."}} Adramolech's Blessing 미소지 시 {{LuckSmall}}추가 행운 -5"
+				.. "#{{Collectible"..Items.wings_of_betrayal.."}} 시작 아이템 : 배반의 날개"
+				.. "",
+			Birthright = "↑ {{LuckSmall}}행운 +5#{{Collectible"..Items.adramolechs_blessing.."}} Adramolech's Blessing의 충전량이 2배로 증가합니다.",
+			QuoteDesc = "영원한 총애",
 		},
-		[Isaac.GetPlayerTypeByName("Tainted Xaphan",true)] = {
+		[GODMODE.registry.players.t_xaphan] = {
 			Name = "Tainted Xaphan",
-			Description = "{{Collectible"..Items.adramolechs_fury.."}} 챔피언이 Adramolech's Fury의 표식에 걸릴 확률 +25%#25%의 확률로 표식 걸린 챔피언 속성이 제거됩니다.",
+			Description = "",
+			Detailed = ""
+				.. "#"
+				.. "#"
+				.. "#"
+				.. "#{{Collectible"..Items.adramolechs_fury.."}} 고유 능력 : 아드라몰렉의 분노"
+				.. "",
+			Birthright = "{{Collectible"..Items.adramolechs_fury.."}} 챔피언이 Adramolech's Fury의 표식에 걸릴 확률 +25%#25%의 확률로 표식 걸린 챔피언 속성이 제거됩니다.",
 			QuoteDesc = "",
 		},
-		[Isaac.GetPlayerTypeByName("Elohim",false)] = {
+		[GODMODE.registry.players.elohim] = {
 			Name = "Elohim",
-			Description = "{{AngelRoom}} 특수한 천사방으로 순간이동합니다.#{{AngelRoom}} 특수한 천사방에는 천사방 아이템 3개를 획득할 수 있습니다.",
-			QuoteDesc = "",
+			Description = "",
+			Detailed = ""
+				.. "#"
+				.. "#"
+				.. "#"
+				.. "#{{Collectible"..Items.holy_chalice.."}} 시작 아이템 : 신성한 성배"
+				.. "",
+			Birthright = "{{AngelRoom}} 획득 시 특수한 천사방으로 순간이동합니다.#{{AngelRoom}} 특수한 천사방에는 천사방 아이템 3개를 획득할 수 있습니다.",
+			QuoteDesc = "왕좌를 되찾다",
 		},
-		[Isaac.GetPlayerTypeByName("Tainted Elohim",true)] = {
+		[GODMODE.registry.players.t_elohim] = {
 			Name = "Tainted Elohim",
-			Description = "You can charge daggers to gain a swing attack, pushing enemies away, removing projectiles and dealing damage#Remove 1 more broken heart per boss fight as well", -- TODO
+			Description = "",
+			Detailed = ""
+				.. "#"
+				.. "#"
+				.. "#"
+				.. "#{{Collectible"..Items.divine_approval.."}} 시작 아이템 : 신성한 찬의"
+				.. "#{{Collectible"..Items.vengeful_dagger.."}} 고유 능력 : 복수의 단검"
+				.. "",
+			Birthright = "You can charge daggers to gain a swing attack, pushing enemies away, removing projectiles and dealing damage#Remove 1 more broken heart per boss fight as well", -- TODO
 			QuoteDesc = "",
 		},
-		[Isaac.GetPlayerTypeByName("Gehazi",false)] = {
+		[GODMODE.registry.players.gehazi] = {
 			Name = "Gehazi",
-			Description = "{{Collectible"..Items.crown_of_gold.."}} 피격 시 잃는 {{Coin}}동전의 개수 -2",
-			QuoteDesc = "",
+			Description = "",
+			Detailed = ""
+				.. "#Gehazi was the servant of the prophet Elisha. Overcome with avarice, he obtained in the prophet's name two talents of silver and two valuable robes from Naaman, a general afflicted with leprosy. Elisha cursed him by giving Leprosy to him and all of his descendants."
+				.. "#"
+				.. "#"
+				.. "#{{Collectible"..Items.crown_of_gold.."}} 시작 아이템 : 황금 왕관"
+				.. "#{{Collectible501}} 고유 능력 : {{NameC501}}"
+				.. "",
+			Birthright = "{{Collectible"..Items.crown_of_gold.."}} 피격 시 잃는 {{Coin}}동전의 개수 -2",
+			QuoteDesc = "자금 관리",
 		},
-		[Isaac.GetPlayerTypeByName("Tainted Gehazi",false)] = { -- TODO
+		[GODMODE.registry.players.t_gehazi] = { -- TODO
 			Name = "Tainted Gehazi",
-			Description = "Additional 2% chance for nickel drops from attacking#Additional 10% chance for double penny drops from attacking",
+			Description = "",
+			Detailed = ""
+				.. "#"
+				.. "#"
+				.. "#"
+				.. "#{{Collectible"..Items.adramolechs_blessing.."}} 고유 능력 : "
+				.. "",
+			Birthright = "Additional 2% chance for nickel drops from attacking#Additional 10% chance for double penny drops from attacking",
 			QuoteDesc = "",
 		},
-		[Isaac.GetPlayerTypeByName("Deli",false)] = {
+		[GODMODE.registry.players.deli] = {
 			Name = "Deli",
-			Description = "↑ {{DamageSmall}}공격력 배율 x1.2#↑ {{TearsSmall}}연사 배율 x1.1",
-			QuoteDesc = "",
+			Description = "",
+			Detailed = ""
+				.. "#"
+				.. "#"
+				.. "#"
+				.. "",
+			Birthright = "↑ {{DamageSmall}}공격력 배율 x1.2#↑ {{TearsSmall}}연사 배율 x1.1",
+			QuoteDesc = "절망",
 		},
-		[Isaac.GetPlayerTypeByName("Tainted Deli",true)] = { -- TODO
+		[GODMODE.registry.players.t_deli] = { -- TODO
 			Name = "Tainted Deli",
-			Description = "One less eye closes any time eyes close on your halo#Shifting from Delusion to Oblivion creates a tear burst#Soul hearts have a 20% chance to open your halo's eyes",
+			Description = "",
+			Detailed = ""
+				.. "#"
+				.. "#8방향으로 공격하며 전방 3방향의 공격"
+				.. "#"
+				.. "#{{Collectible"..Items.deli_delusion.."}} 고유 능력 : "
+				.. "#{{Collectible"..Items.deli_oblivion.."}} 고유 능력 : "
+				.. "",
+			Birthright = "One less eye closes any time eyes close on your halo#Shifting from Delusion to Oblivion creates a tear burst#Soul hearts have a 20% chance to open your halo's eyes",
 			QuoteDesc = "",
 		},
-		[Isaac.GetPlayerTypeByName("The Sign",false)] = {
+		[GODMODE.registry.players.the_sign] = {
 			Name = "The Sign",
-			Description = "{{BrokenHeart}}모든 부서진하트를 제거합니다.#↑ {{SpeedSmall}}이동속도 배율 x1.33",
-			QuoteDesc = "",
+			Description = "",
+			Detailed = ""
+				.. "#"
+				.. "#"
+				.. "#"
+				.. "#{{Collectible"..Items.adramolechs_blessing.."}} 고유 능력 : "
+				.. "",
+			Birthright = "↑ {{SoulHeart}}소울하트 +1#↑ {{SpeedSmall}}이동속도 배율 x1.33#{{BrokenHeart}} 모든 부서진하트를 제거합니다.",
+			QuoteDesc = "자유의 몸",
 		},
 	}
 
@@ -524,7 +607,7 @@ if GODMODE then
 		},
 		[Items.vengeful_dagger] = { -- TODO
 			Description = "When used, launches a dagger in the direction you're firing, dealing 200% of your damage on hit.#If you leave and re-enter the room, each dagger deals 400% damage to the enemy it initially hit",
-			Name = "",
+			Name = "복수의 단검",
 			QuoteDesc = "",
 		},
 		[Items.war_banner] = {
@@ -743,7 +826,7 @@ if GODMODE then
 
 	return {
 		targetMod = "AOIGodmodeAchieved",
-		birthright = BirthrightDesc,
+		characters = CharacterDesc,
 		collectibles = CollectibleDesc,
 		trinkets = TrinketDesc,
 		cards = CardDesc,
