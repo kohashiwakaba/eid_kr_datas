@@ -90,7 +90,7 @@ if Retribution then
 		[Retribution.Item.BAPTISMAL_SHELL] 		= {
 			Name = "세례수 껍질",
 			QuoteDesc = "세례의 영혼으로부터 태어나다",
-			Description = "8%의 확률로 맞으면 적을 약화된 형태로 바꾸는 공격이 나갑니다.#{{LuckSmall}} :행운 7+일 때 20%",
+			Description = "8%의 확률로 맞으면 적을 약화된 형태로 바꾸는 공격이 나갑니다.#{{LuckSmall}} 행운 7+일 때 20%",
 		},
 		[Retribution.Item.BAPTISMAL_FONT] 		= {
 			Name = "세례대",
@@ -117,7 +117,7 @@ if Retribution then
 		[Retribution.Item.BLACK_BOX] 				= {
 			Name = "블랙박스",
 			QuoteDesc = "무엇이 들었을까?",
-			Description = "!!! 소지 중일 때:#↑ {{LuckSmall}}행운 +4#사용 시 아이템, 블랙하트, 카드, 혹은 거미를 소환하며 {{LuckSmall}}행운 -0.5.#{{LuckSmall}} :행운 20+일 때 아이템 100%#!!! {{LuckSmall}}행운 수치가 0 이하일 때 사용 불가",
+			Description = "!!! 소지 중일 때:#↑ {{LuckSmall}}행운 +4#사용 시 아이템, 블랙하트, 카드, 혹은 거미를 소환하며 {{LuckSmall}}행운 -0.5.#{{LuckSmall}} 행운 20+일 때 아이템 100%#!!! {{LuckSmall}}행운 수치가 0 이하일 때 사용 불가",
 			Wisps = "{{ColorYellow}}중앙 x1{{CR}}#꺼지면 확률적으로 {{BlackHeart}}블랙하트 혹은 적 거미를 하나 드랍합니다.",
 			Belial = "",
 		},
@@ -190,7 +190,7 @@ if Retribution then
 		[Retribution.Item.CHOLERA] 				= {
 			Name = "콜레라",
 			QuoteDesc = "잘 못 맞춤",
-			Description = "↑ {{LuckSmall}}행운 +1#{{PoopSpell1}} 3%의 확률로 적을 똥으로 바꾸는 공격이 나갑니다.#{{LuckSmall}} :행운 13+일 때 25%#똥 공격은 명중률이 살짝 낮습니다.",
+			Description = "↑ {{LuckSmall}}행운 +1#{{PoopSpell1}} 3%의 확률로 적을 똥으로 바꾸는 공격이 나갑니다.#{{LuckSmall}} 행운 13+일 때 25%#똥 공격은 명중률이 살짝 낮습니다.",
 		},
 		[Retribution.Item.CHUNK_OF_TOFU] 			= {
 			Name = "두부 한 덩이",
@@ -384,7 +384,7 @@ if Retribution then
 		[Retribution.Item.MAD_ONION] 				= {
 			Name = "화난 양파",
 			QuoteDesc = "순수하게 매운",
-			Description = "5%의 확률로 모든 눈물효과가 제거된 캐릭터의 공격력 x3.2의 공격이 나갑니다#{{LuckSmall}} :행운 13+일 때 50%",
+			Description = "5%의 확률로 모든 눈물효과가 제거된 캐릭터의 공격력 x3.2의 공격이 나갑니다#{{LuckSmall}} 행운 13+일 때 50%",
 		},
 		[Retribution.Item.MARK_OF_CAIN] 			= {
 			Name = "카인의 표식",
@@ -418,7 +418,7 @@ if Retribution then
 		[Retribution.Item.MUSTARD_SEED] 			= {
 			Name = "겨자 씨앗",
 			QuoteDesc = "운명을 심는 능력",
-			Description = "↑ {{Heart}}최대 체력 +1#↑ {{Heart}}빨간하트 +1#↑ {{LuckSmall}}행운 +1#{{RETGermination}} 10%의 확률로 적에게 씨앗을 심는 공격이 나갑니다.#{{LuckSmall}} :행운 25+일 때 25%#{{Collectible" .. Retribution.Item.BAPTISMAL_FONT .. "}} 씨앗은 5초동안 유지되며 그 사이에 적 처치 시 약화 형태의 아군 적을 소환합니다.",
+			Description = "↑ {{Heart}}최대 체력 +1#↑ {{Heart}}빨간하트 +1#↑ {{LuckSmall}}행운 +1#{{RETGermination}} 10%의 확률로 적에게 씨앗을 심는 공격이 나갑니다.#{{LuckSmall}} 행운 25+일 때 25%#{{Collectible" .. Retribution.Item.BAPTISMAL_FONT .. "}} 씨앗은 5초동안 유지되며 그 사이에 적 처치 시 약화 형태의 아군 적을 소환합니다.",
 		},
 		[Retribution.Item.OLD_BELL] 				= {
 			Name = "낡은 종",
@@ -497,7 +497,7 @@ if Retribution then
 		[Retribution.Item.SILVER_FLESH] 			= {
 			Name = "은빛 고기덩이",
 			QuoteDesc = "이거 뭔가 이상해...",
-			Description = "5%의 확률로 캐릭터의 공격력 x1.5의 링이 나갑니다.#{{LuckSmall}} :행운 7+일 때 15%#{{HalfSoulHeart}} 링으로 적 처치 시 소울하트 반칸을 드랍합니다.",
+			Description = "5%의 확률로 캐릭터의 공격력 x1.5의 링이 나갑니다.#{{LuckSmall}} 행운 7+일 때 15%#{{HalfSoulHeart}} 링으로 적 처치 시 소울하트 반칸을 드랍합니다.",
 		},
 		[Retribution.Item.SLICK_SPADE] 			= {
 			Name = "핏빛 스페이드",
@@ -532,7 +532,7 @@ if Retribution then
 		[Retribution.Item.SOY_BEAN] 				= {
 			Name = "콩",
 			QuoteDesc = "가스 눈물",
-			Description = "5%의 확률로 명중 시 방귀를 뀌는 공격이 나갑니다.#{{LuckSmall}} :행운 7+일 때 15%#{{Collectible447}} 방귀 공격으로 적 처치 시 Linger Bean의 구름을 남깁니다.",
+			Description = "5%의 확률로 명중 시 방귀를 뀌는 공격이 나갑니다.#{{LuckSmall}} 행운 7+일 때 15%#{{Collectible447}} 방귀 공격으로 적 처치 시 Linger Bean의 구름을 남깁니다.",
 		},
 		[Retribution.Item.SUCKER_SAC] 			= {
 			Name = "빨판 주머니",
@@ -562,7 +562,7 @@ if Retribution then
 		[Retribution.Item.TOOL] 					= {
 			Name = "도구",
 			QuoteDesc = "태어날 때가 기억나니?",
-			Description = "적이 피해를 입을 때 15%의 확률로 같은 종류의 적에게 피해를 줍니다.#{{LuckSmall}} :행운 13+일 때 35%",
+			Description = "적이 피해를 입을 때 15%의 확률로 같은 종류의 적에게 피해를 줍니다.#{{LuckSmall}} 행운 13+일 때 35%",
 		},
 		[Retribution.Item.TOY_DRUM] 				= {
 			Name = "장난감 드럼",
@@ -698,7 +698,7 @@ if Retribution then
 			Name = "브런치",
 			QuoteDesc = "체력 증가",
 			Description = "↑ {{Heart}}최대 체력 +1#↑ {{Heart}}빨간하트 +1",
-			BingeEater = "↑ {{Heart}}추가 빨간하트 +1#↑ {{DamageSmall}}공격력 배율 x1.15#↑ {{RangeSmall}}사거리 +4#↓ {{SpeedSmall}}이동속도 -0.03",
+			BingeEater = "↑ {{DamageSmall}}공격력 배율 x1.15#↑ {{RangeSmall}}사거리 +4#↓ {{SpeedSmall}}이동속도 -0.03",
 		},
 		[Retribution.Item.CONJUNCTIVITIS] 		= {
 			Name = "결막염",
@@ -713,7 +713,7 @@ if Retribution then
 		[Retribution.Item.DEVILS_TOOTH] 			= {
 			Name = "악마의 이빨",
 			QuoteDesc = "방혈",
-			Description = "8%의 확률로 적을 강화 형태로 바꾸는 공격이 나갑니다.#{{Blank}} (Icarus 캐릭터 효과와 동일)#강화 형태로 바뀐 적의 체력을 절반으로 감소시킵니다.#{{LuckSmall}} :행운 7+일 때 20%",
+			Description = "8%의 확률로 적을 강화 형태로 바꾸는 공격이 나갑니다.#{{Blank}} (Icarus 캐릭터 효과와 동일)#강화 형태로 바뀐 적의 체력을 절반으로 감소시킵니다.#{{LuckSmall}} 행운 7+일 때 20%",
 		},
 		[Retribution.Item.DOWSING_ROD] 			= {
 			Name = "다우징 막대",
@@ -756,7 +756,7 @@ if Retribution then
 		[Retribution.Item.MELITODES] 				= {
 			Name = "단물",
 			QuoteDesc = "달콤달콤",
-			Description = "20%의 확률로 적에게 명중 시 자폭 꿀벌을 소환하는 공격이 나갑니다.#{{LuckSmall}} :행운 13+일 때 50%",
+			Description = "20%의 확률로 적에게 명중 시 자폭 꿀벌을 소환하는 공격이 나갑니다.#{{LuckSmall}} 행운 13+일 때 50%",
 		},
 		[Retribution.Item.MONSTER_CANDY] 			= {
 			Name = "이상한 사탕",
@@ -822,7 +822,7 @@ if Retribution then
 		[Retribution.Item.SINNERS_PRAYER] 		= {
 			Name = "죄인의 기도",
 			QuoteDesc = "우리를 죄에서 구하옵소서",
-			Description = "↑ {{DamageSmall}}공격력 +1.4#피격 시 체력이 없을 경우 25%의 확률로 체력을 반칸 남기며 적에게 빛줄기로 반격합니다.#{{LuckSmall}} :행운 7+일 때 50%#피격 시 5%의 확률로 적에게 빛줄기로 반격합니다.#{{LuckSmall}} :행운 14+일 때 25%",
+			Description = "↑ {{DamageSmall}}공격력 +1.4#피격 시 체력이 없을 경우 25%의 확률로 체력을 반칸 남기며 적에게 빛줄기로 반격합니다.#{{LuckSmall}} 행운 7+일 때 50%#피격 시 5%의 확률로 적에게 빛줄기로 반격합니다.#{{LuckSmall}} 행운 14+일 때 25%",
 		},
 		[Retribution.Item.HEARTBROKER]			= {
 			Name = "부서진 심장",
@@ -1010,7 +1010,7 @@ if Retribution then
 		[Retribution.Item.BLEEDING_HEART] = {
 			Name = "흘러내리는 심장",
 			QuoteDesc = "매혹성 방혈",
-			Description = "↑ {{Heart}}최대 체력 +1#↑ {{Heart}}빨간하트 +1#{{Charm}} 5%의 확률로 적을 매혹시키는 공격이 나갑니다.#{{LuckSmall}} :행운 17+일 때 25%#매혹된 적은 주기적으로 랜덤 방향으로 눈물을 흩뿌립니다.#{{Charm}} 매혹된 적 처치 시 적의 최대 체력에 비례한 범위만큼 주변의 적에게 추가로 매혹시킵니다.",
+			Description = "↑ {{Heart}}최대 체력 +1#↑ {{Heart}}빨간하트 +1#{{Charm}} 5%의 확률로 적을 매혹시키는 공격이 나갑니다.#{{LuckSmall}} 행운 17+일 때 25%#매혹된 적은 주기적으로 랜덤 방향으로 눈물을 흩뿌립니다.#{{Charm}} 매혹된 적 처치 시 적의 최대 체력에 비례한 범위만큼 주변의 적에게 추가로 매혹시킵니다.",
 		},
 
 		[Retribution.Item.PUFFSTOOL] = {
@@ -1028,7 +1028,7 @@ if Retribution then
 		[Retribution.Item.CORPSE_FLOWER] = {
 			Name = "썩은 꽃",
 			QuoteDesc = "감염성 눈물",
-			Description = "{{RottenHeart}} 썩은하트 하나를 드랍합니다.#10%의 확률로 감염성 독 공격이 나갑니다.#중독된 적은 주기적으로 자폭 파리를 소환하나 소환한 적에게는 피해를 줄 수 없습니다.#{{LuckSmall}} :행운 36+일 때 100%",
+			Description = "{{RottenHeart}} 썩은하트 하나를 드랍합니다.#10%의 확률로 감염성 독 공격이 나갑니다.#중독된 적은 주기적으로 자폭 파리를 소환하나 소환한 적에게는 피해를 줄 수 없습니다.#{{LuckSmall}} 행운 36+일 때 100%",
 		},
 
 	}
@@ -1086,7 +1086,7 @@ if Retribution then
 		[Retribution.Trinket.PYRITE] 			= {
 			Name = "황철석",
 			QuoteDesc = "금광",
-			Description = "픽업이 3%의 확률로 황금 형태로 바뀝니다.#{{LuckSmall}} :행운 7+일 때 5%",
+			Description = "픽업이 3%의 확률로 황금 형태로 바뀝니다.#{{LuckSmall}} 행운 7+일 때 5%",
 		},
 		[Retribution.Trinket.RAINBOW_PENNY] 	= {
 			Name = "무지개 페니",
@@ -1141,7 +1141,7 @@ if Retribution then
 		[Retribution.Trinket.THICK_SKIN] 		= {
 			Name = "두꺼운 피부",
 			QuoteDesc = "후피동물",
-			Description = "20%의 확률로 받는 피해를 반칸으로 줄입니다.#{{LuckSmall}} :행운 7+일 때 50%",
+			Description = "20%의 확률로 받는 피해를 반칸으로 줄입니다.#{{LuckSmall}} 행운 7+일 때 50%",
 		},
 		[Retribution.Trinket.THORN_RING] 		= {
 			Name = "가시 반지",
@@ -1909,6 +1909,9 @@ if Retribution then
 		end
 		if itemdesc.Belial and itemdesc.Belial ~= "" then
 			EID.descriptions["ko_kr"].bookOfBelialBuffs[itemID] = itemdesc.Belial
+		end
+		if itemdesc.BingeEater and itemdesc.BingeEater ~= "" then
+			EID.descriptions["ko_kr"].bingeEaterBuffs[itemID] = itemdesc.BingeEater
 		end
 	end
 	for itemID, itemdesc in pairs(rtTrinketDesc) do

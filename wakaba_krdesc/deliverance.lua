@@ -77,7 +77,7 @@ if Deliverance then
 		},
 		[Items.sailorHat.id] = {
 			Name = "항해사 모자",
-			Description = "↑ {{SpeedSmall}}이동속도 +0.2#적에게 공격 명중 시 25%의 확률로 그 위치에 파란 장판이 생기며 닿은 적은 최대 체력에 비례한 피해를 입습니다.#{{LuckSmall}} :행운 2+일 때 50%",
+			Description = "↑ {{SpeedSmall}}이동속도 +0.2#적에게 공격 명중 시 25%의 확률로 그 위치에 파란 장판이 생기며 닿은 적은 최대 체력에 비례한 피해를 입습니다.#{{LuckSmall}} 행운 2+일 때 50%",
 			QuoteDesc = "부드럽고 젖은",
 		},
 		[Items.dheart.id] = {

@@ -2,6 +2,10 @@ if not EID then return end
 local mod = RegisterMod("Korean EID Descriptions for modded items", 1)
 wakaba_krdesc = mod
 
+function wakaba_krdesc:isRepPlus()
+	return FontRenderSettings ~= nil
+end
+
 --bulk append from retribution (cuz i'm lazy)
 function mod.BulkAppend(hostTable, appendTable)
 	for _, entry in pairs(appendTable) do
@@ -182,7 +186,7 @@ do
 	end
 end
 
-do
+if not wakaba_krdesc:isRepPlus() then
 	local i_queueLastFrame = {}
 	local i_queueNow = {}
 

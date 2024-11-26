@@ -2849,7 +2849,7 @@ if FiendFolio then
 
 		[FiendFolio.ITEM.ROCK.POCKET_ROCKIT] = {
 			--Description = "Chance to fire a rocket tear that homes in on enemies#Rockets shoot low damage tears when close to enemies#Rockets pop into a tear pattern on impact, depending on its color.",
-			Description = "공격 시 10%의 확률로 로켓을 발사합니다.#{{LuckSmall}} :행운 10+일 때 25%#로켓이 무언가에 부딪힌 위치에 8방향으로 특정 패턴의 눈물을 발사합니다.",
+			Description = "공격 시 10%의 확률로 로켓을 발사합니다.#{{LuckSmall}} 행운 10+일 때 25%#로켓이 무언가에 부딪힌 위치에 8방향으로 특정 패턴의 눈물을 발사합니다.",
 			StatusEffects = {ffStatusEffectDesc.GOLEM_NORMAL},
 			Name = "포켓 로켓",
 			QuoteDesc = "로켓 사이언스",
@@ -2865,7 +2865,7 @@ if FiendFolio then
 
 		[FiendFolio.ITEM.ROCK.ATLAS_BURDEN] = {
 			--Description = "↓0.4 speed down#Dealing damage to enemies has a chance to drop a boulder onto them, slowing them down and periodically doing heavy damage.",
-			Description = "↓ {{SpeedSmall}}이동속도 -0.4#적 명중 시 최대 25%의 확률로 적에게 하늘을 떠받치게 하며 즉사, 보스의 경우 {{Slow}}둔화 + 주기적으로 공격력 x4의 피해를 줍니다.#{{LuckSmall}} :행운 2.5+일 때 50%, 하늘을 떠받친 적 수에 반비례",
+			Description = "↓ {{SpeedSmall}}이동속도 -0.4#적 명중 시 최대 25%의 확률로 적에게 하늘을 떠받치게 하며 즉사, 보스의 경우 {{Slow}}둔화 + 주기적으로 공격력 x4의 피해를 줍니다.#{{LuckSmall}} 행운 2.5+일 때 50%, 하늘을 떠받친 적 수에 반비례",
 			StatusEffects = {ffStatusEffectDesc.GOLEM_NORMAL},
 			Name = "아틀라스의 부담",
 			QuoteDesc = "다른 놈들한테 넘겨",
@@ -2881,7 +2881,7 @@ if FiendFolio then
 
 		[FiendFolio.ITEM.ROCK.HOMOEROTIC_RUBY] = {
 			--Description = "Chance to fire flaming tears that inflict burn.#Women periodically have a chance to go berserk.",
-			Description = "{{Burning}} 공격 시 10%의 확률로 적에게 화상을 입히는 공격이 나갑니다.#{{LuckSmall}} :행운 8+일 때 50%#{{ffBerserk}} 암컷 적의 경우 확률적으로 폭주 상태가 됩니다.",
+			Description = "{{Burning}} 공격 시 10%의 확률로 적에게 화상을 입히는 공격이 나갑니다.#{{LuckSmall}} 행운 8+일 때 50%#{{ffBerserk}} 암컷 적의 경우 확률적으로 폭주 상태가 됩니다.",
 			StatusEffects = {ffStatusEffectDesc.GOLEM_NORMAL,ffStatusEffectDesc.BERSERK},
 			Name = "호모 루비",
 			QuoteDesc = "열정적이야, 베이베!",
@@ -2889,7 +2889,7 @@ if FiendFolio then
 
 		[FiendFolio.ITEM.ROCK.GAY_GARNET] = {
 			--Description = "Chance to fire freezing flames.#Women periodically have a chance to go berserk.#Women start out charmed.",
-			Description = "{{Freezing}} 15%의 확률로 처치시 적을 얼리는 불꽃을 날립니다#{{LuckSmall}} :행운 7+일 때 50%#{{ffBerserk}} 암컷 적의 경우 등장 시 10초동안 {{Charm}}매혹에 걸리며 확률적으로 폭주 상태가 됩니다.",
+			Description = "{{Freezing}} 15%의 확률로 처치시 적을 얼리는 불꽃을 날립니다#{{LuckSmall}} 행운 7+일 때 50%#{{ffBerserk}} 암컷 적의 경우 등장 시 10초동안 {{Charm}}매혹에 걸리며 확률적으로 폭주 상태가 됩니다.",
 			StatusEffects = {ffStatusEffectDesc.GOLEM_NORMAL,ffStatusEffectDesc.BERSERK},
 			Name = "게이 가넷",
 			QuoteDesc = "교미",

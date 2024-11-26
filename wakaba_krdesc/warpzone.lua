@@ -119,7 +119,7 @@ if WarpZone then
 		},
 		[Items.COLLECTIBLE_REAL_LEFT] = {
 			Name = "",
-			Description = "{Chest}} 사용 시 그 방의 모든 상자를 업그레이드 합니다.#순서: {{SpikedChest}} > {{HauntedChest}} > {{Chest}} > {{RedChest}} > {{GoldenChest}} or {{StoneChest}} > {{WoodenChest}} or {{DirtyChest}} > {{HolyChest}} > {{MegaChest}}#{{RedChest}} 상자가 없을 경우 빨간상자를 소환합니다.",
+			Description = "{{Chest}} 사용 시 그 방의 모든 상자를 업그레이드 합니다.#순서: {{SpikedChest}} > {{HauntedChest}} > {{Chest}} > {{RedChest}} > {{GoldenChest}} or {{StoneChest}} > {{WoodenChest}} or {{DirtyChest}} > {{HolyChest}} > {{MegaChest}}#{{RedChest}} 상자가 없을 경우 빨간상자를 소환합니다.",
 			QuoteDesc = "",
 		},
 		[Items.COLLECTIBLE_HITOPS] = {
