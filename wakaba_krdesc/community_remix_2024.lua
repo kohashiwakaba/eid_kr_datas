@@ -544,6 +544,24 @@ if communityRemix then
 			Name = "",
 			QuoteDesc = "",
 		},
+
+		[Items.COLLECTIBLE_THE_ROT] = {
+			Description = "",
+			Name = "",
+			QuoteDesc = "",
+		},
+
+		[Items.COLLECTIBLE_BOOK_OF_VIRTUES] = {
+			Description = "",
+			Name = "",
+			QuoteDesc = "",
+		},
+
+		[Items.COLLECTIBLE_ADAMBAPPLE] = {
+			Description = "",
+			Name = "",
+			QuoteDesc = "",
+		},
 	}
 	local TrinketDesc = {
 		[Trinkets.TRINKET_FIG_LEAF] = {
@@ -696,6 +714,12 @@ if communityRemix then
 			Name = "시든 머리",
 			QuoteDesc = "저주받았어...",
 		},
+
+		[Trinkets.TRINKET_MOMS_PUBE] = {
+			Description = "",
+			Name = "",
+			QuoteDesc = "",
+		},
 	}
 
 	local CardDesc = {
@@ -763,6 +787,12 @@ if communityRemix then
 			Description = "{{DevilRoom}} 그 방의 아이템을 전부 악마방 아이템으로 바꿉니다. (거래 필요)",
 			Name = "XI - 오컬트",
 			QuoteDesc = "금단의 의식",
+		},
+
+		[Cards.RED_RUNE] = {
+			Description = "",
+			Name = "",
+			QuoteDesc = "",
 		},
 	}
 

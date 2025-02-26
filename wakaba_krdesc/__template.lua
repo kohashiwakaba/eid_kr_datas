@@ -8,7 +8,7 @@ if GODMODE then
 
 	local Items = GODMODE.registry.items
 	local Trinkets = GODMODE.registry.trinkets
-	
+
 	local BirthrightDesc = {
 		[PLAYERTYPE] = {
 			Name = "Isaac",
@@ -50,7 +50,7 @@ if GODMODE then
 			Description = "↓ 더 이상 축복을 받을 수 없습니다.",
 		},
 	}
-	
+
 	for playerType, birthrightdesc in pairs(BirthrightDesc) do
 		EID:addBirthright(playerType, birthrightdesc.Description, birthrightdesc.Name, "ko_kr")
 	end
@@ -107,13 +107,14 @@ if GODMODE then
 
 	EID:addDescriptionModifier("FF_EIDKR_GodmodeVanillaDescs", FF_EIDKR_VanillaDescCondition, FF_EIDKR_VanillaDescCallback)
 
-	
+
 	return {
-		birthright = BirthrightDesc,
+		targetMod = "Mod",
+		characters = CharacterDesc,
 		collectibles = CollectibleDesc,
 		trinkets = TrinketDesc,
 		cards = CardDesc,
 		pills = PillDesc,
 	}
-	
+
 end

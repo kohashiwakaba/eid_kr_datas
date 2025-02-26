@@ -2,10 +2,6 @@ if not EID then return end
 local mod = RegisterMod("Korean EID Descriptions for modded items", 1)
 wakaba_krdesc = mod
 
-function wakaba_krdesc:isRepPlus()
-	return FontRenderSettings ~= nil
-end
-
 --bulk append from retribution (cuz i'm lazy)
 function mod.BulkAppend(hostTable, appendTable)
 	for _, entry in pairs(appendTable) do
@@ -28,9 +24,15 @@ end
 wakaba_krdesc.ERRORS = {}
 wakaba_krdesc_entries = {}
 
-if not (CBEncapsulationFx or REPENTOGON) then
+local skip = false
+
+if REPENTANCE_PLUS then
+	wakaba_krdesc.ERRORS.REP_PLUS = true
+elseif not (CBEncapsulationFx or REPENTOGON) then
 	wakaba_krdesc.ERRORS.NO_REQ = true
-else
+	skip = true
+end
+if not skip then
 	wakaba_krdesc_entries.FIENDFOLIO = include("wakaba_krdesc.fiendfolio")
 	wakaba_krdesc_entries.RETRIBUTION = include("wakaba_krdesc.retribution")
 	wakaba_krdesc_entries.REVEL = include("wakaba_krdesc.revelations")
@@ -45,6 +47,8 @@ else
 	wakaba_krdesc_entries.CR = include("wakaba_krdesc.community_remix_2024")
 	wakaba_krdesc_entries.SACRED_DREAMS = include("wakaba_krdesc.sacred_dreams")
 	wakaba_krdesc_entries.TAINTED_TREASURE = include("wakaba_krdesc.tainted_treasure")
+	wakaba_krdesc_entries.MATT_PACK = include("wakaba_krdesc.matt_pack")
+	wakaba_krdesc_entries.KIRBY = include("wakaba_krdesc.kirby")
 end
 
 --[[
@@ -75,7 +79,9 @@ local function checkStartOfRunWarnings()
 	if EID:getLanguage() == "ko_kr" and (wakaba_krdesc.ERRORS.NO_REQ or #wakaba_krdesc.ERRORS > 0) then
 		local game = Game()
 		local str = ""
-		if wakaba_krdesc.ERRORS.NO_REQ then
+		if wakaba_krdesc.ERRORS.REP_PLUS then
+			str = "{{ColorEIDError}}Repentance Plus DLC 적용이 확인되었습니다.#일부 모드 기능 및 아이템이 작동하지 않을 수 있습니다."
+		elseif wakaba_krdesc.ERRORS.NO_REQ then
 			str = "{{ColorEIDError}}Mod Error Container 혹은 REPENTOGON이 적용/설치되지 않았습니다.#둘 중 하나 이상을 적용/설치하기 전까지 모드 설명이 한글로 표시되지 않습니다."
 		else
 			str = "{{ColorEIDError}}업데이트되지 않은 모드가 있습니다.#창작마당에서 해당 모드를 업데이트하기 전까지 아래 모드의 설명은 적용되지 않습니다."
@@ -186,7 +192,7 @@ do
 	end
 end
 
-if not wakaba_krdesc:isRepPlus() then
+do
 	local i_queueLastFrame = {}
 	local i_queueNow = {}
 
