@@ -49,6 +49,7 @@ if not skip then
 	wakaba_krdesc_entries.TAINTED_TREASURE = include("wakaba_krdesc.tainted_treasure")
 	wakaba_krdesc_entries.MATT_PACK = include("wakaba_krdesc.matt_pack")
 	wakaba_krdesc_entries.KIRBY = include("wakaba_krdesc.kirby")
+	wakaba_krdesc_entries.LOST_AND_FORGOTTEN = include("wakaba_krdesc.lost_and_forgotten")
 end
 
 --[[
@@ -121,6 +122,9 @@ local managedTable = comb
 
 if _wakaba then
 	managedTable = wakaba.descriptions["ko_kr"]
+else
+	table.insert(EID.TextReplacementPairs, {">>>", "{{ArrowGrayRight}}"})
+	table.insert(EID.TextReplacementPairs, {"↕", "{{ArrowUpDown}}"})
 end
 
 do

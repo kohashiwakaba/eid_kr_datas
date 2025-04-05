@@ -49,6 +49,7 @@ if MattPack and REPENTOGON then
 				Origin = CollectibleType.COLLECTIBLE_SACRED_HEART,
 				Append = "{{NameC" .. CollectibleType.COLLECTIBLE_BOOK_OF_BELIAL .. "}}/{{NameK" .. Card.CARD_DEVIL .. "}}를 사용하여 변환",
 				q5format = true,
+				Index = 2,
 			},
 		},
 		[MattPack.Items.BoulderBottom] = {
@@ -76,8 +77,8 @@ if MattPack and REPENTOGON then
 				q5format = true,
 			},
 		},
-		[MattPack.Items.DarkKnife] = {
-			Description = "!!방 클리어로 충전 불가, 블랙하트로 충전 가능"
+		[MattPack.Items.KitchenKnife] = {
+			Description = "!!! 방 클리어로 충전 불가, 블랙하트로 충전 가능"
 			.."#{{HalfBlackHeart}} 완충이 아닐 시, 블랙하트 드랍률 증가"
 			.."#사용 시 칼을 바닥에 찍으며 7초동안 최대 243의 피해를 주는 거대한 빛줄기를 소환합니다."
 			.."#거대한 빛줄기 발동 중 주변의 적 및 탄환을 반사, 장애물을 파괴합니다.",
@@ -158,7 +159,7 @@ if MattPack and REPENTOGON then
 			Name = "테크 오메가",
 			QuoteDesc = "저 멀리서의 쇼크",
 		},
-		[MattPack.Items.MutantBody] = {
+		[MattPack.Items.BloatedBody] = {
 			Description = "눈물이 무언가에 부딪힐 때 네갈래로 2번 갈라집니다."
 			.."#갈라진 눈물의 공격력은 갈라지기 이전의 절반입니다.",
 			Name = "돌연변이 몸체",
@@ -169,16 +170,91 @@ if MattPack and REPENTOGON then
 				q5format = true,
 			},
 		},
+		[MattPack.Items.DeadLitter] = {
+			Description = ""
+			.."#↑ {{DamageSmall}}공격력 배율 x1.66"
+			.."#10%의 확률로 고양이 관련 공격이 나갑니다."
+			.."#{{LuckSmall}} 행운 10+일 때 50% 확률"
+    	.."#{{Collectible" .. CollectibleType.COLLECTIBLE_GUPPYS_HEAD .. "}} 공격력 x0.5의 심연의 파리 x3 (1초간 유지됩니다)"
+    	.."#{{Collectible" .. CollectibleType.COLLECTIBLE_TAMMYS_HEAD .. "}} 캐릭터에게서 9방향 눈물"
+    	.."#{{Collectible" .. CollectibleType.COLLECTIBLE_CRICKETS_HEAD .. "}} {{Collectible" .. MattPack.Items.BloatedBody .. "}}이중 4분열"
+			.."",
+			Name = "죽은 새끼",
+			QuoteDesc = "4번째는 어디에?",
+			__mattConvert = {
+				Origin = CollectibleType.COLLECTIBLE_MOVING_BOX,
+				Append = "{{Collectible" .. CollectibleType.COLLECTIBLE_GUPPYS_PAW .. "}} {{ColorYellow}}고양이 파츠{{CR}} 3개를 담아 완성",
+				q5format = true,
+				Logo = true,
+			},
+		},
+		[MattPack.Items.DivineHeart] = {
+			Description = ""
+			.."#↓ {{TearsSmall}}연사 배율 x0.66"
+			.."#↑ {{DamageSmall}}공격력 배율 x1.5"
+			.."#↓ {{ShotspeedSmall}}탄속 배율 x0.5"
+			.."#공격이 적 및 장애물을 관통합니다."
+			.."#눈물이 착지할 시 눈물이 지나간 자리에 초당 캐릭터의 공격력 x3.75의 피해를 주는 레이저를 생성합니다."
+			.."",
+			Name = "신성한 하트",
+			QuoteDesc = "오래 가는 믿음",
+			__mattConvert = {
+				Origin = CollectibleType.COLLECTIBLE_SACRED_HEART,
+				Append = "{{EternalHeart}} {{ColorYellow}}이터널하트{{CR}}를 {{ButtonRT}}을 꾹 눌러 희생",
+				q5format = true,
+				Index = 1,
+			},
+		},
 	}
 
+	--EID:removeDescriptionModifier("LingerBeanRework")
+	EID:addDescriptionModifier("LingerBeanRework",
+	function(objectDescription)
+		if EID:getLanguage() == "ko_kr" and MattPack.Config.lbReworkEnabled then
+			if objectDescription.ObjType == 5
+			and objectDescription.ObjVariant == 100
+			and objectDescription.ObjSubType == lingerBean then
+				return true
+			end
+		end
+	end,
+	function(descObject)
+		descObject.Description =
+			"공격키를 2번 누르면 공격 반대방향으로 구름을 소환합니다."
+			.."#{{Timer}} (쿨타임 10초)"
+			.."#구름은 7초마다 효과가 추가됩니다."
+			.."#{{ArrowGrayRight}} 1단계: 구름이 초당 공격력 x4.29의 피해"
+			.."#{{ArrowGrayRight}} 2단계: 지나간 자리에 파란 장판이 생김"
+			.."#{{ArrowGrayRight}} 3단계: 장판이 33%의 확률로 캐릭터의 눈물 효과 계승"
+			.."#{{ArrowGrayRight}} 4단계: 눈물 효과 확률 100% + 적이 닿으면 공격력 x3의 빛줄기"
+		return descObject
+	end)
+
+	EID:addDescriptionModifier("DeadLitterCatBitInfo",
+	function(objectDescription)
+		if EID:getLanguage() == "ko_kr" and MattPack.Config.EIDHintsEnabled then
+			if objectDescription.ObjType == 5
+			and objectDescription.ObjVariant == 100
+			and MattPack.DeadLitterCatBits[objectDescription.ObjSubType]
+			and PlayerManager.AnyoneHasCollectible(CollectibleType.COLLECTIBLE_MOVING_BOX) then
+				return true
+			end
+		end
+	end,
+	function(descObject)
+		EID:appendToDescription(descObject, "#{{MPLazyWorm}} "
+		.. "{{Collectible" .. CollectibleType.COLLECTIBLE_MOVING_BOX .. "}} Moving Box에 {{ColorYellow}}고양이 파츠{{CR}} 3개를 담아 완성")
+		return descObject
+	end)
 
 	for itemID, itemdesc in pairs(CollectibleDesc) do
 		local desc = itemdesc.Description
 		if itemdesc.__mattConvert then
+			local index = itemdesc.__mattConvert.Index or ""
 			if itemdesc.__mattConvert.Origin and Q5ToClean[itemdesc.__mattConvert.Origin] then
-				EID:removeDescriptionModifier("Q5" .. itemdesc.__mattConvert.Origin)
+				EID:removeDescriptionModifier("Q5" .. itemdesc.__mattConvert.Origin .. index)
 			end
-			EID:addDescriptionModifier("Q5" .. itemdesc.__mattConvert.Origin,
+			EID:addDescriptionModifier("Q5" .. itemdesc.__mattConvert.Origin .. index,
 			function(objectDescription)
 				if (not itemdesc.__mattConvert.q5format) or MattPack.EIDHintsEnabled then
 					if objectDescription.ObjType == 5
@@ -189,10 +265,11 @@ if MattPack and REPENTOGON then
 				end
 			end,
 			function(descObject)
+				local logo = itemdesc.__mattConvert.Logo and "{{MPLazyWorm}} " or ""
 				if itemdesc.__mattConvert.q5format then
-					EID:appendToDescription(descObject, "#{{Collectible"..itemID.."}} " .. itemdesc.__mattConvert.Append)
+					EID:appendToDescription(descObject, "#{{MPLazyWorm}} {{Collectible"..itemID.."}}" .. itemdesc.__mattConvert.Append)
 				else
-					EID:appendToDescription(descObject, "#"..itemdesc.__mattConvert.Append)
+					EID:appendToDescription(descObject, "#"..logo..itemdesc.__mattConvert.Append)
 				end
 				return descObject
 			end)

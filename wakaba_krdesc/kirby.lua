@@ -6,7 +6,7 @@ if KirbyMod then
 	-- KirbyMod.enums
 
 	local Items = KirbyMod.enums.Items
-	EID.MarkupSizeMap["{{KirbyActive}}"] = "{{Collectible"..Items.SWALLOW.."}}"
+	table.insert(EID.TextReplacementPairs,{"{{KirbyActive}}", "{{Collectible"..Items.SWALLOW.."}}"})
 
 	local CharacterDesc = {
 		[KirbyMod.enums.Characters.KIRBY] = {
@@ -17,6 +17,7 @@ if KirbyMod then
 				.."#{{Collectible"..Items.SWALLOW.."}} 고유 능력 : 카피"
 				.."#!!! 무능력 상태에서는 일반공격이 불가능하며 완충 공격은 공격력 x4(흡수한 적을 다시 뱉는 경우 x3)의 피해를 줍니다."
 				.."#!!! 무능력 상태에서 보스를 일정 회수 명중 시 별 총알이 등장하며 별 총알은 초당 캐릭터의 공격력 x30의 피해를 줍니다."
+				.."#{{ButtonRT}} 버튼을 꾹 눌러 능력을 해제할 수 있습니다."
 				.."",
 		},
 	}
