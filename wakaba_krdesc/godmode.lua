@@ -570,7 +570,7 @@ if GODMODE then
 		},
 		[Items.sugar] = { -- TODO
 			Description = "!!! 획득 시 이후 등장하는 3개의 아이템이 50%의 확률로 {{Collectible"..Items.sugar.."}}Sugar!로 교체되며;#↓ {{EmptyHeart}}최대 체력 -1#↑ {{SpeedSmall}}이동속도 +0.125#↑ {{DamageSmall}}공격력 +0.25/0.55(5회이후)/0.2(10회이후)#↑ {{TearsSmall}}연사 +0.35/0.2(5회이후)",
-			BingeEater = "All stat bonuses granted by this item are increased by 25% if Binge Eater is held.",
+			BingeEater = "Sugar의 효과 +25%",
 			Name = "각설탕",
 			QuoteDesc = "",
 		},
@@ -629,14 +629,12 @@ if GODMODE then
 			Name = "배반의 날개",
 			QuoteDesc = "고통 없이는 얻는 것이 없다",
 		},
-
-
-
 		[Items.jack_of_all_trades] = {
 			Description = "획득 시 모든 변신세트 카운터 +1",
 			Name = "만물박사",
 			QuoteDesc = "",
 		},
+--[[
 		[Items.questrock_1] = {
 			Description = "!!! 미구현#조각 4개를 모두 모으면 Sheol 스테이지에서 Gatekeeper에게 접근할 수 있습니다.",
 			Name = "돌 조각 1",
@@ -657,6 +655,7 @@ if GODMODE then
 			Name = "돌 조각 4",
 			QuoteDesc = "",
 		},
+		 ]]
 		[Items.blood_key] = {
 			Description = "Sheol 스테이지에서 Ivory Palace에 진입할 수 있습니다.",
 			Name = "핏빛 열쇠",
@@ -667,6 +666,66 @@ if GODMODE then
 			Name = "축복 십자가",
 			QuoteDesc = "",
 		},
+
+		[Items.eggnog] = {
+			Description = ""
+			.. "#↑ {{Heart}}최대 체력 +2"
+			.. "#↑ {{HealingRed}}빨간하트 +4"
+			.. "#↑ {{LuckSmall}}행운 +3"
+			.. "{{CR}}",
+			BingeEater = "↑ {{DamageSmall}}공격력 배율 +10%p",
+			Name = "",
+			QuoteDesc = "",
+		},
+		[Items.key_ring] = {
+			Description = "{{Collectible175}} 방 클리어 시(12.5%) 혹은 피격 시(33%) 확률적으로 Dad's Key를 발동합니다."
+			.. "#발동 실패 시 확률이 중첩되며 발동 시 0%로 초기화됩니다."
+			.. "{{CR}}",
+			Name = "아빠의 열쇠 고리",
+			QuoteDesc = "",
+		},
+		[Items.red_juice] = {
+			Description = "{{Timer}} 사용 시:"
+			.. "#>>> {{LuckSmall}}행운 +1"
+			.. "#>>> {{SpeedSmall}}이동속도 +0.05"
+			.. "#>>> 화면이 살짝 일그러집니다."
+			.. "#>>> 방 클리어 시 혹은 30초 경과 시 효과가 1회분 제거됩니다."
+			.. "#사용 회수가 20회 이상인 경우 더 이상 충전되지 않습니다.",
+			Name = "붉은 주스",
+			QuoteDesc = "",
+		},
+		[Items.hellfiah] = {
+			Description = "{{Chargeable}} 공격키를 누르면 충전되며;"
+			.. "#>>> 공격키를 떼면 공격방향으로 불꽃을 여러 발 발사합니다."
+			.. "#충전량에 비례하여 불꽃이 나오며 일정 시간 이상 충전하면 파란 불꽃도 나옵니다.",
+			Name = "헬파이어 소스",
+			QuoteDesc = "",
+		},
+		[Items.fallen_skull] = {
+			Description = ""
+			.. "↓ {{BrokenHeart}}부정하트 +6"
+			.. "#{{Trinket"..Trinkets.godmode.."}} 획득 시 Godmode 장신구를 소환합니다."
+			.. "#스테이지 시작 방에 교정의 방이 항상 등장합니다."
+			.. "#방 클리어 시 확률적으로 비밀의 빛줄기가 등장합니다."
+			.. "#{{BrokenHeart}} 부서진하트, 부정하트 개수에 비례하여 능력치 증가",
+			Name = "타락한 해골",
+			QuoteDesc = "",
+		},
+--[[
+		[Items.reflect] = {
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."",
+			Name = "반사",
+			QuoteDesc = "",
+		},
+		 ]]
 	}
 
 	local TrinketDesc = {
@@ -692,7 +751,7 @@ if GODMODE then
 			QuoteDesc = "",
 		},
 		[Trinkets.godmode] = {
-			Description = "!!! {{ColorOrange}}교체 및 버리기 불가{{CR}}#{{Collectible422}} 패널티 피격 시 {{BrokenHeart}}부서진하트를 +1개 추가하며 전 방의 시점으로 돌아갑니다.",
+			Description = "!!! {{ColorOrange}}획득 시 강제 흡수{{CR}}#{{Collectible422}} 패널티 피격 시 {{BrokenHeart}}부서진하트를 +1개 추가하며 전 방의 시점으로 돌아갑니다.",
 			Name = "GODMODE",
 			QuoteDesc = "",
 		},
@@ -758,6 +817,13 @@ if GODMODE then
 		[Trinkets.white_candle] = {
 			Description = "↑ 스테이지 입장 시 축복 확률 +5%",
 			Name = "하얀 양초",
+			QuoteDesc = "",
+		},
+		[Trinkets.bone_feather] = {
+			Description = ""
+			.. "#스테이지 시작 방에 교정의 방이 항상 등장합니다."
+			.."",
+			Name = "날개뼈",
 			QuoteDesc = "",
 		},
 	}
