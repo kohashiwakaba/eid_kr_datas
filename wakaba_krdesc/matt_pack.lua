@@ -205,6 +205,19 @@ if MattPack and REPENTOGON then
 				Index = 1,
 			},
 		},
+		[MattPack.Items.WarpedLegion] = {
+			Description = ""
+			.."#적 직접 처치 시 그 스테이지에서 캐릭터 주변을 도는 미니 Incubus를 소환합니다."
+			.."#미니 Incubus는 캐릭터의 공격력 x0.06의 피해를 줍니다."
+			.."",
+			Name = "대군단",
+			QuoteDesc = "군단을 만들자",
+			__mattConvert = {
+				Origin = CollectibleType.COLLECTIBLE_TWISTED_PAIR,
+				Append = '{{NameC' .. Card.RUNE_JERA .. "}}를 사용하여 변환",
+				q5format = true,
+			},
+		},
 	}
 
 	--EID:removeDescriptionModifier("LingerBeanRework")
