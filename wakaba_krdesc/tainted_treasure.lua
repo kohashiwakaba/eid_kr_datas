@@ -376,7 +376,7 @@ if TaintedTreasure then
 
   ---@param player EntityPlayer
 	wakaba_krdesc:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, function (_, player)
-		if Options.Language ~= "kr" then return end
+		if not (Options.Language == "kr" or REPKOR) then return end
 
 		local initSeed = tostring(player.InitSeed)
 

@@ -3682,7 +3682,7 @@ if FiendFolio then
 	}
 	EID:updateDescriptionsViaTable(diceTable, EID.descriptions["ko_kr"].dice)
 	wakaba_krdesc:AddCallback(ModCallbacks.MC_USE_PILL, function (_, pillEffectID, playerWhoUsedItem, useFlags)
-		if Options.Language ~= "kr" or useFlags & UseFlag.USE_NOHUD == UseFlag.USE_NOHUD then return end
+		if not (Options.Language == "kr" or REPKOR) or useFlags & UseFlag.USE_NOHUD == UseFlag.USE_NOHUD then return end
 		if ffPillDesc[pillEffectID] then
 			Game():GetHUD():ShowItemText(ffPillDesc[pillEffectID].Name, ffPillDesc[pillEffectID].QuoteDesc)
 		end

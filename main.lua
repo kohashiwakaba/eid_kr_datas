@@ -50,6 +50,7 @@ if not skip then
 	wakaba_krdesc_entries.MATT_PACK = include("wakaba_krdesc.matt_pack")
 	wakaba_krdesc_entries.KIRBY = include("wakaba_krdesc.kirby")
 	wakaba_krdesc_entries.LOST_AND_FORGOTTEN = include("wakaba_krdesc.lost_and_forgotten")
+	wakaba_krdesc_entries.FOKS_BOOSTER_PACK = include("wakaba_krdesc.foks_booster_pack")
 end
 
 --[[
@@ -82,6 +83,12 @@ local function checkStartOfRunWarnings()
 		local str = ""
 		if wakaba_krdesc.ERRORS.REP_PLUS then
 			str = "{{ColorEIDError}}Repentance Plus DLC 적용이 확인되었습니다.#일부 모드 기능 및 아이템이 작동하지 않을 수 있습니다."
+		elseif wakaba_krdesc.ERRORS.NO_RGON then
+			str = "{{ColorEIDError}}REPENTOGON이 설치되지 않은 상태에서 REPENGOTON 전용 모드가 적용되었습니다.#이하의 모드를 적용 해제하거나 REPENGOTON을 설치하기 전까지 모드 설명이 한글로 표시되지 않습니다."
+			for _, err in ipairs(wakaba_krdesc.ERRORS) do
+				str = str
+						.. "#{{ColorEIDObjName}}" .. err.err_mod
+			end
 		elseif wakaba_krdesc.ERRORS.NO_REQ then
 			str = "{{ColorEIDError}}Mod Error Container 혹은 REPENTOGON이 적용/설치되지 않았습니다.#둘 중 하나 이상을 적용/설치하기 전까지 모드 설명이 한글로 표시되지 않습니다."
 		else
@@ -202,7 +209,7 @@ do
 
 	---@param player EntityPlayer
 	wakaba_krdesc:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, function(_, player)
-		if Options.Language ~= "kr" then return end
+		if not (Options.Language == "kr" or REPKOR) then return end
 
 		local initSeed = tostring(player.InitSeed)
 
@@ -239,12 +246,27 @@ do
 		i_queueLastFrame[initSeed] = i_queueNow[initSeed]
 	end)
 	wakaba_krdesc:AddCallback(ModCallbacks.MC_USE_PILL, function(_, pillEffectID, playerWhoUsedItem, useFlags)
-		if Options.Language ~= "kr" or useFlags & UseFlag.USE_NOHUD == UseFlag.USE_NOHUD then return end
+		if not (Options.Language == "kr" or REPKOR) or useFlags & UseFlag.USE_NOHUD == UseFlag.USE_NOHUD then return end
 		if managedTable.pills[pillEffectID] then
 			Game():GetHUD():ShowItemText(managedTable.pills[pillEffectID].Name, managedTable.pills[pillEffectID].QuoteDesc)
 		end
 	end)
 end
+
+wakaba_krdesc:AddPriorityCallback(ModCallbacks.MC_POST_GAME_STARTED, CallbackPriority.LATE, function ()
+	for i = 1, CollectibleType.NUM_COLLECTIBLES - 1 do
+		if EID.descriptions["en_us"].custom["5.100."..i] then
+			EID.descriptions["en_us"].custom["5.100."..i] = nil
+		end
+	end
+
+	for i = 1, TrinketType.NUM_TRINKETS - 1 do
+		if EID.descriptions["en_us"].custom["5.350."..i] then
+			EID.descriptions["en_us"].custom["5.350."..i] = nil
+		end
+	end
+
+end)
 
 -- Reserve current mod indicator for EID
 EID._currentMod = "Wakaba_translation_reserved"
