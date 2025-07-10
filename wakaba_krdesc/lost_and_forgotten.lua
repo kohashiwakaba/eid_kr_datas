@@ -1000,7 +1000,7 @@ if LNF then
 			.."{{CR}}",
 			QuoteDesc = "",
 		},
-		[LNF.CollectibleType.CURSED_DICE] = {
+		[LNF.CollectibleType.CURSED_D6] = {
 			Name = "",
 			Description = ""
 			.."#{{Collectible105}} 사용 시 그 방의 아이템을 다른 아이템으로 바꾸며;"
