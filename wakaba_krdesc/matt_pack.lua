@@ -1,7 +1,15 @@
 
-if MattPack and REPENTOGON then
+if MattPack then
+	if not REPENTOGON then
+		table.insert(wakaba_krdesc.ERRORS, {
+			NO_RGON = true,
+			err_mod = "Lazy Mattpack",
+		})
+		return
+	end
 
 	EID._currentMod = "MattPack"
+	local mod = MattPack
 
 	local Q5ToClean = {
 		[CollectibleType.COLLECTIBLE_POLYPHEMUS] = true,
@@ -27,7 +35,7 @@ if MattPack and REPENTOGON then
 			.."#{{3}} War - 소형 폭발"
 			.."#{{4}} Death - 피해량 x2"
 			.."#{{5}} Conquest - 빛줄기",
-			Name = "발록",
+			Name = "발러",
 			QuoteDesc = "묵시의 눈",
 			__mattConvert = {
 				Origin = CollectibleType.COLLECTIBLE_POLYPHEMUS,
@@ -53,9 +61,12 @@ if MattPack and REPENTOGON then
 			},
 		},
 		[MattPack.Items.BoulderBottom] = {
-			Description = "모든 일시적 효과가 영구적으로 유지됩니다."
-			.."#!!! (부활, 무적류 효과 제외)"
-			--.."#Does not get removed upon self-rerolling"
+			Description = "{{Collectible562}} 능력치를 항상 가장 높았던 값으로 고정합니다."
+			.."#{{Collectible479}} 장신구 획득 시 흡수됩니다."
+			.."#모든 일시적 효과가 영구적으로 유지됩니다."
+			.."#>>> ({{Collectible34}}/{{Collectible122}}/{{Collectible160}} 등 그 방 적용 및 시간제 효과)"
+			.."#>>> {{ColorYellow}}(부활, 무적류 효과 제외)"
+			--.."#이 아이템은 제거되지 않습니다."
 			.."",
 			Name = "나락",
 			QuoteDesc = "이렇게나 올라갈 수 있을까?",
@@ -86,8 +97,8 @@ if MattPack and REPENTOGON then
 			QuoteDesc = "땅을 뜯으리라",
 		},
 		[MattPack.Items.DevilsYoYo] = {
-			Description = "캐릭터 머리 위에 요요가 소환되며 모든 방의 아이템이 3배로 나옵니다.#상자/판매 아이템은 영향을 받지 않습니다."
-			.."#{{Warning}} 캐릭터의 전체 체력이 반칸으로 설정될 확률이 생깁니다.#!!! 빈사확률: 1프레임 당 1/2500#!!! 피격 효과가 최소 1회 이상 발동됨",
+			Description = "캐릭터 머리 위에 요요가 소환되며 모든 방의 아이템이 3배로 나옵니다."
+			.."#{{Warning}} 획득 직후 캐릭터의 전체 체력이 반칸으로 설정될 확률이 생깁니다.#!!! 빈사확률: 1프레임 당 1/2500#!!! 피격 효과가 최소 1회 이상 발동됨",
 			Name = "악마의 요요",
 			QuoteDesc = "다가오는 필멸",
 			__mattConvert = {
@@ -149,13 +160,7 @@ if MattPack and REPENTOGON then
 		},
 		[MattPack.Items.TechOmega] = {
 			Description = "공격이 공격력 x0.05의 거대한 지속 레이저 공격으로 변경됩니다."
-			.."#적에게 지속적으로 레이저를 명중 시 랜덤 4방향으로 공격력 x0.5의 사거리가 짧은 레이저를 발사합니다.",
-			Name = "테크 오메가",
-			QuoteDesc = "저 멀리서의 쇼크",
-		},
-		[MattPack.Items.TechOmega] = {
-			Description = "공격이 공격력 x0.05의 거대한 지속 레이저 공격으로 변경됩니다."
-			.."#적에게 지속적으로 레이저를 명중 시 랜덤 4방향으로 공격력 x0.5의 사거리가 짧은 레이저를 발사합니다.",
+			.."#적에게 지속적으로 레이저를 명중 시 랜덤 4방향으로 공격력 x0.5의 사거리가 짧은 방사 레이저를 발사합니다.",
 			Name = "테크 오메가",
 			QuoteDesc = "저 멀리서의 쇼크",
 		},
@@ -175,9 +180,9 @@ if MattPack and REPENTOGON then
 			.."#↑ {{DamageSmall}}공격력 배율 x1.66"
 			.."#10%의 확률로 고양이 관련 공격이 나갑니다."
 			.."#{{LuckSmall}} 행운 10+일 때 50% 확률"
-    	.."#{{Collectible" .. CollectibleType.COLLECTIBLE_GUPPYS_HEAD .. "}} 공격력 x0.5의 심연의 파리 x3 (1초간 유지됩니다)"
-    	.."#{{Collectible" .. CollectibleType.COLLECTIBLE_TAMMYS_HEAD .. "}} 캐릭터에게서 9방향 눈물"
-    	.."#{{Collectible" .. CollectibleType.COLLECTIBLE_CRICKETS_HEAD .. "}} {{Collectible" .. MattPack.Items.BloatedBody .. "}}이중 4분열"
+			.."#{{Collectible" .. CollectibleType.COLLECTIBLE_GUPPYS_HEAD .. "}} 공격력 x0.5의 심연의 파리 x3 (1초간 유지됩니다)"
+			.."#{{Collectible" .. CollectibleType.COLLECTIBLE_TAMMYS_HEAD .. "}} 캐릭터에게서 9방향 눈물"
+			.."#{{Collectible" .. CollectibleType.COLLECTIBLE_CRICKETS_HEAD .. "}} {{Collectible" .. MattPack.Items.BloatedBody .. "}}이중 4분열"
 			.."",
 			Name = "죽은 새끼",
 			QuoteDesc = "4번째는 어디에?",
@@ -207,8 +212,8 @@ if MattPack and REPENTOGON then
 		},
 		[MattPack.Items.WarpedLegion] = {
 			Description = ""
-			.."#적 직접 처치 시 그 스테이지에서 캐릭터 주변을 도는 미니 Incubus를 소환합니다."
-			.."#미니 Incubus는 캐릭터의 공격력 x0.06의 피해를 줍니다."
+			.."#적 직접 처치 시 그 스테이지에서 캐릭터 주변을 도는 미니 인큐버스를 소환합니다."
+			.."#미니 인큐버스는 캐릭터의 공격력 x0.06의 피해를 줍니다."
 			.."",
 			Name = "대군단",
 			QuoteDesc = "군단을 만들자",
@@ -259,6 +264,42 @@ if MattPack and REPENTOGON then
 		.. "{{Collectible" .. CollectibleType.COLLECTIBLE_MOVING_BOX .. "}} Moving Box에 {{ColorYellow}}고양이 파츠{{CR}} 3개를 담아 완성")
 		return descObject
 	end)
+
+	mod.addSynergyDescription(MattPack.Items.Balor,
+	CollectibleType.COLLECTIBLE_DAMOCLES,
+	"추가 등장 아이템 +1")
+	mod.addSynergyDescription(MattPack.Items.CLSpoonBender,
+	CollectibleType.COLLECTIBLE_TECH_X,
+	"레이저 고리가 적을 향해 이동합니다.")
+
+	-- Synergies
+	mod.addSynergyDescription(MattPack.Items.TechOmega,
+	CollectibleType.COLLECTIBLE_TECH_X,
+	"레이저 고리가 유지되며, 레이저 속도가 감소하나, 피해량과 명중 효과가 감소합니다.")
+
+	--[[ mod.addSynergyDescription(MattPack.Items.TechOmega,
+	CollectibleType.COLLECTIBLE_LUDOVICO_TECHNIQUE,
+	"Isaac controls a large, low damage laser ring that increases enemies' tech charge on hit") ]]
+
+	mod.addSynergyDescription(MattPack.Items.TechOmega,
+	CollectibleType.COLLECTIBLE_BRIMSTONE,
+	"방사 레이저가 짧은 혈사포로 바뀝니다.")
+
+	mod.addSynergyDescription(MattPack.Items.TechOmega,
+	CollectibleType.COLLECTIBLE_MOMS_KNIFE,
+	"방사 레이저가 나올 때 캐릭터의 공격력 x2.5의 칼이 추가로 발사됩니다.")
+
+	-- Multishots
+	for i,list in ipairs({mod.multishotPlayersList, mod.multishotsList}) do
+		for id,amt in pairs(list) do
+			local string = "발사되는 방사 레이저 수 +" .. (amt - 1)
+			if i == 1 then
+				mod.addSynergyDescription(MattPack.Items.TechOmega, id, string, nil, true)
+			else
+				mod.addSynergyDescription(MattPack.Items.TechOmega, id, string, nil, nil, true)
+			end
+		end
+	end
 
 	for itemID, itemdesc in pairs(CollectibleDesc) do
 		local desc = itemdesc.Description
