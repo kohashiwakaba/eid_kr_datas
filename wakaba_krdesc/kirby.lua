@@ -1,5 +1,12 @@
 
 if KirbyMod then
+	if not REPENTOGON then
+		table.insert(wakaba_krdesc.ERRORS, {
+			NO_RGON = true,
+			err_mod = "Kirby Mod!",
+		})
+		return
+	end
 
 	EID._currentMod = "Kirby Mod!"
 	local mod = KirbyMod

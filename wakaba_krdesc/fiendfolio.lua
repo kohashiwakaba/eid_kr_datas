@@ -3461,7 +3461,7 @@ if FiendFolio then
   EID.descriptions["ko_kr"].bingeEaterBuffs[FiendFolio.ITEM.COLLECTIBLE.TEA] = "↑ {{RangeSmall}}사거리 +1.5#↑ {{LuckSmall}}행운 +1#↓ {{SpeedSmall}}이동속도 -0.03"
 
 	local function FF_EIDKR_RockSlotCondition(descObj)
-	  if EID:getLanguage() ~= "ko_kr" then return false end
+	  if EID:getLanguage() ~= "ko_kr" and EID:getLanguage() ~= "ko" then return false end
 	  if not descObj.ObjType == EntityType.ENTITY_SLOT then return false end
 	  if not descObj.Entity then return end
 	  if descObj.ObjVariant == 1020
@@ -3536,7 +3536,7 @@ if FiendFolio then
 	end
 
 	local function FF_EIDKR_EmptyBookCondition(descObj)
-	  if EID:getLanguage() ~= "ko_kr" then return false end
+	  if EID:getLanguage() ~= "ko_kr" and EID:getLanguage() ~= "ko" then return false end
 	  if not FiendFolio.savedata.run.emptybookeffects then return false end
 	  if not (descObj.ObjType == EntityType.ENTITY_PICKUP and descObj.ObjVariant == PickupVariant.PICKUP_COLLECTIBLE) then return false end
 	  return (descObj.ObjSubType == FiendFolio.ITEM.COLLECTIBLE.MY_STORY_2 or descObj.ObjSubType == FiendFolio.ITEM.COLLECTIBLE.MY_STORY_4 or descObj.ObjSubType == FiendFolio.ITEM.COLLECTIBLE.MY_STORY_6)
@@ -3630,7 +3630,7 @@ if FiendFolio then
 	end
 
 	local function FF_EIDKR_PerfectGenericObjectCondition(descObj)
-	  if EID:getLanguage() ~= "ko_kr" then return false end
+	  if EID:getLanguage() ~= "ko_kr" and EID:getLanguage() ~= "ko" then return false end
 	  if not (descObj.ObjType == EntityType.ENTITY_PICKUP and descObj.ObjVariant == PickupVariant.PICKUP_TAROTCARD) then return false end
 	  local numPlayers = Game():GetNumPlayers()
 	  for i = 0, numPlayers - 1 do

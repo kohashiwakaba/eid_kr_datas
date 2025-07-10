@@ -1,5 +1,12 @@
 
 if WarpZone then
+	if not REPENTOGON then
+		table.insert(wakaba_krdesc.ERRORS, {
+			NO_RGON = true,
+			err_mod = "Warp Zone",
+		})
+		return
+	end
 
 	EID._currentMod = "WarpZone"
 

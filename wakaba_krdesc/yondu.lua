@@ -1,5 +1,12 @@
 
 if Yondu_Arrow_mod then
+	if not REPENTOGON then
+		table.insert(wakaba_krdesc.ERRORS, {
+			NO_RGON = true,
+			err_mod = "Yondu",
+		})
+		return
+	end
 
 	EID._currentMod = "whistle piece"
 	local mod = Yondu_Arrow_mod

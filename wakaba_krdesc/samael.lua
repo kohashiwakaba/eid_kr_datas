@@ -404,7 +404,7 @@ for itemID, itemdesc in pairs(PillDesc) do
 end
 
 local function MementoMoriEidAppendCondition(descObj)
-	if EID:getLanguage() ~= "ko_kr" then return false end
+	if EID:getLanguage() ~= "ko_kr" and EID:getLanguage() ~= "ko" then return false end
 	if not descObj or descObj.ObjType ~= 5 or descObj.ObjVariant ~= 100 or not MementoMoriItemDescriptions[descObj.ObjSubType] then
 		return false
 	end
@@ -433,7 +433,7 @@ EID:addDescriptionModifier("FF_EIDKR_samaelMementoMoriModifier", MementoMoriEidA
 
 
 local function SamaelScytheEidAppendCondition(descObj)
-	if EID:getLanguage() ~= "ko_kr" then return false end
+	if EID:getLanguage() ~= "ko_kr" and EID:getLanguage() ~= "ko" then return false end
 	if not descObj or descObj.ObjType ~= 5 or descObj.ObjVariant ~= 100 or not SamaelItemDescriptions[descObj.ObjSubType] then
 		return false
 	end

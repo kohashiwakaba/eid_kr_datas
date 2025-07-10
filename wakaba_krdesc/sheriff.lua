@@ -196,7 +196,7 @@ if Sheriff then
 	end
 
 	local function modifyHolsterCondition(descObj)
-		if EID:getLanguage() ~= "ko_kr" then return false end
+		if EID:getLanguage() ~= "ko_kr" and EID:getLanguage() ~= "ko" then return false end
 		return descObj.ObjType == 5
 		and descObj.ObjVariant == 100
 		and (descObj.ObjSubType == Sheriff.Items.Holster.ID or descObj.ObjSubType == Sheriff.Items.Holster.WHIP_VERSION_ID)

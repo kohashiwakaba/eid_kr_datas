@@ -1,4 +1,11 @@
 if REVEL then
+	if not REPENTOGON then
+		table.insert(wakaba_krdesc.ERRORS, {
+			NO_RGON = true,
+			err_mod = "Revelations",
+		})
+		return
+	end
 
 EID._currentMod = "Revelations"
 

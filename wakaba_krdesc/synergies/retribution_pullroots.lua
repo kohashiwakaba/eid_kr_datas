@@ -11,7 +11,7 @@ local trinketSynergies = {
 }
 
 local function FF_EIDKR_RTPullRootsCondition(descObj)
-  if EID:getLanguage() ~= "ko_kr" then return false end
+  if EID:getLanguage() ~= "ko_kr" and EID:getLanguage() ~= "ko" then return false end
   return descObj.ObjType == 5 and (descObj.ObjVariant == 100 or descObj.ObjVariant == 350) and (
 		EID.collectiblesOwned[Retribution.Item.SEED_SACK] or
 		EID.collectiblesOwned[Retribution.Item.BAG_OF_SEEDS] or

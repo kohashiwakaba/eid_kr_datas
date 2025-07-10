@@ -31,7 +31,7 @@ local trinketSynergies = {
 }
 
 local function FF_EIDKR_RTCondition(descObj)
-  if EID:getLanguage() ~= "ko_kr" then return false end
+  if EID:getLanguage() ~= "ko_kr" and EID:getLanguage() ~= "ko" then return false end
   return Retribution.GameHasPlayerType(PlayerType.PLAYER_THEFORGOTTEN, PlayerType.PLAYER_THESOUL, PlayerType.PLAYER_SAMSON_B, PlayerType.PLAYER_THEFORGOTTEN_B)
 end
 

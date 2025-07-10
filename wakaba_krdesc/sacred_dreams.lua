@@ -530,7 +530,7 @@ end
 SacredDreams:AddCallback(ModCallbacks.MC_POST_EFFECT_RENDER, SacredDreams.TDGUpgradesDesc_new, SDMod.SOMNOSSENCE)
 
 local function FF_EIDKR_SSCondition(descObj)
-	if EID:getLanguage() ~= "ko_kr" then return false end
+	if EID:getLanguage() ~= "ko_kr" and EID:getLanguage() ~= "ko" then return false end
 	if EID.InsideItemReminder then return false end
 	return
 		descObj.ObjType == 1000
@@ -582,7 +582,7 @@ end
 EID:addDescriptionModifier("FF_EIDKR_Somni", FF_EIDKR_SSCondition, FF_EIDKR_SSDescCallback)
 
 local function FF_EIDKR_SPCondition(descObj)
-	if EID:getLanguage() ~= "ko_kr" then return false end
+	if EID:getLanguage() ~= "ko_kr" and EID:getLanguage() ~= "ko" then return false end
 	--if (EID.InsideItemReminder) then return false end
 
 	local num_players = Game():GetNumPlayers()

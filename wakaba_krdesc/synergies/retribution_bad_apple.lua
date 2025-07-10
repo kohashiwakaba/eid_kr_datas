@@ -34,7 +34,7 @@ local function badAppleCallback(descObj)
 end
 
 EID:addDescriptionModifier("FF_EIDKR_RTbadAppleSynergyAlt", function(descObj)
-  if EID:getLanguage() ~= "ko_kr" then return false end
+  if EID:getLanguage() ~= "ko_kr" and EID:getLanguage() ~= "ko" then return false end
 	return descObj.ObjType == 5 and descObj.ObjVariant == 100 and descObj.ObjSubType == Retribution.Item.BAD_APPLE and shouldModifyBadApple()
 end, badAppleCallback)
 
@@ -51,11 +51,11 @@ local function otherItemsCallback(descObj)
 end
 
 EID:addDescriptionModifier("FF_EIDKR_RTbadAppleSynergy", function(descObj)
-  if EID:getLanguage() ~= "ko_kr" then return false end
+  if EID:getLanguage() ~= "ko_kr" and EID:getLanguage() ~= "ko" then return false end
 	return descObj.ObjType == 5 and descObj.ObjVariant == 100 and EID.collectiblesOwned[Retribution.Item.BAD_APPLE]
 end, otherItemsCallback)
 
 EID:addDescriptionModifier("FF_EIDKR_RTbadAppleSynergyTrinket", function(descObj)
-  if EID:getLanguage() ~= "ko_kr" then return false end
+  if EID:getLanguage() ~= "ko_kr" and EID:getLanguage() ~= "ko" then return false end
 	return descObj.ObjType == 5 and descObj.ObjVariant == 350 and EID.collectiblesOwned[Retribution.Item.BAD_APPLE]
 end, otherItemsCallback)
