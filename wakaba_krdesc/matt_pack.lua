@@ -35,17 +35,18 @@ if MattPack then
 			.."#{{3}} War - 소형 폭발"
 			.."#{{4}} Death - 피해량 x2"
 			.."#{{5}} Conquest - 빛줄기",
-			Name = "발러",
+			Name = "발로르",
 			QuoteDesc = "묵시의 눈",
 			__mattConvert = {
 				Origin = CollectibleType.COLLECTIBLE_POLYPHEMUS,
-				Append = "{{NameC" .. Card.CARD_HUGE_GROWTH .. "}}을 사용하여 변환",
+				Append = "{{NameK" .. Card.CARD_HUGE_GROWTH .. "}}을 사용하여 변환",
 				q5format = true,
 			},
 		},
 		[MattPack.Items.BenightedHeart] = {
 			Description = "↓ {{EmptyHeart}}최대 체력 -1"
 			.."#↓ {{Heart}}빨간하트 -12"
+			.."#↑ {{BlackHeart}}블랙하트 +2"
 			.."#↓ {{DamageSmall}}공격력 -0.4"
 			.."#↑ {{TearsSmall}}연사 배율 x2.3"
 			.."#↑ {{TearsSmall}}연사 +1"
@@ -103,7 +104,7 @@ if MattPack then
 			QuoteDesc = "다가오는 필멸",
 			__mattConvert = {
 				Origin = CollectibleType.COLLECTIBLE_DAMOCLES,
-				Append = '{{NameK' .. CollectibleType.COLLECTIBLE_SPIN_TO_WIN .. "}}를 사용하여 변환",
+				Append = '{{NameC' .. CollectibleType.COLLECTIBLE_SPIN_TO_WIN .. "}}를 사용하여 변환",
 				q5format = true,
 			},
 		},
@@ -198,7 +199,9 @@ if MattPack then
 			.."#↓ {{TearsSmall}}연사 배율 x0.66"
 			.."#↑ {{DamageSmall}}공격력 배율 x1.5"
 			.."#↓ {{ShotspeedSmall}}탄속 배율 x0.5"
+			.."#{{Collectible"..CollectibleType.COLLECTIBLE_SPOON_BENDER .."}} 공격이 적에게 유도됩니다."
 			.."#공격이 적 및 장애물을 관통합니다."
+			.."#비행 능력을 얻습니다."
 			.."#눈물이 착지할 시 눈물이 지나간 자리에 초당 캐릭터의 공격력 x3.75의 피해를 주는 레이저를 생성합니다."
 			.."",
 			Name = "신성한 하트",
@@ -219,7 +222,7 @@ if MattPack then
 			QuoteDesc = "군단을 만들자",
 			__mattConvert = {
 				Origin = CollectibleType.COLLECTIBLE_TWISTED_PAIR,
-				Append = '{{NameC' .. Card.RUNE_JERA .. "}}를 사용하여 변환",
+				Append = '{{NameK' .. Card.RUNE_JERA .. "}}를 사용하여 변환",
 				q5format = true,
 			},
 		},
@@ -265,7 +268,7 @@ if MattPack then
 		return descObject
 	end)
 
-	mod.addSynergyDescription(MattPack.Items.Balor,
+	mod.addSynergyDescription(MattPack.Items.DevilsYoYo,
 	CollectibleType.COLLECTIBLE_DAMOCLES,
 	"추가 등장 아이템 +1")
 	mod.addSynergyDescription(MattPack.Items.CLSpoonBender,
@@ -306,11 +309,11 @@ if MattPack then
 		if itemdesc.__mattConvert then
 			local index = itemdesc.__mattConvert.Index or ""
 			if itemdesc.__mattConvert.Origin and Q5ToClean[itemdesc.__mattConvert.Origin] then
-				EID:removeDescriptionModifier("Q5" .. itemdesc.__mattConvert.Origin .. index)
+				--EID:removeDescriptionModifier("Q5" .. itemdesc.__mattConvert.Origin .. index)
 			end
 			EID:addDescriptionModifier("Q5" .. itemdesc.__mattConvert.Origin .. index,
 			function(objectDescription)
-				if (not itemdesc.__mattConvert.q5format) or MattPack.EIDHintsEnabled then
+				if (not itemdesc.__mattConvert.q5format) or MattPack.Config.EIDHintsEnabled then
 					if objectDescription.ObjType == 5
 					and objectDescription.ObjVariant == 100
 					and objectDescription.ObjSubType == itemdesc.__mattConvert.Origin then

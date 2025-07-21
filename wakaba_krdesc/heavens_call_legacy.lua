@@ -1,12 +1,5 @@
 
 if HeavensCall then
-	if not REPENTOGON then
-		table.insert(wakaba_krdesc.ERRORS, {
-			NO_RGON = true,
-			err_mod = "Heaven's call",
-		})
-		return
-	end
 
 	EID._currentMod = "Heaven's call"
 	local mod = HeavensCall

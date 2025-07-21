@@ -39,7 +39,7 @@ if not skip then
 	wakaba_krdesc_entries.GODMODE = include("wakaba_krdesc.godmode")
 	wakaba_krdesc_entries.SAMAEL = include("wakaba_krdesc.samael")
 	wakaba_krdesc_entries.DELIVERANCE = include("wakaba_krdesc.deliverance")
-	wakaba_krdesc_entries.HEAVENS_CALL = include("wakaba_krdesc.heavens_call")
+	wakaba_krdesc_entries.HEAVENS_CALL = include("wakaba_krdesc.heavens_call_legacy")
 	wakaba_krdesc_entries.WARPZONE = include("wakaba_krdesc.warpzone")
 	wakaba_krdesc_entries.SHERIFF = include("wakaba_krdesc.sheriff")
 	wakaba_krdesc_entries.YONDU = include("wakaba_krdesc.yondu")
@@ -50,7 +50,8 @@ if not skip then
 	wakaba_krdesc_entries.MATT_PACK = include("wakaba_krdesc.matt_pack")
 	wakaba_krdesc_entries.KIRBY = include("wakaba_krdesc.kirby")
 	wakaba_krdesc_entries.LOST_AND_FORGOTTEN = include("wakaba_krdesc.lost_and_forgotten")
-	wakaba_krdesc_entries.FOKS_BOOSTER_PACK = include("wakaba_krdesc.foks_booster_pack")
+	--wakaba_krdesc_entries.FOKS_BOOSTER_PACK = include("wakaba_krdesc.foks_booster_pack")
+	wakaba_krdesc_entries.AURI = include("wakaba_krdesc.auri")
 end
 
 --[[
@@ -203,7 +204,70 @@ do
 	end
 end
 
-do
+if REPENTOGON then
+
+	wakaba_krdesc:AddPriorityCallback(ModCallbacks.MC_POST_MODS_LOADED, CallbackPriority.LATE, function ()
+		if not (REPKOR or Options.Language == "kr") then goto skipItemName end
+		if DaRules then goto skipItemName end
+		if Encyclopedia then goto skipItemName end
+
+		local ic = Isaac.GetItemConfig()
+
+		for playerType, v in pairs(managedTable.characters) do
+			--local item = ic:GetCollectible()
+		end
+
+		for itemID, v in pairs(managedTable.collectibles) do
+			local item = ic:GetCollectible(itemID)
+			if item and v.targetMod then
+				if v.itemName and v.itemName ~= "" then
+					item.Name = v.itemName or item.Name
+				end
+				if v.queueDesc and v.queueDesc ~= "" then
+					item.Description = v.queueDesc or item.Description
+				end
+			end
+		end
+
+		for trinketID, v in pairs(managedTable.trinkets) do
+			local item = ic:GetTrinket(trinketID)
+			if item and v.targetMod then
+				if v.itemName and v.itemName ~= "" then
+					item.Name = v.itemName or item.Name
+				end
+				if v.queueDesc and v.queueDesc ~= "" then
+					item.Description = v.queueDesc or item.Description
+				end
+			end
+		end
+
+		for cardID, v in pairs(managedTable.cards) do
+			local item = ic:GetCard(cardID)
+			if item and v.targetMod then
+				if v.itemName and v.itemName ~= "" then
+					item.Name = v.itemName or item.Name
+				end
+				if v.queueDesc and v.queueDesc ~= "" then
+					item.Description = v.queueDesc or item.Description
+				end
+			end
+		end
+
+		for pillID, v in pairs(managedTable.pills) do
+			local item = ic:GetPillEffect(pillID)
+			if item and v.targetMod then
+				if v.itemName and v.itemName ~= "" then
+					item.Name = v.itemName or item.Name
+				end
+				if v.queueDesc and v.queueDesc ~= "" then
+					item.Description = v.queueDesc or item.Description
+				end
+			end
+		end
+
+		::skipItemName::
+	end)
+else
 	local i_queueLastFrame = {}
 	local i_queueNow = {}
 
