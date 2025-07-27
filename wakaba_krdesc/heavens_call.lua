@@ -1,5 +1,12 @@
 
 if HeavensCall then
+	if not REPENTOGON then
+		table.insert(wakaba_krdesc.ERRORS, {
+			NO_RGON = true,
+			err_mod = "Heaven's call",
+		})
+		return
+	end
 
 	EID._currentMod = "Heaven's call"
 	local mod = HeavensCall
@@ -11,6 +18,7 @@ if HeavensCall then
 	local Trinkets = mod.Trinkets
 
 	local CollectibleDesc = {
+		--#region TAINTED PLANETARIUMS
 		[Items.Mercurius] = {
 			Description = "↑ {{SpeedSmall}}이동속도 +0.23#비행 능력을 얻습니다.#7%의 확률로 적 처치 시 꼬마 아이작 패밀리어를 소환하는 {{ColorTransform}}비스무트{{ColorText}} 공격이 나갑니다.#{{LuckSmall}} 행운 14+일 때 50%#{{Collectible77}} 방 입장 시 5%의 확률로 My Little Unicorn 아이템의 효과를 발동합니다.",
 			Name = "수성?",
@@ -51,29 +59,791 @@ if HeavensCall then
 			Name = "해왕성?",
 			QuoteDesc = "심연이 우리를 드려다볼 때",
 		},
+		[Items.Luna] = {
+			Name = "달?",
+			Description = ""
+			.."#!!! 무효과 (미구현 아이템)"
+			.."{{CR}}",
+			QuoteDesc = "곁에 있지만, 네 것이 아냐",
+		},
+		[Items.Sol] = {
+			Name = "태양?",
+			Description = ""
+			.."#!!! 무효과 (미구현 아이템)"
+			.."{{CR}}",
+			QuoteDesc = "The morning star, bearer of light",
+		},
+		--#endregion
+
+		--#region SOLAR ITEMS
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		--#endregion
 	}
 
 	local TrinketDesc = {
+		--#region
 		[Trinkets.Shard] = {
-			Description = "13%의 확률로 피해를 막으나;#!!! 방 안의 랜덤 위치로 순간이동합니다.",
 			Name = "퀀텀 조각",
+			Description = ""
+			.."#13%의 확률로 피해를 막으나;"
+			.."#>>> !!! 그 방의 랜덤 위치로 순간이동합니다.",
 			QuoteDesc = "언제 어디서나",
 		},
 		[Trinkets.Sputnik] = {
-			Description = "캐릭터의 주변을 돌며 접촉하는 적에게 초당 6의 피해를 입힙니다",
 			Name = "스푸트닉",
+			Description = "캐릭터의 주변을 돌며 접촉하는 적에게 초당 6의 피해를 줍니다.",
 			QuoteDesc = "위성 친구",
 		},
 		[Trinkets.Flag] = {
-			Description = "↑ 망원경 발견 확률 증가#↑ 망원경이 위성 패밀리어를 줄 확률 증가#{{DamageSmall}} 위성 패밀리어의 피해량 증가.",
 			Name = "흐려진 깃발",
+			Description = "↑ 망원경 발견 확률 증가"
+			.."#↑ 망원경이 위성 패밀리어를 줄 확률 증가"
+			.."#{{DamageSmall}} 위성 패밀리어의 피해량 증가",
 			QuoteDesc = "달을 향해서",
+		},
+		--#endregion
+
+		--#region NO-HIT TRINKETS
+		[mod.Trinkets.BismuthPenny] = {
+			Name = "TESET",
+			--"#{{BismuthHC}} Picking up a coin has a 25% chance to spawn a bismuth crystal # Nickels and dimes have a higher chance # Holding bismuth increases the chance of finding higher quality items # Taking damage drops all Bismuth on the floor", "Bismuth Penny"
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "TESET",
+		},
+		[mod.Trinkets.Incense] = {
+			Name = "TESET",
+			--"#{{Trinket}} Collectibles are replaced with fervent trinkets # Fervent trinkets are automatically smelted on pickup", "Fervent Incense"
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "TESET",
+		},
+		[mod.Trinkets.BadApple] = {
+			Name = "TESET",
+			--"#{{AppleHC}} Rotten apples randomly spawn on the floor # A giant snake will sweep vertically through apples positions # The snake deals heavy damage to anything it touches, including Isaac", "Bad Apple"
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "TESET",
+		},
+		[mod.Trinkets.Nanite] = {
+			Name = "TESET",
+			--"#{{Bomb}} Placed bombs have 7% chance to be upgraded into Giga Bombs", "Nanite"
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "TESET",
+		},
+		[mod.Trinkets.Battery] = {
+			Name = "TESET",
+			--"# Using an active item creates electric flies based on its charges # {{Warning}} Doesn't work with 0 or +12 charges items", "Broken Battery"
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "TESET",
+		},
+		[mod.Trinkets.Gear] = {
+			Name = "TESET",
+			--"# Taking damage has a 10% chance to trigger the effect of {{Collectible422}} # Dying has a 30% chance to trigger the effect of {{Collectible422}} #{{Warning}} Has a 10% chance to break when activated", "Golden Gear"
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "TESET",
+		},
+		[mod.Trinkets.ClayBrick] = {
+			Name = "TESET",
+			--"# Rocks and blocks have a 10% chance to be replaced with poops #{{PoopPickup}} Special poops can also spawn", "Clay Brick"
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "TESET",
+		},
+		[mod.Trinkets.Lure] = {
+			Name = "TESET",
+			--"# Room items have a 50% chance to be upgraded by one quality level # Upgraded items will have their sprites hidden # Does not affect {{Quality4}} items", "Neptune's Lure"
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "TESET",
+		},
+		[mod.Trinkets.Effigy] = {
+			Name = "TESET",
+			--"# At the start of the floor, 75% chance to replace a curse with a blessing # If blessings are locked, the curse is just removed #{{Warning}} Blessings are not implemented yet", "Cursed Effigy"
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "TESET",
+		},
+		[mod.Trinkets.Crown] = {
+			Name = "TESET",
+			--"#{{LunarHC}} +66.6% to Lunar Pact #{{Warning}} 33% chance to turn into {{Trinket146}} after a Lunar Pact spawns #{{PlanetariumChance}} Planetariums are replaced with Void Planetariums", "Lunar Crown"
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "TESET",
+		},
+		[mod.Trinkets.Sol] = {
+			Name = "TESET",
+			--"# At the start of each floor, most rooms are rerolled multiple times, keeping the rarest outcome", "Fine Tuning"
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "TESET",
+		},
+		[mod.Trinkets.i] = {
+			Name = "TESET",
+			--"#{{Collectible"..mod.SolarItems.HyperDice.."}} At the start of each floor, special rooms have a 50% chance to be rerolled into other types", "i"
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "TESET",
+		},
+		[mod.Trinkets.Shard] = {
+			Name = "TESET",
+			--"# Taking damage has a "..tostring(math.floor(100*mod.SHARD_CHANCE)).."% chance to nullify it #{{Warning}} Isaac will be teleported to a random spot in the room, regardless of safety", "Quantum Shard"
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "TESET",
+		},
+		--#endregion
+
+		--#region SOLAR ITEMS
+		[mod.Trinkets.Void] = {
+			Name = "TESET",
+			--"# Defeating the floor boss respawns it as a permanent ally, lasting until it dies # {{Warning}} Some particular bosses are excluded for not being friendly compatible", "Void Matter"
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "TESET",
+		},
+		--#endregion
+
+		--#region OTHER
+		[mod.Trinkets.Sputnik] = {
+			Name = "TESET",
+			--"# Grants a satellite orbital #{{Throwable}} Orbitals orbit farther from Isaac and move more slowly", "Sputnik"
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "TESET",
+		},
+		[mod.Trinkets.Flag] = {
+			Name = "TESET",
+			--"#{{ArrowUp}} +15% chance for Telescopes #{{ArrowUp}} +6% chance for a Telescope to grant a Lil Moon #{{ArrowUp}} +50% damage from Lil Moons #{{ArrowUp}} x2 Fire Rate from Lil Moons", "Faded Flag"
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "TESET",
+		},
+		[mod.Trinkets.Noise] = {
+			Name = "Background Noise",
+			Description = ""
+			.."#!!! 무효과 (미구현 아이템)"
+			.."{{CR}}",
+			QuoteDesc = "TESET",
+		},
+		[mod.Trinkets.Soldier] = {
+			Name = "Toy Soldier",
+			Description = ""
+			.."#!!! 무효과 (미구현 아이템)"
+			.."{{CR}}",
+			QuoteDesc = "TESET",
+		},
+		[mod.Trinkets.Silver] = {
+			Name = "Mirror Shard",
+			Description = ""
+			.."#!!! 무효과 (미구현 아이템)"
+			.."{{CR}}",
+			QuoteDesc = "TESET",
+		},
+		--#endregion
+	}
+
+	local CardDesc = {
+		[mod.FoilConsts.FOIL_ID] = {
+			Name = "TESET",
+			--"# Applies a protection to the nearest card # Protected cards have a "..tostring(math.floor(100*(1-mod.FoilConsts.BREAK_CHANCE))).."% chance not to be consumed", "Card Protector"
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "TESET",
+		},
+	}
+
+	local PillDesc = {
+		[mod.Pills.CLAIRVOYANCE] = {
+			Name = "TESET",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			Horse = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "TESET",
+		},
+		[mod.Pills.CLAIRVOYANCE_BAD] = {
+			Name = "TESET",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			Horse = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "TESET",
+		},
+		[mod.Pills.BALLS_UP] = {
+			Name = "TESET",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			Horse = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "TESET",
+		},
+		[mod.Pills.BALLS_DOWN] = {
+			Name = "TESET",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			Horse = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "TESET",
+		},
+		[mod.Pills.MARSHMALLOW] = {
+			Name = "TESET",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			Horse = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "TESET",
+		},
+	}
+
+	local entityDesc = {
+		["INNERENTRYNAME"] = {
+			Type = 0,
+			Variant = 0,
+			SubType = 0,
+			Name = "",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+		},
+		["INNERENTRYNAME"] = {
+			Type = 0,
+			Variant = 0,
+			SubType = 0,
+			Name = "",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+		},
+		["INNERENTRYNAME"] = {
+			Type = 0,
+			Variant = 0,
+			SubType = 0,
+			Name = "",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+		},
+		["INNERENTRYNAME"] = {
+			Type = 0,
+			Variant = 0,
+			SubType = 0,
+			Name = "",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+		},
+		["INNERENTRYNAME"] = {
+			Type = 0,
+			Variant = 0,
+			SubType = 0,
+			Name = "",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+		},
+		["INNERENTRYNAME"] = {
+			Type = 0,
+			Variant = 0,
+			SubType = 0,
+			Name = "",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+		},
+		["INNERENTRYNAME"] = {
+			Type = 0,
+			Variant = 0,
+			SubType = 0,
+			Name = "",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+		},
+		["INNERENTRYNAME"] = {
+			Type = 0,
+			Variant = 0,
+			SubType = 0,
+			Name = "",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+		},
+		["INNERENTRYNAME"] = {
+			Type = 0,
+			Variant = 0,
+			SubType = 0,
+			Name = "",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+		},
+		["INNERENTRYNAME"] = {
+			Type = 0,
+			Variant = 0,
+			SubType = 0,
+			Name = "",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+		},
+		["INNERENTRYNAME"] = {
+			Type = 0,
+			Variant = 0,
+			SubType = 0,
+			Name = "",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
 		},
 	}
 
 	EID:addEntity(mod.EntityInf[mod.Entity.Telescope].ID, mod.EntityInf[mod.Entity.Telescope].VAR, mod.EntityInf[mod.Entity.Telescope].SUB, "망원경", "1{{Coin}}을 소모하여 아래 중 하나 발동:#{{Blank}} {{Collectible584}}불꽃#{{Blank}} {{ItemPoolPlanetarium}}천체관 아이템 불꽃#{{Blank}} {{SoulHeart}}소울하트/불타는하트#{{Blank}} {{ColorCyan}}위성 패밀리어", "ko_kr")
 	EID:addEntity(mod.EntityInf[mod.Entity.Statue].ID, mod.EntityInf[mod.Entity.Statue].VAR, mod.EntityInf[mod.Entity.Statue].SUB, "아스트랄 석상", "#{{ItemPoolPlanetarium}} 아이템 획득 시 보스전을 시작합니다.#{{Bomb}} 석상을 파괴하면 아이템이 분해되며 보스전을 시작합니다.", "ko_kr")
-	EID:addEntity(mod.EntityInf[mod.Entity.Statue].ID, mod.EntityInf[mod.Entity.Statue].VAR+1, mod.EntityInf[mod.Entity.Statue].SUB, "[달의 계약]", "#{{UltraSecretRoom}} {{Heart}}최대 체력/{{SoulHeart}}소울하트 소모에 더해 {{BrokenHeart}}부서진하트를 얻는 조건으로 거래합니다.#{{Warning}} 거래 시 획득하는 {{BrokenHeart}}부서진하트만큼 {{Heart}}빨간하트/{{SoulHeart}}소울하트를 추가로 차감합니다.(사망하지 않음)", "ko_kr")
+	EID:addEntity(mod.EntityInf[mod.Entity.LunarStatue].ID, mod.EntityInf[mod.Entity.Statue].VAR+1, mod.EntityInf[mod.Entity.Statue].SUB, "[달의 계약]", "#{{UltraSecretRoom}} {{Heart}}최대 체력/{{SoulHeart}}소울하트 소모에 더해 {{BrokenHeart}}부서진하트를 얻는 조건으로 거래합니다.#{{Warning}} 거래 시 획득하는 {{BrokenHeart}}부서진하트만큼 {{Heart}}빨간하트/{{SoulHeart}}소울하트를 추가로 차감합니다.(사망하지 않음)", "ko_kr")
 
 	for itemID, itemdesc in pairs(CollectibleDesc) do
 		local desc = itemdesc.Description
@@ -107,7 +877,7 @@ if HeavensCall then
 	local i_queueLastFrame = {}
 	local i_queueNow = {}
 	wakaba_krdesc:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, function (_, player)
-		if Options.Language ~= "kr" then return end
+		if not (Options.Language == "kr" or REPKOR) then return end
 		local descTable = CollectibleDesc
 		if not descTable and not descTableBR then return end
 
@@ -130,7 +900,7 @@ if HeavensCall then
 	local t_queueLastFrame = {}
 	local t_queueNow = {}
 	wakaba_krdesc:AddCallback(ModCallbacks.MC_POST_PLAYER_UPDATE, function (_, player)
-		if Options.Language ~= "kr" then return end
+		if not (Options.Language == "kr" or REPKOR) then return end
 		local descTable = TrinketDesc
 		if not descTable then return end
 
