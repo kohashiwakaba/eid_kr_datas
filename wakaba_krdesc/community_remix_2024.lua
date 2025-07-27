@@ -493,7 +493,7 @@ if communityRemix then
 		},
 
 		[Items.COLLECTIBLE_MANDRAKE] = {
-			Description = "캐릭터를 따라다니며 적의 탄환을 막아줍니다.#{{Collectible35}} 탄환을 막을 시 5% 확률로 방 안의 모든 적에게 200의 혼란 피해를 입힙니다.",
+			Description = "캐릭터를 따라다니며 적의 탄환을 막아줍니다.#{{Collectible35}} 탄환을 막을 시 5% 확률로 방 안의 모든 적에게 200의 혼란 피해를 줍니다.",
 			Name = "맨드레이크",
 			QuoteDesc = "",
 		},
