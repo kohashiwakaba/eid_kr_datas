@@ -22,22 +22,75 @@ if GODMODE then
 
 	local CollectibleDesc = {
 		[Items.abrahams_map] = {
-			Description = "!!! 2회 사용 가능#사용 시 방 안에 {{Quality4}}등급을 제외한 아이템이 없을 경우 그 방의 아이템을 하나 생성합니다.#사용 시 방 안에 {{Quality4}}등급을 제외한 아이템이 있을 경우 그 방의 아이템을 랜덤 배열의 {{Quality4}}등급 아이템으로 바꿉니다.",
-			Name = "아브라함의 지도",
-			QuoteDesc = "",
+			Name = "TESET",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "TESET",
 		},
 	}
 
 	local TrinketDesc = {
 		[Trinkets.bobs_tongue] = {
-			Description = "↑ {{TearsSmall}}연사 +0.25#{{Bob}} Bob 변신세트의 아이템 2개 소지 시 랜덤 Bob 아이템 획득과 동시에 장신구가 흡수됩니다.",
-			Name = "밥의 혓바닥",
-			QuoteDesc = "",
+			Name = "TESET",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "TESET",
 		},
 	}
 
 	local CardDesc = {
+		[Cards.bobs_tongue] = {
+			Name = "TESET",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "TESET",
+		},
+	}
 
+	local PillDesc = {
+		[Pills.bobs_tongue] = {
+			Name = "TESET",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			Horse = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "TESET",
+		},
+	}
+
+	local entityDesc = {
+		["INNERENTRYNAME"] = {
+			Type = 0,
+			Variant = 0,
+			SubType = 0,
+			Name = "",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+		},
 	}
 
 	local VanillaCollectibles = {
@@ -86,7 +139,7 @@ if GODMODE then
 	end
 
 	local function FF_EIDKR_VanillaDescCondition(descObj)
-		if EID:getLanguage() ~= "ko_kr" then return false end
+		if EID:getLanguage() ~= "ko_kr" and EID:getLanguage() ~= "ko" then return false end
 		return
 			descObj.ObjType == 5
 			and descObj.ObjVariant == PickupVariant.PICKUP_COLLECTIBLE
