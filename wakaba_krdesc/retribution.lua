@@ -195,7 +195,7 @@ if Retribution then
 		[Retribution.Item.CHUNK_OF_TOFU] 			= {
 			Name = "두부 한 덩이",
 			QuoteDesc = "식물성 에스트로겐 가득",
-			Description = "획득할 때마다 성장합니다.#!!! 모든 보스방의 아이템이 {{Collectible"..Retribution.Item.CHUNK_OF_TOFU.."}}Chunk of Tofu로 교체됩니다.#1단계: 캐릭터 주위를 돌며 적의 탄환을 막아줍니다.#2단계: 1단계 + 공격하는 방향으로 공격력 3.5의 눈물을 발사합니다.#3/4단계: 적을 따라다니며 접촉한 적에게 초당 10/20의 피해를 입힙니다.",
+			Description = "획득할 때마다 성장합니다.#!!! 모든 보스방의 아이템이 {{Collectible"..Retribution.Item.CHUNK_OF_TOFU.."}}Chunk of Tofu로 교체됩니다.#1단계: 캐릭터 주위를 돌며 적의 탄환을 막아줍니다.#2단계: 1단계 + 공격하는 방향으로 공격력 3.5의 눈물을 발사합니다.#3/4단계: 적을 따라다니며 접촉한 적에게 초당 10/20의 피해를 줍니다.",
 		},
 		[Retribution.Item.COIL] 					= {
 			Name = "코일",
@@ -327,7 +327,7 @@ if Retribution then
 		[Retribution.Item.FRIENDLY_MONSTER] 		= {
 			Name = "친근한 몬스터",
 			QuoteDesc = "궤도 이탈",
-			Description = "적의 주위를 돌면서 접촉하는 적에게 초당 6의 피해를 입힙니다.#공격하는 방향으로 공격력 3.5의 장애물을 관통하는 눈물을 발사합니다",
+			Description = "적의 주위를 돌면서 접촉하는 적에게 초당 6의 피해를 줍니다.#공격하는 방향으로 공격력 3.5의 장애물을 관통하는 눈물을 발사합니다",
 		},
 		[Retribution.Item.GUPPYS_PRIDE] 			= {
 			Name = "구피 떼",

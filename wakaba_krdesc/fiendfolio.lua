@@ -209,7 +209,7 @@ if FiendFolio then
 			QuoteDesc = "",
 		},
 		[FiendFolio.ITEM.CARD.ENERGY_FIRE] = {
-			Description = "방 안의 모든 적에게 4초간 {{Burning}}화상을 입힙니다.",
+			Description = "방 안의 모든 적에게 4초간 {{Burning}}화상을 줍니다.",
 			Name = "불 속성 에너지",
 			QuoteDesc = "",
 		},
@@ -2290,7 +2290,7 @@ if FiendFolio then
 			QuoteDesc = "충전식 오라",
 		},
 		[FiendFolio.ITEM.ROCK.MOLTEN_SLAG] = {
-			Description = "{{Burning}} 캐릭터와 가까이 있는 적에게 화상을 입힙니다.#채굴기로 이 장신구 소모 시 다른 장신구를 흡수합니다.",
+			Description = "{{Burning}} 캐릭터와 가까이 있는 적에게 화상을 줍니다.#채굴기로 이 장신구 소모 시 다른 장신구를 흡수합니다.",
 			StatusEffects = {ffStatusEffectDesc.GOLEM_NORMAL},
 			Name = "녹아내리는 화산암재",
 			QuoteDesc = "흡수성 채굴",
@@ -2655,7 +2655,7 @@ if FiendFolio then
 			QuoteDesc = "배송기간이 있어",
 		},
 		[FiendFolio.ITEM.ROCK.STAR_SAPPHIRE] = {
-			Description = "가장 가까운 적 및 탄환을 바라보는 방향에서 앞뒤로 움직입니다.#탄환을 막으면서 접촉하는 적에게 초당 공격력 x1.5의 피해를 입힙니다.",
+			Description = "가장 가까운 적 및 탄환을 바라보는 방향에서 앞뒤로 움직입니다.#탄환을 막으면서 접촉하는 적에게 초당 공격력 x1.5의 피해를 줍니다.",
 			StatusEffects = {ffStatusEffectDesc.GOLEM_NORMAL},
 			Name = "별모양 사파이어",
 			QuoteDesc = "이동 탐지기",
@@ -3181,7 +3181,7 @@ if FiendFolio then
 			QuoteDesc = "행운 증가 + 정동 보너스",
 		},
 		[FiendFolio.ITEM.ROCK.PHLEGMY_GEODE] = {
-			Description = "확률적으로(10% + {{LuckSmall}}%p) 접착 눈물이 나가며 접착 눈물이 적에게 붙을 시 10초동안 지속 피해를 입힙니다.#다른 정동석 소지 시 접촉 눈물이 {{Slow}}적을 둔화시킵니다.",
+			Description = "확률적으로(10% + {{LuckSmall}}%p) 접착 눈물이 나가며 접착 눈물이 적에게 붙을 시 10초동안 지속 피해를 줍니다.#다른 정동석 소지 시 접촉 눈물이 {{Slow}}적을 둔화시킵니다.",
 			StatusEffects = {ffStatusEffectDesc.GOLEM_GEODE},
 			Name = "가래 정동",
 			QuoteDesc = "접착 공격 + 정동 보너스",

@@ -60,7 +60,7 @@ if HeavensCall then
 			QuoteDesc = "언제 어디서나",
 		},
 		[Trinkets.Sputnik] = {
-			Description = "캐릭터의 주변을 돌며 접촉하는 적에게 초당 6의 피해를 입힙니다",
+			Description = "캐릭터의 주변을 돌며 접촉하는 적에게 초당 6의 피해를 줍니다",
 			Name = "스푸트닉",
 			QuoteDesc = "위성 친구",
 		},

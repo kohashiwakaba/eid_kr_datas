@@ -67,7 +67,7 @@ if Deliverance then
 		},
 		[Items.lighter.id] = {
 			Name = "라이터",
-			Description = "{{Burning}} 사용 시 6초동안 그 방의 적에게 화상을 입힙니다.",
+			Description = "{{Burning}} 사용 시 6초동안 그 방의 적에게 화상을 줍니다.",
 			QuoteDesc = "싹 다 태워버려!",
 		},
 		[Items.shrinkRay.id] = {
