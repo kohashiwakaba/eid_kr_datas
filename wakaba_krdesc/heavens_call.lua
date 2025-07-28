@@ -667,28 +667,28 @@ if HeavensCall then
 			Description = ""
 			.."#!!! 무효과 (미구현 아이템)"
 			.."{{CR}}",
-			QuoteDesc = "TESET",
+			QuoteDesc = "",
 		},
 		[mod.Trinkets.Soldier] = {
 			Name = "Toy Soldier",
 			Description = ""
 			.."#!!! 무효과 (미구현 아이템)"
 			.."{{CR}}",
-			QuoteDesc = "TESET",
+			QuoteDesc = "",
 		},
 		[mod.Trinkets.Silver] = {
 			Name = "Mirror Shard",
 			Description = ""
 			.."#!!! 무효과 (미구현 아이템)"
 			.."{{CR}}",
-			QuoteDesc = "TESET",
+			QuoteDesc = "",
 		},
 		--#endregion
 	}
 
 	local CardDesc = {
 		[mod.FoilConsts.FOIL_ID] = {
-			Name = "TESET",
+			Name = "카드 프로텍터",
 			--"# Applies a protection to the nearest card # Protected cards have a "..tostring(math.floor(100*(1-mod.FoilConsts.BREAK_CHANCE))).."% chance not to be consumed", "Card Protector"
 			Description = ""
 			.."#"
@@ -700,110 +700,61 @@ if HeavensCall then
 			.."#"
 			.."#"
 			.."{{CR}}",
-			QuoteDesc = "TESET",
+			QuoteDesc = "더 오래",
 		},
 	}
 
 	local PillDesc = {
 		[mod.Pills.CLAIRVOYANCE] = {
-			Name = "TESET",
+			Name = "투영",
 			Description = ""
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
+			.."#{{Planetarium}} 현재 게임에서 천체관 확률 +1%"
 			.."{{CR}}",
 			Horse = ""
-			.."#"
-			.."#"
-			.."#"
-			.."#"
+			.."#{{Planetarium}} 현재 게임에서 천체관 확률 {{ColorCyan}}+3{{CR}}%"
 			.."{{CR}}",
-			QuoteDesc = "TESET",
+			QuoteDesc = "천체관 확률 증가",
 		},
 		[mod.Pills.CLAIRVOYANCE_BAD] = {
-			Name = "TESET",
+			Name = "투영",
 			Description = ""
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
+			.."#Screen distortion"
 			.."{{CR}}",
 			Horse = ""
-			.."#"
-			.."#"
-			.."#"
-			.."#"
+			.."#Strong Screen distortion"
 			.."{{CR}}",
-			QuoteDesc = "TESET",
+			QuoteDesc = "천체관 확률 감소",
 		},
 		[mod.Pills.BALLS_UP] = {
-			Name = "TESET",
+			Name = "위성 증가",
 			Description = ""
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
+			.."#{{Throwable}} 위성 패밀리어 +1 (최대 3)"
 			.."{{CR}}",
 			Horse = ""
-			.."#"
-			.."#"
-			.."#"
-			.."#"
+			.."#{{Throwable}} 위성 패밀리어 {{ColorCyan}}+2{{CR}} (최대 3)"
 			.."{{CR}}",
-			QuoteDesc = "TESET",
+			QuoteDesc = "",
 		},
 		[mod.Pills.BALLS_DOWN] = {
-			Name = "TESET",
+			Name = "위성 감소",
 			Description = ""
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
+			.."#{{Throwable}} 위성 패밀리어 -1"
 			.."{{CR}}",
 			Horse = ""
-			.."#"
-			.."#"
-			.."#"
-			.."#"
+			.."#{{Throwable}} 위성 패밀리어 {{ColorYellow}}-2{{CR}}"
 			.."{{CR}}",
-			QuoteDesc = "TESET",
+			QuoteDesc = "",
 		},
 		[mod.Pills.MARSHMALLOW] = {
-			Name = "TESET",
+			Name = "마시멜로!?",
 			Description = ""
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
+			.."#{{Throwable}} 그 방에서 위성 패밀리어 9개를 지급합니다."
 			.."{{CR}}",
 			Horse = ""
-			.."#"
-			.."#"
-			.."#"
-			.."#"
+			.."#{{Throwable}} 그 방에서 위성 패밀리어 9개를 지급합니다."
+			.."#{{Collectible247}} {{ColorCyan}}그 방에서 패밀리어가 더 강해집니다.{{CR}}"
 			.."{{CR}}",
-			QuoteDesc = "TESET",
+			QuoteDesc = "태양계",
 		},
 	}
 
