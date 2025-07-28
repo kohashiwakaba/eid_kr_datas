@@ -83,12 +83,6 @@ if HeavensCall then
 			.."#"
 			.."#"
 			.."#"
-			.."{{CR}}",
-			QuoteDesc = "",
-		},
-		[mod.SolarItems.HyperDice] = {
-			Name = "아브라함의 지도",
-			Description = ""
 			.."#"
 			.."#"
 			.."#"
@@ -103,12 +97,6 @@ if HeavensCall then
 			.."#"
 			.."#"
 			.."#"
-			.."{{CR}}",
-			QuoteDesc = "",
-		},
-		[mod.SolarItems.HyperDice] = {
-			Name = "아브라함의 지도",
-			Description = ""
 			.."#"
 			.."#"
 			.."#"
@@ -123,12 +111,6 @@ if HeavensCall then
 			.."#"
 			.."#"
 			.."#"
-			.."{{CR}}",
-			QuoteDesc = "",
-		},
-		[mod.SolarItems.HyperDice] = {
-			Name = "아브라함의 지도",
-			Description = ""
 			.."#"
 			.."#"
 			.."#"
@@ -143,12 +125,6 @@ if HeavensCall then
 			.."#"
 			.."#"
 			.."#"
-			.."{{CR}}",
-			QuoteDesc = "",
-		},
-		[mod.SolarItems.HyperDice] = {
-			Name = "아브라함의 지도",
-			Description = ""
 			.."#"
 			.."#"
 			.."#"
@@ -163,12 +139,6 @@ if HeavensCall then
 			.."#"
 			.."#"
 			.."#"
-			.."{{CR}}",
-			QuoteDesc = "",
-		},
-		[mod.SolarItems.HyperDice] = {
-			Name = "아브라함의 지도",
-			Description = ""
 			.."#"
 			.."#"
 			.."#"
@@ -183,12 +153,6 @@ if HeavensCall then
 			.."#"
 			.."#"
 			.."#"
-			.."{{CR}}",
-			QuoteDesc = "",
-		},
-		[mod.SolarItems.HyperDice] = {
-			Name = "아브라함의 지도",
-			Description = ""
 			.."#"
 			.."#"
 			.."#"
@@ -203,12 +167,6 @@ if HeavensCall then
 			.."#"
 			.."#"
 			.."#"
-			.."{{CR}}",
-			QuoteDesc = "",
-		},
-		[mod.SolarItems.HyperDice] = {
-			Name = "아브라함의 지도",
-			Description = ""
 			.."#"
 			.."#"
 			.."#"
@@ -223,12 +181,6 @@ if HeavensCall then
 			.."#"
 			.."#"
 			.."#"
-			.."{{CR}}",
-			QuoteDesc = "",
-		},
-		[mod.SolarItems.HyperDice] = {
-			Name = "아브라함의 지도",
-			Description = ""
 			.."#"
 			.."#"
 			.."#"
@@ -243,12 +195,6 @@ if HeavensCall then
 			.."#"
 			.."#"
 			.."#"
-			.."{{CR}}",
-			QuoteDesc = "",
-		},
-		[mod.SolarItems.HyperDice] = {
-			Name = "아브라함의 지도",
-			Description = ""
 			.."#"
 			.."#"
 			.."#"
@@ -263,12 +209,6 @@ if HeavensCall then
 			.."#"
 			.."#"
 			.."#"
-			.."{{CR}}",
-			QuoteDesc = "",
-		},
-		[mod.SolarItems.HyperDice] = {
-			Name = "아브라함의 지도",
-			Description = ""
 			.."#"
 			.."#"
 			.."#"
@@ -283,12 +223,6 @@ if HeavensCall then
 			.."#"
 			.."#"
 			.."#"
-			.."{{CR}}",
-			QuoteDesc = "",
-		},
-		[mod.SolarItems.HyperDice] = {
-			Name = "아브라함의 지도",
-			Description = ""
 			.."#"
 			.."#"
 			.."#"
@@ -303,12 +237,6 @@ if HeavensCall then
 			.."#"
 			.."#"
 			.."#"
-			.."{{CR}}",
-			QuoteDesc = "",
-		},
-		[mod.SolarItems.HyperDice] = {
-			Name = "아브라함의 지도",
-			Description = ""
 			.."#"
 			.."#"
 			.."#"
@@ -323,12 +251,6 @@ if HeavensCall then
 			.."#"
 			.."#"
 			.."#"
-			.."{{CR}}",
-			QuoteDesc = "",
-		},
-		[mod.SolarItems.HyperDice] = {
-			Name = "아브라함의 지도",
-			Description = ""
 			.."#"
 			.."#"
 			.."#"
@@ -343,12 +265,6 @@ if HeavensCall then
 			.."#"
 			.."#"
 			.."#"
-			.."{{CR}}",
-			QuoteDesc = "",
-		},
-		[mod.SolarItems.HyperDice] = {
-			Name = "아브라함의 지도",
-			Description = ""
 			.."#"
 			.."#"
 			.."#"
@@ -363,12 +279,216 @@ if HeavensCall then
 			.."#"
 			.."#"
 			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
 			.."{{CR}}",
 			QuoteDesc = "",
 		},
 		[mod.SolarItems.HyperDice] = {
 			Name = "아브라함의 지도",
 			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+			QuoteDesc = "",
+		},
+		[mod.SolarItems.HyperDice] = {
+			Name = "아브라함의 지도",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
 			.."#"
 			.."#"
 			.."#"
@@ -382,169 +502,130 @@ if HeavensCall then
 	local TrinketDesc = {
 		--#region
 		[Trinkets.Shard] = {
-			Name = "퀀텀 조각",
+			Name = "퀀텀 파편",
 			Description = ""
-			.."#13%의 확률로 피해를 막으나;"
+			.."#"..tostring(math.floor(100*mod.SHARD_CHANCE)).."%의 확률로 피해를 막으나;"
 			.."#>>> !!! 그 방의 랜덤 위치로 순간이동합니다.",
 			QuoteDesc = "언제 어디서나",
-		},
-		[Trinkets.Sputnik] = {
-			Name = "스푸트닉",
-			Description = "캐릭터의 주변을 돌며 접촉하는 적에게 초당 6의 피해를 줍니다.",
-			QuoteDesc = "위성 친구",
-		},
-		[Trinkets.Flag] = {
-			Name = "흐려진 깃발",
-			Description = "↑ 망원경 발견 확률 증가"
-			.."#↑ 망원경이 위성 패밀리어를 줄 확률 증가"
-			.."#{{DamageSmall}} 위성 패밀리어의 피해량 증가",
-			QuoteDesc = "달을 향해서",
 		},
 		--#endregion
 
 		--#region NO-HIT TRINKETS
 		[mod.Trinkets.BismuthPenny] = {
-			Name = "TESET",
+			Name = "비스무트 페니",
 			--"#{{BismuthHC}} Picking up a coin has a 25% chance to spawn a bismuth crystal # Nickels and dimes have a higher chance # Holding bismuth increases the chance of finding higher quality items # Taking damage drops all Bismuth on the floor", "Bismuth Penny"
 			Description = ""
-			.."#"
-			.."#"
-			.."#"
-			.."#"
+			.."#{{BismuthHC}} 동전을 집으면 25%의 확률로 비스무트 크리스탈을 소환합니다."
+			.."#동전 가치가 높을수록 확률 증가"
+			.."#비스무트 크리스탈 소지량에 따라 등급 보정 확률 증가"
+			.."#!!! 피격 시 소지 중인 비스무트 크리스탈이 떨궈집니다."
 			.."{{CR}}",
-			QuoteDesc = "TESET",
+			QuoteDesc = "색깔 부자",
 		},
 		[mod.Trinkets.Incense] = {
-			Name = "TESET",
+			Name = "열기",
 			--"#{{Trinket}} Collectibles are replaced with fervent trinkets # Fervent trinkets are automatically smelted on pickup", "Fervent Incense"
 			Description = ""
-			.."#"
-			.."#"
-			.."#"
-			.."#"
+			.."#{{Trinket}} 모든 아이템이 뜨거운 장신구로 바뀝니다."
+			.."#뜨거운 장신구는 획득 즉시 흡수됩니다."
 			.."{{CR}}",
-			QuoteDesc = "TESET",
+			QuoteDesc = "뜨거워",
 		},
 		[mod.Trinkets.BadApple] = {
-			Name = "TESET",
+			Name = "썩은 사과",
 			--"#{{AppleHC}} Rotten apples randomly spawn on the floor # A giant snake will sweep vertically through apples positions # The snake deals heavy damage to anything it touches, including Isaac", "Bad Apple"
 			Description = ""
-			.."#"
-			.."#"
-			.."#"
-			.."#"
+			.."#{{AppleHC}} 주기적으로 썩은 사과가 생깁니다."
+			.."#썩은 사과가 생기면 거대한 뱀이 사과를 향해 세로로 돌진합니다."
+			.."#!!! 거대한 뱀은 캐릭터를 포함한 모든 적에게 큰 피해를 줍니다."
 			.."{{CR}}",
-			QuoteDesc = "TESET",
+			QuoteDesc = "뼛속까지 사악해",
 		},
 		[mod.Trinkets.Nanite] = {
-			Name = "TESET",
+			Name = "나노봇",
 			--"#{{Bomb}} Placed bombs have 7% chance to be upgraded into Giga Bombs", "Nanite"
 			Description = ""
-			.."#"
-			.."#"
-			.."#"
-			.."#"
+			.."#{{Bomb}} 폭탄 설치 시 7%의 확률로 기가폭탄으로 바뀝니다."
 			.."{{CR}}",
-			QuoteDesc = "TESET",
+			QuoteDesc = "나노머신",
 		},
 		[mod.Trinkets.Battery] = {
-			Name = "TESET",
+			Name = "부서진 배터리",
 			--"# Using an active item creates electric flies based on its charges # {{Warning}} Doesn't work with 0 or +12 charges items", "Broken Battery"
 			Description = ""
-			.."#"
-			.."#"
-			.."#"
-			.."#"
+			.."#액티브 아이템 사용 시 레이저를 두른 자폭 파리를 소환합니다."
+			.."#!!! 충전량이 1~12칸인 경우에만 적용"
 			.."{{CR}}",
-			QuoteDesc = "TESET",
+			QuoteDesc = "누수",
 		},
 		[mod.Trinkets.Gear] = {
-			Name = "TESET",
+			Name = "황금 기어",
 			--"# Taking damage has a 10% chance to trigger the effect of {{Collectible422}} # Dying has a 30% chance to trigger the effect of {{Collectible422}} #{{Warning}} Has a 10% chance to break when activated", "Golden Gear"
 			Description = ""
-			.."#"
-			.."#"
-			.."#"
-			.."#"
+			.."#{{Collectible422}} 피격 시 10%의 확률로 시점을 전 방으로 되돌립니다."
+			.."#{{Collectible422}} 사망 시 30%의 확률로 시점을 전 방으로 되돌립니다."
+			.."#!!! 발동 시 10%의 확률로 부서집니다."
 			.."{{CR}}",
-			QuoteDesc = "TESET",
+			QuoteDesc = "다시 또 다시",
 		},
 		[mod.Trinkets.ClayBrick] = {
-			Name = "TESET",
+			Name = "지점토 벽돌",
 			--"# Rocks and blocks have a 10% chance to be replaced with poops #{{PoopPickup}} Special poops can also spawn", "Clay Brick"
 			Description = ""
-			.."#"
-			.."#"
-			.."#"
-			.."#"
+			.."#{{PoopPickup}} 장애물이 10%의 확률로 똥으로 바뀝니다."
 			.."{{CR}}",
-			QuoteDesc = "TESET",
+			QuoteDesc = "직접 만든 거야!",
 		},
 		[mod.Trinkets.Lure] = {
-			Name = "TESET",
+			Name = "넵튠의 매혹",
 			--"# Room items have a 50% chance to be upgraded by one quality level # Upgraded items will have their sprites hidden # Does not affect {{Quality4}} items", "Neptune's Lure"
 			Description = ""
-			.."#"
-			.."#"
-			.."#"
-			.."#"
+			.."#방 입장시 50%의 확률로 아이템의 등급이 한 단계 증가합니다."
+			.."#>>> !!! 효과가 적용된 아이템의 모습이 가려집니다."
+			.."#{{Quality4}} 등급 이상의 아이템의 경우 무효과"
 			.."{{CR}}",
 			QuoteDesc = "TESET",
 		},
 		[mod.Trinkets.Effigy] = {
-			Name = "TESET",
+			Name = "저주받은 인형",
 			--"# At the start of the floor, 75% chance to replace a curse with a blessing # If blessings are locked, the curse is just removed #{{Warning}} Blessings are not implemented yet", "Cursed Effigy"
 			Description = ""
-			.."#"
-			.."#"
-			.."#"
-			.."#"
+			.."#!!! 스테이지 진입 시 75%의 확률로;"
+			.."#>>> {{Collectible260}} 저주가 제거됩니다."
+			--.."#>>> 저주가 축복으로 바뀝니다."
+			--.."#"
 			.."{{CR}}",
-			QuoteDesc = "TESET",
+			QuoteDesc = "희생양",
 		},
 		[mod.Trinkets.Crown] = {
-			Name = "TESET",
+			Name = "달빛 왕관",
 			--"#{{LunarHC}} +66.6% to Lunar Pact #{{Warning}} 33% chance to turn into {{Trinket146}} after a Lunar Pact spawns #{{PlanetariumChance}} Planetariums are replaced with Void Planetariums", "Lunar Crown"
 			Description = ""
-			.."#"
-			.."#"
-			.."#"
-			.."#"
+			.."#{{LunarHC}} 악마방이 공월방으로 으로 대체될 확률 +66.6%"
+			.."#{{LunarHC}} {{ColorGray}}공월방은 거래 아이템의 등급이 높으나 거래 시 {{BrokenHeart}}가 추가됩니다."
+			.."#!!! {{Trinket146}} 공월방 등장 시 33%의 확률로 장신구가 Devil's Crown으로 바뀝니다."
+			.."#{{PlanetariumChance}} 천체관이 공체관으로 바뀝니다."
+			.."#{{PlanetariumChance}} {{ColorGray}}공체관은 ???"
 			.."{{CR}}",
-			QuoteDesc = "TESET",
+			QuoteDesc = "이 세계는 이 몸의 것이니라",
 		},
 		[mod.Trinkets.Sol] = {
-			Name = "TESET",
+			Name = "적절한 튜닝",
 			--"# At the start of each floor, most rooms are rerolled multiple times, keeping the rarest outcome", "Fine Tuning"
 			Description = ""
-			.."#"
-			.."#"
-			.."#"
-			.."#"
+			.."#!!! 스테이지 진입 시:"
+			.."#{{Room}} 대부분의 방의 구조가 희귀한 구조로 바뀝니다."
 			.."{{CR}}",
-			QuoteDesc = "TESET",
+			QuoteDesc = "희귀한 방!",
 		},
 		[mod.Trinkets.i] = {
-			Name = "TESET",
+			Name = "",
 			--"#{{Collectible"..mod.SolarItems.HyperDice.."}} At the start of each floor, special rooms have a 50% chance to be rerolled into other types", "i"
 			Description = ""
-			.."#"
-			.."#"
-			.."#"
-			.."#"
+			.."#!!! 스테이지 진입 시:"
+			.."#{{Collectible"..mod.SolarItems.HyperDice.."}} 특수방이 50%의 확률로 다른 특수방으로 바뀝니다."
 			.."{{CR}}",
-			QuoteDesc = "TESET",
-		},
-		[mod.Trinkets.Shard] = {
-			Name = "TESET",
-			--"# Taking damage has a "..tostring(math.floor(100*mod.SHARD_CHANCE)).."% chance to nullify it #{{Warning}} Isaac will be teleported to a random spot in the room, regardless of safety", "Quantum Shard"
-			Description = ""
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."{{CR}}",
-			QuoteDesc = "TESET",
+			QuoteDesc = "차원 드리프트",
 		},
 		--#endregion
 
@@ -557,6 +638,10 @@ if HeavensCall then
 			.."#"
 			.."#"
 			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
 			.."{{CR}}",
 			QuoteDesc = "TESET",
 		},
@@ -564,26 +649,18 @@ if HeavensCall then
 
 		--#region OTHER
 		[mod.Trinkets.Sputnik] = {
-			Name = "TESET",
+			Name = "스푸트닉",
 			--"# Grants a satellite orbital #{{Throwable}} Orbitals orbit farther from Isaac and move more slowly", "Sputnik"
-			Description = ""
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."{{CR}}",
-			QuoteDesc = "TESET",
+			Description = "캐릭터의 주변을 돌며 접촉하는 적에게 초당 6의 피해를 줍니다.",
+			QuoteDesc = "위성 친구",
 		},
-		[mod.Trinkets.Flag] = {
-			Name = "TESET",
-			--"#{{ArrowUp}} +15% chance for Telescopes #{{ArrowUp}} +6% chance for a Telescope to grant a Lil Moon #{{ArrowUp}} +50% damage from Lil Moons #{{ArrowUp}} x2 Fire Rate from Lil Moons", "Faded Flag"
-			Description = ""
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."{{CR}}",
-			QuoteDesc = "TESET",
+		[Trinkets.Flag] = {
+			Name = "흐려진 깃발",
+			Description = "↑ 망원경 발견 확률 +15%"
+			.."#↑ 망원경이 위성 패밀리어를 줄 확률 +6%"
+			.."#{{DamageSmall}} 위성 패밀리어의 피해량 +50%"
+			.."#{{TearsSmall}} 위성 패밀리어의 공격 속도 +100%",
+			QuoteDesc = "달을 향해서",
 		},
 		[mod.Trinkets.Noise] = {
 			Name = "Background Noise",
@@ -618,6 +695,10 @@ if HeavensCall then
 			.."#"
 			.."#"
 			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
 			.."{{CR}}",
 			QuoteDesc = "TESET",
 		},
@@ -627,6 +708,10 @@ if HeavensCall then
 		[mod.Pills.CLAIRVOYANCE] = {
 			Name = "TESET",
 			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
 			.."#"
 			.."#"
 			.."#"
@@ -647,6 +732,10 @@ if HeavensCall then
 			.."#"
 			.."#"
 			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
 			.."{{CR}}",
 			Horse = ""
 			.."#"
@@ -659,6 +748,10 @@ if HeavensCall then
 		[mod.Pills.BALLS_UP] = {
 			Name = "TESET",
 			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
 			.."#"
 			.."#"
 			.."#"
@@ -679,6 +772,10 @@ if HeavensCall then
 			.."#"
 			.."#"
 			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
 			.."{{CR}}",
 			Horse = ""
 			.."#"
@@ -691,6 +788,10 @@ if HeavensCall then
 		[mod.Pills.MARSHMALLOW] = {
 			Name = "TESET",
 			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
 			.."#"
 			.."#"
 			.."#"
@@ -717,14 +818,6 @@ if HeavensCall then
 			.."#"
 			.."#"
 			.."#"
-			.."{{CR}}",
-		},
-		["INNERENTRYNAME"] = {
-			Type = 0,
-			Variant = 0,
-			SubType = 0,
-			Name = "",
-			Description = ""
 			.."#"
 			.."#"
 			.."#"
@@ -741,14 +834,6 @@ if HeavensCall then
 			.."#"
 			.."#"
 			.."#"
-			.."{{CR}}",
-		},
-		["INNERENTRYNAME"] = {
-			Type = 0,
-			Variant = 0,
-			SubType = 0,
-			Name = "",
-			Description = ""
 			.."#"
 			.."#"
 			.."#"
@@ -765,14 +850,6 @@ if HeavensCall then
 			.."#"
 			.."#"
 			.."#"
-			.."{{CR}}",
-		},
-		["INNERENTRYNAME"] = {
-			Type = 0,
-			Variant = 0,
-			SubType = 0,
-			Name = "",
-			Description = ""
 			.."#"
 			.."#"
 			.."#"
@@ -789,14 +866,6 @@ if HeavensCall then
 			.."#"
 			.."#"
 			.."#"
-			.."{{CR}}",
-		},
-		["INNERENTRYNAME"] = {
-			Type = 0,
-			Variant = 0,
-			SubType = 0,
-			Name = "",
-			Description = ""
 			.."#"
 			.."#"
 			.."#"
@@ -813,14 +882,6 @@ if HeavensCall then
 			.."#"
 			.."#"
 			.."#"
-			.."{{CR}}",
-		},
-		["INNERENTRYNAME"] = {
-			Type = 0,
-			Variant = 0,
-			SubType = 0,
-			Name = "",
-			Description = ""
 			.."#"
 			.."#"
 			.."#"
@@ -833,6 +894,90 @@ if HeavensCall then
 			SubType = 0,
 			Name = "",
 			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+		},
+		["INNERENTRYNAME"] = {
+			Type = 0,
+			Variant = 0,
+			SubType = 0,
+			Name = "",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+		},
+		["INNERENTRYNAME"] = {
+			Type = 0,
+			Variant = 0,
+			SubType = 0,
+			Name = "",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+		},
+		["INNERENTRYNAME"] = {
+			Type = 0,
+			Variant = 0,
+			SubType = 0,
+			Name = "",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+		},
+		["INNERENTRYNAME"] = {
+			Type = 0,
+			Variant = 0,
+			SubType = 0,
+			Name = "",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."#"
+			.."{{CR}}",
+		},
+		["INNERENTRYNAME"] = {
+			Type = 0,
+			Variant = 0,
+			SubType = 0,
+			Name = "",
+			Description = ""
+			.."#"
+			.."#"
+			.."#"
+			.."#"
 			.."#"
 			.."#"
 			.."#"
