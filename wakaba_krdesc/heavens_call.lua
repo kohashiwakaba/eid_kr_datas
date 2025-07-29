@@ -631,19 +631,13 @@ if HeavensCall then
 
 		--#region SOLAR ITEMS
 		[mod.Trinkets.Void] = {
-			Name = "TESET",
+			Name = "공허 물질",
 			--"# Defeating the floor boss respawns it as a permanent ally, lasting until it dies # {{Warning}} Some particular bosses are excluded for not being friendly compatible", "Void Matter"
 			Description = ""
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
+			.."#{{BossRoom}} 보스방의 보스 처치 시 아군으로 부활시킵니다."
+			.."#!!! {{ColorGray}}(일부 보스는 제외)"
 			.."{{CR}}",
-			QuoteDesc = "TESET",
+			QuoteDesc = "절망스러운 드롭",
 		},
 		--#endregion
 
@@ -691,14 +685,8 @@ if HeavensCall then
 			Name = "카드 프로텍터",
 			--"# Applies a protection to the nearest card # Protected cards have a "..tostring(math.floor(100*(1-mod.FoilConsts.BREAK_CHANCE))).."% chance not to be consumed", "Card Protector"
 			Description = ""
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
+			.."#{{Card}} 사용 시 가장 가까운 카드 하나에 '보호'를 겁니다."
+			.."#{{Card}} 보호된 카드는 사용 시 "..tostring(math.floor(100*(1-mod.FoilConsts.BREAK_CHANCE))).."%의 확률로 소모되지 않습니다."
 			.."{{CR}}",
 			QuoteDesc = "더 오래",
 		},
@@ -718,10 +706,10 @@ if HeavensCall then
 		[mod.Pills.CLAIRVOYANCE_BAD] = {
 			Name = "투영",
 			Description = ""
-			.."#Screen distortion"
+			.."#{{Collectible582}} 화면이 어지러워집니다."
 			.."{{CR}}",
 			Horse = ""
-			.."#Strong Screen distortion"
+			.."#{{Collectible582}} 화면이 어지러워집니다."
 			.."{{CR}}",
 			QuoteDesc = "왜곡된 시야",
 		},
@@ -759,11 +747,12 @@ if HeavensCall then
 	}
 
 	local entityDesc = {
-		["INNERENTRYNAME"] = {
-			Type = 0,
-			Variant = 0,
-			SubType = 0,
-			Name = "",
+		["ABYSS_COIN"] = {
+			Type = EntityType.ENTITY_PICKUP,
+			Variant = PickupVariant.PICKUP_COIN,
+			SubType = mod.EntityVoidSub,
+			Name = "심연의 동전",
+			-- "# Will take all your coins and create a golden explosion, gilding pickups, trinkets, enemies and more!"
 			Description = ""
 			.."#"
 			.."#"
@@ -775,11 +764,12 @@ if HeavensCall then
 			.."#"
 			.."{{CR}}",
 		},
-		["INNERENTRYNAME"] = {
-			Type = 0,
-			Variant = 0,
-			SubType = 0,
-			Name = "",
+		["ABYSS_BOMB"] = {
+			Type = EntityType.ENTITY_PICKUP,
+			Variant = PickupVariant.PICKUP_BOMB,
+			SubType = mod.EntityVoidSub,
+			Name = "심연의 폭탄",
+			-- "# Next bomb placed will try to absorb anything in the room and then do a {{Collectible483}} explosion"
 			Description = ""
 			.."#"
 			.."#"
@@ -791,11 +781,12 @@ if HeavensCall then
 			.."#"
 			.."{{CR}}",
 		},
-		["INNERENTRYNAME"] = {
-			Type = 0,
-			Variant = 0,
-			SubType = 0,
-			Name = "",
+		["ABYSS_KEY"] = {
+			Type = EntityType.ENTITY_PICKUP,
+			Variant = PickupVariant.PICKUP_KEY,
+			SubType = mod.EntityVoidSub,
+			Name = "심연의 열쇠",
+			-- "# The next door opened will create a line of red rooms in its direction, reaching the I'm Error room # Triggers {{Collectible175}} when used # Colliding with a closed door will also trigger the effect"
 			Description = ""
 			.."#"
 			.."#"
@@ -807,11 +798,12 @@ if HeavensCall then
 			.."#"
 			.."{{CR}}",
 		},
-		["INNERENTRYNAME"] = {
-			Type = 0,
-			Variant = 0,
-			SubType = 0,
-			Name = "",
+		["ABYSS_HEART"] = {
+			Type = EntityType.ENTITY_PICKUP,
+			Variant = PickupVariant.PICKUP_HEART,
+			SubType = mod.EntityVoidSub,
+			Name = "심연의 하트",
+			-- "# +1 {{AbyssalHC}} (+1 {{BrokenHeart}} if no free hearts available) # Works as a shield, "..tostring(math.floor(100*mod.VoidHeartConsts.BREAK_CHANCE)).."% chance to break # If not broken, may be restored when picking up a {{Heart}} at full health #  Triggers {{Collectible35}} on use # Picking up a {{Heart}} while both health and {{AbyssalHC}} are full grants a permanent damage up # Amount of {{AbyssalHC}} acts as a damage multiplier"
 			Description = ""
 			.."#"
 			.."#"
@@ -823,11 +815,12 @@ if HeavensCall then
 			.."#"
 			.."{{CR}}",
 		},
-		["INNERENTRYNAME"] = {
-			Type = 0,
-			Variant = 0,
-			SubType = 0,
-			Name = "",
+		["ABYSS_BATTERY"] = {
+			Type = EntityType.ENTITY_PICKUP,
+			Variant = PickupVariant.PICKUP_LIL_BATTERY,
+			SubType = mod.EntityVoidSub,
+			Name = "심연의 배터리",
+			-- "# Will take all your item charge and can only be picked up when fully charged # Grants you 5 item sparks of your active item"
 			Description = ""
 			.."#"
 			.."#"
@@ -839,11 +832,27 @@ if HeavensCall then
 			.."#"
 			.."{{CR}}",
 		},
-		["INNERENTRYNAME"] = {
-			Type = 0,
-			Variant = 0,
-			SubType = 0,
-			Name = "",
+		["TELESCOPE"] = {
+			Type = mod.EntityInf[mod.Entity.Telescope].ID,
+			Variant = mod.EntityInf[mod.Entity.Telescope].VAR,
+			SubType = mod.EntityInf[mod.Entity.Telescope].SUB,
+			Name = "망원경",
+			-- "{{Coin}} Costs one coin, can reward you with: # Wisps # Astral item wisps and sparks # Soul Hearts # Blaze Hearts # Astral items # {{ColorCyan}}Lil {{ColorCyan}}Moon orbitals"
+			Description = ""
+			.."#1{{Coin}}을 소모하여 아래 중 하나 발동:"
+			.."#>>> {{Collectible584}} 위습"
+			.."#>>> {{ItemPoolPlanetarium}} 천체관 아이템 위습"
+			.."#>>> {{SoulHeart}} 소울하트"
+			.."#>>> {{BlazeHeartHC}} 불타는하트"
+			.."#>>> {{ColorCyan}}위성 패밀리어"
+			.."{{CR}}",
+		},
+		["TITAN"] = {
+			Type = mod.EntityInf[mod.Entity.Titan].ID,
+			Variant = mod.EntityInf[mod.Entity.Titan].VAR,
+			SubType = mod.EntityInf[mod.Entity.Titan].SUB,
+			Name = "타이탄 거지",
+			-- "Takes an increasing number of coins and can reward you with golden pickups and trinkets"
 			Description = ""
 			.."#"
 			.."#"
@@ -855,75 +864,43 @@ if HeavensCall then
 			.."#"
 			.."{{CR}}",
 		},
-		["INNERENTRYNAME"] = {
-			Type = 0,
-			Variant = 0,
-			SubType = 0,
-			Name = "",
+		["ASTRAL_STATUE"] = {
+			Type = mod.EntityInf[mod.Entity.Statue].ID,
+			Variant = mod.EntityInf[mod.Entity.Statue].VAR,
+			SubType = mod.EntityInf[mod.Entity.Statue].SUB,
+			Name = "아스트랄 석상",
+			-- persistentData:Unlocked(Isaac.GetAchievementIdByName("double_nothing (HC)")) "#{{Planetarium}} Take the item to trigger a boss fight #{{Bomb}} Bombing the statue turns the item into pickups (and also spawns the boss!) # {{ColorTransform}}Collect all stars in the room to activate Double-or-Nothing:{{ColorText}} # Gain an extra reward item, but lose both if hit # Isaac receives a free {{Collectible313}} shield # Boss difficulty increases to Ascended"
+			-- "#{{Planetarium}} Take the item to trigger a boss fight #{{Bomb}} Bombing the statue turns the item into pickups (and also spawns the boss!)"
 			Description = ""
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
+			.."#{{Planetarium}} 아이템 획득 시 보스전을 시작합니다."
+			.."#{{Bomb}} 석상을 파괴하면 아이템이 분해되며 보스전을 시작합니다."
+			.."{{CR}}",
+			AllOrNothing = ""
+			.."#!!! {{ColorTransform}}Collect all stars in the room to activate Double-or-Nothing"
+			.."#>>> Gain an extra reward item, but lose both if hit"
+			.."#>>> {{Collectible313}} Isaac receives a free {{Collectible313}} shield"
+			.."#>>> Boss difficulty increases to Ascended"
 			.."{{CR}}",
 		},
-		["INNERENTRYNAME"] = {
-			Type = 0,
-			Variant = 0,
-			SubType = 0,
-			Name = "",
+		["LUNAR_STATUE"] = {
+			Type = mod.EntityInf[mod.Entity.LunarStatue].ID,
+			Variant = mod.EntityInf[mod.Entity.LunarStatue].VAR,
+			SubType = mod.EntityInf[mod.Entity.LunarStatue].SUB,
+			Name = "달의 계약",
+			-- "#Trade {{BrokenHeart}}, {{Heart}}, and {{SoulHeart}} for an item # This room is under the effects of {{Collectible691}}"
+			-- "#{{UltraSecretRoom}} {{Heart}}최대 체력/{{SoulHeart}}소울하트 소모에 더해 {{BrokenHeart}}부서진하트를 얻는 조건으로 거래합니다.#{{Warning}} 거래 시 획득하는 {{BrokenHeart}}부서진하트만큼 {{Heart}}빨간하트/{{SoulHeart}}소울하트를 추가로 차감합니다.(사망하지 않음)"
 			Description = ""
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
+			.."#{{UltraSecretRoom}} {{Heart}}최대 체력/{{SoulHeart}}소울하트 소모에 더해 {{BrokenHeart}}부서진하트를 얻는 조건으로 거래합니다."
+			.."#{{Warning}} 거래 시 획득하는 {{BrokenHeart}}부서진하트만큼 {{Heart}}빨간하트/{{SoulHeart}}소울하트를 추가로 차감합니다. (사망하지 않음)"
+			.."#{{Collectible691}} {{Quality2}} 등급 이상의 아이템이 등장합니다."
 			.."{{CR}}",
 		},
-		["INNERENTRYNAME"] = {
-			Type = 0,
-			Variant = 0,
-			SubType = 0,
-			Name = "",
-			Description = ""
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."{{CR}}",
-		},
-		["INNERENTRYNAME"] = {
-			Type = 0,
-			Variant = 0,
-			SubType = 0,
-			Name = "",
-			Description = ""
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."{{CR}}",
-		},
-		["INNERENTRYNAME"] = {
-			Type = 0,
-			Variant = 0,
-			SubType = 0,
-			Name = "",
+		["BABEL_BUTTON"] = {
+			Type = mod.EntityInf[mod.Entity.BabelButton].ID,
+			Variant = mod.EntityInf[mod.Entity.BabelButton].VAR,
+			SubType = mod.EntityInf[mod.Entity.BabelButton].SUB,
+			Name = "난이도 (Heaven's Call)",
+			-- "#{{NormalHC}} Standard difficulty, same as normal runs #{{AttunedHC}} Extra and deadlier attacks + double damage #{{AscendedHC}} Further enhanced attacks {{ColorTransform}}[Complete the tower in this mode to finish the challenge]{{ColorText}} #{{RadiantHC}} No-hit mode {{ColorTransform}}[No rewards for completing the tower in this mode]{{ColorText}}"
 			Description = ""
 			.."#"
 			.."#"
@@ -937,9 +914,9 @@ if HeavensCall then
 		},
 	}
 
-	EID:addEntity(mod.EntityInf[mod.Entity.Telescope].ID, mod.EntityInf[mod.Entity.Telescope].VAR, mod.EntityInf[mod.Entity.Telescope].SUB, "망원경", "1{{Coin}}을 소모하여 아래 중 하나 발동:#{{Blank}} {{Collectible584}}불꽃#{{Blank}} {{ItemPoolPlanetarium}}천체관 아이템 불꽃#{{Blank}} {{SoulHeart}}소울하트/불타는하트#{{Blank}} {{ColorCyan}}위성 패밀리어", "ko_kr")
-	EID:addEntity(mod.EntityInf[mod.Entity.Statue].ID, mod.EntityInf[mod.Entity.Statue].VAR, mod.EntityInf[mod.Entity.Statue].SUB, "아스트랄 석상", "#{{ItemPoolPlanetarium}} 아이템 획득 시 보스전을 시작합니다.#{{Bomb}} 석상을 파괴하면 아이템이 분해되며 보스전을 시작합니다.", "ko_kr")
-	EID:addEntity(mod.EntityInf[mod.Entity.LunarStatue].ID, mod.EntityInf[mod.Entity.Statue].VAR+1, mod.EntityInf[mod.Entity.Statue].SUB, "[달의 계약]", "#{{UltraSecretRoom}} {{Heart}}최대 체력/{{SoulHeart}}소울하트 소모에 더해 {{BrokenHeart}}부서진하트를 얻는 조건으로 거래합니다.#{{Warning}} 거래 시 획득하는 {{BrokenHeart}}부서진하트만큼 {{Heart}}빨간하트/{{SoulHeart}}소울하트를 추가로 차감합니다.(사망하지 않음)", "ko_kr")
+	for _, itemdesc in pairs(entityDesc) do
+		EID:addEntity(itemdesc.Type, itemdesc.Variant or -1, itemdesc.SubType or -1, itemdesc.Name, itemdesc.Description, "ko_kr")
+	end
 
 	for itemID, itemdesc in pairs(CollectibleDesc) do
 		local desc = itemdesc.Description
