@@ -723,7 +723,7 @@ if HeavensCall then
 			Horse = ""
 			.."#Strong Screen distortion"
 			.."{{CR}}",
-			QuoteDesc = "천체관 확률 감소",
+			QuoteDesc = "왜곡된 시야",
 		},
 		[mod.Pills.BALLS_UP] = {
 			Name = "위성 증가",
@@ -754,7 +754,7 @@ if HeavensCall then
 			.."#{{Throwable}} 그 방에서 위성 패밀리어 9개를 지급합니다."
 			.."#{{Collectible247}} {{ColorCyan}}그 방에서 패밀리어가 더 강해집니다.{{CR}}"
 			.."{{CR}}",
-			QuoteDesc = "태양계",
+			QuoteDesc = "나만의 태양계",
 		},
 	}
 
