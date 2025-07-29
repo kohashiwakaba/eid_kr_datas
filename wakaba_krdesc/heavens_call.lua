@@ -754,14 +754,11 @@ if HeavensCall then
 			Name = "심연의 동전",
 			-- "# Will take all your coins and create a golden explosion, gilding pickups, trinkets, enemies and more!"
 			Description = ""
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
+			.."#!!! 모든 동전을 소모하여:"
+			.."#>>> 가능한 경우, 그 방의 픽업 황금화"
+			.."#>>> {{Collectible202}} 그 방의 적 황금화"
+			.."#>>> {{Trinket}} 소지 중인 장신구 황금화"
+			.."#>>> {{Trinket}} 그 방의 장신구 황금화"
 			.."{{CR}}",
 		},
 		["ABYSS_BOMB"] = {
@@ -771,7 +768,7 @@ if HeavensCall then
 			Name = "심연의 폭탄",
 			-- "# Next bomb placed will try to absorb anything in the room and then do a {{Collectible483}} explosion"
 			Description = ""
-			.."#"
+			.."#{{Collectible483}} "
 			.."#"
 			.."#"
 			.."#"
@@ -788,7 +785,7 @@ if HeavensCall then
 			Name = "심연의 열쇠",
 			-- "# The next door opened will create a line of red rooms in its direction, reaching the I'm Error room # Triggers {{Collectible175}} when used # Colliding with a closed door will also trigger the effect"
 			Description = ""
-			.."#"
+			.."#{{Collectible175}} "
 			.."#"
 			.."#"
 			.."#"
