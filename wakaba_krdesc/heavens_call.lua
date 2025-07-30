@@ -768,14 +768,7 @@ if HeavensCall then
 			Name = "심연의 폭탄",
 			-- "# Next bomb placed will try to absorb anything in the room and then do a {{Collectible483}} explosion"
 			Description = ""
-			.."#{{Collectible483}} "
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
+			.."#{{Collectible483}} 폭탄 설치 시 블랙홀을 설치하며 이후 그 방에 거대한 폭발을 일으킵니다."
 			.."{{CR}}",
 		},
 		["ABYSS_KEY"] = {
@@ -785,14 +778,9 @@ if HeavensCall then
 			Name = "심연의 열쇠",
 			-- "# The next door opened will create a line of red rooms in its direction, reaching the I'm Error room # Triggers {{Collectible175}} when used # Colliding with a closed door will also trigger the effect"
 			Description = ""
-			.."#{{Collectible175}} "
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
+			.."#{{Collectible175}} 잠긴 문을 열 때:"
+			.."#>>> {{ErrorRoom}} 방을 연 방향으로 I AM ERROR가 나올 때까지 연쇄적으로 빨간방을 엽니다."
+			.."#!!! 닫힌 문에 오랫동안 접촉 시에도 발동"
 			.."{{CR}}",
 		},
 		["ABYSS_HEART"] = {
@@ -802,14 +790,12 @@ if HeavensCall then
 			Name = "심연의 하트",
 			-- "# +1 {{AbyssalHC}} (+1 {{BrokenHeart}} if no free hearts available) # Works as a shield, "..tostring(math.floor(100*mod.VoidHeartConsts.BREAK_CHANCE)).."% chance to break # If not broken, may be restored when picking up a {{Heart}} at full health #  Triggers {{Collectible35}} on use # Picking up a {{Heart}} while both health and {{AbyssalHC}} are full grants a permanent damage up # Amount of {{AbyssalHC}} acts as a damage multiplier"
 			Description = ""
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
+			.."#{{AbyssalHC}} 획득 시 반전하트 +1"
+			.."#!!! 반전하트 피격 시 :"
+			.."#>>> "..tostring(math.floor(100*mod.VoidHeartConsts.BREAK_CHANCE)).."%의 확률로 {{BrokenHeart}}로 바뀝니다."
+			.."#>>> 바뀌지 않은 경우 {{Heart}}를 획득하여 확률적으로 회복"
+			.."#!!! 일부 피해는 반전하트에 영향을 주지 않음"
+			.."#{{AbyssalHC}} 체력 상한이 꽉 찬 상태에서 {{Heart}} 획득 시 반전하트 수만큼 공격력 배율 증가"
 			.."{{CR}}",
 		},
 		["ABYSS_BATTERY"] = {
@@ -819,14 +805,10 @@ if HeavensCall then
 			Name = "심연의 배터리",
 			-- "# Will take all your item charge and can only be picked up when fully charged # Grants you 5 item sparks of your active item"
 			Description = ""
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
+			.."#!!! 소지 중인 액티브 아이템이 완충 상태에서만 획득 가능"
+			.."#!!! 획득 시 액티브 아이템의 충전량을 소진시키며;"
+			.."#>>> 아이템 스파크를 5개 소환합니다."
+			.."#완충 상태가 아닐 때 스파크를 소모하여 액티브 아이템을 사용할 수 있습니다."
 			.."{{CR}}",
 		},
 		["TELESCOPE"] = {
