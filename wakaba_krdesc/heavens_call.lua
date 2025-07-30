@@ -285,18 +285,18 @@ if HeavensCall then
 			QuoteDesc = "수제 모찌",
 		},
 		[mod.SolarItems.Wormhole] = {
-			Name = "",
+			--Name = "",
 			Description = ""
 			.."#!!! 미구현"
 			.."{{CR}}",
-			QuoteDesc = "",
+			--QuoteDesc = "",
 		},
 		[mod.SolarItems.Friend] = {
-			Name = "",
+			--Name = "",
 			Description = ""
 			.."#!!! 미구현"
 			.."{{CR}}",
-			QuoteDesc = "",
+			--QuoteDesc = "",
 		},
 		--#endregion
 	}
@@ -482,25 +482,25 @@ if HeavensCall then
 			QuoteDesc = "달을 향해서",
 		},
 		[mod.Trinkets.Noise] = {
-			Name = "Background Noise",
+			--Name = "Background Noise",
 			Description = ""
 			.."#!!! 무효과 (미구현 아이템)"
 			.."{{CR}}",
-			QuoteDesc = "",
+			--QuoteDesc = "",
 		},
 		[mod.Trinkets.Soldier] = {
-			Name = "Toy Soldier",
+			--Name = "Toy Soldier",
 			Description = ""
 			.."#!!! 무효과 (미구현 아이템)"
 			.."{{CR}}",
-			QuoteDesc = "",
+			--QuoteDesc = "",
 		},
 		[mod.Trinkets.Silver] = {
-			Name = "Mirror Shard",
+			--Name = "Mirror Shard",
 			Description = ""
 			.."#!!! 무효과 (미구현 아이템)"
 			.."{{CR}}",
-			QuoteDesc = "",
+			--QuoteDesc = "",
 		},
 		--#endregion
 	}
@@ -680,10 +680,11 @@ if HeavensCall then
 			.."#{{Bomb}} 석상을 파괴하면 아이템이 분해되며 보스전을 시작합니다."
 			.."{{CR}}",
 			AllOrNothing = ""
-			.."#!!! {{ColorTransform}}Collect all stars in the room to activate Double-or-Nothing"
-			.."#>>> Gain an extra reward item, but lose both if hit"
-			.."#>>> {{Collectible313}} Isaac receives a free {{Collectible313}} shield"
-			.."#>>> Boss difficulty increases to Ascended"
+			.."#!!! {{ColorTransform}}방에 있는 별조각을 전부 모아 추가 챌린지 발동"
+			.."#>>> 보스전 클리어 시 추가 아이템 ({{Quality2}} 이상) 드랍"
+			.."#>>> 피격 시 획득 아이템 + 추가 보상이 전부 사라집니다."
+			.."#>>> {{HolyMantleSmall}} 보스전 시작 시 {{Collectible313}}보호막 1개 지급"
+			.."#>>> 추가 패턴 존재"
 			.."{{CR}}",
 		},
 		["LUNAR_STATUE"] = {
@@ -703,17 +704,13 @@ if HeavensCall then
 			Type = mod.EntityInf[mod.Entity.BabelButton].ID,
 			Variant = mod.EntityInf[mod.Entity.BabelButton].VAR,
 			SubType = mod.EntityInf[mod.Entity.BabelButton].SUB,
-			Name = "난이도 (Heaven's Call)",
+			Name = "바벨탑 보스러시 난이도",
 			-- "#{{NormalHC}} Standard difficulty, same as normal runs #{{AttunedHC}} Extra and deadlier attacks + double damage #{{AscendedHC}} Further enhanced attacks {{ColorTransform}}[Complete the tower in this mode to finish the challenge]{{ColorText}} #{{RadiantHC}} No-hit mode {{ColorTransform}}[No rewards for completing the tower in this mode]{{ColorText}}"
 			Description = ""
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
-			.."#"
+			.."#{{NormalHC}} 일반 난이도"
+			.."#{{AttunedHC}} 1차 보스 패턴 추가 + 피해량 2배"
+			.."#{{AscendedHC}} 2차 보스 패턴 추가 {{ColorTransform}}[해당 난이도로 클리어해야 챌린지 클리어로 인정]{{CR}}"
+			.."#{{RadiantHC}} 피격 시 사망 {{ColorTransform}}[추가 보상 없음]{{CR}}"
 			.."{{CR}}",
 		},
 	}
@@ -721,6 +718,28 @@ if HeavensCall then
 	for _, itemdesc in pairs(entityDesc) do
 		EID:addEntity(itemdesc.Type, itemdesc.Variant or -1, itemdesc.SubType or -1, itemdesc.Name, itemdesc.Description, "ko_kr")
 	end
+
+	local function FF_EIDKR_HC_AstralStatueCond(descObj)
+	  if EID:getLanguage() ~= "ko_kr" and EID:getLanguage() ~= "ko" then return false end
+	  if not descObj.Entity then return end
+		if descObj.ObjType == mod.EntityInf[mod.Entity.Statue].ID
+		and descObj.ObjVariant == mod.EntityInf[mod.Entity.Statue].VAR
+		and descObj.ObjSubType == mod.EntityInf[mod.Entity.Statue].SUB
+		then
+			local pers = Isaac.GetPersistentGameData()
+			return pers:Unlocked(Isaac.GetAchievementIdByName("double_nothing (HC)"))
+		end
+	end
+
+	local function FF_EIDKR_HC_AstralStatueCallback(descObj)
+
+	  local appendDesc = entityDesc["ASTRAL_STATUE"].AllOrNothing
+	  EID:appendToDescription(descObj, appendDesc)
+
+	  return descObj
+	end
+
+	EID:addDescriptionModifier("FF_EIDKR_HC_AstralStatue", FF_EIDKR_HC_AstralStatueCond, FF_EIDKR_HC_AstralStatueCallback)
 
 	for itemID, itemdesc in pairs(CollectibleDesc) do
 		local desc = itemdesc.Description
@@ -749,7 +768,12 @@ if HeavensCall then
 		end
 		EID:addTrinket(itemID, desc, itemdesc.Name, "ko_kr")
 	end
-
+	for itemID, itemdesc in pairs(CardDesc) do
+		EID:addCard(itemID, itemdesc.Description, itemdesc.Name, "ko_kr")
+	end
+	for itemID, itemdesc in pairs(PillDesc) do
+		EID:addPill(itemID, itemdesc.Description, itemdesc.Name, "ko_kr")
+	end
 
 	local i_queueLastFrame = {}
 	local i_queueNow = {}
