@@ -257,10 +257,10 @@ if REPENTOGON then
 			local item = ic:GetPillEffect(pillID)
 			if item and v.targetMod then
 				if v.itemName and v.itemName ~= "" then
-					item.Name = v.itemName or item.Name
+					item.Name = v.itemName
 				end
-				if v.queueDesc and v.queueDesc ~= "" then
-					item.Description = v.queueDesc or item.Description
+				if item.Description and v.queueDesc and v.queueDesc ~= "" then
+					item.Description = v.queueDesc
 				end
 			end
 		end

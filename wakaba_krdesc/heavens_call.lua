@@ -315,7 +315,7 @@ if HeavensCall then
 	CollectibleDesc[mod.SolarItems.Dial+7] = CollectibleDesc[mod.SolarItems.Wormhole]
 	CollectibleDesc[mod.SolarItems.Dial+8] = CollectibleDesc[mod.SolarItems.Wormhole]
 	CollectibleDesc[mod.SolarItems.Dial+9] = CollectibleDesc[mod.SolarItems.Wormhole]
-	CollectibleDesc[mod.SolarItems.CatFish] = CollectibleDesc[mod.SolarItems.Wormhole]
+	CollectibleDesc[mod.OtherItems.CatFish] = CollectibleDesc[mod.SolarItems.Wormhole]
 	CollectibleDesc[mod.SolarItems.AdInfinitum] = CollectibleDesc[mod.SolarItems.Wormhole]
 	CollectibleDesc[mod.SolarItems.Whistle] = CollectibleDesc[mod.SolarItems.Wormhole]
 
@@ -429,8 +429,8 @@ if HeavensCall then
 			.."#{{LunarHC}} 악마방이 공월방으로 으로 대체될 확률 +66.6%"
 			.."#{{LunarHC}} {{ColorGray}}공월방은 거래 아이템의 등급이 높으나 거래 시 {{BrokenHeart}}가 추가됩니다."
 			.."#!!! {{Trinket146}} 공월방 등장 시 33%의 확률로 장신구가 Devil's Crown으로 바뀝니다."
-			.."#{{PlanetariumChance}} 천체관이 공체관으로 바뀝니다."
-			.."#{{PlanetariumChance}} {{ColorGray}}공체관은 ???"
+			--.."#{{PlanetariumChance}} 천체관이 공체관으로 바뀝니다."
+			--.."#{{PlanetariumChance}} {{ColorGray}}공체관은 ???"
 			.."{{CR}}",
 			QuoteDesc = "이 세계는 이 몸의 것이니라",
 		},
@@ -488,14 +488,14 @@ if HeavensCall then
 			.."{{CR}}",
 			--QuoteDesc = "",
 		},
-		[mod.Trinkets.Soldier] = {
+		[mod.Trash.Soldier] = {
 			--Name = "Toy Soldier",
 			Description = ""
 			.."#!!! 무효과 (미구현 아이템)"
 			.."{{CR}}",
 			--QuoteDesc = "",
 		},
-		[mod.Trinkets.Silver] = {
+		[mod.Trash.Silver] = {
 			--Name = "Mirror Shard",
 			Description = ""
 			.."#!!! 무효과 (미구현 아이템)"
