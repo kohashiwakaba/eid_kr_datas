@@ -92,9 +92,10 @@ if MattPack then
 		[MattPack.Items.KitchenKnife] = {
 			Description = "!!! 방 클리어로 충전 불가, 블랙하트로 충전 가능"
 			.."#{{HalfBlackHeart}} 완충이 아닐 시, 블랙하트 드랍률 증가"
-			.."#사용 시 칼을 바닥에 찍으며 7초동안 최대 243의 피해를 주는 거대한 빛줄기를 소환합니다."
+			.."#사용 시 칼을 바닥에 찍으며 7초동안 그 방의 적에게 방어 무시 피해를 주는 거대한 빛줄기를 소환합니다."
+			.."#{{Blank}} 프레임 당 피해량: (0.5 * (스테이지 + 1)), 보스에게 x1.5, 반전 시 x2"
 			.."#거대한 빛줄기 발동 중 주변의 적 및 탄환을 반사, 장애물을 파괴합니다.",
-			Name = "검은 칼",
+			Name = "칼",
 			QuoteDesc = "땅을 뜯으리라",
 		},
 		[MattPack.Items.DevilsYoYo] = {
@@ -225,6 +226,11 @@ if MattPack then
 				Append = '{{NameK' .. Card.RUNE_JERA .. "}}를 사용하여 변환",
 				q5format = true,
 			},
+		},
+		[MattPack.Items.MoneyisSadness] = {
+			Description = "{{TearsSmall}} 동전 1개당 연사 +0.1",
+			Name = "돈 = 슬픔",
+			QuoteDesc = "돈으로는 행복을 살 수 없어",
 		},
 	}
 

@@ -52,6 +52,7 @@ if not skip then
 	wakaba_krdesc_entries.LOST_AND_FORGOTTEN = include("wakaba_krdesc.lost_and_forgotten")
 	--wakaba_krdesc_entries.FOKS_BOOSTER_PACK = include("wakaba_krdesc.foks_booster_pack")
 	wakaba_krdesc_entries.AURI = include("wakaba_krdesc.auri")
+	wakaba_krdesc_entries.ITEMJAM_1 = include("wakaba_krdesc.itemjam_1")
 end
 
 --[[
