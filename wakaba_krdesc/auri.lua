@@ -20,46 +20,47 @@ if Auriz then
 	local CharacterDesc = {
 		[PLAYER_AURI] = {
 			Name = "Auri",
-			QuoteDesc = "획득멘트",
-			Description = "생득권 설명",
+			QuoteDesc = "무적?",
+			-- Crown of light effect always active#{{ColorRed}}pickup red heart when she has empty heart container will make her lost the effect
+			Description = "",
 			Detailed = "",
-			Birthright = "",
+			Birthright = "Crown of light 아이템의 비활성화 조건이 피격에서 빨간하트 회복으로 변경됩니다.",
 		},
-		[PLAYER_DARK_AURI] = {
+		--[[ [PLAYER_DARK_AURI] = {
 			Name = "Auri",
 			QuoteDesc = "획득멘트",
 			Description = "생득권 설명",
 			Detailed = "",
 			Birthright = "",
-		},
+		}, ]]
 		[PLAYER_MAGE_AURI] = {
-			Name = "Auri",
-			QuoteDesc = "획득멘트",
-			Description = "생득권 설명",
+			Name = "The Witch of Endor",
+			QuoteDesc = "인챈트",
+			Description = "",
 			Detailed = "",
-			Birthright = "",
+			Birthright = "Book of enchant 사용 시 연사도 증가시킵니다.",
 		},
 		[PLAYER_NAAMAH] = {
-			Name = "Auri",
-			QuoteDesc = "획득멘트",
-			Description = "생득권 설명",
+			Name = "Naamah",
+			QuoteDesc = "더 많은 하트 눈물",
+			Description = "",
 			Detailed = "",
-			Birthright = "",
+			Birthright = "하트 눈물이 나올 확률 +10%",
 		},
 		[PLAYER_MILCAH] = {
+			Name = "Milcah",
+			QuoteDesc = "죽어갈 수록 강해져",
+			Description = "",
+			Detailed = "",
+			Birthright = "랜덤 눈물 효과가 하트 1칸일 때도 발동합니다.",
+		},
+		--[[ [PLAYER_QUEEN_AURI] = {
 			Name = "Auri",
 			QuoteDesc = "획득멘트",
 			Description = "생득권 설명",
 			Detailed = "",
 			Birthright = "",
-		},
-		[PLAYER_QUEEN_AURI] = {
-			Name = "Auri",
-			QuoteDesc = "획득멘트",
-			Description = "생득권 설명",
-			Detailed = "",
-			Birthright = "",
-		},
+		}, ]]
 	}
 
 	local CollectibleDesc = {
@@ -304,6 +305,15 @@ if Auriz then
 			.."",
 			QuoteDesc = "행운 증폭",
 		},
+		[COLLECTIBLE_TECH360] = {
+			Name = "기계장치.360",
+			Description = ""
+			--.."Occasionally fire laser that circle around character"
+			.."#공격키를 누르고 있는 동안 랜덤 간격으로 캐릭터 주변에 원형 레이저가 생성됩니다."
+			.."#!!! 3개 이상 획득 시 발동 안함"
+			.."",
+			QuoteDesc = "충격 전파",
+		},
 		[COLLECTIBLE_CANDY] = {
 			Name = "캔디",
 			Description = ""
@@ -358,13 +368,23 @@ if Auriz then
 			.."",
 			QuoteDesc = "소지품 챙기기",
 		},
+		[COLLECTIBLE_STARVE] = {
+			Name = "공복",
+			Description = ""
+			--.."#Getting trinket now destroy it and gain random status up#{{ColorRed}}not same effect as gulping#{{ColorGreen}}more chance for trinket to spawn when a room is cleared"
+			.."#!!! 장신구를 더 이상 획득할 수 없으나:"
+			.."#>>> 장신구를 집으면 랜덤 능력치 하나가 증가합니다."
+			.."#방 클리어 시 10%의 확률로 장신구를 추가로 소환합니다."
+			.."",
+			QuoteDesc = "굶지 마!",
+		},
 		[COLLECTIBLE_WITCHS_SOUP] = {
 			Name = "마녀의 수프",
 			Description = ""
 			--.."#↑ {{Luck}} +30 Luck#The luck up wears off over time#Distort the screen upon pickup#The distortion effect disappears after clearing 5-6 rooms (5-6 waves in greed mode)"
 			.."#"
 			.."#↑ {{LuckSmall}}행운 +30"
-			.."#증가한 행운은 1초마다 -0.xx씩 감소합니다."
+			.."#증가한 행운은 1초마다 -0.045씩 감소합니다."
 			.."#!!! {{Collectible582}} 획득 시 Wavy Cap을 7회 발동합니다."
 			.."#>>> {{ColorGray}}({{TearsSmall}}+2.1/{{SpeedSmall}}-0.42)"
 			.."",
@@ -407,7 +427,7 @@ if Auriz then
 			.."",
 			QuoteDesc = "공격 강화",
 		},
-		[COLLECTIBLE_STARER_PACK] = {
+		[COLLECTIBLE_STARTER_PACK] = {
 			Name = "스타터 팩",
 			Description = ""
 			--.."#↑ +0.1 Damage#Grants various pickup at the start of the next run"
@@ -440,6 +460,121 @@ if Auriz then
 			.."#사용 시 꼬마 아이작 패밀리어를 소환합니다."
 			.."",
 			QuoteDesc = "꼬마 아이작 생성기",
+		},
+		[COLLECTIBLE_GUPPYS_EARS] = {
+			Name = "구피의 귀",
+			Description = ""
+			--.."#Spawns 3 attack locust familiar that will charge at enemies in the same direction you are shooting#Deals damage equal to your current tear damage#Stops charging once it hits an enemy and returns to characters side"
+			.."#획득 시 심연의 파리를 3개 생성합니다."
+			.."#심연의 파리는 공격방향으로 돌진하며 접촉한 적에게 초당 공격력 x3의 피해를 줍니다."
+			.."",
+			QuoteDesc = "냥...?",
+		},
+
+		[COLLECTIBLE_CURSED_CROWN] = {
+			Name = "저주받은 왕관",
+			Description = ""
+			--.."↑ Boosts all character stats by 50%#{{Warning}} Taking damage while shooting teleports the character to a random room"
+			.."#↑ 모든 능력치 x1.5"
+			.."#!!! 공격 중 캐릭터가 그 방의 랜덤 위치로 순간이동합니다."
+			.."",
+			QuoteDesc = "저주받은 모든 능력치 증가",
+		},
+		[COLLECTIBLE_MERIT] = {
+			Name = "메리트",
+			Description = ""
+			--.."{{SoulHeart}} +2 Soul Hearts#{{HalfSoulHeart}} Every 3 minutes pass in game, there's a chance to regenerate a half soul heart""
+			.."#↑ {{SoulHeart}}소울하트 +2"
+			.."#{{HalfSoulHeart}} 게임 시간 3분마다 확률적으로 소울하트 반칸을 획득합니다."
+			.."",
+			QuoteDesc = "축복받은 느낌 + 영혼 재생",
+		},
+		[COLLECTIBLE_SPIKE_ROCK] = {
+			Name = "뾰족한 돌",
+			Description = ""
+			--.."↑ +2 Damage#↑ +0.1 Tears#{{ArrowDown}} -0.3 Speed"
+			.."#↑ {{TearsSmall}}연사 +0.1"
+			.."#↑ {{DamageSmall}}공격력 +2"
+			.."#↓ {{SpeedSmall}}이동속도 -0.3"
+			.."",
+			QuoteDesc = "공격력 대폭 증가",
+		},
+		[COLLECTIBLE_FIRE_EYE] = {
+			Name = "불의 눈",
+			Description = ""
+			--.."Tears now leave a trail of fire when fired#Increasing Luck extends the duration of the fire"
+			.."#눈물이 지나간 자리에 붉은 불꽃이 생깁니다."
+			.."#{{LuckSmall}} 불의 지속시간은 행운에 비례합니다."
+			.."",
+			QuoteDesc = "불태워!",
+		},
+		[COLLECTIBLE_BLUE_EYE] = {
+			Name = "푸른 눈",
+			Description = ""
+			--.."Tears now leave a trail of fire when fired#Increasing Luck extends the duration of the fire"
+			.."#눈물이 지나간 자리에 푸른 불꽃이 생깁니다."
+			.."#{{LuckSmall}} 불의 지속시간은 행운에 비례합니다."
+			.."",
+			QuoteDesc = "백ㄹ... 잠깐만!",
+		},
+		[COLLECTIBLE_MOMS_SHAMPOO] = {
+			Name = "엄마의 샴푸",
+			Description = ""
+			--.."↑ +0.1 Speed#↑ +0.5 Tears#↑ +0.04 Range#Have a chance to shoot a tears with bubble effect that blocks enemy projectiles#The bubble tears can absorb the player’s tears, growing larger until it bursts and scatters#Chance increases with luck"
+			.."#↑ {{SpeedSmall}}이동속도 +0.1"
+			.."#↑ {{TearsSmall}}연사 +0.5"
+			.."#↑ {{RangeSmall}}사거리 +0.04"
+			.."#{{Collectible532}} 10%의 확률로 탄환 방어 + 흡수 눈물을 발사합니다."
+			.."#{{LuckSmall}} 행운 10+일 때 50% 확률"
+			.."",
+			QuoteDesc = "확률적인 방울 눈물",
+		},
+		[COLLECTIBLE_CLONING_CELL] = {
+			Name = "복제 세포",
+			Description = ""
+			--.."Creates an army of mini Isaac/Auri"
+			.."#획득 시 꼬마 아이작 패밀리어를 여러 마리 소환합니다."
+			.."",
+			QuoteDesc = "나야 나!",
+		},
+
+		[COLLECTIBLE_EARTH_RUNESTONE] = {
+			Name = "땅의 룬스톤",
+			Description = ""
+			--.."Has a chance to fire rock tears that spawn a rockspike on impact, dealing 20 damage to that enemies#Chance increases with luck"
+			.."#10%의 확률로 땅의 눈물을 발사합니다."
+			.."#적에게 땅의 눈물 명중 시 20의 추가 피해를 줍니다."
+			.."#{{LuckSmall}} 행운 14+일 때 80% 확률"
+			.."",
+			QuoteDesc = "적을 해치워",
+		},
+		[COLLECTIBLE_WATER_RUNESTONE] = {
+			Name = "물의 룬스톤",
+			Description = ""
+			--.."Chance to shoot tears that leave creep where they land#Creep deals 40 damage per second#Chance increases with luck"
+			.."#25%의 확률로 물의 눈물을 발사합니다."
+			.."#적에게 물의 눈물 명중 시 초당 40의 피해를 주는 작은 장판을 생성합니다."
+			.."#{{LuckSmall}} 행운 12+일 때 100% 확률"
+			.."",
+			QuoteDesc = "방울을 남기는 눈물",
+		},
+		[COLLECTIBLE_AIR_RUNESTONE] = {
+			Name = "바람의 룬스톤",
+			Description = ""
+			--.."character projectiles repel enemy projectiles when they come into close proximity, altering their trajectory"
+			.."#눈물이 주변의 탄환의 방향을 바꿉니다."
+			.."",
+			QuoteDesc = "탄환 반사",
+		},
+		[COLLECTIBLE_FIRE_RUNESTONE] = {
+			Name = "불의 룬스톤",
+			Description = ""
+			--.."Chance to fire a tear that bursts into flame on hit, scorching the target for extra damage#Chance increases with luck"
+			.."#30%의 확률로 불의 눈물을 발사합니다."
+			.."#적에게 불의 눈물 명중 시 10의 추가 피해를 줍니다."
+			.."#{{LuckSmall}} 행운 15+일 때 100% 확률"
+			.."",
+			QuoteDesc = "적을 불태워",
 		},
 	}
 

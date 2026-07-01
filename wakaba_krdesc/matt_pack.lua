@@ -232,6 +232,13 @@ if MattPack then
 			Name = "돈 = 슬픔",
 			QuoteDesc = "돈으로는 행복을 살 수 없어",
 		},
+		[MattPack.Items.LaserEyeSurgery] = {
+			Name = "레이저 안구 이식",
+			QuoteDesc = "고성능 눈물",
+			Description = ""
+			.."#눈물이 점점 느려집니다.#>>> 눈물이 멈출 때 가장 가까운 적에게 공격력 x1.5의 짧은 {{ColorYellow}}이식성 레이저{{CR}}를 발사합니다."
+			.."",
+		},
 	}
 
 	--EID:removeDescriptionModifier("LingerBeanRework")
@@ -297,6 +304,38 @@ if MattPack then
 	mod.addSynergyDescription(MattPack.Items.TechOmega,
 	CollectibleType.COLLECTIBLE_MOMS_KNIFE,
 	"방사 레이저가 나올 때 캐릭터의 공격력 x2.5의 칼이 추가로 발사됩니다.")
+
+	mod.addSynergyDescription(MattPack.Items.LaserEyeSurgery,
+	CollectibleType.COLLECTIBLE_C_SECTION,
+	"눈물의 목표가 바뀔 때마다 {{ColorYellow}}레이저{{CR}}를 발사합니다.")
+
+	mod.addSynergyDescription(MattPack.Items.LaserEyeSurgery,
+	CollectibleType.COLLECTIBLE_TECH_X,
+	"원형 레이저가 점점 느려지며 사라질 때 고리 주변의 5방향에서 {{ColorYellow}}레이저{{CR}}를 발사합니다.")
+
+	mod.addSynergyDescription(MattPack.Items.LaserEyeSurgery,
+	CollectibleType.COLLECTIBLE_LUDOVICO_TECHNIQUE,
+	"눈물이 멈출 때 주변의 적에게 {{ColorYellow}}레이저{{CR}}를 발사합니다.")
+
+	mod.addSynergyDescription(MattPack.Items.LaserEyeSurgery,
+	CollectibleType.COLLECTIBLE_TECHNOLOGY,
+	"캐릭터와 레이저 끝 지점 사이의 4개 지점마다 공격력 x0.25의 {{ColorYellow}}레이저{{CR}}를 발사합니다.")
+
+	mod.addSynergyDescription(MattPack.Items.LaserEyeSurgery,
+	CollectibleType.COLLECTIBLE_BRIMSTONE,
+	"캐릭터와 레이저 끝 지점 사이의 8개 지점마다 공격력 x0.33의 {{ColorYellow}}레이저{{CR}}를 발사합니다.")
+
+	mod.addSynergyDescription(MattPack.Items.LaserEyeSurgery,
+	CollectibleType.COLLECTIBLE_MOMS_KNIFE,
+	"칼이 가장 멀리 있을 때 주변의 적에게 {{ColorYellow}}레이저{{CR}}를 발사합니다.")
+
+	mod.addSynergyDescription(MattPack.Items.LaserEyeSurgery,
+	CollectibleType.COLLECTIBLE_DR_FETUS,
+	"페투스 폭탄이 터질 때 주변의 적에게 공격력 x2.5의 {{ColorYellow}}레이저{{CR}}를 발사합니다.")
+
+	mod.addSynergyDescription(MattPack.Items.LaserEyeSurgery,
+	CollectibleType.COLLECTIBLE_EPIC_FETUS,
+	"미사일이 착지할 때 주변의 적에게 공격력 x2.5의 {{ColorYellow}}레이저{{CR}}를 발사합니다.")
 
 	-- Multishots
 	for i,list in ipairs({mod.multishotPlayersList, mod.multishotsList}) do
