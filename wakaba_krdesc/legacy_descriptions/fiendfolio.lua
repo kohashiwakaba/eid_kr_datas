@@ -2559,7 +2559,7 @@ if FiendFolio then
 			QuoteDesc = "천장이 무너져",
 		},
 		[FiendFolio.ITEM.ROCK.CAST_GEM] = {
-			Description = "공격 시 적을 향해 날아가는 유도 보석을 3개 획득합니다.#유도 보석이 적과 접촉 시 적에게 피해를 주며 {{ffBruise}}멍들게 합니다.#{{ffBruise}} 멍든 적은 해당 상태 중첩 수만큼 추가 피해를 받습니다.#일부 아이템과의 추가 시너지 존재#{{Collectible"..CollectibleType.COLLECTIBLE_NYX.."}} (Nyx의 보석과 동일)",
+			Description = "공격 시 적을 향해 날아가는 유도 보석을 3개 획득합니다.#유도 보석이 적과 접촉 시 적에게 피해를 주며 {{ffBruise}}멍들게 합니다.#{{ffBruise}} 멍든 적은 해당 상태 중첩 수만큼 추가 피해를 받습니다.#일부 아이템과의 추가 시너지 존재#{{Collectible"..FiendFolio.ITEM.COLLECTIBLE.NYX.."}} (Nyx의 보석과 동일)",
 			StatusEffects = {ffStatusEffectDesc.GOLEM_NORMAL},
 			Name = "주문 보석",
 			QuoteDesc = "보석 친구",

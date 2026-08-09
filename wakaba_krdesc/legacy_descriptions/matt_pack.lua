@@ -8,6 +8,14 @@ if MattPack then
 		return
 	end
 
+	if not MattPack.Config then
+		table.insert(wakaba_krdesc.ERRORS, {
+			err_mod = "Lazy Mattpack",
+			custom = "메인 모드가 적용되지 않았습니다. 메인 모드를 적용해 주십시오."
+		})
+		return
+	end
+
 	EID._currentMod = "MattPack"
 	local mod = MattPack
 
@@ -19,6 +27,8 @@ if MattPack then
 		[CollectibleType.COLLECTIBLE_DAMOCLES] = true,
 		[CollectibleType.COLLECTIBLE_MOMS_KNIFE] = true,
 		[CollectibleType.COLLECTIBLE_MAGIC_MUSHROOM] = true,
+		[CollectibleType.COLLECTIBLE_PSY_FLY] = true,
+		[CollectibleType.COLLECTIBLE_C_SECTION] = true,
 		--[CollectibleType.COLLECTIBLE_CRICKETS_BODY] = true,
 	}
 
@@ -227,6 +237,19 @@ if MattPack then
 				q5format = true,
 			},
 		},
+		[MattPack.Items.PsyHive] = {
+			Description = ""
+			.."#캐릭터 주변을 돌며 캐릭터에게 날아오는 적의 탄환을 추적해 반사합니다."
+			.."#{{Collectible581}} 탄환 반사 시 탄환을 3회 반사시키는 미니 초능력 파리를 소환합니다."
+			.."",
+			Name = "싸이코 파리",
+			QuoteDesc = "초능력 군단",
+			__mattConvert = {
+				Origin = CollectibleType.COLLECTIBLE_PSY_FLY,
+				Append = '{{NameK' .. Card.RUNE_BERKANO .. "}}를 사용하여 변환",
+				q5format = true,
+			},
+		},
 		[MattPack.Items.MoneyisSadness] = {
 			Description = "{{TearsSmall}} 동전 1개당 연사 +0.1",
 			Name = "돈 = 슬픔",
@@ -240,6 +263,26 @@ if MattPack then
 			.."",
 		},
 	}
+
+	-- D Section addition
+	if MattPackDSection then
+		MattPack.Items.DSection = Isaac.GetItemIdByName("D Section")
+		CollectibleDesc[MattPack.Items.DSection] = {
+			Description = ""
+			.."#공격이 꼬마 아이작 발사 공격으로 변경됩니다."
+			.."#{{Chargeable}} 공격키를 누르고 있으면 자동으로 충전되며 발사됩니다."
+			.."#꼬마 아이작은 변경 이전 캐릭터의 공격을 복사합니다."
+			.."#{{RangeSmall}} 꼬마 아이작의 지속시간은 사거리의 영향을 받습니다."
+			.."",
+			Name = "",
+			QuoteDesc = "다 자랐어!",
+			__mattConvert = {
+				Origin = CollectibleType.COLLECTIBLE_C_SECTION,
+				Append = '{{NameC' .. CollectibleType.COLLECTIBLE_VENTRICLE_RAZOR .. "}}를 사용하여 변환",
+				q5format = true,
+			},
+		}
+	end
 
 	--EID:removeDescriptionModifier("LingerBeanRework")
 	EID:addDescriptionModifier("LingerBeanRework",
@@ -266,7 +309,7 @@ if MattPack then
 
 	EID:addDescriptionModifier("DeadLitterCatBitInfo",
 	function(objectDescription)
-		if EID:getLanguage() == "ko_kr" and MattPack.Config.EIDHintsEnabled then
+		if EID:getLanguage() == "ko_kr" and MattPack.getSettingValue("EIDQ5HintsEnabled", true) then
 			if objectDescription.ObjType == 5
 			and objectDescription.ObjVariant == 100
 			and MattPack.DeadLitterCatBits[objectDescription.ObjSubType]
@@ -358,7 +401,7 @@ if MattPack then
 			end
 			EID:addDescriptionModifier("Q5" .. itemdesc.__mattConvert.Origin .. index,
 			function(objectDescription)
-				if (not itemdesc.__mattConvert.q5format) or MattPack.Config.EIDHintsEnabled then
+				if (not itemdesc.__mattConvert.q5format) or MattPack.getSettingValue("EIDQ5HintsEnabled", true) then
 					if objectDescription.ObjType == 5
 					and objectDescription.ObjVariant == 100
 					and objectDescription.ObjSubType == itemdesc.__mattConvert.Origin then
@@ -369,7 +412,7 @@ if MattPack then
 			function(descObject)
 				local logo = itemdesc.__mattConvert.Logo and "{{MPLazyWorm}} " or ""
 				if itemdesc.__mattConvert.q5format then
-					EID:appendToDescription(descObject, "#{{MPLazyWorm}} {{Collectible"..itemID.."}}" .. itemdesc.__mattConvert.Append)
+					EID:appendToDescription(descObject, "#{{MPLazyWorm}} {{Collectible"..itemID.."}} {{ArrowGrayLeft}} " .. itemdesc.__mattConvert.Append) -- TODO
 				else
 					EID:appendToDescription(descObject, "#"..logo..itemdesc.__mattConvert.Append)
 				end
