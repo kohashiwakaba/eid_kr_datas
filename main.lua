@@ -1,10 +1,11 @@
 if not EID then return end
 local mod = RegisterMod("Korean EID Descriptions for modded items", 1)
-wakaba_krdesc = mod
+
+wakaba_krdesc = mod ---@class wakaba_krdesc: ModReference
 
 ---@class EIDConditionalEntry
 ---@field ModifierText string
----@field Function? fun(descObj) condition function. Only on `en_us`
+---@field Function? fun(descObj):boolean? condition function. Only on `en_us`
 ---@field Vars?
 ---@field Type?
 ---@field Layer? integer @default: `1`
@@ -35,12 +36,12 @@ wakaba_krdesc = mod
 ---@field Birthright? string `"player"` - Birthright descriptions.
 ---@field BirthrightQuote? string `"player"` - Used for quotes when picking up Birthright.
 ---@field Duplicate? string|boolean `"collectible"` - Diplopia, Crooked penny. `false` : no effect
----@field BFFS? string|string[]|number[] `"collectible"`|`"trinket"` - BFFS synergies
+---@field BFFS? string|string[]|number[]|false `"collectible"`|`"trinket"` - BFFS synergies
 ---@field Belial? string `"collectible"` - Judas + Birthright synergies
 ---@field Binge? string `"collectible"` - Binge Eater synergies
 ---@field Wisp? string `"collectible"` - Book of Virtues synergies
 ---@field Abyss? string `"collectible"` - Abyss synergies
----@field CarBattery? string|string[]|number[] `"collectible"` - Car Battery synergies
+---@field CarBattery? string|string[]|number[]|false `"collectible"` - Car Battery synergies
 ---@field GoldenTrinketData? EID_GoldenTrinketData `"trinket"` - Golden Trinket meta
 ---@field Golden? string[] `"trinket"` - Golden Trinket description
 ---@field Tarot? string|string[]|number[] `"card"` - Tarot Card synergies
@@ -91,6 +92,16 @@ function mod.KeyValueBulkAppend(hostTable, appendTable)
 	end
 end
 
+local function split(str, delimiter)
+	local result = {}
+	-- The pattern '([^' .. delimiter .. ']+)' matches one or more characters
+	-- that are NOT the delimiter.
+	for part in string.gmatch(str, "([^" .. delimiter .. "]+)") do
+		table.insert(result, part)
+	end
+	return result
+end
+
 ---@param keyString string
 ---@return number?
 ---@return number?
@@ -110,41 +121,36 @@ wakaba_krdesc.entries = {}
 wakaba_krdesc.richer_entries = {}
 
 function mod:loadDescriptionData()
-	if not REPENTOGON then return end
+	if not (REPENTANCE_PLUS and REPENTOGON) then return end
 	--load scripts
 	for key, v in pairs(modsToLoad) do
 		wakaba_krdesc.richer_entries[key] = include("wakaba_krdesc.richer_descriptions." .. v)
 	end
 end
 
-local skip = false
-
-if not REPENTOGON then
+if not (REPENTANCE_PLUS and REPENTOGON) then
 	wakaba_krdesc.ERROR_NO_REQ = true
-	skip = true
-end
-
-if not skip then
-	--wakaba_krdesc_entries.FIENDFOLIO = include("wakaba_krdesc.legacy_descriptions.fiendfolio")
-	wakaba_krdesc_entries.RETRIBUTION = include("wakaba_krdesc.legacy_descriptions.retribution")
-	wakaba_krdesc_entries.REVEL = include("wakaba_krdesc.legacy_descriptions.revelations")
-	wakaba_krdesc_entries.GODMODE = include("wakaba_krdesc.legacy_descriptions.godmode")
-	wakaba_krdesc_entries.SAMAEL = include("wakaba_krdesc.legacy_descriptions.samael")
-	wakaba_krdesc_entries.DELIVERANCE = include("wakaba_krdesc.legacy_descriptions.deliverance")
-	wakaba_krdesc_entries.HEAVENS_CALL = include("wakaba_krdesc.legacy_descriptions.heavens_call")
-	wakaba_krdesc_entries.WARPZONE = include("wakaba_krdesc.legacy_descriptions.warpzone")
-	wakaba_krdesc_entries.SHERIFF = include("wakaba_krdesc.legacy_descriptions.sheriff")
-	wakaba_krdesc_entries.YONDU = include("wakaba_krdesc.legacy_descriptions.yondu")
-	wakaba_krdesc_entries.ALICE = include("wakaba_krdesc.legacy_descriptions.alice_ba")
-	wakaba_krdesc_entries.CR = include("wakaba_krdesc.legacy_descriptions.community_remix_2024")
-	wakaba_krdesc_entries.SACRED_DREAMS = include("wakaba_krdesc.legacy_descriptions.sacred_dreams")
-	wakaba_krdesc_entries.TAINTED_TREASURE = include("wakaba_krdesc.legacy_descriptions.tainted_treasure")
-	wakaba_krdesc_entries.MATT_PACK = include("wakaba_krdesc.legacy_descriptions.matt_pack")
-	wakaba_krdesc_entries.KIRBY = include("wakaba_krdesc.legacy_descriptions.kirby")
-	wakaba_krdesc_entries.LOST_AND_FORGOTTEN = include("wakaba_krdesc.legacy_descriptions.lost_and_forgotten")
-	--wakaba_krdesc_entries.FOKS_BOOSTER_PACK = include("wakaba_krdesc.legacy_descriptions.foks_booster_pack")
-	wakaba_krdesc_entries.AURI = include("wakaba_krdesc.legacy_descriptions.auri")
-	wakaba_krdesc_entries.ITEMJAM_1 = include("wakaba_krdesc.legacy_descriptions.itemjam_1")
+else
+	--wakaba_krdesc.entries.FIENDFOLIO = include("wakaba_krdesc.legacy_descriptions.fiendfolio")
+	wakaba_krdesc.entries.RETRIBUTION = include("wakaba_krdesc.legacy_descriptions.retribution")
+	wakaba_krdesc.entries.REVEL = include("wakaba_krdesc.legacy_descriptions.revelations")
+	wakaba_krdesc.entries.GODMODE = include("wakaba_krdesc.legacy_descriptions.godmode")
+	wakaba_krdesc.entries.SAMAEL = include("wakaba_krdesc.legacy_descriptions.samael")
+	wakaba_krdesc.entries.DELIVERANCE = include("wakaba_krdesc.legacy_descriptions.deliverance")
+	wakaba_krdesc.entries.HEAVENS_CALL = include("wakaba_krdesc.legacy_descriptions.heavens_call")
+	wakaba_krdesc.entries.WARPZONE = include("wakaba_krdesc.legacy_descriptions.warpzone")
+	wakaba_krdesc.entries.SHERIFF = include("wakaba_krdesc.legacy_descriptions.sheriff")
+	wakaba_krdesc.entries.YONDU = include("wakaba_krdesc.legacy_descriptions.yondu")
+	wakaba_krdesc.entries.ALICE = include("wakaba_krdesc.legacy_descriptions.alice_ba")
+	wakaba_krdesc.entries.CR = include("wakaba_krdesc.legacy_descriptions.community_remix_2024")
+	wakaba_krdesc.entries.SACRED_DREAMS = include("wakaba_krdesc.legacy_descriptions.sacred_dreams")
+	wakaba_krdesc.entries.TAINTED_TREASURE = include("wakaba_krdesc.legacy_descriptions.tainted_treasure")
+	wakaba_krdesc.entries.MATT_PACK = include("wakaba_krdesc.legacy_descriptions.matt_pack")
+	wakaba_krdesc.entries.KIRBY = include("wakaba_krdesc.legacy_descriptions.kirby")
+	wakaba_krdesc.entries.LOST_AND_FORGOTTEN = include("wakaba_krdesc.legacy_descriptions.lost_and_forgotten")
+	--wakaba_krdesc.entries.FOKS_BOOSTER_PACK = include("wakaba_krdesc.legacy_descriptions.foks_booster_pack")
+	wakaba_krdesc.entries.AURI = include("wakaba_krdesc.legacy_descriptions.auri")
+	wakaba_krdesc.entries.ITEMJAM_1 = include("wakaba_krdesc.legacy_descriptions.itemjam_1")
 end
 
 function wakaba_krdesc:ModsLoaded_MakeEntries()
@@ -192,7 +198,7 @@ local function checkStartOfRunWarnings()
 
 		if wakaba_krdesc.ERROR_NO_REQ then
 			display = true
-			str = "!!! {{ColorRed}}REPENTOGON이 적용/설치되지 않았습니다.#!!! {{ColorRed}}REPENTOGON을 설치하기 전까지 모드 설명이 한글로 표시되지 않습니다."
+			str = "!!! {{ColorRed}}REPENTOGON+가 적용/설치되지 않았습니다.#!!! {{ColorRed}}REPENTOGON+를 설치하기 전까지 모드 설명이 한글로 표시되지 않습니다."
 		elseif #wakaba_krdesc.ERRORS > 0 then
 			display = true
 			for _, err in ipairs(wakaba_krdesc.ERRORS) do
@@ -239,14 +245,14 @@ local function checkStartOfRunWarnings()
 end
 mod:AddCallback(ModCallbacks.MC_POST_RENDER, checkStartOfRunWarnings)
 
-local managedTable = comb
+local managedTable = {}
 local managedTable2 = {} ---@type table<string, table<string, WakabaDescriptionEntry>>
 
 wakaba_krdesc.managedTable = managedTable
 wakaba_krdesc.managedTable2 = managedTable2
 
 if _wakaba and _wakaba.intversion < 21900 then
-	for modEntry, e in pairs(wakaba_krdesc_entries) do
+	for modEntry, e in pairs(wakaba_krdesc.entries) do
 		if e and e.targetMod then
 			if e.birthright then
 				for p, b in pairs(e.birthright) do
@@ -319,7 +325,7 @@ wakaba_krdesc:AddPriorityCallback(ModCallbacks.MC_POST_MODS_LOADED, CallbackPrio
 	local ic = Isaac.GetItemConfig()
 
 	-- 신규 설명 데이터
-	for mod, modEntries in pairs(managedTable2) do
+	for modKey, modEntries in pairs(managedTable2) do
 		for key, itemDesc in pairs(modEntries) do
 			for k, v in pairs(itemDesc) do
 				if type(itemDesc[k]) == "string" then
@@ -334,9 +340,13 @@ wakaba_krdesc:AddPriorityCallback(ModCallbacks.MC_POST_MODS_LOADED, CallbackPrio
 			-- 어펜드 설명 추가
 			if d ~= "append" then
 				local appendDescs = itemDesc.AppendEntries
+				if type(appendDescs) == "string" then
+					appendDescs = {appendDescs}
+				end
+				---@cast appendDescs string[]?
 				if appendDescs then
-					for _, key in ipairs(appendDescs) do
-						local entry = modEntries[key]
+					for _, appendKey in ipairs(appendDescs) do
+						local entry = modEntries[appendKey]
 						if entry and entry.Description then
 							itemDesc.Description = itemDesc.Description .. entry.Description
 						end
@@ -347,61 +357,67 @@ wakaba_krdesc:AddPriorityCallback(ModCallbacks.MC_POST_MODS_LOADED, CallbackPrio
 			local t, v, s, fallback = spliceKey(key)
 			if not (t and v and s) then
 			elseif d == "transformation" then
-				EID:addEntity(t, v, s, n, itemDesc.Description, lang)
-				EID:createTransformation(itemDesc.TransKey, n, lang)
+				EID:addEntity(t, v, s, n, itemDesc.Description, "ko_kr")
+				EID:createTransformation(itemDesc.TransKey, n, "ko_kr")
 			elseif d == "player" then
 				-- Reminder Desc
 				local shortDesc = itemDesc.Short
-				EID:addCharacterInfo(s, shortDesc, n, lang)
+				EID:addCharacterInfo(s, shortDesc, n, "ko_kr")
 				-- Birthright
 				local brDesc = itemDesc.Birthright
-				EID:addBirthright(s, brDesc, n, lang)
+				EID:addBirthright(s, brDesc, n, "ko_kr")
 				-- Inventory Desc
-				local idDesc = itemDesc.Description
-				EID:addEntity(wakaba.INVDESC_TYPE_PLAYER, wakaba.INVDESC_VARIANT, s, n, idDesc, lang)
+				if InventoryDescriptions then
+					local idDesc = itemDesc.Description
+					EID:addEntity(InvDescEIDType.PLAYER, InvDescEIDVariant.DEFAULT, s, n, idDesc, "ko_kr")
+				end
 			elseif d == "collectible" then
-				local itemConf = conf:GetCollectible(s)
-				local desc = wakaba:isInsaneItemMode() and itemDesc.Insane or itemDesc.Description
-				EID:addCollectible(s, desc, n, lang)
+				local itemConf = ic:GetCollectible(s)
+				local desc = itemDesc.Description
+				EID:addCollectible(s, desc, n, "ko_kr")
 				-- Car Battery
-				EID.descriptions[lang].carBattery[s] = itemDesc.CarBattery
+				if type(itemDesc.CarBattery) == "boolean" and itemDesc.CarBattery == false then
+					EID.CarBatteryNoSynergy[s] = true
+				else
+					EID.descriptions["ko_kr"].carBattery[s] = itemDesc.CarBattery
+				end
 				-- BFFS
-				EID.descriptions[lang].BFFSSynergies["5.100."..s] = itemDesc.BFFS
+				EID.descriptions["ko_kr"].BFFSSynergies["5.100."..s] = itemDesc.BFFS
 				-- Belial
-				EID.descriptions[lang].bookOfBelialBuffs[s] = itemDesc.Belial
+				EID.descriptions["ko_kr"].bookOfBelialBuffs[s] = itemDesc.Belial
 				-- Binge
-				EID.descriptions[lang].bingeEaterBuffs[s] = itemDesc.Binge
+				EID.descriptions["ko_kr"].bingeEaterBuffs[s] = itemDesc.Binge
 				-- TODO Book of Virtues
-				EID.descriptions[lang].bookOfVirtuesWisps[s] = itemDesc.Wisp
+				EID.descriptions["ko_kr"].bookOfVirtuesWisps[s] = itemDesc.Wisp
 				-- TODO Abyss
-				EID.descriptions[lang].abyssSynergies[s] = itemDesc.Abyss
+				EID.descriptions["ko_kr"].abyssSynergies[s] = itemDesc.Abyss
 				-- TODO Duplicate
 				if type(itemDesc.Duplicate) == "string" then
-					EID.descriptions[lang].ConditionalDescs["5.100."..s.." (Copies)"] = itemDesc.Duplicate
+					EID.descriptions["ko_kr"].ConditionalDescs["5.100."..s.." (Copies)"] = itemDesc.Duplicate
 				end
 			elseif d == "trinket" then
 				local desc = itemDesc.Description
-				EID:addTrinket(s, desc, n, lang)
+				EID:addTrinket(s, desc, n, "ko_kr")
 				-- TODO Golden Trinket Data
-				EID.descriptions[lang].goldenTrinketData = itemDesc.GoldenTrinketData
-				EID.descriptions[lang].goldenTrinketEffects = itemDesc.Golden
+				EID.descriptions["ko_kr"].goldenTrinketData = itemDesc.GoldenTrinketData
+				EID.descriptions["ko_kr"].goldenTrinketEffects = itemDesc.Golden
 			elseif d == "card" then
 				local desc = itemDesc.Description
-				EID:addCard(s, desc, n, lang)
-				EID.descriptions[lang].tarotClothBuffs[s] = itemDesc.Tarot
+				EID:addCard(s, desc, n, "ko_kr")
+				EID.descriptions["ko_kr"].tarotClothBuffs[s] = itemDesc.Tarot
 			elseif d == "pill" then
 				local desc = itemDesc.Description
-				EID:addPill(s, desc, n, lang)
+				EID:addPill(s, desc, n, "ko_kr")
 				if itemDesc.Horse then
 					local horse = itemDesc.Horse
-					EID:addHorsePill(s, horse, n, lang)
+					EID:addHorsePill(s, horse, n, "ko_kr")
 				end
 			elseif d == "curse" then
 				local desc = itemDesc.Description
-				EID:addEntity(wakaba.INVDESC_TYPE_CURSE, wakaba.INVDESC_VARIANT, s, n, desc, lang)
+				EID:addEntity(InvDescEIDType.CURSE, InvDescEIDVariant.DEFAULT, s, n, desc, "ko_kr")
 			else
-				local desc = wakaba:isInsaneItemMode() and itemDesc.Insane or itemDesc.Description
-				EID:addEntity(t, v, s, n, desc, lang)
+				local desc = itemDesc.Description
+				EID:addEntity(t, v, s, n, desc, "ko_kr")
 				EID:AddIconToObject(t, v, s, itemDesc.Icon)
 			end
 
@@ -415,7 +431,7 @@ wakaba_krdesc:AddPriorityCallback(ModCallbacks.MC_POST_MODS_LOADED, CallbackPrio
 	if Encyclopedia then goto skipItemName end
 
 	-- 신규 설명 데이터
-	for mod, modEntries in pairs(managedTable2) do
+	for modKey, modEntries in pairs(managedTable2) do
 		for key, v in pairs(modEntries) do
 
 		end
