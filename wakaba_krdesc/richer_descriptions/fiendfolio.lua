@@ -26,11 +26,11 @@ EID._currentMod = "Fiend Folio"
 ---@type table<string, WakabaDescriptionEntry>
 local entries = {
 	--#region APPENDS
-	--#region
+	--#region MISC
 	["FF_APPEND_IMMORAL_HEART"] = {
 		_descType = "append",
 		Description = [[
-			{{ffImmoralHeart}} {{ColorOrange}}이모럴하트 : {{ColorGray}}피격 시 소지 중 {{ffImmoralHeart}}가 Fiend의 부하로 바뀌며;
+			{{ffImmoralHeart}} {{ColorOrange}}이모럴하트: {{ColorGray}}피격 시 소지 중 {{ffImmoralHeart}}가 Fiend의 부하로 바뀌며;
 			>>> {{ColorGray}}바뀐 부하는 방 클리어 시 다시 {{ffImmoralHeart}} 픽업으로 변환
 		]],
 	},
@@ -43,13 +43,38 @@ local entries = {
 	["FF_APPEND_COPPER_BOMB"] = {
 		_descType = "append",
 		Description = [[
-			{{ffCopperBomb}} {{ColorOrange}}구리폭탄 : {{ColorGray}}폭탄이 불발하거나 범위가 큰 폭발을 일으킴
+			{{ffCopperBomb}} {{ColorOrange}}구리폭탄: {{ColorGray}}폭탄이 불발하거나 범위가 큰 폭발을 일으킴
 		]],
 	},
 	["FF_APPEND_SPICY_KEY"] = {
 		_descType = "append",
 		Description = [[
-			{{ffSpicyKey}} {{ColorOrange}}매운열쇠 : {{ColorGray}}획득 시 체력 반칸의 피해
+			{{ffSpicyKey}} {{ColorOrange}}매운열쇠: {{ColorGray}}열쇠를 추가로 획득하나, 체력 반칸의 피해
+		]],
+	},
+	["FF_APPEND_SKUZZES"] = {
+		_descType = "append",
+		Description = [[
+			{{ColorOrange}}벼룩: {{ColorGray}}적을 향해 점프하며, 착지 상태에서만 피해를 줄 수 있습니다.
+		]],
+	},
+	["FF_APPEND_MORBID_HEART"] = {
+		_descType = "append",
+		Description = [[
+			{{ffMorbidHeart}} {{ColorOrange}}종양하트: {{ColorGray}}3회 피격 시 사라짐, 빨간하트로 회복 가능
+			>>> {{ColorGray}}종양하트가 사라지면 임시 공전형 패밀리어 소환
+		]],
+	},
+	["FF_APPEND_TOKENS"] = {
+		_descType = "append",
+		Description = [[
+			{{ffToken}} {{ColorOrange}}토큰: {{ColorGray}}가장 최근에 획득한 픽업을 다시 획득
+		]],
+	},
+	["FF_APPEND_DIRE_CHEST"] = {
+		_descType = "append",
+		Description = [[
+			{{ffDireChest}} {{ColorOrange}}장난상자: {{ColorGray}}
 		]],
 	},
 	--#endregion
@@ -57,91 +82,92 @@ local entries = {
 	["FF_APPEND_BERSERK"] = {
 		_descType = "append",
 		Description = [[
-			{{ffBerserk}} {{ColorOrange}}폭주 : {{ColorGray}}공격 목표를 수시로 바꾸고 추가 피해를 받으나 더 빠르게 행동
+			{{ffBerserk}} {{ColorOrange}}폭주: {{ColorGray}}공격 목표를 수시로 바꾸고 추가 피해를 받으나 더 빠르게 행동
 		]],
 	},
 	["FF_APPEND_BRUISE"] = {
 		_descType = "append",
 		Description = [[
-			{{ffBruise}} {{ColorOrange}}명듦 : {{ColorGray}}해당 상태 중첩 수만큼 추가 피해
+			{{ffBruise}} {{ColorOrange}}명듦: {{ColorGray}}해당 상태 중첩 수만큼 추가 피해
 		]],
 	},
 	["FF_APPEND_DOOM"] = {
 		_descType = "append",
 		Description = [[
-			{{ffDoom}} {{ColorOrange}}둠 : {{ColorGray}}명중 시마다 카운트가 감소
+			{{ffDoom}} {{ColorOrange}}둠: {{ColorGray}}명중 시마다 카운트가 감소
 			{{Blank}} {{ColorGray}}카운트가 0이 될 때 추가 피해 + 상태 제거
 		]],
 	},
 	["FF_APPEND_DROWSY"] = {
 		_descType = "append",
 		Description = [[
-			{{ffSleeping}} {{ColorOrange}}나른함 : {{ColorGray}}서서히 둔화되며 잠듦
+			{{ffSleeping}} {{ColorOrange}}나른함: {{ColorGray}}서서히 둔화되며 잠듦
 			{{Blank}} {{ColorGray}}잠든 적 명중 시 추가 피해 + 상태 제거
 		]],
 	},
 	["FF_APPEND_HEMORRHAGE"] = {
 		_descType = "append",
 		Description = [[
-			{{ffHemorrhage}} {{ColorOrange}}대출혈 : {{ColorGray}}주기적으로 피해를 받고 붉은 장판을 깔며 랜덤 방향으로 핏방울을 흩뿌림
+			{{ffHemorrhage}} {{ColorOrange}}대출혈: {{ColorGray}}주기적으로 피해를 받고 붉은 장판을 깔며 랜덤 방향으로 핏방울을 흩뿌림
 		]],
 	},
 	["FF_APPEND_MARTYR"] = {
 		_descType = "append",
 		Description = [[
-			{{ffMartyr}} {{ColorOrange}}순교 : {{ColorGray}}처치 시 오라와 함께 5초동안 행동불능
+			{{ffMartyr}} {{ColorOrange}}순교: {{ColorGray}}처치 시 오라와 함께 5초동안 행동불능
 			{{Blank}} {{ColorGray}}오라 안에 있는 캐릭터는 {{DamageSmall}}/{{TearsSmall}} 증가 + 유도공격 + 50%의 확률로 피해 무시
 		]],
 	},
 	["FF_APPEND_SEW"] = {
 		_descType = "append",
 		Description = [[
-			{{ffSew}} {{ColorOrange}}귀속 : {{ColorGray}}피해를 받으면 다른 귀속된 적도 같이 피해
+			{{ffSew}} {{ColorOrange}}귀속: {{ColorGray}}피해를 받으면 다른 귀속된 적도 같이 피해
 		]],
 	},
 	["FF_APPEND_MULTIEUCLIDEAN"] = {
 		_descType = "append",
 		Description = [[
-			{{ffMultieuclidean}} {{ColorOrange}}기하 : {{ColorGray}}공격이 해당 적을 관통
+			{{ffMultieuclidean}} {{ColorOrange}}기하: {{ColorGray}}공격이 해당 적을 관통
 			{{Blank}} {{ColorGray}}관통 시 공격이 2개로 복제 + 유도공격
 		]],
 	},
 	["FF_APPEND_EXCOMMUNICATED"] = {
 		_descType = "append",
 		Description = [[
-			{{ffBruise}} {{ColorOrange}}명듦 : {{ColorGray}}Excommunicated enemies are teleported away for a short time
-			Upon teleporting back, they and nearby enemies take damage
+			{{ffExCommunicated}} {{ColorOrange}}추방: {{ColorGray}}Excommunicated enemies are teleported away for a short time
+			{{Blank}} {{ColorGray}}Upon teleporting back, they and nearby enemies take damage
 		]],
 	},
 	["FF_APPEND_OVERLOADED"] = {
 		_descType = "append",
 		Description = [[
-			{{ffBruise}} {{ColorOrange}}명듦 : {{ColorGray}}Overloaded enemies short-circuit and fire short-ranged lasers around themselves
-			Enemies hit by the lasers have a chance to become overloaded
+			{{ffOverloaded}} {{ColorOrange}}과부하: {{ColorGray}}주기적으로 피해를 받으며 전류 레이저를 방출
+			{{Blank}} {{ColorGray}}과부하 전류에 맞은 적도 과부하에 걸릴 수 있음
 		]],
 	},
 	["FF_APPEND_MUGGED"] = {
 		_descType = "append",
 		Description = [[
-			{{ffBruise}} {{ColorOrange}}명듦 : {{ColorGray}}Mugged enemies drop lil' pennies
+			{{ffMugged}} {{ColorOrange}}머그: {{ColorGray}}처치 시 리틀 페니 드랍
+			{{Blank}} {{ColorGray}}리틀 페니 10개 획득 시 1{{Coin}}
 		]],
 	},
 	["FF_APPEND_PACIFIED"] = {
 		_descType = "append",
 		Description = [[
-			{{ffBruise}} {{ColorOrange}}명듦 : {{ColorGray}}Pacified enemies are unable to deal damage to Isaac
+			{{ffPacified}} {{ColorOrange}}진정: {{ColorGray}}캐릭터에게 피해를 줄 수 없음
 		]],
 	},
 	["FF_APPEND_NURSING"] = {
 		_descType = "append",
 		Description = [[
-			{{ffBruise}} {{ColorOrange}}명듦 : {{ColorGray}}Nursing enemies heal Isaac when he would normally deal damage
+			{{ffNursing}} {{ColorOrange}}치유: {{ColorGray}}캐릭터에게 주는 피해가 반전됨 (반칸 피해 -> 반칸 회복)
 		]],
 	},
 	["FF_APPEND_GLEAMING"] = {
 		_descType = "append",
 		Description = [[
-			{{ffBruise}} {{ColorOrange}}명듦 : {{ColorGray}}Gleaming enemies have an aura that inflicts nearby enemies with other status effects
+			{{ffGleaming}} {{ColorOrange}}광택: {{ColorGray}}주변의 다른 적에게 다른 상태이상 전이
 		]],
 	},
 	--#endregion
@@ -203,14 +229,14 @@ local entries = {
 		]],
 		Description = [[
 			골렘은 오래 전 The Devil's Harvest 모드와 색돌에서 유래하였습니다.
-			{{Trinket}} 장신구 등장 시 확률적으로 석기 장신구나 룬으로 바뀝니다.
+			{{Trinket}} 장신구 등장 시 확률적으로 석기류나 룬으로 바뀝니다.
 			{{Collectible139}} 장신구를 처음부터 2개를 동시에 들고 다닐 수 있습니다.
-			{{Trinket}} 비밀방 진입 및 보스방 클리어 시 석기 장신구를 추가로 드랍합니다.
+			{{Trinket}} 비밀방 진입 및 보스방 클리어 시 석기류를 추가로 드랍합니다.
 			주요 특수방에서 서브웨이라는 특수방으로 이동할 수 있으며 서브웨이에서는 각 특수방별 숏컷 및 여러 보조 동료가 있습니다.
 		]],
 		Birthright = [[
 			{{LuckSmall}} 행운 +2
-			색돌 파괴 시 소울하트 대신 석기 장신구를 드랍합니다.
+			색돌 파괴 시 소울하트 대신 석기류를 드랍합니다.
 		]],
 		BirthrightQuote = "단단해진 색돌 + 행운 증가",
 	},
@@ -225,15 +251,15 @@ local entries = {
 			The Artisan: 
 			{{SoulHeart}} 최대 체력 = 소울하트의 보정을 받습니다.
 			{{Collectible139}} 장신구를 처음부터 2개를 동시에 들고 다닐 수 있습니다.
-			{{Trinket}} 비밀방 진입 시 석기 장신구를 추가로 드랍합니다.
-			{{Collectible}} {{TreasureRoom}}/{{BossRoom}} 아이템 등장 시 석기 장신구로 바뀝니다.
+			{{Trinket}} 비밀방 진입 시 석기류를 추가로 드랍합니다.
+			{{Collectible}} {{TreasureRoom}}/{{BossRoom}} 아이템 등장 시 석기류로 바뀝니다.
 			주요 특수방에서 서브웨이라는 특수방으로 이동할 수 있으며 서브웨이에서는 각 특수방별 숏컷 및 여러 보조 동료가 있습니다.
 			!!! 패널티 피격 시 확률적으로 소지 중인 장신구가 강제로 버려지거나 파괴됩니다.
 			{{Collectible]]..FiendFolio.ITEM.COLLECTIBLE.OVERCLOCK..[[}} 고유 능력 : 오버클럭
 		]],
 		Birthright = [[
 			{{Collectible]]..FiendFolio.ITEM.COLLECTIBLE.OVERCLOCK..[[}} Overclock 사용 시 그 방에서 근접 공격을 추가로 합니다.
-			근접 공격으로 장애물을 부술 수 있으며 이 공격으로 부순 장애물은 확률적으로 석기 장신구를 드랍합니다.
+			근접 공격으로 장애물을 부술 수 있으며 이 공격으로 부순 장애물은 확률적으로 석기류를 드랍합니다.
 		]],
 		BirthrightQuote = "되찾아라",
 	},
@@ -923,9 +949,9 @@ local entries = {
 		Name = "골렘의 맷돌",
 		QuoteDesc = "장신구 분해기",
 		Description = [[
-			획득 시 석기 장신구를 소환합니다.
-			사용 시 현재 소지 중인 장신구를 빻아 석기 장신구를 소환합니다.
-			석기 장신구는 일반적으로 등장하지 않으며 Golem 캐릭터 플레이 시에만 등장하는 특수 장신구입니다.
+			획득 시 석기류를 소환합니다.
+			사용 시 현재 소지 중인 장신구를 빻아 석기류를 소환합니다.
+			석기류는 일반적으로 등장하지 않으며 Golem 캐릭터 플레이 시에만 등장하는 특수 장신구입니다.
 		]],
 		Tests = {
 			"Spawns a Golem trinket on pickup",
@@ -3614,7 +3640,7 @@ local entries = {
 		AppendEntries = {
 			"FF_APPEND_TOKENS",
 		},
-		BFFS = 10, 8,
+		BFFS = {10, 8},
 	},
 	[ITEM..FiendFolio.ITEM.COLLECTIBLE.GREEN_ORANGE] = {
 		_descType = "collectible",
@@ -3935,7 +3961,7 @@ local entries = {
 		Name = "오버클럭",
 		QuoteDesc = "",
 		Description = [[
-			{{Trinket}} 20초간 그 방에서 소지 중인 석기 장신구를 강화시키며 흡수 패널티를 제거합니다.
+			{{Trinket}} 20초간 그 방에서 소지 중인 석기류를 강화시키며 흡수 패널티를 제거합니다.
 		]],
 		CarBattery = {20, 40},
 	},
@@ -7310,11 +7336,3328 @@ local entries = {
 	--#endregion
 
 	--#region TRINKETS
-	--#region HARVEST TRINKETS
-	--#endregion
 	--#region REHEATED TRINKETS
+	[TRINKET..FiendFolio.ITEM.TRINKET.SHARD_OF_CHINA] = {
+		_descType = "trinket",
+		Name = "차이나의 조각",
+		QuoteDesc = "나를 재조립",
+		Description = [[
+			체력이 없거나 꽉 찬 상태에서 빨간하트 습득 시 특수 체력 게이지가 채워집니다.
+			{{DamageSmall}} 채워진 게이지 1칸 당 공격력 +1.5
+			게이지 완충 시 자동으로 흡수됩니다.
+			특수 체력 게이지는 {{ButtonRT}}버튼을 꾹 누르거나 빨간하트 근처에 있을 때 캐릭터 위에 표시됩니다.
+		]],
+		Tests = {
+			"Overhealing charges a secondary health bar",
+			"{{Damage}} Filling this health bar accumulates a damage boost up to +1.5 Damage for each heart filled",
+			"Auto-smelts once the bar is completely filled",
+			"This health bar can be viewed by viewing the map"
+		},
+		Golden = {
+			TargetMultipliers = {
+				1.5,
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.BIFURCATED_STARS] = {
+		_descType = "trinket",
+		Name = "찢어진 별",
+		QuoteDesc = "보스에게 찾아가라, 그리고 보상을 받아가라",
+		Description = [[
+			{{BossRoom}} 맵에 보스방의 위치가 표시됩니다.
+			{{TreasureRoom}} 보스방 클리어 시 보스방 출구가 보물방으로 향하게 바뀝니다.
+		]],
+		Tests = {
+			"Reveals the {{BossRoom}} Boss Room on the map",
+			"The Boss Room exit door is replaced with a door to the {{TreasureRoom}} Treasure Room after the room is cleared"
+		},
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.FORTUNE_WORM] = {
+		_descType = "trinket",
+		Name = "운세 지렁이",
+		QuoteDesc = "어쩌구 저쩌구",
+		Description = [[
+			↑ {{ShotspeedSmall}}탄속 +0.2
+			↑ {{LuckSmall}}행운 +2
+			1%의 확률로 적에게 명중 시 운세를 보여주는 공격력 x1.05의 포춘쿠키를 발사합니다.
+			{{LuckSmall}} 행운 18+일 때 33%
+		]],
+		Tests = {
+			"↑ +0.2 Shot speed",
+			"↑ +2 Luck",
+			"1% chance to fire a fortune worm tear that does x1.05 damage",
+			"{{Luck}} 33% chance at 18 luck"
+		},
+		Golden = {
+			TargetMultipliers = {
+				0.2,
+				2,
+				1,
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.FOOLS_GOLD] = {
+		_descType = "trinket",
+		Name = "바보를 위한 금덩이",
+		QuoteDesc = "돈을 더 원해?",
+		Description = [[
+			{{ffCursedPenny}} 방 클리어 보상이 7%의 확률로 저주페니로 바뀝니다.
+			{{LuckSmall}} 행운 14+일 때 100%
+		]],
+		Tests = {
+			"{{ffCursedPenny}} 7% chance for Cursed Pennies to drop on room clear",
+			"{{Luck}} 100% chance at 14 luck"
+		},
+		AppendEntries = {
+			"FF_APPEND_CURSED_PENNY",
+		},
+		Golden = {
+			TargetMultipliers = {
+				7
+			},
+		},
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.EXTRA_VESSEL] = {
+		_descType = "trinket",
+		Name = "추가 그릇",
+		QuoteDesc = "체력 증가",
+		Description = [[
+			소지 시 임시 체력의 역할을 합니다.
+			{{DevilChanceSmall}} 악마방 확률에 영향 없음
+			{{EmptyHeart}} 현재 비어 있음
+		]],
+		Tests = {
+			"{{EmptyHeart}} Stores an extra heart",
+			"{{DevilChance}} Does not count against Devil Deal chance"
+		},
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.HALF_VESSEL] = {
+		_descType = "trinket",
+		Name = "추가 그릇",
+		QuoteDesc = "체력 증가",
+		Description = [[
+			소지 시 임시 체력의 역할을 합니다.
+			{{DevilChanceSmall}} 악마방 확률에 영향 없음
+			{{HalfHeart}} 현재 반칸 채워짐
+		]],
+		Tests = {
+			"{{HalfHeart}} Stores an extra heart",
+			"{{DevilChance}} Does not count against Devil Deal chance"
+		},
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.FULL_VESSEL] = {
+		_descType = "trinket",
+		Name = "추가 그릇",
+		QuoteDesc = "체력 증가",
+		Description = [[
+			소지 시 임시 체력의 역할을 합니다.
+			{{DevilChanceSmall}} 악마방 확률에 영향 없음
+			{{FullHeart}} 현재 한칸 채워짐
+		]],
+		Tests = {
+			"{{Heart}} Stores an extra heart",
+			"{{DevilChance}} Does not count against Devil Deal chance"
+		},
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.CHILI_POWDER] = {
+		_descType = "trinket",
+		Name = "칠리 파우더",
+		QuoteDesc = "그 시절의 뜨거운 열쇠고리",
+		Description = [[
+			{{ffSpicyKey}} 모든 열쇠를 매운열쇠로 바꿉니다.
+		]],
+		Tests = {
+			"{{ffSpicyKey}} Key pickups are turned into spicy keys"
+		},
+		AppendEntries = {
+			"FF_APPEND_SPICY_KEY",
+		},
+		Golden = {
+			FullReplace = {
+				"{{ffSpicyKey}} Key pickups are turned into spicy keys#{{ColorGold}}{{Warning}} Spicy Keys transform into Super Spicy Keys which give three keys, but damage Isaac for a full heart#{{ColorGold}}{{ffSpicyKey}} Super Spicy Keys transform into Quadruple Super Spicy Keys",
+			},
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.GMO_PENNY] = {
+		_descType = "trinket",
+		Name = "GMO 페니",
+		QuoteDesc = "알약 부자",
+		Description = [[
+			동전을 주울 시 5%의 확률로 랜덤 알약을 강제로 사용합니다.
+			{{LuckSmall}} 행운 95+일 때 100%
+		]],
+		Tests = {
+			"Picking up a coin has a 5% chance to consume a pill",
+			"{{Luck}} 100% chance at 95 luck"
+		},
+		Golden = {
+			TargetMultipliers = {
+				5,
+			},
+			TargetStrings = {
+				"a pill",
+				"2 pills",
+				"3 pills",
+				"4 pills",
+			},
+		},
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.MOLTEN_PENNY] = {
+		_descType = "trinket",
+		Name = "녹아내리는 페니",
+		QuoteDesc = "일한 만큼의 대가",
+		Description = [[
+			동전을 주울 시 2%의 확률로 소지 중인 장신구를 흡수합니다.
+			{{LuckSmall}} 행운 196+일 때 100%
+		]],
+		Tests = {
+			"Picking up a coin has a 2% chance to smelt a trinket",
+			"{{Luck}} 100% chance at 196 luck"
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.BLOODY_SANDPAPER] = {
+		_descType = "trinket",
+		Name = "피 묻은 사포",
+		QuoteDesc = "멈춰!",
+		Description = [[
+			캐릭터의 이동 관성을 제거하여 이동키를 떼면 즉시 멈춥니다.
+		]],
+		Tests = {
+			"Isaac no longer has movement momentum",
+		},
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.RIGHT_HAND] = {
+		_descType = "trinket",
+		Name = "오른손목",
+		QuoteDesc = "빛의 보상을 거두어들이다",
+		Description = [[
+			{{EternalChest}} 상자가 33%의 확률로 이터널 상자로 교체됩니다.
+		]],
+		Tests = {
+			"{{HolyChestRoomIcon}} Chests have a 33% chance of becoming Eternal Chests"
+		},
+		Golden = {
+			TargetStrings = {
+				"33",
+				"50",
+				"50",
+				"50",
+			},
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.RED_RIBBON] = {
+		_descType = "trinket",
+		Name = "빨간 리본",
+		QuoteDesc = "영원 2배",
+		Description = [[
+			{{ffFullEternalHeart}} 이터널하트 반칸 픽업을 한칸 픽업으로 바꿉니다.
+			{{Heart}} 한칸짜리 이터널하트 획득 즉시 최대 체력 +1
+		]],
+		Tests = {
+			"{{ffFullEternalHeart}} Half Eternal Hearts become Full Eternal Hearts"
+		},
+		Golden = {
+			FullReplace = {
+				"{{ffFullEternalHeart}} {{ColorGold}} All Eternal Hearts become Double Full Eternal Hearts"
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.FLEA_MELTDOWN] = {
+		_descType = "trinket",
+		Name = "붕괴의 벼룩",
+		QuoteDesc = "붕괴를 초래",
+		Description = [[
+			{{Burning}} 방 입장 시 적에게 공격력 x3의 화상 피해를 주는 주황색 아군 벼룩을 소환합니다.
+		]],
+		Tests = {
+			"Entering a hostile room spawns an Orange Skuzz",
+			"{{Burning}} This skuzz does 3x Isaac's damage and will ignite enemies"
+		},
+		Golden = {
+			TargetStrings = {
+				"an Orange Skuzz",
+				"2 Orange Skuzzes",
+				"3 Orange Skuzzes",
+				"4 Orange Skuzzes",
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.FLEA_DELUGE] = {
+		_descType = "trinket",
+		Name = "홍수의 벼룩",
+		QuoteDesc = "홍수를 초래",
+		Description = [[
+			방 입장 시 적에게 공격력 x3의 피해 + 8방향으로 눈물을 흩뿌리는 푸른색 아군 벼룩을 소환합니다.
+		]],
+		Tests = {
+			"Entering a hostile room spawns an Cyan Skuzz",
+			"This skuzz does 3x Isaac's damage and will leave damaging creep"
+		},
+		Golden = {
+			TargetStrings = {
+				"an Cyan Skuzz",
+				"2 Cyan Skuzzes",
+				"3 Cyan Skuzzes",
+				"4 Cyan Skuzzes",
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.FLEA_POLLUTION] = {
+		_descType = "trinket",
+		Name = "오염의 벼룩",
+		QuoteDesc = "오염을 초래",
+		Description = [[
+			{{Slow}} 방 입장 시 적에게 공격력 x3의 둔화 피해를 주는 보라색 아군 벼룩을 소환합니다.
+		]],
+		Tests = {
+			"Entering a hostile room spawns an Purple Skuzz",
+			"{{Slow}} This skuzz does 3x Isaac's damage and will slow enemies"
+		},
+		Golden = {
+			TargetStrings = {
+				"an Purple Skuzz",
+				"2 Purple Skuzzes",
+				"3 Purple Skuzzes",
+				"4 Purple Skuzzes",
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.FLEA_PROPAGANDA] = {
+		_descType = "trinket",
+		Name = "선전의 벼룩",
+		QuoteDesc = "선전을 초래",
+		Description = [[
+			{{Charm}} 방 입장 시 적에게 공격력 x3의 매혹 피해를 주는 보라색 아군 벼룩을 소환합니다.
+		]],
+		Tests = {
+			"Entering a hostile room spawns an Beige Skuzz",
+			"{{Charm}} This skuzz does 3x Isaac's damage and will charm enemies"
+		},
+		Golden = {
+			TargetStrings = {
+				"an Beige Skuzz",
+				"2 Beige Skuzzes",
+				"3 Beige Skuzzes",
+				"4 Beige Skuzzes",
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.FUZZY_PENNY] = {
+		_descType = "trinket",
+		Name = "털 많은 페니",
+		QuoteDesc = "벼룩 부자",
+		Description = [[
+			동전을 주울 시 아군 자폭 벼룩을 소환합니다.
+		]],
+		Tests = {
+			"Picking up a coin spawns a Blue Skuzz"
+		},
+		Golden = {
+			TargetStrings = {
+				"a Blue Skuzz",
+				"2 Blue Skuzzes",
+				"3 Blue Skuzzes",
+				"4 Blue Skuzzes"
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.CHUNK_OF_TAR] = {
+		_descType = "trinket",
+		Name = "타르 덩이",
+		QuoteDesc = "진흙 친구",
+		Description = [[
+			방 진입 시 아군 blot을 1~3마리 소환합니다.
+		]],
+		Tests = {
+			"Spawns 3 friendly Blots when entering a room with enemies"
+		},
+		Golden = {
+			TargetStrings = {
+				"3",
+				"5",
+				"7",
+				"9",
+			},
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.FORTUNE_GRUB] = {
+		_descType = "trinket",
+		Name = "운세 애벌레",
+		QuoteDesc = "점술기계의 속삭임",
+		Description = [[
+			↑ {{LuckSmall}}행운 +1
+			거지 및 슬롯머신이 보답을 내놓을 시 운세를 같이 표시합니다.
+		]],
+		Tests = {
+			"↑ +1 Luck",
+			"All beggars and slot machines will display a fortune alongside their possible payouts"
+		},
+		Golden = {
+			TargetStrings = {
+				"1",
+				"2",
+				"3",
+				"4",
+			},
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.JIGSAW_PUZZLE_BOX] = {
+		_descType = "trinket",
+		Name = "직소 퍼즐 상자",
+		QuoteDesc = "조각은 잃어버리기 마련",
+		Description = [[
+			]]..FiendFolio.DescriptionIcons.PuzzlePiece..[[ 스테이지 진입 시 Puzzle Piece를 소환합니다. (일회용)
+			]]..FiendFolio.DescriptionIcons.PuzzlePiece..[[ 20%의 확률로 카드를 Puzzle Piece로 바꿉니다.
+			!!! 퍼즐 완성 시 제거됨
+		]],
+		Tests = {
+			FiendFolio.DescriptionIcons.PuzzlePiece .. "Only once, drops a Puzzle Piece at the start of the next floor",
+			"20% chance to replace card spawns with a Puzzle Piece if one is used",
+			"{{Warning}} This trinket is removed whenever a puzzle is completed"
+		},
+		Golden = {
+			TargetMultipliers = {
+				"20",
+			},
+			TargetStrings = {
+				"a Puzzle Piece",
+				"2 Puzzle Pieces",
+				"3 Puzzle Pieces",
+				"4 Puzzle Pieces",
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.YIN_YANG_ORB] = {
+		_descType = "trinket",
+		Name = "음양 오브",
+		QuoteDesc = "유도성 부적",
+		Description = [[
+			17%의 확률로 공격력 x1.25의 강한 유도 공격이 나갑니다.
+			{{LuckSmall}} 행운 7+일 때 64%
+		]],
+		Tests = {
+			"17% chance to fire a homing tear that deals x1.25 your damage",
+			"{{Luck}} 64% chance at 7 luck"
+		},
+		Golden = {
+			TargetStrings = {
+				"x1.25",
+				"x1.75",
+				"x2.25",
+				"x2.75",
+			},
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.SWALLOWED_M90] = {
+		_descType = "trinket",
+		Name = "삼킨 M90",
+		QuoteDesc = "푸슉!",
+		Description = [[
+			피격 시 M90을 꺼내;
+			다음 공격 시 공격력 x3.5의 적을 관통하는 탄속이 빠른 눈물을 발사합니다.
+			!!! 눈물 발사 시 캐릭터가 뒤로 밀려납니다.
+		]],
+		Tests = {
+			"On hit, Isaac pulls out an M90, causing his next shot to be a fast, piercing bullet that does x3.50 damage with self-knockback"
+		},
+		Golden = {
+			TargetStrings = {
+				"x3.50",
+				"x4.50",
+				"x5.50",
+				"x6.50",
+			},
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.TRINITY_WORM] = {
+		_descType = "trinket",
+		Name = "트리니티 벌레",
+		QuoteDesc = "워 워 워!",
+		Description = [[
+			↑ {{TearsSmall}}연사 +0.4
+			↑ {{RangeSmall}}사거리 +12.5
+			눈물이 트리케트라 모양으로({{Collectible333}}) 날아갑니다.
+			공격이 장애물을 관통합니다.
+		]],
+		Tests = {
+			"↑ +0.4 Tears",
+			"↑ +12.5 Range",
+			"Spectral tears",
+			"Tears move in a holy trinity-style pattern",
+		},
+		Golden = {
+			TargetMultipliers = {
+				12.5
+			},
+		},
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.IOU] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "언젠간 돌려줄게",
+		Description = [[
+			방 클리어 시 15%의 확률로 장신구를 추가로 드랍합니다.
+			{{LuckSmall}} 행운 30+일 때 90%
+			{{Trinket}} 게임 종료(게임오버/엔딩) 시점에서 이 장신구 소지 시 다음 게임 시작 시 랜덤 장신구를 하나 소환합니다.
+		]],
+		Tests = {
+			"15% chance for a trinket to be dropped on room clear",
+			"{{Luck}} 90% chance at 30 luck",
+			"{{Trinket}} If held at the end of your run, spawns a random trinket at the start of your next run"
+		},
+		Golden = {
+			TargetMultipliers = {
+				15,
+			},
+		},
+		Conditional = function(descObj)
+			if descObj.ObjSubType == mod.ITEM.TRINKET.IOU + TrinketType.TRINKET_GOLDEN_FLAG then
+				local description = descObj.Description
+				descObj.Description = string.gsub(description, "random trinket", "random {{ColorGold}}golden trinket{{ColorText}}")
+				descObj.Description = description .. "#{{ColorGold}}10% chance for trinkets to spawn golden"
+			end
+		end,
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.AUTOPSY_KIT] = {
+		_descType = "trinket",
+		Name = "포렌식 키트",
+		QuoteDesc = "장기 수확",
+		Description = [[
+			{{Heart}}상점 주인 처치 시 동전 대신 빨간하트를 드랍합니다.
+			{{EmptyBoneHeart}} 낮은 확률로 뼈하트를 대신 드랍
+			원래 동전의 등급이 높을수록 뼈하트의 드랍률이 증가합니다.
+		]],
+		Tests = {
+			"{{Heart}} Bombed Shopkeepers will drop Red Hearts and rarely Bone Hearts instead of coins",
+			"The chance of getting higher-quality hearts increases with the quality of coins replaced"
+		},
+		Golden = {
+			Tests = {
+				"Bone hearts have a higher chance of dropping"
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.SPIRE_GROWTH] = {
+		_descType = "trinket",
+		Name = "스파이어 성장",
+		QuoteDesc = "카드의 힘",
+		Description = [[
+			{{DamageSmall}} 타로 타입 카드 사용 시 사용한 카드 번호의 숫자에 비례하여 공격력이 증가합니다.
+		]],
+		Tests = {
+			"{{Timer}} Using a card grants a damage up that scales with the number of the card, if applicable"
+		},
+		Golden = {
+			Tests = {
+				"{{Damage}} Increased damage when using cards with numbers"
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.FLEA_CIRCUS] = {
+		_descType = "trinket",
+		Name = "벼룩 서커스",
+		QuoteDesc = "감염",
+		Description = [[
+			적 처치 시 20%의 확률로 랜덤 벼룩을 소환합니다.
+		]],
+		Tests = {
+			"20% chance to spawn a random friendly Flea when an enemy is killed"
+		},
+		Golden = {
+			TargetMultipliers = {
+				20,
+			},
+		},
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.SHARP_PENNY] = {
+		_descType = "trinket",
+		Name = "뾰족한 페니",
+		QuoteDesc = "고통 부자",
+		Description = [[
+			동전을 주울 시 27%의 확률로 피격 효과를 발동합니다.
+		]],
+		Tests = {
+			"Picking up a coin has a 17% chance to hurt Isaac without removing health"
+		},
+		Golden = {
+			Tests = {
+				"Higher chance to hurt Isaac without removing health"
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.ANGRY_FAIC] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "풍부한 보스",
+		Description = [[
+			{{BossRoom}} 보스방의 보스 및 미니보스의 체력이 10% 증가합니다.
+			{{Heart}} 보스 처치 시 하트류 픽업을 추가로 드랍합니다.
+		]],
+		Tests = {
+			"Bosses and Minibosses fought in the {{BossRoom}} Boss Room will start with 10% more health",
+			"{{Heart}} Bosses and Minibosses in the {{BossRoom}} will also drop additional hearts when defeated"
+		},
+		Golden = {
+			TargetAdditives = {
+				AdditiveValues = {5, 10, 15, 20},
+				TargetNumbers = {10},
+			},
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.ETERNAL_CAR_BATTERY] = {
+		_descType = "trinket",
+		Name = "이터널 자동차 건전지",
+		QuoteDesc = "???",
+		Description = [[
+			{{Battery}} 액티브 아이템 사용 시 효과가 4~6번 발동되지만 50%의 확률로 액티브 아이템이 사라집니다.
+		]],
+		Tests = {
+			"{{Battery}} Active items are triggered 4-6 times, but have a 1/2 chance to disappear on use"
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.POCKET_DICE] = {
+		_descType = "trinket",
+		Name = "주사위 주머니",
+		QuoteDesc = "층마다 새로운 운명",
+		Description = [[
+			스테이지 진입 시 랜덤 유리 주사위 조각 2개와 동전을 하나 드랍합니다.
+		]],
+		Tests = {
+			"Drops 2 random Glass Die and a coin at the start of each floor"
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.LOCKED_SHACKLE] = {
+		_descType = "trinket",
+		Name = "잠겨있는 족쇄",
+		QuoteDesc = "모든 능력치 증가 + 열쇠가 없어",
+		Description = [[
+			!!! 제거 및 교체불가
+			↑ {{TearsSmall}}연사 +0.35
+			↑ {{DamageSmall}}공격력 +1
+			↑ {{RangeSmall}}사거리 +1
+			↑ {{ShotspeedSmall}}탄속 +0.16
+			↑ {{LuckSmall}}행운 +1
+			열쇠를 주울 시 25%의 확률로 열쇠를 강제로 소모하고 장신구를 파괴합니다.
+		]],
+		Tests = {
+			"↑ +0.35 Tears",
+			"↑ +0.35 Damage",
+			"↑ +1 Range",
+			"↑ +0.16 Shot speed",
+			"↑ +1 Luck",
+			"Picking up keys has a 25% chance to destroy the trinket and use a key",
+			"{{Warning}} Can't be dropped"
+		},
+		Golden = {
+			Tests = {
+				"Removeable!"
+			},
+			TargetMultipliers = {
+				"0.35",
+				"1",
+				"0.16",
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.SOLEMN_VOW] = {
+		_descType = "trinket",
+		Name = "굳건한 맹세",
+		QuoteDesc = "해롭지 않음",
+		Description = [[
+			{{Collectible403}} 적의 체력과 적에게 주는 피해량이 수치로 표시됩니다.
+		]],
+		Tests = {
+			"Displays tear damage and health bars of all enemies"
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.DEALMAKERS] = {
+		_descType = "trinket",
+		Name = "딜메이커",
+		QuoteDesc = "특별 거래",
+		Description = [[
+			{{Shop}}{{DevilChance}} 방 입장시마다 모든 판매 아이템의 가격이 바뀝니다.
+			일부 품목은 20%의 확률로 빠른 속도로 가격이 계속 바뀝니다.
+		]],
+		Tests = {
+			"{{Shop}}{{DevilChance}} Randomizes Shop and Devil Deal prices",
+			"20% chance for Shop and Devil Deal items to have constantly shifting prices"
+		},
+		Golden = {
+			TargetAdditives = {
+				AdditiveValues = {12, 12, 12, 12},
+				TargetNumbers = {20},
+			},
+			Tests = {
+				"Shifting prices are faster"
+			},
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.JEVILSTAIL] = {
+		_descType = "trinket",
+		Name = "제빌의 꼬리",
+		QuoteDesc = "뭐든지 할 수 있어!",
+		Description = [[
+			방 입장시마다 정해진 순서대로 특정 효과를 발동합니다.
+		]],
+		Tests = {
+			"Entering a room gives Isaac a random effect in a rotating list that can either be harmful or helpful"
+		},
+		Golden = {
+			TargetStrings = {
+				"a random effect",
+				"2 random effects",
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.PETRIFIED_GEL] = {
+		_descType = "trinket",
+		Name = "굳은 젤",
+		QuoteDesc = "운이 좋은 건가?",
+		Description = [[
+			일반 똥이 20%의 확률로 샴푸로 대체됩니다.
+			샴푸 파괴 시 랜덤 픽업을 드랍합니다.
+		]],
+		Tests = {
+			"20% chance for Poops to be replaced with Shampoo",
+			"You get better drops from destroying Shampoos"
+		},
+		Golden = {
+			TargetMultipliers = {
+				20,
+			},
+		},
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.HATRED] = {
+		_descType = "trinket",
+		Name = "혐오",
+		QuoteDesc = "더블탭 악의",
+		Description = [[
+			캐릭터와 같이 이동하며 공격하는 방향으로 캐릭터의 공격과 같은 공격을 발사합니다. ({{DamageSmall}}x0.4)
+			공격키를 두번 누르면 장애물에 부딪힐 때까지 돌진하며;
+			{{Slow}} 접촉한 적에게 피해를 주고 돌진한 자리에 적을 느려지게 하는 장판을 생성합니다.
+			{{Timer}}돌진 후 장애물에 부딪히면 사라지며 일정 시간 이후 다시 생성됩니다.
+		]],
+		Tests = {
+			"Slime familiar that mimics Isaac's movement",
+			"Copies Isaac's tear effects and fire-rate at 40% damage",
+			"{{Slow}} Fired tears also inflict Slowness",
+			"Can be fired as a piercing projectile by double tapping, also applying tear effects",
+			"{{Timer}} Respawns after a second"
+		},
+		Golden = {
+			Tests = {
+				"Spawns additional familiars",
+			},
+		},
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.FROG_PUPPET] = {
+		_descType = "trinket",
+		Name = "개구리 인형",
+		QuoteDesc = "이세계의 초록빛",
+		Description = [[
+			↑ 목숨 +1 (소진 시 장신구 제거)
+			{{Player]]..FiendFolio.PLAYER.SLIPPY..[[}} 사망 시 즉시 Slippy로 부활합니다.
+		]],
+		Tests = {
+			"↑ +1 Life",
+			"{{Player" .. FiendFolio.PLAYER.SLIPPY .. "}} On death, Isaac revives as Slippy"
+		},
+		Golden = {
+			TargetStrings = {
+				"1 Life",
+				"2 Lives",
+				"3 Lives",
+				"4 Lives",
+			},
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.TATTERED_FROG_PUPPET] = {
+		_descType = "trinket",
+		Name = "찢어진 개구리 인형",
+		QuoteDesc = "이젠 네가 초록빛이야",
+		Description = [[
+			↑ 목숨 +1 (소진 시 장신구 제거)
+			{{Player]]..FiendFolio.PLAYER.SLIPPY..[[}} 사망 시 즉시 Slippy로 부활합니다.
+		]],
+		Tests = {
+			"↑ +1 Life",
+			"{{Player" .. FiendFolio.PLAYER.SLIPPY .. "}} On death, Isaac revives as Slippy"
+		},
+		Golden = {
+			TargetStrings = {
+				"1 Life",
+				"2 Lives",
+				"3 Lives",
+				"4 Lives",
+			},
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.CURSED_URN] = {
+		_descType = "trinket",
+		Name = "저주받은 항아리",
+		QuoteDesc = "영원한 생명?",
+		Description = [[
+			!!! {{ColorOrange}}교체 및 버리기 시 깨짐{{CR}}
+			!!! {{ColorOrange}}폭발 피해를 받으면 깨짐{{CR}}
+			↑ 목숨 +1 (소진 시 장신구 제거)
+			↑ {{TearsSmall}}연사 증가
+			{{Player]]..FiendFolio.PLAYER.CHINA..[[}} 사망 시 즉시 China로 부활합니다.
+		]],
+		Tests = {
+			"↑ x0.75 Fire rate multiplier",
+			"↑ +1 Life",
+			"{{Player" .. FiendFolio.PLAYER.CHINA .. "}} On death, Isaac revives as China",
+			"{{Warning}} Dropping or exploding the trinket breaks it"
+		},
+		Golden = {
+			TargetMultipliers = {
+				"0.75", "1",
+			},
+		},
+		Conditional = function(descObj) -- This suuucks... but it's the best I could do
+			local split = mod:SplitString(descObj.Description, "#")
+			local lastValidLine = #split + 1
+
+			for i, line in ipairs(split) do
+				if i == 1 then
+					split[i] = string.gsub(line, "%d*%.?%d+", function(s)
+						local values = {-0.19, -0.33, -0.43, -0.51}
+						local multiplier = (tonumber(s) / 0.75) - 1
+
+						if multiplier > 0 then
+							return tostring(0.75 + values[multiplier])
+						end
+					end)
+				end
+
+				for _, blacklistedPrefix in ipairs(mod.EIDBlacklistedPrefix) do
+					if line:sub(1, blacklistedPrefix:len()) == blacklistedPrefix then
+						lastValidLine = i
+						break
+					end
+				end
+			end
+
+			if descObj.ObjSubType == mod.ITEM.TRINKET.CURSED_URN + TrinketType.TRINKET_GOLDEN_FLAG then
+				table.insert(split, lastValidLine, "{{ColorGold}}Can be dropped once without shattering, no longer being gilded")
+			end
+			descObj.Description = table.concat(split, "#")
+		end,
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.SHATTERED_CURSED_URN] = {
+		_descType = "trinket",
+		Name = "깨진 항아리",
+		QuoteDesc = "이미 깨졌어",
+		Description = [[
+			↑ {{TearsSmall}}연사 증가
+		]],
+		Tests = {
+			"↑ x0.9 Fire rate multiplier",
+		},
+		Golden = {
+			TargetAdditives = {
+				AdditiveValues = {-0.09, -0.17, -0.24, -0.30},
+				TargetNumbers = {0.9},
+			},
+			Tests = {
+				"↑ +1 Life",
+				"{{Player" .. FiendFolio.PLAYER.CHINA .. "}} {{ColorGold}}On death, Isaac revives as China"
+			},
+		},
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.CRAIGS_PIPE] = { -- TODO
+		_descType = "trinket",
+		Name = "크레이그의 파이프",
+		QuoteDesc = "",
+		Description = [[
+			↑ 목숨 +1 (소진 시 장신구 제거)
+			{{Player]]..FiendFolio.PLAYER.CRAIG..[[}} 사망 시 즉시 Craig로 부활합니다.
+		]],
+		Tests = {
+			"↑ +1 Life",
+			"{{Player" .. FiendFolio.PLAYER.CRAIG .. "}} On death, Isaac revives as Craig"
+		},
+		Golden = {
+			TargetStrings = {
+				"1 Life",
+				"2 Lives",
+				"3 Lives",
+				"4 Lives",
+			},
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.CONJOINED_CARD] = {
+		_descType = "trinket",
+		Name = "쌍둥이 카드",
+		QuoteDesc = "작은 황제",
+		Description = [[
+			{{MiniBoss}} 스테이지 진입 시 미니보스방을 추가로 생성합니다.
+			!!! Blue Womb, The Void, Home 스테이지는 무효과
+		]],
+		Tests = {
+			"{{MiniBoss}} 1 additional Miniboss Room will generate on every floor"
+		},
+		Golden = {
+			TargetStrings = {
+				"1 additional Miniboss Room",
+				"2 additional Miniboss Rooms",
+				"3 additional Miniboss Rooms",
+				"4 additional Miniboss Rooms",
+			},
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.LOST_FLOWER_CROWN] = {
+		_descType = "trinket",
+		Name = "잊혀진 꽃 왕관",
+		QuoteDesc = "잊혀진 기억",
+		Description = [[
+			{{Collectible638}} 스테이지 당 1회 한정으로 랜덤 적 하나가 해당 게임에서 제거되어 다시 등장하지 않습니다.
+		]],
+		Tests = {
+			"{{Collectible638}} Once a floor, a random enemy will get erased"
+		},
+		Golden = {
+			TargetStrings = {
+				"a random enemy",
+				"2 random enemies",
+				"3 random enemies",
+				"4 random enemies",
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.WACKEY] = {
+		_descType = "trinket",
+		Name = "왜키",
+		QuoteDesc = "엉뚱한 열쇠",
+		Description = [[
+			{{Key}} 열쇠류 픽업의 드랍률이 동일하게 변경됩니다.
+		]],
+		Tests = {
+			"{{Key}} All key drops have an equal chance to become any of the possible key types",
+		},
+		Golden = {
+			Tests = {
+				"Keys cannot be replaced with low value keys", -- Could elaborate more if the system allowed it
+			}
+		},
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.MASSIVE_AMETHYST] = {
+		_descType = "trinket",
+		Name = "거대 아메시스트",
+		QuoteDesc = "수정화된 주인",
+		Description = [[
+			{{SecretRoom}} 비밀방 상점 주인이 룬이 박힌 돌덩이로 바뀝니다.
+			룬이 박힌 돌덩이 파괴 시 {{Card55}}Rune Shard 0~3개, {{Rune}}룬 0~2개를 드랍합니다.
+		]],
+		Tests = {
+			"Shopkeepers in secret rooms are replaced by rune clusters",
+			"{{Rune}} Blowing up a rune cluster causes it to drop:",
+			"1-3 Rune Shards",
+			"One to two random Runes"
+		},
+		Golden = {
+			TargetAdditives = {
+				AdditiveValues = {1, 2, 3, 4},
+				TargetNumbers = {1, 3},
+			},
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.HEARTACHE] = {
+		_descType = "trinket",
+		Name = "심장통",
+		QuoteDesc = "마음이 아파",
+		Description = [[
+			{{BrokenHeart}} 피격 시 그 피격을 무효화하고 부서진하트 +1
+		]],
+		Tests = {
+			"{{BrokenHeart}} +1 Broken Heart when taking damage"
+		},
+		Golden = {
+			TargetStrings = {
+				"1 Broken Heart",
+				"2 Broken Hearts",
+				"3 Broken Hearts",
+				"4 Broken Hearts"
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.REDHAND] = {
+		_descType = "trinket",
+		Name = "붉은 손",
+		QuoteDesc = "잡았다!",
+		Description = [[
+			캐릭터/픽업/적을 잡아 강제로 이동시키는 빨간 손 2개가 방을 돌아다닙니다.
+		]],
+		Tests = {
+			"Spawns 2 Red Hand familiars that fly from off-screen",
+			"These familiars drag Isaac, pickups, and enemies around"
+		},
+		Golden = {
+			TargetStrings = {
+				"2",
+				"3",
+				"4",
+				"5"
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.MIDDLE_HAND] = {
+		_descType = "trinket",
+		Name = "가운데손목",
+		QuoteDesc = "부덕한 보상을 거두어들이다",
+		Description = [[
+			{{ffDireChest}} 일반상자/황금상자가 50%의 확률로 확률로 트롤상자로 교체됩니다.
+		]],
+		Tests = {
+			"50% chance for any {{Chest}} Chest or {{GoldenChest}} Golden Chest to be replaced by a {{ffDireChest}} Dire Chest"
+		},
+		AppendEntries = {
+			"FF_APPEND_DIRE_CHEST",
+		},
+		Golden = {
+			TargetStrings = {
+				"50",
+				"100",
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.RAINBOW_BEAN] = {
+		_descType = "trinket",
+		Name = "무지개 콩",
+		QuoteDesc = "친숙한 방귀",
+		Description = [[
+			적에게 가까이 다가갈 시 5%의 확률로 랜덤 방귀를 뀝니다.
+			{{LuckSmall}} 행운 48+일 때 100%
+		]],
+		Tests = {
+			"5% chance to expell a random fart when near enemies",
+			"{{Luck}} 100% chance at 48 luck"
+		},
+		Golden = {
+			Tests = {
+				"Increased radius at which farts expell",
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.FAULTY_FUSE] = {
+		_descType = "trinket",
+		Name = "끊어진 퓨즈",
+		QuoteDesc = "탄 구리 맛",
+		Description = [[
+			{{Bomb}} 폭탄이 40%의 확률로 구리폭탄으로 바뀝니다.
+			{{ffCopperBomb}} 방 클리어 시 5%의 확률로 구리폭탄으로 바뀝니다.
+		]],
+		Tests = {
+			"{{Bomb}} 40% for random Bomb drops to be replaced by Copper Bombs",
+			"{{ffCopperBomb}} 5% chance for a Copper Bomb to be dropped on room clear"
+		},
+		AppendEntries = {
+			"FF_APPEND_COPPER_BOMB",
+		},
+		Golden = {
+			TargetMultipliers = {
+				"40",
+				"5",
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.ENERGY_SEARCHER] = {
+		_descType = "trinket",
+		Name = "에너지 탐지기",
+		QuoteDesc = "에너지 드로우",
+		Description = [[
+			방 클리어 시 5%의 확률로 에너지 카드를 추가로 드랍합니다.
+			에너지 카드 사용 시 33%의 확률로 다른 에너지 카드를 소환합니다.
+		]],
+		Tests = {
+			"5% chance for an Energy Card to be dropped on room clear",
+			"Using an Energy Card has a 33% chance to spawn another random Energy Card"
+		},
+		Golden = {
+			TargetMultipliers = {
+				"5",
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.BROKEN_RECORD] = {
+		_descType = "trinket",
+		Name = "부서진 레코드",
+		QuoteDesc = "반복된 채로 멈춰있어",
+		Description = [[
+			아이템이 등장할 때 30%의 확률로 소지 중인 아이템으로 등장합니다.
+			중첩 가능한 아이템만 등장합니다.
+		]],
+		Tests = {
+			"30% chance for newly-spawned item pedestals to be replaced with an passive item you already have",
+			"Will not provide you with useless duplicates"
+		},
+		Golden = {
+			TargetAdditives = {
+				AdditiveValues = {21, 36, 46, 53},
+				TargetNumbers = {30},
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.FUSHIGI] = {
+		_descType = "trinket",
+		Name = "불가사의",
+		QuoteDesc = "떠다니게 해!",
+		Description = [[
+			{{Collectible572}} 공격 시 5%의 확률로 공격력 x2의 오컬트 눈물을 발사합니다.
+			{{LuckSmall}} 행운 9+일 때 50%
+		]],
+		Tests = {
+			"{{Collectible572}} 5% chance to fire a metal Eye of the Occult tear with increased range and double damage",
+			"{{Luck}} 50% chance at 9 luck"
+		},
+		Golden = {
+			TargetMultipliers = {
+				"5",
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.NESTING_DOLL] = {
+		_descType = "trinket",
+		Name = "인형 안의 인형",
+		QuoteDesc = "안에서의 서프라이즈",
+		Description = [[
+			{{Beggar}} 거지 폭파 시 80%의 확률로 그 자리에서 다른 거지가 생깁니다.
+		]],
+		Tests = {
+			"{{Beggar}} 80% chance for another, smaller beggar to appear when blowing up a beggar"
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.EGG_PENNY] = {
+		_descType = "trinket",
+		Name = "알 페니",
+		QuoteDesc = "아기 부자",
+		Description = [[
+			{{Collectible8}} {{Coin}}동전을 주울 때 17%의 확률로 Fragile Bobby를 소환합니다.
+			{{Collectible8}} Fragile bobby는 Brother Bobby와 동일하나 5회 피격 시 사라집니다.
+		]],
+		Tests = {
+			"Picking up a coin has a 17% chance to spawn a Fragile Bobby",
+			"{{Collectible8}} Fragile bobbies are similar to Brother Bobby but can die"
+		},
+		Golden = {
+			Tests = {
+				"Higher chance to spawn a Fragile Bobby"
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.LEFTOVERS] = {
+		_descType = "trinket",
+		Name = "먹다 남은 음식",
+		QuoteDesc = "나중을 위해 아껴",
+		Description = [[
+			{{Heart}} 초과회복된 하트류 픽업을 남깁니다.
+		]],
+		Tests = {
+			"{{HalfHeart}} Overhealed health gained from heart pickups will be left on the ground for later use"
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.FUZZY_PICKLE] = {
+		_descType = "trinket",
+		Name = "퍼지 피클",
+		QuoteDesc = "패러디 증가",
+		Description = [[
+			↑ {{DamageSmall}}공격력 +0.25
+			{{DamageSmall}} 패러디 아이템 당 공격력 +0.1
+			{{Blank}} (패러디가 약한 경우 +0.05)
+			액티브 아이템인 경우 +0.5, 장신구의 경우 +0.25
+		]],
+		Tests = {
+			"↑ +0.25 Damage",
+			"{{Damage}} +0.1 Damage up for each reference item Isaac has",
+			"{{Damage}} Trinkets grant +0.25 Damage",
+			"{{Damage}} Active items grant +0.5 Damage",
+			"Loose references only grant half of the corresponding damage"
+		},
+		Golden = {
+			TargetMultipliers = {
+				"0.25",
+				"0.1",
+				"0.5",
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.DUDS_FLOWER] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+			{{ffCopperBomb}} 캐릭터가 설치한 폭탄이 전부 구리폭탄으로 설치됩니다.
+		]],
+		Tests = {
+			"{{ffCopperBomb}} All bombs placed by Isaac will become Copper Bombs"
+		},
+		AppendEntries = {
+			"FF_APPEND_COPPER_BOMB",
+		},
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.BOMB_TOKEN] = {
+		_descType = "trinket",
+		Name = "폭탄 토큰",
+		QuoteDesc = "폭발력 증가",
+		Description = [[
+			{{Bomb}} 플레이어의 폭탄의 피해량 +50
+			{{Collectible52}} 페투스 폭탄의 경우 피해량 x1.25
+		]],
+		Tests = {
+			"{{Bomb}} Increases the flat damage dealt by bombs spawned by Isaac by 50",
+			"{{Collectible52}} Grants a 1.25x damage multiplier to Dr. Fetus bombs"
+		},
+		Golden = {
+			TargetMultipliers = {
+				"50",
+				"1.25",
+			}
+		}
+	},
 	--#endregion
 	--#region RELOADED TRINKETS
+	[TRINKET..FiendFolio.ITEM.TRINKET.QUALITY_ASSURANCE] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"10% chance for enemies to spawn in with the Glitched status effect",
+			"{{Card" .. FiendFolio.ITEM.CARD.DOWNLOAD_FAILURE .. "}} Glitched enemies slide around the room",
+			"Glitched enemies spawn 3 blue bugs on death"
+		},
+		Golden = {
+			TargetMultipliers = {
+				"10",
+				"3",
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.CERBERUS_ORB] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"After not firing for 2.5 seconds, the next shot will deal double damage and have increased velocity",
+			"This shot will deal base damage in a small radius around itself on impact"
+		},
+		Golden = {
+			TargetStrings = {
+				"double damage",
+				"triple damage",
+				"quadruple damage",
+				"quintuple damage",
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.BONE_LORDS_TABLET] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Using a card will grant 4-5 bone orbitals"
+		},
+		Golden = {
+			TargetAdditives = {
+				AdditiveValues = {4, 5, 6, 4},
+				TargetNumbers = {4, 5},
+			},
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.SCARAB_PENNY] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Picking up a coin spawns a Blue Beetle",
+			"Blue Beetles are friendly creatures that shield Isaac from oncoming attacks and projectiles"
+		},
+		Golden = {
+			TargetStrings = {
+				"a Blue Beetle",
+				"2 Blue Beetles",
+				"3 Blue Beetles",
+				"4 Blue Beetles",
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.STACK_OF_PENNY] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"{{ffLilPenny}} Picking up a coin spawns 1-4 Lil' Pennies"
+		},
+		Golden = {
+			TargetAdditives = {
+				AdditiveValues = {1, 2, 3, 4},
+				TargetNumbers = {1, 4},
+			},
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.PINCUSHION] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"25% chance to shoot sewing needle tears that pierce and inflict enemies with Sewn",
+			"{{Luck}} 100% chance at 6 luck",
+			"{{ffSew}} Sewn enemies reflect damage taken onto all other enemies inflicted with Sewn"
+		},
+		Golden = {
+			TargetAdditives = {
+				AdditiveValues = {13, 25, 38, 50},
+				TargetNumbers = {25},
+			},
+		},
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.WAVEBREAKER] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Wave 2 enemies no longer appear",
+			"Does not affect multi-wave room types like {{BossRushRoom}} Boss Rush or {{ChallengeRoom}} Challenge Rooms"
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.CHARRED_CARD] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"{{Bomb}} Placing a bomb will also place a Troll Bomb in the room",
+			"Troll bombs avoid Isaac and prioritize enemies"
+		},
+		Golden = {
+			TargetStrings = {
+				"a Troll Bomb",
+				"2 Troll Bombs",
+				"3 Troll Bombs",
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.GLUTTONOUS_JOKER] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"{{Bomb}} Converts all suit cards to Club cards, if possible"
+		},
+		Golden = {
+			Tests = {
+				"2 of Clubs cards are converted into 3 of Clubs"
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.WRATHFUL_JOKER] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"{{Key}} Converts all suit cards to Spade cards, if possible"
+		},
+		Golden = {
+			Tests = {
+				"2 of Spades cards are converted into 3 of Spades"
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.GREEDY_JOKER] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"{{Coin}} Converts all suit cards to Diamond cards, if possible"
+		},
+		Golden = {
+			Tests = {
+				"2 of Diamonds cards are converted into 3 of Diamonds"
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.LUSTY_JOKER] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"{{Heart}} Converts all suit cards to Heart cards, if possible"
+		},
+		Golden = {
+			Tests = {
+				"2 of Hearts cards are converted into 3 of Hearts"
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.EVIOLITE] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"↑ Large all stats up",
+			"↓ Stat increase reduces with each owned item, degrading to 0 at 10 items"
+		},
+		Golden = {
+			TargetMultipliers = {
+				"10"
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.SLEEPY_DUST] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"15% chance to fire tears that inflict enemies with Drowsy",
+			"{{Luck}} 30% chance at 25 luck",
+		},
+		StatusEffects = { FiendFolio.DescriptionStatuses.DROWSY_AND_SLEEP },
+		Golden = {
+			TargetMultipliers = {
+				"15"
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.EARTH_IMPALE] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"{{Chargeable}} Gain a charged attack to make a rock spike in the cardinal directions",
+			"The rock spike attack scales with Isaac's damage",
+		},
+		Golden = {
+			Tests = {
+				"Rock spike attack does more damage"
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.COMFORT_FOOD] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"{{HalfHeart}} 50% chance to heal half a heart if a room clear reward does not spawn"
+		},
+		Golden = {
+			TargetStrings = {
+				"half a heart",
+				"a heart",
+				"a heart and a half",
+				"two hearts",
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.SPROUTING_SEED] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Dropping this trinket in an uncleared room will grow a vine that snares nearby enemies",
+			"Taking damage will drop the trinket automatically"
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.JOY_BUZZER] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"{{Battery}} All batteries are replaced by virtuous, cursed, or firework batteries",
+			"{{Coin}} 50% chance to replace cards in shops with batteries"
+		},
+		Golden = {
+			TargetAdditives = {
+				AdditiveValues = {25, 50, 50, 50},
+				TargetNumbers = {50},
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.INTERNALIZED_HATRED] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"{{BlackHeart}} ↑ Grants a Damage Up whenever a Black Heart is depleted",
+			"Black Hearts no longer deal damage to enemies"
+		},
+		Golden = {
+			Tests = {
+				"Greater damage up when a Black Heart is depleted"
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.DELIGHTFUL_DRUMSTICK] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"25% chance to fire in a cross shape whenever shooting",
+			"{{Luck}} 45% chance at 15 luck",
+			"{{Charm}} Acts like a friendly Drumstick when dropped on the ground"
+		},
+		Golden = {
+			TargetAdditives = {
+				AdditiveValues = {10, 20, 30, 40},
+				TargetNumbers = {25},
+			},
+			Tests = {
+				"Drumstick tears deal increased damage"
+			},
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.PROJECTILE_TRINKET] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Is a projectile",
+			"You shouldn't have this"
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.IMP_FINGER] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"One orbital fireball can frequently spawn around Isaac",
+			"{{Collectible" ..FiendFolio.ITEM.COLLECTIBLE.PYROMANCY .."}} Spawns fireballs at 3x slower rate compared to Pyromancy"
+		},
+		Golden = {
+			TargetStrings = {
+				"One orbital fireball",
+				"Two orbital fireballs",
+				"Three orbital fireballs",
+				"Four orbital fireballs",
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.GODHEADJR] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"{{Collectible331}} 10% chance to shoot a godhead tear",
+			"{{Luck}} 40% chance at 8 luck"
+		},
+		Golden = {
+			TargetMultipliers = {
+				"10"
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.FLAMING_PENNY] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Picking up a coin spawns an orbital fireball"
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.TAN_WORM] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"↑ +0.4 Tears",
+			"↑ +18 Range",
+			"Spectral tears",
+			"Isaac's tears move in a tangent wave"
+		},
+		Golden = {
+			TargetMultipliers = {
+				"18"
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.ADBLOCKER] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Removes all fortune popups",
+			"Will notify Isaac when a popup is blocked"
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.THE_SHAMPOO_BOTTLE] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"↑ +0.1 Damage",
+			"Provides insightful commentary on many things",
+			"Points out missed tinted rocks"
+		},
+		Golden = {
+			TargetMultipliers = {
+				"0.1"
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.BUTTON_MASHER] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Automatically uses your active item",
+			"Starts automatically using your active item on room entry",
+			"Chargeless items are automatically used"
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.PENNY_PACK] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Picking up a coin has a 8% chance to spawn a penny trinket"
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.ORIGINAL_EGGPLANT] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Prevents reference items from spawning"
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.CHEMISTRY_KIT] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"All fires are replaced by Champion Fires",
+			"7% chance for grids to turn into Champion Fires",
+			"Champion Fires have effects similar to enemy champions when destroyed"
+		},
+		Golden = {
+			TargetAdditives = {
+				AdditiveValues = {6, 13, 20, 26},
+				TargetNumbers = {7},
+			},
+		},
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.FADED_CARD] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"All non-story {{BossRoom}} Boss Rooms will be skipped, granting no rewards and deleting the boss instantly"
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.STITCHED_CARD] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Isaac starts each floor in a random special room"
+		},
+		Golden = {
+			Tests = {
+				"The random special room Isaac spawns in is better"
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.STAINED_CARD] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"↑ +2.5 Damage",
+			"Taking damage will steadily lower this damage bonus"
+		},
+		Golden = {
+			Tests = {
+				"The amount of damage bonus lost is lowered"
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.CROWDED_CARD] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"{{Heart}} 10% chance to spawn a heart of a random type when picking up a heart"
+		},
+		Golden = {
+			TargetAdditives = {
+				AdditiveValues = {5, 10, 15, 20},
+				TargetNumbers = {10},
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.HOLLOW_CARD] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"All {{SecretRoom}} Secret Rooms are replaced by {{SuperSecretRoom}} Super Secret Rooms instead"
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.SPADE_OF_CLUBS] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Bomb and key pickups will periodically swap between each other while on the ground"
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.MINIATURE_CARD] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Reveals rooms in a 5x5 radius upon starting a new floor",
+			"{{Heart}} Heals 1 hearts on the start of a new floor",
+			"Isaac will deal 40 damage to all enemies in the first 1 rooms he enters each floor"
+		},
+		Golden = {
+			TargetMultipliers = {
+				"1",
+			}
+		},
+		Conditional = function(descObj) -- This suuucks... but it's the best I could do
+			descObj.Description = string.gsub(descObj.Description, "1 hearts", "1 heart")
+			descObj.Description = string.gsub(descObj.Description, "1 rooms", "room")
+		end,
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.HONEYED_PENNY] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			FiendFolio.DescriptionIcons.Honey ..  "Picking up a coin has a 50% chance to grant a slowing trail and slowing tears for a period"
+		},
+		Golden = {
+			TargetAdditives = {
+				AdditiveValues = {25, 50, 50, 50},
+				TargetNumbers = {50},
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.LINK_CABLE] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"20% chance to pause all enemies in the room until Isaac attacks or enough time passes"
+		},
+		Golden = {
+			TargetMultipliers = {
+				"20"
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.TOKEN_ON_A_STRING] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			FiendFolio.DescriptionIcons.Token .. "Spawns a Token on the next floor",
+			"Tokens mimic the effect of the previous pickup collected",
+			"Trinket destroys itself on the next floor"
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.INFESTATION_ONE_POINT_FIVE] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Killing an enemy spawns a Blue Baby Spider"
+		},
+		Golden = {
+			TargetStrings = {
+				"a Blue Baby Spider",
+				"2 Blue Baby Spiders",
+				"3 Blue Baby Spiders",
+				"4 Blue Baby Spiders",
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.SHOOTING_STAR] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"{{TreasureRoom}} When skipping a Treasure Room on a floor:",
+			"↑ +1 Damage"
+		},
+		Golden = {
+			TargetMultipliers = {1},
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.LONGTIME_FIEND] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"↑ +0.1 Damage on first pickup",
+			"↑ +0.33 Damage when entering a new floor"
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.VANILLA_EXTRACT] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Only classic floors can appear (Basement, Caves, Depths, Womb)",
+			"Does nothing beyond Womb",
+			"Does nothing on the alternate path (Downpour, Dross, Mines, Ashpit, Mausoleum, Gehenna, Corpse)"
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.OLD_SHELL] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"{{Luck}} 10% chance to fire 1 quadruple-shot",
+			"{{Damage}} Quadruple shot tears deal x0.7 damage each"
+		},
+		Golden = {
+			TargetMultipliers = {
+				1,
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.BREAKPOINT] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"{{Collectible" .. CollectibleType.COLLECTIBLE_PAUSE .. "}} Taking damage pauses every enemy in the room for up to 5 seconds",
+			" Attacking will break the pause early"
+		},
+		Golden = {
+			TargetMultipliers = {
+				5
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.CONTRA_BAND] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"50% chance for Beggars to be replaced with Fake Beggars"
+		},
+		Golden = {
+			TargetAdditives = {
+				AdditiveValues = {25, 50, 50, 50},
+				TargetNumbers = {50},
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.PLUSH_LAMB] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Whenever you would next lose an item for any reason, Plush Lamb will be removed instead"
+		},
+		Golden = {
+			Tests = {
+				"Plush Lamb will de-gild instead of being lost and can be used a second time"
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.LIMITED_TIME_OFFER] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"{{Collectible" .. CollectibleType.COLLECTIBLE_STEAM_SALE .. "}} For up to 2 minutes after entering a floor, some items in the shop will be half price"
+		},
+		Golden = {
+			TargetMultipliers = {
+				2
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.FIENDISH_LADYBUG] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Entering a hostile room spawns a Purple Beetle",
+			"This beetle reflects projectiles with a 50% chance for them to deal 5x damage"
+		},
+		Golden = {
+			TargetStrings = {
+				"a Purple Beetle",
+				"2 Purple Beetles",
+				"3 Purple Beetles",
+				"4 Purple Beetles",
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.BASTARDLY_LADYBUG] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Entering a hostile room spawns a Black Beetle",
+			"{{Slow}} This beetle reflects projectiles that slow enemies and leave a slowing puddle on impact"
+		},
+		Golden = {
+			TargetStrings = {
+				"a Black Beetle",
+				"2 Black Beetles",
+				"3 Black Beetles",
+				"4 Black Beetles",
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.FRIENDLY_LADYBUG] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Entering a hostile room spawns a Red Beetle",
+			"This beetle reflects projectiles that deal 1.5x damage and cause enemies to drop temporary hearts on kill"
+		},
+		Golden = {
+			TargetStrings = {
+				"a Red Beetle",
+				"2 Red Beetles",
+				"3 Red Beetles",
+				"4 Red Beetles",
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.SKELETAL_LADYBUG] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Entering a hostile room spawns a Grey Beetle",
+			"This beetle reflects projectiles that split into two bone tears on impact"
+		},
+		Golden = {
+			TargetStrings = {
+				"a Grey Beetle",
+				"2 Grey Beetles",
+				"3 Grey Beetles",
+				"4 Grey Beetles",
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.CLUMP_OF_LADYBUGS] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"20% chance to spawn a random Ladybug when an enemy is killed"
+		},
+		Golden = {
+			TargetMultipliers = {
+				20,
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.STRANGE_COCOON] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Blue flies, spiders, skuzzes, and beetles are converted to another type when spawned"
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.INK_POT] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Gaining black hearts will also convert up to 2 souls hearts to black hearts"
+		},
+		Golden = {
+			TargetMultipliers = {
+				"2"
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.LOOSE_FILAMENT] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Grants a bulb familiar that attacks enemies after Isaac uses an active item",
+			"Bulb familiar does 2.75 damage",
+			"Active period scales with active charge"
+		},
+		Golden = {
+			TargetMultipliers = {
+				"2.75"
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.SMALL_BANDAID] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"25% chance to heal 1 damaged heart after clearing a room"
+		},
+		Golden = {
+			TargetMultipliers = {
+				"25"
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.SPECTRAL_KEYCHAIN] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"{{Key}} Picking up keys does not give you a key, but instead gives you a grey key wisp",
+			"Key wisps will automatically spend themselves to unlock whatever is closest to Isaac",
+			"Picking up a key has a 25% chance to spawn two grey key wisps"
+		},
+		Golden = {
+			TargetAdditives = {
+				AdditiveValues = {25, 50, 75, 75},
+				TargetNumbers = {25},
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.SISYPHEAN_BOULDER] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"↓ -0.1 Speed",
+			"Gives Isaac a boulder he can push",
+			"The boulder deals 60 damage per second and can block shots",
+			"{{Damage}} The boulder becomes more powerful the more kills you get with it",
+			"{{Speed}} The more kills Isaac gets with the boulder, the slower he moves"
+		},
+		Golden = {
+			TargetMultipliers = {
+				"60"
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.TIMES_ARROW] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Automatically skips the first floor in the first 4 chapters"
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.CORRUPTED_LARVA] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Spawns 1 mini Level 0 Fly upon entering an uncleared room",
+			"{{Collectible285}} The mini Level 0 Fly devolves enemies it touches"
+		},
+		Golden = {
+			TargetStrings = {
+				"1 mini Level 0 Fly",
+				"2 mini Level 0 Flies",
+				"3 mini Level 0 Flies",
+				"4 mini Level 0 Flies",
+			},
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.HINGE] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"{{Collectible" .. FiendFolio.ITEM.COLLECTIBLE.LIL_FIEND .. "}} Grants Lil Fiend or Lil Friend",
+			"{{Collectible" .. FiendFolio.ITEM.COLLECTIBLE.LIL_FRIEND .. "}} Swaps every room"
+		},
+		Golden = {
+			TargetStrings = {
+				"Lil Fiend or Lil Friend",
+				"2 Lil Fiends or 2 Lil Friends",
+				"3 Lil Fiends or 3 Lil Friends",
+				"4 Lil Fiends or 4 Lil Friends"
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.WANTED_POSTER] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Once per floor, an enemy will be marked",
+			"{{ffMarked}} Marked enemies are bigger, have more health, and spew tears out",
+			"{{Coin}} Killing a marked enemy drops 1 nickel"
+		},
+		Golden = {
+			TargetMultipliers = {
+				1
+			}
+		},
+		Conditionals = function (descObj)
+			local save = mod.getFieldInit(FiendFolio.savedata, 'run', {})
+
+			if save.SpecialWantedPosterSpawned then
+				local prefix = "#{{Player" .. mod.PLAYER.FRIEND .. "}} "
+				local SPECIAL_LINE = "It states that the fugitive was last seen in a Secret room..."
+				descObj.Description = descObj.Description .. prefix .. SPECIAL_LINE
+			end
+
+			return descObj
+		end
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.FIENDS_LOST_FRIEND] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Spawns a permanent Fiend Minion that helps you in the next room Isaac goes to"
+		},
+		Golden = {
+			TargetStrings = {
+				"a permanent Fiend Minion",
+				"two permanent Fiend Minions",
+				"three permanent Fiend Minions",
+				"four permanent Fiend Minions",
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.PSYCHOLOGICAL_TORTURE] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"{{Damage}} Count with your tears for an increasing damage and tears up",
+			"{{Tears}} Counting counts as firing a certain amount of tears and stopping",
+			"Damage and tears increase stops if you fail to count properly"
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.NOTABLE_ALBUM] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Isaac can fire a quadruple-shot once per room"
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.FIVE_LEAF_CLOVER] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"{{Damage}} Damage increased by 0.1x Isaac's luck"
+		},
+		Golden = {
+			TargetMultipliers = {
+				0.1
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.CIRCADIAN_RHYTHM] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"During the day (6:00 to 18:00):",
+			"↑ +0.6 Tears",
+			"↑ +0.2 Speed",
+			"During the night (18:00 to 6:00):",
+			"↑ +0.6 Damage",
+			"↑ +1 Luck"
+		},
+		Golden = {
+			TargetMultipliers = {
+				0.6, 0.2, 1
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.SHAMROCK_SHOE] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"↑ +1 Luck",
+			"↑ +0.1 Speed",
+		},
+		Golden = {
+			TargetMultipliers = {
+				1, 0.1
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.WET_WELLY] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"↑ +0.4 Tears",
+			"↑ +0.1 Speed",
+		},
+		Golden = {
+			TargetMultipliers = {
+				0.4, 0.1
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.CLOVERED_EPEE] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"↑ +0.3 Damage",
+			"↑ +1 Luck",
+		},
+		Golden = {
+			TargetMultipliers = {
+				0.3, 1
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.TOY_SPEAR] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"↑ +0.3 Damage",
+			"↑ +1.25 Range",
+		},
+		Golden = {
+			TargetMultipliers = {
+				0.3, 1.25
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.BLOODY_BLADE] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"↑ +0.4 Tears",
+			"↑ +0.3 Damage",
+		},
+		Golden = {
+			TargetMultipliers = {
+				0.4, 0.3
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.TATTY_CLEAT] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"↑ +0.1 Speed",
+			"↑ +0.3 Damage",
+		},
+		Golden = {
+			TargetMultipliers = {
+				0.1, 0.3
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.LIFE_INSURANCE] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"All leftover money at the end of the run is added to the donation machine"
+		},
+		Golden = {
+			TargetStrings = {
+				"added",
+				"doubled and added",
+				"tripled and added",
+				"quadrupled and added",
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.GOLD_LEAF] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Gold pickups no longer have special effects and give you the normal pickup",
+			"{{Coin}} Gold pickups also give +9 Coins"
+		},
+		Golden = {
+			TargetMultipliers = {
+				"9"
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.BEATEN_CROSS] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"{{Collectible108}} Reduces most damage taken to half a heart when Isaac has 3 hearts or less"
+		},
+		Golden = {
+			TargetMultipliers = {
+				"3"
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.VICODIN] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"{{Pill}} Reduces most damage taken to half a heart when taking a pill"
+		},
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.RUNIC_CUBE] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"{{Rune}} 15=8% chance to spawn a random rune upon taking damage"
+		},
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.ZZZZZZ_MAGNET] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"{{AngelDevilChance}} Turns all doors to Devil Rooms and Angel Rooms into doors to the Error Room"
+		},
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.OWL_FEATHER] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"{{Trinket113}} Blue Flies have a 20% chance to turn into Locusts of War on spawn"
+		},
+		Golden = {
+			TargetMultipliers = {
+				"20"
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.POPPET] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"{{Collectible462}} 20% chance to shoot a piercing Eye of Belial tear",
+			"Hitting an enemy makes the tear homing and double its damage"
+		},
+		Golden = {
+			TargetMultipliers = {
+				"20"
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.POWER_INVERTER] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"{{Battery}} Batteries give +0.9 Damage for the current floor",
+			"Batteries can be picked up at full item charge or with no active item"
+		},
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.BABY_BOTTLE] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		StatusEffects = { mod.DescriptionStatuses.PACIFIED },
+		Tests = {
+			"On hit, nearby enemies are Pacified for 4 seconds",
+			"{{HalfSoulHeart}} Pacified enemies have a 20% chance to drop a half soul heart"
+		},
+		Golden = {
+			TargetMultipliers = {
+				4
+			},
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.ONE_OF_YOUR_BOMBS] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"{{Warning}} {{Bomb}} It's An Item Now! {{Bomb}} {{Warning}}",
+		},
+		Golden = {
+			Tests = {
+				"{{Warning}} {{Bomb}} It's Golden Now! {{Bomb}} {{Warning}}"
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.TWEEZERS] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"30% chance to fire tears that release a piercing, homing tear on hit",
+			"{{Luck}} 75% chance at 6 luck",
+		},
+		Golden = {
+			Tests = {
+				"Piercing, homing tears split into more tears on hit"
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.SEWING_MANUAL_3_USE] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Turns the next 3 tear effect items collected into familiars that shoot that item's effect",
+		},
+		Golden = {
+			TargetStrings = {
+				"into familiars",
+				"into 2 familiars",
+				"into 3 familiars",
+				"into 4 familiars",
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.SEWING_MANUAL_2_USE] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Turns the next 2 tear effect items collected into familiars that shoot that item's effect",
+		},
+		Golden = {
+			TargetStrings = {
+				"into familiars",
+				"into 2 familiars",
+				"into 3 familiars",
+				"into 4 familiars",
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.SEWING_MANUAL_1_USE] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Turns the next tear effect item collected into a familiar that shoots that item's effect",
+		},
+		Golden = {
+			TargetStrings = {
+				"into familiars",
+				"into 2 familiars",
+				"into 3 familiars",
+				"into 4 familiars",
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.SANGUINE_SALIVATION] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Bosses below 30% health take 30% extra damage",
+			"{{Heart}} On clearing a boss room, heals 1 heart",
+		},
+		Golden = {
+			TargetStrings = {
+				"heals 1 heart",
+				"heals 2 hearts",
+				"heals 3 hearts",
+				"heals 4 hearts",
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.LUNATIC_EYE] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"7% chance to shoot tears that inflict enemies with Berserk",
+			"{{Luck}} 20% chance at 16 luck",
+		},
+		StatusEffects = { FiendFolio.DescriptionStatuses.BERSERK },
+		Golden = {
+			TargetAdditives = {
+				AdditiveValues = {3, 6, 9, 12},
+				TargetNumbers = {7},
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.CHARACTER_SELECT] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"5% chance for the room clear reward to be a soulstone",
+			"Consumed upon using a soulstone, granting Isaac a revive as the corresponding character"
+		},
+		Golden = {
+			Tests = {
+				"Isaac revives with full health on death"
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.SHADOW_MANTLE] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"{{Collectible313}} Negates 6 hits of damage before breaking",
+		},
+		Golden = {
+			TargetMultipliers = {
+				6
+			},
+		},
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.DADS_USB] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"25% chance for a random Technlogy item effect each room",
+		},
+		Golden = {
+			TargetAdditives = {
+				AdditiveValues = {25, 75, 75, 75},
+				TargetNumbers = {25},
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.GOOGLY_EYES] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Grants most non-shooting familiars googly eyes which let them fire tears",
+			"The tears deal 3.5 damage"
+		},
+		Golden = {
+			TargetMultipliers = {
+				"3.5"
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.AMMO_CLIP] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"17% chance to fire an Ammo Heart bullet",
+			"Ammo Hearts correspond to the type of health Isaac has",
+			"{{Luck}} 100% chance to fire at 20 luck"
+		},
+		Golden = {
+			TargetMultipliers = {
+				"17"
+			}
+		},
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.JUSTICE_AXE] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"When Isaac shoots, he throws a curved hammer projectile that deals 15 in a radius and 35 damage on a direct hit",
+			"When the hammer grazes enemies, it does 2 damage",
+			"Can be fired every 9 seconds"
+		},
+		Golden = {
+			TargetStrings = {
+				"9 seconds",
+				"4.5 seconds",
+				"3 seconds",
+				"2.25 seconds",
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.DADS_HOME] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"20% chance to clear all enemies and pickups from a room, causing them to spawn in the next room",
+		},
+		Golden = {
+			TargetAdditives = {
+				AdditiveValues = {5, 13, 30, 30},
+				TargetNumbers = {20},
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.STEVENS_BOX] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"{{Damage}} Steven heart bullets do 2x as much damage",
+			"{{ffStevenHeart}} 10% chance for the room clear award to be a Steven Heart",
+			"Hearts have a rare chance to be replaced by Steven Hearts",
+			"Steven hearts go over other hearts and shoot at enemies from the HUD",
+	},
+		Golden = {
+			TargetAdditives = {
+				AdditiveValues = {1, 2, 3, 4},
+				TargetNumbers = {2, 10},
+			},
+			TargetMultipliers = {
+				"10",
+			}
+		}
+	},
+	--#endregion
+	--#region BONUS PENNIES
+	[TRINKET..FiendFolio.ITEM.TRINKET.BENT_PENNY] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Picking up a coin has a 50% chance to either double its value or grant zero cents"
+		},
+		Golden = {
+			TargetAdditives = {
+				AdditiveValues = {25, 50, 50, 50},
+				TargetNumbers = {50},
+			},
+		},
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.TROLL_PENNY] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Picking up a coin has a 50% chance to spawn a troll bomb nearby enemies"
+		},
+		Golden = {
+			TargetStrings = {
+				"a troll bomb",
+				"2 troll bombs",
+				"3 troll bombs",
+				"4 troll bombs",
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.AIRBAG_PENNY] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Picking up a coin knocks Isaac backwards"
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.MICRO_PENNY] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Picking up a coin has a 15% chance to decrease Isaac's size"
+		},
+		Golden = {
+			TargetMultipliers = {
+				"15"
+			},
+		},
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.MAP_PENNY] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Picking up a coin has a 33% chance to reveal a random room on the map",
+			"Higher value coins will reveal more rooms"
+		},
+		Golden = {
+			TargetStrings = {
+				"a random room",
+				"2 random rooms",
+				"3 random rooms",
+				"4 random rooms",
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.PRETTY_PENNY] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Picking up a coin has a 33% chance to spawn a Fairy Fly"
+		},
+		Golden = {
+			TargetMultipliers = {
+				"33"
+			},
+		},
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.FACEBOOK_PENNY] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Picking up a coin has a 15% chance to grant a random familiar for the floor"
+		},
+		Golden = {
+			TargetMultipliers = {
+				"15"
+			},
+		},
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.CHARITABLE_PENNY] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Picking up a coin has a 50% chance to add its value to the donation machine"
+		},
+		Golden = {
+			TargetAdditives = {
+				AdditiveValues = {25, 50, 50, 50},
+				TargetNumbers = {50},
+			},
+		},
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.DEVIOUS_PENNY] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Picking up a coin has a 50% chance to spawn an Immoral Heart, a Spicy Key, a Copper bomb, or a Cursed Penny"
+		},
+		Golden = {
+			TargetAdditives = {
+				AdditiveValues = {25, 50, 50, 50},
+				TargetNumbers = {50},
+			},
+		},
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.SWITCH_PENNY] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"{{Collectible" .. FiendFolio.ITEM.COLLECTIBLE.AVGM .. "}} Picking up a coin uses A.V.G.M"
+		},
+		Golden = {
+			TargetStrings = {
+				"A.V.G.M",
+				"A.V.G.M two times",
+				"A.V.G.M three times",
+				"A.V.G.M four times",
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.POOP_PENNY] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Picking up a coin has a 50% chance to spawn a random Dip Familiar"
+		},
+		Golden = {
+			TargetAdditives = {
+				AdditiveValues = {25, 50, 50, 50},
+				TargetNumbers = {50},
+			},
+		},
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.SLIPPERY_PENNY] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Picking up a coin causes Isaac to drop a key or bomb if owned"
+		},
+		Golden = {
+			TargetStrings = {
+				"drop a key or bomb",
+				"drop a key or bomb twice",
+				"drop a key or bomb three times",
+				"drop a key or bomb four times",
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.CANADIAN_PENNY] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Picking up a coin will increase its value by the Canadian exchange rate",
+		},
+		Conditionals = function (descObj)
+			local split = mod:SplitString(descObj.Description, "#")
+			local lastValidLine = #split + 1
+
+			for i, line in ipairs(split) do
+				for _, blacklistedPrefix in ipairs(mod.EIDBlacklistedPrefix) do
+					if line:sub(1, blacklistedPrefix:len()) == blacklistedPrefix then
+						lastValidLine = i
+						break
+					end
+				end
+			end
+
+			table.insert(split, lastValidLine, "Current rate is x" .. FiendFolio.CanadianExchangeRate)
+			descObj.Description = table.concat(split, "#")
+		end
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.ALPHA_PENNY] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"{{Collectible" .. FiendFolio.ITEM.COLLECTIBLE.ALPHA_COIN .. "}} Picking up a coin has a 20% chance to use Alpha Coin"
+		},
+		Golden = {
+			TargetMultipliers = {
+				"20"
+			},
+		},
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.STONE_PENNY] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Picking up a coin destroys a random obstacle in the room",
+			"Higher value coins will break more obstacles"
+		},
+		Golden = {
+			TargetStrings = {
+				"a random obstacle",
+				"2 random obstacles",
+				"3 random obstacles",
+				"4 random obstacles",
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.RED_PENNY] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Picking up a coin has a 20% chance to open a random adjacent red room"
+		},
+		Golden = {
+			TargetStrings = {
+				"a random adjacent red room",
+				"2 random adjacent red rooms",
+				"3 random adjacent red rooms",
+				"4 random adjacent red rooms",
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.PUCK_PENNY] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Touching coins in active rooms will slide them around and cause them to do Isaac's damage to enemies"
+		},
+		Golden = {
+			TargetStrings = {
+			"to do Isaac's damage",
+			"to do double Isaac's damage",
+			"to do triple Isaac's damage",
+			"to do quadruple Isaac's damage",
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.PRISM_PENNY] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Picking up a coin has a 50% chance to spawn a Prism Shard that temporarily boosts a stat"
+		},
+		Golden = {
+			TargetAdditives = {
+				AdditiveValues = {25, 50, 50, 50},
+				TargetNumbers = {50},
+			},
+		},
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.BERRY_PENNY] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Picking up a coin has a 50% chance to spawn a Berry pickup that grants a single use Ipecac shot"
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.CALCIUM_PENNY] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Picking up a coin spawns bone shards and has a 40% chance to grant a bone orbital"
+		},
+		Golden = {
+			TargetAdditives = {
+				AdditiveValues = {20, 40, 80, 100},
+				TargetNumbers = {40},
+			},
+			Tests = {
+				"Spawns more bone shards"
+			}
+		},
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.DOG_PENNY] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Picking up a coin has a 15% chance to reveal the next tinted rock encountered",
+			"There is another 50% chance to spawn a cosmetic dog"
+		},
+		Golden = {
+			TargetStrings = {
+			"the next tinted rock",
+			"the next 2 tinted rocks",
+			"the next 3 tinted rocks",
+			"the next 4 tinted rocks",
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.DADS_LOST_PENNY] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"{{Collectible" .. CollectibleType.COLLECTIBLE_DADS_LOST_COIN .. "}} Picking up a coin grants +1 Luck and +2.5 Range for the room"
+		},
+		Golden = {
+			TargetMultipliers = {
+				"1",
+				"2.5"
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.LOADED_PENNY] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"{{Collectible" .. FiendFolio.ITEM.COLLECTIBLE.IMP_SODA .. "}} Picking up a coin makes the next tear fired deal x3 damage"
+		},
+		Golden = {
+			TargetStrings = {
+				"next tear",
+				"next two tears",
+				"next three tears",
+				"next four tears",
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.SUNDIAL_PENNY] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Picking up a coin decreases the score timer by 2 seconds",
+			"The amount of seconds subtracted scales with the value of the coin"
+		},
+		Golden = {
+			TargetAdditives = {
+				AdditiveValues = {1, 2, 3, 4},
+				TargetNumbers = {2},
+			},
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.SUICIDAL_PENNY] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"Picking up a coin explodes Isaac"
+		},
+		Golden = {
+			Tests = {
+				"Picking up a coin removes Isaac"
+			}
+		}
+	},
+	--#endregion
+	--#region CURSED TRINKETS
+	[TRINKET..FiendFolio.ITEM.TRINKET.WIFE_HAT] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+
+		]],
+		Tests = {
+			"\2 Grants the Curse of the Veil"
+		}
+	},
 	--#endregion
 	--#region REHEATED ROCKS
 	--#endregion
@@ -8472,7 +11815,7 @@ local entries = {
 		Name = "펜타클 3",
 		QuoteDesc = '',
 		Description = [[
-			{{Trinket}} 랜덤 장신구(석기 장신구 포함)를 3개 소환합니다.
+			{{Trinket}} 랜덤 장신구(석기류 포함)를 3개 소환합니다.
 		]],
 		Conditionals = {
 			{
@@ -8640,7 +11983,7 @@ local entries = {
 		Name = "골렘의 영혼",
 		QuoteDesc = "락 온!",
 		Description = [[
-			{{Trinket}} 석기 장신구를 3개 드랍합니다.
+			{{Trinket}} 석기류를 3개 드랍합니다.
 		]],
 	},
 	[CARD..FiendFolio.ITEM.CARD.SOUL_OF_RANDOM] = {
@@ -8872,9 +12215,264 @@ local entries = {
 	--#endregion
 
 	--#region ENTITIES
+	--#region PENNIES
+	["5.20."..FiendFolio.PICKUP.COIN.CURSED] = {
+		_descType = "entity",
+		Name = "저주페니",
+		Description = [[
+			획득 시 -2 ~ +2개의 동전을 획득하며;
+			!!! 낮은 확률로 모든 능력치가 증가하거나 {{ColorOrange}}폭발합니다{{CR}}
+		]],
+	},
+	["5.20."..FiendFolio.PICKUP.COIN.HAUNTED] = {
+		_descType = "entity",
+		Name = "유령페니",
+		Description = [[
+			{{Collectible584}} 획득 시 일반 위습이 같이 소환됩니다.
+		]],
+	},
+	["5.20."..FiendFolio.PICKUP.COIN.HONEY] = {
+		_descType = "entity",
+		Name = "허니페니",
+		Description = [[
+			{{Slow}} 획득 시 일정 시간동안 적을 느려지게 하는 장판을 깝니다.
+		]],
+	},
+	["5.20."..FiendFolio.PICKUP.COIN.GOLDENCURSED] = {
+		_descType = "entity",
+		Name = "황금 저주페니",
+		Description = [[
+			획득 시 -2 ~ +2개의 동전을 획득하며;
+			!!! 낮은 확률로 모든 능력치가 증가하거나 {{ColorOrange}}폭발합니다{{CR}}
+			{{ColorGold}}확률적으로 방 안에 다시 등장합니다.{{CR}}
+		]],
+	},
+	["5.20."..FiendFolio.PICKUP.COIN.LEGOSTUD] = {
+		_descType = "entity",
+		Name = "레고페니",
+		Description = [[
+			{{Collectible486}} 획득 시 추가로 피격 효과를 발동합니다.
+			레고 페니에 접촉한 적에게 5의 피해를 줍니다.
+		]],
+	},
+	--#endregion
+	--#region SPICY KEYS
+	["5.30."..FiendFolio.PICKUP.KEY.SPICY] = {
+		_descType = "entity",
+		Name = "매운열쇠",
+		Description = [[
+			등장 시 열쇠 개수가 1개 증가하나 획득 시 체력 반칸의 피해를 받습니다.
+		]],
+	},
+	--#endregion
+	--#region COPPER BOMBS
+	["5.40."..FiendFolio.PICKUP.BOMB.COPPER] = {
+		_descType = "entity",
+		Name = "구리폭탄",
+		Description = [[
+			{{Collectible106}} 설치 시 확률적으로 불발되거나 거대한 폭발을 일으킵니다.
+			불발된 폭탄은 다른 폭발에 휘말려 같이 폭발합니다.
+		]],
+	},
+	--#endregion
+	--#region BATTERIES
+	["5."..FiendFolio.PICKUP.VARIANT.FIREWORK_BATTERY..".0"] = {
+		_descType = "entity",
+		Name = "폭죽 배터리",
+		Description = [[
+			{{Collectible]]..FiendFolio.ITEM.COLLECTIBLE.EXCELSIOR..[[}}다음 액티브 사용 시 유도성 로켓을 여러 발 발사합니다.
+		]],
+	},
+	["5."..FiendFolio.PICKUP.VARIANT.VIRTUOUS_BATTERY..".0"] = {
+		_descType = "entity",
+		Name = "미덕의 배터리",
+		Description = [[
+			{{Collectible584}} 다음 액티브 사용 시 해당 액티브의 위습을 같이 소환합니다.
+		]],
+	},
+	["5."..FiendFolio.PICKUP.VARIANT.POTATO_BATTERY..".0"] = {
+		_descType = "entity",
+		Name = "감자도스",
+		Description = [[
+			1칸을 충전합니다.
+		]],
+	},
+	["5."..FiendFolio.PICKUP.VARIANT.CURSED_BATTERY..".0"] = {
+		_descType = "entity",
+		Name = "저주배터리",
+		Description = [[
+			-2~4칸을 충전합니다. (초과 충전 가능)
+		]],
+	},
+	--#endregion
+	--#region MISC PICKUPS
+	["5."..FiendFolio.PICKUP.VARIANT.TOKEN..".0"] = {
+		_descType = "entity",
+		Name = "토큰",
+		Description = [[
+			가장 최근에 집은 픽업을 다시 집습니다.
+		]],
+	},
+	--#endregion
 	--#region SLOTS
+	["6."..FiendFolio.FF.GridRestock.Var..".0"] = {
+		_descType = "entity",
+		Name = "장애물 리스톡",
+		Description = [[
+			1{{Bomb}} 필요
+			{{Collectible386}} 확률적으로 그 방의 장애물을 바꿉니다.
+		]],
+	},
+	["6."..FiendFolio.FF.PokerTable.Var..".0"] = {
+		_descType = "entity",
+		Name = "포커 테이블",
+		Description = [[
+			베팅할 픽업의 수를 선택하고 터치 시 확률적으로 돌려받거나 전부 잃습니다.
+			3번 승리 시 투자한 픽업의 수에 비례하여 픽업 및 아이템을 드랍합니다.
+		]],
+	},
+	["6."..FiendFolio.FF.Blacksmith.Var..".0"] = {
+		_descType = "entity",
+		Name = "대장장이",
+		Description = [[
+			{{Trinket}} 장신구 2개를 소모하여 새로운 장신구로 바꿉니다.
+		]],
+	},
+	["6."..FiendFolio.FF.Dealer.Var..".0"] = {
+		_descType = "entity",
+		Name = "???",
+		Description = [[
+			필요한 건 가져오셨나?
+		]],
+	},
+	["6."..FiendFolio.FF.ZodiacBeggar.Var..".0"] = {
+		_descType = "entity",
+		Name = "천체 거지",
+		Description = [[
+			1{{Coin}} 필요
+			확률적으로 아래 중 하나 소환:
+			>>> {{Planetarium}} 천체관/별자리 아이템 위습
+			>>> {{Collectible584}} 일반 위습
+		]],
+	},
+	["6."..FiendFolio.FF.RobotTeller.Var..".0"] = {
+		_descType = "entity",
+		Name = "로봇 점술기계",
+		Description = [[
+			1{{Coin}} 필요
+			작동 시 확률적으로 아래 중 하나 발동:
+			>>> {{Collectible287}} 일부 위치를 보여줌
+			>>> 포탈 소환
+			>>> 카드를 제시
+			>>> 제시한 카드를 사용
+			카드를 제시한 상태에서 폭파 시 해당 카드가 드랍됩니다.
+		]],
+	},
+	["6."..FiendFolio.FF.EvilBeggar.Var..".0"] = {
+		_descType = "entity",
+		Name = "짐승 거지",
+		Description = [[
+			1{{Heart}}(최대 체력)/2{{SoulHeart}} 필요
+			{{ItemPoolDevil}} 1~3회 기부 시 악마방 아이템을 주고 떠납니다.
+		]],
+	},
+	["6."..FiendFolio.FF.CellGame.Var..".0"] = {
+		_descType = "entity",
+		Name = "셀 게임",
+		Description = [[
+			1{{Key}} 필요
+			확률적으로 제시한 아이템을 받을 수 있습니다.
+		]],
+	},
+	["6."..FiendFolio.FF.GoldenSlotMachine.Var..".0"] = {
+		_descType = "entity",
+		Name = "황금 슬롯머신",
+		Description = [[
+			1{{Coin}} 필요
+			작동 시 랜덤 보상을 획득하며;
+			슬롯머신은 그 스테이지의 랜덤 방으로 이동합니다.
+		]],
+	},
 	--#endregion
 	--#region GOLEM
+	["6."..FiendFolio.FF.MiningMachine.Var..".0"] = {
+		_descType = "entity",
+		Name = "채굴기",
+		Description = [[
+			현재 들고 있는 장신구와 {{Coin}}동전 3개를 소모하여 다른 석기류로 교체합니다.
+		]],
+	},
+	["6."..FiendFolio.FF.BismuthBeggar.Var..".0"] = {
+		_descType = "entity",
+		Name = "분해기",
+		Description = [[
+			{{SoulHeart}} 현재 들고 있는 장신구를 소울하트 1~1.5개로 분해합니다.
+		]],
+	},
+	["6."..FiendFolio.FF.UnfinishedGolem.Var..".0"] = {
+		_descType = "entity",
+		Name = "미완성 골렘",
+		Description = [[
+			!!! 홀수 스테이지에만 등장
+			폭파 시 랜덤 장신구를 드랍합니다.
+		]],
+	},
+	["6."..FiendFolio.FF.Sourpuss.Var..".0"] = {
+		_descType = "entity",
+		Name = "은둔자",
+		Description = [[
+			!!! 짝수 스테이지에서만 등장
+			{{SoulHeart}} 소울하트 1.5칸을 소모하여 현재 소지 중인 석기류를 흡수합니다.
+			!!! 가능한 경우 흡수된 석기류의 효과는 원래 효과의 66%로 줄어듭니다.
+		]],
+	},
+	["6."..FiendFolio.FF.GeodeGolem.Var..".0"] = {
+		_descType = "entity",
+		Name = "정동 골렘",
+		Description = [[
+			!!! 스테이지 당 일회용
+			현재 들고 있는 장신구를 {{ColorTeal}}정동류{{CR}} 2개로 바꿉니다.
+			정동류의 경우 해당 장신구를 복제합니다.
+		]],
+	},
+	["6."..FiendFolio.FF.GeodeGolem.Var..".1"] = {
+		_descType = "entity",
+		Name = "정동 골렘",
+		Description = [[
+			!!! 이미 사용됨. 다음 스테이지부터 등장 시 다시 사용할 수 있습니다.
+		]],
+	},
+	["6."..FiendFolio.FF.Babi.Var..".0"] = {
+		_descType = "entity",
+		Name = "",
+		Description = [[
+		
+		]],
+	},
+	["6."..FiendFolio.FF.Midarizer.Var..".0"] = {
+		_descType = "entity",
+		Name = "미다라이저",
+		Description = [[
+			현재 들고 있는 장신구와 {{Coin}}동전 10개를 소모하여 황금 형태로 바꿉니다.
+			사용 후 50%의 확률로 비활성화되어 더 이상 사용할 수 없게 됩니다.
+		]],
+	},
+	["6."..FiendFolio.FF.Midarizer.Var..".10"] = {
+		_descType = "entity",
+		Name = "미다라이저",
+		Description = [[
+			!!! 비활성화됨. 다음 스테이지부터 등장 시 다시 사용할 수 있습니다.
+		]],
+	},
+	["6."..FiendFolio.FF.Sweetpuss.Var..".0"] = {
+		_descType = "entity",
+		Name = "스윗퍼스",
+		Description = [[
+			!!! 일회용
+			현재 들고 있는 장신구를 {{ColorRed}}화석{{CR}} 장신구로 바꿉니다.
+			화석 타입의 장신구는 해당 장신구를 파괴합니다.
+		]],
+	},
 	--#endregion
 	--#endregion
 
@@ -8890,14 +12488,28 @@ entries[ITEM..FiendFolio.ITEM.COLLECTIBLE.PERFECTLY_GENERIC_OBJECT_5] = entries[
 entries[ITEM..FiendFolio.ITEM.COLLECTIBLE.PERFECTLY_GENERIC_OBJECT_6] = entries[ITEM..FiendFolio.ITEM.COLLECTIBLE.PERFECTLY_GENERIC_OBJECT_1]
 entries[ITEM..FiendFolio.ITEM.COLLECTIBLE.PERFECTLY_GENERIC_OBJECT_8] = entries[ITEM..FiendFolio.ITEM.COLLECTIBLE.PERFECTLY_GENERIC_OBJECT_1]
 entries[ITEM..FiendFolio.ITEM.COLLECTIBLE.PERFECTLY_GENERIC_OBJECT_12] = entries[ITEM..FiendFolio.ITEM.COLLECTIBLE.PERFECTLY_GENERIC_OBJECT_1]
+
 entries[ITEM..FiendFolio.ITEM.COLLECTIBLE.MY_STORY_2] = entries[ITEM..FiendFolio.ITEM.COLLECTIBLE.EMPTY_BOOK]
 entries[ITEM..FiendFolio.ITEM.COLLECTIBLE.MY_STORY_4] = entries[ITEM..FiendFolio.ITEM.COLLECTIBLE.EMPTY_BOOK]
 entries[ITEM..FiendFolio.ITEM.COLLECTIBLE.MY_STORY_6] = entries[ITEM..FiendFolio.ITEM.COLLECTIBLE.EMPTY_BOOK]
+
 entries[CARD..FiendFolio.ITEM.CARD.STUD_2] = entries[CARD..FiendFolio.ITEM.CARD.STUD]
 entries[CARD..FiendFolio.ITEM.CARD.STUD_3] = entries[CARD..FiendFolio.ITEM.CARD.STUD]
 entries[CARD..FiendFolio.ITEM.CARD.STUD_4] = entries[CARD..FiendFolio.ITEM.CARD.STUD]
 entries[CARD..FiendFolio.ITEM.CARD.STUD_5] = entries[CARD..FiendFolio.ITEM.CARD.STUD]
 entries[CARD..FiendFolio.ITEM.CARD.STUD_6] = entries[CARD..FiendFolio.ITEM.CARD.STUD]
+
+entries["5.30."..FiendFolio.PICKUP.KEY.SUPERSPICY] = entries["5.30."..FiendFolio.PICKUP.KEY.SPICY]
+entries["5.30."..FiendFolio.PICKUP.KEY.CHARGEDSPICY] = entries["5.30."..FiendFolio.PICKUP.KEY.SPICY]
+entries["5.30."..FiendFolio.PICKUP.KEY.SPICY_BOX] = entries["5.30."..FiendFolio.PICKUP.KEY.SPICY]
+entries["5.30."..FiendFolio.PICKUP.KEY.SUPERSPICY_BOX] = entries["5.30."..FiendFolio.PICKUP.KEY.SPICY]
+entries["5.30."..FiendFolio.PICKUP.KEY.CHARGEDSPICY_BOX] = entries["5.30."..FiendFolio.PICKUP.KEY.SPICY]
+entries["5.30."..FiendFolio.PICKUP.KEY.SPICY_PERM] = entries["5.30."..FiendFolio.PICKUP.KEY.SPICY]
+entries["5.30."..FiendFolio.PICKUP.KEY.SUPERSPICY_PERM] = entries["5.30."..FiendFolio.PICKUP.KEY.SPICY]
+entries["5.30."..FiendFolio.PICKUP.KEY.CHARGEDSPICY_PERM] = entries["5.30."..FiendFolio.PICKUP.KEY.SPICY]
+
+entries["5.40."..FiendFolio.PICKUP.BOMB.DOUBLE_COPPER] = entries["5.40."..FiendFolio.PICKUP.BOMB.COPPER]
+entries["5.40."..FiendFolio.PICKUP.BOMB.MIXED_DOUBLE] = entries["5.40."..FiendFolio.PICKUP.BOMB.COPPER]
 
 local diceTable = {
   [881] = {"881", "12번", "{{Collectible386}} 스테이지 안의 모든 장애물 변경"},
