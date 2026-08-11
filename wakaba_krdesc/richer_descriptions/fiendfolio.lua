@@ -14517,10 +14517,10 @@ local entries = {
 	--#region REHEATED FOSSIL
 	[TRINKET..FiendFolio.ITEM.ROCK.BREAKFAST_FOSSIL] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "아침밥 화석",
+		QuoteDesc = "체력 증가 + 분해 보너스",
 		Description = [[
-
+			{{ffCrush}} {{ColorRed}}분해:{{CR}} {{Heart}} 최대 체력 +1
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_FOSSIL",
@@ -14537,7 +14537,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{GrabBag}} 픽업 아이템을 10%의 확률로 픽업 자루로 바꿉니다.
+			{{ffCrush}} {{ColorRed}}분해:{{CR}} {{GrabBag}} 픽업 자루 드랍
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_FOSSIL",
@@ -14554,10 +14555,11 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.COPROLITE_FOSSIL] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "코프롤라이트",
+		QuoteDesc = "똥 아티팩트 + 분해 보너스",
 		Description = [[
-
+			방 최초 입장 시 파란 아군 자폭 파리를 하나 소환합니다.
+			{{ffCrush}} {{ColorRed}}분해:{{CR}} 파란 아군 자폭 파리 12마리 소환
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_FOSSIL",
@@ -14574,10 +14576,12 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.BEETER_FOSSIL] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "벌꿀 화석",
+		QuoteDesc = "벌꿀맛 호박 + 분해 보너스",
 		Description = [[
-
+			눈물을 발사할 때마다 다른 방향으로 공격력 x0.3의 눈물을 발사합니다.
+			눈물은 시계방향으로 서서히 돌아가면서 발사됩니다.
+			{{ffCrush}} {{ColorRed}}분해:{{CR}} 아군 Beeter 소환
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_FOSSIL",
@@ -14602,10 +14606,11 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.FLY_FOSSIL] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "파리 화석",
+		QuoteDesc = "영원한 친구 + 분해 보너스",
 		Description = [[
-
+			방 최초 입장 시 랜덤 색상의 아군 자폭 파리를 하나 소환합니다.
+			{{ffCrush}} {{ColorRed}}분해:{{CR}} 파리 배리어 +1
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_FOSSIL",
@@ -14628,10 +14633,11 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.GMO_FOSSIL] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "GMO 화석",
+		QuoteDesc = "보스의 알약 + 분해 보너스",
 		Description = [[
-
+			{{Pill}} 보스 처치 시 랜덤 알약 2개를 강제로 사용합니다.
+			{{ffCrush}} {{ColorRed}}분해:{{CR}} {{Pill}} 랜덤 알약 3개 강제 사용
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_FOSSIL",
@@ -14648,10 +14654,14 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.SWORD_FOSSIL] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "검의 화석",
+		QuoteDesc = "모든 능력치 증가 + 분해 보너스",
 		Description = [[
-
+			↑ {{TearsSmall}}연사 +0.27
+			↑ {{DamageSmall}}공격력 +1
+			↑ {{RangeSmall}}사거리 +0.75
+			↑ {{ShotspeedSmall}}탄속 +0.2
+			{{ffCrush}} {{ColorRed}}분해:{{CR}} 위의 상승량 50%만큼 영구 적용
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_FOSSIL",
@@ -14678,10 +14688,14 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.FORTUNE_WORM_FOSSIL] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "운세 화석",
+		QuoteDesc = "과거에서의 미래 + 분해 보너스",
 		Description = [[
-
+			↑ {{ShotspeedSmall}}탄속 +0.2
+			↑ {{LuckSmall}}행운 +2
+			{{Trinket]]..FiendFolio.ITEM.TRINKET.FORTUNE_WORM..[[}} 1%의 확률로 적에게 명중 시 운세를 보여주는 공격력 x1.05의 포춘쿠키를 발사합니다.
+			{{LuckSmall}} 행운 18+일 때 33%
+			{{ffCrush}} {{ColorRed}}분해:{{CR}} {{SoulHeart}} 소울하트 드랍 + 랜덤 운세 3개
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_FOSSIL",
@@ -14704,10 +14718,11 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.PRIMORDIAL_FOSSIL] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "원시 화석",
+		QuoteDesc = "초보자 키트 + 분해 보너스",
 		Description = [[
-
+			{{Collectible317}} 6.66%의 확률로 여러 개의 독성 눈물을 흩뿌리면서 발사합니다.
+			{{ffCrush}} {{ColorRed}}분해:{{CR}} Golem 캐릭터의 시작 장신구 드랍 ({{Trinket]]..FiendFolio.ITEM.ROCK.DIRT_CLUMP..[[}} + {{Trinket]]..FiendFolio.ITEM.ROCK.ROLLING_ROCK..[[}})
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_FOSSIL",
@@ -14726,10 +14741,12 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.REROLLIGAN_FOSSIL] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "주사위 화석",
+		QuoteDesc = "적을 바꾸는 공격 + 분해 보너스",
 		Description = [[
-
+			{{Collectible285}} 적 명중 시 10%의 확률로 다른 적으로 바꿉니다.
+			{{LuckSmall}} 행운 8+일 때 40%
+			{{ffCrush}} {{ColorRed}}분해:{{CR}} 랜덤 유리 주사위 조각 3개 드랍
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_FOSSIL",
@@ -14747,10 +14764,11 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.FOSSILIZED_FOSSIL] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "비옥한 화석",
+		QuoteDesc = "화석 복제 + 분해 보너스",
 		Description = [[
-
+			소지한 상태에서 다른 화석 타입 장신구 분해시 효과 2배
+			{{ffCrush}} {{ColorRed}}분해:{{CR}} 소지 중인 다른 화석류의 분해 효과 발동
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_FOSSIL",
@@ -14774,10 +14792,11 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.FISH_FOSSIL] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "생선 화석",
+		QuoteDesc = "쓰레기의 왕 + 분해 보너스",
 		Description = [[
-
+			피격 시 파란 아군 자폭 파리를 1~4마리 소환합니다.
+			{{ffCrush}} {{ColorRed}}분해:{{CR}} 아군 Portal 몬스터 소환
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_FOSSIL",
@@ -14797,10 +14816,12 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.RUNIC_FOSSIL] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "룬 화석",
+		QuoteDesc = "연약한 룬 + 분해 보너스",
 		Description = [[
-
+			{{Rune}} 룬의 등장 확률이 증가합니다.
+			{{Card55}} 룬 사용 시 Rune Shard를 드랍합니다.
+			{{ffCrush}} {{ColorRed}}분해:{{CR}} {{Card55}} Rune Shard 4개 드랍
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_FOSSIL",
@@ -14824,10 +14845,11 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.CANNED_FOSSIL] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "취한 화석",
+		QuoteDesc = "콩의 위력 + 분해 보너스",
 		Description = [[
-
+			피격 시 적을 밀쳐내는 랜덤 방귀를 뀝니다.
+			{{ffCrush}} {{ColorRed}}분해:{{CR}} 아군 Litter Bug 소환
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_FOSSIL",
@@ -14846,10 +14868,11 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.BALANCED_FOSSIL] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "균형의 화석",
+		QuoteDesc = "균형의 방 보상 + 분해 보너스",
 		Description = [[
-
+			방 클리어 보상을 50%의 확률로 {{Heart}}/{{Coin}}/{{Key}}/{{Bomb}} 중 0개인 종류로 바꿉니다.
+			{{ffCrush}} {{ColorRed}}분해:{{CR}} 가장 적게 소지 중인 픽업 3개 드랍
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_FOSSIL",
@@ -14872,10 +14895,12 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.BURIED_FOSSIL] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "묻혀있는 화석",
+		QuoteDesc = "땅을 파 봐 + 분해 보너스",
 		Description = [[
-
+			{{Bomb}} 스테이지 당 하나씩 바닥에 틈새가 생기고 그 틈새를 폭탄으로 터트릴 시 화석류를 드랍합니다.
+			Dark Room 스테이지의 무덤을 {{Bomb}}폭탄으로 열 수 있습니다.
+			{{ffCrush}} {{ColorRed}}분해:{{CR}} 랜덤 화석류 드랍
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_FOSSIL",
@@ -14899,10 +14924,12 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.TRIPPY_FOSSIL] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "환각 화석",
+		QuoteDesc = "허 우워... + 분해 보너스",
 		Description = [[
-
+			{{Collectible398}} 13%의 확률로 적을 작아지게 만드는 공격이 나갑니다.
+			{{LuckSmall}} 행운 44+일 때 100%
+			{{ffCrush}} {{ColorRed}}분해:{{CR}} 캐릭터 크기 축소
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_FOSSIL",
@@ -14923,10 +14950,11 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.MAXS_FOSSIL] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "맥스의 화석",
+		QuoteDesc = "개 울음소리 + 분해 보너스",
 		Description = [[
-
+			{{Collectible445}} {{SecretRoom}}{{SuperSecretRoom}}비밀방이 연결되어 있을 경우 개 울음소리가 납니다.
+			{{ffCrush}} {{ColorRed}}분해:{{CR}} 이후 등장하는 색독이 밝혀짐
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_FOSSIL",
@@ -14941,10 +14969,11 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.BOMB_SACK_FOSSIL] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "폭탄자루 화석",
+		QuoteDesc = "지진파 폭발 + 분해 보너스",
 		Description = [[
-
+			{{Bomb}} 폭탄이 터지면 폭탄 주위에 충격파를 일으킵니다.
+			{{ffCrush}} {{ColorRed}}분해:{{CR}} {{Bomb}} 폭탄 3개 드랍
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_FOSSIL",
@@ -14959,10 +14988,11 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.DEATH_CAP_FOSSIL] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "똥모자 화석",
+		QuoteDesc = "아직 효력이 있어 + 분해 보너스",
 		Description = [[
-
+			↓ 방 클리어 시마다 모든 능력치가 감소합니다.
+			{{ffCrush}} {{ColorRed}}분해:{{CR}} 감소량에 비례하여 능력치가 영구적으로 증가
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_FOSSIL",
@@ -14982,10 +15012,12 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.EXPLOSIVE_FOSSIL] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "폭발성 화석",
+		QuoteDesc = "더 많은 폭탄 + 분해 보너스",
 		Description = [[
-
+			{{Bomb}} 방 클리어 시 13%의 확률로 폭탄을 추가로 드랍합니다.
+			장애물이 20%의 확률로 폭탄 돌덩이로 바뀝니다.
+			{{ffCrush}} {{ColorRed}}분해:{{CR}} {{Collectible483}} 이후 클리어하지 않은 3개의 방에 Mama Mega 폭발
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_FOSSIL",
@@ -15006,10 +15038,11 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.COLOSSAL_FOSSIL] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "거대 화석",
+		QuoteDesc = "여러 개의 분해 보너스",
 		Description = [[
-
+			{{TearsizeSmall}} 눈물 크기 x2
+			{{ffCrush}} {{ColorRed}}분해:{{CR}} 랜덤 화석류 3개의 효과 발동
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_FOSSIL",
@@ -15024,10 +15057,11 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.SKUZZ_FOSSIL] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "벼룩 화석",
+		QuoteDesc = "영원한 친구 + 분해 보너스",
 		Description = [[
-
+			{{Slow}} 방 입장 시 적을 느려지게 하는 보라색 아군 벼룩을 2~3마리 소환합니다.
+			{{ffCrush}} {{ColorRed}}분해:{{CR}} 아군 자폭 벼룩 5~7마리 소환
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_FOSSIL",
@@ -15048,10 +15082,11 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.FOSSILIZED_BLESSING] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "골렘의 축복",
+		QuoteDesc = "에덴의 축복 + 분해 보너스",
 		Description = [[
-
+			↑ {{TearsSmall}}연사 +0.4
+			{{ffCrush}} {{ColorRed}}분해:{{CR}} 다음 게임 시작 시 랜덤 석기류 추가
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_FOSSIL",
@@ -15068,10 +15103,12 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.PETRIFIED_SOCK] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "굳은 양말",
+		QuoteDesc = "딱딱한 눈물 + 분해 보너스",
 		Description = [[
-
+			{{Petrify}} 10%의 확률로 적을 석화시키는 공격이 나갑니다.
+			{{LuckSmall}} 행운 45+일 때 100%
+			{{ffCrush}} {{ColorRed}}분해:{{CR}} {{Card92}} 랜덤 패밀리어 획득
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_FOSSIL",
@@ -15092,10 +15129,11 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.MOLTEN_FOSSIL] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "녹아내리는 화석",
+		QuoteDesc = "녹아내린 분해 보너스",
 		Description = [[
-
+			흡수한 정동류의 효과를 15% 강화시킵니다.
+			{{ffCrush}} {{ColorRed}}분해:{{CR}} 랜덤 석기류 획득 + 흡수
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_FOSSIL",
@@ -15114,10 +15152,11 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.VALUE_FOSSIL] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "가치있는 화석",
+		QuoteDesc = "상점 할인 + 분해 보너스",
 		Description = [[
-
+			{{Shop}} 상점의 판매 가격을 1{{Coin}} 할인합니다.
+			{{ffCrush}} {{ColorRed}}분해:{{CR}} {{Coin}} 동전 3개 드랍
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_FOSSIL",
@@ -15140,10 +15179,13 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.CORAL_FOSSIL] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "코랄 화석",
+		QuoteDesc = "뭔가 물에 찬 느낌 + 분해 보너스",
 		Description = [[
-
+			↑ {{HealingRed}}빨간하트 +1
+			공격 시 25%의 확률로 X자 방향의 눈물을 추가로 발사합니다.
+			{{LuckSmall}} 행운 75+일 때 100%
+			{{ffCrush}} {{ColorRed}}분해:{{CR}} {{HealingRed}}+1, 아군 Drowned Charger 3마리 소환
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_FOSSIL",
@@ -15165,10 +15207,12 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.NECROMANTIC_FOSSIL] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "네크로 화석",
+		QuoteDesc = "죽음으로부터 되돌려라 + 분해 보너스",
 		Description = [[
-
+			적 처치 시 20%의 확률로 캐릭터의 주위를 도는 뼛조각을 소환합니다.
+			{{LuckSmall}} 행운 20+일 때 40%
+			{{ffCrush}} {{ColorRed}}분해:{{CR}} 현재 게임에서 분해한 석기류 하나 드랍
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_FOSSIL",
@@ -15184,10 +15228,11 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.BRAIN_FOSSIL] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "두뇌 화석",
+		QuoteDesc = "잠깐동안의 유도 + 분해 보너스",
 		Description = [[
-
+			공격이 잠시동안 적에게 유도됩니다.
+			{{ffCrush}} {{ColorRed}}분해:{{CR}} {{Card1}} The Magician 카드 드랍
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_FOSSIL",
@@ -15206,10 +15251,11 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.REFUND_FOSSIL] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "흥정 화석",
+		QuoteDesc = "모래 채굴 무료 + 분해 보너스",
 		Description = [[
-
+			{{Trinket]]..FiendFolio.ITEM.ROCK.POCKET_SAND..[[}} 다른 화석류 분해 시 Pocket Sand 추가 드랍
+			{{ffCrush}} {{ColorRed}}분해:{{CR}} {{Trinket]]..FiendFolio.ITEM.ROCK.POCKET_SAND..[[}} Pocket Sand 2개 드랍
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_FOSSIL",
@@ -15228,10 +15274,11 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.LEFT_FOSSIL] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "왼손목",
+		QuoteDesc = "어둠의 보상을 거두어들이다 + 분해 보너스",
 		Description = [[
-
+			{{Trinket61}} {{RedChest}}모든 상자가 빨간상자로 교체됩니다.
+			{{ffCrush}} {{ColorRed}}분해:{{CR}} {{RedChest}} 빨간상자 소환
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_FOSSIL",
@@ -15246,10 +15293,12 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.THANK_YOU_FOSSIL] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "감사의 화석",
+		QuoteDesc = "풍성한 거지 + 분해 보너스",
 		Description = [[
-
+			거지가 픽업을 2배로 보답합니다.
+			!!! (패시브/액티브 보상은 미적용)
+			{{ffCrush}} {{ColorRed}}분해:{{CR}} {{Card9}} Judgement 카드 드랍
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_FOSSIL",
@@ -15272,10 +15321,11 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.HOLLOW_FOSSIL] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "공허의 화석",
+		QuoteDesc = "암흑의 기운이 담겨 있어 + 분해 보너스",
 		Description = [[
-
+			↑ {{DamageSmall}}공격력 +1.35
+			{{ffCrush}} {{ColorRed}}분해:{{CR}} {{BlackHeart}}블랙하트를 대신 드랍, 그 스테이지의 악마방 확률 100%
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_FOSSIL",
@@ -15297,7 +15347,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{ffCrush}} {{ColorRed}}분해:{{CR}} 
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_FOSSIL",
@@ -15324,7 +15374,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{ffCrush}} {{ColorRed}}분해:{{CR}} 
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_FOSSIL",
@@ -15342,7 +15392,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{ffCrush}} {{ColorRed}}분해:{{CR}} 
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_FOSSIL",
@@ -15367,7 +15417,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15386,7 +15436,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15406,7 +15456,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15432,7 +15482,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15453,7 +15503,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15478,7 +15528,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15498,7 +15548,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15517,7 +15567,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15537,7 +15587,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15557,7 +15607,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15577,7 +15627,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15593,7 +15643,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15622,7 +15672,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15644,7 +15694,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15664,7 +15714,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15688,7 +15738,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15711,7 +15761,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15733,7 +15783,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15759,7 +15809,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15784,7 +15834,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15801,7 +15851,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15821,7 +15871,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15842,7 +15892,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15863,7 +15913,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15884,7 +15934,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15908,7 +15958,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15933,7 +15983,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15954,7 +16004,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15976,7 +16026,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -16003,7 +16053,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -16025,7 +16075,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -16045,7 +16095,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -16067,7 +16117,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -16085,7 +16135,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -16105,9 +16155,9 @@ local entries = {
 		QuoteDesc = "궁극의 보석 + 정동, 분해 보너스",
 		Description = [[
 			↑ {{RangeSmall}}사거리 +1.5
-			{{ffGeodeFossil}} {{ColorTeal}}공명:{{CR}} {{RangeSmall}} 추가 사거리 +1.5
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} {{RangeSmall}} 추가 사거리 +1.5
 			{{ffCrush}} {{ColorRed}}분해:{{CR}} 랜덤 정동류 드랍
-			{{ffCrush}} {{ColorRed}}공명+분해:{{CR}} 랜덤 정동류 추가 드랍
+			{{ffGeodeFossil}} {{ColorTransform}}공명+분해:{{CR}} 랜덤 정동류 추가 드랍
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_FOSSIL",
@@ -17861,7 +17911,7 @@ local entries = {
 		_descType = "entity",
 		Name = "채굴기",
 		Description = [[
-			현재 들고 석기와 {{Coin}}동전 3개를 소모하여 다른 석기류로 교체합니다.
+			{{ffRock}} 현재 들고 석기와 {{Coin}}동전 3개를 소모하여 다른 석기류로 교체합니다.
 		]],
 	},
 	["6."..FiendFolio.FF.BismuthBeggar.Var..".0"] = {
@@ -17876,7 +17926,7 @@ local entries = {
 		Name = "미완성 골렘",
 		Description = [[
 			!!! 홀수 스테이지에만 등장
-			폭파 시 랜덤 장신구를 드랍합니다.
+			폭파 시 랜덤 석기류를 드랍합니다.
 		]],
 	},
 	["6."..FiendFolio.FF.Sourpuss.Var..".0"] = {
@@ -17893,7 +17943,7 @@ local entries = {
 		Name = "정동 골렘",
 		Description = [[
 			!!! 스테이지 당 일회용
-			현재 들고 석기를 {{ColorTeal}}정동류{{CR}} 2개로 바꿉니다.
+			현재 들고 있는 석기를 {{ColorTeal}}정동류{{CR}} 2개로 바꿉니다.
 			정동류의 경우 해당 석기를 복제합니다.
 		]],
 	},
