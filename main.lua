@@ -48,11 +48,12 @@ wakaba_krdesc = mod ---@class wakaba_krdesc: ModReference
 ---@field TarotBlank? string `"card"` - Tarot Card synergies when using Blank Card
 ---@field Horse? string `"pill"` - Horse Pill descriptions
 ---@field AppendEntries? string|string[] shortcut key to append
+---@field KeepItemConfig? boolean Don't change itemConfig name and descriptions
 
 
 local modsToLoad = {
 	-- Majors
-	--FIENDFOLIO = "fiendfolio",
+	FIENDFOLIO = "fiendfolio",
 	--RETRIBUTION = "retribution",
 	--REVEL = "revelations",
 	--GODMODE = "godmode",
@@ -124,6 +125,7 @@ function mod:loadDescriptionData()
 	if not (REPENTANCE_PLUS and REPENTOGON) then return end
 	--load scripts
 	for key, v in pairs(modsToLoad) do
+		print("[리셰쨩] ["..key.."] 모드 설명 데이터 로드 중...")
 		wakaba_krdesc.richer_entries[key] = include("wakaba_krdesc.richer_descriptions." .. v)
 	end
 end
@@ -159,6 +161,7 @@ function wakaba_krdesc:ModsLoaded_MakeEntries()
 	table.insert(EID.TextReplacementPairs, {"<<<", "{{ArrowGrayLeft}}"})
 	table.insert(EID.TextReplacementPairs, {">>>", "{{ArrowGrayRight}}"})
 	table.insert(EID.TextReplacementPairs, {"↕", "{{ArrowUpDown}}"})
+	--EID.InlineIcons["Familiar"] = {}
 end
 wakaba_krdesc:AddPriorityCallback(ModCallbacks.MC_POST_MODS_LOADED, CallbackPriority.EARLY, wakaba_krdesc.ModsLoaded_MakeEntries)
 
@@ -245,13 +248,20 @@ local function checkStartOfRunWarnings()
 end
 mod:AddCallback(ModCallbacks.MC_POST_RENDER, checkStartOfRunWarnings)
 
-local managedTable = {}
-local managedTable2 = {} ---@type table<string, table<string, WakabaDescriptionEntry>>
+local managedTable = {
+	birthright = {},
+	characters = {},
+	collectibles = {},
+	trinkets = {},
+	cards = {},
+	pills = {},
+}
+local managedTable2 = wakaba_krdesc.richer_entries ---@type table<string, table<string, WakabaDescriptionEntry>>
 
 wakaba_krdesc.managedTable = managedTable
 wakaba_krdesc.managedTable2 = managedTable2
 
-if _wakaba and _wakaba.intversion < 21900 then
+do
 	for modEntry, e in pairs(wakaba_krdesc.entries) do
 		if e and e.targetMod then
 			if e.birthright then
@@ -432,7 +442,30 @@ wakaba_krdesc:AddPriorityCallback(ModCallbacks.MC_POST_MODS_LOADED, CallbackPrio
 
 	-- 신규 설명 데이터
 	for modKey, modEntries in pairs(managedTable2) do
-		for key, v in pairs(modEntries) do
+		for key, itemDesc in pairs(modEntries) do
+			local d = itemDesc._descType
+			local n = itemDesc.Name
+			local t, v, s, fallback = spliceKey(key)
+			local item
+			if not (t and v and s) or itemDesc.KeepItemConfig then
+			elseif d == "collectible" then
+				item = ic:GetCollectible(s)
+			elseif d == "trinket" then
+				item = ic:GetTrinket(s)
+			elseif d == "card" then
+				item = ic:GetCard(s)
+			elseif d == "pill" then
+				item = ic:GetPillEffect(s)
+			end
+
+			if item --[[ and itemDesc.Mod ]] then
+				if itemDesc.Name and itemDesc.Name ~= "" then
+					item.Name = itemDesc.Name or item.Name
+				end
+				if item.Description and itemDesc.QuoteDesc and itemDesc.QuoteDesc ~= "" then
+					item.Description = itemDesc.QuoteDesc or item.Description
+				end
+			end
 
 		end
 	end
@@ -504,6 +537,42 @@ wakaba_krdesc:AddPriorityCallback(ModCallbacks.MC_POST_GAME_STARTED, CallbackPri
 	for i = 1, TrinketType.NUM_TRINKETS - 1 do
 		if EID.descriptions["en_us"].custom["5.350."..i] then
 			EID.descriptions["en_us"].custom["5.350."..i] = nil
+		end
+	end
+end)
+
+local _lastPillUsed = -1
+
+---@param pillEffect PillEffect
+---@param player EntityPlayer
+---@param flags UseFlag
+---@param pillColor PillColor
+wakaba_krdesc:AddCallback(ModCallbacks.MC_PRE_USE_PILL, function (_, pillEffect, pillColor, player, flags)
+	if pillEffect >= PillEffect.NUM_PILL_EFFECTS and flags & UseFlag.USE_NOHUD == 0 then
+		_lastPillUsed = pillEffect
+		Isaac.CreateTimer(function ()
+			_lastPillUsed = -1
+		end, 2 , 1, true)
+	end
+end)
+
+---@param title string
+---@param subTitle string
+---@param isSticky boolean
+---@param isCurseDisplay boolean
+wakaba_krdesc:AddCallback(ModCallbacks.MC_PRE_ITEM_TEXT_DISPLAY, function (_, title, subTitle, isSticky, isCurseDisplay)
+	if not (REPKOR or Options.Language == "kr") then return end
+
+	-- 신규 설명 데이터
+	for modKey, modEntries in pairs(managedTable2) do
+		if _lastPillUsed >= PillEffect.NUM_PILL_EFFECTS then
+			if modEntries["5.70.".._lastPillUsed] then
+				local itemDesc = modEntries["5.70.".._lastPillUsed]
+				if itemDesc.Name and itemDesc.Name == title and itemDesc.QuoteDesc and subTitle ~= itemDesc.QuoteDesc then
+					Game():GetHUD():ShowItemText(itemDesc.Name, itemDesc.QuoteDesc, false, false)
+					return false
+				end
+			end
 		end
 	end
 end)

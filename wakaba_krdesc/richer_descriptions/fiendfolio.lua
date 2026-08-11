@@ -1,7 +1,7 @@
 if not FiendFolio then return end
 
-local versionRequ = "3.1.0"
-local versionNext = "3.1.0"
+local versionRequ = "3.1"
+local versionNext = "3.1"
 
 if (FiendFolio and FiendFolio.REHEATED) or FiendFolio:CheckFiendFolioModVersion(versionRequ, true) then
 	table.insert(wakaba_krdesc.ERRORS, {
@@ -88,7 +88,7 @@ local entries = {
 	["FF_APPEND_BRUISE"] = {
 		_descType = "append",
 		Description = [[
-			{{ffBruise}} {{ColorOrange}}명듦: {{ColorGray}}해당 상태 중첩 수만큼 추가 피해
+			{{ffBruise}} {{ColorOrange}}멍듦: {{ColorGray}}해당 상태 중첩 수만큼 추가 피해
 		]],
 	},
 	["FF_APPEND_DOOM"] = {
@@ -191,6 +191,9 @@ local entries = {
 		]],
 	},
 	--#endregion
+	--#endregion
+
+	--#region TRANSFORMATIONS
 	--#endregion
 
 	--#region PLAYERS
@@ -18179,10 +18182,241 @@ entries["5.30."..FiendFolio.PICKUP.KEY.CHARGEDSPICY_PERM] = entries["5.30."..Fie
 entries["5.40."..FiendFolio.PICKUP.BOMB.DOUBLE_COPPER] = entries["5.40."..FiendFolio.PICKUP.BOMB.COPPER]
 entries["5.40."..FiendFolio.PICKUP.BOMB.MIXED_DOUBLE] = entries["5.40."..FiendFolio.PICKUP.BOMB.COPPER]
 
+-- 주사위방
 local diceTable = {
   [881] = {"881", "12번", "{{Collectible386}} 스테이지 안의 모든 장애물 변경"},
   [882] = {"882", "12번", "{{Collectible386}} 스테이지 안의 모든 장애물 변경"}
 }
 EID:updateDescriptionsViaTable(diceTable, EID.descriptions["ko_kr"].dice)
+
+--#region Golem Slot
+local function FF_EIDKR_RockSlotCondition(descObj)
+	if EID:getLanguage() ~= "ko_kr" and EID:getLanguage() ~= "ko" then return false end
+	if not descObj.ObjType == EntityType.ENTITY_SLOT then return false end
+	if not descObj.Entity then return end
+	if descObj.ObjVariant == FiendFolio.FF.MiningMachine.Var
+	or descObj.ObjVariant == FiendFolio.FF.BismuthBeggar.Var
+	or descObj.ObjVariant == FiendFolio.FF.Sourpuss.Var
+	or (descObj.ObjVariant == FiendFolio.FF.GeodeGolem.Var and descObj.ObjSubType == 0)
+	or (descObj.ObjVariant == FiendFolio.FF.Midarizer.Var and descObj.ObjSubType ~= 10)
+	or descObj.ObjVariant == FiendFolio.FF.Sweetpuss.Var
+	then
+		local holdUpRockRange = 100
+
+		local game = Game()
+		local slot = descObj.Entity
+		local anim = slot:GetSprite():GetAnimation()
+		for i=0, game:GetNumPlayers()-1 do
+			local player = game:GetPlayer(i)
+			local data = player:GetData()
+
+			if player and player:Exists() then
+				local trinket
+				if slot.Variant == FiendFolio.FF.Midarizer.Var then
+					trinket = FiendFolio.GetMostRecentRockTrinket(player, nil, true)
+				else
+					trinket = FiendFolio.GetMostRecentRockTrinket(player)
+				end
+				local price = FiendFolio.GetGrindPriceForTrinket(trinket, player)
+
+				local shouldHoldUpRockTrinket = trinket > 0
+					and (data.holdingUpRockTouchingPickup or 0) == 0
+					and not player:IsHoldingItem()
+					and (anim == 'Idle' or anim == 'IdleRandom')
+					and player.Position:Distance(slot.Position) < holdUpRockRange
+					and player:GetShootingInput():Length() < 0.1
+					and not (slot.Variant == FiendFolio.FF.MiningMachine.Var and player:GetNumCoins() < price)
+					and not (slot.Variant == FiendFolio.FF.Sourpuss.Var and player:GetSoulHearts() < 3)
+
+				return shouldHoldUpRockTrinket
+			end
+
+		end
+	end
+end
+
+local function FF_EIDKR_RockSlotCallback(descObj)
+	for i = 0, Game():GetNumPlayers() -1 do
+		local player = Isaac.GetPlayer()
+		local data = player:GetData()
+		local trinket = FiendFolio.GetMostRecentRockTrinket(player)
+		if data.isHoldingUpRockTrinket and trinket > 0 then
+			trinket = trinket % TrinketType.TRINKET_GOLDEN_FLAG
+			local demoDescObj = EID:getDescriptionObj(5, 350, trinket)
+
+			local appendDesc = "#{{ArrowGrayDown}} 소모할 석기:#"
+			if descObj.ObjVariant == FiendFolio.FF.MiningMachine.Var then
+				appendDesc = "#{{ArrowGrayDown}} {{ColorLightOrange}}소모할 석기{{CR}}: #"
+			elseif descObj.ObjVariant == FiendFolio.FF.BismuthBeggar.Var then
+				appendDesc = "#{{ArrowGrayDown}} {{ColorPastelBlue}}분해할 석기{{CR}}: #"
+			elseif descObj.ObjVariant == FiendFolio.FF.Sourpuss.Var then
+				appendDesc = "#{{ArrowGrayDown}} {{ColorSilver}}흡수할 석기{{CR}}: #"
+			elseif descObj.ObjVariant == FiendFolio.FF.Midarizer.Var then
+				appendDesc = "#{{ArrowGrayDown}} {{ColorGold}}강화할 석기{{CR}}: #"
+			elseif descObj.ObjVariant == FiendFolio.FF.Sweetpuss.Var then
+				appendDesc = "#{{ArrowGrayDown}} {{ColorEIDError}}소모할 석기{{CR}} : #"
+			end
+			appendDesc = appendDesc .. "{{Trinket"..trinket.."}} {{ColorEIDObjName}}" .. demoDescObj.Name .. "#" .. demoDescObj.Description .. "#"
+			EID:appendToDescription(descObj, appendDesc)
+			break
+		end
+	end
+
+	return descObj
+end
+EID:addDescriptionModifier("FF_EIDKR_GolemMachines", FF_EIDKR_RockSlotCondition, FF_EIDKR_RockSlotCallback)
+--#endregion
+
+--#region Empty Book
+local function FF_EIDKR_EmptyBookCondition(descObj)
+	if EID:getLanguage() ~= "ko_kr" and EID:getLanguage() ~= "ko" then return false end
+	if not FiendFolio.savedata.run.emptybookeffects then return false end
+	if not (descObj.ObjType == EntityType.ENTITY_PICKUP and descObj.ObjVariant == PickupVariant.PICKUP_COLLECTIBLE) then return false end
+	return (descObj.ObjSubType == FiendFolio.ITEM.COLLECTIBLE.MY_STORY_2 or descObj.ObjSubType == FiendFolio.ITEM.COLLECTIBLE.MY_STORY_4 or descObj.ObjSubType == FiendFolio.ITEM.COLLECTIBLE.MY_STORY_6)
+end
+local checkNames = {
+	[FiendFolio.ITEM.COLLECTIBLE.MY_STORY_2] = "short story",
+	[FiendFolio.ITEM.COLLECTIBLE.MY_STORY_4] = "average story",
+	[FiendFolio.ITEM.COLLECTIBLE.MY_STORY_6] = "long story",
+}
+local function FF_EIDKR_EmptyBookCallback(descObj)
+	local effects
+	local multiplier
+	local existingEffects = FiendFolio.savedata.run.emptybookeffects
+	local appendDesc = "!!! 사용 시:"
+	local shouldAppend = true
+	if existingEffects then
+		if existingEffects and existingEffects[checkNames[descObj.ObjSubType]] then
+			effects = existingEffects[checkNames[descObj.ObjSubType]]
+			multiplier = Isaac.GetItemConfig():GetCollectible(descObj.ObjSubType).MaxCharges
+			multiplier = multiplier and multiplier / 2
+		else
+			shouldAppend = false
+			appendDesc = "!!! 랜덤 효과를 2번 발동합니다."
+			effects = {"wild", "wild"}
+			multiplier = 2
+		end
+
+		if effects and multiplier and shouldAppend then
+			for _, effect in ipairs(effects) do
+				while effect == "wild" do
+					appendDesc = appendDesc .. "#랜덤 효과를 발동합니다."
+				end
+				if effect == "sad" then
+					appendDesc = appendDesc .. "#그 방에서 {{TearsSmall}}연사 +" .. (0.25 * multiplier)
+				elseif effect == "frightning" then
+					local rangeStr = multiplier == 1 and "주변의 " or "그 방의 "
+					local durations = {
+						[1] = "7", [2] = "5", [3] = "8"
+					}
+					appendDesc = appendDesc .. "#{{Fear}} " .. rangeStr .. "적에게 " .. durations[multiplier] .. "초동안 공포를 겁니다."
+				elseif effect == "shocking" then
+					local rangeStr = multiplier == 1 and "주변의 " or "그 방의 "
+					local durations = {
+						[1] = 7, [2] = 5, [3] = 8
+					}
+					appendDesc = appendDesc .. "#{{ffBruise}} " .. rangeStr .. "적을 " .. tostring(math.ceil(durations[multiplier] * 1.5)) .. "초동안 멍들게 합니다."
+				elseif effect == "violent" then
+					local rangeStr = multiplier == 1 and "주변의 " or "그 방의 "
+					local dmgStrings = {
+						[1] = "15 + (3 * 현재 스테이지)",
+						[2] = "20 + (3 * 현재 스테이지)",
+						[3] = "30 + (4 * 현재 스테이지)"
+					}
+					appendDesc = appendDesc .. "#" .. rangeStr .. "적에게 " .. dmgStrings[multiplier] .. "만큼의 피해를 줍니다."
+				elseif effect == "profitable" then
+					local coinStrings = {
+						[1] = "페니 2개를 드랍합니다.",
+						[2] = "페니 1개와 랜덤 동전을 드랍합니다.",
+						[3] = "페니 1개, 랜덤 동전 1개, 랜덤 픽업 1개를 드랍합니다."
+					}
+					appendDesc = appendDesc .. "#{{Coin}} " .. coinStrings[multiplier]
+				elseif effect == "religious" then
+					appendDesc = appendDesc .. "#{{Collectible584}} Book of Virtues의 불꽃을 " ..tostring(math.ceil(multiplier)) .. "개 소환합니다."
+				elseif effect == "love" then
+					local heartStrings = {
+						[1] = "#{{HalfHeart}} 빨간하트 반칸을 드랍합니다.",
+						[2] = "#{{Heart}} 빨간하트 한칸을 드랍합니다.",
+						[3] = "#{{SoulHeart}} 소울하트 한칸을 드랍합니다."
+					}
+					appendDesc = appendDesc .. heartStrings[multiplier]
+
+				elseif effect == "funny" then
+					local funnyStrings = {
+						[1] = "적을 밀쳐내는 ",
+						[2] = "적을 밀쳐내는 독",
+						[3] = "주변의 적을 {{Poison}}중독시키는 거대한 독"
+					}
+					appendDesc = appendDesc .. "#{{Collectible294}} " .. funnyStrings[multiplier] .. "방귀를 뀝니다."
+
+				elseif effect == "mischievous" then
+					appendDesc = appendDesc .. "#{{Collectible"..FiendFolio.ITEM.COLLECTIBLE.FIENDS_HORN.."}} Fiend의 부하를 " ..tostring(math.ceil(multiplier)) .. "마리 소환합니다."
+				elseif effect == "festering" then
+					appendDesc = appendDesc .. "#파란 아군 자폭 벼룩을 " .. tostring(math.ceil(multiplier * 2)) .. "마리 소환합니다."
+				end
+			end
+		end
+		descObj.Description = appendDesc .. descObj.Description
+		--EID:appendToDescription(descObj, appendDesc)
+	end
+	return descObj
+end
+EID:addDescriptionModifier("FF_EIDKR_EmptyBook", FF_EIDKR_EmptyBookCondition, FF_EIDKR_EmptyBookCallback)
+--#endregion
+
+--#region Perfect Generic Object modifier override
+EID:addDescriptionModifier("FF Perfectly Generic Object", function (descObj)
+	local anyoneHas = false
+	for _, player in ipairs(PlayerManager.GetPlayers()) do
+		for _, id in ipairs({
+			FiendFolio.ITEM.COLLECTIBLE.PERFECTLY_GENERIC_OBJECT_1,
+			FiendFolio.ITEM.COLLECTIBLE.PERFECTLY_GENERIC_OBJECT_2,
+			FiendFolio.ITEM.COLLECTIBLE.PERFECTLY_GENERIC_OBJECT_3,
+			FiendFolio.ITEM.COLLECTIBLE.PERFECTLY_GENERIC_OBJECT_4,
+			FiendFolio.ITEM.COLLECTIBLE.PERFECTLY_GENERIC_OBJECT_5,
+			FiendFolio.ITEM.COLLECTIBLE.PERFECTLY_GENERIC_OBJECT_6,
+			FiendFolio.ITEM.COLLECTIBLE.PERFECTLY_GENERIC_OBJECT_8,
+			FiendFolio.ITEM.COLLECTIBLE.PERFECTLY_GENERIC_OBJECT_12
+		}) do
+			if player:HasCollectible(id) then
+				anyoneHas = true
+				break
+			end
+		end
+
+		if anyoneHas then
+			break
+		end
+	end
+	if anyoneHas and descObj.Entity and descObj.Entity.Type == EntityType.ENTITY_PICKUP and descObj.Entity.Variant == PickupVariant.PICKUP_TAROTCARD then
+		local config = Isaac.GetItemConfig():GetCard(descObj.Entity.SubType)
+
+		if config and config.CardType == ItemConfig.CARDTYPE_SPECIAL_OBJECT then
+			local collectible = "#{{Collectible" .. mod.ITEM.COLLECTIBLE.PERFECTLY_GENERIC_OBJECT_1 .. "}} "
+			local prefix = "{{ColorYellow}}Perfectly Generic Object{{CR}} 충전량: "
+			local charge = "{{"..FiendFolio.PocketObjectMimicCharges[descObj.Entity.SubType].."}}{{Battery}}"
+			descObj.Description = descObj.Description ..  collectible .. prefix .. charge
+		end
+	end
+
+	return descObj
+end)
+--#endregion
+
+--#region Blasphemous modifier override
+EID:addDescriptionModifier("FF Blasphemous Trinket", function (descObj)
+	if descObj.Entity and descObj.Entity.Type == EntityType.ENTITY_PICKUP and descObj.Entity.Variant == PickupVariant.PICKUP_TRINKET then
+		if mod:IsPickupTrinketBlasphemous(descObj.Entity) then
+			descObj.Description = descObj.Description .. "#{{DamageSmall}} {{ColorBlasphemous}}공격력 +1"
+		end
+	end
+
+	return descObj
+end)
+--#endregion
+
+for _, entry in pairs(entries) do
+	entry.Mod = "Fiend Folio"
+end
 
 return entries
