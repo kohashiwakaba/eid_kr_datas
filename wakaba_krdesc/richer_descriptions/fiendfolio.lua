@@ -15414,10 +15414,11 @@ local entries = {
 	--#region REHEADED GEODE
 	[TRINKET..FiendFolio.ITEM.ROCK.CURVED_GEODE] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "굽은 정동",
+		QuoteDesc = "공격력 증가 + 정동 보너스",
 		Description = [[
-			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
+			↑ {{DamageSmall}}공격력 +1
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} {{DamageSmall}} 추가 공격력 +0.5
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15433,10 +15434,12 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.HAUNTED_GEODE] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "유령의 정동",
+		QuoteDesc = "유령 공격 + 정동 보너스",
 		Description = [[
-			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
+			20%의 확률로 적과 장애물을 관통하는 공격이 나갑니다.
+			{{LuckSmall}} 행운 40+일 때 100%
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 확률 증가
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15453,10 +15456,13 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.HEALTH_GEODE] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "체력의 정동",
+		QuoteDesc = "두번째 기회 + 정동 보너스",
 		Description = [[
-			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
+			!!! 일회용
+			전체 체력이 빨간하트 1칸 이하일 때 {{Heart}}체력을 전부 회복합니다.
+			!!! 최대 체력이 1칸일 경우 빨간하트 반칸일 때 발동
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} {{SoulHeart}} 회복 시 추가 소울하트 +1
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15479,10 +15485,11 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.LITTLE_GEODE] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "작은 정동",
+		QuoteDesc = "크기 감소 + 정동 보너스",
 		Description = [[
-			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
+			캐릭터의 크기가 작아집니다.
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 캐릭터 크기 추가 감소
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15500,10 +15507,11 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.QUICK_GEODE] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "신속의 정동",
+		QuoteDesc = "재빠른 탐색 + 정동 보너스",
 		Description = [[
-			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
+			{{SpeedSmall}} 클리어한 방에서 이동속도가 최소 1.75 이상으로 고정됩니다.
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} {{SpeedSmall}} 이동속도 +0.1
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15525,10 +15533,12 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.WEBBY_GEODE] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "거미 정동",
+		QuoteDesc = "둔화 공격 + 정동 보너스",
 		Description = [[
-			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
+			{{Slow}} 20%의 확률로 적을 둔화시키는 공격이 나갑니다.
+			{{LuckSmall}} 행운 40+일 때 100%
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 둔화된 적이 흰색 장판을 남김
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15545,10 +15555,11 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.LUCKY_GEODE] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "행운의 정동",
+		QuoteDesc = "행운 증가 + 정동 보너스",
 		Description = [[
-			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
+			↑ {{LuckSmall}}행운 +1
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} {{LuckSmall}} 추가 행운 +2
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15564,10 +15575,12 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.PHLEGMY_GEODE] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "가래 정동",
+		QuoteDesc = "접착 공격 + 정동 보너스",
 		Description = [[
-			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
+			10%의 확률로 접착 눈물이 나갑니다.
+			{{LuckSmall}} 행운 90+일 때 100%
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} {{Slow}} 접착 눈물이 적을 둔화시킵니다.
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15584,10 +15597,12 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.LOB_GEODE] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "로브 정동",
+		QuoteDesc = "공성 공격 + 정동 보너스",
 		Description = [[
-			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
+			↑ {{RangeSmall}}사거리 +1
+			눈물을 곡선형으로 발사합니다.
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} {{RangeSmall}} 추가 사거리 +0.5
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15604,10 +15619,12 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.SODALITE_GEODE] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "소달라이트",
+		QuoteDesc = "치명타 공격 + 정동 보너스",
 		Description = [[
-			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
+			4%의 확률로 공격력 x5의 피해를 주는 치명타 공격이 나갑니다.
+			{{LuckSmall}} 행운 11+일 때 33%
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 치명타 확률 증가
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15624,10 +15641,11 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.PLACEBEODE] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "위약 정동",
+		QuoteDesc = "흡수 시 정동 보너스",
 		Description = [[
-			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
+			무효과
+			{{ffGeode}} 흡수 시 다른 정동류에 추가 공명 효과를 줍니다.
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15640,10 +15658,16 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.WARM_GEODE] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "따뜻한 정동",
+		QuoteDesc = "불의 힘 + 정동 보너스",
 		Description = [[
-			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
+			캐릭터가 불 주변에 있을 때:
+			>>> {{DamageSmall}} 공격력 +4
+			>>> {{ShotspeedSmall}} 탄속 +0.2
+			따뜻한 스테이지일 때:
+			>>> {{DamageSmall}} 공격력 +2
+			>>> {{ShotspeedSmall}} 탄속 +0.2
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} {{DamageSmall}} 불 주변에 있을 때 추가 공격력 +5
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15669,10 +15693,12 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.CHAIN_GEODE] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "연쇄 정동",
+		QuoteDesc = "연쇄적 장애물 파괴 + 정동 보너스",
 		Description = [[
-			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
+			장애물 파괴 시 40%의 확률로 인접한 장애물을 파괴합니다.
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 추가 장애물 파괴 확률 +30%p
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 20%의 확률로 인접한 구덩이를 메움
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15691,10 +15717,11 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.RUSTY_GEODE] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "녹슨 정동",
+		QuoteDesc = "식어가는 욕망 + 정동 보너스",
 		Description = [[
-			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
+			{{DamageSmall}} 증발성 공격력 +8
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 공격력 증발 속도 감소
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15711,10 +15738,13 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.FRAGMENTED_ONYX_GEODE] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "오닉스 조각",
+		QuoteDesc = "공포 공격 + 정동 보너스",
 		Description = [[
-			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
+			{{Fear}} 10%의 확률로 적을 도망가게 하는 공격이 나갑니다.
+			{{LuckSmall}} 행운 26+일 때 100%
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 공포 공격 확률 증가
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 공포 상태의 적에게 악마방 확률에 따른 추가 피해
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15735,10 +15765,11 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.QUANTUM_GEODE] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "양자 정동",
+		QuoteDesc = "혼란스러운 공격 + 정동 보너스",
 		Description = [[
-			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
+			눈물이 3갈래로 나가며 하나를 명중시키면 나머지는 사라집니다.
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 명중 가능 눈물 +1
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15758,10 +15789,11 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.TECHNOLOGICAL_GEODE] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "기계 정동",
+		QuoteDesc = "주변 레이저 + 정동 보너스",
 		Description = [[
-			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
+			공격방향으로 캐릭터의 공격력 x0.3의 매우 짧은 레이저를 발사합니다.
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 추가 레이저 발사
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15780,13 +15812,16 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.RUBBER_GEODE] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "고무 정동",
+		QuoteDesc = "통통 튀는 눈물 + 정동 보너스",
 		Description = [[
-			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
+			{{ffBruise}} 15%의 확률로 적을 멍들게 하는 고무 공격이 나갑니다.
+			{{LuckSmall}} 행운 18+일 때 50%
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 확률 및 넉백 강도 증가
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
+			"FF_APPEND_BRUISE",
 		},
 		Tests = {
 			"{{ffGeode}} {{ColorTransform}}Rock Trinket (Geode)",
@@ -15806,10 +15841,12 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.CALZONE_GEODE] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "칼초네 정동",
+		QuoteDesc = "처비 발사 + 정동 보너스",
 		Description = [[
-			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
+			{{Bait}} 5%의 확률로 적에게 표식을 걸며 캐릭터에게 다시 돌아오는 처비를 발사합니다.
+			{{LuckSmall}} 행운 9+일 때 50%
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 발사 확률 증가
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15831,10 +15868,11 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.TOUGH_GEODE] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "딱딱한 정동",
+		QuoteDesc = "보존력이 강함 + 정동 보너스",
 		Description = [[
-			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
+			{{ffCrush}} 분해 시 20%의 확률로 소모되지 않고 보존됩니다.
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 보존 확률 증가
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15848,10 +15886,12 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.TIPSY_GEODE] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "술취한 정동",
+		QuoteDesc = "불안정한 이동 + 정동 보너스",
 		Description = [[
-			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
+			↑ {{DamageSmall}}공격력 +2
+			움직임이 불안정해집니다.
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} {{DamageSmall}} 추가 공격력 +1.5, 불안정성 증가
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15868,10 +15908,13 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.VINYL_GEODE_A] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "비닐 정동 - 앞면",
+		QuoteDesc = "양면 능력치 증가 + 정동 보너스",
 		Description = [[
-			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
+			↑ {{DamageSmall}}공격력 +1
+			↑ {{ShotspeedSmall}}탄속 +0.24
+			짝수 스테이지 진입 시 뒷면으로 뒤집습니다.({{SpeedSmall}}/{{TearsSmall}} 증가)
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} {{SpeedSmall}}+0.07/{{TearsSmall}}+0.2
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15889,10 +15932,13 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.VINYL_GEODE_B] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "비닐 정동 - 뒷면",
+		QuoteDesc = "양면 능력치 증가 + 정동 보너스",
 		Description = [[
-			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
+			↑ {{SpeedSmall}}이동속도 +0.2
+			↑ {{TearsSmall}}연사 +0.66
+			홀수 스테이지 진입 시 앞면으로 뒤집습니다.({{DamageSmall}}/{{ShotspeedSmall}} 증가)
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} {{DamageSmall}}+0.3/{{ShotspeedSmall}}+0.08
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15910,10 +15956,12 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.PRISMATIC_GEODE] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "프리즘 정동",
+		QuoteDesc = "무지개빛의 힘 + 정동 보너스",
 		Description = [[
-			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
+			적 처치 시 12%의 확률로 랜덤 능력치를 10초동안 증가시켜주는 프리즘 조각을 드랍합니다.
+			방 클리어 시 25%의 확률로 프리즘 조각을 추가로 드랍합니다.
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 능력치 증가량 2배, 지속시간 증가
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15931,13 +15979,16 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.FRACTAL_GEODE] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "프랙탈 정동",
+		QuoteDesc = "깊이 보려고 하지 마 + 정동 보너스",
 		Description = [[
-			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
+			{{ffSleeping}} 15%의 확률로 적을 나른하게 만드는 눈물을 회오리 모양으로 발사합니다.
+			{{LuckSmall}} 행운 20+일 때 45%
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 33%의 확률로 즉시 잠들게 함
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
+			"FF_APPEND_DROWSY",
 		},
 		Tests = {
 			"{{ffGeode}} {{ColorTransform}}Rock Trinket (Geode)",
@@ -15955,10 +16006,11 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.GMO_GEODE] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "GMO 정동",
+		QuoteDesc = "잠재성 알약 + 정동 보너스",
 		Description = [[
-			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
+			{{Pill}} 알약 사용 시 랜덤 효과의 알약을 강제로 사용합니다.
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 추가 긍정 알약 효과 발동
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -15980,10 +16032,11 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.SWALLOWED_GEODE] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "삼켜진 페니",
+		QuoteDesc = "꿀꺽! + 정동 보너스",
 		Description = [[
-			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
+			{{Coin}} 피격 시 동전을 하나 드랍합니다.
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 33%의 확률로 1+1 페니가 드랍됨
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -16001,10 +16054,12 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.VOODOO_GEODE] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "부두 정동",
+		QuoteDesc = "저주가 곧 힘 + 정동 보너스",
 		Description = [[
-			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
+			{{DamageSmall}} {{CurseCursedSmall}} 저주가 걸려 있는 동안 공격력 +1.5
+			{{DamageSmall}} {{CurseRoom}} 저주방 최초 진입 시 그 스테이지에서 공격력 +0.35
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 위의 효과 +50%
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -16023,10 +16078,14 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.UMBILICAL_GEODE] = {
 		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
+		Name = "탯줄",
+		QuoteDesc = "태아 보호 + 정동 보너스",
 		Description = [[
-			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
+			{{Collectible100}} {{HalfHeart}} 방 입장 시 빨간하트가 반칸 이하일 때 Little Steven을 소환합니다.
+			{{Collectible318}} 피격 시 30%의 확률로 그 방에서 Gemini 패밀리어를 소환합니다.
+			{{LuckSmall}} 행운 35+일 때 100%
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} {{Collectible318}} 확률 증가
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} {{Collectible100}} 빨간하트 1칸일 때에도 등장
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
