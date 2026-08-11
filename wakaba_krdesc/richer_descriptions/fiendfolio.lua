@@ -18415,6 +18415,95 @@ EID:addDescriptionModifier("FF Blasphemous Trinket", function (descObj)
 end)
 --#endregion
 
+--#region Crazy Slots
+local checkCrazySlot = false
+
+---@param player EntityPlayer
+local function renderCrazyError(player)
+	local data = mod:GetEntityData(player)
+	local sdata = data.ffsavedata
+
+	local ic = Isaac.GetItemConfig()
+	local str = ""
+
+	if mod:IsNormalRender(true) then
+		if sdata.CrazyErrorSlot then
+			local startNum
+			local endNum
+			local currentNum = sdata.CrazyErrorNum
+			if not sdata.CrazyErrorData[1] then
+				startNum = currentNum * 100
+				endNum = startNum + 99
+				for i = startNum, endNum do
+					if i % 10 == 0 then
+						str = str .. "#{{NoLB}} "
+					end
+					if ic:GetCollectible(i) and not ic:GetCollectible(i).Hidden then
+						str = str .. "{{Collectible"..i.."}}"
+					else
+						str = str .. "{{Collectible721}}"
+					end
+				end
+			elseif not sdata.CrazyErrorData[2] then
+				startNum = sdata.CrazyErrorData[1] * 100
+				endNum = startNum + 99
+				for i = startNum, endNum do
+					if i % 10 == 0 then
+						str = str .. "#{{NoLB}}"
+						if (i // 10) % 10 == currentNum then
+							str = str .. ">>> "
+						else
+							str = str .. " "
+						end
+					end
+					if ic:GetCollectible(i) and not ic:GetCollectible(i).Hidden then
+						str = str .. "{{Collectible"..i.."}}"
+					else
+						str = str .. "{{Collectible721}}"
+					end
+				end
+			elseif not sdata.CrazyErrorData[3] then
+				startNum = (sdata.CrazyErrorData[1] * 100) + (sdata.CrazyErrorData[2] * 10)
+				endNum = startNum + 9
+				for i = startNum, endNum do
+					str = str .. "#{{NoLB}}"
+					if (i % 10) == currentNum then
+						str = str .. ">>> {{ColorLime}}"
+					else
+						str = str .. " "
+					end
+					if ic:GetCollectible(i) and not ic:GetCollectible(i).Hidden then
+						str = str .. "{{Collectible"..i.."}} ["..i.."] {{NameOnlyC"..i.."}}{{CR}}"
+					else
+						str = str .. "{{Collectible721}} ["..i.."] {{ErrorRoom}} 오류방으로 이동{{CR}}"
+					end
+				end
+			end
+		end
+	end
+
+	if str ~= "" then
+		local desc = EID:getDescriptionObj(5, 100, FiendFolio.ITEM.COLLECTIBLE.ERRORS_CRAZY_SLOTS, nil, false)
+		desc.Description = str
+		EID:displayPermanentText(desc)
+	end
+end
+
+---@param player EntityPlayer
+wakaba_krdesc:AddCallback(ModCallbacks.MC_POST_PLAYER_RENDER, function (_, player)
+	if not player:Exists() then return end
+	local data = mod:GetEntityData(player)
+	local sdata = data.ffsavedata
+	if sdata.CrazyErrorDuration then
+		renderCrazyError(player)
+		checkCrazySlot = true
+	elseif checkCrazySlot then
+		EID:hidePermanentText()
+		checkCrazySlot = false
+	end
+end)
+--#endregion
+
 for _, entry in pairs(entries) do
 	entry.Mod = "Fiend Folio"
 end
