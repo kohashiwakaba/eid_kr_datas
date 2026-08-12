@@ -17993,7 +17993,8 @@ local entries = {
 		_descType = "entity",
 		Name = "주사위 자판기",
 		Description = [[
-		
+			4{{Coin}} 필요
+			작동 시 랜덤 주사위 조각을 드랍합니다.
 		]],
 	},
 	["6."..FiendFolio.FF.PennyPress.Var..".0"] = {
@@ -18328,6 +18329,37 @@ local function FF_EIDKR_RockSlotCallback(descObj)
 	return descObj
 end
 EID:addDescriptionModifier("FF_EIDKR_GolemMachines", FF_EIDKR_RockSlotCondition, FF_EIDKR_RockSlotCallback)
+--#endregion
+
+--#region Vending Machine
+local function FF_EIDKR_VendingCondition(descObj)
+	if EID:getLanguage() ~= "ko_kr" and EID:getLanguage() ~= "ko" then return false end
+	if not descObj.ObjType == EntityType.ENTITY_SLOT then return false end
+	if not descObj.Entity then return end
+	if EID:hasCurseBlind() then return end
+
+
+	if descObj.ObjVariant == FiendFolio.FF.VendingMachine.Var
+	or descObj.ObjVariant == FiendFolio.FF.VendingMachineFF.Var
+	then
+		local slot = descObj.Entity:ToSlot()
+    local sprite, d = slot:GetSprite(), mod:GetEntityData(slot)
+		return d.state ~= "dead"
+	end
+end
+
+local function FF_EIDKR_VendingCallback(descObj)
+
+	local prepend = "" 
+	local slot = descObj.Entity:ToSlot()
+	local sprite, d = slot:GetSprite(), mod:GetEntityData(slot)
+
+	prepend = prepend .. "!!! "..d.price.."{{Coin}} 소모, 발동 시 아래 아이템 즉시 사용#"
+	descObj.Description = prepend .. descObj.Description
+
+	return descObj
+end
+--EID:addDescriptionModifier("FF_EIDKR_VendingMachines", FF_EIDKR_VendingCondition, FF_EIDKR_VendingCallback)
 --#endregion
 
 --#region Milk Machine
