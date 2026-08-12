@@ -17110,7 +17110,7 @@ local entries = {
 		Description = [[
 			{{Timer}} 그 방에서:
 			{{IND}} {{Collectible245}} 20/20 효과 발동
-			{{IND}} {{RangeSmal}} 사거리 +2.5
+			{{IND}} {{RangeSmall}} 사거리 +2.5
 		]],
 	},
 	[CARD..FiendFolio.ITEM.CARD.EGG_SACK] = {
@@ -17173,7 +17173,7 @@ local entries = {
 		Name = "천사방 디스크",
 		QuoteDesc = '',
 		Description = [[
-			{{ItemPoolAngel}} 1분간 3~5개의 천사방 배열 패시브 아이템의 효과를 받습니다.",
+			{{ItemPoolAngel}} 1분간 3~5개의 천사방 배열 패시브 아이템의 효과를 받습니다.
 		]],
 	},
 	[CARD..FiendFolio.ITEM.CARD.PLANETARIUM_DISC] = {
