@@ -4134,7 +4134,7 @@ local entries = {
 		Tests = {
 			"15% chance to fire tears that inflict enemies with Drowsy",
 			"Sleeping enemies gain a counter that counts down over time",
-                "Upon reaching zero, the enemy takes a large amount of damage",
+				"Upon reaching zero, the enemy takes a large amount of damage",
 			"{{Luck}} 50% chance at 25 luck",
 		},
 		AppendEntries = {
@@ -5953,7 +5953,7 @@ local entries = {
 		]],
 		Tests = {
 			"Periodically spawns \"Glitched Tiles\" while held, which destroy rocks, block projectiles and deal 60 damage to enemies",
-        		"!!! While held, every minute and a half, another random held item will turn into GLITCHCITY",
+				"!!! While held, every minute and a half, another random held item will turn into GLITCHCITY",
 		},
 	},
 	[ITEM..FiendFolio.ITEM.COLLECTIBLE.GOLDEN_SPIKES] = {
@@ -5965,8 +5965,8 @@ local entries = {
 		]],
 		Tests = {
 			"9% chance for rocks to turn into Golden Spiked Rocks upon entering the room for the first time",
-                "Golden Spiked Rocks drop 1-3 coins upon being destroyed",
-                "!!! Golden Spiked Rocks hurt Isaac when touched"
+				"Golden Spiked Rocks drop 1-3 coins upon being destroyed",
+				"!!! Golden Spiked Rocks hurt Isaac when touched"
 		},
 		AbyssTests = {
 			"10% chance to drop a penny on kill"
@@ -17889,6 +17889,28 @@ local entries = {
 	},
 	--#endregion
 	--#region SLOTS
+	["6."..FiendFolio.FF.HugBeggar.Var..".0"] = {
+		_descType = "entity",
+		Name = "허그 거지",
+		Description = [[
+			꼬옥 안아주세요
+			{{Heart}} 안아주면 랜덤 하트를 드랍하고 떠납니다.
+		]],
+	},
+	["6."..FiendFolio.FF.VendingMachine.Var..".0"] = {
+		_descType = "entity",
+		Name = "자판기",
+		Description = [[
+
+		]],
+	},
+	["6."..FiendFolio.FF.VendingMachineFF.Var..".0"] = {
+		_descType = "entity",
+		Name = "자판기",
+		Description = [[
+		
+		]],
+	},
 	["6."..FiendFolio.FF.GridRestock.Var..".0"] = {
 		_descType = "entity",
 		Name = "장애물 리스톡",
@@ -17931,7 +17953,7 @@ local entries = {
 	},
 	["6."..FiendFolio.FF.RobotTeller.Var..".0"] = {
 		_descType = "entity",
-		Name = "로봇 점술기계",
+		Name = "점술로봇",
 		Description = [[
 			1{{Coin}} 필요
 			작동 시 확률적으로 아래 중 하나 발동:
@@ -17965,6 +17987,46 @@ local entries = {
 			1{{Coin}} 필요
 			작동 시 랜덤 보상을 획득하며;
 			슬롯머신은 그 스테이지의 랜덤 방으로 이동합니다.
+		]],
+	},
+	["6."..FiendFolio.FF.DiceDispenser.Var..".0"] = {
+		_descType = "entity",
+		Name = "주사위 자판기",
+		Description = [[
+		
+		]],
+	},
+	["6."..FiendFolio.FF.PennyPress.Var..".0"] = {
+		_descType = "entity",
+		Name = "페니 프레스기",
+		Description = [[
+			11{{Coin}} 필요, 일회용
+			작동 시 랜덤 페니류 장신구를 생성합니다.
+		]],
+	},
+	["6."..FiendFolio.FF.MilkMachine.Var..".0"] = {
+		_descType = "entity",
+		Name = "밀크 제조기",
+		Description = [[
+			밀크 자판기 : 5{{Coin}} 필요
+			양쪽의 품질, 플레이버에 따라 능력치가 증가 및 감소합니다.
+		]],
+	},
+	["6."..FiendFolio.FF.MilkFlavorContainer.Var..".0"] = {
+		_descType = "entity",
+		Name = "밀크 제조기",
+		Description = [[
+			플레이버 뽑기 : 1{{Coin}} 필요
+			증가시킬 능력치와 감소시킬 능력치가 하나씩 랜덤으로 지정됩니다.
+		]],
+	},
+	["6."..FiendFolio.FF.MilkQualityModulator.Var..".0"] = {
+		_descType = "entity",
+		Name = "밀크 제조기",
+		Description = [[
+			품질 관리기 : 1{{Coin}} 필요
+			확률적으로 우유의 품질을 강화시킵니다.
+			!!! 강화 실패 시 하락
 		]],
 	},
 	--#endregion
@@ -18150,7 +18212,7 @@ local entries = {
 	--#endregion
 }
 
--- 중복 엔트리
+--#region 중복 엔트리
 entries[ITEM..FiendFolio.ITEM.COLLECTIBLE.PERFECTLY_GENERIC_OBJECT_2] = entries[ITEM..FiendFolio.ITEM.COLLECTIBLE.PERFECTLY_GENERIC_OBJECT_1]
 entries[ITEM..FiendFolio.ITEM.COLLECTIBLE.PERFECTLY_GENERIC_OBJECT_3] = entries[ITEM..FiendFolio.ITEM.COLLECTIBLE.PERFECTLY_GENERIC_OBJECT_1]
 entries[ITEM..FiendFolio.ITEM.COLLECTIBLE.PERFECTLY_GENERIC_OBJECT_4] = entries[ITEM..FiendFolio.ITEM.COLLECTIBLE.PERFECTLY_GENERIC_OBJECT_1]
@@ -18181,6 +18243,7 @@ entries["5.30."..FiendFolio.PICKUP.KEY.CHARGEDSPICY_PERM] = entries["5.30."..Fie
 
 entries["5.40."..FiendFolio.PICKUP.BOMB.DOUBLE_COPPER] = entries["5.40."..FiendFolio.PICKUP.BOMB.COPPER]
 entries["5.40."..FiendFolio.PICKUP.BOMB.MIXED_DOUBLE] = entries["5.40."..FiendFolio.PICKUP.BOMB.COPPER]
+--#endregion
 
 -- 주사위방
 local diceTable = {
@@ -18265,6 +18328,166 @@ local function FF_EIDKR_RockSlotCallback(descObj)
 	return descObj
 end
 EID:addDescriptionModifier("FF_EIDKR_GolemMachines", FF_EIDKR_RockSlotCondition, FF_EIDKR_RockSlotCallback)
+--#endregion
+
+--#region Milk Machine
+--[[  
+	밀크 머신 eid 표시
+	- 우측 품질 관리기 : 배율 증가, 일반 증가, 일반 감소, 배율 감소
+]]
+
+local function getSlotSave(slot)
+  return FiendFolio.getFieldInit(FiendFolio.savedata, 'run', 'level', 'SlotData', tostring(slot.InitSeed), {})
+end
+
+local function slotIsDead(slot)
+  return slot:GetSprite():IsPlaying("Destroyed")
+end
+
+local function calcMilkColor(pos,neg,quality)
+	local col1 = mod.MILK.COLORS[pos].UP.Color
+	local col2 = mod.MILK.COLORS[neg].DOWN.Color
+	quality = quality or 1
+	return Color.Lerp(col2,col1,quality * 1/6)
+end
+
+local function getMilkColor(slot, d)
+	local flavorModule = d.FlavorContainer
+	if flavorModule and flavorModule:Exists() and not slotIsDead(flavorModule) then
+		local flavaSave = getSlotSave(flavorModule)
+		return flavaSave.containedPosMilk, flavaSave.containedNegMilk
+	else
+		local milk1, milk2 = mod:selectMilk(slot:GetDropRNG())
+		return milk1, milk2
+	end
+end
+
+local function getMilkQuality(slot, d)
+	local qualityModule = d.QualityModulator
+	if qualityModule and qualityModule:Exists() and not slotIsDead(qualityModule) then
+		local qualitySave = getSlotSave(qualityModule)
+		return qualitySave.QualityLevel
+	else
+		return 0
+	end
+end
+
+local function FF_EIDKR_MilkMachineCondition(descObj)
+	if EID:getLanguage() ~= "ko_kr" and EID:getLanguage() ~= "ko" then return false end
+	if not descObj.ObjType == EntityType.ENTITY_SLOT then return false end
+	if not (descObj.Entity and descObj.Entity:ToSlot()) then return end
+
+	if descObj.ObjVariant == FiendFolio.FF.MilkMachine.Var then
+		local slot = descObj.Entity:ToSlot()
+		local sprite, d = slot:GetSprite(), mod:GetEntityData(slot)
+		local saveData = FiendFolio.getFieldInit(FiendFolio.savedata, 'run', 'level', 'SlotData', tostring(slot.InitSeed), {})
+		local milkColorPos, milkColorNeg = getMilkColor(slot, d)
+		local milkQuality = getMilkQuality(slot, d)
+		return not slotIsDead(descObj.Entity:ToSlot()) and (d.state == "idleMilk" or (milkColorPos and milkColorNeg))
+	elseif descObj.ObjVariant == FiendFolio.FF.MilkQualityModulator.Var then
+		local slot = descObj.Entity:ToSlot()
+		return not (slotIsDead(slot) or slotIsDead(slot.Parent))
+	elseif descObj.ObjVariant == FiendFolio.FF.MilkFlavorContainer.Var then
+		local slot = descObj.Entity:ToSlot()
+		return not( slotIsDead(slot) or slotIsDead(slot.Parent))
+	end
+end
+
+local milkStatKeyToDesc = {
+	["TEARS"] = "{{TearsSmall}} 연사",
+	["DAMAGE"] = "{{DamageSmall}} 공격력",
+	["SPEED"] = "{{SpeedSmall}} 이동속도",
+	["RANGE"] = "{{RangeSmall}} 사거리",
+	["SHOTSPEED"] = "{{ShotspeedSmall}} 탄속",
+	["LUCK"] = "{{LuckSmall}} 행운",
+}
+
+local milkStat = {
+	["TEARS"] = { 0.15, -0.15, 1.25, 0.75, true},
+	["DAMAGE"] = { 0.2, -0.2, 1.1, 0.9, true},
+	["SPEED"] = { 0.1, -0.1, 0.15, -0.15},
+	["RANGE"] = { 0.5, -0.5, 1.5, -1.5},
+	["SHOTSPEED"] = { 0.1, -0.1, 0.15, -0.15},
+	["LUCK"] = { 1, -1, 5, -5},
+}
+
+local function FF_EIDKR_MilkMachineCallback(descObj)
+	local slot = descObj.Entity:ToSlot()
+	local sprite, d = slot:GetSprite(), mod:GetEntityData(slot)
+	if descObj.ObjVariant == FiendFolio.FF.MilkMachine.Var then
+		local pos, neg, quality
+		local appendDesc = ""
+
+		if d.state == "idleMilk" then
+			local saveData = FiendFolio.getFieldInit(FiendFolio.savedata, 'run', 'level', 'SlotData', tostring(slot.InitSeed), {})
+
+			quality = saveData.MilkDeets.Quality
+
+			pos = saveData.MilkDeets.ColorPos
+			neg = saveData.MilkDeets.ColorNeg
+			appendDesc = appendDesc .. "# 최종 우유 품질 : "
+		else
+			pos, neg = getMilkColor(slot, d)
+			quality = getMilkQuality(slot, d)
+			appendDesc = appendDesc .. "# 예상 우유 품질 : "
+		end
+		appendDesc = appendDesc .. "{{Quality"..quality.."}}"
+
+		local balanceTable = mod.MILK.BALANCE[quality]
+
+		local posStat = milkStat[pos]
+		local negStat = milkStat[neg]
+
+		local isPosMult = posStat[5]
+		local isNegMult = negStat[5]
+
+		if isPosMult then
+			appendDesc = appendDesc .. "#{{IND}}↑ " .. milkStatKeyToDesc[pos] .. " +".. (posStat[1] * balanceTable.UP)
+			if balanceTable.UPMULT ~= 0 then
+				appendDesc = appendDesc .. "#{{IND}}↑ " .. milkStatKeyToDesc[pos] .. " 배율 x".. (posStat[3] * balanceTable.UPMULT)
+			end
+		else
+			appendDesc = appendDesc .. "#{{IND}}↑ " .. milkStatKeyToDesc[pos] .. " +".. ((posStat[1] * balanceTable.UP) + (posStat[3] * balanceTable.UPMULT))
+		end
+
+		if isNegMult then
+			appendDesc = appendDesc .. "#{{IND}}↓ " .. milkStatKeyToDesc[neg] .. " ".. (posStat[2] * balanceTable.DOWN)
+			if balanceTable.DOWNMULT ~= 0 then
+				appendDesc = appendDesc .. "#{{IND}}↓ " .. milkStatKeyToDesc[neg] .. " 배율 x".. (posStat[4] * balanceTable.DOWNMULT)
+			end
+		else
+			appendDesc = appendDesc .. "#{{IND}}↓ " .. milkStatKeyToDesc[neg] .. " ".. ((posStat[2] * balanceTable.DOWN) + (posStat[4] * balanceTable.DOWNMULT))
+		end
+
+		EID:appendToDescription(descObj, appendDesc)
+	elseif descObj.ObjVariant == FiendFolio.FF.MilkQualityModulator.Var then
+		local saveData = FiendFolio.getFieldInit(FiendFolio.savedata, 'run', 'level', 'SlotData', tostring(slot.InitSeed), {})
+		local quality = saveData.QualityLevel
+		local appendDesc = ""
+		appendDesc = appendDesc .. "#우유 품질 : {{Quality"..quality.."}}"
+
+		local balanceTable = mod.MILK.BALANCE[quality]
+		local posCount = balanceTable.UP + (balanceTable.UPMULT * 2)
+		local negCount = balanceTable.DOWN + (balanceTable.DOWNMULT * 2)
+
+		appendDesc = appendDesc .. "#↑ 능력치 증가 비중치 : ".. posCount
+		appendDesc = appendDesc .. "#↓ 능력치 감소 비중치 : ".. negCount
+
+		EID:appendToDescription(descObj, appendDesc)
+	elseif descObj.ObjVariant == FiendFolio.FF.MilkFlavorContainer.Var then
+		local saveData = FiendFolio.getFieldInit(FiendFolio.savedata, 'run', 'level', 'SlotData', tostring(slot.InitSeed), {})
+		local milkColorPos, milkColorNeg = saveData.containedPosMilk, saveData.containedNegMilk
+		if milkColorPos and milkColorNeg then
+			local appendDesc = ""
+			appendDesc = appendDesc .. "#↑ 능력치 증가 : " .. milkStatKeyToDesc[milkColorPos]
+			appendDesc = appendDesc .. "#↓ 능력치 감소 : " .. milkStatKeyToDesc[milkColorNeg]
+			EID:appendToDescription(descObj, appendDesc)
+		end
+	end
+	return descObj
+end
+EID:addDescriptionModifier("FF_EIDKR_MilkMachine", FF_EIDKR_MilkMachineCondition, FF_EIDKR_MilkMachineCallback)
+
 --#endregion
 
 --#region Empty Book
