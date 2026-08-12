@@ -49,7 +49,7 @@ local entries = {
 	["FF_APPEND_SPICY_KEY"] = {
 		_descType = "append",
 		Description = [[
-			{{ffSpicyKey}} {{ColorOrange}}매운열쇠: {{ColorGray}}열쇠를 추가로 획득하나, 체력 반칸의 피해
+			{{ffSpicyKey}} {{ColorOrange}}매운열쇠: {{ColorGray}}등장 시 열쇠가 하나 추가되나, 체력 반칸의 피해
 		]],
 	},
 	["FF_APPEND_SKUZZES"] = {
@@ -114,7 +114,7 @@ local entries = {
 	["FF_APPEND_MARTYR"] = {
 		_descType = "append",
 		Description = [[
-			{{ffMartyr}} {{ColorOrange}}순교: {{ColorGray}}처치 시 오라와 함께 5초동안 행동불능
+			{{ffMartyr}} {{ColorOrange}}순교: {{ColorGray}}처치 시 오라와 함께 5초간 행동불능
 			{{Blank}} {{ColorGray}}오라 안에 있는 캐릭터는 {{DamageSmall}}/{{TearsSmall}} 증가 + 유도공격 + 50%의 확률로 피해 무시
 		]],
 	},
@@ -148,7 +148,7 @@ local entries = {
 	["FF_APPEND_MUGGED"] = {
 		_descType = "append",
 		Description = [[
-			{{ffMugged}} {{ColorOrange}}머그: {{ColorGray}}처치 시 리틀 페니 드랍
+			{{ffMugged}} {{ColorOrange}}약탈: {{ColorGray}}공격 명중 및 처치 시 리틀 페니 드랍
 			{{Blank}} {{ColorGray}}리틀 페니 10개 획득 시 1{{Coin}}
 		]],
 	},
@@ -970,10 +970,12 @@ local entries = {
 		Name = "골렘의 맷돌",
 		QuoteDesc = "장신구 분해기",
 		Description = [[
-			획득 시 석기류를 소환합니다.
-			사용 시 현재 소지 중인 장신구를 빻아 석기류를 소환합니다.
-			석기류는 일반적으로 등장하지 않으며 Golem 캐릭터 플레이 시에만 등장하는 특수 장신구입니다.
+			{{ffRock}} 획득 시 석기류를 소환합니다.
+			{{ffRock}} 사용 시 현재 소지 중인 장신구를 빻아 석기류를 소환합니다.
 		]],
+		AppendEntries = {
+			"FF_APPEND_GOLEM_NORMAL",
+		},
 		Tests = {
 			"Spawns a Golem trinket on pickup",
 			"{{Trinket}} On use, grinds your current trinket into a rock trinket",
@@ -1164,10 +1166,10 @@ local entries = {
 		Name = "커뮤니티 업적",
 		QuoteDesc = "숫자세기에 정통",
 		Description = [[
-			↑ {{DamageSmall}}공격력 +]]..string.format("%.2f", FiendFolio:GetCommunityAchievementDamage())..[[
+			↑ {{DamageSmall}}공격력 +]]..string.format("%.2f", FiendFolio:GetCommunityAchievementDamage())..[[ 
 			{{DamageSmall}} 공격력 증가량은 Fiend Folio 디스코드 Counting 계열 채널의 기록에 비례합니다.
 			!!! 현재 모드에 기록된 최고기록:
-			{{Blank}} 일반:]]..FiendFolio.CountingChannelWorldRecords.Canon.Regular..[[
+			{{Blank}} 일반:]]..FiendFolio.CountingChannelWorldRecords.Canon.Regular..[[ 
 			{{Blank}} 하드:]]..FiendFolio.CountingChannelWorldRecords.Canon.Hardcore..[[
 		]],
 		Tests = {
@@ -1545,7 +1547,7 @@ local entries = {
 		Name = "십자가",
 		QuoteDesc = "우리의 죄를 사하소서",
 		Description = [[
-			{{ffMartyr}}적 처치 시 순교자로 만듭니다.
+			{{ffMartyr}} 적 처치 시 순교자로 만듭니다.
 		]],
 		Tests = {
 			"Enemies killed by tears will turn into Martyrs"
@@ -1668,6 +1670,9 @@ local entries = {
 			"{{ffMorbidHeart}} +1 Morbid Heart",
 			"{{GoldenHeart}} +1 Golden Heart",
 			"{{EternalHeart}} +1 Eternal Heart"
+		},
+		AppendEntries = {
+			"FF_APPEND_MORBID_HEART",
 		},
 		AbyssSpecial = {
 			"1 big and slow locust (1.5x Isaac's damage)"
@@ -2339,7 +2344,7 @@ local entries = {
 		Name = "황금 플럼 피리",
 		QuoteDesc = "플레이 타임!",
 		Description = [[
-			{{Timer}}사용 시 10초 동안 아군 Golden Baby Plum 보스를 소환합니다.
+			{{Timer}} 사용 시 10초 동안 아군 Golden Baby Plum 보스를 소환합니다.
 		]],
 		Tests = {
 			"{{Timer}} Summons a friendly Golden Baby Plum in the room for 10 seconds"
@@ -2368,6 +2373,7 @@ local entries = {
 			"{{ffMorbidHeart}} Morbid hearts have a slightly higher chance to appear"
 		},
 		AppendEntries = {
+			"FF_APPEND_MORBID_HEART",
 			"FF_APPEND_SKUZZES",
 		},
 	},
@@ -2385,8 +2391,8 @@ local entries = {
 	},
 	[ITEM..FiendFolio.ITEM.COLLECTIBLE.GRIDDLED_CORN] = {
 		_descType = "collectible",
-		Name = "",
-		QuoteDesc = "",
+		Name = "옥수수 철판구이",
+		QuoteDesc = "공격력 증가 + 구워진 옥수수",
 		Description = [[
 			↑ {{BlackHeart}}블랙하트 +1
 			↑ {{DamageSmall}}공격력 +0.3
@@ -2517,8 +2523,8 @@ local entries = {
 	},
 	[ITEM..FiendFolio.ITEM.COLLECTIBLE.ETERNAL_CLICKER] = {
 		_descType = "collectible",
-		Name = "",
-		QuoteDesc = "",
+		Name = "이터널 클리커",
+		QuoteDesc = "???",
 		Description = [[
 			사용 시 가장 최근에 획득한 패시브 아이템을 제거하고 캐릭터를 랜덤하게 바꾸며;
 			!!! {{ColorRed}}50%의 확률로 캐릭터가 사라집니다.
@@ -2947,7 +2953,7 @@ local entries = {
 		QuoteDesc = "더블탭 콘센트",
 		Description = [[
 			공격키를 두번 눌러 적에게 콘센트를 꼽습니다.
-			콘센트에 꽃힌 적은 과부하 상태에 걸리며 오랫동안 꽂고 있으면 적이 폭발합니다.
+			{{ffOverloaded}} 콘센트에 꽃힌 적은 과부하 상태에 걸리며 오랫동안 꽂고 있으면 적이 폭발합니다.
 		]],
 		Tests = {
 			"Double tap to link to an enemy",
@@ -3063,7 +3069,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-			!!! ]]..FiendFolio.DescriptionIcons.China..[[ China 전용
+			!!! ]]..FiendFolio.DescriptionIcons.China..[[China 전용
 			{{BrokenHeart}} 사용 시 부서진하트 -1
 		]],
 		Tests = {
@@ -3116,8 +3122,8 @@ local entries = {
 	},
 	[ITEM..FiendFolio.ITEM.COLLECTIBLE.CRAZY_JACKPOT] = {
 		_descType = "collectible",
-		Name = "",
-		QuoteDesc = "",
+		Name = "크레이지 잭팟",
+		QuoteDesc = "화풀이 도박",
 		Description = [[
 			피격 시 확률적으로 아래 효과 중 하나를 발동합니다:
 			{{IND}} {{Coin}} 동전 1~2개
@@ -3190,8 +3196,8 @@ local entries = {
 	},
 	[ITEM..FiendFolio.ITEM.COLLECTIBLE.MOMS_STOCKINGS] = {
 		_descType = "collectible",
-		Name = "",
-		QuoteDesc = "",
+		Name = "엄마의 스타킹",
+		QuoteDesc = "사거리 증가",
 		Description = [[
 			↑ {{RangeSmall}}사거리 +2.5
 			아군 자폭 벼룩을 3~9마리 소환합니다.
@@ -3621,7 +3627,7 @@ local entries = {
 		Description = [[
 			방 입장 시 50%의 확률로 적 하나에 후광이 생깁니다.
 			캐릭터가 후광을 보면 그 후광이 캐릭터에게 옮겨지며 잠시동안:
-			>> {{DamageSmall}}x1.5/{{TearsSmall}}x0.85/{{LuckSmall}}+3
+			>>> {{DamageSmall}}x1.5/{{TearsSmall}}x0.85/{{LuckSmall}}+3
 			일정 시간 이후 다른 적에게 오라가 옮겨집니다.
 		]],
 		Tests = {
@@ -16240,6 +16246,7 @@ local entries = {
 	--#endregion
 
 	--#region CARDS
+	--#region FIEND CARDS
 	[CARD..FiendFolio.ITEM.CARD.PLUS_3_FIREBALLS] = {
 		_descType = "card",
 		Name = "파이어볼 +3",
@@ -16301,6 +16308,122 @@ local entries = {
 			폭발성 몬스터를 일반형으로 바꿉니다.
 		]],
 	},
+	[CARD..FiendFolio.ITEM.CARD.DOWNLOAD_FAILURE] = {
+		_descType = "card",
+		Name = "다운로드 실패",
+		QuoteDesc = '',
+		Description = [[
+			사용 시 그 방에 오류가 생깁니다.
+			{{Card]] .. FiendFolio.ITEM.CARD.DOWNLOAD_FAILURE .. [[}} 오류가 생긴 적은 미끄러집니다.
+		]],
+	},
+	[CARD..FiendFolio.ITEM.CARD.SMALL_CONTRABAND] = {
+		_descType = "card",
+		Name = "작은 밀매품",
+		QuoteDesc = '',
+		Description = [[
+			!!! 사용 효과 없음
+			!!! 소지하지 않은 상태에서는 특정 몬스터가 해당 카드를 훔칠 수 있습니다!
+			해당 카드를 다음 스테이지에 있는 검은 모자의 거지에게 배달 시 특수 배열의 아이템을 소환합니다.
+		]],
+	},
+	[CARD..FiendFolio.ITEM.CARD.SKIP_CARD] = {
+		_descType = "card",
+		Name = "스킵 카드",
+		QuoteDesc = '',
+		Description = [[
+			사용 시 모든 오브젝트 및 엔티티(적/아이템 등)을 지웁니다.
+			스킵 카드로 방 클리어 시 액티브 아이템 게이지가 충전되지 않으며 방 클리어 보상이 소환되지 않습니다.
+			{{BossRoom}} 보스방의 경우 아이템이 소환되지 않습니다.
+			최종 보스의 경우 해당 페이즈를 건너뛰지만 마지막 페이즈에서의 사용 시 면역입니다.
+		]],
+	},
+	[CARD..FiendFolio.ITEM.CARD.GIFT_CARD] = {
+		_descType = "card",
+		Name = "선물 카드",
+		QuoteDesc = '',
+		Description = [[
+			{{Collectible515}} 방 안의 모든 아이템을 Mystery Gift로 바꿉니다.
+		]],
+	},
+	[CARD..FiendFolio.ITEM.CARD.SORRY] = {
+		_descType = "card",
+		Name = "미안!",
+		QuoteDesc = "데헷~!",
+		Description = [[
+			{{Collectible422}} 사용 시 상태를 이전 방으로 되돌립니다.
+		]],
+	},
+	[CARD..FiendFolio.ITEM.CARD.FRIENDLY_FIRE] = {
+		_descType = "card",
+		Name = "친절한 화염",
+		QuoteDesc = "보랏빛 광선",
+		Description = [[
+			{{Collectible]] .. FiendFolio.ITEM.COLLECTIBLE.FRIENDS_FIREBALL_FORMULA .. [[}} 사용 시 그 방에서 Friend's Fireball Formula 지급:
+			{{IND}} {{Burning}} 5%의 확률로 적에게 화상을 입히는 공격이 나갑니다.
+			{{IND}} 화상 상태의 적 처치 시 십자 모양으로 불꽃 웨이브가 나갑니다.
+		]],
+	},
+	[CARD..FiendFolio.ITEM.CARD.NEKO_NYAN_QUIZ_CARD] = {
+		_descType = "card",
+		Name = "네코냥 퀴즈",
+		QuoteDesc = "너의 영원한 파트너는?",
+		Description = [[
+			{{Timer}} 30초간 캐릭터가 Goby로 변신합니다:
+			{{Blank}} (비행/공격 명중 시 확률적으로 아군 딱정벌레 소환/아군 딱정벌레는 적 탄환을 막아줌)
+		]],
+	},
+	--#endregion
+	--#region CLUB PENGUIN CARDS
+	[CARD..FiendFolio.ITEM.CARD.CARDJITSU_SOCCER] = {
+		_descType = "card",
+		Name = "축구",
+		QuoteDesc = "혹자는 이걸 풋볼이라고 부른다네",
+		Description = [[
+			사용 시 그 방에서 굴릴 수 있는 축구공을 소환합니다.
+			축구공은 접촉 시 적에게 속도에 비례한 피해를 줍니다.
+		]],
+	},
+	[CARD..FiendFolio.ITEM.CARD.CARDJITSU_FLOORING_UPGRADE] = {
+		_descType = "card",
+		Name = "바닥 업그레이드",
+		QuoteDesc = "버건디 스타일",
+		Description = [[
+			사용 시 그 방 전체에 랜덤 장판을 깝니다.
+		]],
+	},
+	[CARD..FiendFolio.ITEM.CARD.CARDJITSU_AC_3000] = {
+		_descType = "card",
+		--Name = '',
+		QuoteDesc = "무한 냉기",
+		Description = [[
+			{{Freezing}} 그 방에서 적 처치 시 해당 적을 얼립니다.
+		]],
+	},
+	--#endregion
+	--#region FOUR SOULS CARDS
+	[CARD..FiendFolio.ITEM.CARD.MISPRINTED_GISH] = {
+		_descType = "card",
+		Name = "기쉬?",
+		QuoteDesc = "기쉬 소환?",
+		Description = [[
+			아군 Gish를 소환합니다.
+			가까운 적에게 착지, 폭발 타르를 발사 후 떠납니다.
+		]],
+	},
+	[CARD..FiendFolio.ITEM.CARD.REDACTED_TRIANGLE] = {
+		_descType = "card",
+		Name = "램넌트 삼각형",
+		QuoteDesc = "",
+		Description = [[
+			{{Timer}} 사용 시 그 방에서:
+			{{IND}} 그 방의 액티브 아이템을 전부 발동합니다.
+			{{Timer}} 사용 시 그 스테이지에서:
+			{{IND}} 그 방의 패시브 아이템 효과를 전부 발동합니다.
+		]],
+	},
+	--#endregion
+	--#region YUGIOH CARDS
 	[CARD..FiendFolio.ITEM.CARD.POT_OF_GREED] = {
 		_descType = "card",
 		Name = "욕망의 항아리",
@@ -16340,78 +16463,6 @@ local entries = {
 			!!! 다른 알약을 사용하지 않았을 경우 60초 후 캐릭터가 즉사합니다."
 		]],
 	},
-	[CARD..FiendFolio.ITEM.CARD.DOWNLOAD_FAILURE] = {
-		_descType = "card",
-		Name = "다운로드 실패",
-		QuoteDesc = '',
-		Description = [[
-			사용 시 그 방에 오류가 생깁니다.
-			{{Card]] .. FiendFolio.ITEM.CARD.DOWNLOAD_FAILURE .. [[}} 오류가 생긴 적은 미끄러집니다.
-		]],
-	},
-	[CARD..FiendFolio.ITEM.CARD.SMALL_CONTRABAND] = {
-		_descType = "card",
-		Name = "작은 밀매품",
-		QuoteDesc = '',
-		Description = [[
-			!!! 사용 효과 없음
-			!!! 소지하지 않은 상태에서는 특정 몬스터가 해당 카드를 훔칠 수 있습니다!
-			해당 카드를 다음 스테이지에 있는 검은 모자의 거지에게 배달 시 특수 배열의 아이템을 소환합니다.
-		]],
-	},
-	[CARD..FiendFolio.ITEM.CARD.SKIP_CARD] = {
-		_descType = "card",
-		Name = "스킵 카드",
-		QuoteDesc = '',
-		Description = [[
-			사용 시 모든 오브젝트 및 엔티티(적/아이템 등)을 지웁니다.
-			스킵 카드로 방 클리어 시 액티브 아이템 게이지가 충전되지 않으며 방 클리어 보상이 소환되지 않습니다.
-			{{BossRoom}} 보스방의 경우 아이템이 소환되지 않습니다.
-			최종 보스의 경우 해당 페이즈를 건너뛰지만 마지막 페이즈에서의 사용 시 면역입니다.
-		]],
-	},
-	[CARD..FiendFolio.ITEM.CARD.SORRY] = {
-		_descType = "card",
-		Name = "미안!",
-		QuoteDesc = "데헷~!",
-		Description = [[
-			{{Collectible422}} 사용 시 상태를 이전 방으로 되돌립니다.
-		]],
-	},
-	[CARD..FiendFolio.ITEM.CARD.CARDJITSU_SOCCER] = {
-		_descType = "card",
-		Name = "축구",
-		QuoteDesc = "혹자는 이걸 풋볼이라고 부른다네",
-		Description = [[
-			사용 시 그 방에서 굴릴 수 있는 축구공을 소환합니다.
-			축구공은 접촉 시 적에게 속도에 비례한 피해를 줍니다.
-		]],
-	},
-	[CARD..FiendFolio.ITEM.CARD.CARDJITSU_FLOORING_UPGRADE] = {
-		_descType = "card",
-		Name = "바닥 업그레이드",
-		QuoteDesc = "버건디 스타일",
-		Description = [[
-			사용 시 그 방 전체에 랜덤 장판을 깝니다.
-		]],
-	},
-	[CARD..FiendFolio.ITEM.CARD.CARDJITSU_AC_3000] = {
-		_descType = "card",
-		--Name = '',
-		QuoteDesc = "무한 냉기",
-		Description = [[
-			{{Freezing}} 그 방에서 적 처치 시 해당 적을 얼립니다.
-		]],
-	},
-	[CARD..FiendFolio.ITEM.CARD.MISPRINTED_GISH] = {
-		_descType = "card",
-		Name = "",
-		QuoteDesc = "기쉬 소환?",
-		Description = [[
-			아군 Gish를 소환합니다.
-			가까운 적에게 착지, 폭발 타르를 발사 후 떠납니다.
-		]],
-	},
   [CARD..FiendFolio.ITEM.CARD.SEAL_OF_ORICHALCOS] = {
 		_descType = "card",
 		Name = "오리컬코스의 결계",
@@ -16421,203 +16472,186 @@ local entries = {
 			{{Collectible584}} 결계 안의 적 처치 시 위습을 소환합니다.
 		]],
 	},
-	[CARD..FiendFolio.ITEM.CARD.FRIENDLY_FIRE] = {
-		_descType = "card",
-		Name = "친절한 화염",
-		QuoteDesc = "보랏빛 광선",
-		Description = [[
-			{{Collectible]] .. FiendFolio.ITEM.COLLECTIBLE.FRIENDS_FIREBALL_FORMULA .. [[}} 사용 시 그 방에서 Friend's Fireball Formula 지급:
-			{{IND}} {{Burning}} 5%의 확률로 적에게 화상을 입히는 공격이 나갑니다.
-			{{IND}} 화상 상태의 적 처치 시 십자 모양으로 불꽃 웨이브가 나갑니다.
-		]],
-	},
-	[CARD..FiendFolio.ITEM.CARD.NEKO_NYAN_QUIZ_CARD] = {
-		_descType = "card",
-		Name = "네코냥 퀴즈",
-		QuoteDesc = "너의 영원한 파트너는?",
-		Description = [[
-			{{Timer}} 30초간 캐릭터가 Goby로 변신합니다:
-			{{Blank}} (비행/공격 명중 시 확률적으로 아군 딱정벌레 소환/아군 딱정벌레는 적 탄환을 막아줌)
-		]],
-	},
-	[CARD..FiendFolio.ITEM.CARD.REDACTED_TRIANGLE] = {
-		_descType = "card",
-		Name = '',
-		QuoteDesc = '',
-		Description = [[
-			Mimics every active item in the room
-			Grants temporary copies of every passive item in the room
-			Temporary passive items are removed when moving to the next floor
-		]],
-	},
+	--#endregion
+	--#region SHADOWVERSE
 	[CARD..FiendFolio.ITEM.CARD.DRACONIC_FERVOR] = {
 		_descType = "card",
-		Name = '',
+		Name = "용의 투기",
 		QuoteDesc = '',
 		Description = [[
-			When used:
-			{{Card}} Spawns 2 random cards
-			{{Heart}} Heals 1 and a half red hearts
-			{{Battery}} Charges Isaac's active by 2
+			사용 시:
+			{{IND}} {{Card}} 카드 2장을 드랍합니다.
+			{{IND}} {{Heart}} 체력을 1.5칸 회복합니다.
+			{{IND}} {{Battery}} 소지 중인 액티브 아이템을 2칸 충전합니다.
 		]],
 	},
 	[CARD..FiendFolio.ITEM.CARD.TRIBUNAL_OF_GOOD_AND_EVIL] = {
 		_descType = "card",
-		Name = '',
+		Name = "신마재판소",
 		QuoteDesc = '',
 		Description = [[
-			{{Collectible]] .. FiendFolio.ITEM.COLLECTIBLE.EXECUTIONER ..[[}} Kills a random enemy in the room and marks another enemy to die in 3 seconds
-			If targeting a boss, damages 20% of its health instead
+			{{Collectible]] .. FiendFolio.ITEM.COLLECTIBLE.EXECUTIONER ..[[}} 사용 시 그 방의 적을 즉사시키며 다른 적을 3초 후 즉사시킵니다.
+			{{Blank}} (보스의 경우 최대 체력의 20% 피해)
 		]],
 	},
 	[CARD..FiendFolio.ITEM.CARD.DANCE_OF_USURPATION] = {
 		_descType = "card",
-		Name = '',
+		Name = "약탈의 춤",
 		QuoteDesc = '',
 		Description = [[
-			Deals moderate damage to all enemies in a room
-			Damage scales between floors
-			Enemies killed by this effect drop a random pickup
+			사용 시 그 방의 적에게 스테이지 비례 피해를 줍니다.
+			이 효과로 적 처치 시 랜덤 픽업을 드랍합니다.
 		]],
 	},
 	[CARD..FiendFolio.ITEM.CARD.HAUNTED_HOUSE] = {
 		_descType = "card",
-		Name = '',
+		Name = "유령 저택",
 		QuoteDesc = '',
 		Description = [[
-			{{Charm}} When used, all non-boss enemies killed in an active room spawn a temporary friendly copy
+			{{Charm}} 사용 시 그 방에서 적 처치 시 아군으로 부활시킵니다. (보스 제외)
 		]],
 	},
 	[CARD..FiendFolio.ITEM.CARD.DIRE_BOND] = {
 		_descType = "card",
-		Name = '',
+		Name = "칠흑의 계약",
 		QuoteDesc = '',
 		Description = [[
-			{{Warning}} Isaac takes 3 non-lethal damage
-			{{HalfHeart}} At the end of the next 3 rooms, heals half a heart and grants a random card
-			{{HalfSoulHeart}} If red hearts are full, grants half a soul heart instead
+			!!! 사용 시 캐릭터에게 3칸의 피해를 주며; (사망하지 않음)
+			{{BlendedHeart}} 이후 방 클리어 시 체력 반칸 회복 (초과회복 = 소울하트) + 카드 획득 (3회)
 		]],
 	},
 	[CARD..FiendFolio.ITEM.CARD.ELF_SONG] = {
 		_descType = "card",
-		Name = '',
+		Name = "요정을 부르는 선율",
 		QuoteDesc = '',
 		Description = [[
-			Spawns 2 medium fairy flies and 2 blue flies
-			{{Collectible248}} Blue spiders and flies deal double damage for a room
+			사용 시 중형, 자폭 아군 파리를 2마리씩 소환합니다.
+			{{Collectible248}} 사용 시 그 방에서 파리/거미류 패밀리어의 피해량 2배
 		]],
 	},
+	--#endregion
+	--#region SLAY THE SPIRE
 	[CARD..FiendFolio.ITEM.CARD.NEIGHBOURS_FROM_HELL] = {
 		_descType = "card",
-		Name = '',
+		Name = "지옥에서 온 이웃",
 		QuoteDesc = '',
 		Description = [[
-			{{Trinket}} Adds a random smelted trinket onto Isaac
+			{{Trinket}} 사용 시 랜덤 장신구 하나를 흡수합니다.
 		]],
 	},
 	[CARD..FiendFolio.ITEM.CARD.CREATIVE_AI] = {
 		_descType = "card",
-		Name = '',
+		Name = "창의적인 인공지능",
 		QuoteDesc = '',
 		Description = [[
-			Upon use, your main active item is replaced with another random active item for the rest of the floor
-			Swapping out your item while its effect is active will still have your active replaced
-			Your active will be returned to you at the start of next floor
-			!!! Does nothing if you do not have an active item
+			사용 시 그 스테이지에서 소지 중인 액티브 아이템이 다른 랜덤 액티브 아이템으로 바뀝니다.
+			{{Blank}} (교체 시에도 바뀐 상태 유지)
 		]],
 	},
 	[CARD..FiendFolio.ITEM.CARD.CORRUPTION] = {
 		_descType = "card",
-		Name = '',
+		Name = "타락",
 		QuoteDesc = '',
 		Description = [[
-			{{Battery}} For the rest of this floor, ALL active items that charge on room clear and are not in your pocket slot have a maximum charge of 1
-			!!! These active items will be removed at the start of next floor
+			{{Battery}} 사용 시 그 스테이지에 카드/알약 슬롯이 아닌 소지 액티브 아이템의 충전량을 1칸으로 설정합니다.
+			!!! 스테이지 진입 시 충전량이 바뀐 액티브 아이템이 사라집니다.
+			{{Blank}} (특수, 시간제 충전의 경우 무효과)
 		]],
 	},
 	[CARD..FiendFolio.ITEM.CARD.BLASPHEMY] = {
 		_descType = "card",
-		Name = '',
+		Name = "신성 모독",
 		QuoteDesc = '',
 		Description = [[
-			{{Collectible577}} Gain the effect of Damocles for the rest of the current floor
-			{{HalfHeart}} Deals half a heart of damage to Isaac
+			{{Collectible577}} 사용 시 그 스테이지에서 Damocles 효과를 발동합니다.
+			!!! 직후 캐릭터가 체력 반칸의 패널티 피해를 받습니다.
 		]],
 	},
+	--#endregion
+	--#region SIGNALIS
 	[CARD..FiendFolio.ITEM.CARD.ABERRANT_LOVERS] = {
 		_descType = "card",
-		Name = '',
+		Name = "이상한 연인",
 		QuoteDesc = '',
 		Description = [[
-			Drops 2 Morbid Hearts but makes Isaac lose half his red health
+			사용 시 캐릭터의 체력의 절반을 소모하며;
+			{{ffMorbidHeart}} 종양하트를 2개 드랍합니다.
 		]],
+		AppendEntries = {
+			"FF_APPEND_MORBID_HEART",
+		},
 	},
 	[CARD..FiendFolio.ITEM.CARD.ABERRANT_DEATH] = {
 		_descType = "card",
-		Name = '',
+		Name = "이상한 죽음",
 		QuoteDesc = '',
 		Description = [[
-			Respawns all enemies in the room but with a 50% chance for any to be friendly instead
+			그 방의 모든 적을 다시 소환합니다.
+			소환된 적은 50%의 확률로 아군이 됩니다.
 		]],
 	},
 	[CARD..FiendFolio.ITEM.CARD.ABERRANT_TOWER] = {
 		_descType = "card",
-		Name = '',
+		Name = "이상한 탑",
 		QuoteDesc = '',
 		Description = [[
-			Spawns 3 reticles on the floor that Isaac can control
-			After a short delay, 4 missiles will drop on each one
+			{{Collectible168}} 조준점을 3개 소환합니다.
+			일정 시간 이후 각 조준점마다 랜덤 간격으로 미사일을 4발씩 발사합니다.
 		]],
 	},
 	[CARD..FiendFolio.ITEM.CARD.ABERRANT_STARS] = {
 		_descType = "card",
-		Name = '',
+		Name = "이상한 별",
 		QuoteDesc = '',
 		Description = [[
-			Fills any empty consumable and trinket slots that Isaac has
+			비어있는 장신구 및 카드/알약 슬롯을 채웁니다.
 		]],
 	},
 	[CARD..FiendFolio.ITEM.CARD.ABERRANT_MOON] = {
 		_descType = "card",
-		Name = '',
+		Name = "이상한 달",
 		QuoteDesc = '',
 		Description = [[
-			Reveals the secret and super secret rooms and opens any adjacent red rooms
+			{{SecretRoom}} 비밀방/일급비밀방의 위치를 맵에 표시하며;
+			{{RedRoom}} 가능한 경우, 각 방의 면마다 빨간방을 생성합니다.
 		]],
 	},
 	[CARD..FiendFolio.ITEM.CARD.ABERRANT_SUN] = {
 		_descType = "card",
-		Name = '',
+		Name = "이상한 태양",
 		QuoteDesc = '',
 		Description = [[
-			Isaac will heal half a red heart every 15 seconds, to a total of 6 hearts
-			Soul heart characters will get 2 total soul hearts instead
+			{{HealingRed}} 15초마다 체력을 반칸씩 회복합니다. (최대 6칸 회복)
+			{{SoulHeart}} (최대체력 = 소울하트의 보정을 받는 경우 최대 2칸 회복)
 		]],
 	},
+	--#endregion
+	--#region ALLEGEDLY TAROT CARDS
 	[CARD..FiendFolio.ITEM.CARD.HAPPY_SQUIRREL] = {
 		_descType = "card",
-		Name = '',
-		QuoteDesc = '',
+		Name = "XXIII - 행복한 다람뷔",
+		QuoteDesc = "놀이시간!",
 		Description = [[
-			{{ArcadeRoom}} Teleports Isaac to a special Arcade room
+			{{ArcadeRoom}} 사용 시 특수한 오락실로 이동합니다.
 		]],
 	},
 	[CARD..FiendFolio.ITEM.CARD.THE_INVISIBLE_MOON] = {
 		_descType = "card",
-		Name = '',
-		QuoteDesc = '',
+		Name = "보이지 않는 달",
+		QuoteDesc = "모두 사라져",
 		Description = [[
-			{{ffBerserk}} Inflicts all enemies in a room with Berserk for 15 seconds
-			Effect persists between multiple rooms
+			{{ffBerserk}} 사용 시 15초간 적을 폭주 상태로 만듭니다.
 		]],
 		AppendEntries = {
 			"FF_APPEND_BERSERK",
 		},
 	},
+	--#endregion
+	--#region ENERGY CARDS
 	[CARD..FiendFolio.ITEM.CARD.ENERGY_GRASS] = {
 		_descType = "card",
 		Name = "자연 에너지",
-		QuoteDesc = '',
+		QuoteDesc = "중독",
 		Description = [[
 			{{Poison}} 그 방의 모든 적을 4초간 중독시킵니다.
 		]],
@@ -16625,7 +16659,7 @@ local entries = {
 	[CARD..FiendFolio.ITEM.CARD.ENERGY_FIRE] = {
 		_descType = "card",
 		Name = "화염 에너지",
-		QuoteDesc = '',
+		QuoteDesc = "화상",
 		Description = [[
 			{{Burning}} 그 방의 모든 적에게 4초간 화상을 줍니다.
 		]],
@@ -16633,7 +16667,7 @@ local entries = {
 	[CARD..FiendFolio.ITEM.CARD.ENERGY_WATER] = {
 		_descType = "card",
 		Name = "물 에너지",
-		QuoteDesc = '',
+		QuoteDesc = "흐름",
 		Description = [[
 			방 안의 적이 4초간 8방향으로 파란 눈물을 여러번 쏩니다.
 			파란 눈물을 쏠 때마다 미세한 피해를 받습니다.
@@ -16642,7 +16676,7 @@ local entries = {
 	[CARD..FiendFolio.ITEM.CARD.ENERGY_LIGHTNING] = {
 		_descType = "card",
 		Name = "전기 에너지",
-		QuoteDesc = '',
+		QuoteDesc = "과부하",
 		Description = [[
 			{{ffOverloaded}} 그 방의 모든 적에게 4초간 과부하를 겁니다.
 		]],
@@ -16653,7 +16687,7 @@ local entries = {
 	[CARD..FiendFolio.ITEM.CARD.ENERGY_FIGHTING] = {
 		_descType = "card",
 		Name = "힘 에너지",
-		QuoteDesc = '',
+		QuoteDesc = "멍",
 		Description = [[
 			{{ffBruise}} 방 안의 모든 적이 멍듦 상태가 됩니다.
 		]],
@@ -16664,7 +16698,7 @@ local entries = {
 	[CARD..FiendFolio.ITEM.CARD.ENERGY_PSYCHIC] = {
 		_descType = "card",
 		Name = "초능력 에너지",
-		QuoteDesc = '',
+		QuoteDesc = "에스퍼",
 		Description = [[
 			{{Confusion}} 방 안의 모든 적이 4초간 혼란에 걸립니다.
 		]],
@@ -16672,7 +16706,7 @@ local entries = {
 	[CARD..FiendFolio.ITEM.CARD.ENERGY_COLORLESS] = {
 		_descType = "card",
 		Name = "무채 에너지",
-		QuoteDesc = '',
+		QuoteDesc = "유클리드",
 		Description = [[
 			{{ffMultieuclidean}} 방 안의 모든 적이 4초간 기하 상태에 걸립니다.
 		]],
@@ -16683,7 +16717,7 @@ local entries = {
 	[CARD..FiendFolio.ITEM.CARD.ENERGY_DARKNESS] = {
 		_descType = "card",
 		Name = "어둠 에너지",
-		QuoteDesc = '',
+		QuoteDesc = "공포",
 		Description = [[
 			{{Fear}} 방 안의 모든 적이 4초간 공포에 걸립니다.
 		]],
@@ -16691,7 +16725,7 @@ local entries = {
 	[CARD..FiendFolio.ITEM.CARD.ENERGY_METAL] = {
 		_descType = "card",
 		Name = "강철 에너지",
-		QuoteDesc = '',
+		QuoteDesc = "대출혈",
 		Description = [[
 			{{ffHemorrhage}} 방 안의 모든 적이 4초간 대출혈에 걸립니다.
 		]],
@@ -16702,7 +16736,7 @@ local entries = {
 	[CARD..FiendFolio.ITEM.CARD.ENERGY_FAIRY] = {
 		_descType = "card",
 		Name = "페어리 에너지",
-		QuoteDesc = '',
+		QuoteDesc = "매혹",
 		Description = [[
 			{{Charm}} 방 안의 모든 적에게 4초간 매혹을 겁니다.
 		]],
@@ -16710,7 +16744,7 @@ local entries = {
 	[CARD..FiendFolio.ITEM.CARD.ENERGY_DRAGON] = {
 		_descType = "card",
 		Name = "드래곤 에너지",
-		QuoteDesc = '',
+		QuoteDesc = "에너지",
 		Description = [[
 			사용 시 2종류의 랜덤 에너지 계열 카드 효과를 발동합니다
 		]],
@@ -16723,12 +16757,14 @@ local entries = {
 			!!! 미구현
 		]],
 	},
+	--#endregion
+	--#region 100% ORANGE JUICE CARDS
 	[CARD..FiendFolio.ITEM.CARD.OJ_BUSINESS] = {
 		_descType = "card",
-		Name = '',
+		Name = "어둠의 자금 조달",
 		QuoteDesc = '',
 		Description = [[
-			{{ffLilPenny}} Inflicts all enemies in the room with Mugged
+			{{ffLilPenny}} 사용 시 그 방의 적에게 약탈을 겁니다.
 		]],
 		AppendEntries = {
 			"FF_APPEND_MUGGED",
@@ -16737,46 +16773,46 @@ local entries = {
 	},
 	[CARD..FiendFolio.ITEM.CARD.OJ_STRONGER] = {
 		_descType = "card",
-		Name = '',
+		Name = "강해져서 돌아왔다",
 		QuoteDesc = '',
 		Description = [[
-			{{Timer}} Receive for the room:
-			↑ +1 Damage
-			Gives double the damage if you've taken damage this room
+			{{Timer}} 사용 시 그 방에서:
+			>>> {{DamageSmall}} 공격력 +1
+			{{Timer}} 피해를 받은 방에서 사용 시:
+			>>> {{DamageSmall}} 공격력 +2
 		]],
 	},
 	[CARD..FiendFolio.ITEM.CARD.OJ_PRESENT] = {
 		_descType = "card",
-		Name = '',
+		Name = "근사한 선물",
 		QuoteDesc = '',
 		Description = [[
-			Spawns 2 random 100% Orange Juice cards
+			사용 시 {{ColorOrange}}100% 오렌지 주스{{CR}} 출신 카드를 2장 드랍합니다.
 		]],
 	},
 	[CARD..FiendFolio.ITEM.CARD.OJ_SEAGULLS] = {
 		_descType = "card",
-		Name = '',
+		Name = "갈매기 떼",
 		QuoteDesc = '',
 		Description = [[
-			Deals damage to a random enemy or player in the room
-			{{Collectible486}} Players take fake damage instead
+			사용 시 그 방의 적 혹은 캐릭터 중 하나에게 스테이지 비례 피해를 줍니다.
+			{{Collectible486}} (캐릭터의 경우 피격 효과만 발동)
 		]],
 	},
 	[CARD..FiendFolio.ITEM.CARD.OJ_FIRE_SUPPORT] = {
 		_descType = "card",
-		Name = '',
+		Name = "무차별 화력 지원",
 		QuoteDesc = '',
 		Description = [[
-			{{Collectible47}} Fires 4 low damage rockets at random enemies
+			{{Collectible47}} 그 방의 적 하나에게 스테이지 비례 피해를 주는 미사일을 발사합니다. (4회 발동)
 		]],
 	},
 	[CARD..FiendFolio.ITEM.CARD.OJ_SERENE_HUSH] = {
 		_descType = "card",
-		Name = '',
+		Name = "고요와 적막",
 		QuoteDesc = '',
 		Description = [[
-			Pacifies all enemies in the room
-			{{ffPacified}} Pacified enemies are unable to deal damage to Isaac
+			{{ffPacified}} 사용 시 그 방의 적을 진정시킵니다.
 		]],
 		AppendEntries = {
 			"FF_APPEND_PACIFIED",
@@ -16784,38 +16820,43 @@ local entries = {
 	},
 	[CARD..FiendFolio.ITEM.CARD.OJ_MIX_PHENOMENON] = {
 		_descType = "card",
-		Name = '',
+		Name = "믹스화 현상",
 		QuoteDesc = '',
 		Description = [[
-			{{Collectible]] .. tostring(FiendFolio.ITEM.COLLECTIBLE.HUNDRED_PERCENT_ORANGE_JUICE) .. [[}} If there are less than 3 Orange Juice tiles, spawns up to 3
-			Also rerolls any Orange Juice tiles in the room
+			{{Collectible]] .. tostring(FiendFolio.ITEM.COLLECTIBLE.HUNDRED_PERCENT_ORANGE_JUICE) .. [[}} 100% Orange Juice 타일을 최대 3개까지 소환하며;
+			이미 소환된 타일의 색상을 바꿉니다.
 		]],
 	},
 	[CARD..FiendFolio.ITEM.CARD.OJ_JONATHAN_RUSH] = {
 		_descType = "card",
-		Name = '',
+		Name = "조나단 러시",
 		QuoteDesc = '',
 		Description = [[
-			Teleports Isaac to an enemy and explodes while becoming invulnerable for a period
+			사용 시 피격 무적 시간을 얻으며 랜덤 적의 위치로 순간이동 + 폭발합니다.
+			!!! (적이 없는 경우 무효과)
 		]],
 	},
 	[CARD..FiendFolio.ITEM.CARD.OJ_ENCHANTMENT] = {
 		_descType = "card",
-		Name = '',
+		Name = "질풍의 인챈트",
 		QuoteDesc = '',
 		Description = [[
-			↑ +0.15 Speed for the room
+			{{Timer}} 그 방에서:
+			{{IND}} {{SpeedSmall}} 이동속도 +0.15
 		]],
 	},
 	[CARD..FiendFolio.ITEM.CARD.OJ_HINDENPEATER] = {
 		_descType = "card",
-		Name = '',
+		Name = "",
 		QuoteDesc = '',
 		Description = [[
-			{{Collectible108}} All damage is reduced to half a heart
-			↑ All stats up for the room
+			{{Timer}} 사용 시 그 방에서:
+				{{Collectible108}} 모든 피해를 절반으로 받습니다.
+				↑ 모든 능력치 증가
 		]],
 	},
+	--#endregion
+	--#region GLASS DICE
 	[CARD..FiendFolio.ITEM.CARD.GLASS_D6] = {
 		_descType = "card",
 		Name = "유리 6면 조각",
@@ -16912,7 +16953,7 @@ local entries = {
 		Name = '',
 		QuoteDesc = '',
 		Description = [[
-			{{Collectible]] .. tostring(FiendFolio.ITEM.COLLECTIBLE.D3) .. [[}} Activates the D3 effect for the room, spawning an orbital familiar that rerolls tears
+			{{Collectible]] .. tostring(FiendFolio.ITEM.COLLECTIBLE.D3) .. [[}} 사용 시 그 방에서 눈물을 바꾸는 기둥을 소환합니다.
 		]],
 	},
 	[CARD..FiendFolio.ITEM.CARD.GLASS_D5] = {
@@ -16920,35 +16961,36 @@ local entries = {
 		Name = '',
 		QuoteDesc = '',
 		Description = [[
-			{{Collectible]] .. tostring(FiendFolio.ITEM.COLLECTIBLE.D5) .. [[}} Activates the D5 effect for the room, spawning a dice that can be thrown around
-			When it lands, it does an effect depending on the side
+			{{Collectible]] .. tostring(FiendFolio.ITEM.COLLECTIBLE.D5) .. [[}} 사용 시 그 방에서 손 모양 주사위를 소환합니다.
 		]],
 	},
 	[CARD..FiendFolio.ITEM.CARD.D10_SHARD] = {
 		_descType = "card",
-		Name = '',
-		QuoteDesc = '',
+		Name = "주사위 파편",
+		QuoteDesc = "",
 		Description = [[
-			{{Collectible285}} Activates the D10 and D12 effects, rerolling grids and devolving enemies in the room
+			{{Collectible285}} 사용 시 그 방의 장애물을 바꾸며 그 방의 적을 한 단계 낮춥니다.
 		]],
 	},
 	[CARD..FiendFolio.ITEM.CARD.ETERNAL_SHARD] = {
 		_descType = "card",
-		Name = '',
-		QuoteDesc = '',
+		Name = "주사위 파편",
+		QuoteDesc = "",
 		Description = [[
-			{{Collectible609}} Activates the Eternal D6, D10, and D12 effects which rerolls all pedestals, enemies, and grids in the room
-			There is a 50% chance to delete the targets instead
+			{{Collectible609}} 사용 시 그 방의 아이템, 장애물을 바꾸며 그 방의 적을 한 단계 낮춥니다.
+			50%의 확률로 대상이 사라집니다.
 		]],
 	},
 	[CARD..FiendFolio.ITEM.CARD.D8_SHARD] = {
 		_descType = "card",
-		Name = '',
-		QuoteDesc = '',
+		Name = "주사위 파편",
+		QuoteDesc = "",
 		Description = [[
-			{{Collectible284}} Activates the D4 and D8 effects, rerolling Isaac's stats and passive items
+			{{Collectible284}} 사용 시 캐릭터의 소지 아이템과 능력치 배율을 바꿉니다.
 		]],
 	},
+	--#endregion
+	--#region MODEL OBJECTS
 	[CARD..FiendFolio.ITEM.CARD.GREEN_HOUSE] = {
 		_descType = "card",
 		Name = "녹색 모형집",
@@ -17000,7 +17042,7 @@ local entries = {
 		Name = "말 푸시팝",
 		QuoteDesc = '',
 		Description = [[
-			!!! ]]..FiendFolio.DescriptionIcons.China..[[ China 전용
+			!!! ]]..FiendFolio.DescriptionIcons.China..[[China 전용
 			{{BrokenHeart}} 사용 시 부서진하트 -1
 		]],
 	},
@@ -17010,14 +17052,6 @@ local entries = {
 		QuoteDesc = '',
 		Description = [[
 			열린 상점 상자를 소환합니다.
-		]],
-	},
-	[CARD..FiendFolio.ITEM.CARD.GIFT_CARD] = {
-		_descType = "card",
-		Name = "선물 카드",
-		QuoteDesc = '',
-		Description = [[
-			{{Collectible515}} 방 안의 모든 아이템을 Mystery Gift로 바꿉니다.
 		]],
 	},
 	[CARD..FiendFolio.ITEM.CARD.STUD] = {
@@ -17042,11 +17076,10 @@ local entries = {
 	},
 	[CARD..FiendFolio.ITEM.CARD.PINK_COW] = {
 		_descType = "card",
-		Name = '',
+		Name = "핑크빛 송아지",
 		QuoteDesc = '',
 		Description = [[
-			One enemy in the next 4 rooms is Pacified for a long duration
-			{{ffPacified}} Pacified enemies are unable to deal damage to Isaac
+			{{ffPacified}} 사용 후 방 4개동안 랜덤 적 하나에 진정 상태를 겁니다.
 		]],
 		AppendEntries = {
 			"FF_APPEND_PACIFIED",
@@ -17054,41 +17087,47 @@ local entries = {
 	},
 	[CARD..FiendFolio.ITEM.CARD.YELLOW_CAR] = {
 		_descType = "card",
-		Name = '',
+		Name = "노란 차",
 		QuoteDesc = '',
 		Description = [[
-			↑ +1 Speed
-			Speed bonus goes down by 0.15 after clearing a room
+			{{SpeedSmall}} 사용 시 이동속도 +1
+			{{SpeedSmall}} 방 클리어 시 증가한 이동속도 -0.15
 		]],
 	},
 	[CARD..FiendFolio.ITEM.CARD.LUCKY_DUCK] = {
 		_descType = "card",
-		Name = '',
+		Name = "행운의 오리",
 		QuoteDesc = '',
 		Description = [[
-			{{Timer}} Receive for the room:
-			↑ +7.77 Luck
+			{{Timer}} 그 방에서:
+			{{IND}} {{LuckSmall}} 행운 +7.77
 		]],
 	},
 	[CARD..FiendFolio.ITEM.CARD.COMICAL_ROUND_GLASSES] = {
 		_descType = "card",
-		Name = '',
+		Name = "코믹 안경",
 		QuoteDesc = '',
 		Description = [[
-			{{Timer}} Receive for the room:
-			↓ x0.8 Damage multiplier
-			{{Collectible245}} Isaac shoots 2 tears at once
-			↑ +2.5 Range
+			{{Timer}} 그 방에서:
+			{{IND}} {{Collectible245}} 20/20 효과 발동
+			{{IND}} {{RangeSmal}} 사거리 +2.5
 		]],
 	},
 	[CARD..FiendFolio.ITEM.CARD.EGG_SACK] = {
 		_descType = "card",
-		Name = '',
+		Name = "알주머니",
 		QuoteDesc = '',
 		Description = [[
-			Spawns 3 blue spiders, 3 blue flies, 3 blue skuzzes, 3 blue beetles, and 3 blue baby spiders
+			사용 시 아래의 아군 패밀리어 혹은 몬스터를 3마리씩 소환:
+			{{IND}} 파란 자폭 파리
+			{{IND}} 파란 자폭 거미
+			{{IND}} 파란 자폭 벼룩
+			{{IND}} 작은 거미
+			{{IND}} 딱정벌레
 		]],
 	},
+	--#endregion
+	--#region DISCS
 	[CARD..FiendFolio.ITEM.CARD.TREASURE_DISC] = {
 		_descType = "card",
 		Name = "보믈방 체험판 디스크",
@@ -17139,8 +17178,8 @@ local entries = {
 	},
 	[CARD..FiendFolio.ITEM.CARD.PLANETARIUM_DISC] = {
 		_descType = "card",
-		Name = '',
-		QuoteDesc = "천체관 디스크",
+		Name = "천체관 디스크",
+		QuoteDesc = '',
 		Description = [[
 			{{ItemPoolPlanetarium}} 1분간 3~5개의 천체관 배열 패시브 아이템의 효과를 받습니다.
 		]],
@@ -17169,6 +17208,8 @@ local entries = {
 			{{ffDisc}} 1분간 3~5개의 더럽혀진 보물방 배열 패시브 아이템의 효과를 받습니다.
 		]],
 	},
+	--#endregion
+	--#region SUIT CARDS
 	[CARD..FiendFolio.ITEM.CARD.MISPRINTED_JACK_OF_CLUBS] = {
 		_descType = "card",
 		Name = "클로버 J?",
@@ -17192,11 +17233,11 @@ local entries = {
 	},
 	[CARD..FiendFolio.ITEM.CARD.MISPRINTED_THREE_OF_DIAMONDS] = {
 		_descType = "card",
-		Name = '',
+		Name = "다이아 3?",
 		QuoteDesc = '',
 		Description = [[
-			{{Trinket}} Spawns 3 penny trinkets
-			Once one is taken, the others despawn
+			{{Trinket}} 페니류 장신구를 3개 소환합니다.
+			하나를 선택하면 나머지는 사라집니다.
 		]],
 	},
 	[CARD..FiendFolio.ITEM.CARD.THREE_OF_DIAMONDS] = {
@@ -17413,21 +17454,22 @@ local entries = {
 	},
 	[CARD..FiendFolio.ITEM.CARD.REVERSE_KING_OF_PENTACLES] = {
 		_descType = "card",
-		Name = '',
+		Name = "펜타클 K?",
 		QuoteDesc = '',
 		Description = [[
-			{{Trinket}} Converts all trinkets in the room and held by Isaac into rock trinkets
-			!!! Has no effect on gulped trinkets
+			{{Trinket}} 소지 중인 장신구 및 그 방의 장신구를 석기류로 바꿉니다.
 		]],
+		AppendEntries = {
+			"FF_APPEND_GOLEM_NORMAL",
+		},
 	},
 	[CARD..FiendFolio.ITEM.CARD.MISPRINTED_KING_OF_PENTACLES] = {
 		_descType = "card",
-		Name = '',
+		Name = "펜타클 K",
 		QuoteDesc = '',
 		Description = [[
-			{{Trinket}} Converts all trinkets in the room and held by Isaac into Blasphemous trinkets
-			{{Damage}} Blasphemous trinkets grant +1 Damage if you hold or smelt them
-			!!! Has no effect on gulped trinkets
+			{{Trinket}} 소지 중인 장신구 및 그 방의 장신구를 불경의 장신구로 바꿉니다.
+			{{DamageSmall}} 불경의 장신구 하나 당 공격력 +1
 		]],
 	},
 	[CARD..FiendFolio.ITEM.CARD.ACE_OF_SWORDS] = {
@@ -17527,15 +17569,18 @@ local entries = {
 	},
 	[CARD..FiendFolio.ITEM.CARD.MISPRINTED_JUSTICEJACK] = {
 		_descType = "card",
-		Name = '',
+		Name = "정의?",
 		QuoteDesc = '',
 		Description = [[
-			{{ffImmoralHeart}} Spawns an Immoral Heart
-			{{ffCopperBomb}} Spawns a Copper Bomb
-			{{ffSpicyKey}} Spawns a pair of Spicy Keys
-			{{ffCursedPenny}} Spawns a Cursed Penny
+			사용 시 아래를 각각 하나씩 소환합니다:
+			>>> {{ffImmoralHeart}} 이모럴하트
+			>>> {{ffCopperBomb}} 구리폭탄
+			>>> {{ffSpicyKey}} 매운열쇠
+			>>> {{ffCursedPenny}} 저주페니
 		]],
 	},
+	--#endregion
+	--#region SUS
 	[CARD..FiendFolio.ITEM.CARD.RUNE_ANSUS] = {
 		_descType = "card",
 		Name = "안수즈?",
@@ -17544,6 +17589,8 @@ local entries = {
 			{{CurseLostSmall}} 그 스테이지에서 맵에 특수방 위치, 비밀방 위치, 스테이지 구조가 표시됩니다 (?)
 		]],
 	},
+	--#endregion
+	--#region SOULS
 	[CARD..FiendFolio.ITEM.CARD.SOUL_OF_FIEND] = {
 		_descType = "card",
 		Name = "핀드의 영혼",
@@ -17568,24 +17615,35 @@ local entries = {
 			사용 시 랜덤 영혼석 효과를 발동합니다.
 		]],
 	},
-	[CARD..FiendFolio.ITEM.CARD.SOUL_OF_CRAIG] = {
+	[CARD..FiendFolio.ITEM.CARD.SOUL_OF_FRIEND] = {
 		_descType = "card",
-		Name = '',
+		Name = "프렌드의 영혼",
 		QuoteDesc = '',
 		Description = [[
-			{{Battery}} Overcharges Isaac's active item up to two full charges
-			{{Collectible]] .. tostring(FiendFolio.ITEM.COLLECTIBLE.EXCELSIOR) .. [[}} Using your active item will shoot fireworks based on the amount of item charge
-			{{Collectible584}} Using your active item activates Book of Virtues
+			사용 시 랜덤 총을 얻습니다.
+			획득한 총은 남은 탄약이 없으면 사라집니다.
+		]],
+	},
+	[CARD..FiendFolio.ITEM.CARD.SOUL_OF_CRAIG] = {
+		_descType = "card",
+		Name = "크레이그의 영혼",
+		QuoteDesc = '',
+		Description = [[
+			{{Battery}} 소지 중인 액티브 아이템을 강제로 최대충전 시킵니다.
+			{{Collectible]] .. tostring(FiendFolio.ITEM.COLLECTIBLE.EXCELSIOR) .. [[}} 다음 액티브 사용 시 유도성 로켓을 여러 발 발사합니다.
+			{{Collectible584}} 다음 액티브 사용 시 위습을 하나 소환합니다.
 		]],
 	},
 	[CARD..FiendFolio.ITEM.CARD.SOUL_OF_INABA] = {
 		_descType = "card",
-		Name = '',
+		Name = "이나바의 영혼",
 		QuoteDesc = '',
 		Description = [[
 			Activates Migraine Mode, granting Isaac two Inaba satellites
 		]],
 	},
+	--#endregion
+	--#region BATTERIES
 	[CARD..FiendFolio.ITEM.CARD.STORAGE_BATTERY_0] = {
 		_descType = "card",
 		Name = "보조 배터리",
@@ -17666,16 +17724,7 @@ local entries = {
 			!!! 액티브 아이템 충전 시 잠시 후 충전한 위치에서 폭발합니다.
 		]],
 	},
-	[CARD..FiendFolio.ITEM.CARD.SOUL_OF_FRIEND] = {
-		_descType = "card",
-		Name = "프렌드의 영혼",
-		QuoteDesc = '',
-		Description = [[
-			Grants Isaac a random gun with limited ammo
-			Gun fires along with Isaac's tears
-			Disappears after running out of ammo
-		]],
-	},
+	--#endregion
 	--#endregion
 
 	--#region PILLS
@@ -18757,6 +18806,32 @@ wakaba_krdesc:AddCallback(ModCallbacks.MC_POST_PLAYER_RENDER, function (_, playe
 		checkCrazySlot = false
 	end
 end)
+--#endregion
+
+--#region Remove English leftover
+local collectibleToRemove = {
+	[FiendFolio.ITEM.COLLECTIBLE.BACON_GREASE] = "(#{{Trinket122}} Drops Butter)",
+	[FiendFolio.ITEM.COLLECTIBLE.DADS_WALLET] = "(#{{Card43}} Drops a credit card on pickup)",
+	[FiendFolio.ITEM.COLLECTIBLE.COMMUNITY_ACHIEVEMENT] = "↑(.*) Damage+",
+}
+
+local function FF_EIDKR_EtcCondition(descObj)
+	if EID:getLanguage() ~= "ko_kr" and EID:getLanguage() ~= "ko" then return false end
+	if descObj.ObjType == 5 and descObj.ObjVariant == 100 then
+		return collectibleToRemove[descObj.ObjSubType] ~= nil
+	end
+	return false
+end
+
+local function FF_EIDKR_EtcCallback(descObj)
+	if descObj.ObjType == 5 and descObj.ObjVariant == 100 and collectibleToRemove[descObj.ObjSubType] then
+		local remove = collectibleToRemove[descObj.ObjSubType]
+		descObj.Description =  string.gsub(descObj.Description, remove, "")
+	end
+	return descObj
+end
+
+EID:addDescriptionModifier("FF_EIDKR_Etc", FF_EIDKR_EtcCondition, FF_EIDKR_EtcCallback)
 --#endregion
 
 for _, entry in pairs(entries) do
