@@ -9830,7 +9830,7 @@ local entries = {
 		QuoteDesc = "",
 		Description = [[
 			↑ {{DamageSmall}}공격력 +0.3
-			↑ {{RangeSmall}}사거리 +1.25
+			↑ {{LuckSmall}}행운 +1
 		]],
 		Tests = {
 			"↑ +0.3 Damage",
@@ -9848,7 +9848,7 @@ local entries = {
 		QuoteDesc = "",
 		Description = [[
 			↑ {{DamageSmall}}공격력 +0.3
-			↑ {{LuckSmall}}행운 +1
+			↑ {{RangeSmall}}사거리 +1.25
 		]],
 		Tests = {
 			"↑ +0.3 Damage",
