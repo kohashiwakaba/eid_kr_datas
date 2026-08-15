@@ -12,6 +12,21 @@ if (FiendFolio and FiendFolio.REHEATED) or FiendFolio:CheckFiendFolioModVersion(
 	return
 end
 
+--[[  
+	메모 : 이나바 해금 선행 조건
+	1. 핀드, 골렘, 프렌드 노멀 캐릭터 전부 해금 (이건 올해금 커맨드로 스킵 가능)
+	2. 핀드, 골렘, 프렌드 세 캐릭터로 각각 아래 중 하나 격파 (체크리스트 올클 안해도 되나 보라색이 찍혀 있어야 됨, 노멀 알트 상관없이 한 쪽만 깨도 OK)
+	  - ???, 램, 메가사탄, 그리디어, 델리리움, 마더, 비스트
+	3. 델리리움 1회 이상 격파 (Delirious 아이템이 해금되어 있어야 됨. 목표가 델리라서 그럼)
+	메모 : 이나바 해금 방법
+	1. 위 조건 만족 시 1스테이지 일급비밀방은 이나바 해금 전까지 특정 구조로 고정됨
+	2. 일급비밀방에서 토끼를 터치하면 특수 챌린지 시작 (시스템 상 목표는 델리인데 6층 엄마발 직후 바로 보이드로 직행)
+	3. 토끼는 이리저리 돌아다니면서 플레이를 방해함 (유도가 토끼한테 가는 건 예삿일이고 지 맘대로 돈 써서 상점 템도 삼)
+	4. 이와중에 토끼를 지키면서 델리 깨야 됨. 중간에 토끼가 죽으면 실패. 토끼 피격 판정이 너그러운 게 다행
+	5. 델리 깨면 토끼가 트로피 꿀꺽하는데 그 이후 나온 알약 먹으면 이나바 캐릭터 해금, 이후 재도전은 모드 챌린지 메뉴를 통해 가능함
+	  - [FFBonus!] Follow the Rabbit
+]]
+
 local mod = FiendFolio
 
 local CHAR = "-997.-1."
@@ -55,13 +70,13 @@ local entries = {
 	["FF_APPEND_SKUZZES"] = {
 		_descType = "append",
 		Description = [[
-			{{ColorOrange}}벼룩: {{ColorGray}}적을 향해 점프하며, 착지 상태에서만 피해를 줄 수 있습니다.
+			{{ColorOrange}}벼룩: {{ColorGray}}적을 향해 점프하며, 착지 상태에서 공격력 x3의 피해를 줍니다.
 		]],
 	},
 	["FF_APPEND_BEETLES"] = {
 		_descType = "append",
 		Description = [[
-			{{ColorOrange}}무당벌레: {{ColorGray}}적의 탄환을 막아주며 일정 수 막으면 사라집니다.
+			{{ColorOrange}}무당벌레: {{ColorGray}}적과 탄환으로부터 캐릭터를 보호하려 하며 일정 수 막으면 사라집니다.
 		]],
 	},
 	["FF_APPEND_MORBID_HEART"] = {
@@ -76,6 +91,12 @@ local entries = {
 		Description = [[
 			{{ffStevenHeart}} {{ColorOrange}}스티븐하트: {{ColorGray}}해당 하트칸에 있는 하트 소진 시 사라짐, 동일 종류 하트로 회복 가능
 			>>> {{ColorGray}}UI의 하트에서 주기적으로 유도 눈물을 발사합니다.
+		]],
+	},
+	["FF_APPEND_SHIELD_HEART"] = {
+		_descType = "append",
+		Description = [[
+			{{ffShieldHeart}} {{ColorOrange}}쉴드하트: {{ColorGray}}3회 피격 시 사라짐, 소울하트로 회복 가능
 		]],
 	},
 	["FF_APPEND_TOKENS"] = {
@@ -147,8 +168,8 @@ local entries = {
 	["FF_APPEND_EXCOMMUNICATED"] = {
 		_descType = "append",
 		Description = [[
-			{{ffExCommunicated}} {{ColorOrange}}추방: {{ColorGray}}Excommunicated enemies are teleported away for a short time
-			{{Blank}} {{ColorGray}}Upon teleporting back, they and nearby enemies take damage
+			{{ffExCommunicated}} {{ColorOrange}}전이: {{ColorGray}}잠시동안 방에서 사라지며 일정 시간 후 사라진 위치에 돌아옴
+			{{Blank}} {{ColorGray}}돌아올 때 추가 피해
 		]],
 	},
 	["FF_APPEND_OVERLOADED"] = {
@@ -255,6 +276,18 @@ local entries = {
 		]],
 		BirthrightQuote = "악의 회복 + 개성 증가",
 	},
+	[CHAR .. FiendFolio.PLAYER.SKELETAL_FIEND] = {
+		_descType = "player",
+		Name = "핀드-타니쉬드",
+		ReminderName = "Skeletal Fiend",
+		Short = [[
+		]],
+		Description = [[
+		]],
+		Birthright = [[
+		]],
+		BirthrightQuote = "Hurtful taunts",
+	},
 	[CHAR .. FiendFolio.PLAYER.GOLEM] = {
 		_descType = "player",
 		Name = "골렘",
@@ -288,7 +321,8 @@ local entries = {
 			{{Trinket}} 비밀방 진입 시 석기류를 추가로 드랍합니다.
 			{{Collectible}} {{TreasureRoom}}/{{BossRoom}} 아이템 등장 시 석기류로 바뀝니다.
 			주요 특수방에서 서브웨이라는 특수방으로 이동할 수 있으며 서브웨이에서는 각 특수방별 숏컷 및 여러 보조 동료가 있습니다.
-			!!! 패널티 피격 시 확률적으로 소지 중인 장신구가 강제로 버려지거나 파괴됩니다.
+			!!! 패널티 피격 시 {{{ColorRed}}50%의 확률{{CR}}로 흡수 및 소지 중인 석기 혹은 아이템 중 하나가 강제로 버려지거나 파괴됩니다. (방 당 1회, 석기가 버려질 때 33%의 확률로 파괴)
+			>>> 파괴 확률은 패널티 피격 시마다 증가하며 비역행 스테이지 진입 시 초기화됩니다.
 			{{Collectible]]..FiendFolio.ITEM.COLLECTIBLE.OVERCLOCK..[[}} 고유 능력 : 오버클럭
 		]],
 		Birthright = [[
@@ -305,7 +339,7 @@ local entries = {
 		]],
 		Description = [[
 			{{Heart}} 최대 6칸의 체력을 가질 수 있습니다.
-			{{Heart}} 눈물 대신 탄환을 발사하며 탄환의 수량은 현재 소지 중인 체력에 비례합니다.
+			{{Heart}} {{ColorYellow}}불릿하트{{CR}}: 눈물 대신 탄환을 발사하며 탄환의 수량은 현재 소지 중인 체력에 비례합니다.
 			탄환 발사에 사용된 하트 종류에 따라 추가 효과를 발동합니다.
 			{{Blank}} (탄환 발사는 실제 체력을 소모하지 않음)
 			{{Collectible]]..FiendFolio.ITEM.COLLECTIBLE.HOT_SHOT..[[}} 고유 능력 : 핫 샷
@@ -342,8 +376,21 @@ local entries = {
 		Short = [[
 		]],
 		Description = [[
+			이나바는 알 수 없는 곳에서 온 교활한 토끼입니다.
+			캐릭터 주변의 눈알 모양의 새틀라이트가 같이 공격합니다.
+			>>> 새틀라이트의 공격력: 공격력 x0.25~x0.5 (연사 비례)
+			{{ColorYellow}}불안 오브{{CR}}: 적 처치 시 드랍되며 일정 수 이상 모으면 새틀라이트의 레벨이 상승합니다.
+			새틀라이트 레벨에 따라 공격하는 새틀라이트 수가 늘어납니다. (최대 4, 연사 비례 최대 8)
+			!!! 피격 시 불안 오브가 일정량 차감되며 새틀라이트 레벨이 하락할 수 있음
+			{{ColorYellow}}민감도{{CR}}: 적 명중 시 혹은 처치 시 게이지가 채워지며 완충 시 Migraine 모드를 자동으로 발동합니다.
+			{{ColorYellow}}Migraine{{CR}}: 발동 시 공격력이 증가하나 연사가 소폭 감소하며 새틀라이트의 공격이 적을 관통합니다.
+			Migraine 모드 중에는 민감도가 지속적으로 감소합니다.
 		]],
 		Birthright = [[
+			민감도 상승량 증가
+			Migraine 모드 발동 중에도 적 처치 시 민감도를 회복할 수 있습니다.
+			{{HolyMantleSmall}} Migraine 모드 진입 시 피격을 1회 막아주는 보호막을 생성하나;
+			>>> 보호막 파괴 시 민감도의 50%가 차감됩니다.
 		]],
 		BirthrightQuote = "머리 아파!",
 	},
@@ -354,8 +401,22 @@ local entries = {
 		Short = [[
 		]],
 		Description = [[
+			공격할 수 없으며 캐릭터 주변의 눈알 모양의 새틀라이트가 대신 공격합니다.
+			{{ButtonRT}} Ctrl 키를 누르는 동안 새틀라이트의 위치가 고정됩니다.
+			{{Chargeable}} 고정 중 충전되며 완충 후 해제 시 캐릭터에게 돌아오면서 회전 공격을 합니다.
+			>>> 새틀라이트의 공격력: 공격력 x1 + 유도 공격
+			{{ColorYellow}}불안 오브{{CR}}: 적 처치 시 드랍되며 일정 수 이상 모으면 새틀라이트의 레벨이 상승합니다.
+			{{DamageSmall}} 새틀라이트 레벨마다 공격력 +0.5
+			!!! 피격 시 불안 오브가 일정량 차감되며 새틀라이트 레벨이 하락할 수 있음
+			{{ColorYellow}}불안도{{CR}}:피격 시 게이지가 채워지며 완충 시 Migraine 모드를 자동으로 발동합니다.
+			{{ColorYellow}}Migraine{{CR}}: 발동 시 공격력이 소폭 감소하나 연사 및 사거리가가 증가하며 새틀라이트의 공격이 적을 관통합니다.
+			Migraine 모드 중에는 민감도가 지속적으로 감소합니다.
+			{{Collectible]]..FiendFolio.ITEM.COLLECTIBLE.OCULAR_SPECTRUM..[[}} 고유 능력 : 오큘러 스펙트럼
+			>>> 새틀라이트의 회전 공격으로 피해를 준 만큼 추가 충전을 하며 추가 충전량에 비례하여 Ocular Spectrum 사용 시 추가 눈물을 발사합니다.
 		]],
 		Birthright = [[
+			새틀라이트 회전 공격 시 그 위치에 그림자 눈알을 소환합니다.
+			그림자 눈알은 캐릭터 공격 시 같이 공격하며 가장 가까운 적을 향해 공격합니다.
 		]],
 		BirthrightQuote = "그림자 눈빛",
 	},
@@ -443,18 +504,6 @@ local entries = {
 	},
 	--#endregion
 	--#region JOKE PLAYERS
-	[CHAR .. FiendFolio.PLAYER.SKELETAL_FIEND] = {
-		_descType = "player",
-		Name = "핀드-스켈레톤",
-		ReminderName = "Skeletal Fiend",
-		Short = [[
-		]],
-		Description = [[
-		]],
-		Birthright = [[
-		]],
-		BirthrightQuote = "Hurtful taunts",
-	},
 	[CHAR .. FiendFolio.PLAYER.FEND] = {
 		_descType = "player",
 		Name = "펜드",
@@ -1525,7 +1574,7 @@ local entries = {
 		QuoteDesc = "낙관스런 저주",
 		Description = [[
 			↑ {{BlackHeart}}블랙하트 +1
-			{{CurseCursedSmall}} 항상 저주에 걸리며 기존의 저주가 아닌 새로운 형태의 저주가 걸립니다.
+			{{ffCursesBlackLantern}} 항상 저주에 걸리며 기존의 저주가 아닌 새로운 형태의 저주가 걸립니다.
 		]],
 		Tests = {
 			"{{BlackHeart}} +1 Black Heart",
@@ -1985,132 +2034,6 @@ local entries = {
 			"Drops an {{ffObject}} object when destroyed"
 		},
 		CarBattery = {"발동합니다", "2번{{CR}} 발동합니다"},
-	},
-	[ITEM..FiendFolio.ITEM.COLLECTIBLE.PERFECTLY_GENERIC_OBJECT_2] = {
-		_descType = "collectible",
-		Name = "",
-		QuoteDesc = "",
-		Description = [[
-		
-		]],
-		Tests = {
-			"{{ffObject}} Spawns 1 object on pickup",
-			"{{ffObject}} Triggers the effect of the object Isaac holds without using it"
-		},
-		Virtues = {
-			"15% chance for enemies to drop an {{ffObject}} object on kill",
-			"Drops an {{ffObject}} object when destroyed"
-		},
-		CarBattery = false,
-		
-	},
-	[ITEM..FiendFolio.ITEM.COLLECTIBLE.PERFECTLY_GENERIC_OBJECT_3] = {
-		_descType = "collectible",
-		Name = "",
-		QuoteDesc = "",
-		Description = [[
-		
-		]],
-		Tests = {
-			"{{ffObject}} Spawns 1 object on pickup",
-			"{{ffObject}} Triggers the effect of the object Isaac holds without using it"
-		},
-		Virtues = {
-			"15% chance for enemies to drop an {{ffObject}} object on kill",
-			"Drops an {{ffObject}} object when destroyed"
-		},
-		CarBattery = false,
-		
-	},
-	[ITEM..FiendFolio.ITEM.COLLECTIBLE.PERFECTLY_GENERIC_OBJECT_4] = {
-		_descType = "collectible",
-		Name = "",
-		QuoteDesc = "",
-		Description = [[
-		
-		]],
-		Tests = {
-			"{{ffObject}} Spawns 1 object on pickup",
-			"{{ffObject}} Triggers the effect of the object Isaac holds without using it"
-		},
-		Virtues = {
-			"15% chance for enemies to drop an {{ffObject}} object on kill",
-			"Drops an {{ffObject}} object when destroyed"
-		},
-		CarBattery = false,
-		
-	},
-	[ITEM..FiendFolio.ITEM.COLLECTIBLE.PERFECTLY_GENERIC_OBJECT_5] = {
-		_descType = "collectible",
-		Name = "",
-		QuoteDesc = "",
-		Description = [[
-		
-		]],
-		Tests = {
-			"{{ffObject}} Spawns 1 object on pickup",
-			"{{ffObject}} Triggers the effect of the object Isaac holds without using it"
-		},
-		Virtues = {
-			"15% chance for enemies to drop an {{ffObject}} object on kill",
-			"Drops an {{ffObject}} object when destroyed"
-		},
-		CarBattery = false,
-		
-	},
-	[ITEM..FiendFolio.ITEM.COLLECTIBLE.PERFECTLY_GENERIC_OBJECT_6] = {
-		_descType = "collectible",
-		Name = "",
-		QuoteDesc = "",
-		Description = [[
-		
-		]],
-		Tests = {
-			"{{ffObject}} Spawns 1 object on pickup",
-			"{{ffObject}} Triggers the effect of the object Isaac holds without using it"
-		},
-		Virtues = {
-			"15% chance for enemies to drop an {{ffObject}} object on kill",
-			"Drops an {{ffObject}} object when destroyed"
-		},
-		CarBattery = false,
-		
-	},
-	[ITEM..FiendFolio.ITEM.COLLECTIBLE.PERFECTLY_GENERIC_OBJECT_8] = {
-		_descType = "collectible",
-		Name = "",
-		QuoteDesc = "",
-		Description = [[
-		
-		]],
-		Tests = {
-			"{{ffObject}} Spawns 1 object on pickup",
-			"{{ffObject}} Triggers the effect of the object Isaac holds without using it"
-		},
-		Virtues = {
-			"15% chance for enemies to drop an {{ffObject}} object on kill",
-			"Drops an {{ffObject}} object when destroyed"
-		},
-		CarBattery = false,
-		
-	},
-	[ITEM..FiendFolio.ITEM.COLLECTIBLE.PERFECTLY_GENERIC_OBJECT_12] = {
-		_descType = "collectible",
-		Name = "",
-		QuoteDesc = "",
-		Description = [[
-		
-		]],
-		Tests = {
-			"{{ffObject}} Spawns 1 object on pickup",
-			"{{ffObject}} Triggers the effect of the object Isaac holds without using it"
-		},
-		Virtues = {
-			"15% chance for enemies to drop an {{ffObject}} object on kill",
-			"Drops an {{ffObject}} object when destroyed"
-		},
-		CarBattery = false,
-		
 	},
 	[ITEM..FiendFolio.ITEM.COLLECTIBLE.PAGE_OF_VIRTUES] = {
 		_descType = "collectible",
@@ -3607,7 +3530,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			사용 시 달빛을 소환합니다.
 		]],
 		Tests = {
 			""
@@ -3819,7 +3742,10 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			사용 시 공격방향으로 병을 휘둘러 접촉한 적을 하나 담습니다.
+			적이 병에 있는 상태에서 재사용 시 공격방향으로 그 적을 던져;
+			명중한 적에게 던진 적의 체력만큼의 피해를 줍니다.
+			!!! 충전량은 적을 던질 때에만 소모, 보스의 경우 무효과
 		]],
 		Tests = {
 			"If empty, Isaac can swing the jar to place an enemy into the jar",
@@ -3835,7 +3761,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{ffExCommunicated}} 7번째 눈물마다 적을 전이시키는 공격이 나갑니다.
 		]],
 		Tests = {
 			"Every 7th tear fired inflicts enemies with excommunication"
@@ -3854,7 +3780,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{Heart}} 적 처치 시 높은 확률로 빨간하트를 드랍합니다.
+			!!! 패널티 피격 시 1~3칸의 추가 피해를 받으며 추가 피해로 받은 하트는 사라지는 픽업으로 드랍됩니다.
+			하트가 사라지면 빨간 장판을 생성하며 주변의 적에게 공격력 x1.5의 피해를 줍니다.
 		]],
 		Tests = {
 			"{{Heart}} High chance for enemies to drop red hearts",
@@ -3863,12 +3791,14 @@ local entries = {
 			"When expiring, hearts release a highly damaging blood explosion"
 		},
 	},
-	[ITEM..FiendFolio.ITEM.COLLECTIBLE.MTN_DEW] = {
+	[ITEM..FiendFolio.ITEM.COLLECTIBLE.MTN_DEW] = { -- TODO
 		_descType = "collectible",
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{Chargeable}} 
+			{{ffRadiation}} 
+			!!! 
 		]],
 		Tests = {
 			"{{Chargeable}} Firing charges up an extended volley of tears",
@@ -3881,7 +3811,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{ffBerserk}} 사용 시 그 방의 적을 폭주시킵니다.
 		]],
 		Tests = {
 			mod.DescriptionIcons.Berserk .. "Inflicts all enemies with Berserk"
@@ -3900,7 +3830,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{ffDoom}} 사용 시 그 방의 적을 둠에 걸리게 합니다.
 		]],
 		Tests = {
 			"Inflicts all enemies with Doom"
@@ -3919,7 +3849,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{ffOverloaded}} 16%의 확률로 적을 과부하 시키는 공격이 나갑니다.
+			{{LuckSmall}} 행운 12+일 때 33%
 		]],
 		Tests = {
 			"16% chance to fire tears that inflict enemies with Overloaded",
@@ -3938,7 +3869,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{ffSew}} 캐릭터 주변의 적을 귀속시킵니다.
 		]],
 		Tests = {
 			"Applies Sewn to enemies in a small radius around Isaac"
@@ -3956,7 +3887,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			!!! 획득 시 아래의 아이템을 전부 사용합니다.
+			>>> {{Collectible476}}{{Collectible105}}{{Collectible386}}{{Collectible166}}
+			>>> {{Collectible]].. FiendFolio.ITEM.COLLECTIBLE.MARIAS_IPAD ..[[(20% 확률)
 		]],
 		Tests = {
 			"Placeholder description"
@@ -3967,7 +3900,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{Collectible317}} 3%의 확률로 적을 즉사시키며 녹색 장판을 생성하는 공격이 나갑니다.
+			{{LuckSmall}} 행운 13+일 때 25%
 		]],
 		Tests = {
 			"3% chance to fire an insta-kill tear that leaves behind mysterious liquid creep on kill",
@@ -3982,7 +3916,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			캐릭터의 반대편에서 움직이며 캐릭터의 공격 반대방향으로 공격력 3.5의 지형 관통 눈물을 발사합니다.
+			눈물이 캐릭터의 눈물과 닿으면 주변의 적에게 캐릭터 x10의 폭발 피해를 줍니다. (캐릭터 피해 없음)
 		]],
 		Tests = {
 			"Familiar that sits horizontally aligned with Isaac on the opposite side of the room",
@@ -4011,7 +3946,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{SoulHeart}} 소울하트 +1
+			{{ffRock}} 획득 시 랜덤 조약돌을 드랍합니다.
 		]],
 		Tests = {
 			"{{SoulHeart}} +2 Soul Hearts",
@@ -4023,7 +3959,10 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			적이 있는 방에서 주기적으로 검을 3개 소환합니다.
+			검 소환 후 일정 시간 뒤에 적을 향해 날아가며;
+			>>> {{ffHemorrhage}} 검에 닿은 적에게 대출혈 피해를 줍니다.
+			캐릭터가 검에 닿은 경우 검이 소멸하는 대신 그 방향으로 핏방울 여러 개를 대신 발사합니다.
 		]],
 		Tests = {
 			"Periodically fires 3 piercing blades that fire towards random enemies, dealing damage and inflicting Hemorrhaging",
@@ -4039,7 +3978,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			방 클리어 시 혹은 적에게 일정 피해를 줄 때마다 캐릭터 주변을 도는 운석 배리어를 하나 소환합니다.
+			운석 배리어는 적의 탄환을 막아주며 일정 회수 막으면 사라집니다.
+			{{Confusion}} 공격키를 두번 눌러 운석 배리어를 투척하여 적에게 혼란 피해를 줄 수 있습니다.
 		]],
 		Tests = {
 			"Grants rock orbitals that block shots upon dealing damage and clearing rooms",
@@ -4052,7 +3993,14 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			적 처치 시 확률적으로 열매를 드랍합니다.
+			{{Chargeable}} 열매 획득 시 일회성 구토제 눈물을 발사합니다.
+			방 클리어 시 구토제 눈물에 추가 효과를 주는 열매 더미를 소환합니다.
+			{{IND}} 5개 : 독구름
+			{{IND}} 10개 : 추가 눈물더미 (독성)
+			{{IND}} 15개 : 추가 눈물더미 (빨간 장판)
+			{{IND}} 20개 : 추가 줄기 공격
+			{{IND}} 이후 5개마다 추가 피해
 		]],
 		Tests = {
 			"{{Chargeable}} Enemies drop berries that give Isaac a chargeable ipecac tear",
@@ -4064,7 +4012,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{Charm}} 사용 시 주변의 적 하나를 아군으로 만들며 줄기로 묶습니다.
+			{{Heart}} 체력 회복 시 줄기에 묶인 아군도 같이 회복합니다.
+			!!! 줄기에 묶인 아군이 없을 때 재사용 가능
 		]],
 		Tests = {
 			"{{Charm}} Makes the nearest enemy permanently friendly and snared to Isaac",
@@ -4088,7 +4038,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			!!! 캐릭터가 왼쪽/오른쪽으로 공격할 때:
+			>>> {{TearsSmall}} 연사 +1.2
 		]],
 		Tests = {
 			"↑ +1.2 Tears when firing to the left or right"
@@ -4099,7 +4050,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			랜덤 간격으로 방귀를 뀝니다.
+			스테이지 진입 시 방귀를 53번 뀝니다.
 		]],
 		Tests = {
 			"Chance to pheromone fart periodically",
@@ -4111,7 +4063,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{ffImmoralHeart}} 이모럴하트 +2
+			Fiend의 부하 소환 및 적 처치 시 아군 버섯 포자를 생성합니다.
 		]],
 		Tests = {
 			"{{ffImmoralHeart}} +2 Immoral Hearts",
@@ -4123,7 +4076,10 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			↑ {{Heart}}최대 체력 +1
+			↑ {{HealingRed}}빨간하트 +1
+			↑ {{Planetarium}}천체관 확률 +10%
+			획득 후 3분간 50%의 확률로 상태이상에 걸리지 않습니다.
 		]],
 		Tests = {
 			"↑ +1 Health",
@@ -4137,7 +4093,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			공격 시 적에게 랜덤 상태이상을 걸리게 하는 장판을 생성하는 눈물을 발사합니다.
+			{{Timer}} (쿨타임 2초)
 		]],
 		Tests = {
 			"Every 2 seconds, the next tear Isaac shoots is colored and spawns a puddle of creep on impact",
@@ -4149,7 +4106,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{ffSleeping}} 15%의 확률로 적을 나른하게 하는 공격을 합니다.
+			{{LuckSmall}} 행운 25+일 때 50%
+			{{ffSleeping}} 잠든 적에게 카운터가 생기며 0이 되면 공격력 x1의 추가 피해를 주며 깨어납니다.
 		]],
 		Tests = {
 			"15% chance to fire tears that inflict enemies with Drowsy",
@@ -4170,7 +4129,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{HalfHeart}} 방 진입 시 25%의 확률로 Fiend의 부하를 5마리 소환하는 대신 하트 -0.5 ({{Heart}} 우선)
+			{{ffHalfImmoralHeart}} 낮은 확률로 부하 중 하나가 이모럴 타입으로 바뀝니다.
 		]],
 		Tests = {
 			"{{HalfHeart}} 25% chance to spawn 5 Fiend Minions and lose half a heart when entering a combat room",
@@ -4183,7 +4143,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			확률적으로 적이 커지거나 작아집니다.
+			커진 적은 체력이 50% 증가합니다.
+			작아진 적은 체력이 50% 감소합니다.
 		]],
 		Tests = {
 			"Chance for enemies to either gain 1.5x health or halve their health",
@@ -4195,7 +4157,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			캐릭터의 체력이 6칸 이하일 때 모든 적이 추가 피해를 받습니다.
+			{{Blank}} (체력이 적을수록 받는 피해 증가)
 		]],
 		Tests = {
 			"When Isaac is at 6 hearts or lower, enemies will take extra damage from all sources",
@@ -4207,7 +4170,10 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{Chargeable}} 공격 중 충전하며 충전 상태에 따라 오라를 발산하는 석상을 설치합니다.
+			>>> {{1}}: 매혹, 폭주, 혼란 중 하나
+			>>> {{2}}: 석화
+			>>> {{3}}: 석화 + 해제 시 추가 피해 (스테이지 당 1회)
 		]],
 		Tests = {
 			"{{Chargeable}} Grants a 3 stage charge bar that will place down a statue that inflicts debuffs in an aura",
@@ -4222,7 +4188,10 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{Chargeable}} 이동 중일 때 충전, 멈추면 마지막으로 이동한 방향으로 돌진합니다.
+			돌진 중에는 미끄러지나 무적이며 빨간 장판을 생성합니다.
+			초과 충전량에 따라 돌진 거리 및 장판의 피해량이 증가합니다.
+			{{Blank}} (돌진 중 다른 방향키로 취소 가능)
 		]],
 		Tests = {
 			"{{Chargeable}} Moving charges up an invincible dash that activates upon stopping",
@@ -4235,7 +4204,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			↑ {{Heart}}최대 체력 +1
+			↑ {{TearsSmall}}연사 +0.35
 		]],
 		Tests = {
 			"↑ +1 Health",
@@ -4247,7 +4217,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{ffLilPenny}} 4초당 동전 +0.1
 		]],
 		Tests = {
 			"{{ffLilPenny}} Gives Isaac a lil' penny every 4 seconds"
@@ -4260,7 +4230,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{ffMugged}} 25%의 확률로 적에게 약탈을 거는 공격을 합니다.
+			{{LuckSmall}} 행운 25+일 때 100%
 		]],
 		Tests = {
 			"25% chance to fire tears that inflict Mugged",
@@ -4280,7 +4251,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			↓ {{SpeedSmall}}이동속도 -0.4
+			↑ {{TearsSmall}}연사 +0.4
+			↑ {{DamageSmall}}공격력 +2
 		]],
 		Tests = {
 			"↑ +0.4 Tears",
@@ -4293,7 +4266,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			↑ {{TearsSmall}}연사 +1.4
+			↑ {{DamageSmall}}공격력 +0.4
+			↓ {{ShotspeedSmall}}탄속 -0.4
 		]],
 		Tests = {
 			"↑ +1.4 Tears",
@@ -4306,7 +4281,10 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			↑ {{SpeedSmall}}이동속도 +0.4
+			↑ {{TearsSmall}}연사 +0.4
+			↑ {{DamageSmall}}공격력 +0.4
+			↑ {{ShotspeedSmall}}탄속 +0.4
 		]],
 		Tests = {
 			"↑ +0.4 Damage",
@@ -4320,7 +4298,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			사용 시 구릅니다.
+			구르기 중 무적
 		]],
 		Tests = {
 			"Allows Isaac to dodge roll, allowing him to move quickly"
@@ -4333,7 +4312,12 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			↑ {{SpeedSmall}}이동속도 +0.1
+			↑ {{TearsSmall}}연사 +0.1
+			↑ {{DamageSmall}}공격력 +0.1
+			↑ {{LuckSmall}}행운 +0.1
+			{{Coin}} 동전을 5개 드랍합니다.
+			운세를 하나 보여줍니다.
 		]],
 		Tests = {
 			"↑ +0.1 Damage",
@@ -4349,7 +4333,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			사용 시 캐릭터 주변을 도는 뼛조각을 없애며;
+			{{LuckSmall}} 없앤 뼛조각 수에 비례하여 증발성 공격력 으로 바꿉니다.
 		]],
 		Tests = {
 			"{{Damage}} Turns bone orbitals into Damage",
@@ -4363,7 +4348,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			↑ {{TearsSmall}}연사 +1
+			!!! 눈물의 정확도가 감소합니다.
 		]],
 		Tests = {
 			"↑ +1 Tears",
@@ -4375,7 +4361,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			↑ {{Heart}}최대 체력 +3
+			{{HealingRed}} 체력을 전부 회복합니다.
+			!!! 모든 하트 픽업이 빨간하트로 등장합니다.
 		]],
 		Tests = {
 			"↑ +3 Health",
@@ -4388,7 +4376,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{Poison}} 사용 시 공격방향으로 독가스를 생겅하는 불꽃을 날립니다.
+			불꽃은 2초동안 지속되며 탄환을 막아주나, 적에게 피해를 주면 사라집니다.
 		]],
 		Tests = {
 			"{{Poison}} Throws a green poisonous flame",
@@ -4406,7 +4395,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			↑ {{DamageSmall}}공격력 배율 x2
+			캐릭터 크기 대폭 증가
+			캐릭터 연두빛 대폭 증가
 		]],
 		Tests = {
 			"↑ x2 Damage",
@@ -4420,7 +4411,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{BlackHeart}} 블랙하트 +1
+			!!! 블랙하트 픽업이 더 이상 등장하지 않습니다.
 		]],
 		Tests = {
 			"{{BlackHeart}} +1 Black Heart",
@@ -4429,10 +4421,12 @@ local entries = {
 	},
 	[ITEM..FiendFolio.ITEM.COLLECTIBLE.HUNDRED_PERCENT_ORANGE_JUICE] = {
 		_descType = "collectible",
-		Name = "",
+		Name = "100% 오렌지 주스",
 		QuoteDesc = "",
 		Description = [[
-		
+			클리어하지 않은 방 진입 시 방 안의 랜덤 위치에 타일이 여러 개 생깁니다.
+			타일의 색상에 따라 다른 효과를 발동합니다.
+			!!! {{ColorGray}}(Inventory Description에서 확인){{CR}}
 		]],
 		Tests = {
 			"Causes colorful floor tiles that Isaac can step on to appear in rooms",
@@ -4444,7 +4438,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{TearsSmall}} 체력이 적을수록 연사 증가 (2{{Heart}}일 때 +1.5)
+			!!! 체력 2칸 이하인 상태에서 피격 시 사망합니다.
 		]],
 		Tests = {
 			"{{Tears}} Tears up that gets stronger based on how low your health is",
@@ -4456,7 +4451,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{Burning}} 공격방향으로 적에게 공격력 x2의 화상 피해를 주는 보라색 화염을 던집니다.
+			!!! 화염 명중 시 폭발합니다.
+			{{HalfHeart}} 화염 폭발로 적 처치 시 30%의 확률로 빨간하트 반칸을 드랍합니다.
 		]],
 		Tests = {
 			"Friend throws a purple fire which can be shot to explode enemies",
@@ -4471,11 +4468,14 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			50걸음마다 아군 자폭 벼룩을 소환합니다.
 		]],
 		Tests = {
 			"Spawns a Blue Skuzz after walking 50 steps",
 			"Blue Skuzzes are friendly creatures that hop towards nearby enemies and do 3x Isaac's damage"
+		},
+		AppendEntries = {
+			"FF_APPEND_SKUZZES",
 		},
 	},
 	[ITEM..FiendFolio.ITEM.COLLECTIBLE.INFESTATION_4] = {
@@ -4483,11 +4483,14 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			50의 피해를 줄 때마다 아군 자폭 무당벌레를 소환합니다.
 		]],
 		Tests = {
 			"Spawns a Blue Beetle after dealing 50 damage",
 			"Blue Beetles are friendly creatures that shield Isaac from oncoming attacks and projectiles"
+		},
+		AppendEntries = {
+			"FF_APPEND_BEETLES",
 		},
 	},
 	[ITEM..FiendFolio.ITEM.COLLECTIBLE.UTILITY_POLE] = {
@@ -4495,7 +4498,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			짝수 스테이지 시작 시 까마귀가 선물상자를 준비합니다.
+			선물상자에는 카드/알약 등이 2~4개 들어 있습니다.
 		]],
 		Tests = {
 			"Spawns a crow with a gift at the start of every second floor",
@@ -4507,7 +4511,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			공격방향으로 공격력 4.6의 유도성 탄환을 발사합니다. (탄창 6개)
 		]],
 		Tests = {
 			"Shoots bullets from her gun that deal 4.9 Damage",
@@ -4525,7 +4529,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			모든 잠긴 컬러 블록을 유령 열쇠 없이 열 수 있습니다.
+			장애물이 확률적으로 잠긴 컬러 블록으로 바뀝니다.
+			!!! 컬러 블록은 비행으로 지나갈 수 없음
 		]],
 		Tests = {
 			"{{Key}} All colored locks are free to open",
@@ -4537,7 +4543,14 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			공격 시 공격방향으로 주사위를 던집니다.
+			주사위의 손가락 수에 따른 효과:
+			>>> {{1}}: 적에게 피해를 주는 장판 생성
+			>>> {{2}}: 다음에 나온 효과 2배
+			>>> {{3}}: 360도 방향으로 확률 치명타 눈물 3발 발사
+			>>> {{4}}: 4방향으로 불꽃 발사
+			>>> {{5}}: {{ffBruise}} 가까운 적을 향해 5방향으로 멍들게 하는 탄환 발사
+			발동 후 주우면 다시 던질 수 있습니다.
 		]],
 		Tests = {
 			"Dice that can be picked up and thrown around",
@@ -4554,7 +4567,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			사용 시 그 방의 랜덤 위치로 순간이동하며;
+			>>> 그 위치에 적에게 50의 피해를 줍니다.
 		]],
 		Tests = {
 			"Teleports Isaac to a random position in a room",
@@ -4574,7 +4588,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			15%의 확률로 지나간 자리에 장판을 생성하는 공격을 합니다.
+			{{LuckSmall}} 행운 20+일 때 45%
 		]],
 		Tests = {
 			"15% chance to fire tears that leave a trail of green damaging creep",
@@ -4586,7 +4601,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{Coin}} 동전 7개를 드랍합니다.
 		]],
 		Tests = {
 			"{{Coin}} Spawns 7 random coins"
@@ -4597,7 +4612,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			적 처치 시 예술 조각을 생성합니다.
+			예술 조각 파괴 시 적을 향해 알록달록한 눈물 여러 발을 발사합니다.
 		]],
 		Tests = {
 			"Killing an enemy spawns an abstract art piece which does not deal contact damage",
@@ -4609,7 +4625,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			↑ {{Heart}}최대 체력 +1
+			↑ {{HealingRed}}빨간하트 +1
+			!!! 여자만 획득 가능
 		]],
 		Tests = {
 			"↑ +1 Health",
@@ -4622,7 +4640,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			↑ {{DamageSmall}}공격력 +0.3
+			적 처치 시 뼛조각 눈물이 튀어나오며 주변의 적을 밀쳐냅니다.
 		]],
 		Tests = {
 			"↑ +0.3 Damage",
@@ -4634,8 +4653,12 @@ local entries = {
 		_descType = "collectible",
 		Name = "",
 		QuoteDesc = "",
-		Description = [[
-		
+		Description = [[ 
+			!!! ]]..FiendFolio.DescriptionIcons.Craig..[[Craig 전용, 랜턴으로 충전 가능
+			적이 있는 방에서 랜턴이 등장하며 랜턴의 크기 및 주는 충전량은 시간이 지나면 커집니다.
+			사용 시 공격방향으로 혈사포를 발사합니다.
+			충전량 33% 이상일 때 사용 가능하며 혈사포 크기가 충전량에 비례합니다.
+			!!! 충전량 200%일 때 폭발, 충전량 전부 소진
 		]],
 		Tests = {
 			"Bulb lanterns spawn in rooms with enemies",
@@ -4652,7 +4675,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{Battery}} 액티브 아이템 사용 시 충전량의 0~50%를 보존합니다.
 		]],
 		Tests = {
 			"{{Battery}} After using an active item, Isaac will gain back 0-50% of its charge"
@@ -4663,11 +4686,15 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{ffMorbidHeart}} 종양하트 +1
+			↑ {{TearsSmall}}연사 +0.7
 		]],
 		Tests = {
 			"↑ +0.7 Tears",
 			"{{ffMorbidHeart}} +1 Morbid Heart"
+		},
+		AppendEntries = {
+			"FF_APPEND_MORBID_HEART",
 		},
 	},
 	[ITEM..FiendFolio.ITEM.COLLECTIBLE.BABY_FORMULA] = {
@@ -4675,7 +4702,10 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			↑ {{Heart}}최대 체력 +1
+			↑ {{HealingRed}}빨간하트 +1
+			↑ {{SpeedSmall}}이동속도 +0.05
+			캐릭터의 크기가 작아집니다.
 		]],
 		Tests = {
 			"↑ +1 Health",
@@ -4689,7 +4719,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			사용 시 공격방향으로 휴대전화를 던집니다.
+			휴대전화의 방향은 공격키로 변경할 수 있으나 점점 빨라집니다.
+			휴대전화 주변에 적에게 1.8의 피해를 주는 전류를 발산합니다.
 		]],
 		Tests = {
 			"Using the item and firing in a direction fires a giant piercing electric tear",
@@ -4705,7 +4737,11 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			↑ {{DamageSmall}}공격력 +0.5
+			↑ {{RangeSmall}}사거리 +3
+			↑ {{ShotspeedSmall}}탄속 +0.2
+			다음 획득하는 아이템이 강아지류 패밀리어로 바뀝니다.
+			획득한 강아지류 패밀리어는 방 종류에 따라 달라집니다.
 		]],
 		Tests = {
 			"↑ +0.5 Damage",
@@ -4720,7 +4756,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			공격방향으로 공격력 3.5의 눈물을 발사합니다.
+			{{Collectible]]..FiendFolio.ITEM.COLLECTIBLE.DOUBLE_DOG..[[}} {{TreasureRoom}} {{BossRoom}} 보물방/보스방에서 획득한 아이템이 Double Dog에 의해 교체됨
 		]],
 		Tests = {
 			"Shoots normal tears",
@@ -4738,7 +4775,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{ffDoom}} 공격방향으로 공격력 6.66의 둠 눈물을 발사합니다.
+			{{Collectible]]..FiendFolio.ITEM.COLLECTIBLE.DOUBLE_DOG..[[}} {{DevilRoom}} 악마방에서 획득한 아이템이 Double Dog에 의해 교체됨
 		]],
 		Tests = {
 			"↑ +1 Damage",
@@ -4764,7 +4802,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			↑ {{TearsSmall}}연사 +0.7
+			{{ffMartyr}} 공격방향으로 공격력 6.66의 순교성 눈물을 발사합니다.
+			{{Collectible]]..FiendFolio.ITEM.COLLECTIBLE.DOUBLE_DOG..[[}} {{AngelRoom}} 천사방에서 획득한 아이템이 Double Dog에 의해 교체됨
 		]],
 		Tests = {
 			"↑ +0.7 Tears",
@@ -4790,7 +4830,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			↑ {{TearsSmall}}목숨 +1
+			{{Collectible453}} 공격방향으로 공격력 4의 뼈 눈물을 발사합니다.
+			{{Collectible]]..FiendFolio.ITEM.COLLECTIBLE.DOUBLE_DOG..[[}} {{SecretRoom}} {{SuperSecretRoom}} 비밀방/일급비밀방에서 획득한 아이템이 Double Dog에 의해 교체됨
 		]],
 		Tests = {
 			"↑ +1 Life",
@@ -4809,7 +4851,10 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			획득 시 랜덤 픽업을 여러 개 드랍합니다.
+			{{ffMartyr}} 공격방향으로 공격력 3.5의 순교성 눈물을 발사합니다.
+			{{Shop}} 상점 품목의 가격이 25% 감소합니다.
+			{{Collectible]]..FiendFolio.ITEM.COLLECTIBLE.DOUBLE_DOG..[[}} {{Shop}} 상점에서 획득한 아이템이 Double Dog에 의해 교체됨
 		]],
 		Tests = {
 			"Does 3.5 damage per tear",
@@ -4828,7 +4873,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{Petrify}} 공격방향으로 공격력 7의 석화 눈물을 발사합니다.
+			{{Petrify}} 석화 상태의 적 처치 시 눈물 여러 개로 나뉩니다.
+			{{Collectible]]..FiendFolio.ITEM.COLLECTIBLE.DOUBLE_DOG..[[}} {{CurseRoom}} 저주방에서 획득한 아이템이 Double Dog에 의해 교체됨
 		]],
 		Tests = {
 			"Does 7 damage per tear",
@@ -4847,7 +4894,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			랜덤 강아지 패밀리어 x5
+			{{Collectible]]..FiendFolio.ITEM.COLLECTIBLE.DOUBLE_DOG..[[}} {{ErrorRoom}} 오류방에서 획득한 아이템이 Double Dog에 의해 교체됨
 		]],
 		Tests = {
 			"Spawns 5 dogs from the dog folder",
@@ -4865,7 +4913,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{Coin}} 동전 +6
+			{{Coin}} 폭탄이 없어도 동전 3개를 소모하여 추가로 설치할 수 있습니다.
+			{{ffLilPenny}} 폭탄이 터지면 리틀 페니를 여러 개 흩뿌립니다.
 		]],
 		Tests = {
 			"{{Coin}} +6 Coins",
@@ -4878,7 +4928,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			↓ {{TearsSmall}}연사 배율 x0.5
+			↓ {{ShotspeedSmall}}탄속 -0.2
+			일부 눈물이 캐릭터 주변에서 등장하며 가까운 적을 향해 날아갑니다.
 		]],
 		Tests = {
 			"↓ x0.5 Fire rate multiplier",
@@ -4894,7 +4946,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{Burning}} 5%의 확률로 적에게 화상을 입히는 공격을 합니다.
+			{{LuckSmall}} 행운 20+일 때 100%
+			화상에 걸린 적 처치 시 십자 모양으로 보라색 불길을 발사합니다. (캐릭터 피해 없음)
 		]],
 		Tests = {
 			"{{Burning}} 5% chance to shoot out a purple tear that inflicts Burning on enemies",
@@ -4910,7 +4964,10 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			클리어하지 않은 방에서 10~30초마다 말풍선이 나옵니다.
+			말풍선에서 위/아래 키로 꿈을 선택할 수 있으며;
+			일정 시간 후 그 꿈에 대응되는 효과를 발동합니다.
+			{{ButtonRT}} Ctrl 키로 즉시 발동 가능
 		]],
 		Tests = {
 			"When in an active room, a thought bubble appears beside Isaac every 15-30 seconds",
@@ -4926,7 +4983,12 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{Timer}} 사용 시:
+			{{IND}} {{SpeedSmall}}이동속도 +0.25
+			{{IND}} 패밀리어 공격력 x3 (패밀리어가 없는 경우 {{Collectible8}} 지급)
+			{{IND}} {{Battery}} 재사용 시 해제 가능하며, 15초 후 재사용 가능
+			!!! 패널티 피격 시 강제로 해제 + 패밀리어 제거 + 캐릭터에게 2배의 피해
+			방 클리어 시 제거되었던 패밀리어 하나가 부활합니다.
 		]],
 		Tests = {
 			'When used:',
@@ -4945,37 +5007,15 @@ local entries = {
 			"{{Slow}} Wisp tears inflict Slowness"
 		},
 		CarBattery = false,
-		
-	},
-	[ITEM..FiendFolio.ITEM.COLLECTIBLE.THE_WAR_HORN_CHARGING] = {
-		_descType = "collectible",
-		Name = "",
-		QuoteDesc = "",
-		Description = [[
-		
-		]],
-		Tests = {
-			'Toggles a "familiar frenzy" state on use:',
-			"{{Damage}} Combat-familiars deal x3 Damage, except blue bugs",
-			"↑ +0.25 Speed",
-			"{{Battery}} Deactivating incurrs a 15 second recharge time",
-			"↓ Taking damage while in the frenzy state forcibly cancels it, doubles the amount of damage taken, and kills all frenzied familiars",
-			"{{Collectible11}} One killed familiar is revived each room",
-			"{{Collectible8}} Summons a Brother Bobby style familiar if Isaac owns no permanent combat familiars"
-		},
-		Belial = {
-			"{{Damage}} Familiar damage mult increased to x3.33",
-			"{{Burning}} 26.66% chance for familiars tears to light enemies on fire",
-		},
-		CarBattery = false,
-		
 	},
 	[ITEM..FiendFolio.ITEM.COLLECTIBLE.ZIP_43] = {
 		_descType = "collectible",
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{Bomb}} 폭탄 +5
+			폭탄이 터지면 주변의 적을 오류에 걸리게 합니다. (미끄러짐 + 일부 행동 불가)
+			{{ffOverloaded}} 5%의 확률로 과부하가 대신 걸림
 		]],
 		Tests = {
 			"{{Bomb}} +5 Bombs",
@@ -4988,7 +5028,14 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{Heart}} 캐릭터의 체력을 탄창으로 바꿉니다.
+			공격 시 탄환을 소모하며 소모하며 탄환 발사에 사용된 하트 종류에 따라 추가 효과를 발동합니다.
+			{{Blank}} (실제 체력을 소모하지 않음)
+			!!! 탄창에 탄약이 있는 경우:
+			>>> {{DamageSmall}} 공격력 +0.8
+			>>> {{ShotspeedSmall}} 탄속 +0.3
+			!!! 탄창에 탄약이 없는 경우:
+			>>> {{TearsSmall}} 연사 -0.3
 		]],
 		Tests = {
 			"{{Heart}} Converts Isaac's health into Ammo Hearts, which decrement when shooting and reload when not",
@@ -5004,7 +5051,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{Timer}} 클리어하지 않은 방에서 20초마다:
+			>>> 3초간 캐릭터가 확정 치명 공격을 합니다.
+			치명타는 적에게 공격력 x5의 피해를 줍니다.
 		]],
 		Tests = {
 			"{{Timer}} Every 20 seconds in an uncleared room:",
@@ -5019,7 +5068,14 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			피격되지 않은 상태에서 방 2회 이상 클리어 시 63%의 확률로:
+			>>> {{DamageSmall}} 공격력 +0.15
+			>>> {{UnknownHeart}} 랜덤하트 +1
+			>>> {{Coin}} 동전 +1~5
+			>>> {{Battery}} 액티브 1~3칸 충전
+			>>> {{Collectible123}} 랜덤 패밀리어 or 일회성 패밀리어
+			>>> {{Card}} 랜덤 타로 카드 소환
+			>>> !!! {{ffCursedPenny}} 랜덤 저주받은 픽업
 		]],
 		Tests = {
 			"63% chance to grant a reward upon completing rooms without taking damage"
@@ -5030,7 +5086,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			클리어하지 않은 방에서 주기적으로 캐릭터가 똥을 쌉니다.
+			캐릭터가 싼 똥 파괴 시 50%의 확률로 약물을 드랍합니다.
+			!!! {{Collectible582}} 약물 획득 시 증발성 Wave Cap 효과 발동
 		]],
 		Tests = {
 			"Periodically in active rooms, Isaac will poop 3-7 times in a row",
@@ -5046,7 +5104,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			사용 시 액티브 자판기를 소환합니다.
+			{{Coin}} 액티브 자판기는 동전 0~10개를 소모하여 그 아이템을 즉시 사용합니다.
 		]],
 		Tests = {
 			"Spawns a vending machine in the room",
@@ -5063,7 +5122,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			5%의 확률로 유도성 와드 공격이 나갑니다.
+			{{LuckSmall}} 행운 7+일 때 20%
+			와드 공격 명중 시 10초간 주변의 적을 가둡니다.
 		]],
 		Tests = {
 			"5% chance to fire a homing Warding tear",
@@ -5077,7 +5138,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{Bomb}} 사용 시 투척성 폭탄 3개를 소환합니다.
 		]],
 		Tests = {
 			"{{Bomb}} On use, spawns 3 throwable red bombs"
@@ -5096,7 +5157,10 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			!!! 획득 시 지정 8개 배열의 아이템이 하나씩 존재하는 방으로 이동합니다.
+			!!! 아이템은 모두 획득할 수 있으나 하나라도 획득 시:
+			>>> 현재 게임에서 이하의 방이 더 이상 등장하지 않음: {{TreasureRoom}} {{Shop}} {{Library}} {{Planetarium}} {{UltraSecretRoom}} {{DevilRoom}} {{AngelRoom}}
+			>>> {{AngelDevilChanceSmall}}} 현재 게임에서 악마방/천사방 {{ColorRed}}최종 확률{{CR}}이 0%로 고정 + 해당 방으로 이동 불가
 		]],
 		Tests = {
 			"Teleport to a special room containing 8 items from curated item pools",
@@ -5115,7 +5179,17 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{ColorOrange}}모든 수치{{CR}} 배율 x1.09
+			>>> {{SpeedSmall}} {{TearsSmall}} {{DamageSmall}} {{RangeSmall}} {{ShotspeedSmall}} {{LuckSmall}} {{Tearsize}} 모든 능력치
+			>>> {{AngelDevilChanceSmall}} {{PlanetariumSmall}} 악마방, 천사방, 천체관 확률
+			>>> {{Heart}} 체력 상한
+			>>> {{Coin}} {{Bomb}} {{Key}} 픽업 수, 픽업 상한
+			>>> {{Collectible58}} {{Trinket81}} 무적시간
+			>>> {{Collectible308}} 캐릭터 장판 지속시간
+			>>> {{Battery}} 시간제 액티브 충전량
+			>>> {{Collectible300}} 캐릭터 관성, 접촉 피해량, 피격 범위
+			>>> {{Bomb}} 폭탄 피해량, 범위
+			>>> 기타 등등
 		]],
 		Tests = {
 			"↑ 1.09x multipliers for:",
@@ -5217,7 +5291,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			!!! 일회용 !!! 
+			]]..FiendFolio.DescriptionIcons.Golem..[[사용 시 Golem의 모든 석기가 있는 방으로 이동합니다.
+			>>> 석기 3개 획득 시 원래 있던 장소로 돌아갑니다. (자동 흡수)
 		]],
 		Tests = {
 			"{{Warning}} SINGLE USE {{Warning}}",
@@ -5245,7 +5321,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{Timer}} 사용 시 공격이 미니건으로 변경됩니다.
+			>>> 미니건 탄환은 속사가 가능하며 장애물을 파괴하는 공격력 x2의 피해를 줍니다.
+			>>> 일정 수 발사 시 비활성화되며 스테이지 진입 시 다시 사용할 수 있습니다.
 		]],
 		Tests = {
 			"{{Timer}} Gives Isaac a giant minigun, allowing him to rapidly fire bullets for up to 9 seconds",
@@ -5269,7 +5347,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			소지 중일 때 캐릭터가 주기적으로 보라색 장판을 생성합니다. (적 피해 없음)
+			사용 시 캐릭터 주변에 보라색 장판을 원형으로 생성하며;
+			>>> 보라색 장판에서 적에게 초당 공격력 x0.6 + 5의 피해를 주는 가시를 생성합니다.
 		]],
 		Tests = {
 			"Isaac leaves a trail of purple creep that doesn't harm enemies",
@@ -5296,7 +5376,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{Bomb}} 폭탄 +6
+			캐릭터가 설치한 폭탄에 랜덤 효과를 3가지 추가합니다.
+			랜덤 효과는 스테이지별로 고정
 		]],
 		Tests = {
 			"{{Bomb}} +5 Bombs",
@@ -5309,7 +5391,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			클리어하지 않은 방에서 주기적으로 타겟을 2개 소환합니다.
+			타겟 접촉 시 랜덤 탄막 게임 계열의 눈물세례를 발사합니다.
 		]],
 		Tests = {
 			"Two targets periodically spawn in active rooms",
@@ -5321,12 +5404,16 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{ffMorbidHeart}} !!! 모든 소울/블랙하트를 종양하트로 바뀝니다.
+			{{SoulHeart}} 최대 체력 = 소울/블랙하트 보정을 받는 캐릭터는 무효과
 		]],
 		Tests = {
 			"{{ffMorbidHeart}} Replaces all Soul and Black Heart pickups with Morbid Hearts",
 			"Morbid chunks spawn 1-3 blue flies when destroyed",
 			"{{SoulHeart}} Heart replacement doesn't happen for soul heart only characters"
+		},
+		AppendEntries = {
+			"FF_APPEND_MORBID_HEART",
 		},
 	},
 	[ITEM..FiendFolio.ITEM.COLLECTIBLE.RAILDRIVER] = {
@@ -5334,7 +5421,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			방마다 처음 공격은 방을 관통하며 캐릭터 공격력에 비례한 피해를 주는 레일건 탄환을 발사합니다.
+			관통한 방 입장 시 경로를 따라 레일건 탄환이 계속 발사됩니다.
 		]],
 		Tests = {
 			"Grants a one shot railgun at the start of each room that fires a piercing shot",
@@ -5347,7 +5435,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{Petrify}} 공격방향으로 공격력 4의 랜덤 붉은 효과 눈물을 발사합니다.
+			{{Collectible]]..FiendFolio.ITEM.COLLECTIBLE.DOUBLE_DOG..[[}} {{UltraSecretRoom}} 특급비밀방에서 획득한 아이템이 Double Dog에 의해 교체됨
 		]],
 		Tests = {
 			"Does 4 damage per tear",
@@ -5365,7 +5454,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			Alt 키를 통해 감정표현을 사용합니다.
 		]],
 		Tests = {
 			"Pressing the ALT key creates a wheel of emotes",
@@ -5377,7 +5466,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			적 처치 시 확률적으로 붉은 오라를 소환합니다.
+			{{Damage}} 붉은 오라 안에 있는 경우 증발성 공격력이 증가
+			{{HalfHeart}} 오라가 꺼질때 있는 경우 빨간하트 반칸 회복 (방 당 1회)
 		]],
 		Tests = {
 			"{{Damage}} Chance for enemies to spawn a bloody aura that grants damage while Isaac stands inside",
@@ -5389,7 +5480,10 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			적 처치 수에 비례하여:
+			>>> {{Damage}} 공격력 증가
+			>>> {{Collectible]] .. FiendFolio.ITEM.COLLECTIBLE.IMP_SODA .. [[}} 치명타 확률 증가
+			!!! 이 아이템의 적 처치 수는 새 게임 시작 시에도 초기화되지 않음
 		]],
 		Tests = {
 			"Stat tracks every single monster Isaac kills",
@@ -5404,7 +5498,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{Heart}} {{Coin}} {{Bomb}} {{Key}} 주변의 픽업을 집어 저장합니다. (상한 있음)
+			집어간 픽업을 적에게 던집니다.
+			{{Heart}} 체력의 경우 회복이 필요할 때 캐릭터에게 던집니다.
 		]],
 		Tests = {
 			"Grants a Snagger familiar that picks up nearby coins, keys, and bombs",
@@ -5423,11 +5519,15 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			↑ {{DamageSmall}}공격력 +0.7
+			{{ffMorbidHeart}} 종양하트 +1
 		]],
 		Tests = {
 			"↑ +0.7 Damage",
 			"{{ffMorbidHeart}} +1 Morbid Heart"
+		},
+		AppendEntries = {
+			"FF_APPEND_MORBID_HEART",
 		},
 	},
 	[ITEM..FiendFolio.ITEM.COLLECTIBLE.EXECUTIONER] = {
@@ -5435,7 +5535,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			체력이 일정 비율 이하로 내려간 적을 4초 후 즉사시킵니다.
+			>>> 보스 : 35%
+			>>> 일반 적 : 75%
 		]],
 		Tests = {
 			"Executes enemies that are damaged enough after 4 seconds in a room",
@@ -5447,7 +5549,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			↑ {{SpeedSmall}}이동속도 +0.3
+			클리어한 방에서 비행 능력을 얻습니다.
 		]],
 		Tests = {
 			"↑ +0.3 Speed",
@@ -5465,7 +5568,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{Battery}} 액티브 아이템 사용 시 66%의 확률로 2~3배의 효과를 발동합니다.
 		]],
 		Tests = {
 			"{{Battery}} 66% chance to use an active item 1-2 more times on use"
@@ -5476,7 +5579,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{Battery}} 액티브 아이템을 x번째 사용할 때마다 3배의 효과를 발동합니다.
+			>>> (x : 액티브 아이템 충전량)
 		]],
 		Tests = {
 			"{{Battery}} Supercharges every Xth use of an active item, where X is the amount of charges the active has",
@@ -5488,7 +5592,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{Battery}} 완충 5초 이전에 액티브 아이템 사용 시 충전량의 50%를 보존합니다.
 		]],
 		Tests = {
 			"{{Battery}} Actives will refund 50% of their charge if used within 5 seconds of being charged"
@@ -5499,7 +5603,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			캐릭터가 접촉할 시 직선으로 미끄러지며 이동합니다.
+			접촉할 때마다, 혹은 주변의 적이 있을 때 주변의 적에게 공격력 x1의 피해를 주는 전류를 발산합니다.
 		]],
 		Tests = {
 			"",
@@ -5518,7 +5623,11 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			방 입장 시 장애물 하나가 오라를 발산하는 천사 석상으로 바뀝니다.
+			캐릭터가 오라 안에 있을 시:
+			>>> {{DamageSmall}}공격력 배율 x1.2
+			>>> {{TearsSmall}}연사 배율 x2.5
+			>>> 피해를 확률적으로 무시하고 공격에 유도 효과가 생깁니다.
 		]],
 		Tests = {
 			"Every room, a random rock will turn into an angellic statue",
@@ -5535,7 +5644,10 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			!!! 카드 압축으로만 충전 가능
+			카드를 들고 있는 동안 사용 시 그 카드를 소모하여 압축합니다.
+			{{Card}} 사용 시 압축된 카드의 효과를 모두 발동합니다.
+			적 처치 시 15%의 확률로 잠시 후 사라지는 공격성 카드를 드랍합니다.
 		]],
 		Tests = {
 			"Must be charged by picking up cards",
@@ -5561,7 +5673,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{Battery}} 액티브 아이템 2번 사용 시마다 그 아이템의 충전량을 감소시킵니다. (최소 1칸/1초)
+			>>> 스테이지 진입 시 액티브 충전량 초기화
+			>>> 방 진입 시 시간제 액티브 충전량 초기화
 		]],
 		Tests = {
 			"{{Battery}} Every 2 times you use your active item, decrease it's maximum charge for the current floor",
@@ -5574,7 +5688,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			공격이 1~6발로 나갑니다.
+			!!! ↓ {{Tears}} 발사한 공격 수에 따라 공격 딜레이 증가
 		]],
 		Tests = {
 			"Isaac shoots 1-6 tears at once",
@@ -5586,7 +5701,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{SacrificeRoom}} 희생방 진입 시 1~4회차의 희생 효과를 발동하며 희생 가시가 5번째부터 시작합니다.
+			{{SacrificeRoom}} 스테이지 진입 시 희생방 생성 확률 +33%p
 		]],
 		Tests = {
 			"{{SacrificeRoom}} Entering the Sacrifice Room for the first time triggers the spikes 4 times for free",
@@ -5598,7 +5714,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			공격 명중 시 캐릭터를 향해 공격력 x0.25의 유도성 레이저를 생성합니다.
 		]],
 		Tests = {
 			"Tears that hit enemies fire a homing beam towards Isaac that deals x0.25 of his damage"
@@ -5609,7 +5725,11 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{Charm}} 사용 시 그 방에서 이하의 아군을 소환합니다:
+			>>> Goat x2
+			>>> Bonie x2
+			>>> Fishface
+			>>> Charmed Bloomer
 		]],
 		Tests = {
 			"{{Charm}} Spawns 2 friendly Goats, Bonies, a friendly Fishface, and 1 charmed Bloomer for the room"
@@ -5626,7 +5746,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			↓ {{DamageSmall}}공격력 배율 x0.85
+			공격 명중 시 눈물을 그 위치 및 방향으로 다시 발사합니다.
 		]],
 		Tests = {
 			"Tears that hit enemies are fired again, starting from where they were initially fired and following the path they took",
@@ -5638,7 +5759,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			공격 명중 시 캐릭터 주변을 도는 눈물을 생성합니다.
 		]],
 		Tests = {
 			"Tears fire additional orbital spectral tears upon hitting anything"
@@ -5652,7 +5773,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			공격이 지형을 관통합니다.
+			눈물을 5번 발사할 때마다 4개의 유도성 후광 눈물을 소환합니다.
 		]],
 		Tests = {
 			"Isaac fires a burst of 4 stationary tears every 5 shots",
@@ -5665,7 +5787,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{Collectible118}} 적 처치 시 13%의 확률로 사망하지 않으나 그 위치에서 4방향으로 혈사포가 나갑니다.
+			{{LuckSmall}} 행운 10+일 때 33%
 		]],
 		Tests = {
 			"{{Collectible118}} On death, enemies have a 13% chance to stay alive for a second longer, then fire 4 brimstone lasers in the cardinal directions",
@@ -5677,7 +5800,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			공격방향으로 돌진하며 이후 십자모양이 나오도록 다른 방향으로 돌진합니다.
+			돌진 중 초당 52.5의 피해를 줍니다.
 		]],
 		Tests = {
 			"Charges forward and then sideways in the direction Isaac is shooting",
@@ -5694,7 +5818,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			공격 중일 때 캐릭터의 주변을 돌며 적에게 초당 75의 피해를 줍니다.
 		]],
 		Tests = {
 			"Spawns three mini Whisper familiars that orbit around Isaac when he shoots",
@@ -5711,7 +5835,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			↑ {{DamageSmall}}공격력 +1
+			{{Coin}} 동전을 4개 드랍합니다.
+			!!! 스테이지 진입 시 이 아이템이 소환되며 강제로 거래됩니다.
 		]],
 		Tests = {
 			"↑ +1 Damage",
@@ -5725,7 +5851,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{SoulHeart}} 소울하트 +2
+			{{SoulHeart}} {{BlackHeart}} {{ffImmoralHeart}} 소울하트 계열 체력 1칸 당 캐릭터 주변을 도는 빛의 하트를 소환합니다.
+			빛의 하트는 적의 탄환을 막아주며 초당 30의 피해를 줍니다.
 		]],
 		Tests = {
 			"{{SoulHeart}} +2 Soul Hearts",
@@ -5744,7 +5872,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			!!! 일회용 !!!
+			{{Trinket}} 사용 시 랜덤 장신구 4개를 흡수합니다.
 		]],
 		Tests = {
 			"{{Warning}} SINGLE USE {{Warning}}",
@@ -5761,7 +5890,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{AngelChanceSmall}} 획득 시 다음 악마방/천사방 문 소환 시 천사방으로 고정됩니다.
 		]],
 		Tests = {
 			"{{AngelRoom}} On pickup, guarantees an Angel Room to spawn after the next valid boss"
@@ -5772,7 +5901,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{Burning}} 방 상단의 태양이 적과 픽업을 끌어들이며 주변의 적에게 화상 피해를 줍니다.
 		]],
 		Tests = {
 			"{{Burning}} Spawns a sun familiar at the top of every room which pulls in enemies and pickups, and applies Burning to nearby enemies"
@@ -5785,7 +5914,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			↑ {{TearsSmall}}연사 +0.7
+			{{BlackHeart}} 블랙하트 +1
 		]],
 		Tests = {
 			"↑ 0.7 Tears",
@@ -5797,7 +5927,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			공격 시 25%의 확률로 유성 공격이 나갑니다.
+			{{LuckSmall}} 행운 16+일 때 40%
+			유성 공격은 공격방향으로 공격력 x0.33의 눈물 7개로 나뉩니다.
 		]],
 		Tests = {
 			"25% chance to fire a big star that splits into 7 miniature stars",
@@ -5810,7 +5942,13 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			↑ {{Heart}}최대 체력 +1
+			↑ {{HealingRed}}빨간하트 +1
+			↑ {{SpeedSmall}}이동속도 +0.3
+			↑ {{TearsSmall}}연사 배율 +0.2
+			↑ {{DamageSmall}}공격력 +0.4
+			↑ {{LuckSmall}}행운 +1
+			!!! 스테이지마다 {{BossRoom}} {{TreasureRoom}} 를 제외한 랜덤 특수방 하나에 진입할 수 없습니다.
 		]],
 		Tests = {
 			"One random special room on the floor gets barred off at floor start, excluding {{BossRoom}} Boss Rooms, {{TreasureRoom}} Treasure Rooms",
@@ -5827,7 +5965,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{Card78}} 획득 시 Cracked Key를 1~3개 드랍합니다.
+			{{UltraSecretRoom}} 스테이지 진입 시 특급비밀방이 하나 더 생깁니다.
 		]],
 		Tests = {
 			"{{UltraSecretRoom}} Adds an extra Ultra Secret Room to each floor",
@@ -5839,7 +5978,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			!!! 방 클리어로 충전 불가
+			소지 중일 때 감자도스 자루 등장 확률 증가
+			{{DamageSmall}} 사용 시 공격력 +5%p
 		]],
 		Tests = {
 			"↑ +5% Damage permanently on use",
@@ -5860,7 +6001,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{Beggar}} 거지에게 이 아이템을 소모하여 보상을 즉시 획득 가능
+			{{Shop}} 거지에게 지급 후 상점에서 다시 나올 수 있으며 판매 가격이 증가합니다.
+			{{DamageSmall}} 획득 시 구매에 사용된 가격에 비례하여 공격력 배율 증가
 		]],
 		Tests = {
 			"{{Beggar}} Give this to beggars in exchange for their life savings",
@@ -5873,7 +6016,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			아이템 획득 시 랜덤 아이템 하나가 고유능력으로 추가됩니다.
+			패널티 피격 시 고유능력 하나가 제거됩니다.
 		]],
 		Tests = {
 			"↑ Picking up an item grants the effect of a random item",
@@ -5887,7 +6031,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{Timer}} {{ItemPoolDevil}} 적 처치 시 확률적으로 90초간 악마방 아이템의 효과를 얻습니다.
+			{{Blank}} (확률은 적 체력에 비례)
 		]],
 		Tests = {
 			"{{Timer}} Killing enemies has a chance to give the effect of a random {{DevilRoom}} Devil Room item for 90 seconds",
@@ -5899,7 +6044,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{Collectible149}} 사용 시 그 방에서 공격이 구토제로 바뀝니다.
 		]],
 		Tests = {
 			"{{Timer}} Receive for the current room:",
@@ -5924,7 +6069,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			클리어하지 않은 방에서 주기적으로 그 방의 랜덤 위치에 공격력 13의 유도성 눈물을 생성합니다.
 		]],
 		Tests = {
 			"While in combat, spawns tears around you which home onto nearby enemies",
@@ -5936,7 +6081,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			캐릭터 주변을 도는 커다란 눈물이 하나 생깁니다.
+			커다란 눈물은 공격력 x1.5의 피해를 줍니다.
 		]],
 		Tests = {
 			"Orbital familiar that copies tear effects",
@@ -5948,7 +6094,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{Chargeable}} 공격 중 충전, 공격키를 떼면 공격방향으로 구름을 생성합니다.
+			구름은 주기적으로 눈물을 떨어뜨립니다.
 		]],
 		Tests = {
 			"{{Chargeable}} Chargeable nimbus cloud that can fire alongside tears",
@@ -5960,7 +6107,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"It's time to repent! Isaac has joined the Nendoroid line, ready to escape the terrifying clutches of his mother's wrath! Preorder now & receive an exclusive GSUS Bonus Background Sheet & The Binding of Isaac: Four Souls playing cards! Shop: https://s.goodsmile.link/jU8 #Goodsmile",
@@ -5971,7 +6118,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			주기적으로 오류 장애물을 생성합니다.
+			오류 장애물은 적 탄환 방어, 적에게 60의 피해, 나온 위치의 원래 장애물을 파괴하나 잠시 후 사라집니다.
+			!!! 소지 중일 때 90초마다 소지 중인 아이템 중 하나가 GLITCHCITY로 바뀝니다.
 		]],
 		Tests = {
 			"Periodically spawns \"Glitched Tiles\" while held, which destroy rocks, block projectiles and deal 60 damage to enemies",
@@ -5983,7 +6132,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			가시돌이 9%의 확률로 금가시돌이 됩니다.
+			{{ColorOrange}}금가시돌{{CR}}: 가시돌 + 파괴 시 동전 드랍
 		]],
 		Tests = {
 			"9% chance for rocks to turn into Golden Spiked Rocks upon entering the room for the first time",
@@ -5999,7 +6149,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			↑ {{SpeedSmall}}이동속도 +0.1
+			↑ {{LuckSmall}}행운 +1
+			!!! {{DiceRoom}} 획득 시 주사위방 4번 효과를 발동합니다. (스테이지 내의 액티브/패시브 변경)
 		]],
 		Tests = {
 			"↑ +1 Luck up",
@@ -6013,7 +6165,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{Collectible58}} 획득 시 90초간 무적 상태가 됩니다.
+			{{Collectible58}} 스테이지 진입 시 36초간 무적 상태가 됩니다.
+			{{Blank}} (방 이동 시에도 지속)
 		]],
 		Tests = {
 			"Grants invulnerability to Isaac for 90 seconds on pickup",
@@ -6026,7 +6180,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			사용 시 이 스테이지에서 소모된 일회성 패밀리어를 소환합니다. (재소환 불가)
 		]],
 		Tests = {
 			"All temporary familiars that died this floor (Blue Flies, Blue Spiders, etc.) are respawned on use", --im not sure if i like the use of the etcetera here but also listing all of the familiars would be very ugly and messy
@@ -6047,7 +6201,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{ffMugged}} 공격방향으로 공격력 3.5의 약탈 눈물을 발사합니다.
 		]],
 		Tests = {
 			"Shoots tears that inflict Mugged",
@@ -6071,7 +6225,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{ffExCommunicated}} 공격방향으로 공격력 3.5의 전이 눈물을 발사합니다.
 		]],
 		Tests = {
 			"Shoots tears that inflict enemies with Excommunication",
@@ -6095,7 +6249,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{ffOverloaded}} 공격방향으로 공격력 3.5의 과부하 눈물을 발사합니다.
 		]],
 		Tests = {
 			"Shoots tears that inflict enemies with Overloaded",
@@ -6119,7 +6273,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{Collectible]]..FiendFolio.ITEM.COLLECTIBLE.WNIC..[[}} 공격방향으로 공격력 3.5의 반복성 눈물을 발사합니다. (명중 시 그 궤도로 다시 발사)
 		]],
 		Tests = {
 			"{{Collectible"..FiendFolio.ITEM.COLLECTIBLE.WNIC.."}} Shoots tears that are fired again following the same path if they hit an enemy",
@@ -6136,7 +6290,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{Burning}} 이동 중일 때 주기적으로 캐릭터 위치에 불을 생성합니다.
+			{{Burning}} 적과 접촉 시 공격력 x2의 화염 피해를 줍니다.
 		]],
 		Tests = {
 			"{{Burning}} Isaac spawns fires behind him while moving#{{Burning}} Charging into enemies creates a ring of fire jets"
@@ -6147,7 +6302,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			10%의 확률로 폭발성 눈물을 발사합니다.
+			{{LuckSmall}} 행운 8+일 때 50%
+			!!! 캐릭터도 폭발 피해를 받습니다.
 		]],
 		Tests = {
 			"10% chance to shoot fires that explode on contact#{{Luck}} 50% chance at 8 luck#{{Warning}} The explosion can hurt Isaac"
@@ -6158,7 +6315,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{BossRoom}} 보스방 진입 시 특수 꼬마 아이작을 소환합니다.
+			꼬마 아이작이 있는 경우 캐릭터 피격이 꼬마 아이작에게 옮겨집니다.
 		]],
 		Tests = {
 			"Entering {{BossRoom}} Boss Rooms spawns a unique Minisaac that blocks all incoming damage for Isaac#Damage Isaac takes is transferred to the Minisaac#Minisaacs chase and shoot at nearby enemies"
@@ -6169,7 +6327,12 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			↑ {{Heart}}최대 체력 +1
+			↑ {{HealingRed}}빨간하트 +1
+			{{ffNursing}} 방 입장 시 7.5%의 확률로 적에게 치유 상태를 겁니다.
+			{{LuckSmall}} 행운 20+일 때 15%
+			{{ffNursing}} 1%의 확률로 적에게 치유 상태를 거는 공격이 나갑니다.
+			{{LuckSmall}} 행운 20+일 때 5%
 		]],
 		Tests = {
 			"↑ +1 Health",
@@ -6192,12 +6355,17 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{EternalHeart}} 이터널하트 +1
+			{{EternalHeart}} 스테이지 진입 시 이터널하트 +1
+			{{ffShieldHeart}} 이터널하트 완성 시 쉴드하트 +1
 		]],
 		Tests = {
 			"{{EternalHeart}} +1 Eternal Heart",
 			"Gives an Eternal Heart at the start of each floor",
 			"{{ffShieldHeart}} Eternal Hearts also give a 3 hit shield heart when completed",
+		},
+		AppendEntries = {
+			"FF_APPEND_SHIELD_HEART",
 		},
 	},
 	[ITEM..FiendFolio.ITEM.COLLECTIBLE.BABY_BELL] = {
@@ -6205,7 +6373,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			캐릭터의 주변을 돕니다.
+			적에게 맞으면 종이 울리며;
+			>>> {{Fear}} 주변의 적과 탄환에 공포 넉백을 줍니다.
 		]],
 		Tests = {
 			"Orbital that rings for a period when hit by enemies",
@@ -6217,7 +6387,12 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{DamageSmall}} 공격력 +1.6
+			스테이지 진입 시 저주에 걸리지 않습니다.
+			그 스테이지의 방 수의 일정 비율을 클리어할 때마다 증가한 공격력이 33%만큼 감소하며:
+			>>> {{BossRoom}} 25%: 첫번째 양초 불이 꺼지며 보스방 위치 표시
+			>>> {{TreasureRoom}} 50%: 두번째 양초 불이 꺼지며 보물방 위치 표시
+			>>> {{CurseCursedSmall}} 75%: !!! 랜덤 저주 2개
 		]],
 		Tests = {
 			"↑ +1.6 Damage",
@@ -6231,7 +6406,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			↓ {{DamageSmall}}공격력 배율 x0.66
+			눈물 착지 예상 위치의 양옆으로 레이저를 생성합니다.
 		]],
 		Tests = {
 			"↓ 0.66x Damage",
@@ -6243,7 +6419,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			↓ {{DamageSmall}}공격력 배율 x0.2
+			눈물을 발사할 때마다 3개의 랜덤 눈물의 효과가 추가됩니다.
 		]],
 		Tests = {
 			"↓ 0.2x Damage multiplier",
@@ -6255,7 +6432,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			캐릭터의 앞뒤로 돌며 적의 탄환을 막아줍니다.
+			적과 접촉 시 초당 225의 피해를 줍니다.
 		]],
 		Tests = {
 			"Orbital",
@@ -6269,7 +6447,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			사용 시 랜덤 투척성 아이템을 발동합니다.
 		]],
 		Tests = {
 			"Uses a random throwable active item on use"
@@ -6283,7 +6461,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			3번째 공격마다 공격력 x0.6의 눈물 6개로 나뉩니다.
 		]],
 		Tests = {
 			"Every 3rd tear fired splits into 6 half damage tears upon hitting anything"
@@ -6294,7 +6472,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{Timer}} 그 방에서:
+			>>> {{Burning}} 방 상단의 태양이 적과 픽업을 끌어들이며 주변의 적에게 화상 피해를 줍니다.
 		]],
 		Tests = {
 			"{{Timer}} For the current room:",
@@ -6311,7 +6490,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{ffGleaming}} 10%의 확률로 적에게 광택을 거는 공격이 나갑니다.
+			{{LuckSmall}} 행운 20+일 때 50%
+			광택 오라가 적에게 랜덤 상태이상을 추가로 겁니다.
 		]],
 		Tests = {
 			"{{ffGleaming}} 10% chance to shoot tears which inflict Gleaming",
@@ -6332,7 +6513,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{ffGleaming}} 10%의 확률로 적에게 광택을 거는 공격이 나갑니다.
+			{{LuckSmall}} 행운 20+일 때 50%
+			{{Burning}} 광택 오라가 적에게 화상을 추가로 겁니다.
 		]],
 		Tests = {
 			"{{ffGleaming}} 10% chance to shoot tears which inflict Gleaming",
@@ -6348,7 +6531,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			↑ {{DamageSmall}}공격력 +0.3
+			↑ {{ShotspeedSmall}}탄속 +0.1
+			공격 중일 때 공격이 적에게 피해를 줄 수 없으나 (1 + 스테이지 x0.3)의 지속 피해를 받습니다.
 		]],
 		Tests = {
 			"While firing tears, your tears become temporarily intangible, unable to hit any enemies",
@@ -6362,10 +6547,13 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			{{ffCursedPenny}} 사용 시 저주페니를 하나 소환합니다.
 		]],
 		Tests = {
 			"{{ffCursedPenny}} Spawns a Cursed Penny on use"
+		},
+		AppendEntries = {
+			"FF_APPEND_CURSED_PENNY",
 		},
 		Virtues = {
 			"80% chance to spawn a {{ffCursedPenny}} cursed penny when destroyed",
@@ -6377,7 +6565,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"{{Battery}} Upon use, your held active items are replaced with another random active item for the rest of the floor",
@@ -6390,7 +6578,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"Enemies with a low amount of max health instantly die",
@@ -6403,7 +6591,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"Every second in combat:",
@@ -6418,7 +6606,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"{{CurseBlind}} Cannot be charged on floors without curses",
@@ -6435,7 +6623,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"↑ +0.1 Damage, aswell as +0.3 Damage for every {{SecretRoom}} Secret Room found on this floor",
@@ -6447,7 +6635,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"↑ +1 Damage",
@@ -6460,7 +6648,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"↑ +0.1 Damage for every friendly Embryo",
@@ -6474,7 +6662,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"Inflicts Excommunicated on all enemies but the one with the highest health",
@@ -6494,7 +6682,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"Inflicts Excommunicated to enemies in range",
@@ -6518,7 +6706,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"+2 Leaky Hearts",
@@ -6532,7 +6720,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"↑ +1 Damage",
@@ -6548,7 +6736,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"Inflicts 3 stacks of Bruised to enemies in range",
@@ -6574,7 +6762,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"Pacifies all enemies of a random type in the room for 6 seconds",
@@ -6591,7 +6779,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"{{Bomb}} +5 Bombs",
@@ -6611,7 +6799,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"Clears the room of all obstacles, pick-ups, and enemies",
@@ -6622,7 +6810,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"↑ +0.1 Speed",
@@ -6635,7 +6823,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"{{Warning}} SINGLE USE {{Warning}}",
@@ -6647,7 +6835,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"When held up, Isaac can aim a laser at a specific point",
@@ -6675,7 +6863,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"{{SoulHeart}} +1 Soul Heart",
@@ -6697,7 +6885,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"↑ +0.025 Damage upon clearing an active room",
@@ -6709,7 +6897,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"Spawns a Troll Bomb in a random position of the room",
@@ -6726,7 +6914,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"{{Luck}} 15% chance to fire Soapsud tears",
@@ -6744,7 +6932,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"Throws a tantrum after absorbing 10 enemy tears",
@@ -6762,7 +6950,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"Isaac's tears turn into erasers that instantly kill enemies",
@@ -6774,7 +6962,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"20% chance to fire a tear that releases a ring of piercing, reflecting tears on hit",
@@ -6786,7 +6974,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"{{EmptyHeart}} +1 Empty heart container",
@@ -6800,7 +6988,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"Tears cycle between multiple tear effects",
@@ -6813,7 +7001,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"On use, destroys all enemy tears and briefly prevents new ones from spawning",
@@ -6829,7 +7017,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"Orbital familiar that blocks projectiles",
@@ -6848,7 +7036,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"33% chance to fire 3 tears in a very tight spread",
@@ -6861,7 +7049,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"Spawns doors in cleared rooms that connect rooms by skipping over gaps in the map",
@@ -6873,7 +7061,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"Attacking enemies indicated by the mark above them redirects all player and enemy tears in the room towards them",
@@ -6884,7 +7072,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"Seeks out nearby enemies, and rapidly shoots tears at them",
@@ -6901,7 +7089,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"Orbital familiar that blocks projectiles",
@@ -6919,7 +7107,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"Shoots spectral tears backwards while moving",
@@ -6936,7 +7124,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"↑ +1 Luck",
@@ -6950,7 +7138,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"{{Bomb}} +5 Bombs",
@@ -6964,7 +7152,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"10% chance on fire to drop a boulder on the closest enemy aligned with the shooting direction",
@@ -6976,7 +7164,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"While held, grants a satellite familiar",
@@ -6994,7 +7182,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"↑ +0.2 Speed",
@@ -7006,7 +7194,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"placeholder",
@@ -7017,7 +7205,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"Gives Isaac the effect of a random 100% Orange Juice card",
@@ -7028,7 +7216,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"placeholder",
@@ -7039,7 +7227,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"↑ +1 Damage",
@@ -7062,7 +7250,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"↑ +0.5 Tears",
@@ -7082,7 +7270,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"↑ +1 Luck",
@@ -7101,7 +7289,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"↑ +0.1 Tears",
@@ -7114,7 +7302,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"↑ +0.15 Speed",
@@ -7128,7 +7316,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"After every 7th tear fired, an explosive bullet can fire from either the left or right of the screen",
@@ -7141,7 +7329,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"Familiar that teleports and glitches around the room",
@@ -7158,7 +7346,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"Shoots tears from eye satellites that deal 1.25 damage",
@@ -7174,7 +7362,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"↑ +40 Damage",
@@ -7190,7 +7378,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"Image's special little item",
@@ -7204,7 +7392,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"Spawns 6 rabbit familiars that seek out enemies and attack, scaling with Isaac's damage",
@@ -7224,7 +7412,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"{{Burning}} Creates a ring of fire that blocks projectiles, deals damage, and inflicts Burning on enemies",
@@ -7244,7 +7432,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"{{Heart}} +1 Health",
@@ -7261,7 +7449,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"{{ffStevenHeart}} +1 Steven Heart",
@@ -7276,7 +7464,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"↑ +0.5 Damage",
@@ -7289,7 +7477,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"Goes to nearby enemies and extracts their souls",
@@ -7302,7 +7490,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"20% chance for a mysterious stranger to appear in a room",
@@ -7321,7 +7509,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"{{Coin}} Spend 5 coins to get a random stat milk",
@@ -7332,7 +7520,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"{{Collectible291}} 10% chance to use Flush! when it is hit by an enemy tear",
@@ -7343,7 +7531,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"↑ +0.02 Speed"
@@ -7354,7 +7542,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"{{Warning}} SINGLE USE {{Warning}}",
@@ -7367,7 +7555,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-		
+			TODO
 		]],
 		Tests = {
 			"{{Warning}} Prevents all modded code from running {{Warning}}",
@@ -10813,7 +11001,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{ffCursesBlackLantern}} 획득 시 및 스테이지 진입 시 Veil 저주에 걸립니다.
 		]],
 		Tests = {
 			"\2 Grants the Curse of the Veil"
@@ -14123,7 +14311,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{Slow}} 15%의 확률로 눈물이 적을 느려지게 하는 장판을 생성합니다.
+			{{LuckSmall}} 행운 20+일 때 45%
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_NORMAL",
@@ -14140,12 +14329,14 @@ local entries = {
 			}
 		}
 	},
-	[TRINKET..FiendFolio.ITEM.ROCK.ONION_ROCK] = {
+	[TRINKET..FiendFolio.ITEM.ROCK.ONION_ROCK] = { -- TODO
 		_descType = "trinket",
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			공격키로 던질 수 있는 Brickmin 패밀리어를 소환합니다.
+			{{Blank}} 
+			방 4개 클리어 시마다 Brickmin 패밀리어가 추가로 등장합니다.
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_NORMAL",
@@ -14164,10 +14355,11 @@ local entries = {
 	},
 	[TRINKET..FiendFolio.ITEM.ROCK.PAPERWEIGHT] = {
 		_descType = "trinket",
-		Name = "",
+		Name = "종이 클립",
 		QuoteDesc = "",
 		Description = [[
-
+			열쇠가 필요한 모든 상자를 열쇠 소모 없이 열 수 있습니다.
+			{{Trinket]]..FiendFolio.ITEM.ROCK.POCKET_SAND..[[}} 5회 사용 후 10%의 확률로 Pocket Sand로 바뀝니다.
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_NORMAL",
@@ -14189,7 +14381,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			주기적으로 적이 있는 방향으로 음파형 방향으로 눈물을 발사합니다.
+			{{Confusion}} 음파형 방향 눈물은 20%의 확률로 적에게 혼란을 겁니다.
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_NORMAL",
@@ -14208,7 +14401,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{ffGrind}} 다른 석기류 채굴 시 능력치 소량 증가 (최대 20회)
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_NORMAL",
@@ -14228,7 +14421,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{ffGrind}} {{ffCrush}} 다른 석기류 채굴 혹은 분해 시 그 스테이지에서:
+			공격방향으로 작은 자갈을 발사합니다.
+			발사하는 자갈의 수는 그 스테이지에서 채굴/분해한 석기류 수에 비례합니다.
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_NORMAL",
@@ -14252,7 +14447,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{Coin}} 동전으로 아이템 구매 시 구매 금액의 25%만큼 지급합니다.
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_NORMAL",
@@ -14274,7 +14469,11 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			프레임 당 0.3%의 확률로 적이 빛납니다.
+			캐릭터가 빛나는 적을 바라보는 동안:
+			>>> {{TearsSmall}} 연사 증가
+			>>> {{DamageSmall}} 공격력 배율 x1.5
+			>>> {{LuckSmall}} 행운 +3
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_NORMAL",
@@ -14299,7 +14498,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{Collectible494}} 20%의 확률로 전류 공격이 나갑니다.
+			{{LuckSmall}} 행운 25+일 때 50%
+			{{ffGrind}} {{ColorYellow}}채굴:{{CR}} 소지 중인 액티브를 강제로 완충시킵니다.
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_NORMAL",
@@ -14320,7 +14521,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{Collectible289}} 공격 시 6%의 확률로 불꽃을 날립니다.
+			{{LuckSmall}} 행운 16+일 때 50%
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_NORMAL",
@@ -14341,7 +14543,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			챔피언 몬스터가 1.5배의 피해를 받습니다.
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_NORMAL",
@@ -14362,7 +14564,10 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{Heart}} 빨간하트 픽업 등장 시:
+			>>> {{BlackHeart}} [60%] 블랙하트로 변경
+			>>> {{SoulHeart}} [20%] 소울하트로 변경
+			>>> {{EmptyHeart}} [20%] 등장하지 않음
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_NORMAL",
@@ -14384,7 +14589,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			장애물 파괴 시 35%의 확률로 아군 자폭 파리를 소환합니다.
+			아군 자폭 파리가 35%의 확률로 2배로 소환됩니다.
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_NORMAL",
@@ -14406,7 +14612,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{DamageSmall}} 적 처치 시 공격력 +0.02
+			!!! 패널티 피격 시 사라집니다.
+			흡수 시 장신구가 사라지지 않으나 공격력이 더 이상 증가하지 않습니다.
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_NORMAL",
@@ -14426,7 +14634,11 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			방 입장 시 그 방에서 아래 중 하나 증가:
+			>>> {{SpeedSmall}} 이동속도 +0.22
+			>>> {{TearsSmall}} 연사 +0.5
+			>>> {{DamageSmall}} 공격력 +0.7
+			>>> {{RangeSmall}} 사거리 +2
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_NORMAL",
@@ -14446,7 +14658,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{Chargeable}} 충전 공격 시 가장 가까운 적에게 탄환을 2발 발사합니다.
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_NORMAL",
@@ -14470,7 +14682,10 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{EternalHeart}} 이터널하트 소지 중일 때:
+			>>> {{TearsSmall}} 연사 +0.5
+			>>> {{DamageSmall}} 공격력 +1
+			{{EternalHeart}} 짝수 스테이지 진입 시 이터널하트를 소환합니다.
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_NORMAL",
@@ -14491,7 +14706,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			적 3회째 명중 시마다 33%의 확률로 적 주변을 도는 공격력 x1.33의 눈물 3개를 소환합니다.
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_NORMAL",
@@ -14509,7 +14724,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{Timer}} 방 입장 시 4초간:
+			>>> {{SpeedSmall}} 이동속도 +2
+			>>> {{TearsSmall}} 연사 +0.55
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_NORMAL",
@@ -14524,12 +14741,15 @@ local entries = {
 			TargetMultipliers = {4}
 		}
 	},
-	[TRINKET..FiendFolio.ITEM.ROCK.NON_EUCLIDEAN_ROCK] = {
+	[TRINKET..FiendFolio.ITEM.ROCK.NON_EUCLIDEAN_ROCK] = { -- TODO
 		_descType = "trinket",
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{CurseMazeSmall}} 스테이지 진입 시 Maze 저주에 걸립니다.
+			{{CurseMazeSmall}} 저주에 의해 다른 방으로 이동할 시:
+			>>> {{DamageSmall}} 그 스테이지에서 공격력 +0.4
+			>>> {{TearsSmall}} 그 방에서 연사 +0.4
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_NORMAL",
@@ -14547,32 +14767,13 @@ local entries = {
 			TargetMultipliers = {0.4}
 		}
 	},
-	[TRINKET..FiendFolio.ITEM.ROCK.BOOSTER_ROCK] = {
-		_descType = "trinket",
-		Name = "",
-		QuoteDesc = "",
-		Description = [[
-
-		]],
-		AppendEntries = {
-			"FF_APPEND_GOLEM_NORMAL",
-		},
-		Tests = {
-			"{{ffRock}} {{ColorTransform}}Rock Trinket (Rock)",
-			"↑ Grants a randomly chosen stat buff each room"
-		},
-		Golden = {
-			Description = {
-				"Stat buffs are increased"
-			}
-		}
-	},
 	[TRINKET..FiendFolio.ITEM.ROCK.MIRROR_SLATE] = {
 		_descType = "trinket",
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			버리거나 교체할 시 그 방의 적에게 40의 피해를 줍니다.
+			>>> {{BlackHeart}} 66%의 확률로 장신구가 깨지며 블랙하트를 드랍합니다.
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_NORMAL",
@@ -14593,7 +14794,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			{{DamageSmall}} 장애물 파괴 시 그 방에서 공격력 +0.3
+			장애물 파괴 시 적에게 피해를 주는 돌덩이 눈물이 떨어집니다.
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_NORMAL",
@@ -14609,12 +14811,13 @@ local entries = {
 			}
 		}
 	},
-	[TRINKET..FiendFolio.ITEM.ROCK.URANIUM] = {
+	[TRINKET..FiendFolio.ITEM.ROCK.URANIUM] = { -- TODO
 		_descType = "trinket",
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			피격 시 25%의 확률로 사라지는 하트를 드랍합니다.
+			{{ffRadiation}} 
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_NORMAL",
@@ -14639,7 +14842,12 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-
+			내려놓은 상태에서 오라를 발산합니다.
+			오라 안에 있는 동안:
+			>>> {{TearsSmall}} 연사 배율 x2.5
+			>>> {{DamageSmall}} 공격력 배율 x1.2
+			>>> 공격이 적에게 유도되며 확률적으로 피해를 막아줍니다.
+			{{ffGrind}} {{ColorYellow}}채굴:{{CR}} 등장 확률이 낮은 석기류가 등장합니다.
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_NORMAL",
@@ -15490,7 +15698,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-			{{ffCrush}} {{ColorRed}}분해:{{CR}} 
+			{{EmptyBoneHeart}} 빈 뼈하트가 2번 피격 시에 부서집니다.
+			1번 피격 후 상태는 해당 하트 회복 시 복원됩니다.
+			{{ffCrush}} {{ColorRed}}분해:{{CR}} 거대한 아군 Bony를 하나 소환합니다.
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_FOSSIL",
@@ -15517,7 +15727,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-			{{ffCrush}} {{ColorRed}}분해:{{CR}} 
+			{{GoldenChest}} 낡은상자, 메가상자를 제외한 모든 상자가 황금상자로 교체됩니다.
+			{{ffCrush}} {{ColorRed}}분해:{{CR}} {{GoldenChest}} 황금상자를 하나 드랍합니다.
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_FOSSIL",
@@ -15535,7 +15746,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-			{{ffCrush}} {{ColorRed}}분해:{{CR}} 
+			{{Coin}} 페니가 15%의 확률로 니켈로, 7%의 확률로 다임으로 바뀝니다.
+			{{ffCrush}} {{ColorRed}}분해:{{CR}} 상점 상자를 소환합니다.
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_FOSSIL",
@@ -16252,10 +16464,11 @@ local entries = {
 	--#region RELOADED GEODE
 	[TRINKET..FiendFolio.ITEM.ROCK.AAA_GEODE] = {
 		_descType = "trinket",
-		Name = "",
+		Name = "AAA 건전지",
 		QuoteDesc = "",
 		Description = [[
-			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
+			{{Trinket3}} 방 클리어 시 액티브 아이템의 충전량이 1칸 남았을 경우 액티브를 자동으로 충전합니다.
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 2칸 남았을 경우 자동 충전
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -16277,7 +16490,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
+			{{Trinket32}} 방 입장 시 25%의 확률로 그 방에서 아래 중 랜덤 버섯 아이템 효과를 얻습니다:
+			>>> {{Collectible12}}{{Collectible71}}{{Collectible121}}{{Collectible120}}{{Collectible342}}{{Collectible398}}
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 확률 증가, 2개 이상의 효과가 나올 수 있음
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -16297,7 +16512,8 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
+			{{Battery}} 액티브 아이템 사용 시 25%의 확률로 배터리를 드랍합니다.
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 배터리 드랍 확률 증가
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -16319,7 +16535,10 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
+			!!! 일회용
+			체력 거래 시 체력 대신 소모합니다.
+			!!! {{DevilRoom}}악마방/{{Collectible292}}Satanic Bible 거래 시 여전히 악마 거래로 취급됩니다.
+			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 이 석기가 아닌 소지 중인 다른 석기를 대신 소모합니다.
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -16337,7 +16556,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-			{{ffGeode}} {{ColorTeal}}공명:{{CR}} 
+			!!! 석기류 획득 시 레어도가 {{Quality1}}레어 이상인 경우 그 석기를 파괴하며;
+			>>> {{Quality0}} 레어도가 낮은 석기와 {{HalfSoulHeart}} 소울하트 반칸으로 바꿉니다.
+			{{ffGeode}} 파괴된 석기가 정동류인 경우 {{SoulHeart}} 소울하트 1칸으로 바뀜
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_GEODE",
@@ -17752,7 +17973,7 @@ local entries = {
 	[CARD..FiendFolio.ITEM.CARD.SOUL_OF_FRIEND] = {
 		_descType = "card",
 		Name = "프렌드의 영혼",
-		QuoteDesc = '',
+		QuoteDesc = "일시적 건슬링거",
 		Description = [[
 			사용 시 랜덤 총을 얻습니다.
 			획득한 총은 남은 탄약이 없으면 사라집니다.
@@ -17761,7 +17982,7 @@ local entries = {
 	[CARD..FiendFolio.ITEM.CARD.SOUL_OF_CRAIG] = {
 		_descType = "card",
 		Name = "크레이그의 영혼",
-		QuoteDesc = '',
+		QuoteDesc = "슈퍼차지!",
 		Description = [[
 			{{Battery}} 소지 중인 액티브 아이템을 강제로 최대충전 시킵니다.
 			{{Collectible]] .. tostring(FiendFolio.ITEM.COLLECTIBLE.EXCELSIOR) .. [[}} 다음 액티브 사용 시 유도성 로켓을 여러 발 발사합니다.
@@ -17771,9 +17992,10 @@ local entries = {
 	[CARD..FiendFolio.ITEM.CARD.SOUL_OF_INABA] = {
 		_descType = "card",
 		Name = "이나바의 영혼",
-		QuoteDesc = "Migraine",
+		QuoteDesc = "편두통",
 		Description = [[
-			Activates Migraine Mode, granting Isaac two Inaba satellites
+			Migraine 모드를 발동시키며;
+			Migraine 모드 중 새틀라이트를 2개 소환합니다.
 		]],
 	},
 	--#endregion
@@ -18091,17 +18313,9 @@ local entries = {
 	},
 	["6."..FiendFolio.FF.VendingMachine.Var..".0"] = {
 		_descType = "entity",
-		Name = "자판기",
-		Description = [[
-
-		]],
 	},
 	["6."..FiendFolio.FF.VendingMachineFF.Var..".0"] = {
 		_descType = "entity",
-		Name = "자판기",
-		Description = [[
-		
-		]],
 	},
 	["6."..FiendFolio.FF.GridRestock.Var..".0"] = {
 		_descType = "entity",
@@ -18273,10 +18487,6 @@ local entries = {
 	},
 	["6."..FiendFolio.FF.Babi.Var..".0"] = {
 		_descType = "entity",
-		Name = "",
-		Description = [[
-		
-		]],
 	},
 	["6."..FiendFolio.FF.Midarizer.Var..".0"] = {
 		_descType = "entity",
@@ -18311,95 +18521,87 @@ local entries = {
 		Name = "임프의 저주",
 		Icon = "ffCurseImpSmall",
 		Description = [[
-		
-		]],
-	},
-	[CURSE..FiendFolio.curses.impCurse] = {
-		_descType = "curse",
-		Name = "임프의 저주",
-		Icon = "ffCurseImpSmall",
-		Description = [[
-		
+			TODO
 		]],
 	},
 	[CURSE..FiendFolio.curses.stoneCurse] = {
 		_descType = "curse",
-		Name = "임프의 저주",
-		Icon = "ffCurseImpSmall",
+		Name = "무게의 저주",
+		Icon = "ffCurseStoneSmall",
 		Description = [[
-		
+			TODO
 		]],
 	},
 	[CURSE..FiendFolio.curses.sunCurse] = {
 		_descType = "curse",
-		Name = "임프의 저주",
-		Icon = "ffCurseImpSmall",
+		Name = "태양의 저주",
+		Icon = "ffCurseSunSmall",
 		Description = [[
-		
+			TODO
 		]],
 	},
 	[CURSE..FiendFolio.curses.swineCurse] = {
 		_descType = "curse",
-		Name = "임프의 저주",
-		Icon = "ffCurseImpSmall",
+		Name = "꿀꿀이의 저주",
+		Icon = "ffCurseSwineSmall",
 		Description = [[
-		
+			TODO
 		]],
 	},
 	[CURSE..FiendFolio.curses.ghostCurse] = {
 		_descType = "curse",
-		Name = "임프의 저주",
-		Icon = "ffCurseImpSmall",
+		Name = "유령의 저주",
+		Icon = "ffCurseGhostSmall",
 		Description = [[
-		
+			TODO
 		]],
 	},
 	[CURSE..FiendFolio.curses.scytheCurse] = {
 		_descType = "curse",
-		Name = "임프의 저주",
-		Icon = "ffCurseImpSmall",
+		Name = "낫의 저주",
+		Icon = "ffCurseScytheSmall",
 		Description = [[
-		
+			TODO
 		]],
 	},
 	[CURSE..FiendFolio.curses.masterCurse] = {
 		_descType = "curse",
-		Name = "임프의 저주",
-		Icon = "ffCurseImpSmall",
+		Name = "마스터의 저주",
+		Icon = "ffCurseMasterSmall",
 		Description = [[
-		
+			TODO
 		]],
 	},
 	[CURSE..FiendFolio.curses.dynamoCurse] = {
 		_descType = "curse",
 		Name = "임프의 저주",
-		Icon = "ffCurseImpSmall",
+		Icon = "ffCurseDynamoSmall",
 		Description = [[
-		
+			TODO
 		]],
 	},
 	[CURSE..FiendFolio.curses.lunacyCurse] = {
 		_descType = "curse",
-		Name = "임프의 저주",
-		Icon = "ffCurseImpSmall",
+		Name = "광기의 저주",
+		Icon = "ffCurseLunacySmall",
 		Description = [[
-		
+			TODO
 		]],
 	},
 	[CURSE..FiendFolio.curses.veilCurse] = {
 		_descType = "curse",
-		Name = "임프의 저주",
-		Icon = "ffCurseImpSmall",
+		Name = "베일의 저주",
+		Icon = "ffCurseVeilSmall",
 		Description = [[
-		
+			TODO
 		]],
 	},
 	[CURSE..FiendFolio.curses.gateCurse] = {
 		_descType = "curse",
-		Name = "임프의 저주",
-		Icon = "ffCurseImpSmall",
+		Name = "통로의 저주",
+		Icon = "ffCurseGateSmall",
 		Description = [[
-		
+			TODO
 		]],
 	},
 	--#endregion
@@ -18417,6 +18619,8 @@ entries[ITEM..FiendFolio.ITEM.COLLECTIBLE.PERFECTLY_GENERIC_OBJECT_12] = entries
 entries[ITEM..FiendFolio.ITEM.COLLECTIBLE.MY_STORY_2] = entries[ITEM..FiendFolio.ITEM.COLLECTIBLE.EMPTY_BOOK]
 entries[ITEM..FiendFolio.ITEM.COLLECTIBLE.MY_STORY_4] = entries[ITEM..FiendFolio.ITEM.COLLECTIBLE.EMPTY_BOOK]
 entries[ITEM..FiendFolio.ITEM.COLLECTIBLE.MY_STORY_6] = entries[ITEM..FiendFolio.ITEM.COLLECTIBLE.EMPTY_BOOK]
+
+entries[ITEM..FiendFolio.ITEM.COLLECTIBLE.THE_WAR_HORN_CHARGING] = entries[ITEM..FiendFolio.ITEM.COLLECTIBLE.THE_WAR_HORN]
 
 entries[CARD..FiendFolio.ITEM.CARD.STUD_2] = entries[CARD..FiendFolio.ITEM.CARD.STUD]
 entries[CARD..FiendFolio.ITEM.CARD.STUD_3] = entries[CARD..FiendFolio.ITEM.CARD.STUD]
@@ -18444,6 +18648,43 @@ local diceTable = {
   [882] = {"882", "12번", "{{Collectible386}} 스테이지 안의 모든 장애물 변경"}
 }
 EID:updateDescriptionsViaTable(diceTable, EID.descriptions["ko_kr"].dice)
+
+--#region Golem Rarity
+local function FF_EIDKR_GolemRarityCondition(descObj)
+	if EID:getLanguage() ~= "ko_kr" and EID:getLanguage() ~= "ko" then return false end
+	if descObj.ObjType == 5 and descObj.ObjVariant == 350 then
+		return FiendFolio.RockTrinkets[descObj.ObjSubType] or FiendFolio.GolemTrinketWhitelist[descObj.ObjSubType]
+	end
+	return false
+end
+
+local function FF_EIDKR_GolemRarityCallback(descObj)
+	local rarity = FiendFolio.RockTrinkets[descObj.ObjSubType] or FiendFolio.GolemTrinketWhitelist[descObj.ObjSubType]
+	local appendDesc = ""
+	if rarity == -2 then
+		--appendDesc = "#{{Player" .. mod.PLAYER.GOLEM .. "}} 석기 레어도 : {{Quality0}}"
+	elseif rarity == 0 then
+		appendDesc = "#{{Player" .. mod.PLAYER.GOLEM .. "}} 석기 레어도: {{Quality0}} {{ColorSilver}}커먼"
+		descObj.Quality = 0
+	elseif rarity == 1 then
+		appendDesc = "#{{Player" .. mod.PLAYER.GOLEM .. "}} 석기 레어도: {{Quality1}} {{ColorLime}}레어"
+		descObj.Quality = 1
+	elseif rarity == 2 then
+		appendDesc = "#{{Player" .. mod.PLAYER.GOLEM .. "}} 석기 레어도: {{Quality2}} {{ColorCyan}}핀디쉬"
+		descObj.Quality = 2
+	elseif rarity == 3 then
+		appendDesc = "#{{Player" .. mod.PLAYER.GOLEM .. "}} 석기 레어도: {{Quality3}} {{ColorPurple}}슈퍼레어"
+		descObj.Quality = 3
+	elseif rarity == -1 then
+		appendDesc = "#{{Player" .. mod.PLAYER.GOLEM .. "}} 석기 레어도: {{Quality4}} {{ColorYellow}}울트라레어"
+		descObj.Quality = 4
+	end
+	descObj.Description = descObj.Description .. appendDesc
+	return descObj
+end
+
+EID:addDescriptionModifier("FF_EIDKR_GolemRarity", FF_EIDKR_GolemRarityCondition, FF_EIDKR_GolemRarityCallback)
+--#endregion
 
 --#region Golem Slot
 local function FF_EIDKR_RockSlotCondition(descObj)
@@ -18598,8 +18839,8 @@ end
 
 local function FF_EIDKR_MilkMachineCondition(descObj)
 	if EID:getLanguage() ~= "ko_kr" and EID:getLanguage() ~= "ko" then return false end
-	if not descObj.ObjType == EntityType.ENTITY_SLOT then return false end
-	if not (descObj.Entity and descObj.Entity:ToSlot()) then return end
+	if descObj.ObjType ~= EntityType.ENTITY_SLOT then return false end
+	if not (descObj.Entity and descObj.Entity:Exists() and descObj.Entity:ToSlot()) then return end
 
 	if descObj.ObjVariant == FiendFolio.FF.MilkMachine.Var then
 		local slot = descObj.Entity:ToSlot()
@@ -18948,6 +19189,33 @@ wakaba_krdesc:AddCallback(ModCallbacks.MC_POST_PLAYER_RENDER, function (_, playe
 		EID:hidePermanentText()
 		checkCrazySlot = false
 	end
+end)
+--#endregion
+
+--#region Remove English leftover
+EID:addDescriptionModifier("EID FF Golden Watch", function (descObj)
+	if descObj.Entity and descObj.Entity.Type == 5 and descObj.Entity.Variant == 100 and descObj.Entity.SubType == mod.ITEM.COLLECTIBLE.GOLDEN_WATCH then
+			local dmg = 0.0
+			if descObj.Entity:ToPickup():IsShopItem() and descObj.Entity:ToPickup().Price >= 0 then 
+					local price = descObj.Entity:ToPickup().Price
+					dmg = 1.0+(price*mod.ff_goldenWatchMult)
+					descObj.Description = "↑ "..price.."{{Coin}} -> 공격력 배율 x"..dmg.."#" .. descObj.Description
+			else
+					for i = 1, Game():GetNumPlayers() do
+							local player = Game():GetPlayer(i-1)
+							local sd = mod:GetEntityData(player).ffsavedata.RunEffects
+							if sd and descObj.Entity:ToPickup():IsShopItem() and descObj.Entity:ToPickup().Price < 0 then
+									local value = sd.goldenWatchValue or 0
+									dmg = 1.0+((value+devilValueIncrease)*mod.ff_goldenWatchMult)
+									descObj.Description = "↑ 공격력 배율 x"..dmg.."#" .. descObj.Description
+							elseif sd and sd.goldenWatchValue and sd.goldenWatchValue > 0 then
+									dmg = 1.0+(sd.goldenWatchValue*mod.ff_goldenWatchMult)
+									descObj.Description = "↑ 공격력 배율 x"..dmg.."#" .. descObj.Description
+							end
+					end
+			end
+	end
+	return descObj
 end)
 --#endregion
 
