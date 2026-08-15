@@ -385,6 +385,7 @@ wakaba_krdesc:AddPriorityCallback(ModCallbacks.MC_POST_MODS_LOADED, CallbackPrio
 				local itemConf = ic:GetCollectible(s)
 				local desc = itemDesc.Description
 				EID:addCollectible(s, desc, n, "ko_kr")
+				-- TODO 영어 아이템 이름
 				-- Car Battery
 				if type(itemDesc.CarBattery) == "boolean" and itemDesc.CarBattery == false then
 					EID.CarBatteryNoSynergy[s] = true
