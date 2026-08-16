@@ -796,11 +796,13 @@ if communityRemix then
 			QuoteDesc = "금단의 의식",
 		},
 
+		--[[
 		[Cards.RED_RUNE] = {
 			Description = "",
 			Name = "",
 			QuoteDesc = "",
 		},
+		]]
 	}
 
 	for playerType, birthrightdesc in pairs(CharacterDesc) do
