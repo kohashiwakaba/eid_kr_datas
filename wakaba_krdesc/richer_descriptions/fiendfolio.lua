@@ -36,6 +36,10 @@ local CARD = "5.300."
 local PILL = "5.70."
 local CURSE ="-998.-1."
 
+if not FiendFolio.ITEM.ROCK.FOSSILIZED_EYE then
+	FiendFolio.ITEM.ROCK.FOSSILIZED_EYE = FiendFolio.ITEM.TRINKET.FOSSILIZED_EYE
+end
+
 EID._currentMod = "Fiend Folio"
 
 ---@type table<string, WakabaDescriptionEntry>
