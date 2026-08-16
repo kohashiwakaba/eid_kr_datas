@@ -4531,9 +4531,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-			모든 잠긴 컬러 블록을 유령 열쇠 없이 열 수 있습니다.
-			장애물이 확률적으로 잠긴 컬러 블록으로 바뀝니다.
-			!!! 컬러 블록은 비행으로 지나갈 수 없음
+			모든 잠긴 컬러 블럭을 유령 열쇠 없이 열 수 있습니다.
+			장애물이 확률적으로 잠긴 컬러 블럭으로 바뀝니다.
+			!!! 컬러 블럭은 비행으로 지나갈 수 없음
 		]],
 		Tests = {
 			"{{Key}} All colored locks are free to open",
@@ -18619,7 +18619,9 @@ local entries = {
 		Name = "임프의 저주",
 		Icon = "ffCurseImpSmall",
 		Description = [[
-			TODO
+			{{Heart}} 하트 픽업이 50%의 확률로 Fiend의 부하로 바뀝니다.
+			바뀐 Fiend의 부하는 방 3개 클리어 시 사라집니다.
+			{{Collectible260}} Black Candle: Fiend의 부하 적용 확률에서 하트 픽업 보존
 		]],
 	},
 	[CURSE..FiendFolio.curses.stoneCurse] = {
@@ -18627,7 +18629,10 @@ local entries = {
 		Name = "무게의 저주",
 		Icon = "ffCurseStoneSmall",
 		Description = [[
-			TODO
+			{{SpeedSmall}} 이동속도 +0.3
+			{{SpeedSmall}} 소지 중인 장신구/카드/알약 수만큼 이동속도 -0.3
+			{{SpeedSmall}} 수량이 0개인 경우 추가 이동속도 +0.15
+			{{Collectible260}} Black Candle: 추가 이동속도만 적용
 		]],
 	},
 	[CURSE..FiendFolio.curses.sunCurse] = {
@@ -18635,7 +18640,10 @@ local entries = {
 		Name = "태양의 저주",
 		Icon = "ffCurseSunSmall",
 		Description = [[
-			TODO
+			{{SpeedSmall}}/{{TearsSmall}}/{{DamageSmall}}/{{ShotspeedSmall}} 능력치 배율 x1.1
+			패널티 피격 시 x0.85로 감소
+			능력치 패널티는 방 3개 클리어 시 복구됩니다.
+			{{Collectible260}} Black Candle: 저주 효과 제거
 		]],
 	},
 	[CURSE..FiendFolio.curses.swineCurse] = {
@@ -18643,7 +18651,9 @@ local entries = {
 		Name = "꿀꿀이의 저주",
 		Icon = "ffCurseSwineSmall",
 		Description = [[
-			TODO
+			{{Coin}} 적 처치 시 50%의 확률로 동전을 드랍합니다.
+			{{Coin}} {{ColorOrange}}모든{{CR}} 동전 픽업이 빠르게 사라집니다.
+			{{Collectible260}} Black Candle: 적 처치 시 나오는 동전만 적용
 		]],
 	},
 	[CURSE..FiendFolio.curses.ghostCurse] = {
@@ -18651,7 +18661,9 @@ local entries = {
 		Name = "유령의 저주",
 		Icon = "ffCurseGhostSmall",
 		Description = [[
-			TODO
+			조준점이 표시되며 적과 캐릭터에게 피해를 주는 유령비가 떨어집니다.
+			{{Fear}} 유령비는 적에게 6.66의 공포 피해를 줍니다.
+			{{Collectible260}} Black Candle: 유령비가 캐릭터에게 피해를 주지 않음
 		]],
 	},
 	[CURSE..FiendFolio.curses.scytheCurse] = {
@@ -18659,7 +18671,10 @@ local entries = {
 		Name = "낫의 저주",
 		Icon = "ffCurseScytheSmall",
 		Description = [[
-			TODO
+			적에게 피해를 줄 때마다 캐릭터가 붉어집니다.
+			{{TearsSmall}} 완전히 붉어지면 멍듦 상태가 되나 연사가 대폭 증가합니다.
+			{{ffBruise}} 캐릭터가 멍듦 상태일 때 피격 무적 시간 감소
+			{{Collectible260}} Black Candle: 캐릭터가 멍듦 상태가 되지 않음
 		]],
 	},
 	[CURSE..FiendFolio.curses.masterCurse] = {
@@ -18667,15 +18682,21 @@ local entries = {
 		Name = "마스터의 저주",
 		Icon = "ffCurseMasterSmall",
 		Description = [[
-			TODO
+			{{ColorOrange}}스타일{{CR}}: 캐릭터의 실력을 나타내는 척도가 추가됩니다.
+			방을 빨리 클리어할 때마다 스타일 수치 증가
+			패널티 피격 시 스타일 수치 감소
+			스타일 수치에 따라 픽업과 아이템의 등급이 결정됩니다.
+			{{Collectible260}} Black Candle: 스타일 수치가 낮아도 픽업 및 아이템의 등급이 하락하지 않음
 		]],
 	},
 	[CURSE..FiendFolio.curses.dynamoCurse] = {
 		_descType = "curse",
-		Name = "임프의 저주",
+		Name = "폭약의 저주",
 		Icon = "ffCurseDynamoSmall",
 		Description = [[
-			TODO
+			{{Burning}} 주기적으로 적이 랜덤 방향으로 보라색 화염을 던집니다.
+			!!! 화염 명중 시 폭발합니다.
+			{{Collectible260}} Black Candle: 화염이 파란색으로 바뀌며 3회 명중 시 사라짐
 		]],
 	},
 	[CURSE..FiendFolio.curses.lunacyCurse] = {
@@ -18683,7 +18704,8 @@ local entries = {
 		Name = "광기의 저주",
 		Icon = "ffCurseLunacySmall",
 		Description = [[
-			TODO
+			{{ffBerserk}} 주기적으로 적이 폭주에 걸립니다.
+			{{Collectible260}} Black Candle: 확률적으로 폭주 대신 매혹에 걸림
 		]],
 	},
 	[CURSE..FiendFolio.curses.veilCurse] = {
@@ -18691,15 +18713,17 @@ local entries = {
 		Name = "베일의 저주",
 		Icon = "ffCurseVeilSmall",
 		Description = [[
-			TODO
+			픽업과 상자 종류를 알 수 없습니다.
 		]],
 	},
 	[CURSE..FiendFolio.curses.gateCurse] = {
 		_descType = "curse",
-		Name = "통로의 저주",
+		Name = "게이트의 저주",
 		Icon = "ffCurseGateSmall",
 		Description = [[
-			TODO
+			일부 특수방이 사슬로 잠겨 입장할 수 없습니다.
+			열쇠가 새겨진 타일이 있는 방 클리어 시 유령 열쇠를 드랍합니다.
+			사슬로 잠긴 문은 유령 열쇠로 열 수 있습니다.
 		]],
 	},
 	--#endregion
