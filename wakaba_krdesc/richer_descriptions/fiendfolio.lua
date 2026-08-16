@@ -108,7 +108,7 @@ local entries = {
 	["FF_APPEND_DIRE_CHEST"] = {
 		_descType = "append",
 		Description = [[
-			{{ffDireChest}} {{ColorOrange}}장난상자: {{ColorGray}}
+			{{ffDireChest}} {{ColorOrange}}트롤상자: {{ColorGray}}저주받은 픽업을 드랍하나 일정 확률로 폭발합니다.
 		]],
 	},
 	--#endregion
@@ -3798,9 +3798,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-			{{Chargeable}} 
-			{{ffRadiation}} 
-			!!! 
+			{{Chargeable}} 공격 중 충전, 공격키를 떼면 눈물을 여러 발 발사합니다.
+			{{ffRadiation}} 이후 방사성 구름을 생성하는 눈물을 3발 발사합니다.
+			!!! 방사선에 많이 노출되면 하트류가 픽업으로 드랍됩니다.
 		]],
 		Tests = {
 			"{{Chargeable}} Firing charges up an extended volley of tears",
@@ -3891,7 +3891,7 @@ local entries = {
 		Description = [[
 			!!! 획득 시 아래의 아이템을 전부 사용합니다.
 			>>> {{Collectible476}}{{Collectible105}}{{Collectible386}}{{Collectible166}}
-			>>> {{Collectible]].. FiendFolio.ITEM.COLLECTIBLE.MARIAS_IPAD ..[[(20% 확률)
+			>>> {{Collectible]].. FiendFolio.ITEM.COLLECTIBLE.MARIAS_IPAD ..[[}}(20% 확률)
 		]],
 		Tests = {
 			"Placeholder description"
@@ -4426,9 +4426,16 @@ local entries = {
 		Name = "100% 오렌지 주스",
 		QuoteDesc = "",
 		Description = [[
-			클리어하지 않은 방 진입 시 방 안의 랜덤 위치에 타일이 여러 개 생깁니다.
-			타일의 색상에 따라 다른 효과를 발동합니다.
-			!!! {{ColorGray}}(Inventory Description에서 확인){{CR}}
+			클리어하지 않은 방 진입 시 방 안의 랜덤 위치에 패널이 여러 개 생깁니다.
+			패널 색상에 따라 다른 효과를 발동합니다.
+			{{IND}} {{ColorYellow}}보너스{{CR}}: {{Coin}} 동전 증가
+			{{IND}} {{ColorBlue}}드롭{{CR}}: {{Coin}} 동전 감소
+			{{IND}} {{ColorLime}}드로우{{CR}}: 랜덤 카드 발동
+			{{IND}} {{ColorPurple}}워프{{CR}}: 그 방의 랜덤 위치로 순간이동
+			{{IND}} {{ColorOrange}}엔카운터{{CR}}: 랜덤 적 소환
+			{{IND}} {{ColorPink}}힐{{CR}}: {{Heart}} 증발성 빨간하트 소환
+			{{IND}} {{ColorRed}}보스{{CR}}: 랜덤 챔피언 적 소환
+			{{IND}} {{BlinkYellowRed}}데미지{{CR}}: 슈퍼트롤폭탄 소환
 		]],
 		Tests = {
 			"Causes colorful floor tiles that Isaac can step on to appear in rooms",
@@ -5183,7 +5190,7 @@ local entries = {
 		Description = [[
 			{{ColorOrange}}모든 수치{{CR}} 배율 x1.09
 			>>> {{SpeedSmall}} {{TearsSmall}} {{DamageSmall}} {{RangeSmall}} {{ShotspeedSmall}} {{LuckSmall}} {{Tearsize}} 모든 능력치
-			>>> {{AngelDevilChanceSmall}} {{PlanetariumSmall}} 악마방, 천사방, 천체관 확률
+			>>> {{AngelDevilChanceSmall}} {{PlanetariumChanceSmall}} 악마방, 천사방, 천체관 확률
 			>>> {{Heart}} 체력 상한
 			>>> {{Coin}} {{Bomb}} {{Key}} 픽업 수, 픽업 상한
 			>>> {{Collectible58}} {{Trinket81}} 무적시간
@@ -5892,7 +5899,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-			{{AngelChanceSmall}} 획득 시 다음 악마방/천사방 문 소환 시 천사방으로 고정됩니다.
+			{{AngelChanceSmall}} 획득 후 다음 악마방/천사방 문 소환 시 천사방으로 고정됩니다.
 		]],
 		Tests = {
 			"{{AngelRoom}} On pickup, guarantees an Angel Room to spawn after the next valid boss"
@@ -6109,7 +6116,9 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-			TODO
+			캐릭터가 넨도로이드로 변신합니다.
+			구매방법: https://s.goodsmile.link/jU8
+			Goodsmile
 		]],
 		Tests = {
 			"It's time to repent! Isaac has joined the Nendoroid line, ready to escape the terrifying clutches of his mother's wrath! Preorder now & receive an exclusive GSUS Bonus Background Sheet & The Binding of Isaac: Four Souls playing cards! Shop: https://s.goodsmile.link/jU8 #Goodsmile",
@@ -7570,7 +7579,7 @@ local entries = {
 			>>> {{ffCursedPenny}} [6%] 유령페니
 			>>> {{Collectible584}} [3.49%] 위습
 			>>> {{Collectible712}} [2.5%] 아이템 위습
-			>>> {{ffDireChest}} [0.01%] 장난상자 배열 아이템 (최대 3회)
+			>>> {{ffDireChest}} [0.01%] 트롤상자 배열 아이템 (최대 3회)
 		]],
 		Tests = {
 			"Goes to nearby enemies and extracts their souls",
@@ -7781,7 +7790,7 @@ local entries = {
 		Description = [[
 			소지 시 임시 체력의 역할을 합니다.
 			{{DevilChanceSmall}} 악마방 확률에 영향 없음
-			{{FullHeart}} 현재 한칸 채워짐
+			{{Heart}} 현재 한칸 채워짐
 		]],
 		Tests = {
 			"{{Heart}} Stores an extra heart",
@@ -8429,7 +8438,7 @@ local entries = {
 			!!! {{ColorOrange}}교체 및 버리기 시 깨짐{{CR}}
 			!!! {{ColorOrange}}폭발 피해를 받으면 깨짐{{CR}}
 			↑ 목숨 +1 (소진 시 장신구 제거)
-			↑ {{TearsSmall}}연사 증가
+			↑ {{TearsSmall}}공격 딜레이 x0.75
 			{{Player]]..FiendFolio.PLAYER.CHINA..[[}} 사망 시 즉시 China로 부활합니다.
 		]],
 		Tests = {
@@ -8478,7 +8487,7 @@ local entries = {
 		Name = "깨진 항아리",
 		QuoteDesc = "이미 깨졌어",
 		Description = [[
-			↑ {{TearsSmall}}연사 증가
+			↑ {{TearsSmall}}공격 딜레이 x0.9
 		]],
 		Tests = {
 			"↑ x0.9 Fire rate multiplier",
@@ -8850,7 +8859,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-			{{Card]] .. FiendFolio.ITEM.CARD.DOWNLOAD_FAILURE .. [[}}방 입장 시 10%의 확률로 적이 오류에 걸립니다.
+			{{Card]] .. FiendFolio.ITEM.CARD.DOWNLOAD_FAILURE .. [[}} 방 입장 시 10%의 확률로 적이 오류에 걸립니다.
 			오류 걸린 적 처치 시 아군 자폭 벌레 3마리를 소환합니다.
 		]],
 		Tests = {
@@ -8932,7 +8941,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-			{{ffLilPenny}} 동전을 집으면 리틀 페니를 1~4개 소환합니다.
+			{{ffLilPenny}} 동전 획득 시 리틀 페니를 1~4개 소환합니다.
 		]],
 		Tests = {
 			"{{ffLilPenny}} Picking up a coin spawns 1-4 Lil' Pennies"
@@ -9271,7 +9280,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-			{{Collectible]] ..FiendFolio.ITEM.COLLECTIBLE.PYROMANCY ..[[}} 동전을 집으면 Fiend의 파이어볼을 하나 생성합니다.
+			{{Collectible]] ..FiendFolio.ITEM.COLLECTIBLE.PYROMANCY ..[[}} 동전 획득 시 Fiend의 파이어볼을 하나 생성합니다.
 		]],
 		Tests = {
 			"Picking up a coin spawns an orbital fireball"
@@ -9335,9 +9344,9 @@ local entries = {
 		QuoteDesc = "",
 		Description = [[
 			액티브 아이템이 자동으로 사용됩니다.
-			(일부 아이템은 방 진입 시에만 사용)
-			(일부 아이템은 무효과)
-			(충전량이 없는 경우 3프레임마다 사용)
+			{{Blank}} (일부 아이템은 방 진입 시에만 사용)
+			{{Blank}} (일부 아이템은 무효과)
+			{{Blank}} (충전량이 없는 경우 3프레임마다 사용)
 		]],
 		Tests = {
 			"Automatically uses your active item",
@@ -9350,7 +9359,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-			동전을 집으면 8%의 확률로 페니류 장신구를 드랍합니다.
+			동전 획득 시 8%의 확률로 페니류 장신구를 드랍합니다.
 		]],
 		Tests = {
 			"Picking up a coin has a 8% chance to spawn a penny trinket"
@@ -9500,8 +9509,8 @@ local entries = {
 		_descType = "trinket",
 		Name = "",
 		QuoteDesc = "",
-		Description = [[ 
-			]]..FiendFolio.DescriptionIcons.Honey..[[동전을 주우면 50%의 확률로 적을 느려지게 하는 공격 및 장판을 생성합니다.
+		Description = [[
+			]]..FiendFolio.DescriptionIcons.Honey..[[동전 획득 시 50%의 확률로 적을 느려지게 하는 공격 및 장판을 생성합니다.
 		]],
 		Tests = {
 			FiendFolio.DescriptionIcons.Honey ..  "Picking up a coin has a 50% chance to grant a slowing trail and slowing tears for a period"
@@ -10357,7 +10366,7 @@ local entries = {
 		_descType = "trinket",
 		Name = "",
 		QuoteDesc = "",
-		Description = [[ 
+		Description = [[
 			{{Collectible]] .. FiendFolio.ITEM.COLLECTIBLE.PARANOIA .. [[}} 30%의 확률로 망상 공격을 합니다.
 			망상 공격 명중 시 명중한 적에게 되돌아오는 관통 눈물이 나갑니다.
 			{{LuckSmall}} 행운 6+일 때 75%
@@ -11024,7 +11033,7 @@ local entries = {
 		Name = "",
 		QuoteDesc = "",
 		Description = [[
-			{{Collectible455}} 동전을 집으면 그 방에서:
+			{{Collectible455}} 동전 획득 시 그 방에서:
 			>>> {{RangeSmall}} 사거리 +2.5
 			>>> {{LuckSmall}} 행운 +1
 		]],
@@ -11082,6 +11091,22 @@ local entries = {
 		QuoteDesc = "",
 		Description = [[
 			!!! {{GigaBomb}} 동전 획득 시 사망합니다.
+		]],
+		Tests = {
+			"Picking up a coin explodes Isaac"
+		},
+		Golden = {
+			Tests = {
+				"Picking up a coin removes Isaac"
+			}
+		}
+	},
+	[TRINKET..FiendFolio.ITEM.TRINKET.BRAZILIAN_PENNY] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+			동전 획득 시 75%의 확률로 일정 시간 지속되는 축구공 3개를 소환합니다.
 		]],
 		Tests = {
 			"Picking up a coin explodes Isaac"
@@ -12213,7 +12238,7 @@ local entries = {
 		Description = [[
 			소지 시 임시 체력의 역할을 합니다.
 			{{DevilChanceSmall}} 악마방 확률에 영향 없음
-			{{FullHeart}} 현재 한칸 채워짐
+			{{Heart}} 현재 한칸 채워짐
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_NORMAL",
@@ -14915,7 +14940,7 @@ local entries = {
 		QuoteDesc = "",
 		Description = [[
 			피격 시 25%의 확률로 사라지는 하트를 드랍합니다.
-			{{ffRadiation}} 
+			{{ffRadiation}} 방사능 저항 증가
 		]],
 		AppendEntries = {
 			"FF_APPEND_GOLEM_NORMAL",
@@ -15862,6 +15887,23 @@ local entries = {
 				"Increased chances"
 			}
 		}
+	},
+	[TRINKET..FiendFolio.ITEM.ROCK.FOSSILIZED_EYE] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+			{{Card}} 카드 픽업이 앞면 상태로 보여집니다.
+			{{ffCrush}} {{ColorRed}}분해:{{CR}} 아군 Bloodshoy eye를 소환합니다.
+		]],
+		AppendEntries = {
+			"FF_APPEND_GOLEM_FOSSIL",
+		},
+		Tests = {
+			"Card fronts will be visible even when dropped",
+			"{{ColorTransform}}{{ffCrush}} Crush effect",
+							"Spawns a friendly bloodshot eye",
+		},
 	},
 	--#endregion
 	--#region REHEADED GEODE

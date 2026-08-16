@@ -161,6 +161,7 @@ function wakaba_krdesc:ModsLoaded_MakeEntries()
 	table.insert(EID.TextReplacementPairs, {"<<<", "{{ArrowGrayLeft}}"})
 	table.insert(EID.TextReplacementPairs, {">>>", "{{ArrowGrayRight}}"})
 	table.insert(EID.TextReplacementPairs, {"↕", "{{ArrowUpDown}}"})
+	EID:addIcon("Familiar", "familiar", 0, 10, 10, 5, 5, EID.IconSprite)
 	--EID.InlineIcons["Familiar"] = {}
 end
 wakaba_krdesc:AddPriorityCallback(ModCallbacks.MC_POST_MODS_LOADED, CallbackPriority.EARLY, wakaba_krdesc.ModsLoaded_MakeEntries)
