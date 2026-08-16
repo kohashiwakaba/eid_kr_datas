@@ -201,7 +201,11 @@ local function checkStartOfRunWarnings()
 
 		if wakaba_krdesc.ERROR_NO_REQ then
 			display = true
-			str = "!!! {{ColorRed}}REPENTOGON+가 적용/설치되지 않았습니다.#!!! {{ColorRed}}REPENTOGON+를 설치하기 전까지 모드 설명이 한글로 표시되지 않습니다."
+			str = [[
+				!!! {{NoLB}}{{ColorRed}}REPENTOGON+가 적용/설치되지 않았습니다.
+				!!! {{NoLB}}{{ColorRed}}REPENTOGON+를 설치하기 전까지 모드 설명이 한글로 표시되지 않습니다.
+				만약 아이템을 추가하는 모드를 적용 중이지 않다면 아래 모드를 적용 해제해 주세요.
+				{{IND}} z Mod items EID Korean translations]]
 		elseif #wakaba_krdesc.ERRORS > 0 then
 			display = true
 			for _, err in ipairs(wakaba_krdesc.ERRORS) do
@@ -212,20 +216,24 @@ local function checkStartOfRunWarnings()
 				end
 			end
 			if invalid_version then
-				str = "!!! {{ColorEIDError}}업데이트되지 않은 모드가 있습니다. 창작마당에서 해당 모드를 업데이트하기 전까지 아래 모드의 설명은 적용되지 않습니다."
+				str = [[
+					!!! {{NoLB}} {{ColorEIDError}}업데이트되지 않은 모드가 있습니다.
+					{{NoLB}} {{ColorEIDError}}창작마당에서 해당 모드를 업데이트하기 전까지 아래 모드의 설명은 적용되지 않습니다.]]
 				for _, err in ipairs(wakaba_krdesc.ERRORS) do
 					if not err.NO_RGON and err.current then
 						str = str
-								.. "#{{IND}} {{ColorEIDObjName}}" .. err.err_mod .. "{{CR}}(" .. err.current .. " -> " .. err.required .. ")"
+								.. "#{{IND}} {{NoLB}}{{ColorEIDObjName}}" .. err.err_mod .. "{{CR}}(" .. err.current .. " -> " .. err.required .. ")"
 					end
 				end
 			end
 			if custom then
-				str = "!!! {{ColorEIDError}}일부 모드 적용에 문제가 발견되었습니다. 해당 문제 해결 전까지 아래 모드의 설명은 적용되지 않습니다."
+				str = [[
+					!!! {{NoLB}} {{ColorEIDError}}일부 모드 적용에 문제가 발견되었습니다. 
+					{{NoLB}} {{ColorEIDError}}해당 문제 해결 전까지 아래 모드의 설명은 적용되지 않습니다.]]
 				for _, err in ipairs(wakaba_krdesc.ERRORS) do
 					if not err.NO_RGON and err.current then
 						str = str
-								.. "#{{IND}} {{ColorEIDObjName}}" .. err.err_mod .. "{{CR}}(" .. err.custom .. ")"
+								.. "#{{IND}} {{NoLB}}{{ColorEIDObjName}}" .. err.err_mod .. "{{CR}}(" .. err.custom .. ")"
 					end
 				end
 			end
