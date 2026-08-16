@@ -283,10 +283,17 @@ local entries = {
 		Short = [[
 		]],
 		Description = [[
+			{{EmptyBoneHeart}} 최대 체력 = 뼈하트의 보정을 받습니다. (빨간하트를 채울 수 없음)
+			{{Collectible]]..FiendFolio.ITEM.COLLECTIBLE.PYROMANCY..[[}} 고유 능력 : 방화술사
+			{{Blank}} (파이어볼이 자동 생성되지 않으며 50 + (스테이지 수 * 10)의 피해를 줄 때마다 생성됨)
+			{{Collectible]]..FiendFolio.ITEM.COLLECTIBLE.PYROMANCY..[[}} 파이어볼로 적 처치 시 이모럴하트가 아닌 뼛조각 배리어가 등장함
+			{{Collectible]]..FiendFolio.ITEM.COLLECTIBLE.BONE_HURTING_JUICE..[[}} 고유 능력 : 뼈갈이
 		]],
 		Birthright = [[
+			티배깅 시 주변의 적에게 공격력 x1의 폭발 피해를 줍니다.
+			{{Blank}} (티배깅 키 : + 혹은 -)
 		]],
-		BirthrightQuote = "Hurtful taunts",
+		BirthrightQuote = "뼈아픈 티배깅",
 	},
 	[CHAR .. FiendFolio.PLAYER.GOLEM] = {
 		_descType = "player",
@@ -499,8 +506,10 @@ local entries = {
 		Short = [[
 		]],
 		Description = [[
+			제발 나 좀 구해줘
 		]],
 		Birthright = [[
+			방해요소 증가
 		]],
 		BirthrightQuote = "Sensory overload",
 	},
@@ -4332,8 +4341,8 @@ local entries = {
 	},
 	[ITEM..FiendFolio.ITEM.COLLECTIBLE.BONE_HURTING_JUICE] = {
 		_descType = "collectible",
-		Name = "",
-		QuoteDesc = "",
+		Name = "뼈갈이",
+		QuoteDesc = "뼈를 갈아 빌드업",
 		Description = [[
 			사용 시 캐릭터 주변을 도는 뼛조각을 없애며;
 			{{LuckSmall}} 없앤 뼛조각 수에 비례하여 증발성 공격력 으로 바꿉니다.
