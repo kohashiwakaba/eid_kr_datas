@@ -19420,6 +19420,8 @@ local function FF_EIDKR_EtcCallback(descObj)
 end
 
 EID:addDescriptionModifier("FF_EIDKR_Etc", FF_EIDKR_EtcCondition, FF_EIDKR_EtcCallback)
+
+EID:removeDescriptionModifier("FiendFolio-Trinkets" .. tostring(FiendFolio.ITEM.TRINKET.CURSED_URN))
 --#endregion
 
 for _, entry in pairs(entries) do
