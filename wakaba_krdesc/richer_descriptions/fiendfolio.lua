@@ -3,7 +3,7 @@ if not FiendFolio then return end
 local versionRequ = "3.1"
 local versionNext = "3.1"
 
-if (FiendFolio and FiendFolio.REHEATED) or FiendFolio:CheckFiendFolioModVersion(versionRequ, true) then
+if (FiendFolio and not FiendFolio.CheckFiendFolioModVersion) or FiendFolio:CheckFiendFolioModVersion(versionRequ, true) then
 	table.insert(wakaba_krdesc.ERRORS, {
 		err_mod = "Fiend Folio",
 		current = FiendFolio.modVersionNumber,
