@@ -436,8 +436,8 @@ wakaba_krdesc:AddPriorityCallback(ModCallbacks.MC_POST_MODS_LOADED, CallbackPrio
 				local desc = itemDesc.Description
 				EID:addTrinket(s, desc, n, "ko_kr")
 				-- TODO Golden Trinket Data
-				EID.descriptions["ko_kr"].goldenTrinketData = itemDesc.GoldenTrinketData
-				EID.descriptions["ko_kr"].goldenTrinketEffects = itemDesc.Golden
+				--EID.descriptions["ko_kr"].goldenTrinketData = itemDesc.GoldenTrinketData
+				--EID.descriptions["ko_kr"].goldenTrinketEffects = itemDesc.Golden
 			elseif d == "card" then
 				local desc = itemDesc.Description
 				EID:addCard(s, desc, n, "ko_kr")
