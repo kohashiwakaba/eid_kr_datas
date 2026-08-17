@@ -18669,7 +18669,7 @@ local entries = {
 	--#endregion
 
 	--#region CURSES
-	[CURSE..(1 << FiendFolio.curses.impCurse)] = {
+	[CURSE..(1 << (FiendFolio.curses.impCurse - 1))] = {
 		_descType = "curse",
 		Name = "임프의 저주",
 		Icon = "ffCurseImpSmall",
@@ -18679,7 +18679,7 @@ local entries = {
 			{{Collectible260}} Black Candle: Fiend의 부하 적용 확률에서 하트 픽업 보존
 		]],
 	},
-	[CURSE..(1 << FiendFolio.curses.stoneCurse)] = {
+	[CURSE..(1 << (FiendFolio.curses.stoneCurse - 1))] = {
 		_descType = "curse",
 		Name = "무게의 저주",
 		Icon = "ffCurseStoneSmall",
@@ -18690,7 +18690,7 @@ local entries = {
 			{{Collectible260}} Black Candle: 추가 이동속도만 적용
 		]],
 	},
-	[CURSE..(1 << FiendFolio.curses.sunCurse)] = {
+	[CURSE..(1 << (FiendFolio.curses.sunCurse - 1))] = {
 		_descType = "curse",
 		Name = "태양의 저주",
 		Icon = "ffCurseSunSmall",
@@ -18701,7 +18701,7 @@ local entries = {
 			{{Collectible260}} Black Candle: 저주 효과 제거
 		]],
 	},
-	[CURSE..(1 << FiendFolio.curses.swineCurse)] = {
+	[CURSE..(1 << (FiendFolio.curses.swineCurse - 1))] = {
 		_descType = "curse",
 		Name = "꿀꿀이의 저주",
 		Icon = "ffCurseSwineSmall",
@@ -18711,7 +18711,7 @@ local entries = {
 			{{Collectible260}} Black Candle: 적 처치 시 나오는 동전만 적용
 		]],
 	},
-	[CURSE..(1 << FiendFolio.curses.ghostCurse)] = {
+	[CURSE..(1 << (FiendFolio.curses.ghostCurse - 1))] = {
 		_descType = "curse",
 		Name = "유령의 저주",
 		Icon = "ffCurseGhostSmall",
@@ -18721,7 +18721,7 @@ local entries = {
 			{{Collectible260}} Black Candle: 유령비가 캐릭터에게 피해를 주지 않음
 		]],
 	},
-	[CURSE..(1 << FiendFolio.curses.scytheCurse)] = {
+	[CURSE..(1 << (FiendFolio.curses.scytheCurse - 1))] = {
 		_descType = "curse",
 		Name = "낫의 저주",
 		Icon = "ffCurseScytheSmall",
@@ -18732,7 +18732,7 @@ local entries = {
 			{{Collectible260}} Black Candle: 캐릭터가 멍듦 상태가 되지 않음
 		]],
 	},
-	[CURSE..(1 << FiendFolio.curses.masterCurse)] = {
+	[CURSE..(1 << (FiendFolio.curses.masterCurse - 1))] = {
 		_descType = "curse",
 		Name = "마스터의 저주",
 		Icon = "ffCurseMasterSmall",
@@ -18744,7 +18744,7 @@ local entries = {
 			{{Collectible260}} Black Candle: 스타일 수치가 낮아도 픽업 및 아이템의 등급이 하락하지 않음
 		]],
 	},
-	[CURSE..(1 << FiendFolio.curses.dynamoCurse)] = {
+	[CURSE..(1 << (FiendFolio.curses.dynamoCurse - 1))] = {
 		_descType = "curse",
 		Name = "폭약의 저주",
 		Icon = "ffCurseDynamoSmall",
@@ -18754,7 +18754,7 @@ local entries = {
 			{{Collectible260}} Black Candle: 화염이 파란색으로 바뀌며 3회 명중 시 사라짐
 		]],
 	},
-	[CURSE..(1 << FiendFolio.curses.lunacyCurse)] = {
+	[CURSE..(1 << (FiendFolio.curses.lunacyCurse - 1))] = {
 		_descType = "curse",
 		Name = "광기의 저주",
 		Icon = "ffCurseLunacySmall",
@@ -18763,7 +18763,7 @@ local entries = {
 			{{Collectible260}} Black Candle: 확률적으로 폭주 대신 매혹에 걸림
 		]],
 	},
-	[CURSE..(1 << FiendFolio.curses.veilCurse)] = {
+	[CURSE..(1 << (FiendFolio.curses.veilCurse - 1))] = {
 		_descType = "curse",
 		Name = "베일의 저주",
 		Icon = "ffCurseVeilSmall",
@@ -18771,7 +18771,7 @@ local entries = {
 			픽업과 상자 종류를 알 수 없습니다.
 		]],
 	},
-	[CURSE..(1 << FiendFolio.curses.gateCurse)] = {
+	[CURSE..(1 << (FiendFolio.curses.gateCurse - 1))] = {
 		_descType = "curse",
 		Name = "게이트의 저주",
 		Icon = "ffCurseGateSmall",
