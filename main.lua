@@ -129,6 +129,9 @@ function mod:loadDescriptionData()
 		wakaba_krdesc.richer_entries[key] = include("wakaba_krdesc.richer_descriptions." .. v)
 		if type(wakaba_krdesc.richer_entries[key]) == "string" then
 			print("[리셰쨩] ["..key.."] 모드 설명 데이터 로드 실패. 스팀 창작마당에서 재구독 요망")
+			print("--------------------------------------------")
+			print(wakaba_krdesc.richer_entries[key])
+			print("--------------------------------------------")
 			table.insert(wakaba_krdesc.ERRORS, {
 				err_mod = key,
 				custom = "설명 파일이 정상적으로 로드되지 않았습니다. 모드를 재설치 해주세요."
