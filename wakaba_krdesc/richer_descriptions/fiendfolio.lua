@@ -1436,7 +1436,6 @@ local entries = {
 		},
 		Belial = "공격력 증가량 2배",
 		CarBattery = "공격력 및 연사 증가량 2배",
-		
 	},
 	[ITEM..FiendFolio.ITEM.COLLECTIBLE.AVGM] = {
 		_descType = "collectible",
@@ -2470,7 +2469,6 @@ local entries = {
 			"Slammer familiar that jumps on and crushes enemies",
 		},
 		BFFS = {5, 10},
-		
 	},
 	[ITEM..FiendFolio.ITEM.COLLECTIBLE.ETERNAL_CLICKER] = {
 		_descType = "collectible",
@@ -2575,7 +2573,6 @@ local entries = {
 			"Spawns 1 object at the start of every floor",
 			"{{ffObject}} Objects are consumable pickups that don't fall into the same category as pills, cards, and runes"
 		},
-		
 	},
 	[ITEM..FiendFolio.ITEM.COLLECTIBLE.CHERRY_BOMB] = {
 		_descType = "collectible",
@@ -2799,7 +2796,6 @@ local entries = {
 			"{{Coin}} Spend 5 coins to turn an enemy into a one use Golden Slot Machine"
 		},
 		CarBattery = false,
-		
 	},
 	[ITEM..FiendFolio.ITEM.COLLECTIBLE.KALUS_HEAD] = {
 		_descType = "collectible",
@@ -3088,7 +3084,6 @@ local entries = {
 			"On hit, Isaac rolls for a unique effect",
 			"{{Luck}} 100% chance to get three matching symbols at 10 luck"
 		},
-		
 	},
 	[ITEM..FiendFolio.ITEM.COLLECTIBLE.NIL_PASTA] = {
 		_descType = "collectible",
@@ -3602,7 +3597,6 @@ local entries = {
 			"10% chance for tears to reroll enemies into enemies with similar max HP"
 		},
 		CarBattery = false,
-		
 	},
 	[ITEM..FiendFolio.ITEM.COLLECTIBLE.TOKEN_BAG] = {
 		_descType = "collectible",
@@ -3713,7 +3707,6 @@ local entries = {
 			"Fully chiseled stone blocks produce an aura that gives status effects to enemies and buffs to Isaac"
 		},
 		CarBattery = false,
-		
 	},
 	[ITEM..FiendFolio.ITEM.COLLECTIBLE.TOO_MANY_OPTIONS] = {
 		_descType = "collectible",
@@ -3769,7 +3762,6 @@ local entries = {
 			"Bosses cannot be put into the jar"
 		},
 		CarBattery = false,
-		
 	},
 	[ITEM..FiendFolio.ITEM.COLLECTIBLE.ANATHEMA] = {
 		_descType = "collectible",
@@ -4238,7 +4230,6 @@ local entries = {
 			"{{ffLilPenny}} Gives Isaac a lil' penny every 4 seconds"
 		},
 		BFFS = false,
-		
 	},
 	[ITEM..FiendFolio.ITEM.COLLECTIBLE.LOADSAMONEY] = {
 		_descType = "collectible",
@@ -4320,7 +4311,6 @@ local entries = {
 			"Allows Isaac to dodge roll, allowing him to move quickly"
 		},
 		CarBattery = false,
-		
 	},
 	[ITEM..FiendFolio.ITEM.COLLECTIBLE.LE_CAT] = {
 		_descType = "collectible",
@@ -4403,7 +4393,6 @@ local entries = {
 			"Leaves behind a poisonous gas trail"
 		},
 		VirtuesSingleRoom = true,
-		
 	},
 	[ITEM..FiendFolio.ITEM.COLLECTIBLE.JUMBO_JOSH] = {
 		_descType = "collectible",
@@ -4440,14 +4429,15 @@ local entries = {
 		QuoteDesc = "",
 		Description = [[
 			클리어하지 않은 방 진입 시 방 안의 랜덤 위치에 패널이 여러 개 생깁니다.
+			{{LuckSmall}} 기본 3개, 행운 16+일 때 7개
 			패널 색상에 따라 다른 효과를 발동합니다.
 			{{IND}} {{ColorYellow}}보너스{{CR}}: {{Coin}} 동전 증가
 			{{IND}} {{ColorBlue}}드롭{{CR}}: {{Coin}} 동전 감소
 			{{IND}} {{ColorLime}}드로우{{CR}}: 랜덤 카드 발동
 			{{IND}} {{ColorPurple}}워프{{CR}}: 그 방의 랜덤 위치로 순간이동
 			{{IND}} {{ColorOrange}}엔카운터{{CR}}: 랜덤 적 소환
-			{{IND}} {{ColorPink}}힐{{CR}}: {{Heart}} 증발성 빨간하트 소환
 			{{IND}} {{ColorRed}}보스{{CR}}: 랜덤 챔피언 적 소환
+			{{IND}} {{ColorPink}}힐{{CR}}: {{Heart}} 증발성 하트 소환
 			{{IND}} {{BlinkYellowRed}}데미지{{CR}}: 슈퍼트롤폭탄 소환
 		]],
 		Tests = {
@@ -4752,7 +4742,6 @@ local entries = {
 			"The more you change the direction of the tear, the faster it becomes"
 		},
 		CarBattery = false,
-		
 	},
 	[ITEM..FiendFolio.ITEM.COLLECTIBLE.DOUBLE_DOG] = {
 		_descType = "collectible",
@@ -5905,7 +5894,6 @@ local entries = {
 			"4 wisps","20% chance to spawn Neighbours from Hell when destroyed"
 		},
 		CarBattery = false,
-		
 	},
 	[ITEM..FiendFolio.ITEM.COLLECTIBLE.TEFILLIN] = {
 		_descType = "collectible",
@@ -5929,7 +5917,6 @@ local entries = {
 			"{{Burning}} Spawns a sun familiar at the top of every room which pulls in enemies and pickups, and applies Burning to nearby enemies"
 		},
 		BFFS = false,
-		
 	},
 	[ITEM..FiendFolio.ITEM.COLLECTIBLE.DADS_HALF] = {
 		_descType = "collectible",
@@ -6046,7 +6033,6 @@ local entries = {
 			"!!! Taking damage removes the oldest item effect granted by Dis"
 		},
 		BFFS = false,
-		
 	},
 	[ITEM..FiendFolio.ITEM.COLLECTIBLE.ACHERON] = {
 		_descType = "collectible",
@@ -6752,7 +6738,6 @@ local entries = {
 			"Leaky hearts slowly drain, leaving red creep on the floor",
 			"{{AngelDevilChance}} Damage taken to draining hearts doesn't affect Devil Deal chance",
 		}, -- needs different descriptions for soul heart characters, and eid icon
-		
 	},
 	[ITEM..FiendFolio.ITEM.COLLECTIBLE.CAN_OF_BEANS] = {
 		_descType = "collectible",
