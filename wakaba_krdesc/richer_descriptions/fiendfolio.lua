@@ -528,6 +528,7 @@ local entries = {
 		Description = [[
 		]],
 		Birthright = [[
+			효과 없음
 		]],
 		BirthrightQuote = "리비도 증가",
 	},
@@ -538,8 +539,10 @@ local entries = {
 		Short = [[
 		]],
 		Description = [[
+			클리어하지 않은 방에서 주기적으로 녹색 장판을 생성하는 눈물을 흩뿌립니다.
 		]],
 		Birthright = [[
+			장판 눈물 생성 증가
 		]],
 		BirthrightQuote = "Acid reflux",
 	},
@@ -552,6 +555,7 @@ local entries = {
 		Description = [[
 		]],
 		Birthright = [[
+			약봉지 드랍 증가
 		]],
 		BirthrightQuote = "Reefer madness",
 	},
@@ -562,8 +566,11 @@ local entries = {
 		Short = [[
 		]],
 		Description = [[
+			명중하지 않은 눈물이 Fiend의 부하로 바뀝니다.
+			바뀐 부하는 시간이 지나거나 방 클리어 시 사라집니다.
 		]],
 		Birthright = [[
+			바뀐 부하가 
 		]],
 		BirthrightQuote = "Ultimate chimerism!",
 	},
@@ -574,20 +581,24 @@ local entries = {
 		Short = [[
 		]],
 		Description = [[
+			{{Chargeable}} 충전 공격 시 그 방의 적, 픽업, 장애물을 지웁니다.
 		]],
 		Birthright = [[
+			충전 공격이 게임을 추가로 지웁니다.
 		]],
 		BirthrightQuote = "메타 포텐셜",
 	},
 	[CHAR .. FiendFolio.PLAYER.PEAT] = {
 		_descType = "player",
-		Name = "피트",
+		Name = "Peat",
 		ReminderName = "Peat",
 		Short = [[
 		]],
 		Description = [[
+			???
 		]],
 		Birthright = [[
+			???
 		]],
 		BirthrightQuote = "The horse is here",
 	},
