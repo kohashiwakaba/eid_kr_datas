@@ -175,8 +175,9 @@ else
 	wakaba_krdesc.entries.ITEMJAM_1 = include("wakaba_krdesc.legacy_descriptions.itemjam_1")
 end
 
+mod:loadDescriptionData()
+
 function wakaba_krdesc:ModsLoaded_MakeEntries()
-	mod:loadDescriptionData()
 
 	table.insert(EID.TextReplacementPairs, {"<<<", "{{ArrowGrayLeft}}"})
 	table.insert(EID.TextReplacementPairs, {">>>", "{{ArrowGrayRight}}"})
