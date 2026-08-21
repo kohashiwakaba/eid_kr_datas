@@ -5,11 +5,17 @@ wakaba_krdesc = mod ---@class wakaba_krdesc: ModReference
 
 ---@class EIDConditionalEntry
 ---@field ModifierText string
----@field Function? fun(descObj):boolean? condition function. Only on `en_us`
+---@field Function? fun(descObj:EID_DescObj):boolean? condition function. Only on `en_us`
 ---@field Vars?
 ---@field Type?
 ---@field Layer? integer @default: `1`
 ---@field Description string condition description when condition is met
+
+---@class EIDModifierEntry
+---@field ModifierText string
+---@field ModifierCond? fun(descObj:EID_DescObj):boolean? condition function. Only on `en_us`
+---@field ModifierCallback? fun(descObj:EID_DescObj):EID_DescObj? condition function. Only on `en_us`
+---@field Position? integer
 
 ---@alias WakabaDescriptionType
 ---|"player" Wakaba or Modded players.
@@ -31,6 +37,7 @@ wakaba_krdesc = mod ---@class wakaba_krdesc: ModReference
 ---@field Description? string Description for EID <br> `"player"` - Used for Inventory Descriptions feature.
 ---@field Insane? string Wakaba mod only. Description for EID while on Insane difficulty
 ---@field Conditionals? EIDConditionalEntry[]
+---@field Modifiers? EIDModifierEntry[]
 ---@field Icon? string `"curse"`|`"richer_uniform"` - shortcut for EID icon.
 ---@field Short? string `"player"` - Used for Item Reminder.
 ---@field Birthright? string `"player"` - Birthright descriptions.
@@ -60,6 +67,7 @@ local modsToLoad = {
 	--DELIVERANCE = "deliverance",
 	--CR = "community_remix_2024",
 	--LOST_AND_FORGOTTEN = "lost_and_forgotten",
+	--OP365 = "operation_365",
 	-- Middles
 	--SAMAEL = "samael",
 	--WARPZONE = "warpzone",
@@ -68,6 +76,7 @@ local modsToLoad = {
 	--MATT_PACK = "matt_pack",
 	--AURI = "auri",
 	--ITEMJAM_1 = "itemjam_1",
+	SHERIFF = "sheriff",
 	-- Characters
 	--YONDU = "yondu",
 	--ALICE = "alice_ba",
@@ -370,6 +379,9 @@ wakaba_krdesc:AddPriorityCallback(ModCallbacks.MC_POST_MODS_LOADED, CallbackPrio
 			end
 
 			EID._currentMod = itemDesc.Mod or "부끄부끄 리셰쨩"
+			if EID._currentMod == "부끄부끄 리셰쨩" then
+				EID:setModIndicatorName("부끄부끄 리셰쨩")
+			end
 			local d = itemDesc._descType
 			local n = itemDesc.Name
 
@@ -458,6 +470,14 @@ wakaba_krdesc:AddPriorityCallback(ModCallbacks.MC_POST_MODS_LOADED, CallbackPrio
 				local desc = itemDesc.Description
 				EID:addEntity(t, v, s, n, desc, "ko_kr")
 				EID:AddIconToObject(t, v, s, itemDesc.Icon)
+			end
+
+			if itemDesc.Modifiers then
+				for _, m in ipairs(itemDesc.Modifiers) do
+					if m.ModifierText and m.ModifierCond and m.ModifierCallback then
+						EID:addDescriptionModifier(m.ModifierText, m.ModifierCond, m.ModifierCallback, m.Position)
+					end
+				end
 			end
 
 			EID._currentMod = "부끄부끄 리셰쨩"

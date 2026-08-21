@@ -7679,6 +7679,23 @@ local entries = {
 			"↑ +0.3 Damage",
 		},
 	},
+	[ITEM..FiendFolio.ITEM.COLLECTIBLE.LANKY_MUSHROOM] = {
+		_descType = "collectible",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+			↓ {{TearsSmall}}연서 -0.4
+			↑ {{DamageSmall}}공격력 +0.7
+			↑ {{RangeSmall}}사거리 +0.75
+			캐릭터가 길쭉해집니다.
+		]],
+		Tests = {
+        "↑ +0.7 Damage",
+				"↓ -0.4 Tears",
+				"↑ +0.75 Range ",
+				"Makes Isaac 50% taller and 25% thinner",
+		},
+	},
 	--#endregion
 	--#endregion
 
@@ -9990,7 +10007,7 @@ local entries = {
 				1
 			}
 		},
-		Conditionals = function (descObj)
+		Conditional = function (descObj)
 			local save = mod.getFieldInit(FiendFolio.savedata, 'run', {})
 
 			if save.SpecialWantedPosterSpawned then
@@ -10876,7 +10893,7 @@ local entries = {
 		Tests = {
 			"Picking up a coin will increase its value by the Canadian exchange rate",
 		},
-		Conditionals = function (descObj)
+		Conditional = function (descObj)
 			local split = mod:SplitString(descObj.Description, "#")
 			local lastValidLine = #split + 1
 

@@ -1,5 +1,5 @@
 
-if Sheriff then
+if Sheriff and not SheriffRepentogon then
 
 	EID._currentMod = "TSC Unlock API (TheSheriff)"
 
