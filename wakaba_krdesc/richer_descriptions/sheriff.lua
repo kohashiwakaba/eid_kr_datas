@@ -7,7 +7,9 @@ local CARD = "5.300."
 local PILL = "5.70."
 local CURSE ="-998.-1."
 
-EID._currentMod = "TSC Unlock API (TheSheriff)"
+EID._currentMod = "The Sheriff"
+EID:setModIndicatorName("The Sheriff")
+EID:setModIndicatorIcon("Player"..Sheriff.Characters.TheSheriff.CHARACTER_ID)
 
 local Items = Sheriff.Items
 local Trinkets = Sheriff.Items
@@ -36,8 +38,8 @@ local entries = {
 			{{Collectible]]..Items.QuickDraw.ITEM_ID..[[}} 고유 능력 : 퀵 드로우
 		]],
 		Birthright = [[
-			{{SheriffBullet}} 적 처치 시 확률적으로 탄창 픽업을 드랍합니다.
-			{{SheriffBullet}} 탄창을 주우면 탄환 +3 (초과 보유 가능)
+			{{sfBullet}} 적 처치 시 확률적으로 탄창 픽업을 드랍합니다.
+			{{sfBullet}} 탄창을 주우면 탄환 +3 (초과 보유 가능)
 		]],
 		BirthrightQuote = "빼앗고 다시 쓰기",
 	},
@@ -69,7 +71,7 @@ local entries = {
 		Description = [[
 			↑ {{Bomb}}폭탄 +5
 			적이 있는 방에서 폭탄이 더 느리게 터집니다.
-			{{SheriffBullet}} 폭탄이 적을 향해 총탄을 발사하며, 폭탄이 터지면 5방향으로 총탄을 발사합니다.
+			{{sfBullet}} 폭탄이 적을 향해 총탄을 발사하며, 폭탄이 터지면 5방향으로 총탄을 발사합니다.
 		]],
 	},
 	[ITEM..Items.BanditsBandana.ID] = {
@@ -77,8 +79,8 @@ local entries = {
 		Name = "도적의 손수건",
 		QuoteDesc = "소매치기다! 지갑을 지켜!",
 		Description = [[
-			{{BanditDazed}} 방 입장 시 25%의 확률로 적이 최소 6.5초간 표적 상태가 됩니다.
-			{{BanditDazed}} {{ColorOrange}}표적: {{ColorGray}}처치 시 50%의 확률로 동전을 드랍합니다.
+			{{sfDazed}} 방 입장 시 25%의 확률로 적이 최소 6.5초간 표적 상태가 됩니다.
+			{{sfDazed}} {{ColorOrange}}표적: {{ColorGray}}처치 시 50%의 확률로 동전을 드랍합니다.
 		]],
 	},
 	[ITEM..Items.OilLamp.ID] = {
@@ -106,13 +108,13 @@ local entries = {
 			{{Collectible531}} 눈물이 무언가에 부딪히면 작은 눈물 여러개로 나뉘며, 적을 느려지게 하는 장판을 생성합니다.
 		]],
 	},
-	[ITEM..Items.DeaderEye.ID] = {
+	[ITEM..Items.DeaderEye.ITEM_ID] = {
 		_descType = "collectible",
 		Name = "천리안의 눈",
 		QuoteDesc = "집중하고, 호흡하고, 발사하세요",
 		Description = [[
 			사용 시 조준점으로 목표를 설정하며 (최대 5마리, {{Timer}}조준 중 느려짐);
-			{{SheriffBullet}} 조준을 향해 총탄을 발사, 적에게 최대 체력 비례 피해를 줍니다.
+			{{sfBullet}} 조준을 향해 총탄을 발사, 적에게 최대 체력 비례 피해를 줍니다.
 		]],
 	},
 	[ITEM..Items.LittleRam.ID] = {
@@ -130,7 +132,7 @@ local entries = {
 		QuoteDesc = "",
 		Description = [[
 			사용 시 일정 시간 후 거대 폭탄이 떨어집니다. (자해 없음)
-			{{SheriffBullet}} 폭발 시 그 방의 적에게 1000의 방어 무시 피해를 주며 무언가에 반사되는 추가 총탄을 여러 발 발사합니다.
+			{{sfBullet}} 폭발 시 그 방의 적에게 1000의 방어 무시 피해를 주며 무언가에 반사되는 추가 총탄을 여러 발 발사합니다.
 		]],
 	},
 	[ITEM..Items.QuickDraw.ITEM_ID] = {
@@ -179,7 +181,7 @@ local entries = {
 				end,
 				ModifierCallback = function (descObj)
 					local onlyTainted = true
-					local descToAdd =  [[ 
+					local descToAdd =  [[
 						]]..TSICON..[[ {{ColorLime}}사용 시 공격이 휘두를 수 있는 채찍으로 변경됩니다.
 						{{ColorLime}}채찍은 적에게 공격력 x0.5의 저격 피해를 줍니다.
 						{{ColorLime}}저격된 적 명중 시 탄창을 드랍합니다.
@@ -195,6 +197,7 @@ local entries = {
 					else
 						EID:appendToDescription(descObj.Description, descToAdd)
 					end
+					return descObj
 				end,
 			}
 		},
@@ -206,7 +209,7 @@ local entries = {
 		Description = [[
 			적 탄환을 가까스로 피하면 캐릭터의 텐션pt가 증가합니다.
 			{{Blank}} (캐릭터 아웃라인 및 효과음으로 확인)
-			{{SheriffBullet}} 텐션pt가 5 이상일 때 공격 시 (공격력 x8 + 10)의 커다란 총알을 발사합니다.
+			{{sfBullet}} 텐션pt가 5 이상일 때 공격 시 (공격력 x8 + 10)의 커다란 총알을 발사합니다.
 			!!! 피격 시 텐션 pt가 사라짐
 		]],
 	},
@@ -324,7 +327,7 @@ local entries = {
 		Name = "셰리프의 영혼",
 		QuoteDesc = "정의는 승리하리라",
 		Description = [[
-			{{SheriffBullet}} 10초동안 적을 향해 리볼버를 난사합니다.
+			{{sfBullet}} 10초동안 적을 향해 리볼버를 난사합니다.
 		]],
 	},
 	[CARD..Cards.CancerPack.ID] = {
@@ -343,8 +346,8 @@ local entries = {
 		_descType = "entity",
 		Name = "목동",
 		Description = [[
-			{{SheriffBullet}} 3{{Coin}}을 사용하여 특수 사격장으로 이동합니다. (아이템 비활성화)
-			{{SheriffBullet}} {{Timer}} 일정 시간 혹은 {{SheriffBullet}} 일정 탄수 안에 모든 과녁 명중 시 성공
+			{{sfBullet}} 3{{Coin}}을 사용하여 특수 사격장으로 이동합니다. (아이템 비활성화)
+			{{sfBullet}} {{Timer}} 일정 시간 혹은 {{sfBullet}} 일정 탄수 안에 모든 과녁 명중 시 성공
 			{{Blank}} (둘 중 하나의 조건만 랜덤으로 적용)
 			{{ArrowUp}} 성공 수에 비례하여 보상을 드랍합니다.
 			!!! 3회 성공 혹은 2회 실패 시 떠남
@@ -352,5 +355,9 @@ local entries = {
 	},
 	--#endregion
 }
+
+for _, entry in pairs(entries) do
+	entry.Mod = "The Sheriff"
+end
 
 return entries
