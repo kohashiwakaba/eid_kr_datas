@@ -22,6 +22,7 @@ wakaba_krdesc = mod ---@class wakaba_krdesc: ModReference
 ---|"transformation" Wakaba or Modded transformations
 ---|"collectible" Wakaba or Modded collectibles.
 ---|"trinket" Wakaba or Modded trinkets.
+---|"trinket_vanilla" Vanilla trinkets. Used for synergies with Wakaba items. Does not affect original EID descriptions.
 ---|"card" Wakaba or Modded cards.
 ---|"pill" Wakaba or Modded pills.
 ---|"curse" Wakaba or Modded curses.
@@ -445,6 +446,7 @@ wakaba_krdesc:AddPriorityCallback(ModCallbacks.MC_POST_MODS_LOADED, CallbackPrio
 				if type(itemDesc.Duplicate) == "string" then
 					EID.descriptions["ko_kr"].ConditionalDescs["5.100."..s.." (Copies)"] = itemDesc.Duplicate
 				end
+			elseif d == "trinket_vanilla" then
 			elseif d == "trinket" then
 				local desc = itemDesc.Description
 				EID:addTrinket(s, desc, n, "ko_kr")
@@ -567,9 +569,9 @@ wakaba_krdesc:AddPriorityCallback(ModCallbacks.MC_POST_MODS_LOADED, CallbackPrio
 			if v.itemName and v.itemName ~= "" then
 				item.Name = v.itemName
 			end
-			if item.Description and v.queueDesc and v.queueDesc ~= "" then
+			--[[ if item.Description and v.queueDesc and v.queueDesc ~= "" then
 				item.Description = v.queueDesc
-			end
+			end ]]
 		end
 	end
 
@@ -626,6 +628,55 @@ wakaba_krdesc:AddCallback(ModCallbacks.MC_PRE_ITEM_TEXT_DISPLAY, function (_, ti
 		end
 	end
 end)
+
+-- 구버전 와카바 모드에서는 변신세트 설명이 없어서 별도로 추가
+if (wakaba and wakaba.intversion < 21900) or (InventoryDescriptions and not RicherInventoryDescriptions) then
+	local transformationEntries = {}
+	for modKey, modEntries in pairs(managedTable2) do
+		for key, itemDesc in pairs(modEntries) do
+			local d = itemDesc._descType
+			local n = itemDesc.Name
+			local t, v, s, fallback = spliceKey(key)
+			local item
+			if not (t and v and s) then
+			elseif d == "transformation" then
+				if v then
+					-- nullItem으로 체크
+					transformationEntries[key] = itemDesc
+					transformationEntries[key].TransNullID = v
+				end
+			end
+		end
+	end
+
+
+	function wakaba_krdesc:getInvdescTransformations()
+		local ei = {}
+		local entries = {}
+		for _, player in ipairs(PlayerManager.GetPlayers()) do
+			for key, v in pairs(transformationEntries) do
+				local nullItemID = v.TransNullID
+				if nullItemID and not ei[nullItemID] and player:GetEffects():HasNullEffect(nullItemID) then
+					local entry = {
+						Type = -994,
+						Variant = nullItemID,
+						SubType = 0,
+						Frame = function()
+							return InventoryDescriptions:getOptions("q0icon")
+						end,
+						LeftIcon = "{{Player"..player:GetPlayerType().."}}",
+						Icon = "{{".. (v.Icon or v.TransKey) .."}}",
+					}
+					table.insert(entries, entry)
+					ei[nullItemID] = true
+				end
+			end
+		end
+		return entries
+	end
+
+	wakaba_krdesc:AddPriorityCallback("WakabaCallbacks.INVENTORY_DESCRIPTIONS_BASIC_ENTRIES", -339, function (_) return wakaba_krdesc:getInvdescTransformations() end)
+end
 
 -- 모드 표시 수정 대기열
 EID._currentMod = "Wakaba_translation_reserved"
