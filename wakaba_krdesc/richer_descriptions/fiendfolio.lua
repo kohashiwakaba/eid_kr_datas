@@ -15639,6 +15639,19 @@ local entries = {
 			"Always spawns a rare trinket when grinded in the Mining Machine"
 		},
 	},
+	[TRINKET..FiendFolio.ITEM.ROCK.ANCIENT_EFFIGY] = {
+		_descType = "trinket",
+		Name = "",
+		QuoteDesc = "",
+		Description = [[
+			↑ {{DamageSmall}}공격력 +1
+			{{SpeedSmall}} 이동속도 1.6 이상일 때 자동흡수
+			흡수 시 패널티가 적용되지 않습니다.
+		]],
+		AppendEntries = {
+			"FF_APPEND_GOLEM_NORMAL",
+		},
+	},
 	--#endregion
 	--#region REHEATED FOSSIL
 	[TRINKET..FiendFolio.ITEM.ROCK.BREAKFAST_FOSSIL] = {
