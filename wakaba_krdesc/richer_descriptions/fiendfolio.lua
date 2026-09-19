@@ -12,7 +12,7 @@ if (FiendFolio and not FiendFolio.CheckFiendFolioModVersion) or FiendFolio:Check
 	return
 end
 
---[[  
+--[[
 	메모 : 이나바 해금 선행 조건
 	1. 핀드, 골렘, 프렌드 노멀 캐릭터 전부 해금 (이건 올해금 커맨드로 스킵 가능)
 	2. 핀드, 골렘, 프렌드 세 캐릭터로 각각 아래 중 하나 격파 (체크리스트 올클 안해도 되나 보라색이 찍혀 있어야 됨, 노멀 알트 상관없이 한 쪽만 깨도 OK)
@@ -390,7 +390,7 @@ local entries = {
 			{{SoulHeart}} 최대 체력 = 소울하트의 보정을 받습니다.
 		]],
 		Description = [[
-			The Artisan: 
+			The Artisan:
 			{{SoulHeart}} 최대 체력 = 소울하트의 보정을 받습니다.
 			{{Collectible139}} 장신구를 처음부터 2개를 동시에 들고 다닐 수 있습니다.
 			{{Trinket}} 비밀방 진입 시 석기류를 추가로 드랍합니다.
@@ -634,7 +634,7 @@ local entries = {
 			바뀐 부하는 시간이 지나거나 방 클리어 시 사라집니다.
 		]],
 		Birthright = [[
-			바뀐 부하가 
+			바뀐 부하가
 		]],
 		BirthrightQuote = "Ultimate chimerism!",
 	},
@@ -1298,7 +1298,7 @@ local entries = {
 		Description = [[
 			적에게 가까이 있으면 확률적으로 적을 밀쳐내는 랜덤 방귀를 뀝니다.
 			>>> 20%: 작은 방귀
-			>>> {{Confusion}} 40%: 혼란성 방귀 
+			>>> {{Confusion}} 40%: 혼란성 방귀
 			>>> {{Poison}} 38%: 독방귀
 			>>> {{Poison}} 2%: 여러 개의 독방귀
 		]],
@@ -1318,10 +1318,10 @@ local entries = {
 		Name = "커뮤니티 업적",
 		QuoteDesc = "숫자세기에 정통",
 		Description = [[
-			↑ {{DamageSmall}}공격력 +]]..string.format("%.2f", FiendFolio:GetCommunityAchievementDamage())..[[ 
+			↑ {{DamageSmall}}공격력 +]]..string.format("%.2f", FiendFolio:GetCommunityAchievementDamage())..[[
 			{{DamageSmall}} 공격력 증가량은 Fiend Folio 디스코드 Counting 계열 채널의 기록에 비례합니다.
 			!!! 현재 모드에 기록된 최고기록:
-			{{Blank}} 일반:]]..FiendFolio.CountingChannelWorldRecords.Canon.Regular..[[ 
+			{{Blank}} 일반:]]..FiendFolio.CountingChannelWorldRecords.Canon.Regular..[[
 			{{Blank}} 하드:]]..FiendFolio.CountingChannelWorldRecords.Canon.Hardcore..[[
 		]],
 		Tests = {
@@ -1404,7 +1404,7 @@ local entries = {
 		Name = "모던 우로보로스",
 		QuoteDesc = "악마를 닮은 목소리",
 		Description = [[
-			{{Slow}} 공격이 무언가에 부딪힐 때 기름 장판이 생기며 
+			{{Slow}} 공격이 무언가에 부딪힐 때 기름 장판이 생기며
 			캐릭터/불이 기름 장판에 닿으면 불이 붙습니다.
 			캐릭터는 이 불에 피해를 받지 않습니다.
 		]],
@@ -3020,7 +3020,7 @@ local entries = {
 		Description = [[
 			소지 시 리라의 색상에 따라 다른 효과의 눈물을 발사합니다.
 			사용 시 리라의 현재 색상을 바꿉니다.
-			{{ColorBlue}}파랑{{CR}}: 
+			{{ColorBlue}}파랑{{CR}}:
 			{{Blank}} {{SpeedSmall}}+0.2/{{TearsSmall}}x1.3/{{LuckSmall}}+3
 			{{Blank}} {{ShotspeedSmall}}-0.2
 			눈물을 1발 > 3발 > 0발을 번갈아가며 발사합니다.
@@ -3046,7 +3046,7 @@ local entries = {
 		Description = [[
 			소지 시 리라의 색상에 따라 다른 효과의 눈물을 발사합니다.
 			사용 시 리라의 현재 색상을 바꿉니다.
-			{{ColorRed}}빨강{{CR}}: 
+			{{ColorRed}}빨강{{CR}}:
 			{{Blank}} {{DamageSmall}}x2
 			{{Blank}} {{TearsSmall}}x0.18
 			공격이 4발로 나가며 지형을 관통합니다.
@@ -3070,9 +3070,9 @@ local entries = {
 		Description = [[
 			소지 시 리라의 색상에 따라 다른 효과의 눈물을 발사합니다.
 			사용 시 리라의 현재 색상을 바꿉니다.
-			{{ColorYellow}}노랑{{CR}}: 
+			{{ColorYellow}}노랑{{CR}}:
 			{{Blank}} {{TearsSmall}}x4.4/{{RangeSmall}}+2.5
-			{{Blank}} {{DamageSmall}}x0.2 
+			{{Blank}} {{DamageSmall}}x0.2
 			유도 눈물을 10발 연속 발사하며 이후 잠시동안 공격을 멈춥니다.
 			연사가 높을수록 공격을 멈추는 시간이 짧아집니다.
 		]],
@@ -3409,7 +3409,7 @@ local entries = {
 		Description = [[
 			↑ {{Heart}}최대 체력 +1
 			↑ {{Heart}}빨간하트 +1
-			↑ {{DamageSmall}}공격력 +1 
+			↑ {{DamageSmall}}공격력 +1
 			적의 체력이 적을수록 공격이 적을 더 크게 밀쳐냅니다.
 		]],
 		Tests = {
@@ -3571,7 +3571,7 @@ local entries = {
 		Name = "고문 쿠키",
 		QuoteDesc = "충전식 고문",
 		Description = [[
-			!!! {{HalfHeart}} 사용 시 체력 반칸을 깎고 확률적으로 아래 중 하나를 드랍: 
+			!!! {{HalfHeart}} 사용 시 체력 반칸을 깎고 확률적으로 아래 중 하나를 드랍:
 			>>> [16%] {{BlackHeart}} 블랙하트
 			>>> [14%] {{Card}} 역타로카드
 			>>> [3%] {{Trinket}} 악마 관련 장신구
@@ -4758,8 +4758,8 @@ local entries = {
 		_descType = "collectible",
 		Name = "크레이그의 배터리",
 		QuoteDesc = "충전식 에너지 폭발",
-		Description = [[ 
-			!!! ]]..FiendFolio.DescriptionIcons.Craig..[[Craig 전용, 랜턴으로 충전 가능
+		Description = [[
+			{{Warning}} ]]..FiendFolio.DescriptionIcons.Craig..[[Craig 전용, 랜턴으로 충전 가능
 			적이 있는 방에서 랜턴이 등장하며 랜턴의 크기 및 주는 충전량은 시간이 지나면 커집니다.
 			사용 시 공격방향으로 혈사포를 발사합니다.
 			충전량 33% 이상일 때 사용 가능하며 혈사포 크기가 충전량에 비례합니다.
@@ -4844,7 +4844,7 @@ local entries = {
 			↑ {{DamageSmall}}공격력 +0.5
 			↑ {{RangeSmall}}사거리 +3
 			↑ {{ShotspeedSmall}}탄속 +0.2
-			!!! 다음 획득하는 아이템이 강아지류 패밀리어로 바뀝니다.
+			!!! 다음 획득하는 아이템이 1회 한정으로 강아지류 패밀리어로 바뀝니다.
 			획득한 강아지류 패밀리어는 방 배열 및 종류에 따라 달라집니다.
 		]],
 		Tests = {
@@ -5209,7 +5209,7 @@ local entries = {
 		QuoteDesc = "충전식 액티브... 하지만 공짜는 아냐",
 		Description = [[
 			사용 시 액티브 자판기를 소환합니다.
-			{{Coin}} 액티브 자판기는 동전 0~10개를 소모하여 그 아이템을 즉시 사용합니다.
+			{{Coin}} 액티브 자판기는 기재된 수만큼의 동전을 소모하여 그 아이템을 즉시 사용합니다.
 		]],
 		Tests = {
 			"Spawns a vending machine in the room",
@@ -5264,7 +5264,7 @@ local entries = {
 			!!! 획득 시 지정 8개 배열의 아이템이 하나씩 존재하는 방으로 이동합니다.
 			!!! 아이템은 모두 획득할 수 있으나 하나라도 획득 시:
 			>>> 현재 게임에서 이하의 방이 더 이상 등장하지 않음: {{TreasureRoom}} {{Shop}} {{Library}} {{Planetarium}} {{UltraSecretRoom}} {{DevilRoom}} {{AngelRoom}}
-			>>> {{AngelDevilChanceSmall}}} 현재 게임에서 악마방/천사방 {{ColorRed}}최종 확률{{CR}}이 0%로 고정 + 해당 방으로 이동 불가
+			>>> {{AngelDevilChanceSmall}} 현재 게임에서 악마방/천사방 {{ColorRed}}최종 확률{{CR}}이 0%로 고정 + 해당 방으로 이동 불가
 		]],
 		Tests = {
 			"Teleport to a special room containing 8 items from curated item pools",
@@ -5395,7 +5395,7 @@ local entries = {
 		Name = "맘모스 사본",
 		QuoteDesc = "",
 		Description = [[
-			!!! 일회용 !!! 
+			!!! 일회용 !!!
 			]]..FiendFolio.DescriptionIcons.Golem..[[사용 시 Golem의 모든 석기가 있는 방으로 이동합니다.
 			>>> 석기 3개 획득 시 원래 있던 장소로 돌아갑니다. (자동 흡수)
 		]],
@@ -6518,6 +6518,12 @@ local entries = {
 			"Whenever you fire tears, fire a screen-wide laser perpendicular to your tears wherever it would land"
 		},
 	},
+	[ITEM..FiendFolio.ITEM.COLLECTIBLE.INFUSER] = {
+		_descType = "collectible",
+		Description = [[
+			!!! 미구현
+		]],
+	},
 	[ITEM..FiendFolio.ITEM.COLLECTIBLE.FRUIT_MILK] = {
 		_descType = "collectible",
 		Name = "핑크맛 우유",
@@ -7477,7 +7483,7 @@ local entries = {
 		Name = "마탄",
 		QuoteDesc = "무엇이든 맞출 수 있어",
 		Description = [[
-			매 7번째 공격마다 폭발성 완전 관통 탄환이 왼쪽/오른쪽을 향해 발사됩니다. 
+			매 7번째 공격마다 폭발성 완전 관통 탄환이 왼쪽/오른쪽을 향해 발사됩니다.
 			탄환은 적에게 공격력 x2.1의 피해를 주며 주변의 적에게 40의 피해를 줍니다.
 			발사 위치는 매 2번째 공격 시 공개되며 캐릭터의 반대편에서 지정됩니다.
 			!!! 탄환 폭발이 캐릭터에게도 피해를 줍니다.
@@ -7766,12 +7772,18 @@ local entries = {
 			"↑ +0.3 Damage",
 		},
 	},
+	[ITEM..FiendFolio.ITEM.COLLECTIBLE.LETHAL_INJECTION] = {
+		_descType = "collectible",
+		Description = [[
+			!!! 미구현
+		]],
+	},
 	[ITEM..FiendFolio.ITEM.COLLECTIBLE.LANKY_MUSHROOM] = {
 		_descType = "collectible",
 		Name = "홀쭉 버섯",
 		QuoteDesc = "길쭉함 증가",
 		Description = [[
-			↓ {{TearsSmall}}연서 -0.4
+			↓ {{TearsSmall}}연사 -0.4
 			↑ {{DamageSmall}}공격력 +0.7
 			↑ {{RangeSmall}}사거리 +0.75
 			캐릭터가 길쭉해집니다.
@@ -9975,7 +9987,7 @@ local entries = {
 		Name = "토큰 달린 실",
 		QuoteDesc = "실이 튼튼하진 않아...",
 		Description = [[
-			!!! 일회용 
+			!!! 일회용
 			]]..FiendFolio.DescriptionIcons.Token .. [[스테이지 진입 시 토큰을 소환합니다.
 		]],
 		Tests = {
@@ -12422,8 +12434,8 @@ local entries = {
 		QuoteDesc = "영혼이 담겨있어",
 		Description = [[
 			{{Heart}} 피격 시 20%의 확률로 빨간하트를 하나 드랍합니다.
-			폭발 피해를 받으면 각각 35%의 확률로 드랍: 
-			>>> {{SoulHeart}} 소울하트 
+			폭발 피해를 받으면 각각 35%의 확률로 드랍:
+			>>> {{SoulHeart}} 소울하트
 			>>> {{Key}} 열쇠
 			>>> {{Bomb}}폭탄
 			>>> {{Chest}}상자
@@ -14029,7 +14041,7 @@ local entries = {
 		QuoteDesc = "영혼을 바친 보호막",
 		Description = [[
 			피격 시 소울하트가 없으면:
-			>>> 10초간 무적 상태가 되며 
+			>>> 10초간 무적 상태가 되며
 			>>> {{HolyMantleSmall}} 피격 시 피해를 1회 무시하는 보호막을 제공합니다.
 		]],
 		AppendEntries = {
@@ -15110,7 +15122,7 @@ local entries = {
 		QuoteDesc = "던질 수 있는 친구",
 		Description = [[
 			공격키로 던질 수 있는 Brickmin 패밀리어를 소환합니다.
-			{{Blank}} 
+			{{Blank}}
 			방 4개 클리어 시마다 Brickmin 패밀리어가 추가로 등장합니다.
 		]],
 		AppendEntries = {
@@ -19000,7 +19012,7 @@ local entries = {
 		_descType = "pill",
 		Name = "", -- ???
 		QuoteDesc = "",
-		Description = [[ 
+		Description = [[
 			토끼가 트로피를 먹고 싼 똥입니다.
 			]]..FiendFolio.DescriptionIcons.Inaba..[[사용 시 토끼로 변신합니다.
 		]],
@@ -19612,7 +19624,7 @@ end
 
 local function FF_EIDKR_VendingCallback(descObj)
 
-	local prepend = "" 
+	local prepend = ""
 	local slot = descObj.Entity:ToSlot()
 	local sprite, d = slot:GetSprite(), mod:GetEntityData(slot)
 
@@ -19625,7 +19637,7 @@ end
 --#endregion
 
 --#region Milk Machine
---[[  
+--[[
 	밀크 머신 eid 표시
 	- 우측 품질 관리기 : 배율 증가, 일반 증가, 일반 감소, 배율 감소
 ]]
@@ -20025,7 +20037,7 @@ end)
 EID:addDescriptionModifier("EID FF Golden Watch", function (descObj)
 	if descObj.Entity and descObj.Entity.Type == 5 and descObj.Entity.Variant == 100 and descObj.Entity.SubType == mod.ITEM.COLLECTIBLE.GOLDEN_WATCH then
 			local dmg = 0.0
-			if descObj.Entity:ToPickup():IsShopItem() and descObj.Entity:ToPickup().Price >= 0 then 
+			if descObj.Entity:ToPickup():IsShopItem() and descObj.Entity:ToPickup().Price >= 0 then
 					local price = descObj.Entity:ToPickup().Price
 					dmg = 1.0+(price*mod.ff_goldenWatchMult)
 					descObj.Description = "↑ "..price.."{{Coin}} -> 공격력 배율 x"..dmg.."#" .. descObj.Description
