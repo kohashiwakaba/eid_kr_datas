@@ -11545,7 +11545,7 @@ local entries = {
 		Name = "해시계 동전",
 		QuoteDesc = "시간 부자",
 		Description = [[
-			{{Timer}} 동전 획득 시 타이머를 2초 차감합니다.
+			{{Timer}} 동전 획득 시 타이머를 2초 차감합니다. (최소 0초)
 			동전 가치가 높을수록 차감되는 시간 증가
 		]],
 		Tests = {
@@ -20058,6 +20058,125 @@ EID:addDescriptionModifier("EID FF Golden Watch", function (descObj)
 	end
 	return descObj
 end)
+--#endregion
+
+--#region Three/Ace cards function override (why)
+
+mod:RemoveCallback(ModCallbacks.MC_USE_CARD, mod.useThreeCard, mod.ITEM.CARD.THREE_OF_CLUBS)
+mod:RemoveCallback(ModCallbacks.MC_USE_CARD, mod.useThreeCard, mod.ITEM.CARD.THREE_OF_DIAMONDS)
+mod:RemoveCallback(ModCallbacks.MC_USE_CARD, mod.useThreeCard, mod.ITEM.CARD.THREE_OF_SPADES)
+mod:RemoveCallback(ModCallbacks.MC_USE_CARD, mod.useThreeCard, mod.ITEM.CARD.THREE_OF_HEARTS)
+mod:RemoveCallback(ModCallbacks.MC_USE_CARD, mod.useThreeCard, mod.ITEM.CARD.THREE_OF_PENTACLES)
+mod:RemoveCallback(ModCallbacks.MC_USE_CARD, mod.useThreeCard, mod.ITEM.CARD.THREE_OF_CUPS)
+
+mod.useThreeCardOriginal = mod.useThreeCard
+mod.useThreeCard = function(mod, card, player, flags)
+	wakaba_krdesc:revertOriginalItemNames("FIENDFOLIO")
+	mod:useThreeCardOriginal(card, player, flags)
+	Isaac.CreateTimer(function()
+		wakaba_krdesc:translateItemNames("FIENDFOLIO")
+	end, 1, 1, true)
+end
+
+mod:AddCallback(ModCallbacks.MC_USE_CARD, mod.useThreeCard, mod.ITEM.CARD.THREE_OF_CLUBS)
+mod:AddCallback(ModCallbacks.MC_USE_CARD, mod.useThreeCard, mod.ITEM.CARD.THREE_OF_DIAMONDS)
+mod:AddCallback(ModCallbacks.MC_USE_CARD, mod.useThreeCard, mod.ITEM.CARD.THREE_OF_SPADES)
+mod:AddCallback(ModCallbacks.MC_USE_CARD, mod.useThreeCard, mod.ITEM.CARD.THREE_OF_HEARTS)
+mod:AddCallback(ModCallbacks.MC_USE_CARD, mod.useThreeCard, mod.ITEM.CARD.THREE_OF_PENTACLES)
+mod:AddCallback(ModCallbacks.MC_USE_CARD, mod.useThreeCard, mod.ITEM.CARD.THREE_OF_CUPS)
+
+mod:RemoveCallback(ModCallbacks.MC_USE_CARD, mod.useAceCard, mod.ITEM.CARD.ACE_OF_WANDS)
+mod:RemoveCallback(ModCallbacks.MC_USE_CARD, mod.useAceCard, mod.ITEM.CARD.ACE_OF_PENTACLES)
+mod:RemoveCallback(ModCallbacks.MC_USE_CARD, mod.useAceCard, mod.ITEM.CARD.ACE_OF_SWORDS)
+mod:RemoveCallback(ModCallbacks.MC_USE_CARD, mod.useAceCard, mod.ITEM.CARD.ACE_OF_CUPS)
+
+mod.useAceCardOriginal = mod.useAceCard
+mod.useAceCard = function(mod, card, player, flags)
+	wakaba_krdesc:revertOriginalItemNames("FIENDFOLIO")
+	mod:useAceCardOriginal(card, player, flags)
+	Isaac.CreateTimer(function()
+		wakaba_krdesc:translateItemNames("FIENDFOLIO")
+	end, 1, 1, true)
+end
+
+mod:AddCallback(ModCallbacks.MC_USE_CARD, mod.useAceCard, mod.ITEM.CARD.ACE_OF_WANDS)
+mod:AddCallback(ModCallbacks.MC_USE_CARD, mod.useAceCard, mod.ITEM.CARD.ACE_OF_PENTACLES)
+mod:AddCallback(ModCallbacks.MC_USE_CARD, mod.useAceCard, mod.ITEM.CARD.ACE_OF_SWORDS)
+mod:AddCallback(ModCallbacks.MC_USE_CARD, mod.useAceCard, mod.ITEM.CARD.ACE_OF_CUPS)
+
+FiendFolio.IsGeodeOriginal = FiendFolio.IsGeode
+FiendFolio.IsGeode = function(trinketId)
+	if trinketId <= 0 then return false end
+	local trinketId2 = mod:GetRealTrinketId(trinketId)
+	local config = Isaac.GetItemConfig():GetTrinket(trinketId2)
+	local isGeode = string.find(config.Description, " 정동 보너스$")
+
+	return isGeode or FiendFolio.IsGeodeOriginal(trinketId2)
+end
+
+--copy penny trinket func
+local function isPennyTrinket(id)
+	local config = Isaac.GetItemConfig():GetTrinket(id)
+
+	if config then
+		if config.ID < TrinketType.NUM_TRINKETS then return false end
+		local gfx = string.lower(config.GfxFileName)
+		return string.find(gfx, "penny")
+	end
+	return false
+end
+local function addPennyTrinket(player, id, isBlasphemous)
+	local tracker = isBlasphemous and "PENNY_ALBUM_BLASPHEMOUS" or "PENNY_ALBUM"
+	player:AddInnateTrinket(id, 1, tracker)
+	mod:TriggerBlasphemousDamageCache(player)
+
+	-- Add extra copies with Car Battery
+	if player:HasCollectible(CollectibleType.COLLECTIBLE_CAR_BATTERY) then
+		player:AddInnateTrinket(id, 1, "PENNY_ALBUM_CAR_BATTERY")
+	end
+end
+
+function mod:PennyAlbumTrinketCollision2(pickup, collider, bool)
+	local player = collider:ToPlayer()
+
+	if player and player:HasCollectible(mod.ITEM.COLLECTIBLE.PENNY_ALBUM) and isPennyTrinket(pickup.SubType) then
+		mod:GetEntityData(pickup).IsPennyAlbumTrinketBlashpemeous = mod:IsPickupTrinketBlasphemous(pickup)
+		pickup.Variant = mod.PICKUP.VARIANT.PENNY_ALBUM_TRINKET
+		pickup:ForceCollide(player, bool)
+		return true
+	end
+end
+mod:AddPriorityCollectibleCallback(ModCallbacks.MC_PRE_PICKUP_COLLISION, math.huge, mod.ITEM.COLLECTIBLE.PENNY_ALBUM, mod.PennyAlbumTrinketCollision2, PickupVariant.PICKUP_TRINKET)
+
+function mod:PennyAlbumAddItem2(itemID, charge, firstTime, itemSlot, varData, player)
+	for trinketSlot = 0, 1 do
+		local trinketID = player:GetTrinket(trinketSlot)
+
+		if isPennyTrinket(trinketID) then
+			local isBlasphemous = mod:IsPlayerTrinketBlasphemous(player, trinketSlot)
+			addPennyTrinket(player, trinketID, isBlasphemous)
+			player:TryRemoveTrinket(trinketID)
+		end
+	end
+end
+mod:AddCallback(ModCallbacks.MC_POST_ADD_COLLECTIBLE, mod.PennyAlbumAddItem2, mod.ITEM.COLLECTIBLE.PENNY_ALBUM)
+
+function mod:PennyAlbumAddTrinket2(player, id, firstTime)
+	if player:HasCollectible(mod.ITEM.COLLECTIBLE.PENNY_ALBUM) and isPennyTrinket(id) then
+		local isBlasphemous = mod:PlayerHasBlasphemousTrinket(player, true, id) ~= nil
+		addPennyTrinket(player, id, isBlasphemous)
+		return false
+	end
+end
+mod:AddCollectibleCallback(ModCallbacks.MC_PRE_ADD_TRINKET, mod.ITEM.COLLECTIBLE.PENNY_ALBUM, mod.PennyAlbumAddTrinket2)
+
+function mod:PennyAlbumReplaceTrinket2(selected, rng)
+	if not isPennyTrinket(selected) and mod:Random(nil, nil, rng) <= Settings.TrinketReplaceChance / 100 then
+		return mod:GetPennyTrinketIncludingFunnies(rng)
+	end
+end
+mod:AddCollectibleCallback(ModCallbacks.MC_GET_TRINKET, mod.ITEM.COLLECTIBLE.PENNY_ALBUM, mod.PennyAlbumReplaceTrinket2)
+
 --#endregion
 
 --#region Remove English leftover

@@ -361,6 +361,92 @@ do
 	end
 end
 
+---@param targetModKey string?
+function wakaba_krdesc:revertOriginalItemNames(targetModKey)
+
+	if not (REPKOR or Options.Language == "kr") then return end
+	if DaRules then return end
+	if Encyclopedia then return end
+
+	local ic = Isaac.GetItemConfig()
+	for modKey, modEntries in pairs(managedTable2) do
+		if (not targetModKey) or (targetModKey == modKey) then
+			print("[리셰쨩] ["..modKey.."] 인게임 아이템명 재설정 중...")
+			for key, itemDesc in pairs(modEntries) do
+				local d = itemDesc._descType
+				local n = itemDesc.Name
+				local t, v, s, fallback = spliceKey(key)
+				local item
+				if not (t and v and s) or itemDesc.KeepItemConfig then
+				elseif d == "collectible" then
+					item = ic:GetCollectible(s)
+				elseif d == "trinket" then
+					item = ic:GetTrinket(s)
+				elseif d == "card" then
+					item = ic:GetCard(s)
+				elseif d == "pill" then
+					item = ic:GetPillEffect(s)
+				end
+
+				if item --[[ and itemDesc.Mod ]] then
+					if itemDesc.OriginalName and itemDesc.OriginalName ~= "" then
+						item.Name = itemDesc.OriginalName or item.Name
+					end
+					if item.Description and itemDesc.OriginalQuote and itemDesc.OriginalQuote ~= "" then
+						item.Description = itemDesc.OriginalQuote or item.Description
+					end
+				end
+			end
+		end
+	end
+end
+
+---@param targetModKey string?
+function wakaba_krdesc:translateItemNames(targetModKey)
+
+	if not (REPKOR or Options.Language == "kr") then return end
+	if DaRules then return end
+	if Encyclopedia then return end
+
+	local ic = Isaac.GetItemConfig()
+	for modKey, modEntries in pairs(managedTable2) do
+		if (not targetModKey) or (targetModKey == modKey) then
+			print("[리셰쨩] ["..modKey.."] 인게임 아이템명 한글화 중...")
+			for key, itemDesc in pairs(modEntries) do
+				local d = itemDesc._descType
+				local n = itemDesc.Name
+				local t, v, s, fallback = spliceKey(key)
+				local item
+				if not (t and v and s) or itemDesc.KeepItemConfig then
+				elseif d == "collectible" then
+					item = ic:GetCollectible(s)
+				elseif d == "trinket" then
+					item = ic:GetTrinket(s)
+				elseif d == "card" then
+					item = ic:GetCard(s)
+				elseif d == "pill" then
+					item = ic:GetPillEffect(s)
+				end
+
+				if item --[[ and itemDesc.Mod ]] then
+					if itemDesc.Name and itemDesc.Name ~= "" then
+						if not itemDesc.OriginalName then
+							itemDesc.OriginalName = item.Name
+						end
+						item.Name = itemDesc.Name or item.Name
+					end
+					if item.Description and itemDesc.QuoteDesc and itemDesc.QuoteDesc ~= "" then
+						if not itemDesc.OriginalQuote then
+							itemDesc.OriginalQuote = item.Description
+						end
+						item.Description = itemDesc.QuoteDesc or item.Description
+					end
+				end
+			end
+		end
+	end
+end
+
 wakaba_krdesc:AddPriorityCallback(ModCallbacks.MC_POST_MODS_LOADED, CallbackPriority.LATE, function ()
 
 	local ic = Isaac.GetItemConfig()
@@ -493,34 +579,7 @@ wakaba_krdesc:AddPriorityCallback(ModCallbacks.MC_POST_MODS_LOADED, CallbackPrio
 	if Encyclopedia then goto skipItemName end
 
 	-- 신규 설명 데이터
-	for modKey, modEntries in pairs(managedTable2) do
-		for key, itemDesc in pairs(modEntries) do
-			local d = itemDesc._descType
-			local n = itemDesc.Name
-			local t, v, s, fallback = spliceKey(key)
-			local item
-			if not (t and v and s) or itemDesc.KeepItemConfig then
-			elseif d == "collectible" then
-				item = ic:GetCollectible(s)
-			elseif d == "trinket" then
-				item = ic:GetTrinket(s)
-			elseif d == "card" then
-				item = ic:GetCard(s)
-			elseif d == "pill" then
-				item = ic:GetPillEffect(s)
-			end
-
-			if item --[[ and itemDesc.Mod ]] then
-				if itemDesc.Name and itemDesc.Name ~= "" then
-					item.Name = itemDesc.Name or item.Name
-				end
-				if item.Description and itemDesc.QuoteDesc and itemDesc.QuoteDesc ~= "" then
-					item.Description = itemDesc.QuoteDesc or item.Description
-				end
-			end
-
-		end
-	end
+	wakaba_krdesc:translateItemNames()
 
 	-- 이전 설명 데이터
 	for playerType, v in pairs(managedTable.characters) do
