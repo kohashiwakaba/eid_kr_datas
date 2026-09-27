@@ -78,6 +78,7 @@ local modsToLoad = {
 	--AURI = "auri",
 	--ITEMJAM_1 = "itemjam_1",
 	SHERIFF = "sheriff",
+	--RETUNED = "tboi_retuned", -- 로컬 데이터라 불가능
 	-- Characters
 	--YONDU = "yondu",
 	--ALICE = "alice_ba",

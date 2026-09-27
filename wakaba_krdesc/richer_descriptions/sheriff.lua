@@ -272,7 +272,6 @@ local entries = {
 	},
 	--#endregion
 
-	
 	--#region TRINKETS
 	[TRINKET..Items.OilLamp.ID] = {
 		_descType = "trinket",
