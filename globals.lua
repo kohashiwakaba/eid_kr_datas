@@ -1,10 +1,15 @@
+---@diagnostic disable: lowercase-global
+
 FiendFolio = {}
 Sheriff = {}
 SheriffRepentogon = {}
 EID = {}
-InventoryDescriptions = {}
+InventoryDescriptions = {} -- invdesc 2.x 버전
+RicherInventoryDescriptions = {} -- invdesc 3.x 버전
 InvDescEIDType = {}
 InvDescEIDVariant = {}
+wakaba = {}
+_wakaba = {}
 
 --#region Luadoc definitions
 
